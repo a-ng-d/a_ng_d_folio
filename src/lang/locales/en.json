@@ -1,0 +1,16 @@
+{
+  "home": {
+    "author": "aurélie_ng_rimaud",
+    "baseline": "Fresh blend of  Creative technology,\nProduct design  &\nRogue-like love",
+    "id": "Flip over to the id card",
+    "menu": "Discover more universes"
+  },
+  "footer": {
+    "author": "Aurélien Grimaud aka nG⚡",
+    "license": "CC-BY {year}",
+    "attribution": "Attribution"
+  },
+  "global": {
+    "separator": "・"
+  }
+}

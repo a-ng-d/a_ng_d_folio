@@ -1,0 +1,195 @@
+// nG⚡️ Design System﹒Flash﹒Tokens
+
+:root
+  // Colors
+  //// Values
+  --color-deep-black: hsla(240, 100%, 8%, 1)
+  --color-titanium-white: hsla(0, 0, 100%, 1)
+
+  //// Greys
+  --color-soil: hsla(340, 2%, 30%, 1)
+  --color-sandstone: hsla(345, 2%, 61%, 1)
+  --color-clay: hsla(3, 4%, 78%, 1)
+  --color-cream: hsla(3, 14%, 96%, 1)
+
+  //// Yellows
+  --color-creamy-sun: hsla(49, 90%, 62%, 1)
+
+  //// Blues
+  --color-clear-water: hsla(209, 96%, 69%, 1)
+  --color-soft-wind: hsla(209, 96%, 89%, 1)
+
+  //// Pink
+  --color-candy-floss: hsla(266, 60%, 89%, 1)
+
+  //// Gradients
+  --gradient-biscarosse-sunset: linear-gradient(180deg, var(--color-soft-wind) 0%, var(--color-candy-floss) 75%, var(--color-creamy-sun) 100%)
+  --gradient-soft-steel: linear-gradient(180deg, var(--color-clay) 0%, var(--color-cream) 40%, var(--color-soft-wind) 100%)
+
+  // Semantic
+  --text-color-light: var(--color-soil)
+  --text-color-dark: var(--color-cream)
+
+  // Scale
+  --scale-ref: 16
+  --scale-xs-000: var(--scale-ref) / 4
+  --scale-s-000: var(--scale-ref) / 2
+  --scale-s-100: var(--scale-ref) / 3
+  --scale-m-000: var(--scale-ref)
+  --scale-m-100: var(--scale-ref) * 1.25
+  --scale-m-200: var(--scale-ref) * 1.5
+  --scale-m-300: var(--scale-ref) * 1.75
+  --scale-l-000: var(--scale-ref) * 2
+  --scale-l-100: var(--scale-ref) * 2.5
+  --scale-l-200: var(--scale-ref) * 3
+  --scale-l-300: var(--scale-ref) * 3.5
+  --scale-xl-000: var(--scale-ref) * 4
+  --scale-xl-100: var(--scale-ref) * 4.5
+  --scale-xl-200: var(--scale-ref) * 5
+  --scale-xl-300: var(--scale-ref) * 5.5
+  --scale-xl-400: var(--scale-ref) * 6
+  --scale-xl-500: var(--scale-ref) * 6.5
+  --scale-xl-600: var(--scale-ref) * 7
+  --scale-xl-700: var(--scale-ref) * 7.5
+  --scale-xxl-000: var(--scale-ref) * 8
+  --scale-xxl-100: var(--scale-ref) * 8.5
+  --scale-xxl-200: var(--scale-ref) * 9
+  --scale-xxl-300: var(--scale-ref) * 8.5
+  --scale-xxl-400: var(--scale-ref) * 10
+  --scale-xxl-500: var(--scale-ref) * 10.5
+  --scale-xxl-600: var(--scale-ref) * 11
+  --scale-xxl-700: var(--scale-ref) * 11.5
+  --scale-xxl-800: var(--scale-ref) * 12
+  --scale-xxl-900: var(--scale-ref) * 12.5
+
+  // Spacing
+  --spacing-xs-000: calc((var(--scale-xs-000)) * 1rem)
+  --spacing-s-000: calc((var(--scale-s-000)) * 1rem)
+  --spacing-s-100: calc((var(--scale-s-100)) * 1rem)
+  --spacing-m-000: calc((var(--scale-m-000)) * 1rem)
+  --spacing-m-100: calc((var(--scale-m-100)) * 1rem)
+  --spacing-m-200: calc((var(--scale-m-200)) * 1rem)
+  --spacing-m-300: calc((var(--scale-m-300)) * 1rem)
+  --spacing-l-000: calc((var(--scale-l-000)) * 1rem)
+  --spacing-l-100: calc((var(--scale-l-100)) * 1rem)
+  --spacing-l-200: calc((var(--scale-l-200)) * 1rem)
+  --spacing-l-300: calc((var(--scale-l-300)) * 1rem)
+  --spacing-xl-000: calc((var(--scale-xl-000)) * 1rem)
+  --spacing-xl-100: calc((var(--scale-xl-100)) * 1rem)
+  --spacing-xl-200: calc((var(--scale-xl-200)) * 1rem)
+  --spacing-xl-300: calc((var(--scale-xl-300)) * 1rem)
+  --spacing-xl-400: calc((var(--scale-xl-400)) * 1rem)
+  --spacing-xl-500: calc((var(--scale-xl-500)) * 1rem)
+  --spacing-xl-600: calc((var(--scale-xl-600)) * 1rem)
+  --spacing-xl-700: calc((var(--scale-xl-700)) * 1rem)
+  --spacing-xxl-000: calc((var(--scale-xxl-000)) * 1rem)
+  --spacing-xxl-100: calc((var(--scale-xxl-100)) * 1rem)
+  --spacing-xxl-200: calc((var(--scale-xxl-200)) * 1rem)
+  --spacing-xxl-300: calc((var(--scale-xxl-300)) * 1rem)
+  --spacing-xxl-400: calc((var(--scale-xxl-400)) * 1rem)
+  --spacing-xxl-500: calc((var(--scale-xxl-500)) * 1rem)
+  --spacing-xxl-600: calc((var(--scale-xxl-600)) * 1rem)
+  --spacing-xxl-700: calc((var(--scale-xxl-700)) * 1rem)
+  --spacing-xxl-800: calc((var(--scale-xxl-800)) * 1rem)
+  --spacing-xxl-900: calc((var(--scale-xxl-900)) * 1rem)
+
+  // Sizing
+  --sizing-xs-000: calc(var(--scale-xs-000) * 1rem)
+  --sizing-s-000: calc(var(--scale-s-000) * 1rem)
+  --sizing-s-100: calc(var(--scale-s-100) * 1rem)
+  --sizing-m-000: calc(var(--scale-m-000) * 1rem)
+  --sizing-m-100: calc(var(--scale-m-100) * 1rem)
+  --sizing-m-200: calc(var(--scale-m-200) * 1rem)
+  --sizing-m-300: calc(var(--scale-m-300) * 1rem)
+  --sizing-l-000: calc(var(--scale-l-000) * 1rem)
+  --sizing-l-100: calc(var(--scale-l-100) * 1rem)
+  --sizing-l-200: calc(var(--scale-l-200) * 1rem)
+  --sizing-l-300: calc(var(--scale-l-300) * 1rem)
+  --sizing-xl-000: calc(var(--scale-xl-000) * 1rem)
+  --sizing-xl-100: calc(var(--scale-xl-100) * 1rem)
+  --sizing-xl-200: calc(var(--scale-xl-200) * 1rem)
+  --sizing-xl-300: calc(var(--scale-xl-300) * 1rem)
+  --sizing-xl-400: calc(var(--scale-xl-400) * 1rem)
+  --sizing-xl-500: calc(var(--scale-xl-500) * 1rem)
+  --sizing-xl-600: calc(var(--scale-xl-600) * 1rem)
+  --sizing-xl-700: calc(var(--scale-xl-700) * 1rem)
+  --sizing-xxl-000: calc(var(--scale-xxl-000) * 1rem)
+  --sizing-xxl-100: calc(var(--scale-xxl-100) * 1rem)
+  --sizing-xxl-200: calc(var(--scale-xxl-200) * 1rem)
+  --sizing-xxl-300: calc(var(--scale-xxl-300) * 1rem)
+  --sizing-xxl-400: calc(var(--scale-xxl-400) * 1rem)
+  --sizing-xxl-500: calc(var(--scale-xxl-500) * 1rem)
+  --sizing-xxl-600: calc(var(--scale-xxl-600) * 1rem)
+  --sizing-xxl-700: calc(var(--scale-xxl-700) * 1rem)
+  --sizing-xxl-800: calc(var(--scale-xxl-800) * 1rem)
+  --sizing-xxl-900: calc(var(--scale-xxl-900) * 1rem)
+
+  // Font size
+  --font-size-ref: 6.25%
+  --font-size-xs-000: calc(var(--scale-xs-000) * 1rem)
+  --font-size-s-000: calc(var(--scale-s-000) * 1rem)
+  --font-size-s-100: calc(var(--scale-s-100) * 1rem)
+  --font-size-m-000: calc(var(--scale-m-000) * 1rem)
+  --font-size-m-100: calc(var(--scale-m-100) * 1rem)
+  --font-size-m-200: calc(var(--scale-m-200) * 1rem)
+  --font-size-m-300: calc(var(--scale-m-300) * 1rem)
+  --font-size-l-000: calc(var(--scale-l-000) * 1rem)
+  --font-size-l-100: calc(var(--scale-l-100) * 1rem)
+  --font-size-l-200: calc(var(--scale-l-200) * 1rem)
+  --font-size-l-300: calc(var(--scale-l-300) * 1rem)
+  --font-size-xl-000: calc(var(--scale-xl-000) * 1rem)
+  --font-size-xl-100: calc(var(--scale-xl-100) * 1rem)
+  --font-size-xl-200: calc(var(--scale-xl-200) * 1rem)
+  --font-size-xl-300: calc(var(--scale-xl-300) * 1rem)
+  --font-size-xl-400: calc(var(--scale-xl-400) * 1rem)
+  --font-size-xl-500: calc(var(--scale-xl-500) * 1rem)
+  --font-size-xl-600: calc(var(--scale-xl-600) * 1rem)
+  --font-size-xl-700: calc(var(--scale-xl-700) * 1rem)
+  --font-size-xxl-000: calc(var(--scale-xxl-000) * 1rem)
+  --font-size-xxl-100: calc(var(--scale-xxl-100) * 1rem)
+  --font-size-xxl-200: calc(var(--scale-xxl-200) * 1rem)
+  --font-size-xxl-300: calc(var(--scale-xxl-300) * 1rem)
+  --font-size-xxl-400: calc(var(--scale-xxl-400) * 1rem)
+  --font-size-xxl-500: calc(var(--scale-xxl-500) * 1rem)
+  --font-size-xxl-600: calc(var(--scale-xxl-600) * 1rem)
+  --font-size-xxl-700: calc(var(--scale-xxl-700) * 1rem)
+  --font-size-xxl-800: calc(var(--scale-xxl-800) * 1rem)
+  --font-size-xxl-900: calc(var(--scale-xxl-900) * 1rem)
+
+  // Sharing
+  --sharing-one-quarter: 25%
+  --sharing-one-third: 30%
+  --sharing-half: 50%
+  --sharing-two-thirds: 60%
+  --sharing-three-quarters: 75%
+  --sharing-full: 100%
+  --sharing-full-one-third: 130%
+  --sharing-full-two-thirds: 160%
+
+  // Font
+  //// Font family
+  --font-family-rubik: 'Rubik', Helvetica, Arial, sans-serif
+  --font-family-sora: 'Sora', Helvetica, Arial, sans-serif
+
+  //// Font weight
+  --font-weight-thin: 100
+  --font-weight-extra-light: 200
+  --font-weight-light: 300
+  --font-weight-regular: 400
+  --font-weight-medium: 500
+  --font-weight-semi-bold: 600
+  --font-weight-bold: 700
+  --font-weight-extra-bold: 800
+  --font-weight-black: 900
+
+  //// Font style
+  --font-style-normal: normal
+  --font-style-italic: italic
+
+  //// Letter spacing
+  --letter-spacing-medium: 0.05em
+
+  // Layout
+  --layout-center: var(--spacing-xxl-900)
+  --layout-margin: var(--spacing-l-200)
+  --layout-gap: var(--spacing-m-200)

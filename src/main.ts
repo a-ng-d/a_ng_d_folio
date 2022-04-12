@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import { i18n } from './lang'
 
-const app = createApp(App)
-
-app.use(router)
-
-app.mount('#app')
+createApp(App)
+  .use(router)
+  .use(i18n)
+  .mount('#app')

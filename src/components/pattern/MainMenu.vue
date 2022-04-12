@@ -1,0 +1,43 @@
+<script lang="ts">
+  export default {
+    name: 'MainMenu',
+    props: {
+      logotypeColor: {
+        type: String,
+        default: 'var(--color-deep-black)'
+      },
+      type: {
+        type: String,
+        default: '0 action'
+      }
+    },
+    data() {
+      return {
+        fill: this.logotypeColor,
+        type: this.type
+      }
+    }
+  }
+</script>
+
+<template v-if="type === '0 action'">
+  <header class="main-menu">
+    <div class="main-menu__logotype">
+      <svg width="128" height="128" viewBox="0 0 500 500" :style="{ fill }">
+        <use href="#logotype" />
+      </svg>
+    </div>
+  </header>
+</template>
+
+<style scoped lang="sass">
+  .main-menu
+    grid-area: header
+    display: grid
+    grid-template-columns: var(--layout-margin) repeat(9, 1fr) var(--layout-margin)
+    gap: 0 var(--layout-gap)
+    align-items: center
+
+    &__logotype
+      grid-column: 6 / 7
+</style>
