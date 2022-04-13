@@ -6,6 +6,10 @@
         type: String,
         default: 'primary'
       },
+      layout: {
+        type: String,
+        default: 'simple'
+      },
       inverted: {
         type: Boolean,
         default: false
@@ -14,6 +18,7 @@
     data() {
       return {
         type: this.type,
+        layout: this.layout,
         inverted: false
       }
     }
@@ -21,18 +26,32 @@
 </script>
 
 <template>
-  <button class="button" :class="['button--' + type, inverted ? 'button--' + type + '--inverted' : '']">
-    <div class="button__content">
-      <div class="button__icon">
-        <slot name="icon"></slot>
+  <template v-if="layout === 'simple'">
+    <button class="button" :class="['button--' + type, inverted ? 'button--' + type + '--inverted' : '']">
+      <div class="button__content">
+        <div class="button__label">
+          <span>
+            <slot name="label"></slot>
+          </span>
+        </div>
       </div>
-      <div class="button__label">
-        <span>
-          <slot name="label"></slot>
-        </span>
+    </button>
+  </template>
+
+  <template v-if="layout === 'indicator'">
+    <button class="button" :class="['button--' + type, inverted ? 'button--' + type + '--inverted' : '']">
+      <div class="button__content">
+        <div class="button__icon">
+          <slot name="icon"></slot>
+        </div>
+        <div class="button__label">
+          <span>
+            <slot name="label"></slot>
+          </span>
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </template>
 </template>
 
 <style lang="sass">
