@@ -1,6 +1,8 @@
 <script setup lang="ts">
   import MainMenu from '@/components/pattern/MainMenu.vue'
   import Footer from '@/components/pattern/Footer.vue'
+  import Button from '@/components/ui/Button.vue'
+  import { RotateCw } from 'lucide-vue-next'
 </script>
 
 <template>
@@ -11,8 +13,30 @@
   <main class="jumbotron">
     <h2 class="jumbotron__author">{{ $t("home.author") }}</h2>
     <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
-    <button class="jumbotron__id">{{ $t("home.id") }}</button>
-    <button class="jumbotron__menu">{{ $t("home.menu") }}</button>
+    <RouterLink to="/_id" class="jumbotron__id">
+      <Button type="primary" inverted="true">
+        <template #icon>
+          <RotateCw
+            :size="24"
+          />
+        </template>
+        <template #label>
+          {{ $t("home.id") }}
+        </template>
+      </Button>
+    </RouterLink>
+    <RouterLink to="/_id" class="jumbotron__menu">
+      <Button type="primary" inverted="true">
+        <template #icon>
+          <RotateCw
+            :size="24"
+          />
+        </template>
+        <template #label>
+          {{ $t("home.menu") }}
+        </template>
+      </Button>
+    </RouterLink>
   </main>
   <Footer
     alignment="left"
@@ -45,8 +69,4 @@
 
     &__menu
       grid-area: 2 / 7 / 3 / 10
-
-
-
-
 </style>
