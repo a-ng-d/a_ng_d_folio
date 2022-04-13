@@ -11,6 +11,11 @@ const router = createRouter({
       component: Home
     },
     {
+      path: '/_id',
+      name: 'id',
+      component: Home
+    },
+    {
       path: '/_core',
       name: 'core',
       component: Home
