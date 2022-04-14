@@ -83,6 +83,16 @@
       padding: 0 var(--spacing-l-000)
       @include text.label
 
+  .button--primary
+    background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
+    box-shadow: 0 0 0 var(--sizing-xs-000) var(--color-cream)
 
+    .button__icon
+      background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
 
+      &:deep(svg)
+        stroke: var(--color-soil)
+
+    .button__label
+      color: var(--text-color-light)
 </style>
