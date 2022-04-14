@@ -6,6 +6,9 @@
         type: String,
         default: 'primary'
       },
+      path: {
+        type: String
+      },
       layout: {
         type: String,
         default: 'simple'
@@ -18,6 +21,7 @@
     data() {
       return {
         type: this.type,
+        path: this.path,
         layout: this.layout,
         inverted: false
       }
@@ -27,7 +31,7 @@
 
 <template>
   <template v-if="layout === 'simple'">
-    <button class="button" :class="['button--' + type, inverted ? 'button--' + type + '--inverted' : '']">
+    <RouterLink :to="path" class="button" :class="['button--' + type, inverted ? 'button--' + type + '--inverted' : '']">
       <div class="button__content">
         <div class="button__label">
           <span>
@@ -35,11 +39,11 @@
           </span>
         </div>
       </div>
-    </button>
+    </RouterLink>
   </template>
 
   <template v-if="layout === 'indicator'">
-    <button class="button" :class="['button--' + type, inverted ? 'button--' + type + '--inverted' : '']">
+    <RouterLink :to="path" class="button" :class="['button--' + type, inverted ? 'button--' + type + '--inverted' : '']">
       <div class="button__content">
         <div class="button__icon">
           <slot name="icon"></slot>
@@ -50,7 +54,7 @@
           </span>
         </div>
       </div>
-    </button>
+    </RouterLink>
   </template>
 </template>
 
@@ -85,7 +89,7 @@
       @include text.label
 
   // Events
-  a:focus .button
+  .button:focus
     transform: scale(1.25)
 
   // Variants

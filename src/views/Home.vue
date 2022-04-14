@@ -16,30 +16,26 @@
       <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
     </div>
     <div class="jumbotron__actions">
-      <RouterLink to="/_id">
-        <Button type="secondary" layout="indicator" inverted="true">
-          <template #icon>
-            <RotateCw
-              :size="24"
-            />
-          </template>
-          <template #label>
-            {{ $t("home.id") }}
-          </template>
-        </Button>
-      </RouterLink>
-      <RouterLink to="/_universes" class="jumbotron__menu">
-        <Button type="primary" layout="simple" inverted="true">
-          <template #icon>
-            <RotateCw
-              :size="24"
-            />
-          </template>
-          <template #label>
-            {{ $t("home.menu") }}
-          </template>
-        </Button>
-      </RouterLink>
+      <Button type="secondary" path="/_id" layout="indicator" inverted="true">
+        <template #icon>
+          <RotateCw
+            :size="24"
+          />
+        </template>
+        <template #label>
+          {{ $t("home.id") }}
+        </template>
+      </Button>
+      <Button type="primary" path="/_universes" layout="simple" inverted="true">
+        <template #icon>
+          <RotateCw
+            :size="24"
+          />
+        </template>
+        <template #label>
+          {{ $t("home.menu") }}
+        </template>
+      </Button>
     </div>
   </main>
   <Footer
