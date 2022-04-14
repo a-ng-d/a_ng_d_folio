@@ -31,6 +31,7 @@
 </template>
 
 <style scoped lang="sass">
+  // Structure
   .main-menu
     grid-area: header
     display: grid

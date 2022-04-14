@@ -57,6 +57,7 @@
 <style scoped lang="sass">
   @use '@/assets/text-styles.sass' as text
 
+  // Structure
   .button
     display: flex
     align-items: stretch
@@ -83,6 +84,11 @@
       padding: 0 var(--spacing-l-000)
       @include text.label
 
+  // Events
+  a:focus .button
+    transform: scale(1.25)
+
+  // Variants
   .button--primary
     background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
     box-shadow: 0 0 0 var(--sizing-xs-000) var(--color-cream)

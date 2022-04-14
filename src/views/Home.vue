@@ -51,6 +51,7 @@
 <style scoped lang="sass">
   @use '@/assets/text-styles.sass' as text
 
+  // Structure
   .jumbotron
     grid-area: main
     display: flex

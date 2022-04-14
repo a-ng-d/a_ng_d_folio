@@ -14,6 +14,7 @@
   @use '@/assets/tokens.sass'
   @use '@/assets/base.sass'
 
+  // Structure
   #app
     display: grid
     grid-template-columns: var(--layout-margin) repeat(9, 1fr) var(--layout-margin)
@@ -22,5 +23,4 @@
     grid-template-areas: "header header header header header header header header header header header" "main main main main main main main main main main main" "footer footer footer footer footer footer footer footer footer footer footer"
     height: 100vh
     background-color: var(--color-soil)
-
 </style>

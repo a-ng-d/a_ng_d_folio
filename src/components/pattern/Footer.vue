@@ -39,6 +39,7 @@
 <style scoped lang="sass">
   @use '@/assets/text-styles.sass' as text
 
+  // Structure
   .footer
     grid-area: footer
     display: flex
@@ -59,6 +60,7 @@
       &__content, &__link
         @include text.caption
 
+    // Variants
     &__tag--dark
       background-color: var(--color-cream)
 
@@ -70,5 +72,4 @@
 
       .footer__tag__content, .footer__tag__link
         color: var(--text-color-dark)
-
 </style>
