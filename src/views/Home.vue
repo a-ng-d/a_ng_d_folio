@@ -16,7 +16,7 @@
       <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
     </div>
     <div class="jumbotron__actions">
-      <Button type="secondary" path="/_id" layout="indicator" inverted="true">
+      <Button type="secondary" path="/_id" layout="indicator" inverted>
         <template #icon>
           <RotateCw
             :size="24"
@@ -26,7 +26,7 @@
           {{ $t("home.id") }}
         </template>
       </Button>
-      <Button type="primary" path="/_universes" layout="simple" inverted="true">
+      <Button type="primary" path="/_universes" layout="simple" inverted>
         <template #icon>
           <RotateCw
             :size="24"

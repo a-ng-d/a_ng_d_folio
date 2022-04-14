@@ -14,7 +14,7 @@
     data() {
       return {
         fill: this.logotypeColor,
-        type: this.type
+        //type: this.type
       }
     }
   }

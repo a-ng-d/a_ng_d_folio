@@ -17,14 +17,6 @@
         type: Boolean,
         default: false
       }
-    },
-    data() {
-      return {
-        type: this.type,
-        path: this.path,
-        layout: this.layout,
-        inverted: false
-      }
     }
   }
 </script>
