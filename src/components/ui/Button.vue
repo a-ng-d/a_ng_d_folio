@@ -54,7 +54,7 @@
   </template>
 </template>
 
-<style lang="sass">
+<style scoped lang="sass">
   @use '@/assets/text-styles.sass' as text
 
   .button
