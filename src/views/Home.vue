@@ -14,7 +14,7 @@
     <h2 class="jumbotron__author">{{ $t("home.author") }}</h2>
     <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
     <RouterLink to="/_id" class="jumbotron__id">
-      <Button type="primary" layout="indicator" inverted="true">
+      <Button type="secondary" layout="indicator" inverted="true">
         <template #icon>
           <RotateCw
             :size="24"
