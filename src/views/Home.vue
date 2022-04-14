@@ -40,7 +40,7 @@
   </main>
   <Footer
     alignment="left"
-    mode="dark"
+    inverted
   />
 </template>
 

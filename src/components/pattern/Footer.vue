@@ -6,9 +6,9 @@
         type: String,
         default: 'left'
       },
-      mode: {
-        type: String,
-        default: 'light'
+      inverted: {
+        type: Boolean,
+        default: false
       }
     },
     data() {
@@ -17,7 +17,6 @@
               this.alignment === 'center' ? 'center' :
               this.alignment === 'right' ? 'flex-end' :
               'flex-start',
-        mode: this.mode,
         currentYear: new Date().getFullYear()
       }
     }
@@ -26,7 +25,7 @@
 
 <template>
   <footer class="footer">
-    <div class="footer__tag" :class="'footer__tag--' + mode">
+    <div class="footer__tag" :class="inverted ? 'footer__tag--inverted' : 'footer__tag--default'">
       <span class="footer__tag__content">{{ $t("footer.author") }}</span>
       <span class="footer__tag__content">{{ $t("global.separator") }}</span>
       <span class="footer__tag__content">{{ $t("footer.license", { year: currentYear }) }}</span>
@@ -61,15 +60,15 @@
         @include text.caption
 
     // Variants
-    &__tag--dark
-      background-color: var(--color-cream)
-
-      .footer__tag__content, .footer__tag__link
-        color: var(--text-color-light)
-
-    &__tag--light
+    &__tag--default
       background-color: var(--color-soil)
 
       .footer__tag__content, .footer__tag__link
         color: var(--text-color-dark)
+
+    &__tag--inverted
+      background-color: var(--color-cream)
+
+      .footer__tag__content, .footer__tag__link
+        color: var(--text-color-light)
 </style>
