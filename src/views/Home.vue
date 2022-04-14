@@ -25,7 +25,7 @@
         </template>
       </Button>
     </RouterLink>
-    <RouterLink to="/_id" class="jumbotron__menu">
+    <RouterLink to="/_universes" class="jumbotron__menu">
       <Button type="primary" layout="simple" inverted="true">
         <template #icon>
           <RotateCw
