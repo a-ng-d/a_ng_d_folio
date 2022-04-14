@@ -16,6 +16,11 @@ const router = createRouter({
       component: Home
     },
     {
+      path: '/_universes',
+      name: 'universes',
+      component: Home
+    },
+    {
       path: '/_core',
       name: 'core',
       component: Home
