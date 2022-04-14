@@ -11,32 +11,36 @@
     type="0 action"
   />
   <main class="jumbotron">
-    <h2 class="jumbotron__author">{{ $t("home.author") }}</h2>
-    <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
-    <RouterLink to="/_id" class="jumbotron__id">
-      <Button type="secondary" layout="indicator" inverted="true">
-        <template #icon>
-          <RotateCw
-            :size="24"
-          />
-        </template>
-        <template #label>
-          {{ $t("home.id") }}
-        </template>
-      </Button>
-    </RouterLink>
-    <RouterLink to="/_universes" class="jumbotron__menu">
-      <Button type="primary" layout="simple" inverted="true">
-        <template #icon>
-          <RotateCw
-            :size="24"
-          />
-        </template>
-        <template #label>
-          {{ $t("home.menu") }}
-        </template>
-      </Button>
-    </RouterLink>
+    <div class="jumbotron__content">
+      <h2 class="jumbotron__author">{{ $t("home.author") }}</h2>
+      <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
+    </div>
+    <div class="jumbotron__actions">
+      <RouterLink to="/_id">
+        <Button type="secondary" layout="indicator" inverted="true">
+          <template #icon>
+            <RotateCw
+              :size="24"
+            />
+          </template>
+          <template #label>
+            {{ $t("home.id") }}
+          </template>
+        </Button>
+      </RouterLink>
+      <RouterLink to="/_universes" class="jumbotron__menu">
+        <Button type="primary" layout="simple" inverted="true">
+          <template #icon>
+            <RotateCw
+              :size="24"
+            />
+          </template>
+          <template #label>
+            {{ $t("home.menu") }}
+          </template>
+        </Button>
+      </RouterLink>
+    </div>
   </main>
   <Footer
     alignment="left"
@@ -49,24 +53,21 @@
 
   .jumbotron
     grid-area: main
-    display: grid
-    grid-template-columns: var(--layout-margin) repeat(9, 1fr) var(--layout-margin)
-    grid-template-rows: auto auto
-    gap: 0 var(--layout-gap)
-    align-content: space-between
-    align-items: center
-    padding: var(--spacing-xl-600) 0
+    display: flex
+    flex-flow: column nowrap
+    justify-content: space-between
+    padding: var(--spacing-xl-600) var(--layout-center)
     color: var(--text-color-dark)
 
-    &__author
-      grid-area: 1 / 3 / 2 / 6
+    &__content
+      display: flex
+      align-items: center
+      gap: var(--spacing-xl-000)
 
-    &__baseline
-      grid-area: 1 / 7 / 2 / 10
+      & > *
+        flex: 1
 
-    &__id
-      grid-area: 2 / 3 / 3 / 6
-
-    &__menu
-      grid-area: 2 / 7 / 3 / 10
+    &__actions
+      display: flex
+      justify-content: space-between
 </style>
