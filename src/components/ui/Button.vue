@@ -62,8 +62,8 @@
     align-items: stretch
     height: var(--sizing-xl-000)
     padding: 0
-    border: 0
     border-radius: calc(var(--sizing-xl-000) / 2)
+    border: var(--spacing-xs-000) solid transparent
 
     &__content
       display: flex
@@ -73,6 +73,9 @@
       width: var(--spacing-xl-000)
       justify-content: center
       align-items: center
+      margin: calc(var(--sizing-xs-000) * -1)
+      border-radius: calc(var(--sizing-xl-000) / 2)
+      border: var(--spacing-xs-000) solid transparent
 
     &__label
       display: flex
