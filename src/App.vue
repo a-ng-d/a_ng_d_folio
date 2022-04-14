@@ -12,7 +12,6 @@
 
 <style lang="sass">
   @use '@/assets/tokens.sass'
-  @use '@/assets/text-styles.sass' as text
   @use '@/assets/base.sass'
 
   #app
