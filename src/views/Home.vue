@@ -8,7 +8,7 @@
 <template>
   <MainMenu
     logotypeColor="url(#gradient-biscarosse-sunset)"
-    type="0 action"
+    context="logotype"
   />
   <main class="jumbotron">
     <div class="jumbotron__content">

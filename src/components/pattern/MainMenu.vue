@@ -6,28 +6,29 @@
         type: String,
         default: 'var(--color-deep-black)'
       },
-      type: {
+      context: {
         type: String,
-        default: '0 action'
+        default: 'logotype'
       }
     },
     data() {
       return {
-        fill: this.logotypeColor,
-        //type: this.type
+        fill: this.logotypeColor
       }
     }
   }
 </script>
 
-<template v-if="type === '0 action'">
-  <header class="main-menu">
-    <div class="main-menu__logotype">
-      <svg width="128" height="128" viewBox="0 0 500 500" :style="{ fill }">
-        <use href="#logotype" />
-      </svg>
-    </div>
-  </header>
+<template>
+  <template v-if="context === 'logotype'">
+    <header class="main-menu">
+      <div class="main-menu__logotype">
+        <svg width="128" height="128" viewBox="0 0 500 500" :style="{ fill }">
+          <use href="#logotype" />
+        </svg>
+      </div>
+    </header>
+  </template>
 </template>
 
 <style scoped lang="sass">
