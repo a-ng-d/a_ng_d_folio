@@ -1,6 +1,11 @@
 <script lang="ts">
+  import Particles from '@/components/graphics/Particles.vue'
+
   export default {
     name: 'Button',
+    components: {
+      Particles
+    },
     props: {
       type: {
         type: String,
@@ -31,6 +36,7 @@
           </span>
         </div>
       </div>
+      <Particles class="button__background" />
     </RouterLink>
   </template>
 
@@ -88,6 +94,10 @@
       height: 100%
 
   // Events
+  .button:hover
+    :deep(.particle)
+      transform: scale(1)
+
   .button:focus
     transform: scale(1.25)
 
