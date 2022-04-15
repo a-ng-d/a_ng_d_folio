@@ -67,4 +67,5 @@
     &__actions
       display: flex
       justify-content: space-between
+      gap: var(--spacing-xl-000)
 </style>
