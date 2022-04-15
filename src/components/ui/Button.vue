@@ -67,6 +67,7 @@
 
     &__icon
       display: flex
+      flex: 0 0 var(--spacing-xl-000)
       width: var(--spacing-xl-000)
       justify-content: center
       align-items: center
@@ -78,7 +79,13 @@
       display: flex
       align-items: center
       padding: 0 var(--spacing-l-000)
+      text-align: center
       @include text.label
+
+    &__background
+      position: absolute
+      width: 100%
+      height: 100%
 
   // Events
   .button:focus
