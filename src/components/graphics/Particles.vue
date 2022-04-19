@@ -9,6 +9,10 @@
         rows: 0
       }
     },
+    mounted() {
+      this.modulus = 21;
+      this.counter = 0
+    },
     methods: {
       getGrid(e) {
         this.columns = Math.round(e.target.clientWidth / 8);
