@@ -18,8 +18,18 @@
         this.columns = Math.round(e.target.clientWidth / 8);
         this.rows = Math.round(e.target.clientHeight / 8)
       },
-      canBreakLine(n) {
-        console.log(n)
+      glitchFade(n) {
+        if (n % this.modulus == 0) {
+          this.counter = 0;
+          this.modulus = this.getRandomArbitrary(1, 51)
+        }
+        else
+          this.counter++;
+
+        return this.counter * 10
+      },
+      getRandomArbitrary(min, max) {
+        return Math.round(Math.random() * (max - min) + min)
       }
     }
   }
