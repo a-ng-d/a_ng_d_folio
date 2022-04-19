@@ -3,7 +3,6 @@
     name: 'Particles',
     data() {
       return {
-        counter: 0,
         radius: 8,
         columns: 0,
         rows: 0
