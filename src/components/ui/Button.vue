@@ -36,7 +36,9 @@
           </span>
         </div>
       </div>
-      <Particles class="button__background" />
+      <div class="button__background">
+        <Particles />
+      </div>
     </RouterLink>
   </template>
 
@@ -51,6 +53,9 @@
             <slot name="label"></slot>
           </span>
         </div>
+      </div>
+      <div class="button__background">
+        <Particles />
       </div>
     </RouterLink>
   </template>
@@ -70,6 +75,7 @@
 
     &__content
       display: flex
+      z-index: 1
 
     &__icon
       display: flex
@@ -92,6 +98,12 @@
       position: absolute
       width: 100%
       height: 100%
+      border-radius: calc(var(--sizing-xl-000) / 2)
+      overflow: hidden
+
+      svg
+        width: 100%
+        height: 100%
 
   // Events
   .button:hover
@@ -116,6 +128,9 @@
     .button__label
       color: var(--text-color-light)
 
+    .button__background svg
+      fill: var(--color-candy-floss)
+
   //// Secondary
   .button--secondary
     background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box, transparent
@@ -129,4 +144,7 @@
 
     .button__label
       color: var(--text-color-dark)
+
+    .button__background svg
+      fill: var(--color-sandstone)
 </style>
