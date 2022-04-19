@@ -128,9 +128,6 @@
     .button__label
       color: var(--text-color-light)
 
-    .button__background svg
-      fill: var(--color-candy-floss)
-
   //// Secondary
   .button--secondary
     background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box, transparent
@@ -144,7 +141,4 @@
 
     .button__label
       color: var(--text-color-dark)
-
-    .button__background svg
-      fill: var(--color-sandstone)
 </style>

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import chroma from 'chroma-js';
   export default {
     name: 'Particles',
     data() {
@@ -10,19 +11,20 @@
     },
     mounted() {
       this.modulus = 21;
-      this.counter = 0
+      this.counter = 0;
+      this.colors = []
     },
     methods: {
       getGrid(e) {
         this.columns = Math.round(e.target.clientWidth / 8);
-        this.rows = Math.round(e.target.clientHeight / 8) + 1
+        this.rows = Math.round(e.target.clientHeight / 8) + 1;
+        this.colors = chroma.scale(['#C7E3FE', '#E0D1F3', '#F5D546']).colors(this.columns * this.rows)
       },
       glitchFade(n) {
         if (n % this.modulus == 0) {
           this.counter = 0;
           this.modulus = this.getRandomArbitrary(1, 51)
-        }
-        else
+        } else
           this.counter++;
 
         return this.counter * 10
@@ -43,6 +45,7 @@
           :r="radius"
           :cx="(j - 1) * this.radius"
           :cy="(i - 1) * this.radius"
+          :fill="this.colors[j + (columns * (i - 1))]"
           :style="`transition-delay: ${glitchFade(j + (columns * (i - 1)))}ms`"
         />
       </template>
