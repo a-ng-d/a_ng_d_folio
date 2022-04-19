@@ -102,6 +102,7 @@
     transform: scale(1.25)
 
   // Variants
+  //// Primary
   .button--primary
     background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
     box-shadow: 0 0 0 var(--sizing-xs-000) var(--color-cream)
@@ -115,6 +116,7 @@
     .button__label
       color: var(--text-color-light)
 
+  //// Secondary
   .button--secondary
     background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box, transparent
     box-shadow: 0 0 0 var(--sizing-xs-000) var(--color-cream)
