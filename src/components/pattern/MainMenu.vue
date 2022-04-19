@@ -40,6 +40,6 @@
     gap: 0 var(--layout-gap)
     align-items: center
 
-    &__logotype
+    .main-menu__logotype
       grid-column: 6 / 7
 </style>

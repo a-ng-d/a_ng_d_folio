@@ -24,8 +24,8 @@
 </script>
 
 <template>
-  <footer class="footer">
-    <div class="footer__tag" :class="inverted ? 'footer__tag--inverted' : 'footer__tag--default'">
+  <footer class="footer" :class="inverted ? 'footer--inverted' : 'footer--default'">
+    <div class="footer__tag">
       <span class="footer__tag__content">{{ $t("footer.author") }}</span>
       <span class="footer__tag__content">{{ $t("global.separator") }}</span>
       <span class="footer__tag__content">{{ $t("footer.license", { year: currentYear }) }}</span>
@@ -47,7 +47,7 @@
     align-self: center
     padding: var(--spacing-m-200)
 
-    &__tag
+    .footer__tag
       display: flex
       flex-flow: row nowrap
       align-items: center
@@ -56,19 +56,19 @@
       gap: var(--spacing-xs-000)
       padding: 0 var(--spacing-m-000)
 
-      &__content, &__link
+      .footer__tag__content, .footer__tag__link
         @include text.caption
 
-    // Variants
-    &__tag--default
+  // Variants
+  //// Default
+  .footer--default
+    .footer__tag
       background-color: var(--color-soil)
+      color: var(--text-color-dark)
 
-      .footer__tag__content, .footer__tag__link
-        color: var(--text-color-dark)
-
-    &__tag--inverted
+  //// Inverted
+  .footer--inverted
+    .footer__tag
       background-color: var(--color-cream)
-
-      .footer__tag__content, .footer__tag__link
-        color: var(--text-color-light)
+      color: var(--text-color-light)
 </style>

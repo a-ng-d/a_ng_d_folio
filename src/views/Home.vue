@@ -56,7 +56,7 @@
     padding: var(--spacing-xl-600) var(--layout-center)
     color: var(--text-color-dark)
 
-    &__content
+    .jumbotron__content
       display: flex
       align-items: center
       gap: var(--spacing-xl-000)
@@ -64,7 +64,7 @@
       & > *
         flex: 1
 
-    &__actions
+    .jumbotron__actions
       display: flex
       justify-content: space-between
       gap: var(--spacing-xl-000)

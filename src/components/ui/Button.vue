@@ -73,11 +73,11 @@
     border-radius: calc(var(--sizing-xl-000) / 2)
     border: var(--spacing-xs-000) solid transparent
 
-    &__content
+    .button__content
       display: flex
       z-index: 1
 
-    &__icon
+    .button__icon
       display: flex
       flex: 0 0 var(--spacing-xl-000)
       width: var(--spacing-xl-000)
@@ -87,14 +87,14 @@
       border-radius: calc(var(--sizing-xl-000) / 2)
       border: var(--spacing-xs-000) solid transparent
 
-    &__label
+    .button__label
       display: flex
       align-items: center
       padding: 0 var(--spacing-l-000)
       text-align: center
       @include text.label
 
-    &__background
+    .button__background
       position: absolute
       width: 100%
       height: 100%
@@ -109,6 +109,10 @@
   .button:hover
     :deep(.particle)
       transform: scale(1)
+
+    &.button--secondary
+      .button__label
+        color: var(--text-color-light)
 
   .button:focus
     transform: scale(1.25)
