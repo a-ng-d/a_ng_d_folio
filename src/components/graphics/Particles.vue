@@ -15,7 +15,7 @@
     methods: {
       getGrid(e) {
         this.columns = Math.round(e.target.clientWidth / 8);
-        this.rows = Math.round(e.target.clientHeight / 8)
+        this.rows = Math.round(e.target.clientHeight / 8) + 1
       },
       glitchFade(n) {
         if (n % this.modulus == 0) {
