@@ -52,7 +52,7 @@
 
 <style scoped lang="sass">
   .particle
-    transition: var(--duration-running) all var(--ease-peps)
+    transition: var(--duration-turtoise) all var(--ease-peps)
     transform: scale(0)
     transform-origin: center center
     transform-box: fill-box
