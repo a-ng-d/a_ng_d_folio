@@ -108,14 +108,6 @@
         width: 100%
         height: 100%
 
-  // Events
-  .button:hover
-    :deep(.particle)
-      transform: scale(1)
-
-  .button:focus
-    transform: scale(1.25)
-
   // Variants
   //// Primary
   .button--primary[data-theme="light"]
@@ -165,5 +157,14 @@
     &:hover
       .button__label
         color: var(--text-color-light)
+
+  // Events
+  .button:hover
+    :deep(.particle)
+      transform: scale(1)
+
+  .button:focus
+    transform: scale(1.25)
+    box-shadow: 0 0 0 var(--sizing-xs-000) var(--color-clear-water)
 
 </style>
