@@ -12,12 +12,13 @@
     mounted() {
       this.modulus = 21;
       this.counter = 0;
-      this.colors = []
+      this.colors = [];
+      this.getGrid(this.$el)
     },
     methods: {
-      getGrid(e) {
-        this.columns = Math.round(e.target.clientWidth / 8);
-        this.rows = Math.round(e.target.clientHeight / 8) + 1;
+      getGrid(el) {
+        this.columns = Math.round(el.clientWidth / 8);
+        this.rows = Math.round(el.clientHeight / 8) + 1;
         this.colors = chroma.scale(['#C7E3FE', '#E0D1F3', '#F5D546']).colors(this.columns * this.rows)
       },
       glitchFade(n) {
@@ -37,7 +38,7 @@
 </script>
 
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" @load="getGrid">
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
     <template v-for="i in rows">
       <template v-for="j in columns" :key="j + (columns * (i - 1))">
         <circle
