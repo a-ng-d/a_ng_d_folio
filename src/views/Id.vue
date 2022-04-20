@@ -11,7 +11,7 @@
       logotypeColor="var(--color-soil)"
     >
       <template #left-part>
-        <Button type="secondary" path="/" layout="indicator" inverted>
+        <Button type="primary" path="/" layout="indicator">
           <template #icon>
             <RotateCcw
               :size="24"
