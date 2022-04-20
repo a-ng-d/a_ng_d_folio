@@ -14,6 +14,13 @@
     "separator": "・"
   },
   "id": {
-    "back": "Flip back"
+    "back": "Flip back",
+    "biography": {
+      "title": "你好 nǐ hǎo ！",
+      "experience": "I’m Aurélien all over the world or 立安 lì ān in China. Currently Product designer at <span>iObeya</span> for 5 years and an UI + </code> enthousiast.",
+      "mission": "Filling the gap between designers and developpers universes is my leitmotiv, by learning code and teaching design.",
+      "activities": "I also write about <span>team collaboration</span>, <span>design thinking</span> and <span>design system</span>, animate meetup, participate in a french design system community.",
+      "side": "Otherwise, I customize furnitures and explore procedural animation."
+    }
   }
 }

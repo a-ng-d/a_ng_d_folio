@@ -2,6 +2,7 @@
   import MainMenu from '@/components/patterns/MainMenu.vue'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
+  import OneColumn from '@/components/layouts/OneColumn.vue'
   import { RotateCcw } from 'lucide-vue-next'
 </script>
 
@@ -23,11 +24,20 @@
         </Button>
       </template>
     </MainMenu>
-    <main class="article">
+    <article class="article">
       <section>
-
+        <OneColumn
+          :title="$t('id.biography.title')"
+        >
+          <template #content>
+            <p v-html="$t('id.biography.experience')"></p>
+            <p v-html="$t('id.biography.mission')"></p>
+            <p v-html="$t('id.biography.activities')"></p>
+            <p v-html="$t('id.biography.side')"></p>
+          </template>
+        </OneColumn>
       </section>
-    </main>
+    </article>
     <Footer
       alignment="center"
     />
@@ -39,4 +49,8 @@
 
   .page
     background: var(--gradient-biscarosse-sunset)
+
+  // Structure
+  .article
+    grid-area: main
 </style>
