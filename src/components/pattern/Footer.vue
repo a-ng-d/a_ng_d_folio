@@ -6,7 +6,7 @@
         type: String,
         default: 'left'
       },
-      inverted: {
+      dark: {
         type: Boolean,
         default: false
       }
@@ -24,7 +24,7 @@
 </script>
 
 <template>
-  <footer class="footer" :class="inverted ? 'footer--inverted' : 'footer--default'">
+  <footer class="footer" :data-theme="dark ? 'dark' : 'light'">
     <div class="footer__tag">
       <span class="footer__tag__content">{{ $t("footer.author") }}</span>
       <span class="footer__tag__content">{{ $t("global.separator") }}</span>
@@ -60,14 +60,14 @@
         @include text.caption
 
   // Variants
-  //// Default
-  .footer--default
+  //// Light
+  .footer
     .footer__tag
       background-color: var(--color-soil)
       color: var(--text-color-dark)
 
-  //// Inverted
-  .footer--inverted
+  //// Dark
+  .footer[data-theme="dark"]
     .footer__tag
       background-color: var(--color-cream)
       color: var(--text-color-light)

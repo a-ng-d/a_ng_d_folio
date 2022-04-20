@@ -18,7 +18,7 @@
         type: String,
         default: 'simple'
       },
-      inverted: {
+      dark: {
         type: Boolean,
         default: false
       }
@@ -29,7 +29,7 @@
 <template>
 
   <template v-if="layout === 'simple'">
-    <RouterLink :to="path" class="button" :class="['button--' + type, inverted ? 'button--' + type + '--inverted' : '']">
+    <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="dark ? 'dark' : 'light'">
       <div class="button__content">
         <div class="button__label">
           <span>
@@ -44,7 +44,7 @@
   </template>
 
   <template v-if="layout === 'indicator'">
-    <RouterLink :to="path" class="button" :class="['button--' + type, inverted ? 'button--' + type + '--inverted' : '']">
+    <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="dark ? 'dark' : 'light'">
       <div class="button__content">
         <div class="button__icon">
           <slot name="icon"></slot>
