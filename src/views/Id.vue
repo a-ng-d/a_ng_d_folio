@@ -127,6 +127,8 @@
 
   .page
     background: var(--gradient-biscarosse-sunset)
+    background-attachment: fixed
+    height: fit-content
 
   // Structure
   .article
