@@ -12,5 +12,8 @@
   },
   "global": {
     "separator": "・"
+  },
+  "id": {
+    "back": "Flip back"
   }
 }

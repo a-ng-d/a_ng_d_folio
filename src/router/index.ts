@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { i18n } from '@/lang'
 import Home from '../views/Home.vue'
+import Id from '../views/Id.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,7 +14,7 @@ const router = createRouter({
     {
       path: '/_id',
       name: 'id',
-      component: Home
+      component: Id
     },
     {
       path: '/_universes',
