@@ -21,6 +21,39 @@
       "mission": "Filling the gap between designers and developpers universes is my leitmotiv, by learning code and teaching design.",
       "activities": "I also write about <span>team collaboration</span>, <span>design thinking</span> and <span>design system</span>, animate meetup, participate in a french design system community.",
       "side": "Otherwise, I customize furnitures and explore procedural animation."
+    },
+    "network": {
+      "title": "Networks (find me on the internets)",
+      "twitter": {
+        "title": "Twitter",
+        "description": "Curation, ideas, reactions and thoughts",
+        "href": "https://twitter.com/inVoltag",
+        "alt": "External link to my Twitter profile page"
+      },
+      "dribbble": {
+        "title": "Dribbble",
+        "description": "Concept, UI and animation",
+        "href": "https://dribbble.com/inVolt",
+        "alt": "External link to my Dribbble profile page"
+      },
+      "codepen": {
+        "title": "Codepen",
+        "description": "Procedural animation and code concept",
+        "href": "https://codepen.io/inVoltag",
+        "alt": "External link to my Codepen profile page"
+      },
+      "medium": {
+        "title": "Medium",
+        "description": "Articles and comments",
+        "href": "https://medium.com/@inVoltag",
+        "alt": "External link to my Medium profile page"
+      },
+      "github": {
+        "title": "Github",
+        "description": "Dev projects and plugins for UX tools",
+        "href": "https://github.com/inVoltag",
+        "alt": "External link to my GitHub profile page"
+      }
     }
   }
 }
