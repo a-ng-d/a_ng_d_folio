@@ -71,10 +71,10 @@
     display: flex
     align-items: stretch
     width: fit-content
-    height: var(--sizing-xl-000)
+    height: var(--button-height-size)
     padding: 0
-    border-radius: calc(var(--sizing-xl-000) / 2)
-    border: var(--spacing-xs-000) solid transparent
+    border-radius: calc(var(--button-height-size) / 2)
+    border: var(--button-border-size) solid transparent
 
     &__content
       display: flex
@@ -82,18 +82,18 @@
 
     &__icon
       display: flex
-      flex: 0 0 var(--spacing-xl-000)
-      width: var(--spacing-xl-000)
+      flex: 0 0 var(--button-height-size)
+      width: var(--button-height-size)
       justify-content: center
       align-items: center
-      margin: calc(var(--sizing-xs-000) * -1)
-      border-radius: calc(var(--sizing-xl-000) / 2)
-      border: var(--spacing-xs-000) solid transparent
+      margin: calc(var(--button-border-size) * -1)
+      border-radius: calc(var(--button-height-size) / 2)
+      border: var(--button-border-size) solid transparent
 
     &__label
       display: flex
       align-items: center
-      padding: 0 var(--spacing-l-000)
+      padding: 0 calc(var(--button-height-size) / 2)
       text-align: center
       @include text.label
 
@@ -101,7 +101,7 @@
       position: absolute
       width: 100%
       height: 100%
-      border-radius: calc(var(--sizing-xl-000) / 2)
+      border-radius: calc(var(--button-height-size) / 2)
       overflow: hidden
 
       svg
@@ -112,7 +112,7 @@
   //// Primary
   .button--primary[data-theme="light"]
     background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
-    box-shadow: 0 0 0 var(--sizing-xs-000) var(--color-soil)
+    box-shadow: 0 0 0 var(--button-border-size) var(--color-soil)
 
     .button__icon
       background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
@@ -129,7 +129,7 @@
 
   .button--primary[data-theme="dark"]
     background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
-    box-shadow: 0 0 0 var(--sizing-xs-000) var(--color-cream)
+    box-shadow: 0 0 0 var(--button-border-size) var(--color-cream)
 
     .button__icon
       background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
@@ -143,7 +143,7 @@
   //// Secondary
   .button--secondary[data-theme="dark"]
     background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box, transparent
-    box-shadow: 0 0 0 var(--sizing-xs-000) var(--color-cream)
+    box-shadow: 0 0 0 var(--button-border-size) var(--color-cream)
 
     .button__icon
       background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
@@ -165,6 +165,6 @@
 
   .button:focus
     transform: scale(1.25)
-    box-shadow: 0 0 0 var(--sizing-xs-000) var(--color-clear-water)
+    box-shadow: 0 0 0 var(--button-border-size) var(--color-clear-water)
 
 </style>

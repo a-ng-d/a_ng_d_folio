@@ -19,7 +19,7 @@
     display: grid
     grid-template-columns: var(--layout-margin) repeat(9, 1fr) var(--layout-margin)
     grid-template-rows: var(--spacing-xxl-600) 1fr var(--spacing-xl-200)
-    column-gap: var(--layout-gap)
+    column-gap: var(--layout-column-gap)
     grid-template-areas: "header header header header header header header header header header header" "main main main main main main main main main main main" "footer footer footer footer footer footer footer footer footer footer footer"
     height: 100vh
     background-color: var(--color-soil)

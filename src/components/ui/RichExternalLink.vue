@@ -35,22 +35,22 @@
   .rich-external-link
     display: flex
     flex-flow: row nowrap
-    gap: 0 var(--layout-gap)
+    gap: 0 var(--layout-column-gap)
 
     &__icon
       display: flex
-      flex: 0 0 var(--sizing-xxl-000)
-      width: var(--sizing-xxl-000)
-      height: var(--sizing-xxl-000)
+      flex: 0 0 var(--rich-external-link-size)
+      width: var(--rich-external-link-size)
+      height: var(--rich-external-link-size)
       justify-content: center
       align-items: center
-      border-radius: calc(var(--sizing-xxl-000) / 2)
+      border-radius: calc(var(--rich-external-link-size) / 2)
       border: 8rem solid var(--color-soil)
 
     &__content
       display: flex
       flex-flow: column nowrap
-      gap: var(--spacing-m-000) 0
+      gap: var(--layout-paragraph-gap) 0
 
       p
         display: -webkit-box

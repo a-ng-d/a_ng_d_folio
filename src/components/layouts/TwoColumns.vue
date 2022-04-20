@@ -30,16 +30,16 @@
     display: flex
     flex-flow: column nowrap
     padding: 0 var(--layout-center)
-    gap: var(--spacing-l-300) 0
+    gap: var(--layout-title-gap) 0
 
     &__columns
       display: flex
       flex-flow: row nowrap
-      gap: 0 var(--spacing-m-200)
+      gap: 0 var(--layout-column-gap)
 
     &__column
       display: flex
       flex-flow: column nowrap
       flex: 1
-      gap: var(--spacing-l-300) 0
+      gap: var(--layout-title-gap) 0
 </style>

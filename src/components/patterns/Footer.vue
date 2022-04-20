@@ -45,16 +45,16 @@
     flex-flow: row nowrap
     justify-content: v-bind(flex)
     align-self: center
-    padding: var(--spacing-m-200)
+    padding: var(--layout-column-gap)
 
     &__tag
       display: flex
       flex-flow: row nowrap
       align-items: center
-      height: var(--sizing-l-000)
-      border-radius: calc(var(--sizing-l-000) / 2)
-      gap: var(--spacing-xs-000)
-      padding: 0 var(--spacing-m-000)
+      height: var(--footer-tag-height-size)
+      border-radius: calc(var(--footer-tag-height-size) / 2)
+      gap: calc(var(--footer-tag-height-size) / 8)
+      padding: 0 calc(var(--footer-tag-height-size) / 2)
 
       &__content, &__link
         @include text.caption
