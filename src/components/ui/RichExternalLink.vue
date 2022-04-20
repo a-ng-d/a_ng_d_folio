@@ -52,4 +52,9 @@
       flex-flow: column nowrap
       gap: var(--spacing-m-000) 0
 
+      p
+        display: -webkit-box
+        -webkit-line-clamp: 2
+        -webkit-box-orient: vertical
+        overflow: hidden
 </style>
