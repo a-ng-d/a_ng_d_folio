@@ -113,16 +113,29 @@
     :deep(.particle)
       transform: scale(1)
 
-    &.button--secondary
-      .button__label
-        color: var(--text-color-light)
-
   .button:focus
     transform: scale(1.25)
 
   // Variants
   //// Primary
-  .button--primary
+  .button--primary[data-theme="light"]
+    background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
+    box-shadow: 0 0 0 var(--sizing-xs-000) var(--color-cream)
+
+    .button__icon
+      background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
+
+      &:deep(svg)
+        stroke: var(--color-cream)
+
+    .button__label
+      color: var(--text-color-dark)
+
+    &:hover
+      .button__label
+        color: var(--text-color-light)
+
+  .button--primary[data-theme="dark"]
     background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
     box-shadow: 0 0 0 var(--sizing-xs-000) var(--color-cream)
 
@@ -136,7 +149,7 @@
       color: var(--text-color-light)
 
   //// Secondary
-  .button--secondary
+  .button--secondary[data-theme="dark"]
     background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box, transparent
     box-shadow: 0 0 0 var(--sizing-xs-000) var(--color-cream)
 
@@ -148,4 +161,9 @@
 
     .button__label
       color: var(--text-color-dark)
+
+    &:hover
+      .button__label
+        color: var(--text-color-light)
+
 </style>
