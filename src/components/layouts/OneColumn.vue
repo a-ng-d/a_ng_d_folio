@@ -25,10 +25,10 @@
     display: flex
     flex-flow: column nowrap
     padding: 0 var(--layout-center)
-    gap: var(--spacing-l-300)
+    gap: var(--spacing-l-300) 0
 
-    .one-column__content
+    &__content
       display: flex
       flex-flow: column nowrap
-      gap: var(--spacing-m-000)
+      gap: var(--spacing-m-000) 0
 </style>
