@@ -61,7 +61,7 @@
 
   // Variants
   //// Light
-  .footer
+  .footer[data-theme="light"]
     .footer__tag
       background-color: var(--color-soil)
       color: var(--text-color-dark)
