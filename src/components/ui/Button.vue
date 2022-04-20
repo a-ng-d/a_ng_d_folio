@@ -120,7 +120,7 @@
   //// Primary
   .button--primary[data-theme="light"]
     background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
-    box-shadow: 0 0 0 var(--sizing-xs-000) var(--color-cream)
+    box-shadow: 0 0 0 var(--sizing-xs-000) var(--color-soil)
 
     .button__icon
       background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
