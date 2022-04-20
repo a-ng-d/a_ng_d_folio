@@ -76,11 +76,11 @@
     border-radius: calc(var(--sizing-xl-000) / 2)
     border: var(--spacing-xs-000) solid transparent
 
-    .button__content
+    &__content
       display: flex
       z-index: 1
 
-    .button__icon
+    &__icon
       display: flex
       flex: 0 0 var(--spacing-xl-000)
       width: var(--spacing-xl-000)
@@ -90,14 +90,14 @@
       border-radius: calc(var(--sizing-xl-000) / 2)
       border: var(--spacing-xs-000) solid transparent
 
-    .button__label
+    &__label
       display: flex
       align-items: center
       padding: 0 var(--spacing-l-000)
       text-align: center
       @include text.label
 
-    .button__background
+    &__background
       position: absolute
       width: 100%
       height: 100%

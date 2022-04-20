@@ -41,7 +41,7 @@
     align-items: center
     justify-content: space-between
 
-    .main-menu__right-part,
-    .main-menu__left-part
+    &__right-part,
+    &__left-part
       flex: 1
 </style>

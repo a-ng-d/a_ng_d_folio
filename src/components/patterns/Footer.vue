@@ -47,7 +47,7 @@
     align-self: center
     padding: var(--spacing-m-200)
 
-    .footer__tag
+    &__tag
       display: flex
       flex-flow: row nowrap
       align-items: center
@@ -56,7 +56,7 @@
       gap: var(--spacing-xs-000)
       padding: 0 var(--spacing-m-000)
 
-      .footer__tag__content, .footer__tag__link
+      &__content, &__link
         @include text.caption
 
   // Variants
