@@ -15,7 +15,7 @@
   @use '@/assets/base.sass'
 
   // Structure
-  #app
+  .page
     display: grid
     grid-template-columns: var(--layout-margin) repeat(9, 1fr) var(--layout-margin)
     grid-template-rows: var(--spacing-xxl-600) 1fr var(--spacing-xl-200)

@@ -6,42 +6,43 @@
 </script>
 
 <template>
-  <MainMenu
-    logotypeColor="url(#gradient-biscarosse-sunset)"
-    context="logotype"
-  />
-  <main class="jumbotron">
-    <div class="jumbotron__content">
-      <h2 class="jumbotron__author">{{ $t("home.author") }}</h2>
-      <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
-    </div>
-    <div class="jumbotron__actions">
-      <Button type="secondary" path="/_id" layout="indicator" inverted>
-        <template #icon>
-          <RotateCw
-            :size="24"
-          />
-        </template>
-        <template #label>
-          {{ $t("home.id") }}
-        </template>
-      </Button>
-      <Button type="primary" path="/_universes" layout="simple" inverted>
-        <template #icon>
-          <RotateCw
-            :size="24"
-          />
-        </template>
-        <template #label>
-          {{ $t("home.menu") }}
-        </template>
-      </Button>
-    </div>
+  <main class="page">
+    <MainMenu
+      logotypeColor="url(#gradient-biscarosse-sunset)"
+    />
+    <section class="jumbotron">
+      <div class="jumbotron__content">
+        <h2 class="jumbotron__author">{{ $t("home.author") }}</h2>
+        <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
+      </div>
+      <div class="jumbotron__actions">
+        <Button type="secondary" path="/_id" layout="indicator" inverted>
+          <template #icon>
+            <RotateCw
+              :size="24"
+            />
+          </template>
+          <template #label>
+            {{ $t("home.id") }}
+          </template>
+        </Button>
+        <Button type="primary" path="/_universes" layout="simple" inverted>
+          <template #icon>
+            <RotateCw
+              :size="24"
+            />
+          </template>
+          <template #label>
+            {{ $t("home.menu") }}
+          </template>
+        </Button>
+      </div>
+    </section>
+    <Footer
+      alignment="left"
+      inverted
+    />
   </main>
-  <Footer
-    alignment="left"
-    inverted
-  />
 </template>
 
 <style scoped lang="sass">
@@ -68,4 +69,7 @@
       display: flex
       justify-content: space-between
       gap: var(--spacing-xl-000)
+
+  .page
+    background: var(--color-soil)
 </style>

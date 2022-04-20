@@ -6,36 +6,38 @@
 </script>
 
 <template>
-  <MainMenu
-    logotypeColor="var(--color-soil)"
-    context="left action"
-  >
-    <template #button>
-      <Button type="secondary" path="/" layout="indicator" inverted>
-        <template #icon>
-          <RotateCcw
-            :size="24"
-          />
-        </template>
-        <template #label>
-          {{ $t("id.back") }}
-        </template>
-      </Button>
-    </template>
-  </MainMenu>
-  <main class="article">
-    <section>
+  <main class="page">
+    <MainMenu
+      logotypeColor="var(--color-soil)"
+      context="left action"
+    >
+      <template #left-action>
+        <Button type="secondary" path="/" layout="indicator" inverted>
+          <template #icon>
+            <RotateCcw
+              :size="24"
+            />
+          </template>
+          <template #label>
+            {{ $t("id.back") }}
+          </template>
+        </Button>
+      </template>
+    </MainMenu>
+    <main class="article">
+      <section>
 
-    </section>
+      </section>
+    </main>
+    <Footer
+      alignment="center"
+    />
   </main>
-  <Footer
-    alignment="center"
-  />
 </template>
 
 <style scoped lang="sass">
   @use '@/assets/text-styles.sass' as text
 
-  // Structure
-  
+  .page
+    background: var(--gradient-biscarosse-sunset)
 </style>
