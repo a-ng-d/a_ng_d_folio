@@ -38,12 +38,17 @@ h4
 
 h5
   @include title.large-accented-label
+  margin: 0 0 var(--text-paragraph-space) 0
 
 h6
   @include title.accented-label
+  margin: 0 0 var(--text-paragraph-space) 0
 
 section
+  display: flex
+  flex-flow: column
   padding: var(--spacing-xl-400) 0
+  gap: var(--layout-box-gap) 0
 
 a
   text-decoration: none
@@ -56,3 +61,6 @@ p
 
 p.enhanced
   @include text.enhanced
+
+p + p
+  margin: var(--text-paragraph-space) 0 0 0
