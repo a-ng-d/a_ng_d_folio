@@ -17,7 +17,7 @@
       <h3>{{ title }}</h3>
     </template>
     <div class="col-1__content">
-      <slot name="content"></slot>
+      <slot name="plain"></slot>
     </div>
   </div>
 </template>
