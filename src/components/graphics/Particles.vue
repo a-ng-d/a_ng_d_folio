@@ -1,5 +1,6 @@
 <script lang="ts">
-  import chroma from 'chroma-js';
+  import chroma from 'chroma-js'
+  
   export default {
     name: 'Particles',
     data() {
