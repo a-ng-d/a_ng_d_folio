@@ -70,6 +70,7 @@
   .button
     display: flex
     align-items: stretch
+    width: fit-content
     height: var(--sizing-xl-000)
     padding: 0
     border-radius: calc(var(--sizing-xl-000) / 2)

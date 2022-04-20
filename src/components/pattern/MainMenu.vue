@@ -17,13 +17,17 @@
 
 <template>
   <header class="main-menu">
-    <slot name="left-action"></slot>
+    <div class="main-menu__left-part">
+      <slot name="left-part"></slot>
+    </div>
     <div class="main-menu__logotype">
       <svg width="128" height="128" viewBox="0 0 500 500" :style="{ fill }">
         <use href="#logotype" />
       </svg>
     </div>
-    <slot name="right-action"></slot>
+    <div class="main-menu__right-part">
+      <slot name="-right-part"></slot>
+    </div>
   </header>
 </template>
 
@@ -35,7 +39,9 @@
     padding: 0 var(--layout-center)
     gap: 0 var(--layout-gap)
     align-items: center
+    justify-content: space-between
 
-    .main-menu__logotype
-      grid-column: 6 / 7
+    .main-menu__right-part,
+    .main-menu__left-part
+      flex: 1
 </style>

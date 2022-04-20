@@ -9,9 +9,8 @@
   <main class="page">
     <MainMenu
       logotypeColor="var(--color-soil)"
-      context="left action"
     >
-      <template #left-action>
+      <template #left-part>
         <Button type="secondary" path="/" layout="indicator" inverted>
           <template #icon>
             <RotateCcw
