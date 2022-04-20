@@ -5,7 +5,7 @@
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import TwoColumns from '@/components/layouts/TwoColumns.vue'
   import RichExternalLink from '@/components/ui/RichExternalLink.vue'
-  import { RotateCcw, Twitter, Dribbble, BookOpen, Codepen, Github } from 'lucide-vue-next'
+  import { RotateCcw, Twitter, Dribbble, BookOpen, Codepen, Github, Linkedin, Download } from 'lucide-vue-next'
 </script>
 
 <template>
@@ -31,11 +31,13 @@
         <OneColumn
           :title="$t('id.biography.title')"
         >
-          <template #content>
-            <p v-html="$t('id.biography.experience')"></p>
-            <p v-html="$t('id.biography.mission')"></p>
-            <p v-html="$t('id.biography.activities')"></p>
-            <p v-html="$t('id.biography.side')"></p>
+          <template #plain>
+            <div>
+              <p v-html="$t('id.biography.experience')"></p>
+              <p>{{ $t("id.biography.mission") }}</p>
+              <p v-html="$t('id.biography.activities')"></p>
+              <p>{{ $t("id.biography.side") }}</p>
+            </div>
           </template>
         </OneColumn>
       </section>
@@ -114,6 +116,81 @@
             </RichExternalLink>
           </template>
         </TwoColumns>
+      </section>
+      <section>
+        <TwoColumns
+          :title="$t('id.career.title')"
+        >
+          <template #left>
+            <Button type="secondary" path="/" layout="indicator">
+              <template #icon>
+                <Download
+                  :size="24"
+                />
+              </template>
+              <template #label>
+                {{ $t("id.career.resume") }}
+              </template>
+            </Button>
+          </template>
+          <template #right>
+            <Button type="secondary" path="/" layout="indicator">
+              <template #icon>
+                <Linkedin
+                  :size="24"
+                />
+              </template>
+              <template #label>
+                {{ $t("id.career.linkedIn") }}
+              </template>
+            </Button>
+          </template>
+        </TwoColumns>
+        <OneColumn>
+          <template #plain>
+            <div>
+              <h5>
+                <span>{{ $t("id.career.ecv.start") }}</span>
+                <span>{{ $t("global.separator") }}</span>
+                <span>{{ $t("id.career.ecv.end") }}</span>
+              </h5>
+              <h4>{{ $t("id.career.ecv.title") }}</h4>
+              <p>{{ $t("id.career.ecv.label") }}</p>
+            </div>
+            <div>
+              <h5>
+                <span>{{ $t("id.career.iobeya.start") }}</span>
+                <span>{{ $t("global.separator") }}</span>
+                <span>{{ $t("id.career.iobeya.end") }}</span>
+              </h5>
+              <h4>{{ $t("id.career.iobeya.title") }}</h4>
+              <div>
+                <h6>
+                  <span>{{ $t("id.career.iobeya.uxDesign.start") }}</span>
+                  <span>{{ $t("global.separator") }}</span>
+                  <span>{{ $t("id.career.iobeya.uxDesign.end") }}</span>
+                </h6>
+                <p>{{ $t("id.career.iobeya.uxDesign.title") }}</p>
+              </div>
+              <div>
+                <h6>
+                  <span>{{ $t("id.career.iobeya.productDesign.start") }}</span>
+                  <span>{{ $t("global.separator") }}</span>
+                  <span>{{ $t("id.career.iobeya.productDesign.end") }}</span>
+                </h6>
+                <p>{{ $t("id.career.iobeya.productDesign.title") }}</p>
+              </div>
+              <div>
+                <h6>
+                  <span>{{ $t("id.career.iobeya.creativeTechnologist.start") }}</span>
+                  <span>{{ $t("global.separator") }}</span>
+                  <span>{{ $t("id.career.iobeya.creativeTechnologist.end") }}</span>
+                </h6>
+                <p>{{ $t("id.career.iobeya.creativeTechnologist.title") }}</p>
+              </div>
+            </div>
+          </template>
+        </OneColumn>
       </section>
     </article>
     <Footer

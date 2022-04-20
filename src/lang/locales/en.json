@@ -54,6 +54,37 @@
         "href": "https://github.com/inVoltag",
         "alt": "External link to my GitHub profile page"
       }
+    },
+    "career": {
+      "title": "Career (7 years of digital product)",
+      "resume": "Download resume",
+      "linkedIn": "Connect on LinkedIn",
+      "ecv": {
+        "start": "2010",
+        "end": "2015",
+        "title": "ECV (École de Communication Visuelle)",
+        "label": "Digital design course, Title of Digital Art Director with honor"
+      },
+      "iobeya": {
+        "start": "2015",
+        "end": "Today",
+        "title": "iObeya",
+        "uxDesign": {
+          "start": "2015",
+          "end": "2018",
+          "title": "UI/UX designer"
+        },
+        "productDesign": {
+          "start": "2018",
+          "end": "2021",
+          "title": "Product designer"
+        },
+        "creativeTechnologist": {
+          "start": "2021",
+          "end": "Today",
+          "title": "Product designer + Creative technologist"
+        }
+      }
     }
   }
 }
