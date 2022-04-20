@@ -17,7 +17,7 @@
     },
     methods: {
       getGrid(el) {
-        this.columns = Math.round(el.clientWidth / 8);
+        this.columns = Math.round(el.clientWidth / 8) + 1;
         this.rows = Math.round(el.clientHeight / 8) + 1;
         this.colors = chroma.scale(['#C7E3FE', '#E0D1F3', '#F5D546']).colors(this.columns * this.rows)
       },
