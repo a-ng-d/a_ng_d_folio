@@ -13,7 +13,9 @@
 
 <template>
   <div class="col-2">
-    <h3>{{ title }}</h3>
+    <template v-if="title != undefined">
+      <h3>{{ title }}</h3>
+    </template>
     <div class="col-2__columns">
       <div class="col-2__column">
         <slot name="left"></slot>
