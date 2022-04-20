@@ -46,8 +46,8 @@
           :r="radius"
           :cx="(j - 1) * this.radius"
           :cy="(i - 1) * this.radius"
-          :fill="this.colors[j + (columns * (i - 1))]"
-          :style="`transition-delay: ${glitchFade(j + (columns * (i - 1)))}ms`"
+          :fill="this.colors[j + (columns * (i - 1)) - 1]"
+          :style="`transition-delay: ${glitchFade(j + (columns * (i - 1)) - 1)}ms`"
         />
       </template>
     </template>
