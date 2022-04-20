@@ -40,5 +40,6 @@
     &__column
       display: flex
       flex-flow: column nowrap
+      flex: 1
       gap: var(--spacing-l-300) 0
 </style>
