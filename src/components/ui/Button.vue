@@ -27,6 +27,7 @@
 </script>
 
 <template>
+
   <template v-if="layout === 'simple'">
     <RouterLink :to="path" class="button" :class="['button--' + type, inverted ? 'button--' + type + '--inverted' : '']">
       <div class="button__content">
@@ -59,6 +60,7 @@
       </div>
     </RouterLink>
   </template>
+
 </template>
 
 <style scoped lang="sass">

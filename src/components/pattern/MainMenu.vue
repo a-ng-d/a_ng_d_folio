@@ -20,6 +20,7 @@
 </script>
 
 <template>
+
   <template v-if="context === 'logotype'">
     <header class="main-menu">
       <div class="main-menu__logotype">
@@ -29,6 +30,8 @@
       </div>
     </header>
   </template>
+
+
 </template>
 
 <style scoped lang="sass">
