@@ -12,16 +12,16 @@
 </script>
 
 <template>
-  <div class="one-column">
+  <div class="col-1">
     <h3>{{ title }}</h3>
-    <div class="one-column__content">
+    <div class="col-1__content">
       <slot name="content"></slot>
     </div>
   </div>
 </template>
 
 <style scoped lang="sass">
-  .one-column
+  .col-1
     display: flex
     flex-flow: column nowrap
     padding: 0 var(--layout-center)
