@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import MainMenu from '@/components/pattern/MainMenu.vue'
-  import Footer from '@/components/pattern/Footer.vue'
+  import MainMenu from '@/components/patterns/MainMenu.vue'
+  import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import { RotateCcw } from 'lucide-vue-next'
 </script>
