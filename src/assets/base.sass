@@ -9,7 +9,6 @@
   box-sizing: border-box
   margin: 0
   position: relative
-  font-weight: normal
 
 html, body
   min-height: 100vh
@@ -35,6 +34,7 @@ h3
 
 h4
   @include title.paragraph
+  margin: 0 0 var(--text-paragraph-space) 0
 
 h5
   @include title.large-accented-label
@@ -42,7 +42,7 @@ h5
 
 h6
   @include title.accented-label
-  margin: 0 0 var(--text-paragraph-space) 0
+  margin: 0 0 calc(var(--text-paragraph-space) / 2) 0
 
 section
   display: flex
