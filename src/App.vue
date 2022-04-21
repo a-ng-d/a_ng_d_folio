@@ -13,6 +13,7 @@
 <style lang="sass">
   @use '@/assets/tokens.sass'
   @use '@/assets/base.sass'
+  @use '@/assets/animations.sass'
 
   // Structure
   .page
