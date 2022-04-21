@@ -38,7 +38,7 @@
       logotypeColor="var(--color-soil)"
     >
       <template #left-part>
-        <Button type="primary" path="/" layout="indicator">
+        <Button type="primary" path="/" layout="indicator" theme="default">
           <template #icon>
             <RotateCcw
               :size="24"

@@ -18,9 +18,9 @@
         type: String,
         default: 'simple'
       },
-      dark: {
-        type: Boolean,
-        default: false
+      theme: {
+        type: String,
+        default: "default"
       }
     }
   }
@@ -29,7 +29,7 @@
 <template>
 
   <template v-if="layout === 'simple'">
-    <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="dark ? 'dark' : 'light'">
+    <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="theme">
       <div class="button__content">
         <div class="button__label">
           <span>
@@ -44,7 +44,7 @@
   </template>
 
   <template v-if="layout === 'indicator'">
-    <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="dark ? 'dark' : 'light'">
+    <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="theme">
       <div class="button__content">
         <div class="button__icon">
           <slot name="icon"></slot>
@@ -110,7 +110,10 @@
 
   // Variants
   //// Primary
-  .button--primary[data-theme="light"]
+  .button--primary[data-theme="default"]
+    --icon-color: var(--color-cream)
+    --text-color: var(--color-cream)
+
     background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
     box-shadow: 0 0 0 var(--button-border-size) var(--color-soil)
 
@@ -118,16 +121,18 @@
       background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
 
       &:deep(svg)
-        stroke: var(--color-cream)
+        stroke: var(--icon-color)
 
     .button__label
-      color: var(--text-color-dark)
+      color: var(--text-color)
 
     &:hover
-      .button__label
-        color: var(--text-color-light)
+      --text-color: var(--color-soil)
 
   .button--primary[data-theme="dark"]
+    --icon-color: var(--color-soil)
+    --text-color: var(--color-soil)
+
     background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
     box-shadow: 0 0 0 var(--button-border-size) var(--color-cream)
 
@@ -135,13 +140,35 @@
       background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
 
       &:deep(svg)
-        stroke: var(--color-soil)
+        stroke: var(--icon-color)
 
     .button__label
-      color: var(--text-color-light)
+      color: var(--text-color)
 
   //// Secondary
+  .button--secondary[data-theme="default"]
+    --icon-color: var(--color-soil)
+    --text-color: var(--color-soil)
+
+    background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box, transparent
+    box-shadow: 0 0 0 var(--button-border-size) var(--color-soil)
+
+    .button__icon
+      background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
+
+      &:deep(svg)
+        stroke: var(--icon-color)
+
+    .button__label
+      color: var(--text-color)
+
+    &:hover
+      --text-color: var(--color-soil)
+
   .button--secondary[data-theme="dark"]
+    --icon-color: var(--color-cream)
+    --text-color: var(--color-cream)
+
     background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box, transparent
     box-shadow: 0 0 0 var(--button-border-size) var(--color-cream)
 
@@ -149,14 +176,13 @@
       background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
 
       &:deep(svg)
-        stroke: var(--color-cream)
+        stroke: var(--icon-color)
 
     .button__label
-      color: var(--text-color-dark)
+      color: var(--text-color)
 
     &:hover
-      .button__label
-        color: var(--text-color-light)
+      --text-color: var(--color-soil)
 
   // Events
   .button:hover

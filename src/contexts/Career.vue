@@ -29,7 +29,7 @@
       :theme="theme"
     >
       <template #left>
-        <Button type="secondary" path="/" layout="indicator">
+        <Button type="secondary" path="/_resume" layout="indicator" theme="default">
           <template #icon>
             <Download
               :size="24"
@@ -41,7 +41,7 @@
         </Button>
       </template>
       <template #right>
-        <Button type="secondary" path="/" layout="indicator">
+        <Button type="secondary" path="/_linkedin" layout="indicator" theme="default">
           <template #icon>
             <Linkedin
               :size="24"
