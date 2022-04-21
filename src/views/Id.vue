@@ -220,6 +220,8 @@
             />
           </template>
         </OneColumn>
+      </section>
+      <section>
         <OneColumn
           :title="$t('id.talks.title')"
         >
@@ -236,6 +238,8 @@
             />
           </template>
         </OneColumn>
+      </section>
+      <section>
         <OneColumn
           :title="$t('id.workshops.title')"
         >
