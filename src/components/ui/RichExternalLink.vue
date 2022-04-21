@@ -50,7 +50,6 @@
     &__content
       display: flex
       flex-flow: column nowrap
-      gap: var(--layout-paragraph-gap) 0
 
       p
         display: -webkit-box
