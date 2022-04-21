@@ -9,12 +9,18 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      meta: {
+        title: 'nG⚡️ aka. Aurélien Grimaud﹒Senior Product Designer & Creative Technologist'
+      }
     },
     {
       path: '/_id',
       name: 'id',
-      component: Id
+      component: Id,
+      meta: {
+        title: 'nG⚡️ aka. Aurélien Grimaud﹒ID card'
+      }
     },
     {
       path: '/_universes',

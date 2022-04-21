@@ -1,7 +1,20 @@
-<script setup lang="ts">
+<script lang="ts">
   import { RouterLink, RouterView } from 'vue-router'
   import Filter from '@/components/graphics/Filter.vue'
   import Logotype from '@/components/graphics/Logotype.vue'
+
+  export default {
+    name: "App",
+    components: {
+      Filter,
+      Logotype
+    },
+    watch: {
+      '$route' (to, from) {
+        document.title = to.meta.title
+      }
+    }
+  }
 </script>
 
 <template>
