@@ -2,12 +2,14 @@
   import { RouterLink, RouterView } from 'vue-router'
   import Filter from '@/components/graphics/Filter.vue'
   import Logotype from '@/components/graphics/Logotype.vue'
+  import Landscape from '@/components/graphics/Landscape.vue'
 
   export default {
     name: "App",
     components: {
       Filter,
-      Logotype
+      Logotype,
+      Landscape
     },
     watch: {
       '$route' (to, from) {
@@ -21,6 +23,7 @@
   <Filter />
   <Logotype />
   <RouterView />
+  <Landscape />
 </template>
 
 <style lang="sass">
@@ -36,5 +39,7 @@
     column-gap: var(--layout-column-gap)
     grid-template-areas: "header header header header header header header header header header header" "main main main main main main main main main main main" "footer footer footer footer footer footer footer footer footer footer footer"
     height: 100vh
+    z-index: 1
     background-color: var(--color-soil)
+    mix-blend-mode: hard-light
 </style>
