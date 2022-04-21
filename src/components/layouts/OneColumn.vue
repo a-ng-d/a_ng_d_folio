@@ -33,7 +33,7 @@
     &__content
       display: flex
       flex-flow: column nowrap
-      gap: var(--layout-column-gap) 0
+      gap: var(--layout-box-gap) 0
 
     // Aspect
     [data-theme="dark"]

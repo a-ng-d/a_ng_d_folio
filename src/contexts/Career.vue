@@ -65,12 +65,14 @@
           <p>{{ $t("id.career.ecv.label") }}</p>
         </div>
         <div>
-          <h5>
-            <span>{{ $t("id.career.iobeya.start") }}</span>
-            <span>{{ $t("global.separator") }}</span>
-            <span>{{ $t("id.career.iobeya.end") }}</span>
-          </h5>
-          <h4>{{ $t("id.career.iobeya.title") }}</h4>
+          <div>
+            <h5>
+              <span>{{ $t("id.career.iobeya.start") }}</span>
+              <span>{{ $t("global.separator") }}</span>
+              <span>{{ $t("id.career.iobeya.end") }}</span>
+            </h5>
+            <h4>{{ $t("id.career.iobeya.title") }}</h4>
+          </div>
           <div>
             <h6>
               <span>{{ $t("id.career.iobeya.uxDesign.start") }}</span>
@@ -102,5 +104,6 @@
 </template>
 
 <style scoped lang="sass">
-
+  .col-1__content > div > div + div
+    margin: var(--layout-column-gap) 0 0
 </style>
