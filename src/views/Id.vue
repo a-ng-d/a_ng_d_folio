@@ -193,6 +193,66 @@
           </template>
         </OneColumn>
       </section>
+      <section>
+        <OneColumn
+          :title="$t('id.stories.title')"
+        >
+          <template #plain>
+            <SimpleExternalLink
+              :label="$t('id.stories.link-1.label')"
+              :href="$t('id.stories.link-1.href')"
+              :alt="$t('id.stories.link-1.alt')"
+            />
+            <SimpleExternalLink
+              :label="$t('id.stories.link-2.label')"
+              :href="$t('id.stories.link-2.href')"
+              :alt="$t('id.stories.link-2.alt')"
+            />
+            <SimpleExternalLink
+              :label="$t('id.stories.link-3.label')"
+              :href="$t('id.stories.link-3.href')"
+              :alt="$t('id.stories.link-3.alt')"
+            />
+            <SimpleExternalLink
+              :label="$t('id.stories.link-4.label')"
+              :href="$t('id.stories.link-4.href')"
+              :alt="$t('id.stories.link-4.alt')"
+            />
+          </template>
+        </OneColumn>
+        <OneColumn
+          :title="$t('id.talks.title')"
+        >
+          <template #plain>
+            <SimpleExternalLink
+              :label="$t('id.talks.link-1.label')"
+              :href="$t('id.talks.link-1.href')"
+              :alt="$t('id.talks.link-1.alt')"
+            />
+            <SimpleExternalLink
+              :label="$t('id.talks.link-2.label')"
+              :href="$t('id.talks.link-2.href')"
+              :alt="$t('id.talks.link-2.alt')"
+            />
+          </template>
+        </OneColumn>
+        <OneColumn
+          :title="$t('id.workshops.title')"
+        >
+          <template #plain>
+            <SimpleExternalLink
+              :label="$t('id.workshops.link-1.label')"
+              :href="$t('id.workshops.link-1.href')"
+              :alt="$t('id.workshops.link-1.alt')"
+            />
+            <SimpleExternalLink
+              :label="$t('id.workshops.link-2.label')"
+              :href="$t('id.workshops.link-2.href')"
+              :alt="$t('id.workshops.link-2.alt')"
+            />
+          </template>
+        </OneColumn>
+      </section>
     </article>
     <Footer
       alignment="center"
