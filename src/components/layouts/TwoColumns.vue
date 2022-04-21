@@ -4,8 +4,8 @@
     props: {
       title: String,
       theme: {
-        type: Boolean,
-        default: false
+        type: String,
+        default: "default"
       }
     }
   }
