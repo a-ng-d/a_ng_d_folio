@@ -3,7 +3,7 @@
     name: 'OneColumn',
     props: {
       title: String,
-      dark: {
+      theme: {
         type: Boolean,
         default: false
       }
@@ -12,7 +12,7 @@
 </script>
 
 <template>
-  <div class="col-1">
+  <div class="col-1" :data-theme="theme">
     <template v-if="title != undefined">
       <h3>{{ title }}</h3>
     </template>
@@ -23,6 +23,7 @@
 </template>
 
 <style scoped lang="sass">
+  // Structure
   .col-1
     display: flex
     flex-flow: column nowrap
@@ -33,4 +34,8 @@
       display: flex
       flex-flow: column nowrap
       gap: var(--layout-column-gap) 0
+
+    // Aspect
+    [data-theme="dark"]
+      --text-color: var(--color-cream)
 </style>

@@ -3,7 +3,7 @@
     name: 'TwoColumns',
     props: {
       title: String,
-      dark: {
+      theme: {
         type: Boolean,
         default: false
       }
@@ -12,7 +12,7 @@
 </script>
 
 <template>
-  <div class="col-2">
+  <div class="col-2" :data-theme="theme">
     <template v-if="title != undefined">
       <h3>{{ title }}</h3>
     </template>
@@ -28,6 +28,7 @@
 </template>
 
 <style scoped lang="sass">
+  // Structure
   .col-2
     display: flex
     flex-flow: column nowrap
@@ -44,4 +45,8 @@
       flex-flow: column nowrap
       flex: 1
       gap: var(--layout-title-gap) 0
+
+  // Aspect`
+  [data-theme="dark"]
+    --text-color: var(--color-cream)
 </style>
