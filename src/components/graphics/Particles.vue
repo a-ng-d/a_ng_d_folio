@@ -1,6 +1,6 @@
 <script lang="ts">
   import chroma from 'chroma-js'
-  
+
   export default {
     name: 'Particles',
     data() {
@@ -20,7 +20,7 @@
       getGrid(el) {
         this.columns = Math.round(el.clientWidth / 8) + 1;
         this.rows = Math.round(el.clientHeight / 8) + 1;
-        this.colors = chroma.scale(['#C7E3FE', '#E0D1F3', '#F5D546']).colors(this.columns * this.rows)
+        this.colors = chroma.scale(['#C7E3FE', '#E0D1F3', '#F5D546']).domain([0, 0.75, 1]).colors(this.columns * this.rows)
       },
       glitchFade(n) {
         if (n % this.modulus == 0) {
