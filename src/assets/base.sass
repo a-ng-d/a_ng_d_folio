@@ -12,7 +12,7 @@
 
 html, body
   min-height: 100vh
-  color: var(--text-color-light)
+  color: var(--text-color)
   @include text.current
   font-size: var(--font-size-ref)
   text-rendering: optimizeLegibility
@@ -43,6 +43,9 @@ h5
 h6
   @include title.accented-label
   margin: 0 0 calc(var(--text-paragraph-space) / 2) 0
+
+h1, h2, h3, h4, h5, h6
+  color: var(--text-color)
 
 section
   display: flex
