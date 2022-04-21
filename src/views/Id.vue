@@ -265,8 +265,6 @@
 </template>
 
 <style scoped lang="sass">
-  @use '@/assets/text-styles.sass' as text
-
   .page
     background: var(--gradient-biscarosse-sunset)
     background-attachment: fixed
