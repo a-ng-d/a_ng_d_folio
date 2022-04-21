@@ -16,8 +16,7 @@
         flex: this.alignment === 'left' ? 'flex-start' :
               this.alignment === 'center' ? 'center' :
               this.alignment === 'right' ? 'flex-end' :
-              'flex-start',
-        currentYear: new Date().getFullYear()
+              'flex-start'
       }
     }
   }
@@ -28,7 +27,7 @@
     <div class="footer__tag">
       <span class="footer__tag__content">{{ $t("footer.author") }}</span>
       <span class="footer__tag__content">{{ $t("global.separator") }}</span>
-      <span class="footer__tag__content">{{ $t("footer.license", { year: currentYear }) }}</span>
+      <span class="footer__tag__content">{{ $t("footer.license", { year: new Date().getFullYear() }) }}</span>
       <span class="footer__tag__content">{{ $t("global.separator") }}</span>
       <RouterLink class="footer__tag__link" to="/_attribution">{{ $t("footer.attribution") }}</RouterLink>
     </div>
