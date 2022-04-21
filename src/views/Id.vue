@@ -5,6 +5,7 @@
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import TwoColumns from '@/components/layouts/TwoColumns.vue'
   import RichExternalLink from '@/components/ui/RichExternalLink.vue'
+  import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
   import { RotateCcw, Twitter, Dribbble, BookOpen, Codepen, Github, Linkedin, Download } from 'lucide-vue-next'
 </script>
 
