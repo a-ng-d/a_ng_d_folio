@@ -45,7 +45,7 @@
       "medium": {
         "title": "Medium",
         "description": "Articles and comments",
-        "href": "https://medium.com/@inVoltag",
+        "href": "https://medium.com/{'@'}inVoltag",
         "alt": "External link to my Medium profile page"
       },
       "github": {
