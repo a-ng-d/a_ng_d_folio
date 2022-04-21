@@ -18,9 +18,18 @@
         type: String,
         default: 'simple'
       },
+      extensible: {
+        type: Boolean,
+        default: false
+      },
       theme: {
         type: String,
         default: "default"
+      }
+    },
+    data() {
+      return {
+        isExtensible: this.extensible ? '100%' : 'fit-content'
       }
     }
   }
@@ -70,7 +79,7 @@
   .button
     display: flex
     align-items: stretch
-    width: fit-content
+    width: v-bind(isExtensible)
     height: var(--button-height-size)
     padding: 0
     border-radius: calc(var(--button-height-size) / 2)
@@ -78,6 +87,7 @@
 
     &__content
       display: flex
+      flex: 1
       z-index: 1
 
     &__icon
@@ -92,7 +102,9 @@
 
     &__label
       display: flex
+      flex: 1
       align-items: center
+      justify-content: center
       padding: 0 calc(var(--button-height-size) / 2)
       text-align: center
       @include text.label
