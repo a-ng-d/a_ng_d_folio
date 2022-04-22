@@ -71,8 +71,4 @@
   // Structure
   .article
     grid-area: main
-
-  // Aspect
-  :global(.background)
-    --background-color: var(--gradient-biscarosse-sunset)
 </style>
