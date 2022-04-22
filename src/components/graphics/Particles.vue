@@ -11,23 +11,23 @@
       }
     },
     mounted() {
-      this.modulus = 21;
-      this.counter = 0;
-      this.colors = [];
+      this.modulus = 21
+      this.counter = 0
+      this.colors = []
       this.getGrid(this.$el)
     },
     methods: {
       getGrid(el) {
-        this.columns = Math.round(el.clientWidth / 8) + 1;
-        this.rows = Math.round(el.clientHeight / 8) + 1;
+        this.columns = Math.round(el.clientWidth / 8) + 1
+        this.rows = Math.round(el.clientHeight / 8) + 1
         this.colors = chroma.scale(['#C7E3FE', '#E0D1F3', '#F5D546']).domain([0, 0.75, 1]).colors(this.columns * this.rows)
       },
       glitchFade(n) {
         if (n % this.modulus == 0) {
-          this.counter = 0;
+          this.counter = 0
           this.modulus = this.getRandomArbitrary(1, 51)
         } else
-          this.counter++;
+          this.counter++
 
         return this.counter * 10
       },

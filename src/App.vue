@@ -13,7 +13,7 @@
     },
     watch: {
       '$route' (to, from) {
-        document.title = to.meta.title;
+        document.title = to.meta.title
         this.background = to.meta.background
       }
     },

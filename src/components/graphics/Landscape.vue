@@ -5,7 +5,8 @@
       background: String
     },
     mounted() {
-      const canvas = document.getElementById('scene'),
+      const
+      canvas = this.$el.children[1],
  			ctx = canvas.getContext('2d'),
  			scrW = document.body.clientWidth,
 			scrW_1_4 = scrW / 4,
@@ -15,24 +16,30 @@
 			scrH_1_4 = scrH / 4,
 			scrH_1_2 = scrH / 2,
 			scrH_3_4 = (scrH / 4) * 3,
-			bleed = 100;
+			bleed = 100
+
+      // generic functions
+      const randomBetween = (min, max) => Math.floor(min + Math.random() * max)
+      const map = (value, oldMin, oldMax, newMin, newMax) => ((value - oldMin) * (newMax - newMin) / (oldMax - oldMin)) + newMin
 
       // particles arrays
-      let bg_particles = [],
-      		mid_particles = [],
-      		fg_particles = [];
+      let
+      bg_particles = [],
+  		mid_particles = [],
+  		fg_particles = []
 
-      canvas.width = scrW;
-      canvas.height = scrH;
+      canvas.width = scrW
+      canvas.height = scrH
 
       // style guide
-      const colors = {
+      const
+      colors = {
       	deepBlack: '#000028',
       	titaniumWhite: '#FFFFFF',
       	soil: '#4F4C4D',
-      	sandstone: '#B3ABAD',
-      	clay: '#CCC4C6',
-      	cream: '#EDEDED',
+      	sandstone: '#9E9A9B',
+      	clay: '#C9C5C5',
+      	cream: '#F6F3F3',
       	creamySun: '#F5D546',
       	softWind: '#C7E3FE',
       	candyFloss: '#E0D1F3',
@@ -44,7 +51,7 @@
       				color: this.softWind
       			},
       			{
-      				position: .8,
+      				position: .75,
       				color: this.candyFloss
       			},
       			{
@@ -89,17 +96,17 @@
       	cloud: [
       		colors.titaniumWhite
       	]
-      };
+      }
 
       class inV {
 
       	constructor(x, y, width, color) {
-      		this.x = x;
-      		this.y = y;
-      		this.width = width;
-      		this.height = scrH - y;
-      		this.color = color;
-      		this.opacity = Math.abs(1 - map(this.y, 0, scrH, 1, 0));
+      		this.x = x
+      		this.y = y
+      		this.width = width
+      		this.height = scrH - y
+      		this.color = color
+      		this.opacity = Math.abs(1 - map(this.y, 0, scrH, 1, 0))
       	}
 
       	gradient() {
@@ -108,32 +115,26 @@
       			this.y,
       			this.x + this.width / 2,
       			this.y + this.height
-      		);
+      		)
 
-      		for (let i = 0 ; i < this.color.length ; i++) {
+      		for (let i = 0 ; i < this.color.length ; i++)
       			grd.addColorStop(this.color[i].position, this.color[i].color)
-      		}
 
       		this.color = grd
       	}
 
       	draw() {
-      		if (typeof this.color === 'object') {
-      			this.gradient();
-      		};
+      		if (typeof this.color === 'object')
+      			this.gradient()
 
-      		ctx.globalAlpha = this.opacity;
-      		ctx.fillStyle = this.color;
+      		ctx.globalAlpha = this.opacity
+      		ctx.fillStyle = this.color
       		ctx.fillRect(this.x, this.y, this.width, this.height)
       	}
 
-      };
+      }
 
-      function makeParticles() {
-
-      	bg_particles = [];
-      	mid_particles = [];
-      	fg_particles = [];
+      const makeParticles = () => {
 
       	for (let i = 0 ; i < 100 ; i++) {
       		bg_particles.push(new inV(
@@ -141,7 +142,7 @@
       			randomBetween(scrH_1_4, scrH_1_2),
       			randomBetween(20, scrW),
       			groups.background[randomBetween(0, groups.background.length)]
-      		));
+      		))
       		mid_particles.push(new inV(
       			randomBetween(-bleed, scrW + bleed),
       			randomBetween(scrH_3_4, scrH),
@@ -156,58 +157,49 @@
       		))
       	};
 
-      	bg_particles.sort((a, b) => a.opacity - b.opacity);
-      	mid_particles.sort((a, b) => a.opacity - b.opacity);
-      	fg_particles.sort((a, b) => a.opacity - b.opacity);
+      	bg_particles.sort((a, b) => a.opacity - b.opacity)
+      	mid_particles.sort((a, b) => a.opacity - b.opacity)
+      	fg_particles.sort((a, b) => a.opacity - b.opacity)
 
-      };
+      }
 
-      function render() {
+      const render = () => {
 
-      	makeParticles();
-      	ctx.clearRect(0, 0, scrW, scrH);
+      	makeParticles()
+      	ctx.clearRect(0, 0, scrW, scrH)
 
-      	bg_particles.forEach((el) => el.draw());
-      	mid_particles.forEach((el) => el.draw());
+      	bg_particles.forEach((el) => el.draw())
+      	mid_particles.forEach((el) => el.draw())
       	fg_particles.forEach((el) => el.draw())
 
       	//window.requestAnimationFrame(render)
 
-      };
-
-      render();
-
-      // generic functions
-      function randomBetween(min, max) {
-      	return Math.floor(min + Math.random() * max)
-      };
-      function map(value, oldMin, oldMax, newMin, newMax) {
-      	var oldRange = oldMax - oldMin
-      	var newRange = newMax - newMin
-      	return ((value - oldMin) * newRange / oldRange) + newMin
       }
+
+      render()
     }
   }
 </script>
 
 <template>
-  <div class="background"></div>
-  <canvas id="scene"></canvas>
+  <div class="background">
+    <div class="veil"></div>
+    <canvas id="scene"></canvas>
+  </div>
 </template>
 
 <style lang="sass">
-  canvas#scene,
   .background
     width: 100vw
     height: 100vh
     position: fixed
     top: 0
-    background-color: var(--background-color)
 
-  canvas#scene
-    z-index: -1
-
-  .background
-    mix-blend-mode: hard-light
-    background: v-bind(background)
+    .veil
+      width: inherit
+      height: inherit
+      position: absolute
+      z-index: 1
+      mix-blend-mode: hard-light
+      background: v-bind(background)
 </style>
