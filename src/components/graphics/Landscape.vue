@@ -98,7 +98,7 @@
       	]
       }
 
-      class inV {
+      class Tile {
 
       	constructor(x, y, width, color) {
       		this.x = x
@@ -137,19 +137,19 @@
       const makeParticles = () => {
 
       	for (let i = 0 ; i < 100 ; i++) {
-      		bg_particles.push(new inV(
+      		bg_particles.push(new Tile(
       			randomBetween(-bleed, scrW + bleed),
       			randomBetween(scrH_1_4, scrH_1_2),
       			randomBetween(20, scrW),
       			groups.background[randomBetween(0, groups.background.length)]
       		))
-      		mid_particles.push(new inV(
+      		mid_particles.push(new Tile(
       			randomBetween(-bleed, scrW + bleed),
       			randomBetween(scrH_3_4, scrH),
       			randomBetween(20, scrW_1_2),
       			groups.middle[randomBetween(0, groups.middle.length)]
       		))
-      		fg_particles.push(new inV(
+      		fg_particles.push(new Tile(
       			randomBetween(-bleed, scrW + bleed),
       			randomBetween(scrH - 50, scrH),
       			randomBetween(20, scrW_1_2),
@@ -171,8 +171,6 @@
       	bg_particles.forEach((el) => el.draw())
       	mid_particles.forEach((el) => el.draw())
       	fg_particles.forEach((el) => el.draw())
-
-      	//window.requestAnimationFrame(render)
 
       }
 
