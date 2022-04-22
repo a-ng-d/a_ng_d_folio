@@ -1,8 +1,11 @@
 <script lang="ts">
   export default {
     name: 'Landscape',
+    props: {
+      background: String
+    },
     mounted() {
-      const canvas = this.$el,
+      const canvas = document.getElementById('scene'),
  			ctx = canvas.getContext('2d'),
  			scrW = document.body.clientWidth,
 			scrW_1_4 = scrW / 4,
@@ -13,8 +16,6 @@
 			scrH_1_2 = scrH / 2,
 			scrH_3_4 = (scrH / 4) * 3,
 			bleed = 100;
-
-      console.log(canvas)
 
       // particles arrays
       let bg_particles = [],
@@ -190,14 +191,23 @@
 </script>
 
 <template>
+  <div class="background"></div>
   <canvas id="scene"></canvas>
 </template>
 
-<style scoped lang="sass">
-  canvas#scene
+<style lang="sass">
+  canvas#scene,
+  .background
     width: 100vw
     height: 100vh
-    position: absolute
+    position: fixed
     top: 0
-    background-color: var(--color-soil)
+    background-color: var(--background-color)
+
+  canvas#scene
+    z-index: -1
+
+  .background
+    mix-blend-mode: hard-light
+    background: v-bind(background)
 </style>

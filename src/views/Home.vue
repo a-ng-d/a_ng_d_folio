@@ -69,7 +69,4 @@
       display: flex
       justify-content: space-between
       gap: var(--spacing-xl-000)
-
-  .page
-    background: var(--color-soil)
 </style>

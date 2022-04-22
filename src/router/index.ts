@@ -11,7 +11,8 @@ const router = createRouter({
       name: 'home',
       component: Home,
       meta: {
-        title: 'nG⚡️ aka. Aurélien Grimaud﹒Senior Product Designer & Creative Technologist'
+        title: 'nG⚡️ aka. Aurélien Grimaud﹒Senior Product Designer & Creative Technologist',
+        background: 'var(--color-soil)'
       }
     },
     {
@@ -19,7 +20,8 @@ const router = createRouter({
       name: 'id',
       component: Id,
       meta: {
-        title: 'nG⚡️ aka. Aurélien Grimaud﹒ID card'
+        title: 'nG⚡️ aka. Aurélien Grimaud﹒ID card',
+        background: 'var(--gradient-biscarosse-sunset)'
       }
     },
     {

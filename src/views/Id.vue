@@ -66,11 +66,13 @@
 
 <style scoped lang="sass">
   .page
-    background: var(--gradient-biscarosse-sunset)
-    background-attachment: fixed
     height: fit-content
 
   // Structure
   .article
     grid-area: main
+
+  // Aspect
+  :global(.background)
+    --background-color: var(--gradient-biscarosse-sunset)
 </style>

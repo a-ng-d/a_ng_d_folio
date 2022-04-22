@@ -13,7 +13,13 @@
     },
     watch: {
       '$route' (to, from) {
-        document.title = to.meta.title
+        document.title = to.meta.title;
+        this.background = to.meta.background
+      }
+    },
+    data() {
+      return {
+        background: ''
       }
     }
   }
@@ -23,7 +29,7 @@
   <Filter />
   <Logotype />
   <RouterView />
-  <Landscape />
+  <Landscape :background="background" />
 </template>
 
 <style lang="sass">
@@ -40,6 +46,4 @@
     grid-template-areas: "header header header header header header header header header header header" "main main main main main main main main main main main" "footer footer footer footer footer footer footer footer footer footer footer"
     height: 100vh
     z-index: 1
-    background-color: var(--color-soil)
-    mix-blend-mode: hard-light
 </style>
