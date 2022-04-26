@@ -11,6 +11,7 @@
   "dependencies": {
     "chroma-js": "^2.4.2",
     "lucide-vue-next": "^0.35.0",
+    "p5": "^1.4.1",
     "vue": "^3.2.33",
     "vue-router": "^4.0.14"
   },
