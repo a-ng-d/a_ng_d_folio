@@ -1,188 +1,428 @@
 <script lang="ts">
+  import P5 from 'p5'
+
   export default {
     name: 'Landscape',
     props: {
       background: String
     },
     mounted() {
-      const
-      canvas = this.$el.children[1],
- 			ctx = canvas.getContext('2d'),
- 			scrW = document.body.clientWidth,
-			scrW_1_4 = scrW / 4,
-			scrW_1_2 = scrW / 2,
-			scrW_3_4 = (scrW / 4) * 3,
- 			scrH = document.body.clientHeight,
-			scrH_1_4 = scrH / 4,
-			scrH_1_2 = scrH / 2,
-			scrH_3_4 = (scrH / 4) * 3,
-			bleed = 100
+      const script = p5 => {
+        const
+          mNumber = 400,
+          cNumber = 40,
+          quality = 50
 
-      // generic functions
-      const randomBetween = (min, max) => Math.floor(min + Math.random() * max)
-      const map = (value, oldMin, oldMax, newMin, newMax) => ((value - oldMin) * (newMax - newMin) / (oldMax - oldMin)) + newMin
+        let
+          fps = 60,
+          speed = 2,
+          mountains = [],
+          clouds = []
 
-      // particles arrays
-      let
-      bg_particles = [],
-  		mid_particles = [],
-  		fg_particles = []
+        // Style guide
+        const colors = {
+          deepBlack: {
+            hue: 240,
+            saturation: 100,
+            lightness: 8
+          },
+          titaniumWhite: {
+            hue: 0,
+            saturation: 0,
+            lightness: 100
+          },
+          soil: {
+            hue: 340,
+            saturation: 2,
+            lightness: 30
+          },
+          sandstone: {
+            hue: 345,
+            saturation: 2,
+            lightness: 61
+          },
+          clay: {
+            hue: 3,
+            saturation: 4,
+            lightness: 78
+          },
+          cream: {
+            hue: 3,
+            saturation: 14,
+            lightness: 96
+          },
+          creamySun: {
+            hue: 49,
+            saturation: 90,
+            lightness: 62
+          },
+          softWind: {
+            hue: 209,
+            saturation: 96,
+            lightness: 89
+          },
+          candyFloss: {
+            hue: 266,
+            saturation: 60,
+            lightness: 89
+          },
+          clearWater: {
+            hue: 209,
+            saturation: 96,
+            lightness: 69
+          }
+        }
 
-      canvas.width = scrW
-      canvas.height = scrH
+        // Elements
+        class Mountain {
 
-      // style guide
-      const
-      colors = {
-      	deepBlack: '#000028',
-      	titaniumWhite: '#FFFFFF',
-      	soil: '#4F4C4D',
-      	sandstone: '#9E9A9B',
-      	clay: '#C9C5C5',
-      	cream: '#F6F3F3',
-      	creamySun: '#F5D546',
-      	softWind: '#C7E3FE',
-      	candyFloss: '#E0D1F3',
-      	clearWater: '#64B1FC',
-      	get biscarosseSunset() {
-      		return [
-      			{
-      				position: 0,
-      				color: this.softWind
-      			},
-      			{
-      				position: .75,
-      				color: this.candyFloss
-      			},
-      			{
-      				position: 1,
-      				color: this.creamySun
-      			}
-      		]
-      	},
-      	get softSteel() {
-      		return [
-      			{
-      				position: 0,
-      				color: this.clay
-      			},
-      			{
-      				position: .4,
-      				color: this.cream
-      			},
-      			{
-      				position: 1,
-      				color: this.softWind
-      			}
-      		]
-      	}
-      },
-      groups = {
-      	background: [
-      		colors.sandstone,
-      		colors.clay,
-      		colors.cream,
-      		colors.softSteel
-      	],
-      	middle: [
-      		colors.creamySun,
-      		colors.softWind,
-      		colors.candyFloss,
-      		colors.biscarosseSunset
-      	],
-      	foreground: [
-      		colors.clearWater
-      	],
-      	cloud: [
-      		colors.titaniumWhite
-      	]
+          constructor(props) {
+            this.props = props
+            this.size = {
+              width: p5.int(p5.random(this.props.widthRange[0], this.props.widthRange[1])),
+              height: p5.int(p5.random(this.props.heightRange[0], this.props.heightRange[1]))
+            }
+            this.position = {
+              x: p5.int(this.props.x),
+              y: p5.int(this.props.y),
+              z: p5.int(p5.random(this.props.zRange[0], this.props.zRange[1]))
+            }
+            this.params = {
+              r: p5.int(p5.abs(this.size.height / 4)),
+              isGlitched: false
+            }
+            this.backup = {}
+          }
+
+          deepHue = () => p5.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.hue, this.props.foreground.hue)
+
+          deepSaturation = () => p5.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.saturation, this.props.foreground.saturation)
+
+          deepLightness = () => p5.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.lightness, this.props.foreground.lightness)
+
+          glitch = () => {
+            this.backup = {
+              size: {
+                width: this.size.width,
+                height: this.size.height,
+              },
+              params: {
+                r: this.params.r
+              }
+            }
+            this.params.isGlitched = true
+          }
+
+          unglitch = () => {
+            this.params.isGlitched = false
+            this.size = this.backup.size
+            this.params = this.backup.params
+          }
+
+          move = () => {
+            if (this.position.z <= 0)
+              this.position.z += speed
+            else
+              this.position.z = this.props.zRange[0]
+
+            if (this.params.isGlitched) {
+              this.size.width = p5.random(this.backup.size.width * 2)
+              this.size.height = p5.random(this.backup.size.height)
+              this.params.r = p5.random(this.backup.params.r)
+            }
+
+            this.draw()
+          }
+
+          draw = () => {
+            p5.push()
+              p5.translate(this.position.x, this.position.y, this.position.z)
+              p5.noStroke()
+              p5.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
+              p5.rectMode(p5.CORNER)
+              p5.ellipseMode(p5.CORNER)
+              p5.ellipse(0, this.size.height, this.params.r, this.params.r, quality)
+              p5.rect((this.params.r / 2), this.size.height, this.size.width, this.params.r)
+              p5.ellipse(this.size.width, this.size.height, this.params.r, this.params.r, quality)
+              p5.rect(0, 0, (this.size.width + this.params.r), (this.size.height + (this.params.r / 2)))
+            p5.pop()
+          }
+
+        }
+
+        class Cloud {
+
+          constructor(props) {
+            this.props = props
+            this.size = {
+              width: p5.int(p5.random(this.props.widthRange[0], this.props.widthRange[1])),
+              height: p5.int(p5.random(this.props.heightRange[0], this.props.heightRange[1]))
+            }
+            this.position = {
+              x: p5.int(this.props.x),
+              y: p5.int(this.props.y),
+              z: p5.int(p5.random(this.props.zRange[0], this.props.zRange[1]))
+            }
+            this.params = {
+              rows: [],
+              isGlitched: false
+            }
+            for (let i = 1 ; i < this.props.rows ; i++)
+              this.params.rows.push({
+                width: p5.int(this.size.width * p5.random(0.5, 1)),
+                height: p5.int(this.size.height * p5.random(0.5, 1)),
+                x: p5.int(p5.random(-this.size.width / 4, this.size.width / 4))
+              })
+            this.backup = {}
+          }
+
+          deepHue = () => p5.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.hue, this.props.foreground.hue)
+
+          deepSaturation = () => p5.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.saturation, this.props.foreground.saturation)
+
+          deepLightness = () => p5.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.lightness, this.props.foreground.lightness)
+
+          glitch = () => {
+            this.backup.rows = this.params.rows.map(row => {
+              return {
+                width: row.width,
+                height: row.height,
+                x: row.x
+              }
+            })
+            this.params.isGlitched = true
+          }
+
+          unglitch = () => {
+            this.params.isGlitched = false
+            this.params.rows = this.backup.rows
+          }
+
+          move = () => {
+            if (this.position.z <= 0)
+              this.position.z += speed
+            else
+              this.position.z = this.props.zRange[0]
+
+            if (this.position.x <= p5.width * 4)
+              this.position.x += speed / 4
+            else
+              this.position.x = -p5.width * 4
+
+            if (this.params.isGlitched) {
+              this.params.rows.forEach(row => {
+                row.width = p5.random(this.size.width / 2)
+                row.height = p5.random(this.size.height / 2)
+                row.x = p5.random(-p5.width / 4, p5.width / 4)
+              })
+            }
+
+            this.draw()
+          }
+
+          drow = (x, y, width, height) => {
+            p5.push()
+              p5.translate(x, y, 0)
+              p5.rectMode(p5.CORNER)
+              p5.ellipseMode(p5.CORNER)
+              p5.ellipse(0, height, height, height, quality)
+              p5.rect(-(height / 2), 0, width, height)
+              p5.ellipse(width, height, height, height, quality)
+            p5.pop()
+          }
+
+          draw = () => {
+            let offsetY = 0
+            p5.push()
+              p5.translate(this.position.x, this.position.y, this.position.z)
+              p5.noStroke()
+              p5.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
+              this.params.rows.forEach(row => {
+                this.drow(row.x, offsetY, row.width, row.height)
+                offsetY += row.height
+              })
+            p5.pop()
+          }
+
+        }
+
+        class Pov {
+
+          constructor(props) {
+            this.props = props
+            this.position = {
+              x: this.props.x,
+              y: this.props.y,
+              z: this.props.z
+            }
+            this.center = {
+              x: this.props.cX,
+              y: this.props.cY,
+              z: this.props.cZ
+            }
+            this.params = {
+              target: {
+                position: {
+                  x: 0,
+                  y: 0,
+                  z: 0
+                },
+                center: {
+                  x: 0,
+                  y: 0,
+                  z: 0
+                },
+                details: {
+                  x: 0,
+                  y: 0,
+                  z: 0
+                }
+              },
+              speed: 0,
+              isPushed: false
+            }
+          }
+
+          animate = (speed, position, center) => {
+            this.params.speed = speed
+            this.params.target.position.x = position[0]
+            this.params.target.position.y = position[1]
+            this.params.target.position.z = position[2]
+            this.params.target.center.x = center[0]
+            this.params.target.center.y = center[1]
+            this.params.target.center.z = center[2]
+          }
+
+          move = () => {
+            this.position.x = p5.lerp(this.position.x, this.params.target.position.x, this.params.speed)
+            this.position.y = p5.lerp(this.position.y, this.params.target.position.y, this.params.speed)
+            this.position.z = p5.lerp(this.position.z, this.params.target.position.z, this.params.speed)
+            this.center.x = p5.lerp(this.center.x, this.params.target.center.x, this.params.speed)
+            this.center.y = p5.lerp(this.center.y, this.params.target.center.y, this.params.speed)
+            this.center.z = p5.lerp(this.center.z, this.params.target.center.z, this.params.speed)
+
+            if (this.params.isPushed) {
+              this.position.x = p5.lerp(this.position.x, p5.map(p5.mouseX, 0, p5.width, p5.width * 0.1, -p5.width * 0.1), 0.1)
+              this.position.y = p5.lerp(this.position.y, p5.map(p5.mouseY, 0, p5.height, p5.height * 0.1, -p5.height * 0.1), 0.1)
+            }
+
+            this.draw()
+          }
+
+          push = () => {
+            this.params.isPushed = true
+          }
+
+          reset = () => {
+            this.animate(0.1, [0, (-height * 0.1), 0], [0, 0, (-height * 2)])
+          }
+
+          draw = () => {
+            p5.camera(
+              this.position.x,
+              this.position.y,
+              this.position.z,
+              this.center.x,
+              this.center.y,
+              this.center.z
+            )
+          }
+
+        }
+
+        // Sketch
+        let pov = new Pov({
+          x: 0,
+          y: -window.innerHeight * 0.1,
+          z: 0,
+          cX: 0,
+          cY: 0,
+          cZ: -window.innerHeight * 2
+        })
+
+        p5.setup = () => {
+
+          p5.createCanvas(p5.windowWidth, p5.windowHeight, p5.WEBGL).parent('p5Canvas')
+          p5.colorMode(p5.HSL)
+          p5.rectMode(p5.CENTER)
+          p5.frameRate(fps)
+
+          // particles setting
+          for (let i = 0 ; i < mNumber ; i++)
+            mountains.push(new Mountain({
+              widthRange: [p5.width * 0.25, p5.width],
+              heightRange: [-p5.height * 0.2, -p5.height * 0.4],
+              x: p5.random(-p5.width * 4, p5.width * 4),
+              y: p5.height * 0.5,
+              zRange: [-p5.height * 4, 0],
+              foreground: colors.creamySun,
+              background: colors.soil
+            }))
+          for (let i = 0 ; i < cNumber ; i++)
+            clouds.push(new Cloud({
+              widthRange: [p5.width * 0.25, p5.width],
+              heightRange: [-p5.height * 0.05, -p5.height * 0.1],
+              x: p5.random(-p5.width * 4, p5.width * 4),
+              y: p5.random(-p5.height * 0.2, p5.height * 0.4),
+              zRange: [-p5.height * 4, 0],
+              rows: p5.int(p5.random(3, 5)),
+              foreground: colors.cream,
+              background: colors.soil
+             }))
+
+        }
+
+        p5.draw = () => {
+
+          //p5.clear()
+
+          p5.background(colors.soil.hue, colors.soil.saturation, colors.soil.lightness)
+
+          // camera
+          pov.move()
+
+          // int
+          p5.push()
+            p5.noStroke()
+            p5.fill(colors.soil.hue, colors.soil.saturation, colors.soil.lightness)
+            p5.translate(0, p5.height * 0.5, 0)
+            p5.rotateX(p5.PI / 2)
+            p5.rect(0, 0, p5.width * 4, p5.height * 4)
+          p5.pop()
+
+          // mountains
+          mountains.forEach(el => el.move())
+
+          // clouds
+          clouds.forEach(el => el.move())
+
+        }
+
+        // Events
+        p5.povCore = () => pov.animate(0.1, [0, (-p5.height * 0.1), -p5.height * 1.75], [0, 0, (-p5.height * 2)])
+
+        p5.povReset = () => pov.reset()
+
+        p5.mouseMoved = () => pov.push()
+
+        p5.mousePressed = () => {
+          mountains.forEach(el => el.glitch())
+          clouds.forEach(el => el.glitch())
+        }
+
+        p5.mouseReleased = () => {
+  mountains.forEach(el => el.unglitch())
+  clouds.forEach(el => el.unglitch())
+}
       }
-
-      class Tile {
-
-      	constructor(x, y, width, color) {
-      		this.x = x
-      		this.y = y
-      		this.width = width
-      		this.height = scrH - y
-      		this.color = color
-      		this.opacity = Math.abs(1 - map(this.y, 0, scrH, 1, 0))
-      	}
-
-      	gradient() {
-      		let grd = ctx.createLinearGradient(
-      			this.x + this.width / 2,
-      			this.y,
-      			this.x + this.width / 2,
-      			this.y + this.height
-      		)
-
-      		for (let i = 0 ; i < this.color.length ; i++)
-      			grd.addColorStop(this.color[i].position, this.color[i].color)
-
-      		this.color = grd
-      	}
-
-      	draw() {
-      		if (typeof this.color === 'object')
-      			this.gradient()
-
-      		ctx.globalAlpha = this.opacity
-      		ctx.fillStyle = this.color
-      		ctx.fillRect(this.x, this.y, this.width, this.height)
-      	}
-
-      }
-
-      const makeParticles = () => {
-
-      	for (let i = 0 ; i < 100 ; i++) {
-      		bg_particles.push(new Tile(
-      			randomBetween(-bleed, scrW + bleed),
-      			randomBetween(scrH_1_4, scrH_1_2),
-      			randomBetween(20, scrW),
-      			groups.background[randomBetween(0, groups.background.length)]
-      		))
-      		mid_particles.push(new Tile(
-      			randomBetween(-bleed, scrW + bleed),
-      			randomBetween(scrH_3_4, scrH),
-      			randomBetween(20, scrW_1_2),
-      			groups.middle[randomBetween(0, groups.middle.length)]
-      		))
-      		fg_particles.push(new Tile(
-      			randomBetween(-bleed, scrW + bleed),
-      			randomBetween(scrH - 50, scrH),
-      			randomBetween(20, scrW_1_2),
-      			groups.foreground[randomBetween(0, groups.foreground.length)]
-      		))
-      	};
-
-      	bg_particles.sort((a, b) => a.opacity - b.opacity)
-      	mid_particles.sort((a, b) => a.opacity - b.opacity)
-      	fg_particles.sort((a, b) => a.opacity - b.opacity)
-
-      }
-
-      const render = () => {
-
-      	makeParticles()
-      	ctx.clearRect(0, 0, scrW, scrH)
-
-      	bg_particles.forEach((el) => el.draw())
-      	mid_particles.forEach((el) => el.draw())
-      	fg_particles.forEach((el) => el.draw())
-
-      }
-
-      render()
+      new P5(script)
     }
   }
 </script>
 
 <template>
-  <div class="background">
+  <div class="background" id="p5Canvas">
     <div class="veil"></div>
-    <canvas id="scene"></canvas>
   </div>
 </template>
 
