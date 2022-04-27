@@ -12,7 +12,7 @@ const router = createRouter({
       component: Home,
       meta: {
         title: 'nG⚡️ aka. Aurélien Grimaud﹒Senior Product Designer & Creative Technologist',
-        background: 'var(--color-soil)'
+        background: 'var(--gradient-chill-night)'
       }
     },
     {
