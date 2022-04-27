@@ -381,7 +381,7 @@
 
         p5.draw = () => {
 
-          //p5.clear()
+          p5.clear()
 
           p5.background(colors.soil.hue, colors.soil.saturation, colors.soil.lightness)
 
