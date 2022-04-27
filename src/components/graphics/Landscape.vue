@@ -166,7 +166,10 @@
             }
             this.params = {
               rows: [],
+              speed: 0.1,
               order: 0,
+              delay: 30,
+              start: p5.height,
               isGlitched: false
             }
             for (let i = 1 ; i < this.props.rows ; i++)
@@ -211,6 +214,9 @@
             else
               this.position.x = -p5.width * 4
 
+            if (p5.millis() > this.params.order * this.params.delay)
+              this.params.start = p5.lerp(this.params.start, this.position.y, this.params.speed)
+
             if (this.params.isGlitched) {
               this.params.rows.forEach(row => {
                 row.width = p5.random(this.size.width / 2)
@@ -236,7 +242,7 @@
           draw = () => {
             let offsetY = 0
             p5.push()
-              p5.translate(this.position.x, this.position.y, this.position.z)
+              p5.translate(this.position.x, this.params.start, this.position.z)
               p5.noStroke()
               p5.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
               this.params.rows.forEach(row => {
