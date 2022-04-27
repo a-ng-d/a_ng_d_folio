@@ -88,7 +88,7 @@
               z: p5.int(p5.random(this.props.zRange[0], this.props.zRange[1]))
             }
             this.params = {
-              r: p5.int(p5.abs(this.size.height / 4)),
+              radius: p5.int(p5.abs(this.size.height / 4)),
               isGlitched: false
             }
             this.backup = {}
@@ -107,7 +107,7 @@
                 height: this.size.height,
               },
               params: {
-                r: this.params.r
+                radius: this.params.radius
               }
             }
             this.params.isGlitched = true
@@ -116,7 +116,7 @@
           unglitch = () => {
             this.params.isGlitched = false
             this.size = this.backup.size
-            this.params = this.backup.params
+            this.params.radius = this.backup.params.radius
           }
 
           move = () => {
@@ -128,7 +128,7 @@
             if (this.params.isGlitched) {
               this.size.width = p5.random(this.backup.size.width * 2)
               this.size.height = p5.random(this.backup.size.height)
-              this.params.r = p5.random(this.backup.params.r)
+              this.params.radius = p5.random(this.backup.params.radius)
             }
 
             this.draw()
@@ -141,10 +141,10 @@
               p5.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
               p5.rectMode(p5.CORNER)
               p5.ellipseMode(p5.CORNER)
-              p5.ellipse(0, this.size.height, this.params.r, this.params.r, quality)
-              p5.rect((this.params.r / 2), this.size.height, this.size.width, this.params.r)
-              p5.ellipse(this.size.width, this.size.height, this.params.r, this.params.r, quality)
-              p5.rect(0, 0, (this.size.width + this.params.r), (this.size.height + (this.params.r / 2)))
+              p5.ellipse(0, this.size.height, this.params.radius, this.params.radius, quality)
+              p5.rect((this.params.radius / 2), this.size.height, this.size.width, this.params.radius)
+              p5.ellipse(this.size.width, this.size.height, this.params.radius, this.params.radius, quality)
+              p5.rect(0, 0, (this.size.width + this.params.radius), (this.size.height + (this.params.radius / 2)))
             p5.pop()
           }
 
