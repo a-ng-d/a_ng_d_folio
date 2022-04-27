@@ -7,7 +7,7 @@
       background: String
     },
     mounted() {
-      const script = p5 => {
+      new P5((p5) => {
         const
           mNumber = 400,
           cNumber = 40,
@@ -411,11 +411,10 @@
         }
 
         p5.mouseReleased = () => {
-  mountains.forEach(el => el.unglitch())
-  clouds.forEach(el => el.unglitch())
-}
-      }
-      new P5(script)
+          mountains.forEach(el => el.unglitch())
+          clouds.forEach(el => el.unglitch())
+        }
+      })
     }
   }
 </script>
