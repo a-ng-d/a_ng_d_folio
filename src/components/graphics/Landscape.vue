@@ -89,6 +89,7 @@
             }
             this.params = {
               radius: p5.int(p5.abs(this.size.height / 4)),
+              order: 0,
               isGlitched: false
             }
             this.backup = {}
@@ -165,6 +166,7 @@
             }
             this.params = {
               rows: [],
+              order: 0,
               isGlitched: false
             }
             for (let i = 1 ; i < this.props.rows ; i++)
@@ -368,7 +370,12 @@
               rows: p5.int(p5.random(3, 5)),
               foreground: colors.cream,
               background: colors.soil
-             }))
+            }))
+
+          mountains.sort((a, b) => b.position.z - a.position.z)
+          mountains.forEach((mountain, index) => { mountain.params.order = index })
+          clouds.sort((a, b) => b.position.z - a.position.z)
+          clouds.forEach((cloud, index) => { cloud.params.order = index })
 
         }
 
