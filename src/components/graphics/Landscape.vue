@@ -7,7 +7,7 @@
       background: String
     },
     mounted() {
-      new P5((p5) => {
+      new P5((sk) => {
         const
           mNumber = 400,
           cNumber = 40,
@@ -79,17 +79,17 @@
           constructor(props) {
             this.props = props
             this.size = {
-              width: p5.int(p5.random(this.props.widthRange[0], this.props.widthRange[1])),
-              height: p5.int(p5.random(this.props.heightRange[0], this.props.heightRange[1]))
+              width: sk.int(sk.random(this.props.widthRange[0], this.props.widthRange[1])),
+              height: sk.int(sk.random(this.props.heightRange[0], this.props.heightRange[1]))
             }
             this.position = {
-              x: p5.int(this.props.x),
-              y: p5.int(this.props.y),
-              z: p5.int(p5.random(this.props.zRange[0], this.props.zRange[1]))
+              x: sk.int(this.props.x),
+              y: sk.int(this.props.y),
+              z: sk.int(sk.random(this.props.zRange[0], this.props.zRange[1]))
             }
             this.params = {
-              radius: p5.int(p5.abs(this.size.height / 4)),
-              radians: p5.radians(180),
+              radius: sk.int(sk.abs(this.size.height / 4)),
+              radians: sk.radians(180),
               speed: 0.1,
               order: 0,
               delay: 5,
@@ -98,11 +98,11 @@
             this.backup = {}
           }
 
-          deepHue = () => p5.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.hue, this.props.foreground.hue)
+          deepHue = () => sk.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.hue, this.props.foreground.hue)
 
-          deepSaturation = () => p5.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.saturation, this.props.foreground.saturation)
+          deepSaturation = () => sk.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.saturation, this.props.foreground.saturation)
 
-          deepLightness = () => p5.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.lightness, this.props.foreground.lightness)
+          deepLightness = () => sk.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.lightness, this.props.foreground.lightness)
 
           glitch = () => {
             this.backup = {
@@ -129,31 +129,31 @@
             else
               this.position.z = this.props.zRange[0]
 
-            if (p5.millis() > this.params.order * this.params.delay)
-              this.params.radians = p5.lerp(this.params.radians, p5.radians(0), this.params.speed)
+            if (sk.millis() > this.params.order * this.params.delay)
+              this.params.radians = sk.lerp(this.params.radians, sk.radians(0), this.params.speed)
 
             if (this.params.isGlitched) {
-              this.size.width = p5.random(this.backup.size.width * 2)
-              this.size.height = p5.random(this.backup.size.height)
-              this.params.radius = p5.random(this.backup.params.radius)
+              this.size.width = sk.random(this.backup.size.width * 2)
+              this.size.height = sk.random(this.backup.size.height)
+              this.params.radius = sk.random(this.backup.params.radius)
             }
 
             this.draw()
           }
 
           draw = () => {
-            p5.push()
-              p5.translate(this.position.x, this.position.y, this.position.z)
-              p5.rotateX(this.params.radians)
-              p5.noStroke()
-              p5.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
-              p5.rectMode(p5.CORNER)
-              p5.ellipseMode(p5.CORNER)
-              p5.ellipse(0, this.size.height, this.params.radius, this.params.radius, quality)
-              p5.rect((this.params.radius / 2), this.size.height, this.size.width, this.params.radius)
-              p5.ellipse(this.size.width, this.size.height, this.params.radius, this.params.radius, quality)
-              p5.rect(0, 0, (this.size.width + this.params.radius), (this.size.height + (this.params.radius / 2)))
-            p5.pop()
+            sk.push()
+              sk.translate(this.position.x, this.position.y, this.position.z)
+              sk.rotateX(this.params.radians)
+              sk.noStroke()
+              sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
+              sk.rectMode(sk.CORNER)
+              sk.ellipseMode(sk.CORNER)
+              sk.ellipse(0, this.size.height, this.params.radius, this.params.radius, quality)
+              sk.rect((this.params.radius / 2), this.size.height, this.size.width, this.params.radius)
+              sk.ellipse(this.size.width, this.size.height, this.params.radius, this.params.radius, quality)
+              sk.rect(0, 0, (this.size.width + this.params.radius), (this.size.height + (this.params.radius / 2)))
+            sk.pop()
           }
 
         }
@@ -163,36 +163,36 @@
           constructor(props) {
             this.props = props
             this.size = {
-              width: p5.int(p5.random(this.props.widthRange[0], this.props.widthRange[1])),
-              height: p5.int(p5.random(this.props.heightRange[0], this.props.heightRange[1]))
+              width: sk.int(sk.random(this.props.widthRange[0], this.props.widthRange[1])),
+              height: sk.int(sk.random(this.props.heightRange[0], this.props.heightRange[1]))
             }
             this.position = {
-              x: p5.int(this.props.x),
-              y: p5.int(this.props.y),
-              z: p5.int(p5.random(this.props.zRange[0], this.props.zRange[1]))
+              x: sk.int(this.props.x),
+              y: sk.int(this.props.y),
+              z: sk.int(sk.random(this.props.zRange[0], this.props.zRange[1]))
             }
             this.params = {
               rows: [],
               speed: 0.1,
               order: 0,
               delay: 30,
-              start: p5.height,
+              start: sk.height,
               isGlitched: false
             }
             for (let i = 1 ; i < this.props.rows ; i++)
               this.params.rows.push({
-                width: p5.int(this.size.width * p5.random(0.5, 1)),
-                height: p5.int(this.size.height * p5.random(0.5, 1)),
-                x: p5.int(p5.random(-this.size.width / 4, this.size.width / 4))
+                width: sk.int(this.size.width * sk.random(0.5, 1)),
+                height: sk.int(this.size.height * sk.random(0.5, 1)),
+                x: sk.int(sk.random(-this.size.width / 4, this.size.width / 4))
               })
             this.backup = {}
           }
 
-          deepHue = () => p5.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.hue, this.props.foreground.hue)
+          deepHue = () => sk.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.hue, this.props.foreground.hue)
 
-          deepSaturation = () => p5.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.saturation, this.props.foreground.saturation)
+          deepSaturation = () => sk.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.saturation, this.props.foreground.saturation)
 
-          deepLightness = () => p5.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.lightness, this.props.foreground.lightness)
+          deepLightness = () => sk.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.lightness, this.props.foreground.lightness)
 
           glitch = () => {
             this.backup.rows = this.params.rows.map(row => {
@@ -216,19 +216,19 @@
             else
               this.position.z = this.props.zRange[0]
 
-            if (this.position.x <= p5.width * 4)
+            if (this.position.x <= sk.width * 4)
               this.position.x += speed / 4
             else
-              this.position.x = -p5.width * 4
+              this.position.x = -sk.width * 4
 
-            if (p5.millis() > this.params.order * this.params.delay)
-              this.params.start = p5.lerp(this.params.start, this.position.y, this.params.speed)
+            if (sk.millis() > this.params.order * this.params.delay)
+              this.params.start = sk.lerp(this.params.start, this.position.y, this.params.speed)
 
             if (this.params.isGlitched) {
               this.params.rows.forEach(row => {
-                row.width = p5.random(this.size.width / 2)
-                row.height = p5.random(this.size.height / 2)
-                row.x = p5.random(-p5.width / 4, p5.width / 4)
+                row.width = sk.random(this.size.width / 2)
+                row.height = sk.random(this.size.height / 2)
+                row.x = sk.random(-sk.width / 4, sk.width / 4)
               })
             }
 
@@ -236,27 +236,27 @@
           }
 
           drow = (x, y, width, height) => {
-            p5.push()
-              p5.translate(x, y, 0)
-              p5.rectMode(p5.CORNER)
-              p5.ellipseMode(p5.CORNER)
-              p5.ellipse(0, height, height, height, quality)
-              p5.rect(-(height / 2), 0, width, height)
-              p5.ellipse(width, height, height, height, quality)
-            p5.pop()
+            sk.push()
+              sk.translate(x, y, 0)
+              sk.rectMode(sk.CORNER)
+              sk.ellipseMode(sk.CORNER)
+              sk.ellipse(0, height, height, height, quality)
+              sk.rect(-(height / 2), 0, width, height)
+              sk.ellipse(width, height, height, height, quality)
+            sk.pop()
           }
 
           draw = () => {
             let offsetY = 0
-            p5.push()
-              p5.translate(this.position.x, this.params.start, this.position.z)
-              p5.noStroke()
-              p5.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
+            sk.push()
+              sk.translate(this.position.x, this.params.start, this.position.z)
+              sk.noStroke()
+              sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
               this.params.rows.forEach(row => {
                 this.drow(row.x, offsetY, row.width, row.height)
                 offsetY += row.height
               })
-            p5.pop()
+            sk.pop()
           }
 
         }
@@ -309,16 +309,16 @@
           }
 
           move = () => {
-            this.position.x = p5.lerp(this.position.x, this.params.target.position.x, this.params.speed)
-            this.position.y = p5.lerp(this.position.y, this.params.target.position.y, this.params.speed)
-            this.position.z = p5.lerp(this.position.z, this.params.target.position.z, this.params.speed)
-            this.center.x = p5.lerp(this.center.x, this.params.target.center.x, this.params.speed)
-            this.center.y = p5.lerp(this.center.y, this.params.target.center.y, this.params.speed)
-            this.center.z = p5.lerp(this.center.z, this.params.target.center.z, this.params.speed)
+            this.position.x = sk.lerp(this.position.x, this.params.target.position.x, this.params.speed)
+            this.position.y = sk.lerp(this.position.y, this.params.target.position.y, this.params.speed)
+            this.position.z = sk.lerp(this.position.z, this.params.target.position.z, this.params.speed)
+            this.center.x = sk.lerp(this.center.x, this.params.target.center.x, this.params.speed)
+            this.center.y = sk.lerp(this.center.y, this.params.target.center.y, this.params.speed)
+            this.center.z = sk.lerp(this.center.z, this.params.target.center.z, this.params.speed)
 
             if (this.params.isPushed) {
-              this.position.x = p5.lerp(this.position.x, p5.map(p5.mouseX, 0, p5.width, p5.width * 0.1, -p5.width * 0.1), 0.1)
-              this.position.y = p5.lerp(this.position.y, p5.map(p5.mouseY, 0, p5.height, p5.height * 0.1, -p5.height * 0.1), 0.1)
+              this.position.x = sk.lerp(this.position.x, sk.map(sk.mouseX, 0, sk.width, sk.width * 0.1, -sk.width * 0.1), 0.1)
+              this.position.y = sk.lerp(this.position.y, sk.map(sk.mouseY, 0, sk.height, sk.height * 0.1, -sk.height * 0.1), 0.1)
             }
 
             this.draw()
@@ -333,7 +333,7 @@
           }
 
           draw = () => {
-            p5.camera(
+            sk.camera(
               this.position.x,
               this.position.y,
               this.position.z,
@@ -355,32 +355,32 @@
           cZ: -window.innerHeight * 2
         })
 
-        p5.setup = () => {
+        sk.setup = () => {
 
-          p5.createCanvas(p5.windowWidth, p5.windowHeight, p5.WEBGL).parent('p5Canvas')
-          p5.colorMode(p5.HSL)
-          p5.rectMode(p5.CENTER)
-          p5.frameRate(fps)
+          sk.createCanvas(sk.windowWidth, sk.windowHeight, sk.WEBGL).parent('sketch')
+          sk.colorMode(sk.HSL)
+          sk.rectMode(sk.CENTER)
+          sk.frameRate(fps)
 
           // particles setting
           for (let i = 0 ; i < mNumber ; i++)
             mountains.push(new Mountain({
-              widthRange: [p5.width * 0.25, p5.width],
-              heightRange: [-p5.height * 0.2, -p5.height * 0.4],
-              x: p5.random(-p5.width * 4, p5.width * 4),
-              y: p5.height * 0.5,
-              zRange: [-p5.height * 4, 0],
+              widthRange: [sk.width * 0.25, sk.width],
+              heightRange: [-sk.height * 0.2, -sk.height * 0.4],
+              x: sk.random(-sk.width * 4, sk.width * 4),
+              y: sk.height * 0.5,
+              zRange: [-sk.height * 4, 0],
               foreground: colors.creamySun,
               background: colors.soil
             }))
           for (let i = 0 ; i < cNumber ; i++)
             clouds.push(new Cloud({
-              widthRange: [p5.width * 0.25, p5.width],
-              heightRange: [-p5.height * 0.05, -p5.height * 0.1],
-              x: p5.random(-p5.width * 4, p5.width * 4),
-              y: p5.random(-p5.height * 0.2, p5.height * 0.4),
-              zRange: [-p5.height * 4, 0],
-              rows: p5.int(p5.random(3, 5)),
+              widthRange: [sk.width * 0.25, sk.width],
+              heightRange: [-sk.height * 0.05, -sk.height * 0.1],
+              x: sk.random(-sk.width * 4, sk.width * 4),
+              y: sk.random(-sk.height * 0.2, sk.height * 0.4),
+              zRange: [-sk.height * 4, 0],
+              rows: sk.int(sk.random(3, 5)),
               foreground: colors.cream,
               background: colors.soil
             }))
@@ -392,23 +392,23 @@
 
         }
 
-        p5.draw = () => {
+        sk.draw = () => {
 
-          p5.clear()
+          sk.clear()
 
-          p5.background(colors.soil.hue, colors.soil.saturation, colors.soil.lightness)
+          sk.background(colors.soil.hue, colors.soil.saturation, colors.soil.lightness)
 
           // camera
           pov.move()
 
           // floor
-          p5.push()
-            p5.noStroke()
-            p5.fill(colors.soil.hue, colors.soil.saturation, colors.soil.lightness)
-            p5.translate(0, (p5.height * 0.5) - 1, 0)
-            p5.rotateX(p5.PI / 2)
-            p5.rect(0, 0, p5.width * 4, p5.height * 8)
-          p5.pop()
+          sk.push()
+            sk.noStroke()
+            sk.fill(colors.soil.hue, colors.soil.saturation, colors.soil.lightness)
+            sk.translate(0, (sk.height * 0.5) - 1, 0)
+            sk.rotateX(sk.PI / 2)
+            sk.rect(0, 0, sk.width * 4, sk.height * 8)
+          sk.pop()
 
           // mountains
           mountains.forEach(el => el.move())
@@ -419,18 +419,18 @@
         }
 
         // Events
-        p5.povCore = () => pov.animate(0.1, [0, (-p5.height * 0.1), -p5.height * 1.75], [0, 0, (-p5.height * 2)])
+        sk.povCore = () => pov.animate(0.1, [0, (-sk.height * 0.1), -sk.height * 1.75], [0, 0, (-sk.height * 2)])
 
-        p5.povReset = () => pov.reset()
+        sk.povReset = () => pov.reset()
 
-        p5.mouseMoved = () => pov.push()
+        sk.mouseMoved = () => pov.push()
 
-        p5.mousePressed = () => {
+        sk.mousePressed = () => {
           mountains.forEach(el => el.glitch())
           clouds.forEach(el => el.glitch())
         }
 
-        p5.mouseReleased = () => {
+        sk.mouseReleased = () => {
           mountains.forEach(el => el.unglitch())
           clouds.forEach(el => el.unglitch())
         }
@@ -440,7 +440,7 @@
 </script>
 
 <template>
-  <div class="background" id="p5Canvas">
+  <div class="background" id="sketch">
     <div class="veil"></div>
   </div>
 </template>
