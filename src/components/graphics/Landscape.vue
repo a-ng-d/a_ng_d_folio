@@ -385,9 +385,9 @@
           p5.push()
             p5.noStroke()
             p5.fill(colors.soil.hue, colors.soil.saturation, colors.soil.lightness)
-            p5.translate(0, p5.height * 0.5, 0)
+            p5.translate(0, (p5.height * 0.5) - 1, 0)
             p5.rotateX(p5.PI / 2)
-            p5.rect(0, 0, p5.width * 4, p5.height * 4)
+            p5.rect(0, 0, p5.width * 4, p5.height * 8)
           p5.pop()
 
           // mountains
