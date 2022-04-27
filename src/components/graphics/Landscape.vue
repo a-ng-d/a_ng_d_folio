@@ -89,7 +89,10 @@
             }
             this.params = {
               radius: p5.int(p5.abs(this.size.height / 4)),
+              radians: p5.radians(180),
+              speed: 0.1,
               order: 0,
+              delay: 5,
               isGlitched: false
             }
             this.backup = {}
@@ -126,6 +129,9 @@
             else
               this.position.z = this.props.zRange[0]
 
+            if (p5.millis() > this.params.order * this.params.delay)
+              this.params.radians = p5.lerp(this.params.radians, p5.radians(0), this.params.speed)
+
             if (this.params.isGlitched) {
               this.size.width = p5.random(this.backup.size.width * 2)
               this.size.height = p5.random(this.backup.size.height)
@@ -138,6 +144,7 @@
           draw = () => {
             p5.push()
               p5.translate(this.position.x, this.position.y, this.position.z)
+              p5.rotateX(this.params.radians)
               p5.noStroke()
               p5.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
               p5.rectMode(p5.CORNER)
