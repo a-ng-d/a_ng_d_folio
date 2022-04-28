@@ -1,10 +1,12 @@
 <script lang="ts">
   import Particles from '@/components/graphics/Particles.vue'
+  import ParticlesV2 from '@/components/graphics/ParticlesV2.vue'
 
   export default {
     name: 'Button',
     components: {
-      Particles
+      Particles,
+      ParticlesV2
     },
     props: {
       type: {
@@ -47,7 +49,7 @@
         </div>
       </div>
       <div class="button__background">
-        <Particles />
+        <ParticlesV2/>
       </div>
     </RouterLink>
   </template>
@@ -65,7 +67,7 @@
         </div>
       </div>
       <div class="button__background">
-        <Particles />
+        <ParticlesV2 />
       </div>
     </RouterLink>
   </template>
