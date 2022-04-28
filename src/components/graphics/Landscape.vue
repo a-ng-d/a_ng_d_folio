@@ -12,15 +12,14 @@
         const
           mNumber = 400,
           cNumber = 40,
-          quality = 50
+          quality = 50,
+          colors = HSLColors
 
         let
           fps = 60,
           speed = 2,
           mountains = [],
           clouds = []
-
-        const colors = HSLColors
 
         // Elements
         class Mountain {
@@ -360,10 +359,10 @@
           sk.pop()
 
           // mountains
-          mountains.forEach(el => el.move())
+          mountains.forEach(mountain => mountain.move())
 
           // clouds
-          clouds.forEach(el => el.move())
+          clouds.forEach(cloud => cloud.move())
 
         }
 
