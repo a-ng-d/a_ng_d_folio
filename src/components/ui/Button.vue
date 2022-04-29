@@ -210,6 +210,6 @@
   .button:focus
     --border-color: var(--color-clear-water)
 
-    transform: scale(1.25)
+    transform: var(--focus-scale)
     z-index: 2
 </style>

@@ -75,7 +75,7 @@
 
 
     &:focus
-      transform: scale(1.25)
+      transform: var(--focus-scale)
       z-index: 2
 
       :deep(.label)
