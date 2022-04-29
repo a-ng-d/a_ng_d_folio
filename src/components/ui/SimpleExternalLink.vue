@@ -66,7 +66,7 @@
         &:after
           height: 50%
           left: calc(var(--border-size) * 4)
-          border-radius: calc(var(--border-size) * 4)
+          border-radius: var(--full-border-radius)
           background: var(--border-active-color)
 
 </style>
