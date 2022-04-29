@@ -31,34 +31,43 @@
               x2: this.props.x2,
               y2: this.props.y2
             }
+            this.size = {
+              width: (this.position.x2 - this.position.x1)
+            }
             this.params = {
               color: sk.random(colors),
               weight: this.props.weight,
-              start: -this.position.x2,
-              speed: 0.02,
+              move: this.size.width,
+              speed: 0.1,
               order: 0,
-              delay: 2,
-              isCollapsed: true,
-              isExpanded: false
+              gap: 3,
+              isExpanded: false,
+              resetTime: false
             }
           }
 
-          expand = () => {
-            this.params.isCollapsed = false
+          expand = (units) => {
+            this.params.order == 0 ? this.params.order = sk.int(sk.random(0, units)) : this.params.order == this.params.order
+            if (!this.params.resetTime) {
+              time = sk.millis()
+              this.params.resetTime = true
+            }
             this.params.isExpanded = true
           }
 
           collapse = () => {
-            time = 0
-            this.params.isCollapsed = true
+            if (this.params.resetTime) {
+              time = sk.millis()
+              this.params.resetTime = false
+            }
             this.params.isExpanded = false
           }
 
           move = () => {
-            if (this.params.isExpanded)
-              this.params.start = sk.lerp(this.params.start, 0, this.params.speed * 4)
-            if (this.params.isCollapsed)
-              this.params.start = sk.lerp(this.params.start, -this.position.x2, this.params.speed)
+            if (this.params.isExpanded && sk.millis() - time > this.params.gap * this.params.order)
+              this.params.move = sk.lerp(this.params.move, 0, this.params.speed)
+            else if (!this.params.isExpanded && sk.millis() - time > this.params.gap * this.params.order)
+              this.params.move = sk.lerp(this.params.move, this.size.width + 1, this.params.speed * 4)
 
             this.draw()
           }
@@ -67,8 +76,8 @@
             sk.stroke(this.params.color.hue, this.params.color.saturation, this.params.color.lightness)
             sk.strokeCap(sk.ROUND)
             sk.strokeWeight(this.params.weight)
-            sk.drawingContext.setLineDash([this.position.x2, this.position.x2])
-            sk.drawingContext.lineDashOffset = this.params.start
+            sk.drawingContext.setLineDash([this.size.width, this.size.width + 1])
+            sk.drawingContext.lineDashOffset = this.params.move
             sk.line(this.position.x1, this.position.y1, this.position.x2, this.position.y2)
           }
 
@@ -99,7 +108,7 @@
           sk.mouseMoved = () => {
             if (sk.mouseX >= 0 && sk.mouseX <= sk.width)
               if (sk.mouseY >= 0 && sk.mouseY <= sk.height)
-                units.forEach(unit => unit.expand())
+                units.forEach(unit => unit.expand(units.length))
               else
                 units.forEach(unit => unit.collapse())
             else
