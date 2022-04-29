@@ -128,7 +128,7 @@
 
   // Variants
   //// Primary
-  .button--primary[data-theme="default"]
+  .button--primary
     --icon-color: var(--color-cream)
     --text-color: var(--color-cream)
     --border-color: var(--color-soil)
@@ -164,7 +164,7 @@
       color: var(--text-color)
 
   //// Secondary
-  .button--secondary[data-theme="default"]
+  .button--secondary
     --icon-color: var(--color-soil)
     --text-color: var(--color-soil)
     --border-color: var(--color-soil)

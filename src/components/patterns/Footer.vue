@@ -60,13 +60,11 @@
       &__content, &__link
         @include text.caption
 
-  // Variants
-  //// Light
-  .footer[data-theme="default"]
+  // Aspect
+  .footer
     .footer__tag
       --text-color: var(--color-cream)
 
-  //// Dark
   .footer[data-theme="dark"]
     .footer__tag
       --text-color: var(--color-soil)
