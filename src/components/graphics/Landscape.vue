@@ -12,7 +12,7 @@
 
         const
           mNumber = 400,
-          cNumber = 40,
+          cNumber = 50,
           quality = 50,
           colors = HSLColors
 
