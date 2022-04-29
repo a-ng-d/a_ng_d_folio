@@ -111,6 +111,12 @@
       @include text.label
       transition: var(--slow-transition)
 
+      span
+        display: -webkit-box
+        -webkit-line-clamp: 2
+        -webkit-box-orient: vertical
+        overflow: hidden
+
     &__background
       position: absolute
       width: 100%
