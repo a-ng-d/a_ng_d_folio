@@ -40,7 +40,7 @@
               radians: sk.radians(180),
               speed: 0.1,
               order: 0,
-              delay: 5,
+              gap: 5,
               isGlitched: false
             }
             this.backup = {}
@@ -77,7 +77,7 @@
             else
               this.position.z = this.props.zRange[0]
 
-            if (sk.millis() > this.params.order * this.params.delay)
+            if (sk.millis() > this.params.order * this.params.gap)
               this.params.radians = sk.lerp(this.params.radians, sk.radians(0), this.params.speed)
 
             if (this.params.isGlitched) {
@@ -123,7 +123,7 @@
               rows: [],
               speed: 0.1,
               order: 0,
-              delay: 30,
+              gap: 30,
               start: sk.height,
               isGlitched: false
             }
@@ -169,7 +169,7 @@
             else
               this.position.x = -sk.width * 4
 
-            if (sk.millis() > this.params.order * this.params.delay)
+            if (sk.millis() > this.params.order * this.params.gap)
               this.params.start = sk.lerp(this.params.start, this.position.y, this.params.speed)
 
             if (this.params.isGlitched) {
