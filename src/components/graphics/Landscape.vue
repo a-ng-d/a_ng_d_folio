@@ -325,7 +325,7 @@
           for (let i = 0 ; i < cNumber ; i++)
             clouds.push(new Cloud({
               widthRange: [sk.width * 0.25, sk.width],
-              heightRange: [-sk.height * 0.05, -sk.height * 0.1],
+              heightRange: [-sk.height * 0.01, -sk.height * 0.05],
               x: sk.random(-sk.width * 4, sk.width * 4),
               y: sk.random(-sk.height * 0.2, sk.height * 0.4),
               zRange: [-sk.height * 4, 0],
