@@ -85,13 +85,9 @@
 
         }
 
-        // Sketch
-        sk.setup = () => {
-
-          sk.createCanvas(this.$el.clientWidth, this.$el.clientHeight).parent(this.uuid)
-          sk.colorMode(sk.HSL)
-          sk.rectMode(sk.CENTER)
-          sk.frameRate(fps)
+        sk.makeUnits = (reset) => {
+          if (reset === 'reset')
+            units = []
 
           for (let limitY = 0 ; limitY <= sk.height ;) {
             for (let limitX = 0 ; limitX <= sk.width ;) {
@@ -107,6 +103,17 @@
             }
             limitY += weight
           }
+        }
+
+        // Sketch
+        sk.setup = () => {
+
+          sk.createCanvas(this.$el.clientWidth, this.$el.clientHeight).parent(this.uuid)
+          sk.colorMode(sk.HSL)
+          sk.rectMode(sk.CENTER)
+          sk.frameRate(fps)
+
+          sk.makeUnits()
 
         }
 
@@ -126,6 +133,11 @@
               units.forEach(unit => unit.collapse())
           else
             units.forEach(unit => unit.collapse())
+        }
+
+        sk.windowResized = () => {
+          sk.resizeCanvas(this.$el.clientWidth, this.$el.clientHeight)
+          sk.makeUnits('reset')
         }
 
       })

@@ -385,7 +385,7 @@
         }
 
         sk.windowResized = () => {
-          sk.resizeCanvas(sk.windowWidth, sk.windowHeight);
+          sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
         }
 
       })
