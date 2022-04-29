@@ -12,6 +12,7 @@
     },
     mounted() {
       new P5((sk) => {
+
         const
           colors = Object.values(HSLColors).filter(entry => entry.type === 'primary'),
           weight = 8
@@ -21,6 +22,7 @@
           units = [],
           time = 0
 
+        // Elements
         class Unit {
 
           constructor(props) {
@@ -83,6 +85,7 @@
 
         }
 
+        // Sketch
         sk.setup = () => {
 
           sk.createCanvas(this.$el.clientWidth, this.$el.clientHeight).parent(this.uuid)
@@ -105,16 +108,6 @@
             limitY += weight
           }
 
-          sk.mouseMoved = () => {
-            if (sk.mouseX >= 0 && sk.mouseX <= sk.width)
-              if (sk.mouseY >= 0 && sk.mouseY <= sk.height)
-                units.forEach(unit => unit.expand(units.length))
-              else
-                units.forEach(unit => unit.collapse())
-            else
-              units.forEach(unit => unit.collapse())
-          }
-
         }
 
         sk.draw = () => {
@@ -122,6 +115,17 @@
           sk.clear()
           units.forEach(unit => unit.move())
 
+        }
+
+        // Events
+        sk.mouseMoved = () => {
+          if (sk.mouseX >= 0 && sk.mouseX <= sk.width)
+            if (sk.mouseY >= 0 && sk.mouseY <= sk.height)
+              units.forEach(unit => unit.expand(units.length))
+            else
+              units.forEach(unit => unit.collapse())
+          else
+            units.forEach(unit => unit.collapse())
         }
 
       })

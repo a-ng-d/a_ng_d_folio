@@ -9,6 +9,7 @@
     },
     mounted() {
       new P5((sk) => {
+
         const
           mNumber = 400,
           cNumber = 40,
@@ -382,6 +383,11 @@
           mountains.forEach(el => el.unglitch())
           clouds.forEach(el => el.unglitch())
         }
+
+        sk.windowResized = () => {
+          sk.resizeCanvas(sk.windowWidth, sk.windowHeight);
+        }
+
       })
     }
   }
