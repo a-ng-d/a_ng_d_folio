@@ -92,7 +92,7 @@
 
           draw = () => {
             const randomColor = sk.random(Object.values(HSLColors))
-            
+
             sk.push()
               sk.translate(this.position.x, this.position.y, this.position.z)
               sk.rotateX(this.params.radians)
@@ -423,4 +423,5 @@
       z-index: 1
       mix-blend-mode: hard-light
       background: v-bind(background)
+      transition: var(--simple-transition)
 </style>
