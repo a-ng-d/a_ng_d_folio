@@ -91,11 +91,16 @@
           }
 
           draw = () => {
+            const randomColor = sk.random(Object.values(HSLColors))
+            
             sk.push()
               sk.translate(this.position.x, this.position.y, this.position.z)
               sk.rotateX(this.params.radians)
               sk.noStroke()
-              sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
+              if (this.params.isGlitched)
+                sk.fill(randomColor.hue, randomColor.saturation, randomColor.lightness)
+              else
+                sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
               sk.rectMode(sk.CORNER)
               sk.ellipseMode(sk.CORNER)
               sk.ellipse(0, this.size.height, this.params.radius, this.params.radius, quality)
@@ -197,10 +202,15 @@
 
           draw = () => {
             let offsetY = 0
+            const randomColor = sk.random(Object.values(HSLColors))
+
             sk.push()
               sk.translate(this.position.x, this.params.start, this.position.z)
               sk.noStroke()
-              sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
+              if (this.params.isGlitched)
+                sk.fill(randomColor.hue, randomColor.saturation, randomColor.lightness)
+              else
+                sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
               this.params.rows.forEach(row => {
                 this.drow(row.x, offsetY, row.width, row.height)
                 offsetY += row.height
