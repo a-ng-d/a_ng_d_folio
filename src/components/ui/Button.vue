@@ -196,8 +196,8 @@
 
   // Events
   .button:hover
-    :deep(.particle)
-      transform: scale(1)
+    --amplitude: var(--spacing-s-000)
+    animation: excited var(--duration-running) var(--ease-peps)
 
   .button:focus
     transform: scale(1.25)
