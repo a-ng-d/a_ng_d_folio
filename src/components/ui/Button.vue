@@ -1,12 +1,10 @@
 <script lang="ts">
   import Particles from '@/components/graphics/Particles.vue'
-  import ParticlesV2 from '@/components/graphics/ParticlesV2.vue'
 
   export default {
     name: 'Button',
     components: {
-      Particles,
-      ParticlesV2
+      Particles
     },
     props: {
       type: {
@@ -49,7 +47,7 @@
         </div>
       </div>
       <div class="button__background">
-        <ParticlesV2/>
+        <Particles />
       </div>
     </RouterLink>
   </template>
@@ -67,7 +65,7 @@
         </div>
       </div>
       <div class="button__background">
-        <ParticlesV2 />
+        <Particles />
       </div>
     </RouterLink>
   </template>
@@ -86,6 +84,7 @@
     padding: 0
     border-radius: calc(var(--button-height-size) / 2)
     border: var(--button-border-size) solid transparent
+    transition: var(--simple-transition)
 
     &__content
       display: flex
@@ -110,6 +109,7 @@
       padding: 0 calc(var(--button-height-size) / 2)
       text-align: center
       @include text.label
+      transition: var(--slow-transition)
 
     &__background
       position: absolute
@@ -117,10 +117,6 @@
       height: 100%
       border-radius: calc(var(--button-height-size) / 2)
       overflow: hidden
-
-      svg
-        width: 100%
-        height: 100%
 
   // Variants
   //// Primary

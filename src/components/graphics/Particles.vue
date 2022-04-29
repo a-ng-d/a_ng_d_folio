@@ -1,64 +1,140 @@
 <script lang="ts">
-  import chroma from 'chroma-js'
+  import P5 from 'p5'
+  import { v4 as uuidv4 } from 'uuid'
+  import { HSLColors } from '@/assets/Colors'
 
   export default {
     name: 'Particles',
     data() {
       return {
-        radius: 8,
-        columns: 0,
-        rows: 0
+        uuid: uuidv4()
       }
     },
     mounted() {
-      this.modulus = 21
-      this.counter = 0
-      this.colors = []
-      this.getGrid(this.$el)
-    },
-    methods: {
-      getGrid(el) {
-        this.columns = Math.round(el.clientWidth / 8) + 1
-        this.rows = Math.round(el.clientHeight / 8) + 1
-        this.colors = chroma.scale(['#C7E3FE', '#E0D1F3', '#F5D546']).domain([0, 0.75, 1]).colors(this.columns * this.rows)
-      },
-      glitchFade(n) {
-        if (n % this.modulus == 0) {
-          this.counter = 0
-          this.modulus = this.getRandomArbitrary(1, 51)
-        } else
-          this.counter++
+      new P5((sk) => {
+        const
+          colors = Object.values(HSLColors).filter(entry => entry.type === 'primary'),
+          weight = 8
 
-        return this.counter * 10
-      },
-      getRandomArbitrary(min, max) {
-        return Math.round(Math.random() * (max - min) + min)
-      }
+        let
+          fps = 60,
+          units = [],
+          time = 0
+
+        class Unit {
+
+          constructor(props) {
+            this.props = props
+            this.position = {
+              x1: this.props.x1,
+              y1: this.props.y1,
+              x2: this.props.x2,
+              y2: this.props.y2
+            }
+            this.size = {
+              width: (this.position.x2 - this.position.x1)
+            }
+            this.params = {
+              color: sk.random(colors),
+              weight: this.props.weight,
+              move: this.size.width,
+              speed: 0.1,
+              order: 0,
+              gap: 3,
+              isExpanded: false,
+              resetTime: false
+            }
+          }
+
+          expand = (units) => {
+            this.params.order == 0 ? this.params.order = sk.int(sk.random(0, units)) : this.params.order == this.params.order
+            if (!this.params.resetTime) {
+              time = sk.millis()
+              this.params.resetTime = true
+            }
+            this.params.isExpanded = true
+          }
+
+          collapse = () => {
+            if (this.params.resetTime) {
+              time = sk.millis()
+              this.params.resetTime = false
+            }
+            this.params.isExpanded = false
+          }
+
+          move = () => {
+            if (this.params.isExpanded && sk.millis() - time > this.params.gap * this.params.order)
+              this.params.move = sk.lerp(this.params.move, 0, this.params.speed)
+            else if (!this.params.isExpanded && sk.millis() - time > this.params.gap * this.params.order)
+              this.params.move = sk.lerp(this.params.move, this.size.width + 1, this.params.speed * 4)
+
+            this.draw()
+          }
+
+          draw = () => {
+            sk.stroke(this.params.color.hue, this.params.color.saturation, this.params.color.lightness)
+            sk.strokeCap(sk.ROUND)
+            sk.strokeWeight(this.params.weight)
+            sk.drawingContext.setLineDash([this.size.width, this.size.width + 1])
+            sk.drawingContext.lineDashOffset = this.params.move
+            sk.line(this.position.x1, this.position.y1, this.position.x2, this.position.y2)
+          }
+
+        }
+
+        sk.setup = () => {
+
+          sk.createCanvas(this.$el.clientWidth, this.$el.clientHeight).parent(this.uuid)
+          sk.colorMode(sk.HSL)
+          sk.rectMode(sk.CENTER)
+          sk.frameRate(fps)
+
+          for (let limitY = 0 ; limitY <= sk.height ;) {
+            for (let limitX = 0 ; limitX <= sk.width ;) {
+              let rX = sk.int(sk.random(8, 48))
+              units.push(new Unit({
+                x1: limitX,
+                y1: limitY,
+                x2: limitX + rX,
+                y2: limitY,
+                weight: weight
+              }))
+              limitX += rX
+            }
+            limitY += weight
+          }
+
+          sk.mouseMoved = () => {
+            if (sk.mouseX >= 0 && sk.mouseX <= sk.width)
+              if (sk.mouseY >= 0 && sk.mouseY <= sk.height)
+                units.forEach(unit => unit.expand(units.length))
+              else
+                units.forEach(unit => unit.collapse())
+            else
+              units.forEach(unit => unit.collapse())
+          }
+
+        }
+
+        sk.draw = () => {
+
+          sk.clear()
+          units.forEach(unit => unit.move())
+
+        }
+
+      })
     }
   }
 </script>
 
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-    <template v-for="i in rows">
-      <template v-for="j in columns" :key="j + (columns * (i - 1))">
-        <circle
-          class="particle"
-          :r="radius"
-          :cx="(j - 1) * this.radius"
-          :cy="(i - 1) * this.radius"
-          :fill="this.colors[j + (columns * (i - 1)) - 1]"
-          :style="`transition-delay: ${glitchFade(j + (columns * (i - 1)) - 1)}ms`"
-        />
-      </template>
-    </template>
- </svg>
+  <div :id="uuid" class="canvas-container"></div>
 </template>
 
 <style scoped lang="sass">
-  .particle
-    transition: var(--duration-turtoise) all var(--ease-peps)
-    transform: scale(0)
-    transform-origin: center center
-    transform-box: fill-box
+  .canvas-container
+    width: 100%
+    height: 100%
 </style>
