@@ -45,6 +45,8 @@
     display: flex
     flex-flow: row nowrap
     gap: 0 var(--rich-external-link-gap)
+    transition: var(--simple-transition)
+    transform-origin: center center
 
     &__icon
       padding: var(--spacing-s-000) 0 0
@@ -69,4 +71,16 @@
           border-radius: var(--full-border-radius)
           background: var(--border-active-color)
 
+    &:focus
+      transform: scale(1.25)
+      z-index: 2
+
+      :deep(.label)
+        &:after
+          --border-active-color: var(--color-clear-water)
+
+          height: 50%
+          left: calc(var(--border-size) * 4)
+          border-radius: var(--full-border-radius)
+          background: var(--border-active-color)
 </style>
