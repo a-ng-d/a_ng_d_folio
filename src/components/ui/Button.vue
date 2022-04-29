@@ -86,6 +86,7 @@
     border: var(--button-border-size) solid transparent
     transition: var(--simple-transition)
     transform-origin: center center
+    box-shadow: 0 0 0 var(--border-size) var(--border-color)
 
     &__content
       display: flex
@@ -130,9 +131,9 @@
   .button--primary[data-theme="default"]
     --icon-color: var(--color-cream)
     --text-color: var(--color-cream)
+    --border-color: var(--color-soil)
 
     background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
-    box-shadow: 0 0 0 var(--button-border-size) var(--color-soil)
 
     .button__icon
       background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
@@ -149,9 +150,9 @@
   .button--primary[data-theme="dark"]
     --icon-color: var(--color-soil)
     --text-color: var(--color-soil)
+    --border-color: var(--color-cream)
 
     background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
-    box-shadow: 0 0 0 var(--button-border-size) var(--color-cream)
 
     .button__icon
       background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
@@ -166,9 +167,9 @@
   .button--secondary[data-theme="default"]
     --icon-color: var(--color-soil)
     --text-color: var(--color-soil)
+    --border-color: var(--color-soil)
 
     background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box, transparent
-    box-shadow: 0 0 0 var(--button-border-size) var(--color-soil)
 
     .button__icon
       background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
@@ -185,9 +186,9 @@
   .button--secondary[data-theme="dark"]
     --icon-color: var(--color-cream)
     --text-color: var(--color-cream)
+    --border-color: var(--color-cream)
 
     background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box, transparent
-    box-shadow: 0 0 0 var(--button-border-size) var(--color-cream)
 
     .button__icon
       background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
@@ -207,8 +208,8 @@
     animation: excited var(--duration-running) var(--ease-peps)
 
   .button:focus
+    --border-color: var(--color-clear-water)
+
     transform: scale(1.25)
     z-index: 2
-    box-shadow: 0 0 0 var(--button-border-size) var(--color-clear-water)
-
 </style>

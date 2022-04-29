@@ -42,7 +42,7 @@ export default {
         position: absolute
         left: 0
         bottom: calc(var(--border-size) * -1)
-        border-radius: calc(var(--border-size) / 2)
+        border-radius: var(--full-border-radius)
         transition: var(--simple-transition)
 
   // Aspect
@@ -56,7 +56,4 @@ export default {
     &[data-underlined="true"]
       &:after
         background: var(--border-color)
-
-
-
 </style>

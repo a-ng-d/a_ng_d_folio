@@ -60,16 +60,19 @@
     &__icon svg
       stroke: var(--icon-color)
 
+  // Events
+  .external-link
     &:hover
       --amplitude: var(--spacing-s-000)
       animation: excited var(--duration-running) var(--ease-peps)
 
       :deep(.label)
         &:after
+          --border-color: var(--border-active-color)
+
           height: 50%
           left: calc(var(--border-size) * 4)
-          border-radius: var(--full-border-radius)
-          background: var(--border-active-color)
+
 
     &:focus
       transform: scale(1.25)
@@ -77,10 +80,8 @@
 
       :deep(.label)
         &:after
-          --border-active-color: var(--color-clear-water)
+          --border-color: var(--border-focus-color)
 
           height: 50%
           left: calc(var(--border-size) * 4)
-          border-radius: var(--full-border-radius)
-          background: var(--border-active-color)
 </style>

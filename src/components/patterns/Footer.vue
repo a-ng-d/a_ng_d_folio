@@ -54,6 +54,8 @@
       border-radius: calc(var(--footer-tag-height-size) / 2)
       gap: calc(var(--footer-tag-height-size) / 8)
       padding: 0 calc(var(--footer-tag-height-size) / 2)
+      color: var(--text-color)
+      background-color: var(--background-color)
 
       &__content, &__link
         @include text.caption
@@ -62,12 +64,11 @@
   //// Light
   .footer[data-theme="default"]
     .footer__tag
-      background-color: var(--color-soil)
-      color: var(--text-color-dark)
+      --text-color: var(--color-cream)
 
   //// Dark
   .footer[data-theme="dark"]
     .footer__tag
-      background-color: var(--color-cream)
-      color: var(--text-color-light)
+      --text-color: var(--color-soil)
+      --background-color: var(--color-cream)
 </style>
