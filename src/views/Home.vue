@@ -1,8 +1,23 @@
-<script setup lang="ts">
+<script lang="ts">
   import MainMenu from '@/components/patterns/MainMenu.vue'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import { RotateCw } from 'lucide-vue-next'
+
+  export default {
+    name: "Home",
+    components: {
+      MainMenu,
+      Footer,
+      Button,
+      RotateCw
+    },
+    data() {
+      return {
+        theme: "dark"
+      }
+    }
+  }
 </script>
 
 <template>
@@ -11,12 +26,12 @@
       logotypeColor="url(#gradient-biscarosse-sunset)"
     />
     <section class="jumbotron">
-      <div class="jumbotron__content">
+      <div class="jumbotron__content" :data-theme="theme">
         <h2 class="jumbotron__author">{{ $t("home.author") }}</h2>
         <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
       </div>
       <div class="jumbotron__actions">
-        <Button type="secondary" path="/_id" layout="indicator" theme="dark">
+        <Button type="secondary" path="/_id" layout="indicator" :theme="theme">
           <template #icon>
             <RotateCw
               :size="24"
@@ -26,7 +41,7 @@
             {{ $t("home.id") }}
           </template>
         </Button>
-        <Button type="primary" path="/_universes" layout="simple" theme="dark">
+        <Button type="primary" path="/_universes" layout="simple" :theme="theme">
           <template #icon>
             <RotateCw
               :size="24"
@@ -40,7 +55,7 @@
     </section>
     <Footer
       alignment="left"
-      dark
+      :theme="theme"
     />
   </main>
 </template>
@@ -56,6 +71,9 @@
     justify-content: space-between
     padding: var(--spacing-xl-600) var(--layout-center)
     color: var(--text-color-dark)
+
+    &[data-theme="dark"]
+      --text-color: var(--color-cream)
 
     &__content
       display: flex

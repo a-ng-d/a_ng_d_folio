@@ -38,7 +38,7 @@
       logotypeColor="var(--color-soil)"
     >
       <template #left-part>
-        <Button type="primary" path="/" layout="indicator" theme="default">
+        <Button type="primary" path="/" layout="indicator" :theme="theme">
           <template #icon>
             <RotateCcw
               :size="24"
@@ -60,6 +60,7 @@
     </article>
     <Footer
       alignment="center"
+      :theme="theme"
     />
   </main>
 </template>

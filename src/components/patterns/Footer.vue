@@ -6,9 +6,9 @@
         type: String,
         default: 'left'
       },
-      dark: {
-        type: Boolean,
-        default: false
+      theme: {
+        type: String,
+        default: 'default'
       }
     },
     data() {
@@ -23,7 +23,7 @@
 </script>
 
 <template>
-  <footer class="footer" :data-theme="dark ? 'dark' : 'light'">
+  <footer class="footer" :data-theme="theme">
     <div class="footer__tag">
       <span class="footer__tag__content">{{ $t("footer.author") }}</span>
       <span class="footer__tag__content">{{ $t("global.separator") }}</span>
@@ -60,7 +60,7 @@
 
   // Variants
   //// Light
-  .footer[data-theme="light"]
+  .footer[data-theme="default"]
     .footer__tag
       background-color: var(--color-soil)
       color: var(--text-color-dark)
