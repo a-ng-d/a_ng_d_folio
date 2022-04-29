@@ -85,6 +85,7 @@
     border-radius: calc(var(--button-height-size) / 2)
     border: var(--button-border-size) solid transparent
     transition: var(--simple-transition)
+    transform-origin: center center
 
     &__content
       display: flex
@@ -207,6 +208,7 @@
 
   .button:focus
     transform: scale(1.25)
+    z-index: 2
     box-shadow: 0 0 0 var(--button-border-size) var(--color-clear-water)
 
 </style>
