@@ -10,16 +10,16 @@
       },
       href: String,
       alt: String,
-      dark: {
-        type: Boolean,
-        default: false
+      theme: {
+        type: String,
+        default: 'default'
       }
     }
   }
 </script>
 
 <template>
-  <a class="rich-external-link" :href="href" target="_blank" :alt="alt">
+  <a class="rich-external-link" :href="href" target="_blank" :alt="alt" :data-theme="theme">
     <div class="rich-external-link__icon" :style="`background-color: ${color}`">
       <slot name="icon"></slot>
     </div>
@@ -36,6 +36,12 @@
     display: flex
     flex-flow: row nowrap
     gap: 0 var(--layout-column-gap)
+    padding: var(--spacing-l-000)
+    border: var(--border-size) solid transparent
+    border-radius: var(--regular-border-radius)
+    transition: var(--simple-transition)
+    transform-origin: center center
+    box-shadow: 0 0 0 var(--button-border-size) var(--outline-color)
 
     &__icon
       display: flex
@@ -45,7 +51,7 @@
       justify-content: center
       align-items: center
       border-radius: calc(var(--rich-external-link-size) / 2)
-      border: 8rem solid var(--color-soil)
+      border: var(--border-large-size) solid var(--border-color)
 
     &__content
       display: flex
@@ -56,4 +62,42 @@
         -webkit-line-clamp: 2
         -webkit-box-orient: vertical
         overflow: hidden
+
+  // Aspect
+  [data-theme="dark"]
+    --icon-color: var(--color-soil)
+    --text-color: var(--color-cream)
+    --outline-color: var(--color-cream)
+
+  .rich-external-link
+    --container-color: transparent
+    --outline-color: transparent
+
+    color: var(--text-color)
+    background: var(--container-color)
+
+    &:deep(svg)
+      stroke: var(--icon-color)
+
+  // Events
+  .rich-external-link
+    &:hover
+      --amplitude: var(--spacing-s-000)
+      --container-color: inherit
+      --outline-color: var(--color-soil)
+
+      animation: excited var(--duration-running) var(--ease-peps)
+
+    &:focus
+      --container-color: inherit
+      --outline-color: var(--border-focus-color)
+
+      transform: var(--focus-scale)
+      z-index: 2
+
+  .rich-external-link[data-theme="dark"]
+    &:hover, &:focus
+      --text-color: var(--color-soil)
+      --border-color: var(--color-soil)
+
 </style>

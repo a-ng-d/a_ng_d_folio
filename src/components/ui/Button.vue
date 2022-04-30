@@ -86,7 +86,7 @@
     border: var(--button-border-size) solid transparent
     transition: var(--simple-transition)
     transform-origin: center center
-    box-shadow: 0 0 0 var(--border-size) var(--border-color)
+    box-shadow: 0 0 0 var(--border-size) var(--outline-color)
 
     &__content
       display: flex
@@ -131,7 +131,7 @@
   .button--primary
     --icon-color: var(--color-cream)
     --text-color: var(--color-cream)
-    --border-color: var(--color-soil)
+    --outline-color: var(--color-soil)
 
     background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
 
@@ -150,7 +150,7 @@
   .button--primary[data-theme="dark"]
     --icon-color: var(--color-soil)
     --text-color: var(--color-soil)
-    --border-color: var(--color-cream)
+    --outline-color: var(--color-cream)
 
     background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
 
@@ -167,7 +167,7 @@
   .button--secondary
     --icon-color: var(--color-soil)
     --text-color: var(--color-soil)
-    --border-color: var(--color-soil)
+    --outline-color: var(--color-soil)
 
     background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box, transparent
 
@@ -186,7 +186,7 @@
   .button--secondary[data-theme="dark"]
     --icon-color: var(--color-cream)
     --text-color: var(--color-cream)
-    --border-color: var(--color-cream)
+    --outline-color: var(--color-cream)
 
     background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box, transparent
 
@@ -208,7 +208,7 @@
     animation: excited var(--duration-running) var(--ease-peps)
 
   .button:focus
-    --border-color: var(--color-clear-water)
+    --outline-color: var(--color-clear-water)
 
     transform: var(--focus-scale)
     z-index: 2

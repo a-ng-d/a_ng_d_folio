@@ -27,6 +27,7 @@
   <section>
     <TwoColumns
       :title="$t('id.network.title')"
+      :theme="theme"
     >
       <template #left>
         <RichExternalLink
@@ -35,6 +36,7 @@
           color="var(--color-soft-wind)"
           :href="$t('id.network.twitter.href')"
           :alt="$t('id.network.twitter.alt')"
+          :theme="theme"
         >
           <template #icon>
             <Twitter
@@ -48,11 +50,12 @@
           color="var(--color-deep-black)"
           :href="$t('id.network.codepen.href')"
           :alt="$t('id.network.codepen.alt')"
+          :theme="theme"
         >
           <template #icon>
             <Codepen
               :size="48"
-              stroke="var(--color-titanium-white)"
+              style="--icon-color: var(--color-titanium-white)"
             />
           </template>
         </RichExternalLink>
@@ -62,6 +65,7 @@
           color="var(--color-creamy-sun)"
           :href="$t('id.network.github.href')"
           :alt="$t('id.network.github.alt')"
+          :theme="theme"
         >
           <template #icon>
             <Github
@@ -77,6 +81,7 @@
           color="var(--color-candy-floss)"
           :href="$t('id.network.dribbble.href')"
           :alt="$t('id.network.dribbble.alt')"
+          :theme="theme"
         >
           <template #icon>
             <Dribbble
@@ -90,6 +95,7 @@
           color="var(--color-titanium-white)"
           :href="$t('id.network.medium.href')"
           :alt="$t('id.network.medium.alt')"
+          :theme="theme"
         >
           <template #icon>
             <BookOpen
