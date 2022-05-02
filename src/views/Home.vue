@@ -27,7 +27,7 @@
     />
     <section class="jumbotron">
       <div class="jumbotron__content" :data-theme="theme">
-        <h2 class="jumbotron__author">{{ $t("home.author") }}</h2>
+        <h1 class="jumbotron__author">{{ $t("home.author") }}</h1>
         <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
       </div>
       <div class="jumbotron__actions">
