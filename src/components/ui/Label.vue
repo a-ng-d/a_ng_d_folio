@@ -19,7 +19,7 @@ export default {
 </script>
 
 <template>
-  <div class="label" :data-theme="theme" :data-underlined="underlined ? true : false">
+  <div class="label" :data-theme="theme" :data-underlined="underlined">
     <span>{{ label }}</span>
   </div>
 </template>

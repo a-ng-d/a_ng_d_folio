@@ -99,5 +99,4 @@
     &:hover, &:focus
       --text-color: var(--color-soil)
       --border-color: var(--color-soil)
-
 </style>

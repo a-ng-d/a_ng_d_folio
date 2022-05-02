@@ -64,9 +64,10 @@
   .external-link
     &:hover
       --amplitude: var(--spacing-s-000)
+      
       animation: excited var(--duration-running) var(--ease-peps)
 
-      :deep(.label)
+      .label
         &:after
           --border-color: var(--border-active-color)
 
@@ -78,7 +79,7 @@
       transform: var(--focus-scale)
       z-index: 2
 
-      :deep(.label)
+      .label
         &:after
           --border-color: var(--border-focus-color)
 
