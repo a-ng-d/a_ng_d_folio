@@ -283,13 +283,11 @@
             this.draw()
           }
 
-          push = () => {
-            this.params.isPushed = true
-          }
+          push = () => this.params.isPushed = true
 
-          reset = () => {
-            this.animate(0.1, [0, (-height * 0.1), 0], [0, 0, (-height * 2)])
-          }
+          reset = () => this.animate(0.1, [0, (-height * 0.1), 0], [0, 0, (-height * 2)])
+
+          zoom = (scrollPosition, pageLimitMax) => this.position.z = sk.map(scrollPosition, 0, pageLimitMax, 0, this.center.z)
 
           draw = () => {
             sk.camera(
@@ -384,6 +382,8 @@
 
         sk.mouseMoved = () => pov.push()
 
+        sk.mouseWheel = () => pov.zoom(window.pageYOffset, document.body.clientHeight)
+
         sk.mousePressed = () => {
           mountains.forEach(el => el.glitch())
           clouds.forEach(el => el.glitch())
@@ -394,9 +394,7 @@
           clouds.forEach(el => el.unglitch())
         }
 
-        sk.windowResized = () => {
-          sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
-        }
+        sk.windowResized = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
 
       })
     }
