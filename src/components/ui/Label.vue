@@ -45,6 +45,16 @@ export default {
         border-radius: var(--full-border-radius)
         transition: var(--simple-transition)
 
+    &[data-highlighted="true"]
+      &:after
+        content: ''
+        width: 100%
+        height: 50%
+        position: absolute
+        left: calc(var(--border-size) * 4)
+        bottom: calc(var(--border-size) * -1)
+        border-radius: var(--full-border-radius)
+
   // Aspect
   [data-theme="dark"]
     --text-color: var(--color-cream)
@@ -53,7 +63,12 @@ export default {
   .label
     color: var(--text-color)
 
-    &[data-underlined="true"]
+    &[data-underlined="true"], &[data-highlighted="true"]
       &:after
         background: var(--border-color)
+
+    &[data-highlighted="true"]
+      &:after
+        --border-color: var(--color-titanium-white)
+        mix-blend-mode: darken
 </style>
