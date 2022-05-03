@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { i18n } from '@/lang'
 import Home from '../views/Home.vue'
 import Id from '../views/Id.vue'
+import Attributions from '../views/Attributions.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -52,7 +53,11 @@ const router = createRouter({
     {
       path: '/_attribution',
       name: 'attribution',
-      component: Home
+      component: Attributions,
+      meta: {
+        title: i18n.global.t('attributions.title'),
+        background: 'var(--color-candy-floss)'
+      }
     },
     {
       path: '/_resume',

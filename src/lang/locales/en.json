@@ -12,7 +12,8 @@
     "attribution": "Attribution"
   },
   "global": {
-    "separator": "・"
+    "separator": "・",
+    "back": "Back to roots"
   },
   "id": {
     "title": "nG⚡️ aka. Aurélien Grimaud﹒ID card",
@@ -135,6 +136,23 @@
         "label": "Darth Uèxe・ECV・Bordeaux・Février 2022",
         "href": "https://www.figma.com/proto/1yYMtQOQlg6GIUoX7uZ24G/Support-de-pr%C3%A9sentation?page-id=0%3A1&node-id=0%3A3&viewport=308%2C48%2C0.06&scaling=scale-down&starting-point-node-id=0%3A3",
         "alt": "External link to the \"Darth Uèxe\" slides on Figma"
+      }
+    }
+  },
+  "attributions": {
+    "title": "nG⚡️ aka. Aurélien Grimaud﹒Attributions",
+    "back": "",
+    "devtools": {
+      "title": "Development tools",
+      "link-1": {
+        "label": "Vue.js as Javascript framework by Evan You",
+        "href": "https://vuejs.org",
+        "alt": "External link to the Vue.js website"
+      },
+      "link-2": {
+        "label": "Vite.js as frontend build tool by Evan You",
+        "href": "https://vitejs.dev",
+        "alt": "External link to the Vite.js website"
       }
     }
   }
