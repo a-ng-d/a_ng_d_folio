@@ -15,11 +15,13 @@
       '$route' (to, from) {
         document.title = to.meta.title
         this.background = to.meta.background
+        this.position = to.meta.position
       }
     },
     data() {
       return {
-        background: ''
+        background: '',
+        position: ''
       }
     }
   }
@@ -29,7 +31,7 @@
   <Filter />
   <Logotype />
   <RouterView />
-  <Glitchscape :background="background" />
+  <Glitchscape :veil="background" :pov="position" />
 </template>
 
 <style lang="sass">

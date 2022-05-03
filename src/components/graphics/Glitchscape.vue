@@ -5,7 +5,11 @@
   export default {
     name: 'Glitchscape',
     props: {
-      background: String
+      veil: String,
+      pov: {
+        type: String,
+        default: 'reset'
+      }
     },
     mounted() {
       const glitchscape = new P5((sk) => {
@@ -430,6 +434,6 @@
       position: absolute
       z-index: 1
       mix-blend-mode: hard-light
-      background: v-bind(background)
-      transition: var(--simple-transition)
+      background: v-bind(veil)
+      transition: var(--slow-transition)
 </style>
