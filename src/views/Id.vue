@@ -36,6 +36,7 @@
   <main class="page">
     <MainMenu
       logotypeColor="var(--color-soil)"
+      background="var(--color-soft-wind)"
     >
       <template #left-part>
         <Button type="primary" path="/" layout="indicator" :theme="theme">
