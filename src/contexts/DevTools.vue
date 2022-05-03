@@ -3,7 +3,7 @@
   import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
 
   export default {
-    name: 'Workshops',
+    name: 'DevTools',
     components: {
       OneColumn,
       SimpleExternalLink
