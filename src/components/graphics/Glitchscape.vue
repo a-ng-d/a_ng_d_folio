@@ -3,12 +3,12 @@
   import { HSLColors } from '@/assets/Colors'
 
   export default {
-    name: 'Landscape',
+    name: 'Glitchscape',
     props: {
       background: String
     },
     mounted() {
-      new P5((sk) => {
+      const glitchscape = new P5((sk) => {
 
         const
           mNumber = 400,

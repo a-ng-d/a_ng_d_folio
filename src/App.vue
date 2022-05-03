@@ -2,14 +2,14 @@
   import { RouterLink, RouterView } from 'vue-router'
   import Filter from '@/components/graphics/Filter.vue'
   import Logotype from '@/components/graphics/Logotype.vue'
-  import Landscape from '@/components/graphics/Landscape.vue'
+  import Glitchscape from '@/components/graphics/Glitchscape.vue'
 
   export default {
     name: 'App',
     components: {
       Filter,
       Logotype,
-      Landscape
+      Glitchscape
     },
     watch: {
       '$route' (to, from) {
@@ -29,7 +29,7 @@
   <Filter />
   <Logotype />
   <RouterView />
-  <Landscape :background="background" />
+  <Glitchscape :background="background" />
 </template>
 
 <style lang="sass">
