@@ -11,6 +11,20 @@
         default: 'reset'
       }
     },
+    data() {
+      return {
+        pov: this.pov,
+        glitchscape: null
+      }
+    },
+    watch: {
+      pov(to, from) {
+        const actions = {
+          reset: () => this.glitchscape.povReset()
+        }
+        return actions[to]?.() ?? 'no'
+      }
+    },
     mounted() {
       this.glitchscape = new P5((sk) => {
 
@@ -411,20 +425,6 @@
         sk.windowResized = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
 
       })
-    },
-    data() {
-      return {
-        pov: this.pov,
-        glitchscape: null
-      }
-    },
-    watch: {
-      pov(to, from) {
-        const actions = {
-          reset: () => this.glitchscape.povReset()
-        }
-        return actions[to]?.() ?? 'no'
-      }
     }
   }
 </script>
