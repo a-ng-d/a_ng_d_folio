@@ -13,8 +13,8 @@ const router = createRouter({
       component: Home,
       meta: {
         title: i18n.global.t('title'),
-        background: 'var(--gradient-chill-night)',
-        position: 'reset'
+        background: 'var(--color-soil)',
+        pov: 'reset'
       }
     },
     {
@@ -24,7 +24,7 @@ const router = createRouter({
       meta: {
         title: i18n.global.t('id.title'),
         background: 'var(--gradient-biscarosse-sunset)',
-        position: 'scrolling…'
+        pov: 'scrolling…'
       }
     },
     {
@@ -61,7 +61,7 @@ const router = createRouter({
       meta: {
         title: i18n.global.t('attributions.title'),
         background: 'var(--color-soft-wind)',
-        position: 'reset'
+        pov: 'reset'
       }
     },
     {
