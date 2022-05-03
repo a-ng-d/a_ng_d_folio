@@ -12,7 +12,7 @@
       }
     },
     mounted() {
-      this.glitchscale = new P5((sk) => {
+      this.glitchscape = new P5((sk) => {
 
         const
           mNumber = 400,
@@ -415,13 +415,13 @@
     data() {
       return {
         pov: this.pov,
-        glitchscale: null
+        glitchscape: null
       }
     },
     watch: {
       pov(to, from) {
         const actions = {
-          reset: () => this.glitchscale.povReset()
+          reset: () => this.glitchscape.povReset()
         }
         return actions[to]?.() ?? 'no'
       }
