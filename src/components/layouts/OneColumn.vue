@@ -5,7 +5,7 @@
       title: String,
       theme: {
         type: String,
-        default: "default"
+        default: 'default'
       }
     }
   }

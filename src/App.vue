@@ -5,7 +5,7 @@
   import Landscape from '@/components/graphics/Landscape.vue'
 
   export default {
-    name: "App",
+    name: 'App',
     components: {
       Filter,
       Logotype,

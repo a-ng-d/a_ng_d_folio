@@ -14,7 +14,7 @@
       alt: String,
       theme: {
         type: String,
-        default: "default"
+        default: 'default'
       }
     }
   }
@@ -64,7 +64,7 @@
   .external-link
     &:hover
       --amplitude: var(--spacing-s-000)
-      
+
       animation: excited var(--duration-running) var(--ease-peps)
 
       .label

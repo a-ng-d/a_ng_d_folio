@@ -5,7 +5,7 @@
   import { RotateCw } from 'lucide-vue-next'
 
   export default {
-    name: "Home",
+    name: 'Home',
     components: {
       MainMenu,
       Footer,
@@ -14,7 +14,7 @@
     },
     data() {
       return {
-        theme: "dark"
+        theme: 'dark'
       }
     }
   }

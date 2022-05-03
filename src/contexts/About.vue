@@ -9,7 +9,7 @@
     props: {
       theme: {
         type: String,
-        default: "default"
+        default: 'default'
       }
     }
   }
