@@ -9,7 +9,7 @@
   "footer": {
     "author": "Aurélien Grimaud aka nG⚡",
     "license": "CC-BY {year}",
-    "attribution": "Attribution"
+    "attribution": "Attributions"
   },
   "global": {
     "separator": "・",
@@ -20,7 +20,7 @@
     "back": "Flip back",
     "about": {
       "title": "你好 nǐ hǎo ！",
-      "experience": "I’m Aurélien all over the world or 立安 lì ān in China. Currently Product designer at <span class='label' data-highlighted='true'>iObeya</span> for 5 years and an UI + </code> enthousiast.",
+      "experience": "I’m Aurélien all over the world or 立安 lì ān in China. Currently Product designer at <span class='label' data-highlighted='true'>iObeya</span> for {year} years and an UI + </code> enthousiast.",
       "mission": "Filling the gap between designers and developpers universes is my leitmotiv, by learning code and teaching design (at the design schools).",
       "activities": "I also write about <span class='label' data-highlighted='true'>team collaboration</span>, <span class='label' data-highlighted='true'>design thinking</span> and <span class='label' data-highlighted='true'>design system</span>, animate meetup, participate in a french design system community (Design System France).",
       "side": "Otherwise, I customize furnitures and explore procedural animation."
@@ -145,19 +145,19 @@
     "ui": {
       "title": "User Interface assets",
       "link-1": {
-        "label": "Lucide icons as Icons library by *",
+        "label": "Lucide icons as Icons library",
         "href": "https://lucide.dev",
-        "alt": "External link to the Lucide icons repository"
+        "alt": "External link to the Lucide icons website"
       },
       "link-2": {
-        "label": "Sora typeface family by *",
-        "href": "#",
-        "alt": "External link to the Sora typeface family website"
+        "label": "Sora typeface family by Jonathan Barnbrook and Julián Moncada",
+        "href": "https://github.com/sora-xor/sora-font",
+        "alt": "External link to the Sora typeface family repository"
       },
       "link-3": {
-        "label": "Rubik typeface family by *",
-        "href": "#",
-        "alt": "External link to the Rubik typeface family website"
+        "label": "Rubik typeface family by Hubert and Fischer",
+        "href": "https://github.com/googlefonts/Rubik",
+        "alt": "External link to the Rubik typeface family repository"
       }
     },
     "devtools": {

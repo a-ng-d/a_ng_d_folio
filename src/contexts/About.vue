@@ -23,7 +23,7 @@
     >
       <template #plain>
         <div data-theme="theme">
-          <p v-html="$t('id.about.experience')"></p>
+          <p v-html="$t('id.about.experience', { year: new Date().getFullYear() - 2015 })"></p>
           <p>{{ $t("id.about.mission") }}</p>
           <p v-html="$t('id.about.activities')"></p>
           <p>{{ $t("id.about.side") }}</p>
