@@ -61,7 +61,7 @@ const router = createRouter({
       meta: {
         title: i18n.global.t('attributions.title'),
         background: 'var(--color-soft-wind)',
-        position: 'scrolling…'
+        position: 'reset'
       }
     },
     {
