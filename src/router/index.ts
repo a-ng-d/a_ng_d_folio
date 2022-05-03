@@ -28,7 +28,9 @@ const router = createRouter({
     {
       path: '/_universes',
       name: 'universes',
-      component: Home
+      beforeEnter() {
+        window.open('https://involtag.notion.site/involtag/Aur-lien-Grimaud-aka-inV-6b95d4c74aec4b489472d9eda80322d1', '_blank')
+      }
     },
     {
       path: '/_core',
