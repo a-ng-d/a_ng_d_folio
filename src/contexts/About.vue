@@ -2,7 +2,7 @@
   import OneColumn from '@/components/layouts/OneColumn.vue'
 
   export default {
-    name: 'Stories',
+    name: 'About',
     components: {
       OneColumn
     },
