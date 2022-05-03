@@ -394,6 +394,16 @@
           clouds.forEach(el => el.unglitch())
         }
 
+        sk.touchStarted = () => {
+          mountains.forEach(el => el.glitch())
+          clouds.forEach(el => el.glitch())
+        }
+
+        sk.touchEnded = () => {
+          mountains.forEach(el => el.unglitch())
+          clouds.forEach(el => el.unglitch())
+        }
+
         sk.windowResized = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
 
       })
