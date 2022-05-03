@@ -3,6 +3,7 @@
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import DevTools from '@/contexts/DevTools.vue'
+  import UIAssets from '@/contexts/UIAssets.vue'
   import { ArrowLeft } from 'lucide-vue-next'
 
   export default {
@@ -12,6 +13,7 @@
       Footer,
       Button,
       DevTools,
+      UIAssets,
       ArrowLeft
     },
     data() {
@@ -42,6 +44,7 @@
     </MainMenu>
     <article class="article">
       <DevTools :theme="theme" />
+      <UIAssets :theme="theme" />
     </article>
     <Footer
       alignment="center"

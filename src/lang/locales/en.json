@@ -142,6 +142,24 @@
   "attributions": {
     "title": "nG⚡️ aka. Aurélien Grimaud﹒Attributions",
     "back": "",
+    "ui": {
+      "title": "User Interface assets",
+      "link-1": {
+        "label": "Lucide icons as Icons library by *",
+        "href": "#",
+        "alt": "External link to the Lucide icons repository"
+      },
+      "link-2": {
+        "label": "Sora typeface family by *",
+        "href": "#",
+        "alt": "External link to the Sora typeface family website"
+      },
+      "link-3": {
+        "label": "Rubik typeface family by *",
+        "href": "#",
+        "alt": "External link to the Rubik typeface family website"
+      }
+    },
     "devtools": {
       "title": "Development tools",
       "link-1": {
