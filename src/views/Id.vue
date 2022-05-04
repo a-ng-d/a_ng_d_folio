@@ -11,7 +11,7 @@
   import { RotateCcw } from 'lucide-vue-next'
 
   export default {
-    name: "Id",
+    name: 'Id',
     components: {
       MainMenu,
       Footer,
@@ -26,7 +26,7 @@
     },
     data() {
       return {
-        theme: "default"
+        theme: 'default'
       }
     }
   }
