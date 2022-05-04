@@ -301,7 +301,7 @@
           reset = () => this.animate(0.1, [0, -window.innerHeight * 0.1, 0], [0, 0, -window.innerHeight * 2])
 
           zoom = (scrollPosition, pageLimitMax) => {
-            this.position.z = sk.map(scrollPosition, 0, pageLimitMax, 0, this.center.z)
+            this.position.z = sk.lerp(this.position.z, sk.map(scrollPosition, 0, pageLimitMax, 0, this.center.z), 0.05)
             this.params.speed = 0
           }
 
@@ -322,7 +322,7 @@
         let pov = new Pov({
           x: 0,
           y: -window.innerHeight * 0.1,
-          z: sk.map(window.pageYOffset, 0, document.body.clientHeight, 0, -window.innerHeight * 2),
+          z: 0,
           cX: 0,
           cY: 0,
           cZ: -window.innerHeight * 2
