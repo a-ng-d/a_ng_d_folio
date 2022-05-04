@@ -22,7 +22,7 @@
         const actions = {
           reset: () => this.glitchscape.povReset()
         }
-        return actions[to]?.() ?? 'no'
+        return actions[to]?.() ?? 'No pov change'
       }
     },
     mounted() {
