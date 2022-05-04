@@ -305,7 +305,10 @@
 
           reset = () => this.animate(0.1, [0, -window.innerHeight * 0.1, 0], [0, 0, -window.innerHeight * 2])
 
-          zoom = (scrollPosition, pageLimitMax) => this.position.z = sk.map(scrollPosition, 0, pageLimitMax, 0, this.center.z)
+          zoom = (scrollPosition, pageLimitMax) => {
+            this.position.z = sk.map(scrollPosition, 0, pageLimitMax, 0, this.center.z)
+            this.params.speed = 0
+          }
 
           draw = () => {
             sk.camera(
@@ -396,7 +399,7 @@
         // Events
         sk.povCore = () => pov.animate(0.1, [0, (-sk.height * 0.1), -sk.height * 1.75], [0, 0, (-sk.height * 2)])
 
-        sk.povReset = () => { /*pov.reset()*/ }
+        sk.povReset = () => pov.reset()
 
         sk.mouseMoved = () => pov.push()
 
