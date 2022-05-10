@@ -24,14 +24,25 @@
   <main class="page">
     <MainMenu
       logotypeColor="url(#gradient-biscarosse-sunset)"
+      :animation="['pull-down', '1000ms']"
     />
     <section class="jumbotron">
       <div class="jumbotron__content" :data-theme="theme">
-        <h1 class="jumbotron__author">{{ $t("home.author") }}</h1>
-        <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
+        <Transition name="slide-up" appear>
+          <h1 class="jumbotron__author">{{ $t("home.author") }}</h1>
+        </Transition>
+        <Transition name="slide-up" style="transition-delay: 200ms" appear>
+          <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
+        </Transition>
       </div>
       <div class="jumbotron__actions">
-        <Button type="secondary" path="/_id" layout="indicator" :theme="theme">
+        <Button
+          type="secondary"
+          path="/_id"
+          layout="indicator"
+          :theme="theme"
+          :animation="['slide-up', '400ms']"
+        >
           <template #icon>
             <RotateCw
               :size="24"
@@ -41,7 +52,13 @@
             {{ $t("home.id") }}
           </template>
         </Button>
-        <Button type="primary" path="/_universes" layout="simple" :theme="theme">
+        <Button
+          type="primary"
+          path="/_universes"
+          layout="simple"
+          :theme="theme"
+          :animation="['slide-up', '600ms']"
+        >
           <template #icon>
             <RotateCw
               :size="24"
@@ -56,6 +73,7 @@
     <Footer
       alignment="left"
       :theme="theme"
+      :animation="['pull-up', '1200ms']"
     />
   </main>
 </template>
@@ -77,6 +95,7 @@
 
     &__content
       display: flex
+      flex: 1
       align-items: center
       gap: var(--spacing-xl-000)
 

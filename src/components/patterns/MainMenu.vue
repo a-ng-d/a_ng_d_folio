@@ -9,6 +9,10 @@
       background: {
         type: String,
         default: 'var(--color-deep-black)'
+      },
+      animation: {
+        type: Array,
+        default: ['normal', '0']
       }
     },
     data() {
@@ -24,19 +28,21 @@
 </script>
 
 <template>
-  <header class="main-menu" :class="isStuck ? 'main-menu--stuck' : null">
-    <div class="main-menu__left-part">
-      <slot name="left-part"></slot>
-    </div>
-    <div class="main-menu__logotype">
-      <svg width="128" height="128" viewBox="0 0 500 500" :style="{ fill }">
-        <use href="#logotype" />
-      </svg>
-    </div>
-    <div class="main-menu__right-part">
-      <slot name="-right-part"></slot>
-    </div>
-  </header>
+  <Transition :name="animation[0]" :style="`transition-delay: ${animation[1]}`" appear>
+    <header class="main-menu" :class="isStuck ? 'main-menu--stuck' : null">
+      <div class="main-menu__left-part">
+        <slot name="left-part"></slot>
+      </div>
+      <div class="main-menu__logotype">
+        <svg width="128" height="128" viewBox="0 0 500 500" :style="{ fill }">
+          <use href="#logotype" />
+        </svg>
+      </div>
+      <div class="main-menu__right-part">
+        <slot name="-right-part"></slot>
+      </div>
+    </header>
+  </Transition>
 </template>
 
 <style scoped lang="sass">

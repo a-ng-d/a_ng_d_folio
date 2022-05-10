@@ -22,6 +22,10 @@
         type: Boolean,
         default: false
       },
+      animation: {
+        type: Array,
+        default: ['normal', '0']
+      },
       theme: {
         type: String,
         default: 'default'
@@ -38,36 +42,40 @@
 <template>
 
   <template v-if="layout === 'simple'">
-    <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="theme">
-      <div class="button__content">
-        <div class="button__label">
-          <span>
-            <slot name="label"></slot>
-          </span>
+    <Transition :name="animation[0]" :style="`transition-delay: ${animation[1]}`" appear>
+      <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="theme">
+        <div class="button__content">
+          <div class="button__label">
+            <span>
+              <slot name="label"></slot>
+            </span>
+          </div>
         </div>
-      </div>
-      <div class="button__background">
-        <Particles />
-      </div>
-    </RouterLink>
+        <div class="button__background">
+          <Particles />
+        </div>
+      </RouterLink>
+    </Transition>
   </template>
 
   <template v-if="layout === 'indicator'">
-    <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="theme">
-      <div class="button__content">
-        <div class="button__icon">
-          <slot name="icon"></slot>
+    <Transition :name="animation[0]" :style="`transition-delay: ${animation[1]}`" appear>
+      <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="theme">
+        <div class="button__content">
+          <div class="button__icon">
+            <slot name="icon"></slot>
+          </div>
+          <div class="button__label">
+            <span>
+              <slot name="label"></slot>
+            </span>
+          </div>
         </div>
-        <div class="button__label">
-          <span>
-            <slot name="label"></slot>
-          </span>
+        <div class="button__background">
+          <Particles />
         </div>
-      </div>
-      <div class="button__background">
-        <Particles />
-      </div>
-    </RouterLink>
+      </RouterLink>
+    </Transition>
   </template>
 
 </template>
@@ -84,7 +92,6 @@
     padding: 0
     border-radius: calc(var(--button-height-size) / 2)
     border: var(--button-border-size) solid transparent
-    transition: var(--simple-transition)
     transform-origin: center center
     box-shadow: 0 0 0 var(--border-size) var(--outline-color)
 
