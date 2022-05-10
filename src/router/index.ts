@@ -14,7 +14,8 @@ const router = createRouter({
       meta: {
         title: i18n.global.t('title'),
         background: 'var(--color-soil)',
-        pov: 'reset'
+        pov: 'reset',
+        transition: 'scale-up'
       }
     },
     {
@@ -24,7 +25,8 @@ const router = createRouter({
       meta: {
         title: i18n.global.t('id.title'),
         background: 'var(--gradient-biscarosse-sunset)',
-        pov: 'scrolling…'
+        pov: 'scrolling…',
+        transition: 'scale-down'
       }
     },
     {
