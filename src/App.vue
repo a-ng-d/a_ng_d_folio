@@ -30,7 +30,11 @@
 <template>
   <Filter />
   <Logotype />
-  <RouterView />
+  <RouterView v-slot="{ Component, route }">
+    <transition :name="route.meta.transition || 'fade'">
+      <component :is="Component" />
+    </transition>
+  </RouterView>
   <Glitchscape :veil="background" :pov="pov" />
 </template>
 
