@@ -16,6 +16,11 @@
       return {
         theme: 'dark'
       }
+    },
+    methods: {
+      delay(order) {
+        return `${(order * 200) + 1600}ms`
+      }
     }
   }
 </script>
@@ -24,14 +29,14 @@
   <main class="page">
     <MainMenu
       logotypeColor="url(#gradient-biscarosse-sunset)"
-      :animation="['pull-down', '1000ms']"
+      :animation="['pull-down', delay(4)]"
     />
     <section class="jumbotron">
       <div class="jumbotron__content" :data-theme="theme">
-        <Transition name="slide-up" appear>
+        <Transition name="slide-up" :style="`transition-delay: ${delay(0)}`" appear>
           <h1 class="jumbotron__author">{{ $t("home.author") }}</h1>
         </Transition>
-        <Transition name="slide-up" style="transition-delay: 200ms" appear>
+        <Transition name="slide-up" :style="`transition-delay: ${delay(1)}`" appear>
           <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
         </Transition>
       </div>
@@ -41,7 +46,7 @@
           path="/_id"
           layout="indicator"
           :theme="theme"
-          :animation="['slide-up', '400ms']"
+          :animation="['slide-up', delay(2)]"
         >
           <template #icon>
             <RotateCw
@@ -57,7 +62,7 @@
           path="/_universes"
           layout="simple"
           :theme="theme"
-          :animation="['slide-up', '600ms']"
+          :animation="['slide-up', delay(3)]"
         >
           <template #icon>
             <RotateCw
@@ -73,7 +78,7 @@
     <Footer
       alignment="left"
       :theme="theme"
-      :animation="['pull-up', '1200ms']"
+      :animation="['pull-up', delay(3)]"
     />
   </main>
 </template>
