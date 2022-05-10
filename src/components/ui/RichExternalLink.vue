@@ -56,6 +56,7 @@
     &__content
       display: flex
       flex-flow: column nowrap
+      justify-content: center
 
       p
         display: -webkit-box
