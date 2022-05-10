@@ -1,5 +1,6 @@
 // nG⚡️ Design System﹒Flash﹒Animation
 
+// Animations
 @keyframes excited
   0%, 100%
     transform: translateX(calc(var(--amplitude) * 0))
@@ -21,3 +22,28 @@
     transform: translateX(calc(var(--amplitude) * 0.3))
   90%
     transform: translateX(calc(var(--amplitude) * -0.2))
+
+// Pull transitions
+.pull-down-enter-active,
+.pull-down-leave-active,
+.pull-up-enter-active,
+.pull-up-leave-active
+  transition: transform var(--duration-jogging) var(--ease-peps)
+
+.pull-down-enter-from,
+.pull-down-leave-to
+  transform: translateY(-100%)
+
+.pull-up-enter-from,
+.pull-up-leave-to
+  transform: translateY(100%)
+
+// Slide transitions
+.slide-up-enter-active,
+.slide-up-leave-active
+  transition: transform var(--duration-jogging) var(--ease-rebound), opacity var(--duration-running) ease
+
+.slide-up-enter-from,
+.slide-up-leave-to
+  transform: translateY(var(--start-position))
+  opacity: 0
