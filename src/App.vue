@@ -52,4 +52,5 @@
     grid-template-areas: "header header header header header header header header header header header" "main main main main main main main main main main main" "footer footer footer footer footer footer footer footer footer footer footer"
     height: 100vh
     z-index: 1
+    overflow: hidden
 </style>

@@ -34,7 +34,10 @@
     <section class="jumbotron">
       <div class="jumbotron__content" :data-theme="theme">
         <Transition name="slide-up" :style="`transition-delay: ${delay(0)}`" appear>
-          <h1 class="jumbotron__author">{{ $t("home.author") }}</h1>
+          <h1 class="jumbotron__author">
+            <span class="jumbotron__author__instance">{{ $t("home.author") }}</span>
+            <span class="jumbotron__author__instance">{{ $t("home.author") }}</span>
+          </h1>
         </Transition>
         <Transition name="slide-up" :style="`transition-delay: ${delay(1)}`" appear>
           <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
@@ -101,11 +104,18 @@
     &__content
       display: flex
       flex: 1
+      flex-flow: column nowrap
       align-items: center
-      gap: var(--spacing-xl-000)
+      gap: var(--layout-paragraph-gap)
+      justify-content: center
 
-      & > *
-        flex: 1
+    &__author
+      display: flex
+      width: 100vw
+
+    &__author__instance
+      display: block
+      animation: across 16000ms infinite forwards linear
 
     &__actions
       display: flex
