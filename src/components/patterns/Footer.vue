@@ -31,23 +31,21 @@
 </script>
 
 <template>
-  <Transition :name="animation[0]" :style="`transition-delay: ${animation[1]}`" appear>
-    <footer class="footer" :data-theme="theme">
-      <div class="footer__tag">
-        <span class="footer__tag__content">{{ $t("footer.author") }}</span>
-        <span class="footer__tag__content">{{ $t("global.separator") }}</span>
-        <span class="footer__tag__content">{{ $t("footer.license", { year: new Date().getFullYear() }) }}</span>
-        <span class="footer__tag__content">{{ $t("global.separator") }}</span>
-        <RouterLink class="footer__tag__link" to="/_attribution">
-          <Label
-            :label="$t('footer.attribution')"
-            underlined
-            :theme="theme === 'default' ? 'dark' : 'default'"
-          />
-        </RouterLink>
-      </div>
-    </footer>
-  </Transition>
+  <footer class="footer" :data-theme="theme">
+    <div class="footer__tag">
+      <span class="footer__tag__content">{{ $t("footer.author") }}</span>
+      <span class="footer__tag__content">{{ $t("global.separator") }}</span>
+      <span class="footer__tag__content">{{ $t("footer.license", { year: new Date().getFullYear() }) }}</span>
+      <span class="footer__tag__content">{{ $t("global.separator") }}</span>
+      <RouterLink class="footer__tag__link" to="/_attribution">
+        <Label
+          :label="$t('footer.attribution')"
+          underlined
+          :theme="theme === 'default' ? 'dark' : 'default'"
+        />
+      </RouterLink>
+    </div>
+  </footer>
 </template>
 
 <style scoped lang="sass">

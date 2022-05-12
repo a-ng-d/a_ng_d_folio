@@ -153,7 +153,7 @@
   --font-size-xxl-700: calc(var(--scale-xxl-700) * 1rem)
   --font-size-xxl-800: calc(var(--scale-xxl-800) * 1rem)
   --font-size-xxl-900: calc(var(--scale-xxl-900) * 1rem)
-  --font-size-relative: 16vw
+  --font-size-relative: 12vw
 
   //// Sharing
   --sharing-one-quarter: 25%
@@ -192,17 +192,20 @@
   //// Easing
   --ease-peps: cubic-bezier(.03, .85, .36, 1)
   --ease-rebound: cubic-bezier(.08, .75, .57, 1.48)
+  --ease-inverted-rebound: cubic-bezier(.57, -.48, .92, 0.25)
+  --ease-brake: cubic-bezier(.07, .495, .04, .865)
 
   //// Duration
-  --duration-hare: 200ms
-  --duration-running: 400ms
-  --duration-jogging: 800ms
-  --duration-turtoise: 1600ms
+  --duration-step: 200ms
+  --duration-hare: calc(var(--duration-step) * 1)
+  --duration-running: calc(var(--duration-step) * 2)
+  --duration-jogging: calc(var(--duration-step) * 4)
+  --duration-turtoise: calc(var(--duration-step) * 8)
 
   //// Delay
-  --delay-on-time: 0s
-  --delay-late: .2s
-  --delay-very-late: .4s
+  --delay-on-time: calc(var(--duration-step) * 0)
+  --delay-late: calc(var(--duration-step) * 1)
+  --delay-very-late: calc(var(--duration-step) * 2)
 
   // Semantic
   //// Colors
@@ -254,7 +257,7 @@
   // Animation
   --simple-transition: var(--duration-running) all var(--ease-peps)
   --slow-transition: var(--duration-turtoise) all ease
-  --start-position: var(--spacing-xxl-000)
+  --start-position: 20vh
 
   // Misc
   --full-border-radius: var(--sizing-xxl-900)

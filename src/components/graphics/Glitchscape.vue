@@ -9,11 +9,18 @@
       pov: {
         type: String,
         default: 'reset'
+      },
+      scroll: {
+        type: Number,
+        default: 0
+      },
+      pageHeight: {
+        type: Number,
+        required: true
       }
     },
     data() {
       return {
-        pov: this.pov,
         glitchscape: null
       }
     },
@@ -23,6 +30,9 @@
           reset: () => this.glitchscape.povReset()
         }
         return actions[to]?.() ?? 'No pov change'
+      },
+      scroll(to, from) {
+        return this.glitchscape.povZoom(this.scroll, this.pageHeight)
       }
     },
     mounted() {
@@ -396,9 +406,9 @@
 
         sk.povReset = () => pov.reset()
 
-        sk.mouseMoved = () => pov.push()
+        sk.povZoom = (scroll, pageHeight) => pov.zoom(scroll, pageHeight)
 
-        sk.mouseWheel = () => pov.zoom(window.pageYOffset, document.body.clientHeight)
+        sk.mouseMoved = () => pov.push()
 
         sk.mousePressed = () => {
           mountains.forEach(el => el.glitch())

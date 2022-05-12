@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { i18n } from '@/lang'
 import Home from '../views/Home.vue'
 import Id from '../views/Id.vue'
+import Menu from '../views/Menu.vue'
 import Attributions from '../views/Attributions.vue'
 
 const router = createRouter({
@@ -13,9 +14,8 @@ const router = createRouter({
       component: Home,
       meta: {
         title: i18n.global.t('title'),
-        background: 'var(--color-soil)',
-        pov: 'reset',
-        transition: 'scale-up'
+        veil: 'var(--color-soil)',
+        pov: 'reset'
       }
     },
     {
@@ -24,16 +24,18 @@ const router = createRouter({
       component: Id,
       meta: {
         title: i18n.global.t('id.title'),
-        background: 'var(--gradient-biscarosse-sunset)',
-        pov: 'scrolling…',
-        transition: 'scale-down'
+        veil: 'var(--gradient-biscarosse-sunset)',
+        pov: 'scrolling…'
       }
     },
     {
       path: '/_universes',
       name: 'universes',
-      beforeEnter() {
-        window.open('https://involtag.notion.site/involtag/Aur-lien-Grimaud-aka-inV-6b95d4c74aec4b489472d9eda80322d1', '_blank')
+      component: Menu,
+      meta: {
+        title: i18n.global.t('id.title'),
+        veil: 'var(--color-soil)',
+        pov: 'reset'
       }
     },
     {
@@ -62,7 +64,7 @@ const router = createRouter({
       component: Attributions,
       meta: {
         title: i18n.global.t('attributions.title'),
-        background: 'var(--color-soft-wind)',
+        veil: 'var(--color-soft-wind)',
         pov: 'reset'
       }
     },

@@ -10,48 +10,50 @@
         type: String,
         default: 'var(--color-deep-black)'
       },
-      animation: {
-        type: Array,
-        default: ['normal', '0']
+      scroll: {
+        type: Number,
+        default: 0
       }
     },
     data() {
       return {
-        fill: this.logotypeColor,
         isStuck: false
       }
     },
-    mounted() {
-      window.onscroll = () => window.pageYOffset > 0 ? this.isStuck = true :  this.isStuck = false
+    watch: {
+      scroll(to, from) {
+        this.scroll > 0 ? this.isStuck = true : this.isStuck = false
+      }
     }
   }
 </script>
 
 <template>
-  <Transition :name="animation[0]" :style="`transition-delay: ${animation[1]}`" appear>
-    <header class="main-menu" :class="isStuck ? 'main-menu--stuck' : null">
-      <div class="main-menu__left-part">
-        <slot name="left-part"></slot>
-      </div>
-      <div class="main-menu__logotype">
-        <svg width="128" height="128" viewBox="0 0 500 500" :style="{ fill }">
-          <use href="#logotype" />
-        </svg>
-      </div>
-      <div class="main-menu__right-part">
-        <slot name="-right-part"></slot>
-      </div>
-    </header>
-  </Transition>
+  <header class="main-menu" :class="isStuck ? 'main-menu--stuck' : null">
+    <div class="main-menu__left-part">
+      <slot name="left-part"></slot>
+    </div>
+    <div class="main-menu__logotype">
+      <svg width="128" height="128" viewBox="0 0 500 500">
+        <use href="#logotype" />
+      </svg>
+    </div>
+    <div class="main-menu__right-part">
+      <slot name="right-part"></slot>
+    </div>
+  </header>
 </template>
 
 <style scoped lang="sass">
   // Structure
   .main-menu
-    grid-area: header
+    position: fixed
+    width: 100%
+    height: var(--header-height-size)
+    z-index: 2
     display: flex
     padding: 0 var(--layout-center)
-    gap: 0 var(--layout-gap)
+    gap: 0 var(--layout-paragraph-gap)
     align-items: center
     justify-content: space-between
     transition: var(--simple-transition)
@@ -59,11 +61,20 @@
     &__right-part,
     &__left-part
       flex: 1
+      display: flex
+
+    &__right-part
+      justify-content: flex-end
+
+    &__left-part
+      justify-content: flex-start
+
+    &__logotype
+      svg
+        transition: var(--slow-transition)
+        fill: v-bind(logotypeColor)
 
     &--stuck
-      width: 100%
-      height: var(--sizing-xxl-600)
-      position: fixed
       z-index: 2
       box-shadow: 0 var(--header-height-size) 64rem -64rem v-bind(background) inset
 </style>

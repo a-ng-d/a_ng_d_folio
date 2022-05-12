@@ -1,25 +1,19 @@
 <script lang="ts">
-  import MainMenu from '@/components/patterns/MainMenu.vue'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
-  import { RotateCw } from 'lucide-vue-next'
+  import { ArrowLeft, ArrowRight } from 'lucide-vue-next'
 
   export default {
     name: 'Home',
     components: {
-      MainMenu,
       Footer,
       Button,
-      RotateCw
+      ArrowLeft,
+      ArrowRight
     },
     data() {
       return {
         theme: 'dark'
-      }
-    },
-    methods: {
-      delay(order) {
-        return `${(order * 200) + 1600}ms`
       }
     }
   }
@@ -27,32 +21,24 @@
 
 <template>
   <main class="page">
-    <MainMenu
-      logotypeColor="url(#gradient-biscarosse-sunset)"
-      :animation="['pull-down', delay(4)]"
-    />
     <section class="jumbotron">
       <div class="jumbotron__content" :data-theme="theme">
-        <Transition name="slide-up" :style="`transition-delay: ${delay(0)}`" appear>
-          <h1 class="jumbotron__author">
-            <span class="jumbotron__author__instance">{{ $t("home.author") }}</span>
-            <span class="jumbotron__author__instance">{{ $t("home.author") }}</span>
-          </h1>
-        </Transition>
-        <Transition name="slide-up" :style="`transition-delay: ${delay(1)}`" appear>
-          <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
-        </Transition>
-      </div>
+        <h1 class="jumbotron__author">
+          <span class="jumbotron__author__instance">{{ $t("home.author") }}</span>
+          <span class="jumbotron__author__instance">{{ $t("home.author") }}</span>
+        </h1>
+        <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
+        </div>
       <div class="jumbotron__actions">
         <Button
           type="secondary"
           path="/_id"
-          layout="indicator"
+          layout="left-icon"
           :theme="theme"
-          :animation="['slide-up', delay(2)]"
+          :animation="['slide-up', '0']"
         >
           <template #icon>
-            <RotateCw
+            <ArrowLeft
               :size="24"
             />
           </template>
@@ -63,12 +49,12 @@
         <Button
           type="primary"
           path="/_universes"
-          layout="simple"
+          layout="right-icon"
           :theme="theme"
-          :animation="['slide-up', delay(3)]"
+          :animation="['slide-up', '0']"
         >
           <template #icon>
-            <RotateCw
+            <ArrowRight
               :size="24"
             />
           </template>
@@ -81,7 +67,6 @@
     <Footer
       alignment="left"
       :theme="theme"
-      :animation="['pull-up', delay(3)]"
     />
   </main>
 </template>

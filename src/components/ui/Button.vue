@@ -42,40 +42,54 @@
 <template>
 
   <template v-if="layout === 'simple'">
-    <Transition :name="animation[0]" :style="`transition-delay: ${animation[1]}`" appear>
-      <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="theme">
-        <div class="button__content">
-          <div class="button__label">
-            <span>
-              <slot name="label"></slot>
-            </span>
-          </div>
+    <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="theme">
+      <div class="button__content">
+        <div class="button__label">
+          <span>
+            <slot name="label"></slot>
+          </span>
         </div>
-        <div class="button__background">
-          <Particles />
-        </div>
-      </RouterLink>
-    </Transition>
+      </div>
+      <div class="button__background">
+        <Particles />
+      </div>
+    </RouterLink>
   </template>
 
-  <template v-if="layout === 'indicator'">
-    <Transition :name="animation[0]" :style="`transition-delay: ${animation[1]}`" appear>
-      <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="theme">
-        <div class="button__content">
-          <div class="button__icon">
-            <slot name="icon"></slot>
-          </div>
-          <div class="button__label">
-            <span>
-              <slot name="label"></slot>
-            </span>
-          </div>
+  <template v-else-if="layout === 'left-icon'">
+    <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="theme">
+      <div class="button__content">
+        <div class="button__icon">
+          <slot name="icon"></slot>
         </div>
-        <div class="button__background">
-          <Particles />
+        <div class="button__label">
+          <span>
+            <slot name="label"></slot>
+          </span>
         </div>
-      </RouterLink>
-    </Transition>
+      </div>
+      <div class="button__background">
+        <Particles />
+      </div>
+    </RouterLink>
+  </template>
+
+  <template v-else-if="layout === 'right-icon'">
+    <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="theme">
+      <div class="button__content">
+        <div class="button__label">
+          <span>
+            <slot name="label"></slot>
+          </span>
+        </div>
+        <div class="button__icon">
+          <slot name="icon"></slot>
+        </div>
+      </div>
+      <div class="button__background">
+        <Particles />
+      </div>
+    </RouterLink>
   </template>
 
 </template>
@@ -94,6 +108,7 @@
     border: var(--button-border-size) solid transparent
     transform-origin: center center
     box-shadow: 0 0 0 var(--border-size) var(--outline-color)
+    transition: var(--simple-transition)
 
     &__content
       display: flex
