@@ -11,9 +11,8 @@
         type: String,
         default: 'primary'
       },
-      path: {
-        type: String
-      },
+      label: String,
+      path: String,
       layout: {
         type: String,
         default: 'simple'
@@ -26,6 +25,7 @@
         type: Array,
         default: ['normal', '0']
       },
+      position: String,
       theme: {
         type: String,
         default: 'default'
@@ -33,7 +33,13 @@
     },
     data() {
       return {
-        isExtensible: this.extensible ? '100%' : 'fit-content'
+        isExtensible: this.extensible ? '100%' : 'fit-content',
+        randomPosition: `position: absolute ; top: ${this.random(0, 80)}% ; left: ${this.random(0, 80)}%`
+      }
+    },
+    methods: {
+      random(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min
       }
     }
   }
@@ -46,7 +52,7 @@
       <div class="button__content">
         <div class="button__label">
           <span>
-            <slot name="label"></slot>
+            {{ label }}
           </span>
         </div>
       </div>
@@ -56,10 +62,10 @@
     </RouterLink>
   </template>
 
-  <template v-if="layout === 'icon-only'">
-    <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="theme">
+  <template v-else-if="layout === 'icon-only'">
+    <RouterLink :to="path" class="button" :class="`button--${type}`" :style="position === 'random' ? randomPosition : ''" :data-theme="theme">
       <div class="button__content">
-        <div class="button__icon">
+        <div class="button__icon button__icon--transparent">
           <slot name="icon"></slot>
         </div>
       </div>
@@ -77,7 +83,7 @@
         </div>
         <div class="button__label">
           <span>
-            <slot name="label"></slot>
+            {{ label }}
           </span>
         </div>
       </div>
@@ -92,7 +98,7 @@
       <div class="button__content">
         <div class="button__label">
           <span>
-            <slot name="label"></slot>
+            {{ label }}
           </span>
         </div>
         <div class="button__icon">
@@ -127,6 +133,7 @@
       display: flex
       flex: 1
       z-index: 1
+      pointer-events: none
 
     &__icon
       display: flex
@@ -160,6 +167,7 @@
       height: 100%
       border-radius: calc(var(--button-height-size) / 2)
       overflow: hidden
+      pointer-events: none
 
   // Variants
   //// Primary
@@ -172,6 +180,9 @@
 
     .button__icon
       background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
+
+      &--transparent
+        background: transparent
 
       &:deep(svg)
         stroke: var(--icon-color)
@@ -192,6 +203,9 @@
     .button__icon
       background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
 
+      &--transparent
+        background: transparent
+
       &:deep(svg)
         stroke: var(--icon-color)
 
@@ -208,6 +222,9 @@
 
     .button__icon
       background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
+
+      &--transparent
+        background: transparent
 
       &:deep(svg)
         stroke: var(--icon-color)
@@ -227,6 +244,9 @@
 
     .button__icon
       background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
+
+      &--transparent
+        background: transparent
 
       &:deep(svg)
         stroke: var(--icon-color)

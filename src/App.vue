@@ -71,17 +71,13 @@
           <Button
             v-if="context === 'universes'"
             type="secondary"
+            :label="$t('universes.back')"
             path="/"
             layout="left-icon"
             theme="dark"
           >
             <template #icon>
-              <ArrowLeft
-                :size="24"
-              />
-            </template>
-            <template #label>
-              {{ $t("universes.back") }}
+              <ArrowLeft :size="24" />
             </template>
           </Button>
         </Transition>
@@ -91,25 +87,21 @@
           <Button
             v-if="context === 'id'"
             type="primary"
+            :label="$t('id.back')"
             path="/"
             layout="right-icon"
           >
             <template #icon>
-              <ArrowRight
-                :size="24"
-              />
-            </template>
-            <template #label>
-              {{ $t("id.back") }}
+              <ArrowRight :size="24" />
             </template>
           </Button>
         </Transition>
       </template>
     </MainMenu>
   </Transition>
-  <RouterView @scroll="getScrollParams" v-slot="{ Component, route }">
-    <Transition ref="content" :name="transition" mode="out-in">
-      <component :is="Component" />
+  <RouterView @scroll.passive="getScrollParams" v-slot="{ Component, route }">
+    <Transition :name="transition" mode="out-in">
+      <Component :is="Component" />
     </Transition>
   </RouterView>
   <Glitchscape :veil="veil" :pov="pov" :scroll="scroll" :pageHeight="pageHeight" />

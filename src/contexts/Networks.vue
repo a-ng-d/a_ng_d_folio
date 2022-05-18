@@ -39,9 +39,7 @@
           :theme="theme"
         >
           <template #icon>
-            <Twitter
-              :size="48"
-            />
+            <Twitter :size="48" />
           </template>
         </RichExternalLink>
         <RichExternalLink
@@ -68,9 +66,7 @@
           :theme="theme"
         >
           <template #icon>
-            <Github
-              :size="48"
-            />
+            <Github :size="48" />
           </template>
         </RichExternalLink>
       </template>
@@ -84,9 +80,7 @@
           :theme="theme"
         >
           <template #icon>
-            <Dribbble
-              :size="48"
-            />
+            <Dribbble :size="48" />
           </template>
         </RichExternalLink>
         <RichExternalLink
@@ -98,9 +92,7 @@
           :theme="theme"
         >
           <template #icon>
-            <BookOpen
-              :size="48"
-            />
+            <BookOpen :size="48" />
           </template>
         </RichExternalLink>
       </template>

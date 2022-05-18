@@ -32,34 +32,26 @@
       <div class="jumbotron__actions">
         <Button
           type="secondary"
+          :label="$t('home.id')"
           path="/_id"
           layout="left-icon"
           :animation="['slide-up', '0']"
           :theme="theme"
         >
           <template #icon>
-            <ArrowLeft
-              :size="24"
-            />
-          </template>
-          <template #label>
-            {{ $t("home.id") }}
+            <ArrowLeft :size="24" />
           </template>
         </Button>
         <Button
           type="primary"
+          :label="$t('home.menu')"
           path="/_universes"
           layout="right-icon"
           :animation="['slide-up', '0']"
           :theme="theme"
         >
           <template #icon>
-            <ArrowRight
-              :size="24"
-            />
-          </template>
-          <template #label>
-            {{ $t("home.menu") }}
+            <ArrowRight :size="24" />
           </template>
         </Button>
       </div>

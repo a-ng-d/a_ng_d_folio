@@ -31,36 +31,28 @@
       <template #left>
         <Button
           type="secondary"
+          :label="$t('id.career.resume')"
           path="/_resume"
           layout="left-icon"
           extensible
           :theme="theme"
         >
           <template #icon>
-            <Download
-              :size="24"
-            />
-          </template>
-          <template #label>
-            {{ $t("id.career.resume") }}
+            <Download :size="24" />
           </template>
         </Button>
       </template>
       <template #right>
         <Button
           type="secondary"
+          :label="$t('id.career.linkedIn')"
           path="/_linkedin"
           layout="left-icon"
           extensible
           :theme="theme"
         >
           <template #icon>
-            <Linkedin
-              :size="24"
-            />
-          </template>
-          <template #label>
-            {{ $t("id.career.linkedIn") }}
+            <Linkedin :size="24" />
           </template>
         </Button>
       </template>
