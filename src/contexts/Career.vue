@@ -29,7 +29,13 @@
       :theme="theme"
     >
       <template #left>
-        <Button type="secondary" path="/_resume" layout="indicator" extensible theme="default">
+        <Button
+          type="secondary"
+          path="/_resume"
+          layout="left-icon"
+          extensible
+          :theme="theme"
+        >
           <template #icon>
             <Download
               :size="24"
@@ -41,7 +47,13 @@
         </Button>
       </template>
       <template #right>
-        <Button type="secondary" path="/_linkedin" layout="indicator" extensible theme="default">
+        <Button
+          type="secondary"
+          path="/_linkedin"
+          layout="left-icon"
+          extensible
+          :theme="theme"
+        >
           <template #icon>
             <Linkedin
               :size="24"
