@@ -56,6 +56,19 @@
     </RouterLink>
   </template>
 
+  <template v-if="layout === 'icon-only'">
+    <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="theme">
+      <div class="button__content">
+        <div class="button__icon">
+          <slot name="icon"></slot>
+        </div>
+      </div>
+      <div class="button__background">
+        <Particles />
+      </div>
+    </RouterLink>
+  </template>
+
   <template v-else-if="layout === 'left-icon'">
     <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="theme">
       <div class="button__content">
