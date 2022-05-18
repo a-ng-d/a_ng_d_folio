@@ -19,7 +19,8 @@ const router = createRouter({
           background: 'var(--color-soil)',
           blend: 'hard-light'
         },
-        pov: 'reset'
+        pov: 'reset',
+        quality: 'high'
       }
     },
     {
@@ -32,7 +33,8 @@ const router = createRouter({
           background: 'var(--gradient-biscarosse-sunset)',
           blend: 'hard-light'
         },
-        pov: 'scrolling…'
+        pov: 'scrolling…',
+        quality: 'high'
       }
     },
     {
@@ -45,7 +47,8 @@ const router = createRouter({
           background: 'var(--color-sandstone)',
           blend: 'exclusion'
         },
-        pov: 'reset'
+        pov: 'reset',
+        quality: 'high'
       }
     },
     {
@@ -63,7 +66,8 @@ const router = createRouter({
           background: 'var(--color-sandstone)',
           blend: 'exclusion'
         },
-        pov: 'reset'
+        pov: 'reset',
+        quality: 'low'
       }
     },
     {
@@ -93,7 +97,8 @@ const router = createRouter({
           background: 'var(--color-soft-wind)',
           blend: 'hard-light'
         },
-        pov: 'reset'
+        pov: 'reset',
+        quality: 'high'
       }
     },
     {

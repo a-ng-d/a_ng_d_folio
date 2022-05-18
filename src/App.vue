@@ -23,6 +23,7 @@
       return {
         veil: '',
         pov: '',
+        quality: '',
         context: '',
         transition: 'scale-down',
         scroll: 0,
@@ -35,6 +36,7 @@
         document.title = to.meta.title
         this.veil = to.meta.veil
         this.pov = to.meta.pov
+        this.quality = to.meta.quality
 
         if(from.name === 'home' && to.name === 'id')
           this.transition = 'push-left'
@@ -123,7 +125,7 @@
       <Component :is="Component" />
     </Transition>
   </RouterView>
-  <Glitchscape :veil="veil" :pov="pov" :scroll="scroll" :pageHeight="pageHeight" />
+  <Glitchscape :veil="veil" :pov="pov" :quality="quality" :scroll="scroll" :pageHeight="pageHeight" />
 </template>
 
 <style lang="sass">

@@ -10,6 +10,10 @@
         type: String,
         default: 'reset'
       },
+      quality: {
+        type: String,
+        default: 'high'
+      },
       scroll: {
         type: Number,
         default: 0
@@ -31,6 +35,13 @@
         }
         return actions[to]?.() ?? 'No pov change'
       },
+      quality(to, from) {
+        const actions = {
+          low: () => this.glitchscape.lowQuality(),
+          high: () => this.glitchscape.highQuality()
+        }
+        return actions[to]?.() ?? 'No pov change'
+      },
       scroll(to, from) {
         return this.glitchscape.povZoom(this.scroll, this.pageHeight)
       }
@@ -47,6 +58,7 @@
         let
           fps = 60,
           speed = 2,
+          alpha = 1,
           mountains = [],
           clouds = []
 
@@ -66,11 +78,12 @@
             }
             this.params = {
               radius: sk.int(sk.abs(this.size.height / 4)),
-              radians: sk.radians(180),
+              radians: sk.radians(90),
               speed: 0.1,
               order: 0,
               gap: 5,
-              isGlitched: false
+              isGlitched: false,
+              isStrokedOnly: false
             }
             this.backup = {}
           }
@@ -100,6 +113,10 @@
             this.params.radius = this.backup.params.radius
           }
 
+          wireframe = () => this.params.isStrokedOnly = true
+
+          unwireframe = () => this.params.isStrokedOnly = false
+
           move = () => {
             if (this.position.z <= 0)
               this.position.z += speed
@@ -118,23 +135,40 @@
             this.draw()
           }
 
+          extrusion = () => {
+            sk.push()
+              sk.rotateX(this.params.radians)
+              sk.ellipse(0, this.size.height, this.params.radius, this.params.radius, quality)
+              sk.rect((this.params.radius / 2), this.size.height, this.size.width, this.params.radius)
+              sk.ellipse(this.size.width, this.size.height, this.params.radius, this.params.radius, quality)
+              sk.rect(0, 0, (this.size.width + this.params.radius), (this.size.height + (this.params.radius / 2)))
+            sk.pop()
+          }
+
+          reflect = () => {
+            sk.push()
+              sk.rotateX(-this.params.radians)
+              sk.ellipse(0, -(this.size.height * 4), this.params.radius, this.params.radius, quality)
+              sk.rect((this.params.radius / 2), -(this.size.height * 4), this.size.width, this.params.radius)
+              sk.ellipse(this.size.width, -(this.size.height * 4), this.params.radius, this.params.radius, quality)
+              sk.rect(0, 0, (this.size.width + this.params.radius), -(this.size.height * 4 - (this.params.radius / 2)))
+            sk.pop()
+          }
+
           draw = () => {
             const randomColor = sk.random(Object.values(HSLColors))
 
             sk.push()
               sk.translate(this.position.x, this.position.y, this.position.z)
-              sk.rotateX(this.params.radians)
-              sk.noStroke()
-              if (this.params.isGlitched)
-                sk.fill(randomColor.hue, randomColor.saturation, randomColor.lightness)
-              else
-                sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
+              sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
+              sk.stroke(this.deepHue(), this.deepSaturation(), this.deepLightness())
+              sk.strokeWeight(1)
+              this.params.isGlitched ? sk.fill(randomColor.hue, randomColor.saturation, randomColor.lightness) : null
+              this.params.isStrokedOnly ? sk.noFill() : null
               sk.rectMode(sk.CORNER)
               sk.ellipseMode(sk.CORNER)
-              sk.ellipse(0, this.size.height, this.params.radius, this.params.radius, quality)
-              sk.rect((this.params.radius / 2), this.size.height, this.size.width, this.params.radius)
-              sk.ellipse(this.size.width, this.size.height, this.params.radius, this.params.radius, quality)
-              sk.rect(0, 0, (this.size.width + this.params.radius), (this.size.height + (this.params.radius / 2)))
+              this.extrusion()
+              this.reflect()
             sk.pop()
           }
 
@@ -159,7 +193,8 @@
               order: 0,
               gap: 30,
               start: sk.height,
-              isGlitched: false
+              isGlitched: false,
+              isStrokedOnly: false
             }
             for (let i = 1 ; i < this.props.rows ; i++)
               this.params.rows.push({
@@ -191,6 +226,10 @@
             this.params.isGlitched = false
             this.params.rows = this.backup.rows
           }
+
+          wireframe = () => this.params.isStrokedOnly = true
+
+          unwireframe = () => this.params.isStrokedOnly = false
 
           move = () => {
             if (this.position.z <= 0)
@@ -234,11 +273,11 @@
 
             sk.push()
               sk.translate(this.position.x, this.params.start, this.position.z)
-              sk.noStroke()
-              if (this.params.isGlitched)
-                sk.fill(randomColor.hue, randomColor.saturation, randomColor.lightness)
-              else
-                sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
+              sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
+              sk.stroke(this.deepHue(), this.deepSaturation(), this.deepLightness())
+              sk.strokeWeight(1)
+              this.params.isGlitched ? sk.fill(randomColor.hue, randomColor.saturation, randomColor.lightness) : null
+              this.params.isStrokedOnly ? sk.noFill() : null
               this.params.rows.forEach(row => {
                 this.drow(row.x, offsetY, row.width, row.height)
                 offsetY += row.height
@@ -308,7 +347,7 @@
 
           push = () => this.params.isPushed = true
 
-          reset = () => this.animate(0.1, [0, -window.innerHeight * 0.1, 0], [0, 0, -window.innerHeight * 2])
+          reset = () => this.animate(0.1, [0, -window.innerHeight * 0.2, 0], [0, 0, -window.innerHeight * 2])
 
           zoom = (scrollPosition, pageLimitMax) => {
             this.position.z = sk.lerp(this.position.z, sk.map(scrollPosition, 0, pageLimitMax, 0, this.center.z), 0.05)
@@ -331,8 +370,8 @@
         // Sketch
         let pov = new Pov({
           x: 0,
-          y: -window.innerHeight * 0.1,
-          z: 0,
+          y: -window.innerHeight * 0.2,
+          z: -window.innerHeight,
           cX: 0,
           cY: 0,
           cZ: -window.innerHeight * 2
@@ -377,6 +416,8 @@
 
         sk.draw = () => {
 
+          alpha = sk.lerp(alpha, 0.6, 0.01)
+
           sk.clear()
 
           sk.background(colors.soil.hue, colors.soil.saturation, colors.soil.lightness)
@@ -384,20 +425,24 @@
           // camera
           pov.move()
 
-          // floor
-          sk.push()
-            sk.noStroke()
-            sk.fill(colors.soil.hue, colors.soil.saturation, colors.soil.lightness)
-            sk.translate(0, (sk.height * 0.5) - 1, 0)
-            sk.rotateX(sk.PI / 2)
-            sk.rect(0, 0, sk.width * 4, sk.height * 8)
-          sk.pop()
+          sk.blendMode(sk.BLEND)
 
           // mountains
           mountains.forEach(mountain => mountain.move())
 
           // clouds
           clouds.forEach(cloud => cloud.move())
+
+          // floor
+          sk.push()
+            sk.blendMode(sk.DIFFERENCE)
+            sk.noStroke()
+            sk.fill(colors.soil.hue, colors.soil.saturation, colors.soil.lightness, alpha)
+            sk.translate(0, (sk.height * 0.5) - 10, 0)
+            sk.rotateX(sk.PI / 2)
+            sk.rect(0, 0, sk.width * 6, sk.height * 8)
+          sk.pop()
+
 
         }
 
@@ -407,6 +452,16 @@
         sk.povReset = () => pov.reset()
 
         sk.povZoom = (scroll, pageHeight) => pov.zoom(scroll, pageHeight)
+
+        sk.lowQuality = () => {
+          mountains.forEach(el => el.wireframe())
+          clouds.forEach(el => el.wireframe())
+        }
+
+        sk.highQuality = () => {
+          mountains.forEach(el => el.unwireframe())
+          clouds.forEach(el => el.unwireframe())
+        }
 
         sk.mouseMoved = () => pov.push()
 
