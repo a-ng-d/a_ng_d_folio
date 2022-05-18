@@ -117,8 +117,8 @@
     &__info
       display: flex
       flex: 2
-      justify-content: flex-end
-      align-items: flex-start
+      justify-content: center
+      align-items: center
 
       & > div
         flex: 0 1 75%
