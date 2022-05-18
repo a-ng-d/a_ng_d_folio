@@ -29,8 +29,8 @@
         type="primary"
         path="/_core"
         layout="icon-only"
-        :theme="theme"
         :animation="['slide-up', '0']"
+        :theme="theme"
       >
         <template #icon>
           <Heart
@@ -42,8 +42,8 @@
         type="primary"
         path="/_work"
         layout="icon-only"
-        :theme="theme"
         :animation="['slide-up', '0']"
+        :theme="theme"
       >
         <template #icon>
           <Briefcase
@@ -55,8 +55,8 @@
         type="primary"
         path="/_lab"
         layout="icon-only"
-        :theme="theme"
         :animation="['slide-up', '0']"
+        :theme="theme"
       >
         <template #icon>
           <FlaskConical
@@ -68,8 +68,8 @@
         type="primary"
         path="/_contact"
         layout="icon-only"
-        :theme="theme"
         :animation="['slide-up', '0']"
+        :theme="theme"
       >
         <template #icon>
           <Mail
@@ -81,8 +81,8 @@
         type="primary"
         path="/_archive"
         layout="icon-only"
-        :theme="theme"
         :animation="['slide-up', '0']"
+        :theme="theme"
       >
         <template #icon>
           <Archive

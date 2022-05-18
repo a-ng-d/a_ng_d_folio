@@ -34,8 +34,8 @@
           type="secondary"
           path="/_id"
           layout="left-icon"
-          :theme="theme"
           :animation="['slide-up', '0']"
+          :theme="theme"
         >
           <template #icon>
             <ArrowLeft
@@ -50,8 +50,8 @@
           type="primary"
           path="/_universes"
           layout="right-icon"
-          :theme="theme"
           :animation="['slide-up', '0']"
+          :theme="theme"
         >
           <template #icon>
             <ArrowRight
