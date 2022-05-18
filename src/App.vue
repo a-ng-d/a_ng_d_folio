@@ -66,26 +66,26 @@
       :background="context === 'id' ? 'var(--color-soft-wind)' : 'transparent'"
       :scroll="scroll"
     >
-    <template #left-part>
-      <Transition name="switch" mode="out-in">
-        <Button
-          v-if="context === 'universes'"
-          type="secondary"
-          path="/"
-          layout="left-icon"
-          theme="dark"
-        >
-          <template #icon>
-            <ArrowLeft
-              :size="24"
-            />
-          </template>
-          <template #label>
-            {{ $t("universes.back") }}
-          </template>
-        </Button>
-      </Transition>
-    </template>
+      <template #left-part>
+        <Transition name="switch" mode="out-in">
+          <Button
+            v-if="context === 'universes'"
+            type="secondary"
+            path="/"
+            layout="left-icon"
+            theme="dark"
+          >
+            <template #icon>
+              <ArrowLeft
+                :size="24"
+              />
+            </template>
+            <template #label>
+              {{ $t("universes.back") }}
+            </template>
+          </Button>
+        </Transition>
+      </template>
       <template #right-part>
         <Transition name="switch" mode="out-in">
           <Button
