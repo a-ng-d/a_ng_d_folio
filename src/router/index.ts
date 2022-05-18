@@ -80,7 +80,10 @@ const router = createRouter({
       component: Attributions,
       meta: {
         title: i18n.global.t('attributions.title'),
-        veil: 'var(--color-soft-wind)',
+        veil: {
+          background: 'var(--color-soft-wind)',
+          blend: 'hard-light'
+        },
         pov: 'reset'
       }
     },

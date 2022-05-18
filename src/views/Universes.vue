@@ -53,8 +53,8 @@
       expandTooltip(e) {
         this.tooltip.isActive = true
         this.tooltip.name = e.target.id
-        this.tooltip.title = i18n.global.t(`universes['${e.target.id}'].title`)
-        this.tooltip.description = i18n.global.t(`universes['${e.target.id}'].description`)
+        this.tooltip.title = i18n.global.t(`universes.${e.target.id}.title`)
+        this.tooltip.description = i18n.global.t(`universes.${e.target.id}.description`)
       },
       collapseTooltip(e) {
         this.tooltip = {

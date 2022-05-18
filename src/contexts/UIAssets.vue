@@ -13,6 +13,11 @@
         type: String,
         default: 'default'
       }
+    },
+    data() {
+      return {
+        links: ['link-1', 'link-2', 'link-3']
+      }
     }
   }
 </script>
@@ -25,21 +30,11 @@
     >
       <template #plain>
         <SimpleExternalLink
-          :label="$t('attributions.ui.link-1.label')"
-          :href="$t('attributions.ui.link-1.href')"
-          :alt="$t('attributions.ui.link-1.alt')"
-          :theme="theme"
-        />
-        <SimpleExternalLink
-          :label="$t('attributions.ui.link-2.label')"
-          :href="$t('attributions.ui.link-2.href')"
-          :alt="$t('attributions.ui.link-2.alt')"
-          :theme="theme"
-        />
-        <SimpleExternalLink
-          :label="$t('attributions.ui.link-3.label')"
-          :href="$t('attributions.ui.link-3.href')"
-          :alt="$t('attributions.ui.link-3.alt')"
+          v-for="link in links"
+          :key="link"
+          :label="$t(`attributions.ui.${link}.label`)"
+          :href="$t(`attributions.ui.${link}.href`)"
+          :alt="$t(`attributions.ui.${link}.alt`)"
           :theme="theme"
         />
       </template>
