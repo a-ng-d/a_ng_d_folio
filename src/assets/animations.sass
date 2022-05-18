@@ -30,7 +30,7 @@
     transform: translateX(-100%)
 
 @keyframes push-left
-  0%, 50%, 100%
+  0%, 60%, 100%
     transform-origin: center center
   0%
     transform: scale(1) translateX(0)
@@ -47,7 +47,7 @@
     transform: scale(.5) translateX(200vw)
 
 @keyframes push-right
-  0%, 50%, 100%
+  0%, 60%, 100%
     transform-origin: center center
   0%
     transform: scale(1) translateX(0)
@@ -62,6 +62,40 @@
     animation-timing-function: var(--ease-peps)
   100%
     transform: scale(.5) translateX(-200vw)
+
+@keyframes push-down
+  0%, 60%, 100%
+    transform-origin: center center
+  0%
+    transform: scale(1) translateX(0)
+    background-color: hsl(360, 0%, 100%, 0)
+    border-radius: 0
+    animation-timing-function: var(--ease-brake)
+  60%
+    transform: scale(.5)
+    background-color: hsl(360, 0%, 100%, .2)
+    border: var(--border-size) solid var(--border-color)
+    border-radius: var(--regular-border-radius)
+    animation-timing-function: var(--ease-peps)
+  100%
+    transform: scale(.5) translateY(200vw)
+
+@keyframes push-up
+  0%, 60%, 100%
+    transform-origin: center center
+  0%
+    transform: scale(1) translateX(0)
+    background-color: hsl(360, 0%, 100%, 0)
+    border-radius: 0
+    animation-timing-function: var(--ease-brake)
+  60%
+    transform: scale(.5)
+    background-color: hsl(360, 0%, 100%, .2)
+    border: var(--border-size) solid var(--border-color)
+    border-radius: var(--regular-border-radius)
+    animation-timing-function: var(--ease-peps)
+  100%
+    transform: scale(.5) translateY(-200vw)
 
 
 // Pull transitions
@@ -91,6 +125,18 @@
 
 .push-right-leave-active
   animation: push-right var(--duration-jogging) backwards
+
+.push-down-enter-active
+  animation: push-down var(--duration-jogging) reverse forwards
+
+.push-down-leave-active
+  animation: push-up var(--duration-jogging) backwards
+
+.push-up-enter-active
+  animation: push-up var(--duration-jogging) reverse forwards
+
+.push-up-leave-active
+  animation: push-down var(--duration-jogging) backwards
 
 // Slide transitions
 .slide-up-enter-active,

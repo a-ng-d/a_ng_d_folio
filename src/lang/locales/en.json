@@ -13,12 +13,14 @@
   },
   "global": {
     "separator": "・",
-    "back": "Back to roots",
-    "home": "Back to Home"
+    "back": {
+      "root": "Back to root",
+      "home": "Back to Home"
+    },
+    "menu": "Menu"
   },
   "id": {
     "title": "nG⚡️ aka. Aurélien Grimaud﹒ID card",
-    "back": "Back to roots",
     "about": {
       "title": "你好 nǐ hǎo!",
       "experience": "I’m Aurélien all over the world or 立安 lì ān in China. Currently Product designer at <span class='label' data-highlighted='true'>iObeya</span> for {year} years and an UI + </code> enthousiast.",
@@ -142,7 +144,6 @@
   },
   "universes": {
     "title": "nG⚡️ aka. Aurélien Grimaud﹒Universes",
-    "back": "Back to roots",
     "core": {
       "title": "_Core",
       "description": "My adventure as a Product Designer at iObeya teach me what I really love to do and what I really want to keep doing during my career."
@@ -163,6 +164,9 @@
       "title": "_Archive",
       "description": "Watch my creative work before iObeya"
     }
+  },
+  "work": {
+    "title": "nG⚡️ aka. Aurélien Grimaud﹒Selected work"
   },
   "attributions": {
     "title": "nG⚡️ aka. Aurélien Grimaud﹒Attributions",

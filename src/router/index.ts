@@ -3,6 +3,7 @@ import { i18n } from '@/lang'
 import Home from '../views/Home.vue'
 import Id from '../views/Id.vue'
 import Universes from '../views/Universes.vue'
+import Work from '../views/Work.vue'
 import Attributions from '../views/Attributions.vue'
 
 const router = createRouter({
@@ -55,7 +56,15 @@ const router = createRouter({
     {
       path: '/_work',
       name: 'work',
-      component: Home
+      component: Work,
+      meta: {
+        title: i18n.global.t('work.title'),
+        veil: {
+          background: 'var(--color-sandstone)',
+          blend: 'exclusion'
+        },
+        pov: 'reset'
+      }
     },
     {
       path: '/_lab',

@@ -5,7 +5,7 @@
   import MainMenu from '@/components/patterns/MainMenu.vue'
   import Button from '@/components/ui/Button.vue'
   import Glitchscape from '@/components/graphics/Glitchscape.vue'
-  import { ArrowRight, ArrowLeft } from 'lucide-vue-next'
+  import { ArrowRight, ArrowLeft, Menu } from 'lucide-vue-next'
 
   export default {
     name: 'App',
@@ -16,7 +16,8 @@
       Button,
       Glitchscape,
       ArrowRight,
-      ArrowLeft
+      ArrowLeft,
+      Menu
     },
     data() {
       return {
@@ -46,6 +47,12 @@
 
         if(from.name === 'universes' && to.name === 'home')
           this.transition = 'push-left'
+
+        if(from.name === 'universes' && to.name === 'work')
+          this.transition = 'push-down'
+
+        if(from.name === 'work' && to.name === 'universes')
+          this.transition = 'push-up'
       }
     },
     methods: {
@@ -71,13 +78,25 @@
           <Button
             v-if="context === 'universes'"
             type="secondary"
-            :label="$t('universes.back')"
+            :label="$t('global.back.home')"
             path="/"
             layout="left-icon"
             theme="dark"
           >
             <template #icon>
               <ArrowLeft :size="24" />
+            </template>
+          </Button>
+          <Button
+            v-else-if="context === 'work'"
+            type="secondary"
+            :label="$t('global.menu')"
+            path="/_universes"
+            layout="left-icon"
+            theme="dark"
+          >
+            <template #icon>
+              <Menu :size="24" />
             </template>
           </Button>
         </Transition>
@@ -87,7 +106,7 @@
           <Button
             v-if="context === 'id'"
             type="primary"
-            :label="$t('id.back')"
+            :label="$t('global.back.home')"
             path="/"
             layout="right-icon"
           >

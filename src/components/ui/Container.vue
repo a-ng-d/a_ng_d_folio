@@ -9,7 +9,7 @@
 </script>
 
 <template>
-  <div class="container" :data-theme="theme">
+  <div class="container">
     <div class="container__content">
       <slot name="icon"></slot>
       <h5>{{ title }}</h5>
