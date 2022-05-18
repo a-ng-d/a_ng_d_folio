@@ -14,7 +14,10 @@ const router = createRouter({
       component: Home,
       meta: {
         title: i18n.global.t('title'),
-        veil: 'var(--color-soil)',
+        veil: {
+          background: 'var(--color-soil)',
+          blend: 'hard-light'
+        },
         pov: 'reset'
       }
     },
@@ -24,7 +27,10 @@ const router = createRouter({
       component: Id,
       meta: {
         title: i18n.global.t('id.title'),
-        veil: 'var(--gradient-biscarosse-sunset)',
+        veil: {
+          background: 'var(--gradient-biscarosse-sunset)',
+          blend: 'hard-light'
+        },
         pov: 'scrolling…'
       }
     },
@@ -34,7 +40,10 @@ const router = createRouter({
       component: Universes,
       meta: {
         title: i18n.global.t('universes.title'),
-        veil: 'var(--color-soil)',
+        veil: {
+          background: 'var(--color-sandstone)',
+          blend: 'exclusion'
+        },
         pov: 'reset'
       }
     },

@@ -5,7 +5,7 @@
   export default {
     name: 'Glitchscape',
     props: {
-      veil: String,
+      veil: [Object, String],
       pov: {
         type: String,
         default: 'reset'
@@ -455,7 +455,7 @@
       height: inherit
       position: absolute
       z-index: 1
-      mix-blend-mode: hard-light
-      background: v-bind(veil)
+      mix-blend-mode: v-bind('veil.blend')
+      background: v-bind('veil.background')
       transition: var(--slow-transition)
 </style>
