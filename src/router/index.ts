@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { i18n } from '@/lang'
 import Home from '../views/Home.vue'
 import Id from '../views/Id.vue'
-import Menu from '../views/Menu.vue'
+import Universes from '../views/Universes.vue'
 import Attributions from '../views/Attributions.vue'
 
 const router = createRouter({
@@ -31,9 +31,9 @@ const router = createRouter({
     {
       path: '/_universes',
       name: 'universes',
-      component: Menu,
+      component: Universes,
       meta: {
-        title: i18n.global.t('id.title'),
+        title: i18n.global.t('universes.title'),
         veil: 'var(--color-soil)',
         pov: 'reset'
       }
@@ -57,6 +57,13 @@ const router = createRouter({
       path: '/_contact',
       name: 'contact',
       component: Home
+    },
+    {
+      path: '/_archive',
+      name: 'archive',
+      beforeEnter() {
+        window.open('https://involt.io', '_blank')
+      }
     },
     {
       path: '/_attribution',

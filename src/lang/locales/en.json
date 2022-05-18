@@ -13,7 +13,8 @@
   },
   "global": {
     "separator": "・",
-    "back": "Back to roots"
+    "back": "Back to roots",
+    "home": "Back to Home"
   },
   "id": {
     "title": "nG⚡️ aka. Aurélien Grimaud﹒ID card",
@@ -141,7 +142,27 @@
   },
   "universes": {
     "title": "nG⚡️ aka. Aurélien Grimaud﹒Universes",
-    "back": "Back to roots"
+    "back": "Back to roots",
+    "core": {
+      "title": "_Core",
+      "description": "My adventure as a Product Designer at iObeya teach me what I really love to do and what I really want to keep doing during my career."
+    },
+    "selected-work": {
+      "title": "_Selected_work",
+      "description": "As a night owl, and afterwork, I dedicated my time into developing side-projects to change people mindset by using product design."
+    },
+    "lab": {
+      "title": "_Lab",
+      "description": "Doing differently is a real leitmotiv. Experimentation doesn’t scare me because I always look for a personal vision for the future."
+    },
+    "contact": {
+      "title": "_Contact",
+      "description": "Send a word or a feedback"
+    },
+    "archive": {
+      "title": "_Archive",
+      "description": "Watch my creative work before iObeya"
+    }
   },
   "attributions": {
     "title": "nG⚡️ aka. Aurélien Grimaud﹒Attributions",
