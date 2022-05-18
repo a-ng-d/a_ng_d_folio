@@ -26,23 +26,6 @@
 
 <template>
   <main class="page">
-    <MainMenu
-      logotypeColor="var(--color-soil)"
-      background="var(--color-soft-wind)"
-    >
-      <template #left-part>
-        <Button type="primary" path="/" layout="indicator" :theme="theme">
-          <template #icon>
-            <ArrowLeft
-              :size="24"
-            />
-          </template>
-          <template #label>
-            {{ $t("global.back") }}
-          </template>
-        </Button>
-      </template>
-    </MainMenu>
     <article class="article">
       <DevTools :theme="theme" />
       <UIAssets :theme="theme" />
