@@ -71,7 +71,7 @@
           :theme="theme"
         >
           <template #icon>
-            <Component :is="network.icon" :size="48" />
+            <Component :is="network.icon" :size="48" :style="network.color === 'var(--color-deep-black)' ? '--icon-color: var(--color-titanium-white)' : ''" />
           </template>
         </RichExternalLink>
       </template>
