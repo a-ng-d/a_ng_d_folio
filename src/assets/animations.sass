@@ -29,81 +29,12 @@
   100%
     transform: translateX(-100%)
 
-@keyframes push-left
-  0%, 60%, 100%
-    transform-origin: center center
-  0%
-    transform: scale(1) translateX(0)
-    background-color: hsl(360, 0%, 100%, 0)
-    border-radius: 0
-    animation-timing-function: var(--ease-brake)
-  60%
-    transform: scale(.5)
-    background-color: hsl(360, 0%, 100%, .2)
-    border: var(--border-size) solid var(--border-color)
-    border-radius: var(--regular-border-radius)
-    animation-timing-function: var(--ease-peps)
-  100%
-    transform: scale(.5) translateX(200vw)
-
-@keyframes push-right
-  0%, 60%, 100%
-    transform-origin: center center
-  0%
-    transform: scale(1) translateX(0)
-    background-color: hsl(360, 0%, 100%, 0)
-    border-radius: 0
-    animation-timing-function: var(--ease-brake)
-  60%
-    transform: scale(.5)
-    background-color: hsl(360, 0%, 100%, .2)
-    border: var(--border-size) solid var(--border-color)
-    border-radius: var(--regular-border-radius)
-    animation-timing-function: var(--ease-peps)
-  100%
-    transform: scale(.5) translateX(-200vw)
-
-@keyframes push-down
-  0%, 60%, 100%
-    transform-origin: center center
-  0%
-    transform: scale(1) translateX(0)
-    background-color: hsl(360, 0%, 100%, 0)
-    border-radius: 0
-    animation-timing-function: var(--ease-brake)
-  60%
-    transform: scale(.5)
-    background-color: hsl(360, 0%, 100%, .2)
-    border: var(--border-size) solid var(--border-color)
-    border-radius: var(--regular-border-radius)
-    animation-timing-function: var(--ease-peps)
-  100%
-    transform: scale(.5) translateY(200vw)
-
-@keyframes push-up
-  0%, 60%, 100%
-    transform-origin: center center
-  0%
-    transform: scale(1) translateX(0)
-    background-color: hsl(360, 0%, 100%, 0)
-    border-radius: 0
-    animation-timing-function: var(--ease-brake)
-  60%
-    transform: scale(.5)
-    background-color: hsl(360, 0%, 100%, .2)
-    border: var(--border-size) solid var(--border-color)
-    border-radius: var(--regular-border-radius)
-    animation-timing-function: var(--ease-peps)
-  100%
-    transform: scale(.5) translateY(-200vw)
-
-
 // Pull transitions
 .pull-down-enter-active,
 .pull-down-leave-active,
 .pull-up-enter-active,
 .pull-up-leave-active
-  transition: transform var(--duration-jogging) var(--ease-brake) !important
+  transition: transform var(--duration-jogging) var(--delay, 0ms) var(--ease-brake)  !important
 
 .pull-down-enter-from,
 .pull-down-leave-to
@@ -113,30 +44,110 @@
 .pull-up-leave-to
   transform: translateY(100%)
 
-// Push transitions
-.push-left-enter-active
-  animation: push-right var(--duration-jogging) reverse forwards
+// View transitions
+//// Go left
+.go-left-enter-active,
+.go-left-leave-active
+  position: absolute
+  transform-origin: 100% 50%
+  transition: background-color var(--duration-jogging) var(--delay, 0ms) ease, transform var(--duration-jogging) var(--delay, 0ms) var(--ease-rebound), opacity var(--duration-running) var(--delay, 0ms) ease
 
-.push-left-leave-active
-  animation: push-left var(--duration-jogging) backwards
+.go-left-enter-active
+  transition-delay: var(--delay-late)
 
-.push-right-enter-active
-  animation: push-left var(--duration-jogging) reverse forwards
+.go-left-leave-from
+  background-color: hsla(0, 0%, 100%, 0)
+  transform: perspective(100vw) scale(1) rotateY(0)
+  opacity: 1
 
-.push-right-leave-active
-  animation: push-right var(--duration-jogging) backwards
+.go-left-leave-to
+  background-color: hsla(0, 0%, 100%, .2)
+  transform: perspective(100vw) scale(.75) rotateY(-45deg)
+  opacity: 0
 
-.push-down-enter-active
-  animation: push-down var(--duration-jogging) reverse forwards
+.go-left-enter-from
+  transform: translateX(-200vw) skewX(-5deg)
 
-.push-down-leave-active
-  animation: push-up var(--duration-jogging) backwards
+.go-left-enter-to
+  transform: translateX(0) skewX(0)
 
-.push-up-enter-active
-  animation: push-up var(--duration-jogging) reverse forwards
+//// Go right
+.go-right-enter-active,
+.go-right-leave-active
+  position: absolute
+  transform-origin: 0% 50%
+  transition: background-color var(--duration-jogging) var(--delay, 0ms) ease, transform var(--duration-jogging) var(--delay, 0ms) var(--ease-rebound), opacity var(--duration-running) var(--delay, 0ms) ease
 
-.push-up-leave-active
-  animation: push-down var(--duration-jogging) backwards
+.go-right-enter-active
+  transition-delay: var(--delay-late)
+
+.go-right-leave-from
+  background-color: hsla(0, 0%, 100%, 0)
+  transform: perspective(100vw) scale(1) rotateY(0)
+  opacity: 1
+
+.go-right-leave-to
+  background-color: hsla(0, 0%, 100%, .2)
+  transform: perspective(100vw) scale(.75) rotateY(45deg)
+  opacity: 0
+
+.go-right-enter-from
+  transform: translateX(200vw) skewX(5deg)
+
+.go-right-enter-to
+  transform: translateX(0) skewX(0)
+
+//// Go down
+.go-down-enter-active,
+.go-down-leave-active
+  position: absolute
+  transform-origin: 50% 0%
+  transition: background-color var(--duration-jogging) var(--delay, 0ms) ease, transform var(--duration-jogging) var(--delay, 0ms) var(--ease-rebound), opacity var(--duration-running) var(--delay, 0ms) ease
+
+.go-down-enter-active
+  transition-delay: var(--delay-late)
+
+.go-down-leave-from
+  background-color: hsla(0, 0%, 100%, 0)
+  transform: perspective(100vw) scale(1) rotateX(0)
+  opacity: 1
+
+.go-down-leave-to
+  background-color: hsla(0, 0%, 100%, .2)
+  transform: perspective(100vw) scale(.75) rotateX(-45deg)
+  opacity: 0
+
+.go-down-enter-from
+  transform: translateY(200vw) skewY(5deg)
+
+.go-down-enter-to
+  transform: translateY(0) skewY(0)
+
+//// Go up
+.go-up-enter-active,
+.go-up-leave-active
+  position: absolute
+  transform-origin: 50% 100%
+  transition: background-color var(--duration-jogging) var(--delay, 0ms) ease, transform var(--duration-jogging) var(--delay, 0ms) var(--ease-rebound), opacity var(--duration-running) var(--delay, 0ms) ease
+
+.go-up-enter-active
+  transition-delay: var(--delay-late)
+
+.go-up-leave-from
+  background-color: hsla(0, 0%, 100%, 0)
+  transform: perspective(100vw) scale(1) rotateX(0)
+  opacity: 1
+
+.go-up-leave-to
+  background-color: hsla(0, 0%, 100%, .2)
+  transform: perspective(100vw) scale(.75) rotateX(45deg)
+  opacity: 0
+
+.go-up-enter-from
+  transform: translateY(-200vw) skewY(5deg)
+
+.go-up-enter-to
+  transform: translateY(0) skewY(0)
 
 // Slide transitions
 .slide-up-enter-active,

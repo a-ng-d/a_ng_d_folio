@@ -33,7 +33,7 @@
     &__content
       display: flex
       flex-flow: row wrap
-      gap: var(--layout-box-gap) var(--layout-box-gap)
+      gap: var(--layout-box-gap) var(--layout-column-gap)
 
       & > :deep(*)
         flex: 0 1 calc(50% - var(--layout-column-gap))

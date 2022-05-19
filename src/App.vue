@@ -39,28 +39,31 @@
         this.quality = to.meta.quality
 
         if(from.name === 'home' && to.name === 'id')
-          this.transition = 'push-left'
+          this.transition = 'go-left'
 
         if(from.name === 'id' && to.name === 'home')
-          this.transition = 'push-right'
+          this.transition = 'go-right'
 
         if(from.name === 'home' && to.name === 'universes')
-          this.transition = 'push-right'
+          this.transition = 'go-right'
 
         if(from.name === 'universes' && to.name === 'home')
-          this.transition = 'push-left'
+          this.transition = 'go-left'
 
         if(from.name === 'universes' && to.name === 'work')
-          this.transition = 'push-down'
+          this.transition = 'go-down'
 
         if(from.name === 'work' && to.name === 'universes')
-          this.transition = 'push-up'
+          this.transition = 'go-up'
       }
     },
     methods: {
       getScrollParams(e) {
         this.pageHeight = e.target.scrollHeight
         this.scroll = e.target.scrollTop
+      },
+      onAfterLeave(e) {
+        e.style.transitionDelay = '0'
       }
     }
   }
@@ -69,7 +72,7 @@
 <template>
   <Filter />
   <Logotype />
-  <Transition name="pull-down" style="transition-delay: var(--delay-very-late)" appear>
+  <Transition name="pull-down" style="--delay: var(--delay-very-late)" @after-leave="onAfterLeave" appear>
     <MainMenu
       :logotypeColor="context === 'id' ? 'var(--color-soil)' : 'url(#gradient-biscarosse-sunset)'"
       :background="context === 'id' ? 'var(--color-soft-wind)' : 'transparent'"
@@ -121,8 +124,8 @@
     </MainMenu>
   </Transition>
   <RouterView @scroll.passive="getScrollParams" v-slot="{ Component, route }">
-    <Transition :name="transition" mode="out-in">
-      <Component :is="Component" />
+    <Transition :name="transition" mode="default">
+      <Component :is="Component" :key="route.path" />
     </Transition>
   </RouterView>
   <Glitchscape :veil="veil" :pov="pov" :quality="quality" :scroll="scroll" :pageHeight="pageHeight" />
