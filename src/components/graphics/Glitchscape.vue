@@ -57,8 +57,8 @@
       this.glitchscape = new P5((sk) => {
 
         const
-          mNumber = 400,
-          cNumber = 50,
+          mNumber = 240,
+          cNumber = mNumber / 4,
           quality = 50,
           colors = HSLColors
 
