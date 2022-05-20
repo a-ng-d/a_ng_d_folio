@@ -130,16 +130,21 @@
     &__items
       display: flex
       flex: 1
-      gap: 0 var(--layout-column-gap)
+      gap: var(--layout-column-gap)
       padding: 0
 
       & > li
         flex: 1
 
+  @include device.tablet
+    .menu
+      &__info
+        display: none
+
   @include device.mobile
     .menu
       &__info
-        flex: none
+        display: none
 
       &__items
         flex-flow: column nowrap

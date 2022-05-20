@@ -43,7 +43,7 @@
   // Structure
   .external-link
     display: flex
-    gap: 0 var(--rich-external-link-gap)
+    gap: var(--rich-external-link-gap)
     transition: var(--simple-transition)
     transform-origin: center center
 

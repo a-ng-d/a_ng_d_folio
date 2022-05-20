@@ -51,7 +51,7 @@ h1, h2, h3, h4, h5, h6, p
 section
   display: flex
   flex-flow: column
-  padding: var(--spacing-xl-400) 0
+  padding: var(--layout-section-gap) 0
   gap: var(--layout-box-gap) 0
 
 a
@@ -71,9 +71,13 @@ p + p
 
 // Responsive
 @mixin tablet
-  @media (min-width: 461rem) and (max-width: 1024rem)
+  @media (min-width: 28.0625rem) and (max-width: 80rem)
+    @content
+
+@mixin mobile-landscape
+  @media (max-width: 56rem) and (orientation: landscape)
     @content
 
 @mixin mobile
-  @media (max-width: 28.75rem)
+  @media (max-width: 28rem)
     @content

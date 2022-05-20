@@ -112,6 +112,19 @@
     overflow-x: hidden
     overflow-y: scroll
 
+  @include device.tablet
+    :root
+      --font-size-ref: 0.85px
+      --layout-margin: var(--spacing-xl-000)
+      --layout-center: var(--spacing-xl-000)
+      --layout-columns: 6
+      --layout-areas: "header header header header header header header header" "main main main main main main main main" "footer footer footer footer footer footer footer footer"
+
+  @include device.mobile-landscape
+    :root
+      --font-size-ref: 0.75px
+      --header-height-size: var(--sizing-xl-700)
+
   @include device.mobile
     :root
       --font-size-ref: 0.75px

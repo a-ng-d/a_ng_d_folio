@@ -30,7 +30,7 @@
     display: flex
     flex-flow: column nowrap
     padding: 0 var(--layout-center)
-    gap: var(--layout-title-gap) 0
+    gap: var(--layout-title-gap)
 
     &__content
       display: flex
@@ -39,6 +39,20 @@
 
       & > :deep(*)
         flex: 0 1 calc(50% - var(--layout-column-gap))
+
+    @include device.tablet
+      &__content
+        flex-flow: row nowrap
+        overflow: auto
+        margin: 0 calc(var(--layout-margin) * -1)
+        padding: var(--spacing-xs-000) var(--layout-margin)
+
+        &::-webkit-scrollbar
+          display: none
+
+        & > :deep(*)
+          flex: none
+          width: 50vw
 
     @include device.mobile
       &__content

@@ -100,6 +100,15 @@
       justify-content: space-between
       gap: var(--spacing-xl-000)
 
+  @include device.mobile-landscape
+    .jumbotron
+      padding: var(--layout-paragraph-gap) var(--layout-center)
+      gap: var(--layout-paragraph-gap)
+      justify-content: center
+
+      &__baseline
+        display: none
+
   @include device.mobile
     .jumbotron
       &__actions
