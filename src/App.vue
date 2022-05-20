@@ -123,6 +123,7 @@
   @include device.mobile-landscape
     :root
       --font-size-ref: 0.75px
+      --font-size-relative: 8vw
       --header-height-size: var(--sizing-xl-700)
 
   @include device.mobile

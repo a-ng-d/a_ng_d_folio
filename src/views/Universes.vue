@@ -143,6 +143,8 @@
 
   @include device.mobile
     .menu
+      padding: var(--layout-paragraph-gap) var(--layout-center)
+
       &__info
         display: none
 

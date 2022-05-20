@@ -111,6 +111,8 @@
 
   @include device.mobile
     .jumbotron
+      padding: var(--layout-paragraph-gap) var(--layout-center)
+
       &__actions
         flex-flow: column nowrap
         gap: var(--spacing-l-000)
