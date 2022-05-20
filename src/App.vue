@@ -27,7 +27,8 @@
         context: '',
         transition: 'scale-down',
         scroll: 0,
-        pageHeight: NaN
+        pageHeight: NaN,
+        isGlitched: false
       }
     },
     watch: {
@@ -64,6 +65,12 @@
       },
       onAfterLeave(e) {
         e.style.transitionDelay = '0'
+      },
+      glitch() {
+        this.isGlitched = true
+      },
+      unglitch() {
+        this.isGlitched = false
       }
     }
   }
@@ -124,11 +131,11 @@
     </MainMenu>
   </Transition>
   <RouterView @scroll.passive="getScrollParams" v-slot="{ Component, route }">
-    <Transition :name="transition" mode="default">
+    <Transition :name="transition" @after-enter="unglitch" @before-leave="glitch">
       <Component :is="Component" :key="route.path" />
     </Transition>
   </RouterView>
-  <Glitchscape :veil="veil" :pov="pov" :quality="quality" :scroll="scroll" :pageHeight="pageHeight" />
+  <Glitchscape :veil="veil" :pov="pov" :quality="quality" :isGlitched="isGlitched" :scroll="scroll" :pageHeight="pageHeight" />
 </template>
 
 <style lang="sass">

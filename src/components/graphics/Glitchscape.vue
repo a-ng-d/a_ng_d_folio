@@ -14,6 +14,7 @@
         type: String,
         default: 'high'
       },
+      isGlitched: Boolean,
       scroll: {
         type: Number,
         default: 0
@@ -41,6 +42,12 @@
           high: () => this.glitchscape.highQuality()
         }
         return actions[to]?.() ?? 'No pov change'
+      },
+      isGlitched(to, from) {
+        if (to)
+          this.glitchscape.glitch()
+        else
+          this.glitchscape.unglitch()
       },
       scroll(to, from) {
         return this.glitchscape.povZoom(this.scroll, this.pageHeight)
@@ -371,10 +378,10 @@
         let pov = new Pov({
           x: 0,
           y: -window.innerHeight * 0.2,
-          z: -window.innerHeight,
+          z: -window.innerHeight * 2,
           cX: 0,
           cY: 0,
-          cZ: -window.innerHeight * 2
+          cZ: -window.innerHeight * 4
         })
 
         sk.setup = () => {
@@ -407,16 +414,16 @@
               background: colors.soil
             }))
 
-          mountains.sort((a, b) => b.position.z - a.position.z)
+          mountains.sort((a, b) => a.position.z - b.position.z)
           mountains.forEach((mountain, index) => { mountain.params.order = index })
-          clouds.sort((a, b) => b.position.z - a.position.z)
+          clouds.sort((a, b) => a.position.z - b.position.z)
           clouds.forEach((cloud, index) => { cloud.params.order = index })
 
         }
 
         sk.draw = () => {
 
-          alpha = sk.lerp(alpha, 0.6, 0.01)
+          alpha = sk.lerp(alpha, 0.6, 0.009)
 
           sk.clear()
 
@@ -443,7 +450,6 @@
             sk.rect(0, 0, sk.width * 6, sk.height * 8)
           sk.pop()
 
-
         }
 
         // Events
@@ -465,22 +471,12 @@
 
         sk.mouseMoved = () => pov.push()
 
-        sk.mousePressed = () => {
+        sk.glitch = () => {
           mountains.forEach(el => el.glitch())
           clouds.forEach(el => el.glitch())
         }
 
-        sk.mouseReleased = () => {
-          mountains.forEach(el => el.unglitch())
-          clouds.forEach(el => el.unglitch())
-        }
-
-        sk.touchStarted = () => {
-          mountains.forEach(el => el.glitch())
-          clouds.forEach(el => el.glitch())
-        }
-
-        sk.touchEnded = () => {
+        sk.unglitch = () => {
           mountains.forEach(el => el.unglitch())
           clouds.forEach(el => el.unglitch())
         }
