@@ -473,6 +473,8 @@
 
         sk.mouseMoved = () => pov.push()
 
+        sk.touchMoved = () => pov.push()
+
         sk.glitch = () => {
           mountains.forEach(el => el.glitch())
           clouds.forEach(el => el.glitch())
