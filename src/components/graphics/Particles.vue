@@ -140,11 +140,6 @@
           sk.makeUnits('reset')
         }
 
-        sk.deviceTurned = () => {
-          sk.resizeCanvas(this.$el.clientWidth, this.$el.clientHeight)
-          sk.makeUnits('reset')
-        }
-
       })
     }
   }

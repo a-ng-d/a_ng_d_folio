@@ -482,9 +482,6 @@
         }
 
         sk.windowResized = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
-
-        sk.deviceTurned = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
-
       })
     }
   }
