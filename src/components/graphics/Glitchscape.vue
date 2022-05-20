@@ -63,7 +63,7 @@
           colors = HSLColors
 
         let
-          fps = 60,
+          fps = 30,
           speed = 2,
           alpha = 1,
           mountains = [],

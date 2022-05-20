@@ -18,7 +18,7 @@
           weight = 8
 
         let
-          fps = 60,
+          fps = 30,
           units = [],
           time = 0
 
