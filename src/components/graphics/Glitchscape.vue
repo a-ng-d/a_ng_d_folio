@@ -423,7 +423,7 @@
 
         sk.draw = () => {
 
-          alpha = sk.lerp(alpha, 0.6, 0.009)
+          alpha = sk.lerp(alpha, 0.6, 0.001)
 
           sk.clear()
 
