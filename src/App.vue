@@ -2,10 +2,8 @@
   import { RouterLink, RouterView } from 'vue-router'
   import Filter from '@/components/graphics/Filter.vue'
   import Logotype from '@/components/graphics/Logotype.vue'
-  import MainMenu from '@/components/patterns/MainMenu.vue'
-  import Button from '@/components/ui/Button.vue'
+  import MainMenu from '@/contexts/MainMenu.vue'
   import Glitchscape from '@/components/graphics/Glitchscape.vue'
-  import { ArrowRight, ArrowLeft, Menu } from 'lucide-vue-next'
 
   export default {
     name: 'App',
@@ -13,11 +11,7 @@
       Filter,
       Logotype,
       MainMenu,
-      Button,
-      Glitchscape,
-      ArrowRight,
-      ArrowLeft,
-      Menu
+      Glitchscape
     },
     data() {
       return {
@@ -25,11 +19,11 @@
         pov: '',
         quality: '',
         context: '',
+        device: 'desktop',
         transition: 'scale-down',
         scroll: 0,
         pageHeight: NaN,
-        isGlitched: false,
-        device: 'desktop'
+        isGlitched: false
       }
     },
     watch: {
@@ -86,54 +80,10 @@
   <Logotype />
   <Transition name="pull-down" style="--delay: var(--delay-very-late)" @after-leave="onAfterLeave" appear>
     <MainMenu
-      :logotypeColor="context === 'id' ? 'var(--color-soil)' : 'url(#gradient-biscarosse-sunset)'"
-      :background="context === 'id' ? 'var(--color-soft-wind)' : 'transparent'"
       :scroll="scroll"
-    >
-      <template #left-part>
-        <Transition name="switch" mode="out-in">
-          <Button
-            v-if="context === 'universes'"
-            type="secondary"
-            :label="$t('global.back.home')"
-            path="/"
-            :layout="device != 'mobile' ? 'left-icon' : 'icon-only'"
-            theme="dark"
-          >
-            <template #icon>
-              <ArrowLeft :size="24" />
-            </template>
-          </Button>
-          <Button
-            v-else-if="context === 'work'"
-            type="secondary"
-            :label="$t('global.menu')"
-            path="/_universes"
-            :layout="device != 'mobile' ? 'left-icon' : 'icon-only'"
-            theme="dark"
-          >
-            <template #icon>
-              <Menu :size="24" />
-            </template>
-          </Button>
-        </Transition>
-      </template>
-      <template #right-part>
-        <Transition name="switch" mode="out-in">
-          <Button
-            v-if="context === 'id'"
-            type="primary"
-            :label="$t('global.back.home')"
-            path="/"
-            :layout="device != 'mobile' ? 'right-icon' : 'icon-only'"
-          >
-            <template #icon>
-              <ArrowRight :size="24" />
-            </template>
-          </Button>
-        </Transition>
-      </template>
-    </MainMenu>
+      :context="context"
+      :device="device"
+    />
   </Transition>
   <RouterView @scroll.passive="getScrollParams" v-slot="{ Component, route }">
     <Transition :name="transition" @after-enter="unglitch" @before-leave="glitch">

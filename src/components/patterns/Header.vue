@@ -1,6 +1,6 @@
 <script lang="ts">
   export default {
-    name: 'MainMenu',
+    name: 'Header',
     props: {
       logotypeColor: {
         type: String,
