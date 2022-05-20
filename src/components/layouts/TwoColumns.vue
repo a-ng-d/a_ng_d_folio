@@ -28,23 +28,29 @@
 </template>
 
 <style scoped lang="sass">
+  @use '@/assets/base.sass' as device
+
   // Structure
   .col-2
     display: flex
     flex-flow: column nowrap
     padding: 0 var(--layout-center)
-    gap: var(--layout-title-gap) 0
+    gap: var(--layout-title-gap)
 
     &__columns
       display: flex
-      flex-flow: row nowrap
-      gap: 0 var(--layout-column-gap)
+      gap: var(--layout-column-gap)
 
     &__column
       display: flex
       flex-flow: column nowrap
       flex: 1
-      gap: var(--layout-title-gap) 0
+      gap: var(--layout-title-gap)
+
+  @include device.mobile
+    .col-2
+      &__columns
+        flex-flow: column nowrap
 
   // Aspect`
   [data-theme="dark"]

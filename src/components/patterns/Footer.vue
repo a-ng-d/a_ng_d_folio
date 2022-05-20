@@ -50,24 +50,23 @@
 
 <style scoped lang="sass">
   @use '@/assets/text-styles.sass' as text
+  @use '@/assets/base.sass' as device
 
   // Structure
   .footer
     grid-area: footer
     display: flex
-    flex-flow: row nowrap
     justify-content: v-bind(flex)
     align-self: center
     padding: var(--layout-column-gap)
 
     &__tag
       display: flex
-      flex-flow: row nowrap
       align-items: center
-      height: var(--footer-tag-height-size)
+      min-height: var(--footer-tag-height-size)
       border-radius: calc(var(--footer-tag-height-size) / 2)
       gap: calc(var(--footer-tag-height-size) / 8)
-      padding: 0 calc(var(--footer-tag-height-size) / 2)
+      padding: calc(var(--footer-tag-height-size) / 4) calc(var(--footer-tag-height-size) / 2)
       color: var(--text-color)
       background-color: var(--background-color)
 
@@ -78,6 +77,10 @@
       .label
         &:after
           --border-size: 2rem
+
+  @include device.mobile
+    .footer
+      justify-content: center
 
   // Aspect
   .footer

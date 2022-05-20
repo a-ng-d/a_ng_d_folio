@@ -123,7 +123,7 @@
   --sizing-xxl-900: calc(var(--scale-xxl-900) * 1rem)
 
   //// Font size
-  --font-size-ref: 6.25%
+  --font-size-ref: 1px
   --font-size-xs-000: calc(var(--scale-xs-000) * 1rem)
   --font-size-s-000: calc(var(--scale-s-000) * 1rem)
   --font-size-s-100: calc(var(--scale-s-100) * 1rem)
@@ -207,6 +207,10 @@
   --delay-late: calc(var(--duration-step) * 1)
   --delay-very-late: calc(var(--duration-step) * 2)
 
+  // Devices
+  --device-tablet: 1024rem
+  --device-mobile: 464rem
+
   // Semantic
   //// Colors
   --text-color: var(--color-soil)
@@ -235,10 +239,15 @@
   --layout-title-gap: var(--spacing-l-200)
   --layout-column-gap: var(--spacing-m-200)
   --layout-paragraph-gap: var(--spacing-m-000)
+  --layout-columns: 9
+  --layout-areas: "header header header header header header header header header header header" "main main main main main main main main main main main" "footer footer footer footer footer footer footer footer footer footer footer"
 
   --rich-external-link-gap: var(--spacing-m-000)
 
   /// Sizing
+  --icon-size-regular: var(--sizing-m-200)
+  --icon-size-large: var(--sizing-l-200)
+
   --border-size: var(--sizing-xs-000)
   --border-large-size: var(--sizing-s-000)
 
@@ -248,6 +257,7 @@
   --button-border-size: var(--sizing-xs-000)
 
   --header-height-size: var(--sizing-xxl-600)
+  --logotype-size: var(--sizing-xxl-000)
 
   --footer-height-size: var(--spacing-xl-200)
   --footer-tag-height-size: var(--sizing-l-000)

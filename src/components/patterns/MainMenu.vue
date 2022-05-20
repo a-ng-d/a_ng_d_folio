@@ -34,7 +34,7 @@
       <slot name="left-part"></slot>
     </div>
     <div class="main-menu__logotype">
-      <svg width="128" height="128" viewBox="0 0 500 500">
+      <svg viewBox="0 0 500 500">
         <use href="#logotype" />
       </svg>
     </div>
@@ -48,7 +48,7 @@
   // Structure
   .main-menu
     position: fixed
-    width: 100%
+    width: 100vw
     height: var(--header-height-size)
     z-index: 2
     display: flex
@@ -70,6 +70,9 @@
       justify-content: flex-start
 
     &__logotype
+      width: var(--logotype-size)
+      height: var(--logotype-size)
+
       svg
         transition: var(--slow-transition)
         fill: v-bind(logotypeColor)

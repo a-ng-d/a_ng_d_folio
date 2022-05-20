@@ -483,6 +483,8 @@
 
         sk.windowResized = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
 
+        sk.deviceTurned = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
+
       })
     }
   }
@@ -502,8 +504,8 @@
     top: 0
 
     .veil
-      width: inherit
-      height: inherit
+      width: 100%
+      height: 100%
       position: absolute
       z-index: 1
       mix-blend-mode: v-bind('veil.blend')

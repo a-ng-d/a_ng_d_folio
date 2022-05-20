@@ -23,6 +23,8 @@
 </template>
 
 <style scoped lang="sass">
+  @use '@/assets/base.sass' as device
+
   // Structure
   .col-1
     display: flex
@@ -37,6 +39,20 @@
 
       & > :deep(*)
         flex: 0 1 calc(50% - var(--layout-column-gap))
+
+    @include device.mobile
+      &__content
+        flex-flow: row nowrap
+        overflow: auto
+        margin: 0 calc(var(--layout-margin) * -1)
+        padding: var(--spacing-xs-000) var(--layout-margin)
+
+        &::-webkit-scrollbar
+          display: none
+
+        & > :deep(*)
+          flex: none
+          width: 75vw
 
     // Aspect
     [data-theme="dark"]

@@ -65,6 +65,7 @@
 
 <style scoped lang="sass">
   @use '@/assets/text-styles.sass' as text
+  @use '@/assets/base.sass' as device
 
   // Structure
   .jumbotron
@@ -98,4 +99,13 @@
       display: flex
       justify-content: space-between
       gap: var(--spacing-xl-000)
+
+  @include device.mobile
+    .jumbotron
+      &__actions
+        flex-flow: column nowrap
+        gap: var(--spacing-l-000)
+
+        & > a
+          width: 100%
 </style>

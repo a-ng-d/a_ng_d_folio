@@ -13,8 +13,8 @@
 html, body
   min-height: 100vh
   color: var(--text-color)
-  @include text.current
   font-size: var(--font-size-ref)
+  overflow: hidden
   text-rendering: optimizeLegibility
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
@@ -68,3 +68,12 @@ p.enhanced
 
 p + p
   margin: var(--text-paragraph-space) 0 0 0
+
+// Responsive
+@mixin tablet
+  @media (min-width: 461rem) and (max-width: 1024rem)
+    @content
+
+@mixin mobile
+  @media (max-width: 28.75rem)
+    @content

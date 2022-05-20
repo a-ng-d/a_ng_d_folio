@@ -34,7 +34,6 @@
   // Structure
   .rich-external-link
     display: flex
-    flex-flow: row nowrap
     gap: 0 var(--layout-column-gap)
     padding: var(--spacing-l-000)
     border: var(--border-size) solid transparent
@@ -52,6 +51,10 @@
       align-items: center
       border-radius: calc(var(--rich-external-link-size) / 2)
       border: var(--border-large-size) solid var(--border-color)
+
+      &:deep(svg)
+        width: var(--icon-size-large)
+        height: var(--icon-size-large)
 
     &__content
       display: flex

@@ -28,7 +28,8 @@
         transition: 'scale-down',
         scroll: 0,
         pageHeight: NaN,
-        isGlitched: false
+        isGlitched: false,
+        device: 'desktop'
       }
     },
     watch: {
@@ -72,6 +73,10 @@
       unglitch() {
         this.isGlitched = false
       }
+    },
+    mounted() {
+      window.innerWidth < 461 ? this.device = 'mobile' : this.device
+      window.onresize = () => window.innerWidth < 461 ? this.device = 'mobile' : this.device = 'desktop'
     }
   }
 </script>
@@ -92,7 +97,7 @@
             type="secondary"
             :label="$t('global.back.home')"
             path="/"
-            layout="left-icon"
+            :layout="device != 'mobile' ? 'left-icon' : 'icon-only'"
             theme="dark"
           >
             <template #icon>
@@ -104,7 +109,7 @@
             type="secondary"
             :label="$t('global.menu')"
             path="/_universes"
-            layout="left-icon"
+            :layout="device != 'mobile' ? 'left-icon' : 'icon-only'"
             theme="dark"
           >
             <template #icon>
@@ -120,7 +125,7 @@
             type="primary"
             :label="$t('global.back.home')"
             path="/"
-            layout="right-icon"
+            :layout="device != 'mobile' ? 'right-icon' : 'icon-only'"
           >
             <template #icon>
               <ArrowRight :size="24" />
@@ -142,17 +147,26 @@
   @use '@/assets/tokens.sass'
   @use '@/assets/base.sass'
   @use '@/assets/animations.sass'
+  @use '@/assets/base.sass' as device
 
   // Structure
   .page
     display: grid
-    grid-template-columns: var(--layout-margin) repeat(9, 1fr) var(--layout-margin)
-    grid-template-rows: var(--header-height-size) 1fr var(--footer-height-size)
+    grid-template-columns: var(--layout-margin) repeat(var(--layout-columns), 1fr) var(--layout-margin)
+    grid-template-rows: var(--header-height-size) 1fr min-content
     column-gap: var(--layout-column-gap)
-    grid-template-areas: "header header header header header header header header header header header" "main main main main main main main main main main main" "footer footer footer footer footer footer footer footer footer footer footer"
+    grid-template-areas: var(--layout-areas)
     width: 100vw
     height: 100vh
     z-index: 1
     overflow-x: hidden
     overflow-y: scroll
+
+  @include device.mobile
+    :root
+      --font-size-ref: 0.75px
+      --layout-margin: var(--spacing-l-000)
+      --layout-center: var(--spacing-l-000)
+      --layout-columns: 3
+      --layout-areas: "header header header header header" "main main main main main" "footer footer footer footer footer"
 </style>

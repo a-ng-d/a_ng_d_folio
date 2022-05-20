@@ -28,12 +28,12 @@
     display: flex
     flex-flow: column nowrap
     padding: 0 var(--layout-center)
-    gap: var(--layout-title-gap) 0
+    gap: var(--layout-title-gap)
 
     &__content
       display: flex
       flex-flow: column nowrap
-      gap: var(--layout-box-gap) 0
+      gap: var(--layout-box-gap)
 
     // Aspect
     [data-theme="dark"]

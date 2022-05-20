@@ -145,6 +145,10 @@
       border-radius: calc(var(--button-height-size) / 2)
       border: var(--button-border-size) solid transparent
 
+      &:deep(svg)
+        width: var(--icon-size-regular)
+        height: var(--icon-size-regular)
+
     &__label
       display: flex
       flex: 1

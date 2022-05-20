@@ -107,6 +107,9 @@
 </template>
 
 <style scoped lang="sass">
+  @use '@/assets/base.sass' as device
+
+  // Structure
   .menu
     grid-area: main
     padding: var(--spacing-xl-600) var(--layout-center)
@@ -127,10 +130,18 @@
     &__items
       display: flex
       flex: 1
-      flex-flow: row nowrap
       gap: 0 var(--layout-column-gap)
       padding: 0
 
       & > li
         flex: 1
+
+  @include device.mobile
+    .menu
+      &__info
+        flex: none
+
+      &__items
+        flex-flow: column nowrap
+
 </style>
