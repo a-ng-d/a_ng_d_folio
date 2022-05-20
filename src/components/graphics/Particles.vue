@@ -22,6 +22,8 @@
           units = [],
           time = 0
 
+        const random = (min, max) => Math.floor(Math.random() * (max - min)) + min
+
         // Elements
         class Unit {
 
@@ -37,7 +39,7 @@
               width: (this.position.x2 - this.position.x1)
             }
             this.params = {
-              color: sk.random(colors),
+              color: colors[random(0, colors.length)],
               weight: this.props.weight,
               move: this.size.width,
               speed: 0.1,
@@ -49,7 +51,7 @@
           }
 
           expand = (units) => {
-            this.params.order == 0 ? this.params.order = sk.int(sk.random(0, units)) : this.params.order == this.params.order
+            this.params.order == 0 ? this.params.order = sk.int(random(0, units)) : this.params.order == this.params.order
             if (!this.params.resetTime) {
               time = sk.millis()
               this.params.resetTime = true
@@ -91,7 +93,7 @@
 
           for (let limitY = 0 ; limitY <= sk.height ;) {
             for (let limitX = 0 ; limitX <= sk.width ;) {
-              let rX = sk.int(sk.random(8, 48))
+              let rX = sk.int(random(8, 48))
               units.push(new Unit({
                 x1: limitX,
                 y1: limitY,

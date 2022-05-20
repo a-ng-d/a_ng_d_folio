@@ -69,19 +69,21 @@
           mountains = [],
           clouds = []
 
+        const random = (min, max) => Math.floor(Math.random() * (max - min)) + min
+
         // Elements
         class Mountain {
 
           constructor(props) {
             this.props = props
             this.size = {
-              width: sk.int(sk.random(this.props.widthRange[0], this.props.widthRange[1])),
-              height: sk.int(sk.random(this.props.heightRange[0], this.props.heightRange[1]))
+              width: sk.int(random(this.props.widthRange[0], this.props.widthRange[1])),
+              height: sk.int(random(this.props.heightRange[0], this.props.heightRange[1]))
             }
             this.position = {
               x: sk.int(this.props.x),
               y: sk.int(this.props.y),
-              z: sk.int(sk.random(this.props.zRange[0], this.props.zRange[1]))
+              z: sk.int(random(this.props.zRange[0], this.props.zRange[1]))
             }
             this.params = {
               radius: sk.int(sk.abs(this.size.height / 4)),
@@ -134,9 +136,9 @@
               this.params.radians = sk.lerp(this.params.radians, sk.radians(0), this.params.speed)
 
             if (this.params.isGlitched) {
-              this.size.width = sk.random(this.backup.size.width * 2)
-              this.size.height = sk.random(this.backup.size.height)
-              this.params.radius = sk.random(this.backup.params.radius)
+              this.size.width = random(0, this.backup.size.width * 2)
+              this.size.height = random(0, this.backup.size.height)
+              this.params.radius = random(0, this.backup.params.radius)
             }
 
             this.draw()
@@ -163,7 +165,7 @@
           }
 
           draw = () => {
-            const randomColor = sk.random(Object.values(HSLColors))
+            const randomColor = Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
 
             sk.push()
               sk.translate(this.position.x, this.position.y, this.position.z)
@@ -186,13 +188,13 @@
           constructor(props) {
             this.props = props
             this.size = {
-              width: sk.int(sk.random(this.props.widthRange[0], this.props.widthRange[1])),
-              height: sk.int(sk.random(this.props.heightRange[0], this.props.heightRange[1]))
+              width: sk.int(random(this.props.widthRange[0], this.props.widthRange[1])),
+              height: sk.int(random(this.props.heightRange[0], this.props.heightRange[1]))
             }
             this.position = {
               x: sk.int(this.props.x),
               y: sk.int(this.props.y),
-              z: sk.int(sk.random(this.props.zRange[0], this.props.zRange[1]))
+              z: sk.int(random(this.props.zRange[0], this.props.zRange[1]))
             }
             this.params = {
               rows: [],
@@ -205,9 +207,9 @@
             }
             for (let i = 1 ; i < this.props.rows ; i++)
               this.params.rows.push({
-                width: sk.int(this.size.width * sk.random(0.5, 1)),
-                height: sk.int(this.size.height * sk.random(0.5, 1)),
-                x: sk.int(sk.random(-this.size.width / 4, this.size.width / 4))
+                width: sk.int(this.size.width * random(0.5, 1)),
+                height: sk.int(this.size.height * random(0.5, 1)),
+                x: sk.int(random(-this.size.width / 4, this.size.width / 4))
               })
             this.backup = {}
           }
@@ -254,9 +256,9 @@
 
             if (this.params.isGlitched) {
               this.params.rows.forEach(row => {
-                row.width = sk.random(this.size.width / 2)
-                row.height = sk.random(this.size.height / 2)
-                row.x = sk.random(-sk.width / 4, sk.width / 4)
+                row.width = random(0, this.size.width / 2)
+                row.height = random(0, this.size.height / 2)
+                row.x = random(-sk.width / 4, sk.width / 4)
               })
             }
 
@@ -276,7 +278,7 @@
 
           draw = () => {
             let offsetY = 0
-            const randomColor = sk.random(Object.values(HSLColors))
+            const randomColor = Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
 
             sk.push()
               sk.translate(this.position.x, this.params.start, this.position.z)
@@ -396,7 +398,7 @@
             mountains.push(new Mountain({
               widthRange: [sk.width * 0.25, sk.width],
               heightRange: [-sk.height * 0.2, -sk.height * 0.4],
-              x: sk.random(-sk.width * 4, sk.width * 4),
+              x: random(-sk.width * 4, sk.width * 4),
               y: sk.height * 0.5,
               zRange: [-sk.height * 4, 0],
               foreground: colors.creamySun,
@@ -406,10 +408,10 @@
             clouds.push(new Cloud({
               widthRange: [sk.width * 0.25, sk.width],
               heightRange: [-sk.height * 0.01, -sk.height * 0.05],
-              x: sk.random(-sk.width * 4, sk.width * 4),
-              y: sk.random(-sk.height * 0.2, sk.height * 0.4),
+              x: random(-sk.width * 4, sk.width * 4),
+              y: random(-sk.height * 0.2, sk.height * 0.4),
               zRange: [-sk.height * 4, 0],
-              rows: sk.int(sk.random(3, 5)),
+              rows: sk.int(random(3, 5)),
               foreground: colors.cream,
               background: colors.soil
             }))
