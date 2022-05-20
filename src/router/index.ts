@@ -44,8 +44,8 @@ const router = createRouter({
       meta: {
         title: i18n.global.t('universes.title'),
         veil: {
-          background: 'var(--color-candy-floss)',
-          blend: 'saturation'
+          background: 'var(--color-soil)',
+          blend: 'hard-light'
         },
         pov: 'reset',
         quality: 'high'
