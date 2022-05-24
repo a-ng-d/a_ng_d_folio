@@ -32,7 +32,7 @@
 <template>
   <Header
     :logotypeColor="context === 'id' ? 'var(--color-soil)' : 'url(#gradient-biscarosse-sunset)'"
-    :background="context === 'id' ? 'var(--color-soft-wind)' : 'transparent'"
+    :background="context === 'id' ? 'var(--color-candy-floss)' : 'transparent'"
     :scroll="scroll"
   >
     <template #left-part>

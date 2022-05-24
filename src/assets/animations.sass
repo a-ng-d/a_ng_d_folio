@@ -34,7 +34,7 @@
 .pull-down-leave-active,
 .pull-up-enter-active,
 .pull-up-leave-active
-  transition: transform var(--duration-jogging) var(--delay, 0ms) var(--ease-brake)  !important
+  transition: transform var(--duration-jogging) var(--delay, 0ms) var(--ease-brake) !important
 
 .pull-down-enter-from,
 .pull-down-leave-to
@@ -45,109 +45,93 @@
   transform: translateY(100%)
 
 // View transitions
-//// Go left
-.go-left-enter-active,
-.go-left-leave-active
-  position: absolute
-  transform-origin: 100% 50%
-  transition: background-color var(--duration-jogging) var(--delay, 0ms) ease, transform var(--duration-jogging) var(--delay, 0ms) var(--ease-rebound), opacity var(--duration-running) var(--delay, 0ms) ease
+//// Go up
+.go-up-enter-active,
+.go-up-leave-active
+  position: absolute !important
+  transition: all var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom-brake)
 
-.go-left-enter-active
-  transition-delay: var(--delay-late)
-
-.go-left-leave-from
+.go-up-leave-from
   background-color: hsla(0, 0%, 100%, 0)
-  transform: perspective(100vw) scale(1) rotateY(0)
-  opacity: 1
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
 
-.go-left-leave-to
-  background-color: hsla(0, 0%, 100%, .2)
-  transform: perspective(100vw) scale(.75) rotateY(-45deg)
-  opacity: 0
+.go-up-leave-to
+  background-color: hsla(0, 0%, 100%, .8)
+  clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)
 
-.go-left-enter-from
-  transform: translateX(-200vw) skewX(-5deg)
+.go-up-enter-from
+  background-color: hsla(0, 0%, 100%, .8)
+  transform: translateY(-200vw)
 
-.go-left-enter-to
-  transform: translateX(0) skewX(0)
+.go-up-enter-to
+  background-color: hsla(0, 0%, 100%, 0)
+  transform: translateX(0)
 
 //// Go right
 .go-right-enter-active,
 .go-right-leave-active
-  position: absolute
-  transform-origin: 0% 50%
-  transition: background-color var(--duration-jogging) var(--delay, 0ms) ease, transform var(--duration-jogging) var(--delay, 0ms) var(--ease-rebound), opacity var(--duration-running) var(--delay, 0ms) ease
-
-.go-right-enter-active
-  transition-delay: var(--delay-late)
+  position: absolute !important
+  transition: all var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom-brake)
 
 .go-right-leave-from
   background-color: hsla(0, 0%, 100%, 0)
-  transform: perspective(100vw) scale(1) rotateY(0)
-  opacity: 1
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
 
 .go-right-leave-to
-  background-color: hsla(0, 0%, 100%, .2)
-  transform: perspective(100vw) scale(.75) rotateY(45deg)
-  opacity: 0
+  background-color: hsla(0, 0%, 100%, .8)
+  clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)
 
 .go-right-enter-from
-  transform: translateX(200vw) skewX(5deg)
+  background-color: hsla(0, 0%, 100%, .8)
+  transform: translateX(200vw)
 
 .go-right-enter-to
-  transform: translateX(0) skewX(0)
+  background-color: hsla(0, 0%, 100%, 0)
+  transform: translateX(0)
 
 //// Go down
 .go-down-enter-active,
 .go-down-leave-active
-  position: absolute
-  transform-origin: 50% 0%
-  transition: background-color var(--duration-jogging) var(--delay, 0ms) ease, transform var(--duration-jogging) var(--delay, 0ms) var(--ease-rebound), opacity var(--duration-running) var(--delay, 0ms) ease
-
-.go-down-enter-active
-  transition-delay: var(--delay-late)
+  position: absolute !important
+  transition: all var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom-brake)
 
 .go-down-leave-from
   background-color: hsla(0, 0%, 100%, 0)
-  transform: perspective(100vw) scale(1) rotateX(0)
-  opacity: 1
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
 
 .go-down-leave-to
-  background-color: hsla(0, 0%, 100%, .2)
-  transform: perspective(100vw) scale(.75) rotateX(-45deg)
-  opacity: 0
+  background-color: hsla(0, 0%, 100%, 0)
+  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)
 
 .go-down-enter-from
-  transform: translateY(200vw) skewY(5deg)
+  background-color: hsla(0, 0%, 100%, .8)
+  transform: translateY(200vw)
 
 .go-down-enter-to
-  transform: translateY(0) skewY(0)
-
-//// Go up
-.go-up-enter-active,
-.go-up-leave-active
-  position: absolute
-  transform-origin: 50% 100%
-  transition: background-color var(--duration-jogging) var(--delay, 0ms) ease, transform var(--duration-jogging) var(--delay, 0ms) var(--ease-rebound), opacity var(--duration-running) var(--delay, 0ms) ease
-
-.go-up-enter-active
-  transition-delay: var(--delay-late)
-
-.go-up-leave-from
   background-color: hsla(0, 0%, 100%, 0)
-  transform: perspective(100vw) scale(1) rotateX(0)
-  opacity: 1
+  transform: translateX(0)
 
-.go-up-leave-to
-  background-color: hsla(0, 0%, 100%, .2)
-  transform: perspective(100vw) scale(.75) rotateX(45deg)
-  opacity: 0
+//// Go left
+.go-left-enter-active,
+.go-left-leave-active
+  position: absolute !important
+  transition: all var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom-brake)
 
-.go-up-enter-from
-  transform: translateY(-200vw) skewY(5deg)
+.go-left-leave-from
+  background-color: hsla(0, 0%, 100%, 0)
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
 
-.go-up-enter-to
-  transform: translateY(0) skewY(0)
+.go-left-leave-to
+  background-color: hsla(0, 0%, 100%, .8)
+  clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)
+
+.go-left-enter-from
+  background-color: hsla(0, 0%, 100%, .8)
+  transform: translateX(-200vw)
+
+.go-left-enter-to
+  background-color: hsla(0, 0%, 100%, 0)
+  transform: translateX(0)
 
 // Slide transitions
 .slide-up-enter-active,

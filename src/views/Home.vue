@@ -66,7 +66,7 @@
 <style scoped lang="sass">
   @use '@/assets/text-styles.sass' as text
   @use '@/assets/base.sass' as device
-
+    
   // Structure
   .jumbotron
     grid-area: main
