@@ -356,7 +356,7 @@
 
           push = () => this.params.isPushed = true
 
-          reset = () => this.animate(0.1, [0, -window.innerHeight * 0.2, 0], [0, 0, -window.innerHeight * 2])
+          reset = () => this.animate(0.05, [0, -window.innerHeight * 0.2, 0], [0, 0, -window.innerHeight * 2])
 
           zoom = (scrollPosition, pageLimitMax) => {
             this.position.z = sk.map(scrollPosition, 0, pageLimitMax, 0, this.center.z)
