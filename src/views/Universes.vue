@@ -69,7 +69,7 @@
   <main class="page">
     <section class="menu">
       <div class="menu__info">
-        <Transition name="switch" >
+        <Transition name="switch">
           <Container
             v-if="tooltip.isActive"
             :title="tooltip.title"
@@ -78,24 +78,26 @@
         </Transition>
       </div>
       <ul class="menu__items">
-        <li v-for="universe in universes" :key="universe.name">
-          <Button
-            :id="universe.name"
-            type="primary"
-            :path="universe.path"
-            layout="icon-only"
-            :animation="['slide-up', '0']"
-            position="random"
-            @mouseover="expandTooltip"
-            @mouseout="collapseTooltip"
-            @focusin="expandTooltip"
-            @focusout="collapseTooltip"
-            :theme="theme"
-          >
-            <template #icon>
-              <Component :is="universe.icon" :size="24" />
-            </template>
-          </Button>
+        <li v-for="(universe, index) in universes" :key="universe.name">
+          <Transition name="slide-up" appear :style="`--delay: calc(var(--duration-turtoise) + ${index * 100}ms)`">
+            <Button
+              :id="universe.name"
+              type="primary"
+              :path="universe.path"
+              layout="icon-only"
+              :animation="['slide-up', '0']"
+              position="random"
+              @mouseover="expandTooltip"
+              @mouseout="collapseTooltip"
+              @focusin="expandTooltip"
+              @focusout="collapseTooltip"
+              :theme="theme"
+            >
+              <template #icon>
+                <Component :is="universe.icon" :size="24" />
+              </template>
+            </Button>
+          </Transition>
         </li>
       </ul>
     </section>

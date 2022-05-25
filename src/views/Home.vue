@@ -23,37 +23,45 @@
   <main class="page">
     <section class="jumbotron">
       <div class="jumbotron__content" :data-theme="theme">
-        <h1 class="jumbotron__author">
-          <span class="jumbotron__author__instance">{{ $t("home.author") }}</span>
-          <span class="jumbotron__author__instance">{{ $t("home.author") }}</span>
-        </h1>
-        <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
-        </div>
+        <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 0ms)">
+          <h1 class="jumbotron__author">
+            <span class="jumbotron__author__instance">{{ $t("home.author") }}</span>
+            <span class="jumbotron__author__instance">{{ $t("home.author") }}</span>
+          </h1>
+        </Transition>
+        <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 100ms)">
+          <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
+        </Transition>
+      </div>
       <div class="jumbotron__actions">
-        <Button
-          type="secondary"
-          :label="$t('home.id')"
-          path="/_id"
-          layout="left-icon"
-          :animation="['slide-up', '0']"
-          :theme="theme"
-        >
-          <template #icon>
-            <ArrowLeft :size="24" />
-          </template>
-        </Button>
-        <Button
-          type="primary"
-          :label="$t('home.menu')"
-          path="/_universes"
-          layout="right-icon"
-          :animation="['slide-up', '0']"
-          :theme="theme"
-        >
-          <template #icon>
-            <ArrowRight :size="24" />
-          </template>
-        </Button>
+        <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 200ms)">
+          <Button
+            type="secondary"
+            :label="$t('home.id')"
+            path="/_id"
+            layout="left-icon"
+            :animation="['slide-up', '0']"
+            :theme="theme"
+          >
+            <template #icon>
+              <ArrowLeft :size="24" />
+            </template>
+          </Button>
+        </Transition>
+        <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 300ms)">
+          <Button
+            type="primary"
+            :label="$t('home.menu')"
+            path="/_universes"
+            layout="right-icon"
+            :animation="['slide-up', '0']"
+            :theme="theme"
+          >
+            <template #icon>
+              <ArrowRight :size="24" />
+            </template>
+          </Button>
+        </Transition>
       </div>
     </section>
     <Footer
@@ -66,7 +74,7 @@
 <style scoped lang="sass">
   @use '@/assets/text-styles.sass' as text
   @use '@/assets/base.sass' as device
-    
+
   // Structure
   .jumbotron
     grid-area: main

@@ -2,25 +2,37 @@
 
 :root
   // Colors
+  //// HSL
+  --hsl-deep-black: 240, 100%, 8%
+  --hsl-titanium-white: 0, 0%, 100%
+  --hsl-soil: 340, 2%, 30%
+  --hsl-sandstone: 345, 2%, 61%
+  --hsl-clay: 3, 4%, 78%
+  --hsl-cream: 3, 14%, 96%
+  --hsl-creamy-sun: 49, 90%, 62%
+  --hsl-clear-water: 209, 96%, 69%
+  --hsl-soft-wind: 209, 96%, 89%
+  --hsl-candy-floss: 266, 60%, 89%
+
   //// Values
-  --color-deep-black: hsla(240, 100%, 8%, 1)
-  --color-titanium-white: hsla(0, 0%, 100%, 1)
+  --color-deep-black: hsla(var(--hsl-deep-black), var(--alpha, 1))
+  --color-titanium-white: hsla(var(--hsl-titanium-white), var(--alpha, 1))
 
   //// Greys
-  --color-soil: hsla(340, 2%, 30%, 1)
-  --color-sandstone: hsla(345, 2%, 61%, 1)
-  --color-clay: hsla(3, 4%, 78%, 1)
-  --color-cream: hsla(3, 14%, 96%, 1)
+  --color-soil: hsla(var(--hsl-soil), var(--alpha, 1))
+  --color-sandstone: hsla(var(--hsl-sandstone), var(--alpha, 1))
+  --color-clay: hsla(var(--hsl-clay), var(--alpha, 1))
+  --color-cream: hsla(var(--hsl-cream), var(--alpha, 1))
 
   //// Yellows
-  --color-creamy-sun: hsla(49, 90%, 62%, 1)
+  --color-creamy-sun: hsla(var(--hsl-creamy-sun), var(--alpha, 1))
 
   //// Blues
-  --color-clear-water: hsla(209, 96%, 69%, 1)
-  --color-soft-wind: hsla(209, 96%, 89%, 1)
+  --color-clear-water: hsla((var(--hsl-clear-water)), var(--alpha, 1))
+  --color-soft-wind: hsla(var(--hsl-soft-wind), var(--alpha, 1))
 
   //// Pink
-  --color-candy-floss: hsla(266, 60%, 89%, 1)
+  --color-candy-floss: hsla(var(--hsl-candy-floss), var(--alpha, 1))
 
   //// Gradients
   --gradient-biscarosse-sunset: linear-gradient(180deg, var(--color-soft-wind) 0%, var(--color-candy-floss) 75%, var(--color-creamy-sun) 100%)

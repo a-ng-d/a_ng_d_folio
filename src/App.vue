@@ -15,7 +15,7 @@
     },
     data() {
       return {
-        veil: '',
+        filter: '',
         pov: '',
         quality: '',
         context: '',
@@ -30,7 +30,7 @@
       '$route' (to, from) {
         this.context = to.name
         document.title = to.meta.title
-        this.veil = to.meta.veil
+        this.filter = to.meta.filter
         this.pov = to.meta.pov
         this.quality = to.meta.quality
 
@@ -90,7 +90,7 @@
       <Component :is="Component" :key="route.path" />
     </Transition>
   </RouterView>
-  <Glitchscape :veil="veil" :pov="pov" :quality="quality" :isGlitched="isGlitched" :scroll="scroll" :pageHeight="pageHeight" />
+  <Glitchscape :filter="filter" :pov="pov" :quality="quality" :isGlitched="isGlitched" :scroll="scroll" :pageHeight="pageHeight" />
 </template>
 
 <style lang="sass">

@@ -30,14 +30,16 @@
 
 <template>
   <main class="page">
-    <article class="article">
-      <About :theme="theme" />
-      <Networks :theme="theme" />
-      <Career :theme="theme" />
-      <Stories :theme="theme" />
-      <Talks :theme="theme" />
-      <Workshops :theme="theme" />
-    </article>
+    <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 0ms) ; --starting-point: 128rem">
+      <article class="article">
+        <About :theme="theme" />
+        <Networks :theme="theme" />
+        <Career :theme="theme" />
+        <Stories :theme="theme" />
+        <Talks :theme="theme" />
+        <Workshops :theme="theme" />
+      </article>
+    </Transition>
     <Footer
       alignment="center"
       :theme="theme"

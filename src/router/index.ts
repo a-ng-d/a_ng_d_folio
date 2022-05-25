@@ -15,9 +15,11 @@ const router = createRouter({
       component: Home,
       meta: {
         title: i18n.global.t('title'),
-        veil: {
-          background: 'var(--color-creamy-sun)',
-          blend: 'exclusion'
+        filter: {
+          hue: '162deg',
+          brightness: '0.5',
+          invert: '0',
+          saturation: '0.75'
         },
         pov: 'reset',
         quality: 'high'
@@ -29,9 +31,11 @@ const router = createRouter({
       component: Id,
       meta: {
         title: i18n.global.t('id.title'),
-        veil: {
-          background: 'var(--color-candy-floss)',
-          blend: 'hard-light'
+        filter: {
+          hue: '-78deg',
+          brightness: '0.3',
+          invert: '1',
+          saturation: '0.75'
         },
         pov: 'scrolling…',
         quality: 'high'
@@ -43,9 +47,11 @@ const router = createRouter({
       component: Universes,
       meta: {
         title: i18n.global.t('universes.title'),
-        veil: {
-          background: 'var(--color-soft-wind)',
-          blend: 'exclusion'
+        filter: {
+          hue: '313deg',
+          brightness: '0.5',
+          invert: '0',
+          saturation: '0.75'
         },
         pov: 'reset',
         quality: 'high'
@@ -62,9 +68,11 @@ const router = createRouter({
       component: Work,
       meta: {
         title: i18n.global.t('work.title'),
-        veil: {
-          background: 'var(--color-sandstone)',
-          blend: 'exclusion'
+        filter: {
+          hue: '162deg',
+          brightness: '0.5',
+          invert: '0',
+          saturation: '0.75'
         },
         pov: 'reset',
         quality: 'low'
@@ -93,9 +101,11 @@ const router = createRouter({
       component: Attributions,
       meta: {
         title: i18n.global.t('attributions.title'),
-        veil: {
-          background: 'var(--color-soft-wind)',
-          blend: 'hard-light'
+        filter: {
+          hue: '162deg',
+          brightness: '0.5',
+          invert: '0',
+          saturation: '0.75'
         },
         pov: 'reset',
         quality: 'high'

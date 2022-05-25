@@ -49,7 +49,7 @@
 .go-up-enter-active,
 .go-up-leave-active
   position: absolute !important
-  transition: all var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom-brake)
+  transition: all var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom-brake) !important
 
 .go-up-leave-from
   background-color: hsla(0, 0%, 100%, 0)
@@ -61,17 +61,17 @@
 
 .go-up-enter-from
   background-color: hsla(0, 0%, 100%, .8)
-  transform: translateY(-200vw)
+  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)
 
 .go-up-enter-to
   background-color: hsla(0, 0%, 100%, 0)
-  transform: translateX(0)
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
 
 //// Go right
 .go-right-enter-active,
 .go-right-leave-active
   position: absolute !important
-  transition: all var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom-brake)
+  transition: all var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom-brake) !important
 
 .go-right-leave-from
   background-color: hsla(0, 0%, 100%, 0)
@@ -83,17 +83,17 @@
 
 .go-right-enter-from
   background-color: hsla(0, 0%, 100%, .8)
-  transform: translateX(200vw)
+  clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)
 
 .go-right-enter-to
   background-color: hsla(0, 0%, 100%, 0)
-  transform: translateX(0)
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
 
 //// Go down
 .go-down-enter-active,
 .go-down-leave-active
   position: absolute !important
-  transition: all var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom-brake)
+  transition: all var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom-brake) !important
 
 .go-down-leave-from
   background-color: hsla(0, 0%, 100%, 0)
@@ -105,17 +105,17 @@
 
 .go-down-enter-from
   background-color: hsla(0, 0%, 100%, .8)
-  transform: translateY(200vw)
+  clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)
 
 .go-down-enter-to
   background-color: hsla(0, 0%, 100%, 0)
-  transform: translateX(0)
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
 
 //// Go left
 .go-left-enter-active,
 .go-left-leave-active
   position: absolute !important
-  transition: all var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom-brake)
+  transition: all var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom-brake) !important
 
 .go-left-leave-from
   background-color: hsla(0, 0%, 100%, 0)
@@ -127,51 +127,23 @@
 
 .go-left-enter-from
   background-color: hsla(0, 0%, 100%, .8)
-  transform: translateX(-200vw)
+  clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)
 
 .go-left-enter-to
   background-color: hsla(0, 0%, 100%, 0)
-  transform: translateX(0)
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
 
 // Slide transitions
 .slide-up-enter-active,
 .slide-up-leave-active
-  transition: transform var(--duration-jogging) var(--ease-rebound), opacity var(--duration-running) ease
+  transition: transform var(--duration-running) var(--delay, 0ms) var(--ease-rebound), opacity var(--duration-hare) var(--delay, 0ms) ease !important
 
 .slide-up-enter-from
-  transform: translateY(var(--start-position))
+  transform: translateY(var(--starting-point, 100%))
   opacity: 0
 
 .slide-up-leave-to
-  transform: translateY(calc(var(--start-position) * -1))
-  opacity: 0
-
-// Fade transitions
-.fade-enter-active,
-.fade-leave-active
-  transition: opacity var(--duration-turtoise) ease
-  transition-delay: calc(var(--order) * var(--delay-late))
-
-.fade-enter-from,
-.fade-leave-to
-  opacity: 0
-
-// Scale transitions
-.scale-up-enter-active,
-.scale-up-leave-active,
-.scale-down-enter-active,
-.scale-down-leave-active
-  transition: transform var(--duration-turtoise) var(--ease-peps), opacity var(--duration-jogging) ease
-  transform-origin: 50vw 50vh
-
-.scale-down-enter-from,
-.scale-down-leave-to
-  transform: scale(1.2)
-  opacity: 0
-
-.scale-up-enter-from,
-.scale-up-leave-to
-  transform: scale(0.8)
+  transform: translateY(0)
   opacity: 0
 
 // Switch transitions
@@ -180,10 +152,10 @@
   transform-origin: center center
 
 .switch-enter-active
-  transition: transform var(--duration-running) var(--ease-rebound), opacity var(--duration-hare) ease !important
+  transition: transform var(--duration-running) var(--delay, 0ms) var(--ease-rebound), opacity var(--duration-hare) var(--delay, 0ms) ease !important
 
 .switch-leave-active
-  transition: transform var(--duration-running) var(--ease-inverted-rebound), opacity var(--duration-hare) ease var(--delay-late) !important
+  transition: transform var(--duration-running) var(--delay, 0ms) var(--ease-inverted-rebound), opacity var(--duration-hare) var(--delay, var(--delay-late)) ease !important
 
 .switch-enter-from,
 .switch-leave-to
@@ -193,4 +165,4 @@
   transform: translateY(50%)
 
 .switch-leave-to
-  transform: translateY(50%)
+  transform: translateY(-50%)

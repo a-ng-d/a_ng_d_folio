@@ -5,7 +5,7 @@
   export default {
     name: 'Glitchscape',
     props: {
-      veil: [Object, String],
+      filter: [Object, String],
       pov: {
         type: String,
         default: 'reset'
@@ -57,7 +57,7 @@
       this.glitchscape = new P5((sk) => {
 
         const
-          mNumber = 240,
+          mNumber = 140,
           cNumber = mNumber / 4,
           quality = 50,
           colors = HSLColors
@@ -401,7 +401,7 @@
               x: random(-sk.width * 4, sk.width * 4),
               y: sk.height * 0.5,
               zRange: [-sk.height * 4, 0],
-              foreground: colors.creamySun,
+              foreground: colors.softWind,
               background: colors.soil
             }))
           for (let i = 0 ; i < cNumber ; i++)
@@ -492,8 +492,7 @@
 </script>
 
 <template>
-  <div class="background" id="sketch">
-    <div class="veil"></div>
+  <div class="background" id="sketch" :style="`filter: hue-rotate(${filter.hue}) brightness(${filter.brightness}) invert(${filter.invert}) saturate(${filter.saturation})`">
   </div>
 </template>
 
@@ -503,13 +502,5 @@
     height: 100vh
     position: fixed
     top: 0
-
-    .veil
-      width: 100%
-      height: 100%
-      position: absolute
-      z-index: 1
-      mix-blend-mode: v-bind('veil.blend')
-      background: v-bind('veil.background')
-      transition: var(--slow-transition)
+    transition: var(--slow-transition)
 </style>
