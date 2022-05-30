@@ -17,10 +17,11 @@
       "root": "Back to root",
       "home": "Back to Home"
     },
-    "menu": "Menu"
+    "menu": "Menu",
+    "go": "Go deeper"
   },
   "id": {
-    "title": "nG⚡️ aka. Aurélien Grimaud﹒ID card",
+    "title": "ID card﹒nG⚡️ aka. Aurélien Grimaud",
     "about": {
       "title": "你好 nǐ hǎo!",
       "experience": "I’m Aurélien all over the world or 立安 lì ān in China. Currently Product designer at <span class='label' data-highlighted='true'>iObeya</span> for {year} years and an UI + </code> enthousiast.",
@@ -143,7 +144,7 @@
     }
   },
   "universes": {
-    "title": "nG⚡️ aka. Aurélien Grimaud﹒Universes",
+    "title": "Universes﹒nG⚡️ aka. Aurélien Grimaud",
     "core": {
       "title": "_Core",
       "description": "My adventure as a Product Designer at iObeya teach me what I really love to do and what I really want to keep doing during my career."
@@ -166,10 +167,37 @@
     }
   },
   "work": {
-    "title": "nG⚡️ aka. Aurélien Grimaud﹒Selected work"
+    "title": "Selected work﹒nG⚡️ aka. Aurélien Grimaud",
+    "date": "Date",
+    "_ui_color_palette": {
+      "title": "_ui_color_palette",
+      "description": "Accessible color palettes with consistant lightness and contrast with Figma",
+      "date": "2022・Monthly release",
+      "image": "@/assets/images/work/_ui_color_palette/main.png"
+    },
+    "_jeprendsquoi": {
+      "title": "_jeprendsquoi",
+      "description": "Fruits and vegetables seasonality companion",
+      "date": "2021・Beta released"
+    },
+    "_jean_bobby_radio": {
+      "title": "_jean_bobby_radio",
+      "description": "iObeya internal and participatory web radio",
+      "date": "2020・On-air"
+    },
+    "_awesome_ipsums": {
+      "title": "_awesome_ipsums",
+      "description": "Design team’s own Lorem Ipsums from a simple Google Spreadsheet",
+      "date": "2019・Running"
+    },
+    "_iobeya_whiteboarding_session": {
+      "title": "_iobeya_whiteboarding_session",
+      "description": "Go-to-SaaS solution to enhance iObeya virality and deployment",
+      "date": "2018・Released"
+    }
   },
   "attributions": {
-    "title": "nG⚡️ aka. Aurélien Grimaud﹒Attributions",
+    "title": "Attributions﹒nG⚡️ aka. Aurélien Grimaud",
     "back": "",
     "ui": {
       "title": "User Interface assets",

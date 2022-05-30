@@ -1,6 +1,7 @@
 <script lang="ts">
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
+  import ScrollingText from '@/components/ui/ScrollingText.vue'
   import About from '@/contexts/About.vue'
   import Networks from '@/contexts/Networks.vue'
   import Career from '@/contexts/Career.vue'
@@ -13,6 +14,7 @@
     components: {
       Footer,
       Button,
+      ScrollingText,
       About,
       Networks,
       Career,
@@ -51,4 +53,11 @@
   // Structure
   .article
     grid-area: main
+
+  .scrolling-text
+    width: auto
+    height: 100vh
+    position: fixed
+    top: 0
+    left: 0
 </style>

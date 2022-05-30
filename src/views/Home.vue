@@ -1,6 +1,7 @@
 <script lang="ts">
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
+  import ScrollingText from '@/components/ui/ScrollingText.vue'
   import { ArrowLeft, ArrowRight } from 'lucide-vue-next'
 
   export default {
@@ -8,6 +9,7 @@
     components: {
       Footer,
       Button,
+      ScrollingText,
       ArrowLeft,
       ArrowRight
     },
@@ -24,10 +26,10 @@
     <section class="jumbotron">
       <div class="jumbotron__content" :data-theme="theme">
         <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 0ms)">
-          <h1 class="jumbotron__author">
-            <span class="jumbotron__author__instance">{{ $t("home.author") }}</span>
-            <span class="jumbotron__author__instance">{{ $t("home.author") }}</span>
-          </h1>
+          <ScrollingText
+            :label="$t('home.author')"
+            :theme="theme"
+          />
         </Transition>
         <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 100ms)">
           <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
@@ -40,7 +42,6 @@
             :label="$t('home.id')"
             path="/_id"
             layout="left-icon"
-            :animation="['slide-up', '0']"
             :theme="theme"
           >
             <template #icon>
@@ -54,7 +55,6 @@
             :label="$t('home.menu')"
             path="/_universes"
             layout="right-icon"
-            :animation="['slide-up', '0']"
             :theme="theme"
           >
             <template #icon>
@@ -82,7 +82,7 @@
     flex-flow: column nowrap
     justify-content: space-between
     padding: var(--spacing-xl-600) var(--layout-center)
-    color: var(--text-color-dark)
+    //color: var(--text-color-dark)
 
     &[data-theme="dark"]
       --text-color: var(--color-cream)
@@ -94,14 +94,6 @@
       align-items: center
       gap: var(--layout-paragraph-gap)
       justify-content: center
-
-    &__author
-      display: flex
-      width: 100vw
-
-    &__author__instance
-      display: block
-      animation: across 16000ms infinite forwards linear
 
     &__actions
       display: flex

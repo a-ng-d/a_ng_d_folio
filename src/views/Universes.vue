@@ -85,7 +85,6 @@
               type="primary"
               :path="universe.path"
               layout="icon-only"
-              :animation="['slide-up', '0']"
               position="random"
               @mouseover="expandTooltip"
               @mouseout="collapseTooltip"

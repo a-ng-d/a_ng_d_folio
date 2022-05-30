@@ -36,7 +36,7 @@
     :scroll="scroll"
   >
     <template #left-part>
-      <Transition name="switch">
+      <Transition name="switch" mode="out-in">
         <Button
           v-if="context === 'universes'"
           type="secondary"
@@ -64,7 +64,7 @@
       </Transition>
     </template>
     <template #right-part>
-      <Transition name="switch">
+      <Transition name="switch" mode="out-in">
         <Button
           v-if="context === 'id'"
           type="primary"
