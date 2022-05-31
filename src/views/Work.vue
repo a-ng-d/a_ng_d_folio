@@ -25,14 +25,26 @@
     methods: {
       previousProject() {
         this.position == 0 ? this.position = (this.projects.length - 1) : this.position--
-        this.currentProject = this.projects[this.position]
-        this.imagePath = `src/assets/images/work/${this.projects[this.position]}/main.png`
+        this.switchProject()
       },
       nextProject() {
         this.position == (this.projects.length - 1) ? this.position = 0 : this.position++
+        this.switchProject()
+      },
+      switchProject() {
         this.currentProject = this.projects[this.position]
         this.imagePath = `src/assets/images/work/${this.projects[this.position]}/main.png`
+        this.$emit('projectsMeta', {
+          total: this.projects.length,
+          active: this.position
+        })
       }
+    },
+    created() {
+      this.$emit('projectsMeta', {
+        total: this.projects.length,
+        active: this.position
+      })
     }
   }
 </script>
@@ -132,7 +144,6 @@
         top: 50%
         transform: translateY(-50%)
 
-
     &__summary
       flex: 0 1 33%
       display: flex
@@ -151,7 +162,7 @@
     &__title
       display: flex
       flex-flow: column nowrap
-      gap: calc(var(--layout-paragraph-gap) / 2)
+      gap: var(--text-label-space)
 
     &__data
       display: flex

@@ -23,7 +23,8 @@
         transition: 'scale-down',
         scroll: 0,
         pageHeight: NaN,
-        isGlitched: false
+        isGlitched: false,
+        dots: {}
       }
     },
     watch: {
@@ -66,6 +67,9 @@
       },
       unglitch() {
         this.isGlitched = false
+      },
+      setDots(obj) {
+        this.dots = obj
       }
     },
     mounted() {
@@ -83,11 +87,12 @@
       :scroll="scroll"
       :context="context"
       :device="device"
+      :dots="dots"
     />
   </Transition>
   <RouterView @scroll.passive="getScrollParams" v-slot="{ Component, route }">
-    <Transition :name="transition" @after-enter="unglitch" @before-leave="glitch">
-      <Component :is="Component" :key="route.path" />
+    <Transition :name="transition" @after-enter="" @before-leave="">
+      <Component :is="Component" :key="route.path" @projectsMeta="setDots($event)" />
     </Transition>
   </RouterView>
   <Glitchscape :filter="filter" :pov="pov" :quality="quality" :isGlitched="isGlitched" :scroll="scroll" :pageHeight="pageHeight" />

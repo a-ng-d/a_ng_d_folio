@@ -53,7 +53,7 @@
     z-index: 2
     display: flex
     padding: 0 var(--layout-center)
-    gap: var(--layout-column-gap)
+    gap: var(--layout-section-gap)
     align-items: center
     justify-content: space-between
     transition: var(--simple-transition)

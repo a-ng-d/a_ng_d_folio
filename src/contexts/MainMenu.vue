@@ -1,6 +1,7 @@
 <script lang="ts">
   import Header from '@/components/patterns/Header.vue'
   import Button from '@/components/ui/Button.vue'
+  import Pagination from '@/components/ui/Pagination.vue'
   import { ArrowRight, ArrowLeft, Menu } from 'lucide-vue-next'
 
   export default {
@@ -8,6 +9,7 @@
     components: {
       Header,
       Button,
+      Pagination,
       ArrowRight,
       ArrowLeft,
       Menu
@@ -24,6 +26,10 @@
       scroll: {
         type: Number,
         default: 0
+      },
+      dots: {
+        type: Object,
+        default: {}
       }
     }
   }
@@ -76,6 +82,11 @@
             <ArrowRight :size="24" />
           </template>
         </Button>
+        <Pagination
+          v-else-if="context === 'work'"
+          :label="$t('work.friendlyName')"
+          :dots="dots"
+        />
       </Transition>
     </template>
   </Header>
