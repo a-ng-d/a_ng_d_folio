@@ -5,17 +5,31 @@
 
   export default {
     name: 'Particles',
+    props: {
+      isExpanded: Boolean,
+      weight: {
+        type: Number,
+        default: 8
+      }
+    },
     data() {
       return {
-        uuid: uuidv4()
+        uuid: uuidv4(),
+        particles: null
+      }
+    },
+    watch: {
+      isExpanded(to, from) {
+        if(to) this.particles.expand()
+        else this.particles.collapse()
       }
     },
     mounted() {
-      new P5((sk) => {
+        this.particles = new P5((sk) => {
 
         const
           colors = Object.values(HSLColors).filter(entry => entry.type === 'primary'),
-          weight = 8
+          weight = this.weight
 
         let
           fps = 30,
@@ -127,15 +141,9 @@
         }
 
         // Events
-        sk.mouseMoved = () => {
-          if (sk.mouseX >= 0 && sk.mouseX <= sk.width)
-            if (sk.mouseY >= 0 && sk.mouseY <= sk.height)
-              units.forEach(unit => unit.expand(units.length))
-            else
-              units.forEach(unit => unit.collapse())
-          else
-            units.forEach(unit => unit.collapse())
-        }
+        sk.expand = () => units.forEach(unit => unit.expand(units.length))
+
+        sk.collapse = () => units.forEach(unit => unit.collapse())
 
         sk.windowResized = () => {
           sk.resizeCanvas(this.$el.clientWidth, this.$el.clientHeight)

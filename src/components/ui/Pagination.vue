@@ -47,7 +47,7 @@
     &__dot
       flex: 1
       border-radius: calc(var(--sizing-s-000) / 2)
-      transition: var(--intermediate-transition)
+      transition: var(--duration-snail) all var(--ease-vroom)
 
       &--active
         flex: 4

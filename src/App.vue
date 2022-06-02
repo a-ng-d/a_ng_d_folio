@@ -62,12 +62,6 @@
       onAfterLeave(e) {
         e.style.transitionDelay = '0'
       },
-      glitch() {
-        this.isGlitched = true
-      },
-      unglitch() {
-        this.isGlitched = false
-      },
       setDots(obj) {
         this.dots = obj
       }

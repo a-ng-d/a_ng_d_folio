@@ -34,7 +34,8 @@
     data() {
       return {
         isExtensible: this.extensible ? '100%' : 'fit-content',
-        randomPosition: `position: absolute ; top: ${this.random(0, 80)}% ; left: ${this.random(0, 80)}%`
+        randomPosition: `position: absolute ; top: ${this.random(0, 80)}% ; left: ${this.random(0, 80)}%`,
+        isExpanded: false
       }
     },
     methods: {
@@ -48,7 +49,14 @@
 <template>
 
   <template v-if="layout === 'simple'">
-    <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="theme">
+    <RouterLink
+      :to="path"
+      class="button"
+      :class="`button--${type}`"
+      @mouseover="isExpanded = !isExpanded"
+      @mouseout="isExpanded = !isExpanded"
+      :data-theme="theme"
+    >
       <div class="button__content">
         <div class="button__label">
           <span>
@@ -57,26 +65,41 @@
         </div>
       </div>
       <div class="button__background">
-        <Particles />
+        <Particles :isExpanded="isExpanded" />
       </div>
     </RouterLink>
   </template>
 
   <template v-else-if="layout === 'icon-only'">
-    <RouterLink :to="path" class="button" :class="`button--${type}`" :style="position === 'random' ? randomPosition : ''" :data-theme="theme">
+    <RouterLink
+      :to="path"
+      class="button"
+      :class="`button--${type}`"
+      @mouseover="isExpanded = !isExpanded"
+      @mouseout="isExpanded = !isExpanded"
+      :style="position === 'random' ? randomPosition : ''"
+      :data-theme="theme"
+    >
       <div class="button__content">
         <div class="button__icon button__icon--transparent">
           <slot name="icon"></slot>
         </div>
       </div>
       <div class="button__background">
-        <Particles />
+        <Particles :isExpanded="isExpanded" />
       </div>
     </RouterLink>
   </template>
 
   <template v-else-if="layout === 'left-icon'">
-    <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="theme">
+    <RouterLink
+      :to="path"
+      class="button"
+      :class="`button--${type}`"
+      @mouseover="isExpanded = !isExpanded"
+      @mouseout="isExpanded = !isExpanded"
+      :data-theme="theme"
+    >
       <div class="button__content">
         <div class="button__icon">
           <slot name="icon"></slot>
@@ -88,13 +111,20 @@
         </div>
       </div>
       <div class="button__background">
-        <Particles />
+        <Particles :isExpanded="isExpanded" />
       </div>
     </RouterLink>
   </template>
 
   <template v-else-if="layout === 'right-icon'">
-    <RouterLink :to="path" class="button" :class="`button--${type}`" :data-theme="theme">
+    <RouterLink
+      :to="path"
+      class="button"
+      :class="`button--${type}`"
+      @mouseover="isExpanded = !isExpanded"
+      @mouseout="isExpanded = !isExpanded"
+      :data-theme="theme"
+    >
       <div class="button__content">
         <div class="button__label">
           <span>
@@ -106,7 +136,7 @@
         </div>
       </div>
       <div class="button__background">
-        <Particles />
+        <Particles :isExpanded="isExpanded" />
       </div>
     </RouterLink>
   </template>

@@ -182,7 +182,7 @@
     background-repeat: no-repeat
     background-size: cover
     background-position: center
-    transition: background var(--delay-snail) var(--ease-vroom)
+    transition: background var(--duration-snail) var(--ease-vroom)
 
   //Structure
   .work
