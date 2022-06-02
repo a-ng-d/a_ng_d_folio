@@ -82,7 +82,7 @@
 <template>
   <Filter />
   <Logotype />
-  <Transition name="pull-down" style="--delay: var(--delay-very-late)" @after-leave="onAfterLeave" appear>
+  <Transition name="pull-down" style="--delay: var(--delay-jogging)" @after-leave="onAfterLeave" appear>
     <MainMenu
       :scroll="scroll"
       :context="context"

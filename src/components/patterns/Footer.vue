@@ -89,7 +89,7 @@
       --background-color: var(--color-soil)
       --border-color: var(--color-cream)
 
-  .footer[data-theme="dark"]
+  [data-theme="dark"]
     .footer__tag
       --text-color: var(--color-soil)
       --background-color: var(--color-cream)

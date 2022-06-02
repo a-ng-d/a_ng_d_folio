@@ -29,6 +29,16 @@
   100%
     transform: translateX(-100%)
 
+@keyframes wheel
+  0%
+    transform: rotate(0deg) scale(1)
+    opacity: 1
+  80%
+    opacity: 0
+  100%
+    transform: rotate(var(--offset)) scale(0)
+    opacity: 0
+
 // Pull transitions
 .pull-down-enter-active,
 .pull-down-leave-active,
@@ -45,12 +55,18 @@
   transform: translateY(100%)
 
 // View transitions
-//// Go up
 .go-up-enter-active,
-.go-up-leave-active
+.go-up-leave-active,
+.go-right-enter-active,
+.go-right-leave-active,
+.go-down-enter-active,
+.go-down-leave-active,
+.go-left-enter-active,
+.go-left-leave-active
   position: absolute !important
   transition: all var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom) !important
 
+//// Go up
 .go-up-leave-from
   background-color: hsla(0, 0%, 100%, 0)
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
@@ -68,11 +84,6 @@
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
 
 //// Go right
-.go-right-enter-active,
-.go-right-leave-active
-  position: absolute !important
-  transition: all var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom) !important
-
 .go-right-leave-from
   background-color: hsla(0, 0%, 100%, 0)
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
@@ -90,11 +101,6 @@
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
 
 //// Go down
-.go-down-enter-active,
-.go-down-leave-active
-  position: absolute !important
-  transition: all var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom) !important
-
 .go-down-leave-from
   background-color: hsla(0, 0%, 100%, 0)
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
@@ -112,11 +118,6 @@
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
 
 //// Go left
-.go-left-enter-active,
-.go-left-leave-active
-  position: absolute !important
-  transition: all var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom) !important
-
 .go-left-leave-from
   background-color: hsla(0, 0%, 100%, 0)
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
@@ -134,17 +135,85 @@
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
 
 // Slide transitions
-.slide-up-enter-active,
-.slide-up-leave-active
-  transition: transform var(--duration-running) var(--delay, 0ms) var(--ease-rebound), opacity var(--duration-hare) var(--delay, 0ms) ease !important
+.slide-up-leave-active,
+.slide-right-leave-active,
+.slide-down-leave-active,
+.slide-left-leave-active
+  transition: transform var(--duration-jogging) var(--delay, 0ms) var(--ease-inverted-rebound), opacity var(--duration-running) calc(var(--delay, 0ms) + 500ms) ease !important
 
-.slide-up-enter-from
-  transform: translateY(var(--starting-point, 100%))
-  opacity: 0
+.slide-up-enter-active,
+.slide-right-enter-active,
+.slide-down-enter-active,
+.slide-left-enter-active
+  transition: transform var(--duration-jogging) var(--delay, 0ms) var(--ease-rebound), opacity var(--duration-running) var(--delay, 0ms) ease !important
+
+//// Slide up
+.slide-up-leave-from
+  transform: translateY(0)
+  opacity: 1
 
 .slide-up-leave-to
-  transform: translateY(0)
+  transform: translateY(calc(var(--offset, var(--spacing-xl-000)) * -1))
   opacity: 0
+
+.slide-up-enter-from
+  transform: translateY(var(--offset, var(--spacing-xl-000)))
+  opacity: 0
+
+.slide-up-enter-to
+  transform: translateY(0)
+  opacity: 1
+
+//// Slide right
+.slide-right-leave-from
+  transform: translateX(0)
+  opacity: 1
+
+.slide-right-leave-to
+  transform: translateX(var(--offset, var(--spacing-xl-000)))
+  opacity: 0
+
+.slide-right-enter-from
+  transform: translateX(calc(var(--offset, var(--spacing-xl-000)) * -1))
+  opacity: 0
+
+.slide-right-enter-to
+  transform: translateX(0)
+  opacity: 1
+
+//// Slide down
+.slide-down-leave-from
+  transform: translateY(0)
+  opacity: 1
+
+.slide-down-leave-to
+  transform: translateY(var(--offset, var(--spacing-xl-000)))
+  opacity: 0
+
+.slide-down-enter-from
+  transform: translateY(calc(var(--offset, var(--spacing-xl-000)) * -1))
+  opacity: 0
+
+.slide-down-enter-to
+  transform: translateY(0)
+  opacity: 1
+
+//// Slide left
+.slide-left-leave-from
+  transform: translateX(0)
+  opacity: 1
+
+.slide-left-leave-to
+  transform: translateX(calc(var(--offset, var(--spacing-xl-000)) * -1))
+  opacity: 0
+
+.slide-left-enter-from
+  transform: translateX(var(--offset, var(--spacing-xl-000)))
+  opacity: 0
+
+.slide-left-enter-to
+  transform: translateX(0)
+  opacity: 1
 
 // Switch transitions
 .switch-enter-active,

@@ -32,7 +32,7 @@
 
 <template>
   <main class="page">
-    <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 0ms) ; --starting-point: 128rem">
+    <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 0ms) ; --offset: 128rem">
       <article class="article">
         <About :theme="theme" />
         <Networks :theme="theme" />

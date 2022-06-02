@@ -204,7 +204,7 @@
   //// Easing
   --ease-peps: cubic-bezier(.03, .85, .36, 1)
   --ease-rebound: cubic-bezier(0, 1.5, 0.5, 1)
-  --ease-inverted-rebound: cubic-bezier(0.5, 0.03, 1, -0.5)
+  --ease-inverted-rebound: cubic-bezier(0.5, 0, 1, -0.5)
   --ease-vroom: cubic-bezier(0.86, 0.12, 0.12, 0.86)
   //--ease-vroom: cubic-bezier(0.86, 0.12, 0.93, 0.45)
 
@@ -216,9 +216,13 @@
   --duration-turtoise: calc(var(--duration-step) * 8)
 
   //// Delay
-  --delay-on-time: calc(var(--duration-step) * 0)
-  --delay-late: calc(var(--duration-step) * 1)
-  --delay-very-late: calc(var(--duration-step) * 2)
+  --delay-asynchrone: calc(var(--duration-step) * 0.15)
+  --delay-hare: calc(var(--duration-step) * 1)
+  --delay-running: calc(var(--duration-step) * 2)
+  --delay-jogging: calc(var(--duration-step) * 4)
+  --delay-turtoise: calc(var(--duration-step) * 8)
+  --delay-grandma: calc(var(--duration-step) * 16)
+  --delay-snail: calc(var(--duration-step) * 32)
 
   // Devices
   --device-tablet: 1024rem
