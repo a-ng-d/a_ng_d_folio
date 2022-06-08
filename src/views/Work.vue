@@ -1,6 +1,10 @@
 <script lang="ts">
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
+  import { Vue3Lottie } from 'vue3-lottie'
+  import JBRAnimation from '@/assets/images/_work/_jean_bobby_radio/animation.json'
+  import UCPAnimation from '@/assets/images/_work/_ui_color_palette/animation.json'
+  import AI from '@/assets/images/_work/_awesome_ipsums/animation.json'
   import { ArrowLeft, ArrowRight, ArrowDown } from 'lucide-vue-next'
 
   export default {
@@ -16,42 +20,57 @@
       return {
         projects: [{
             name: '_ui_color_palette',
-            background: '#88EBF9'
+            illustration: UCPAnimation,
+            background: '#88EBF9',
+            theme: 'default'
           },
           {
             name: '_jeprendsquoi',
-            background: '#FFF'
+            illustration: '/src/assets/images/_work/_jeprendsquoi/illustration.png',
+            background: '#FFF',
+            theme: 'default'
           }, {
             name: '_jean_bobby_radio',
-            background: '#190038'
+            illustration: JBRAnimation,
+            background: '#190038',
+            theme: 'dark'
           }, {
             name: '_awesome_ipsums',
-            background: '#23A566'
+            illustration: AI,
+            background: '#23A566',
+            theme: 'dark'
           }, {
             name: '_iobeya_whiteboarding_session',
-            background: '#001D5E'
+            illustration: '',
+            background: '#001D5E',
+            theme: 'dark'
         }],
         currentProject: '_ui_color_palette',
         position: 0,
         projectPath: '',
         duration: 2000,
+        direction: 'right',
         theme: 'default'
       }
     },
     methods: {
       previousProject() {
+        this.direction = 'left'
         this.position == 0 ? this.position = (this.projects.length - 1) : this.position--
         this.switchProject()
       },
       nextProject() {
+        this.direction = 'right'
         this.position == (this.projects.length - 1) ? this.position = 0 : this.position++
         this.switchProject()
       },
       switchProject() {
         this.currentProject = this.projects[this.position].name
+        this.theme = this.projects[this.position].theme
         this.$emit('projectsMeta', {
           total: this.projects.length,
-          active: this.position
+          active: this.position,
+          theme: this.projects[this.position].theme
         })
       },
       splitLetters(el) {
@@ -82,13 +101,15 @@
 <template>
   <main class="page">
     <section class="work">
-      <figure class="work__illustration">
-        <template v-for="project in projects">
-          <Transition mode="out-in">
-            <img v-if="currentProject === project" :src="imagePath" />
-          </Transition>
-        </template>
-      </figure>
+      <div class="work__illustration" :style="direction === 'right' ? '--offset: -100vw' : '--offset: 100vw'">
+        <Transition name="across" :duration="duration" mode="out-in" class="work__illustration__item">
+          <Vue3Lottie v-if="currentProject === projects[0].name" :animationData="projects[0].illustration" />
+          <img v-else-if="currentProject === projects[1].name" :src="projects[1].illustration" />
+          <Vue3Lottie v-else-if="currentProject === projects[2].name" :animationData="projects[2].illustration" />
+          <Vue3Lottie v-else-if="currentProject === projects[3].name" :animationData="projects[3].illustration" />
+          <div v-else-if="currentProject === projects[4].name"></div>
+        </Transition>
+      </div>
       <aside class="work__summary">
         <div class="work__summary__description">
           <div class="work__title" :data-theme="theme">
@@ -100,32 +121,42 @@
               <h2 v-else-if="currentProject === projects[4].name">{{ $t(`work.${projects[4].name}.title`) }}</h2>
             </Transition>
             <Transition name="slide-right" :duration="duration * 1.5" mode="out-in" appear>
-              <p v-if="currentProject === projects[0].name">{{ $t(`work.${projects[0].name}.description`) }}</p>
-              <p v-else-if="currentProject === projects[1].name">{{ $t(`work.${projects[1].name}.description`) }}</p>
-              <p v-else-if="currentProject === projects[2].name">{{ $t(`work.${projects[2].name}.description`) }}</p>
-              <p v-else-if="currentProject === projects[3].name">{{ $t(`work.${projects[3].name}.description`) }}</p>
-              <p v-else-if="currentProject === projects[4].name">{{ $t(`work.${projects[4].name}.description`) }}</p>
+              <div v-if="currentProject === projects[0].name">
+                <p>{{ $t(`work.${projects[0].name}.description`) }}</p>
+              </div>
+              <div v-else-if="currentProject === projects[1].name">
+                <p>{{ $t(`work.${projects[1].name}.description`) }}</p>
+              </div>
+              <div v-else-if="currentProject === projects[2].name">
+                <p>{{ $t(`work.${projects[2].name}.description`) }}</p>
+              </div>
+              <div v-else-if="currentProject === projects[3].name">
+                <p>{{ $t(`work.${projects[3].name}.description`) }}</p>
+              </div>
+              <div v-else-if="currentProject === projects[4].name">
+                <p>{{ $t(`work.${projects[4].name}.description`) }}</p>
+              </div>
             </Transition>
           </div>
           <ul class="work__data" :data-theme="theme">
-            <Transition name="slide-right" :duration="duration * 1.5" mode="out-in" appear>
-              <li v-if="currentProject === projects[0].name" class="work__data__item">
+            <Transition class="work__data__item" name="slide-right" :duration="duration * 1.5" mode="out-in" appear>
+              <li v-if="currentProject === projects[0].name">
                 <h6>{{ $t("work.date") }}</h6>
                 <p>{{ $t(`work.${projects[0].name}.date`) }}</p>
               </li>
-              <li v-else-if="currentProject === projects[1].name" class="work__data__item">
+              <li v-else-if="currentProject === projects[1].name">
                 <h6>{{ $t("work.date") }}</h6>
                 <p>{{ $t(`work.${projects[1].name}.date`) }}</p>
               </li>
-              <li v-else-if="currentProject === projects[2].name" class="work__data__item">
+              <li v-else-if="currentProject === projects[2].name">
                 <h6>{{ $t("work.date") }}</h6>
                 <p>{{ $t(`work.${projects[2].name}.date`) }}</p>
               </li>
-              <li v-else-if="currentProject === projects[3].name" class="work__data__item">
+              <li v-else-if="currentProject === projects[3].name">
                 <h6>{{ $t("work.date") }}</h6>
                 <p>{{ $t(`work.${projects[3].name}.date`) }}</p>
               </li>
-              <li v-else-if="currentProject === projects[4].name" class="work__data__item">
+              <li v-else-if="currentProject === projects[4].name">
                 <h6>{{ $t("work.date") }}</h6>
                 <p>{{ $t(`work.${projects[4].name}.date`) }}</p>
               </li>
@@ -133,39 +164,84 @@
           </ul>
         </div>
         <div class="work__summary__actions">
-          <Button
-            type="secondary"
-            path=""
-            layout="icon-only"
-            :theme="theme"
-            @click="previousProject"
-          >
-            <template #icon>
-              <ArrowLeft :size="24" />
-            </template>
-          </Button>
-          <Button
-            type="primary"
-            :label="$t('global.go')"
-            path=""
-            layout="left-icon"
-            :theme="theme"
-          >
-            <template #icon>
-              <ArrowDown :size="24" />
-            </template>
-          </Button>
-          <Button
-            type="secondary"
-            path=""
-            layout="icon-only"
-            :theme="theme"
-            @click="nextProject"
-          >
-            <template #icon>
-              <ArrowRight :size="24" />
-            </template>
-          </Button>
+          <Transition name="switch" mode="out-in" :duration="duration" style="--delay: 0ms" appear>
+            <Button
+              v-if="theme === 'default'"
+              type="secondary"
+              path=""
+              layout="icon-only"
+              :theme="default"
+              @click="previousProject"
+            >
+              <template #icon>
+                <ArrowLeft :size="24" />
+              </template>
+            </Button>
+            <Button
+              v-else-if="theme === 'dark'"
+              type="secondary"
+              path=""
+              layout="icon-only"
+              :theme="dark"
+              @click="previousProject"
+            >
+              <template #icon>
+                <ArrowLeft :size="24" />
+              </template>
+            </Button>
+          </Transition>
+          <Transition name="switch" mode="out-in" :duration="duration" style="--delay: 100ms" appear>
+            <Button
+              v-if="theme === 'default'"
+              type="primary"
+              :label="$t('global.go')"
+              path=""
+              layout="left-icon"
+              :theme="default"
+            >
+              <template #icon>
+                <ArrowDown :size="24" />
+              </template>
+            </Button>
+            <Button
+              v-else-if="theme === 'dark'"
+              type="primary"
+              :label="$t('global.go')"
+              path=""
+              layout="left-icon"
+              :theme="dark"
+            >
+              <template #icon>
+                <ArrowDown :size="24" />
+              </template>
+            </Button>
+          </Transition>
+          <Transition name="switch" mode="out-in" :duration="duration" style="--delay: 200ms" appear>
+            <Button
+              v-if="theme === 'default'"
+              type="secondary"
+              path=""
+              layout="icon-only"
+              :theme="default"
+              @click="nextProject"
+            >
+              <template #icon>
+                <ArrowRight :size="24" />
+              </template>
+            </Button>
+            <Button
+              v-else-if="theme === 'dark'"
+              type="secondary"
+              path=""
+              layout="icon-only"
+              :theme="dark"
+              @click="nextProject"
+            >
+              <template #icon>
+                <ArrowRight :size="24" />
+              </template>
+            </Button>
+          </Transition>
         </div>
       </aside>
     </section>
@@ -179,10 +255,7 @@
 <style scoped lang="sass">
   .page
     background: v-bind('projects[position].background')
-    background-repeat: no-repeat
-    background-size: cover
-    background-position: center
-    transition: background var(--duration-snail) var(--ease-vroom)
+    transition: background var(--duration-grandma) var(--ease-vroom)
 
   //Structure
   .work
@@ -196,11 +269,13 @@
 
     &__illustration
       flex: 1
+      display: flex
+      justify-content: center
+      align-items: center
 
-      img
+      &__item
         position: absolute
-        top: 50%
-        transform: translateY(-50%)
+        height: 90vh
 
     &__summary
       flex: 0 1 33%
@@ -235,20 +310,32 @@
       &__item
         --delay: var(--delay-hare)
 
-    // Aspect
-    [data-theme="dark"]
-      --text-color: var(--color-cream)
+  // Aspect
+  [data-theme="dark"]
+    --text-color: var(--color-cream)
 
-    // Animation
-    :deep(.wheel-leave-active) .shard,
-    :deep(.wheel-enter-active) .shard
-      transform-origin: -200% 100%
+  // Animation
+  :deep(.wheel-leave-active) .shard,
+  :deep(.wheel-enter-active) .shard
+    transform-origin: -200% 100%
 
-    :deep(.wheel-leave-active) .shard
-      --offset: -90deg
-      animation: wheel var(--duration-running) calc(var(--order, 1) * var(--delay-asynchrone) + var(--delay-running)) var(--ease-inverted-rebound) forwards
+  :deep(.wheel-leave-active) .shard
+    --gap: -90deg
+    animation: wheel var(--duration-running) calc(var(--order, 1) * var(--delay-asynchrone) + var(--delay-running)) var(--ease-inverted-rebound) forwards
 
-    :deep(.wheel-enter-active) .shard
-      --offset: 90deg
-      animation: wheel var(--duration-running) calc(var(--order, 1) * var(--delay-asynchrone) + var(--delay-running)) var(--ease-inverted-rebound) backwards reverse
+  :deep(.wheel-enter-active) .shard
+    --gap: 90deg
+    animation: wheel var(--duration-running) calc(var(--order, 1) * var(--delay-asynchrone) + var(--delay-running)) var(--ease-inverted-rebound) backwards reverse
+
+  :deep(.across-leave-active)
+    transition: transform var(--duration-jogging) var(--delay-jogging) var(--ease-inverted-rebound)
+
+  :deep(.across-enter-active)
+    transition: transform var(--duration-jogging) var(--ease-rebound)
+
+  :deep(.across-leave-to)
+    transform: translateX(var(--offset)) scale(0.25)
+
+  :deep(.across-enter-from)
+    transform: translateX(calc(var(--offset) * -1)) scale(0.25)
 </style>

@@ -20,8 +20,7 @@
     },
     watch: {
       isExpanded(to, from) {
-        if(to) this.particles.expand()
-        else this.particles.collapse()
+        to ? this.particles.expand() : this.particles.collapse()
       }
     },
     mounted() {

@@ -9,14 +9,14 @@
       },
       theme: {
         type: String,
-        default: "default"
+        default: 'default'
       }
     }
   }
 </script>
 
 <template>
-  <div class="pagination" :data-theme="theme">
+  <div class="pagination" :data-theme="dots.theme">
     <div class="pagination__dots">
       <div
         v-for="n in dots.total"
@@ -47,13 +47,14 @@
     &__dot
       flex: 1
       border-radius: calc(var(--sizing-s-000) / 2)
-      transition: var(--duration-snail) all var(--ease-vroom)
+      transition: all var(--duration-grandma) var(--ease-vroom)
 
       &--active
         flex: 4
 
     &__label
       --text-label-space: 0
+      transition: all var(--duration-grandma) var(--ease-vroom)
 
   // Aspect
   .pagination

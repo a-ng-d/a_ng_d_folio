@@ -25,6 +25,8 @@
     width: 100vw
 
     &__instance
+      --gap: -100%
+
       display: block
       animation: across 16000ms infinite forwards linear
 
