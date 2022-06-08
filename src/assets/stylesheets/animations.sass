@@ -235,3 +235,23 @@
 
 .switch-leave-to
   transform: scale(0)
+
+// Scale transition
+//// Scale up
+.scale-up-enter-active,
+.scale-up-leave-active
+  transform-origin: center center
+
+.scale-up-enter-active,
+.scale-up-leave-active
+  transition: transform var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom), opacity var(--duration-jogging) calc(var(--delay, 0ms) + 400ms) ease !important
+
+.scale-up-enter-from,
+.scale-up-leave-to
+  opacity: 0
+
+.scale-up-enter-from
+  transform: scale(1.25)
+
+.scale-up-leave-to
+  transform: scale(1.25)
