@@ -74,7 +74,7 @@
       height: var(--logotype-size)
 
       svg
-        transition: var(--slow-transition)
+        transition: var(--grandma-transition)
         fill: v-bind(logotypeColor)
 
     &--stuck

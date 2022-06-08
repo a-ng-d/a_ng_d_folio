@@ -31,13 +31,22 @@
         type: Object,
         default: {}
       }
+    },
+    methods: {
+      changeLogotypeColor(context) {
+        const actions = {
+          id: 'var(--color-soil)',
+          work: this.dots.theme == 'default' ? 'var(--color-soil)' : 'var(--color-cream)'
+        }
+        return actions[context] ?? 'url(#gradient-biscarosse-sunset)'
+      }
     }
   }
 </script>
 
 <template>
   <Header
-    :logotypeColor="context === 'id' ? 'var(--color-soil)' : 'url(#gradient-biscarosse-sunset)'"
+    :logotypeColor="changeLogotypeColor(context)"
     :background="context === 'id' ? 'var(--color-candy-floss)' : 'transparent'"
     :scroll="scroll"
   >
@@ -61,7 +70,7 @@
           :label="$t('global.menu')"
           path="/_universes"
           :layout="device != 'mobile' ? 'left-icon' : 'icon-only'"
-          theme="dark"
+          theme="default"
         >
           <template #icon>
             <Menu :size="24" />
@@ -86,6 +95,7 @@
           v-else-if="context === 'work'"
           :label="$t('work.friendlyName')"
           :dots="dots"
+          :theme="dots.theme"
         />
       </Transition>
     </template>

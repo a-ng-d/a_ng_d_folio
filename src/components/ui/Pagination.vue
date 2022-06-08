@@ -16,7 +16,7 @@
 </script>
 
 <template>
-  <div class="pagination" :data-theme="dots.theme">
+  <div class="pagination" :data-theme="theme">
     <div class="pagination__dots">
       <div
         v-for="n in dots.total"

@@ -4,7 +4,8 @@
   import { Vue3Lottie } from 'vue3-lottie'
   import JBRAnimation from '@/assets/images/_work/_jean_bobby_radio/animation.json'
   import UCPAnimation from '@/assets/images/_work/_ui_color_palette/animation.json'
-  import AI from '@/assets/images/_work/_awesome_ipsums/animation.json'
+  import AIAnimation from '@/assets/images/_work/_awesome_ipsums/animation.json'
+  import IWAnimation from '@/assets/images/_work/_iobeya_whiteboard/animation.json'
   import { ArrowLeft, ArrowRight, ArrowDown } from 'lucide-vue-next'
 
   export default {
@@ -36,12 +37,12 @@
             theme: 'dark'
           }, {
             name: '_awesome_ipsums',
-            illustration: AI,
+            illustration: AIAnimation,
             background: '#23A566',
             theme: 'dark'
           }, {
-            name: '_iobeya_whiteboarding_session',
-            illustration: '',
+            name: '_iobeya_whiteboard',
+            illustration: IWAnimation,
             background: '#001D5E',
             theme: 'dark'
         }],
@@ -75,8 +76,8 @@
       },
       splitLetters(el) {
         const
-            label = el.innerText,
-            split = label.split('')
+          label = el.innerText,
+          split = label.split('')
 
         el.innerHTML = ''
 
@@ -92,7 +93,8 @@
     created() {
       this.$emit('projectsMeta', {
         total: this.projects.length,
-        active: this.position
+        active: this.position,
+        theme: this.projects[this.position].theme
       })
     }
   }
@@ -107,7 +109,7 @@
           <img v-else-if="currentProject === projects[1].name" :src="projects[1].illustration" />
           <Vue3Lottie v-else-if="currentProject === projects[2].name" :animationData="projects[2].illustration" />
           <Vue3Lottie v-else-if="currentProject === projects[3].name" :animationData="projects[3].illustration" />
-          <div v-else-if="currentProject === projects[4].name"></div>
+          <Vue3Lottie v-else-if="currentProject === projects[4].name" :animationData="projects[4].illustration" />
         </Transition>
       </div>
       <aside class="work__summary">
@@ -170,7 +172,7 @@
               type="secondary"
               path=""
               layout="icon-only"
-              :theme="default"
+              :theme="theme"
               @click="previousProject"
             >
               <template #icon>
@@ -182,7 +184,7 @@
               type="secondary"
               path=""
               layout="icon-only"
-              :theme="dark"
+              :theme="theme"
               @click="previousProject"
             >
               <template #icon>
@@ -197,7 +199,7 @@
               :label="$t('global.go')"
               path=""
               layout="left-icon"
-              :theme="default"
+              :theme="theme"
             >
               <template #icon>
                 <ArrowDown :size="24" />
@@ -209,7 +211,7 @@
               :label="$t('global.go')"
               path=""
               layout="left-icon"
-              :theme="dark"
+              :theme="theme"
             >
               <template #icon>
                 <ArrowDown :size="24" />
@@ -222,7 +224,7 @@
               type="secondary"
               path=""
               layout="icon-only"
-              :theme="default"
+              :theme="theme"
               @click="nextProject"
             >
               <template #icon>
@@ -234,7 +236,7 @@
               type="secondary"
               path=""
               layout="icon-only"
-              :theme="dark"
+              :theme="theme"
               @click="nextProject"
             >
               <template #icon>
@@ -278,7 +280,7 @@
         height: 90vh
 
     &__summary
-      flex: 0 1 33%
+      flex: 0 1 480rem
       display: flex
       flex-flow: column nowrap
       justify-content: space-between

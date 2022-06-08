@@ -172,7 +172,7 @@
     "date": "Date",
     "_ui_color_palette": {
       "title": "_ui_color_palette",
-      "description": "Accessible color palettes with consistant lightness and contrast with Figma",
+      "description": "Accessible color palettes with consistant lightness with Figma",
       "date": "2022・Monthly release",
       "image": "@/assets/images/work/_ui_color_palette/main.png"
     },
@@ -191,8 +191,8 @@
       "description": "Design team’s own Lorem Ipsums from a simple Google Spreadsheet",
       "date": "2019・Running"
     },
-    "_iobeya_whiteboarding_session": {
-      "title": "_iobeya_whiteboarding",
+    "_iobeya_whiteboard": {
+      "title": "_iobeya_whiteboard",
       "description": "Go-to-SaaS solution to enhance iObeya virality and deployment",
       "date": "2018・Released"
     }
