@@ -144,7 +144,7 @@
 </template>
 
 <style scoped lang="sass">
-  @use '@/assets/text-styles.sass' as text
+  @use '@/assets/stylesheets/text-styles.sass' as text
 
   // Structure
   .button

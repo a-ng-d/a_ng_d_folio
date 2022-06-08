@@ -38,8 +38,6 @@
 </template>
 
 <style scoped lang="sass">
-  @use '@/assets/text-styles.sass' as text
-
   // Structure
   .external-link
     display: flex

@@ -93,10 +93,10 @@
 </template>
 
 <style lang="sass">
-  @use '@/assets/tokens.sass'
-  @use '@/assets/base.sass'
-  @use '@/assets/animations.sass'
-  @use '@/assets/base.sass' as device
+  @use '@/assets/stylesheets/tokens.sass'
+  @use '@/assets/stylesheets/base.sass'
+  @use '@/assets/stylesheets/animations.sass'
+  @use '@/assets/stylesheets/base.sass' as device
 
   // Structure
   .page

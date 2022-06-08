@@ -72,8 +72,8 @@
 </template>
 
 <style scoped lang="sass">
-  @use '@/assets/text-styles.sass' as text
-  @use '@/assets/base.sass' as device
+  @use '@/assets/stylesheets/text-styles.sass' as text
+  @use '@/assets/stylesheets/base.sass' as device
 
   // Structure
   .jumbotron

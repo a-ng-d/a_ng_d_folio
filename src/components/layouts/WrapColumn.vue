@@ -23,7 +23,7 @@
 </template>
 
 <style scoped lang="sass">
-  @use '@/assets/base.sass' as device
+  @use '@/assets/stylesheets/base.sass' as device
 
   // Structure
   .col-1
