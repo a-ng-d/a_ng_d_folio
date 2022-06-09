@@ -103,17 +103,17 @@
 <template>
   <main class="page">
     <div class="background">
-      <Transition name="scale-up" :duration="duration" mode="out-in" class="background__item">
+      <Transition name="scale-up" :duration="duration" mode="out-in" class="background__item" appear>
         <div v-if="currentProject === projects[0].name" style="background: url(/src/assets/images/_work/_ui_color_palette/background.svg) 50% / cover no-repeat"></div>
         <div v-else-if="currentProject === projects[1].name" style="background: url(/src/assets/images/_work/_jeprendsquoi/background.svg) 50% / cover no-repeat"></div>
         <div v-else-if="currentProject === projects[2].name" style="background: url(/src/assets/images/_work/_jean_bobby_radio/background.png) 50% repeat ; mix-blend-mode : color-dodge"></div>
         <div v-else-if="currentProject === projects[3].name"></div>
-        <div v-else-if="currentProject === projects[4].name" style="background: url(/src/assets/images/_work/_iobeya_whiteboard/background.png) 0% 50% no-repeat ; mix-blend-mode : overlay"></div>
+        <div v-else-if="currentProject === projects[4].name" style="background: url(/src/assets/images/_work/_iobeya_whiteboard/background.png) 0% 0% no-repeat ; mix-blend-mode : overlay"></div>
       </Transition>
     </div>
     <section class="work">
       <div class="work__illustration" :style="direction === 'right' ? '--offset: -100vw' : '--offset: 100vw'">
-        <Transition name="across" :duration="duration" mode="out-in" class="work__illustration__item">
+        <Transition name="across" :duration="duration" mode="out-in" class="work__illustration__item" appear>
           <Vue3Lottie v-if="currentProject === projects[0].name" :animationData="projects[0].illustration" />
           <img v-else-if="currentProject === projects[1].name" :src="projects[1].illustration" />
           <Vue3Lottie v-else-if="currentProject === projects[2].name" :animationData="projects[2].illustration" />
