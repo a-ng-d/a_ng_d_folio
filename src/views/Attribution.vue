@@ -1,7 +1,7 @@
 <script lang="ts">
   import Footer from '@/components/patterns/Footer.vue'
-  import DevTools from '@/contexts/DevTools.vue'
-  import UIAssets from '@/contexts/UIAssets.vue'
+  import DevTools from '@/contexts/_attribution/DevTools.vue'
+  import UIAssets from '@/contexts/_attribution/UIAssets.vue'
 
   export default {
     name: 'Attribution',

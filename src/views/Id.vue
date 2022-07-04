@@ -2,12 +2,12 @@
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import ScrollingText from '@/components/ui/ScrollingText.vue'
-  import About from '@/contexts/About.vue'
-  import Networks from '@/contexts/Networks.vue'
-  import Career from '@/contexts/Career.vue'
-  import Stories from '@/contexts/Stories.vue'
-  import Talks from '@/contexts/Talks.vue'
-  import Workshops from '@/contexts/Workshops.vue'
+  import About from '@/contexts/_id/About.vue'
+  import Networks from '@/contexts/_id/Networks.vue'
+  import Career from '@/contexts/_id/Career.vue'
+  import Stories from '@/contexts/_id/Stories.vue'
+  import Talks from '@/contexts/_id/Talks.vue'
+  import Workshops from '@/contexts/_id/Workshops.vue'
 
   export default {
     name: 'Id',

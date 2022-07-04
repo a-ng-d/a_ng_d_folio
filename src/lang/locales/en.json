@@ -9,7 +9,7 @@
   "footer": {
     "author": "Aurélien Grimaud aka nG⚡",
     "license": "CC-BY {year}",
-    "attribution": "Attributions"
+    "attribution": "Attribution"
   },
   "global": {
     "separator": "・",
@@ -197,8 +197,8 @@
       "date": "2018・Released"
     }
   },
-  "attributions": {
-    "title": "Attributions﹒nG⚡️ aka. Aurélien Grimaud",
+  "attribution": {
+    "title": "Attribution﹒nG⚡️ aka. Aurélien Grimaud",
     "back": "",
     "ui": {
       "title": "User Interface assets",

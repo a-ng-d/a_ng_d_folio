@@ -3,7 +3,7 @@
   import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
 
   export default {
-    name: 'UIAssets',
+    name: 'DevTools',
     components: {
       OneColumn,
       SimpleExternalLink
@@ -16,7 +16,7 @@
     },
     data() {
       return {
-        links: ['link-1', 'link-2', 'link-3']
+        links: ['link-1', 'link-2']
       }
     }
   }
@@ -25,16 +25,16 @@
 <template>
   <section>
     <OneColumn
-      :title="$t('attributions.ui.title')"
+      :title="$t('attribution.devtools.title')"
       :theme="theme"
     >
       <template #plain>
         <SimpleExternalLink
           v-for="link in links"
           :key="link"
-          :label="$t(`attributions.ui.${link}.label`)"
-          :href="$t(`attributions.ui.${link}.href`)"
-          :alt="$t(`attributions.ui.${link}.alt`)"
+          :label="$t(`attribution.devtools.${link}.label`)"
+          :href="$t(`attribution.devtools.${link}.href`)"
+          :alt="$t(`attribution.devtools.${link}.alt`)"
           :theme="theme"
         />
       </template>

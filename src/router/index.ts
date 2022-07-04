@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 import Id from '../views/Id.vue'
 import Universes from '../views/Universes.vue'
 import Work from '../views/Work.vue'
-import Attributions from '../views/Attributions.vue'
+import Attribution from '../views/Attribution.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -98,9 +98,9 @@ const router = createRouter({
     {
       path: '/_attribution',
       name: 'attribution',
-      component: Attributions,
+      component: Attribution,
       meta: {
-        title: i18n.global.t('attributions.title'),
+        title: i18n.global.t('attribution.title'),
         filter: {
           hue: '162deg',
           brightness: '0.5',
