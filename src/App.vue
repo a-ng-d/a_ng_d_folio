@@ -86,7 +86,14 @@
   </Transition>
   <RouterView @scroll.passive="getScrollParams" v-slot="{ Component, route }">
     <Transition :name="transition" @after-enter="" @before-leave="">
-      <Component :is="Component" :key="route.path" @projectsMeta="setDots($event)" />
+      <Component
+        :is="Component"
+        :key="route.path"
+        :title="route.name"
+        :description="route.meta.description"
+        :misc="route.meta.misc"
+        @projectsData="setDots($event)"
+      />
     </Transition>
   </RouterView>
   <Glitchscape :filter="filter" :pov="pov" :quality="quality" :isGlitched="isGlitched" :scroll="scroll" :pageHeight="pageHeight" />

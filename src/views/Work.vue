@@ -68,7 +68,7 @@
       switchProject() {
         this.currentProject = this.projects[this.position].name
         this.theme = this.projects[this.position].theme
-        this.$emit('projectsMeta', {
+        this.$emit('projectsData', {
           total: this.projects.length,
           active: this.position,
           theme: this.projects[this.position].theme
@@ -91,7 +91,7 @@
       }
     },
     created() {
-      this.$emit('projectsMeta', {
+      this.$emit('projectsData', {
         total: this.projects.length,
         active: this.position,
         theme: this.projects[this.position].theme
@@ -125,51 +125,51 @@
         <div class="work__summary__description">
           <div class="work__title" :data-theme="theme">
             <Transition name="wheel" mode="out-in" :duration="duration" @before-leave="splitLetters" @before-enter="splitLetters" appear>
-              <h2 v-if="currentProject === projects[0].name">{{ $t(`work.${projects[0].name}.title`) }}</h2>
-              <h2 v-else-if="currentProject === projects[1].name">{{ $t(`work.${projects[1].name}.title`) }}</h2>
-              <h2 v-else-if="currentProject === projects[2].name">{{ $t(`work.${projects[2].name}.title`) }}</h2>
-              <h2 v-else-if="currentProject === projects[3].name">{{ $t(`work.${projects[3].name}.title`) }}</h2>
-              <h2 v-else-if="currentProject === projects[4].name">{{ $t(`work.${projects[4].name}.title`) }}</h2>
+              <h2 v-if="currentProject === projects[0].name">{{ $t(`work.${projects[0].name}.shortTitle`) }}</h2>
+              <h2 v-else-if="currentProject === projects[1].name">{{ $t(`work.${projects[1].name}.shortTitle`) }}</h2>
+              <h2 v-else-if="currentProject === projects[2].name">{{ $t(`work.${projects[2].name}.shortTitle`) }}</h2>
+              <h2 v-else-if="currentProject === projects[3].name">{{ $t(`work.${projects[3].name}.shortTitle`) }}</h2>
+              <h2 v-else-if="currentProject === projects[4].name">{{ $t(`work.${projects[4].name}.shortTitle`) }}</h2>
             </Transition>
             <Transition name="slide-right" :duration="duration * 1.5" mode="out-in" appear>
               <div v-if="currentProject === projects[0].name">
-                <p>{{ $t(`work.${projects[0].name}.description`) }}</p>
+                <p>{{ $t(`work.${projects[0].name}.shortDescription`) }}</p>
               </div>
               <div v-else-if="currentProject === projects[1].name">
-                <p>{{ $t(`work.${projects[1].name}.description`) }}</p>
+                <p>{{ $t(`work.${projects[1].name}.shortDescription`) }}</p>
               </div>
               <div v-else-if="currentProject === projects[2].name">
-                <p>{{ $t(`work.${projects[2].name}.description`) }}</p>
+                <p>{{ $t(`work.${projects[2].name}.shortDescription`) }}</p>
               </div>
               <div v-else-if="currentProject === projects[3].name">
-                <p>{{ $t(`work.${projects[3].name}.description`) }}</p>
+                <p>{{ $t(`work.${projects[3].name}.shortDescription`) }}</p>
               </div>
               <div v-else-if="currentProject === projects[4].name">
-                <p>{{ $t(`work.${projects[4].name}.description`) }}</p>
+                <p>{{ $t(`work.${projects[4].name}.shortDescription`) }}</p>
               </div>
             </Transition>
           </div>
           <ul class="work__data" :data-theme="theme">
             <Transition class="work__data__item" name="slide-right" :duration="duration * 1.5" mode="out-in" appear>
               <li v-if="currentProject === projects[0].name">
-                <h6>{{ $t("work.date") }}</h6>
-                <p>{{ $t(`work.${projects[0].name}.date`) }}</p>
+                <h6>{{ $t("global.date") }}</h6>
+                <p>{{ $t(`work.${projects[0].name}.misc.date`) }}</p>
               </li>
               <li v-else-if="currentProject === projects[1].name">
-                <h6>{{ $t("work.date") }}</h6>
-                <p>{{ $t(`work.${projects[1].name}.date`) }}</p>
+                <h6>{{ $t("global.date") }}</h6>
+                <p>{{ $t(`work.${projects[1].name}.misc.date`) }}</p>
               </li>
               <li v-else-if="currentProject === projects[2].name">
-                <h6>{{ $t("work.date") }}</h6>
-                <p>{{ $t(`work.${projects[2].name}.date`) }}</p>
+                <h6>{{ $t("global.date") }}</h6>
+                <p>{{ $t(`work.${projects[2].name}.misc.date`) }}</p>
               </li>
               <li v-else-if="currentProject === projects[3].name">
-                <h6>{{ $t("work.date") }}</h6>
-                <p>{{ $t(`work.${projects[3].name}.date`) }}</p>
+                <h6>{{ $t("global.date") }}</h6>
+                <p>{{ $t(`work.${projects[3].name}.misc.date`) }}</p>
               </li>
               <li v-else-if="currentProject === projects[4].name">
-                <h6>{{ $t("work.date") }}</h6>
-                <p>{{ $t(`work.${projects[4].name}.date`) }}</p>
+                <h6>{{ $t("global.date") }}</h6>
+                <p>{{ $t(`work.${projects[4].name}.misc.date`) }}</p>
               </li>
             </Transition>
           </ul>
@@ -206,7 +206,7 @@
               v-if="theme === 'default'"
               type="primary"
               :label="$t('global.go')"
-              path=""
+              :path="`/_work/${currentProject}`"
               layout="left-icon"
               :theme="theme"
             >
@@ -218,7 +218,7 @@
               v-else-if="theme === 'dark'"
               type="primary"
               :label="$t('global.go')"
-              path=""
+              :path="`/_work/${currentProject}`"
               layout="left-icon"
               :theme="theme"
             >

@@ -12,7 +12,9 @@
   <div class="container">
     <div class="container__content">
       <slot name="icon"></slot>
-      <h5>{{ title }}</h5>
+      <template v-if="title != undefined">
+        <h5>{{ title }}</h5>
+      </template>
       <p>{{ description }}</p>
     </div>
   </div>

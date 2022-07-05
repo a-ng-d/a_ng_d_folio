@@ -3,6 +3,10 @@
     name: 'OneColumn',
     props: {
       title: String,
+      isSubSection: {
+        type: Boolean,
+        default: false
+      },
       theme: {
         type: String,
         default: 'default'
@@ -13,8 +17,11 @@
 
 <template>
   <div class="col-1" :data-theme="theme">
-    <template v-if="title != undefined">
+    <template v-if="title != undefined && !isSubSection">
       <h3>{{ title }}</h3>
+    </template>
+    <template v-else-if="title != undefined && isSubSection">
+      <h4>{{ title }}</h4>
     </template>
     <div class="col-1__content">
       <slot name="plain"></slot>

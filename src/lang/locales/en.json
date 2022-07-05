@@ -18,7 +18,12 @@
       "home": "Back to Home"
     },
     "menu": "Menu",
-    "go": "Go deeper"
+    "go": "Go deeper",
+    "overview": "Project at a glance",
+    "date": "Date",
+    "status": "Status",
+    "objectives": "Objectives",
+    "roles": "Roles"
   },
   "id": {
     "title": "ID card﹒nG⚡️ aka. Aurélien Grimaud",
@@ -169,32 +174,52 @@
   "work": {
     "title": "Selected work﹒nG⚡️ aka. Aurélien Grimaud",
     "friendlyName": "_Selected_work",
-    "date": "Date",
     "_ui_color_palette": {
-      "title": "_ui_color_palette",
-      "description": "Accessible color palettes with consistant lightness with Figma",
-      "date": "2022・Monthly release",
-      "image": "@/assets/images/work/_ui_color_palette/main.png"
+      "title": "_ui_color_palette﹒nG⚡️ aka. Aurélien Grimaud",
+      "shortTitle": "_ui_color_palette",
+      "shortDescription": "Accessible color palettes with consistant lightness with Figma",
+      "description": "Figma is an UX tool, using diagrams to build user experiences, interfaces, prototypes, and illustrations… The tool can be extended with a plugin system. Figma tends to be the leader of UX tools market because of its inclusive and powerful business model. So, Figma is still the most exciting tool. By reading this article (Accessible Palette: stop using HSL for color systems), I noticed there is not any plugin on Figma to help to build accessible color systems for UI. The opportunity is to develop a tool to create, edit and deploy color palettes.",
+      "misc": {
+        "date": "2022・Monthly release",
+        "objectives": "Creating UI color palettes with consistant lightness and contrast, Updating and deploy colors with ease to the team library",
+        "roles": "Developing the scripts to create/edit color palette (React)"
+      }
     },
     "_jeprendsquoi": {
-      "title": "_jeprendsquoi",
-      "description": "Fruits and vegetables seasonality companion",
-      "date": "2021・Beta released"
+      "title": "_jeprendsquoi﹒nG⚡️ aka. Aurélien Grimaud",
+      "shortTitle": "_jeprendsquoi",
+      "shortDescription": "Fruits and vegetables seasonality companion",
+      "description": "I often go at the market, to buy some fresh and local food. For decades, my parents taught me consume local food is the best way to feed, because the local economy is stimulated and the carbon footprint is lower. So, avoiding supermarket and co. is a leitmotiv. However, the local market reveals its own limits because of some absurdities: find some cherries in winter (17€ a kilogram), some tomatoes or melons on november. The bitter conclusion is simple: strict seasonality is not yet a standard.",
+      "misc": {
+        "date": "2021・Beta released"
+      }
     },
     "_jean_bobby_radio": {
-      "title": "_jean_bobby_radio",
-      "description": "iObeya internal and participatory web radio",
-      "date": "2020・On-air"
+      "title": "_jean_bobby_radio﹒nG⚡️ aka. Aurélien Grimaud",
+      "shortTitle": "_jean_bobby_radio",
+      "shortDescription": "iObeya internal and participatory web radio",
+      "description": "Before the COVID-19 pandemic, with my teammate in the UX team, we were used to listen to our Spotify collaborative playlist. A batch of various masterpieces from different personalities. There are some 90's hits: Trip Hop, Alternative rock, House… Some 80's hits: Goth, New Wave… Around 500 tracks we listened to everyday. And yet, a virus has co me, and the remote work was the new order. We were distributed. The problem is we cannot use Spotify as a web radio, in order to listen together to our music and react on it. Make our own web radio allows us to retrieve this office atmosphere: Jean-Bobby Radio.",
+      "misc": {
+        "date": "2020・On-air"
+      }
     },
     "_awesome_ipsums": {
-      "title": "_awesome_ipsums",
-      "description": "Design team’s own Lorem Ipsums from a simple Google Spreadsheet",
-      "date": "2019・Running"
+      "title": "_awesome_ipsums﹒nG⚡️ aka. Aurélien Grimaud",
+      "shortTitle": "_awesome_ipsums",
+      "shortDescription": "Design team’s own Lorem Ipsums from a simple Google Spreadsheet",
+      "description": "Sketch is an UX tool, using diagrams to build user experiences, interfaces, prototypes, and illustrations… The tool can be extended with a plugin system. The purpose is to add features, or script actions. The idea of making a more fun Lorem Ipsum tool was a great opportunity to make a Sketch Plugin and understand how it works.",
+      "misc": {
+        "date": "2019・Running"
+      }
     },
     "_iobeya_whiteboard": {
-      "title": "_iobeya_whiteboard",
-      "description": "Go-to-SaaS solution to enhance iObeya virality and deployment",
-      "date": "2018・Released"
+      "title": "_awesome_ipsums﹒nG⚡️ aka. Aurélien Grimaud",
+      "shortTitle": "_awesome_ipsums",
+      "shortDescription": "Go-to-SaaS solution to enhance iObeya virality and deployment",
+      "description": "The Whiteboarding session is a lite version of  iObeya. Its purpose is to ease the deployment through a company by providing  a simple meeting framework, reinforcing the collaboration and introducing the solution. This feature was an opportunity to revamp the UI, follow a design philosophy, involve the team, and make user tests.",
+      "misc": {
+        "date": "2018・Released"
+      }
     }
   },
   "attribution": {

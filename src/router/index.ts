@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Id from '../views/Id.vue'
 import Universes from '../views/Universes.vue'
 import Work from '../views/Work.vue'
+import WorkDetails from '../views/WorkDetails.vue'
 import Attribution from '../views/Attribution.vue'
 
 const router = createRouter({
@@ -66,6 +67,92 @@ const router = createRouter({
       path: '/_work',
       name: 'work',
       component: Work,
+      meta: {
+        title: i18n.global.t('work.title'),
+        filter: {
+          hue: '162deg',
+          brightness: '0.5',
+          invert: '0',
+          saturation: '0.75'
+        },
+        pov: 'reset',
+        quality: 'low'
+      }
+    },
+    {
+      path: '/_work/_ui_color_palette',
+      name: '_ui_color_palette',
+      component: WorkDetails,
+      meta: {
+        title: i18n.global.t('work._ui_color_palette.title'),
+        description: i18n.global.t('work._ui_color_palette.description'),
+        misc: {
+          date: i18n.global.t('work._ui_color_palette.misc.date'),
+          objectives: i18n.global.t('work._ui_color_palette.misc.objectives').split(', '),
+          roles: i18n.global.t('work._ui_color_palette.misc.roles').split(', ')
+        },
+        filter: {
+          hue: '162deg',
+          brightness: '0.5',
+          invert: '0',
+          saturation: '0.75'
+        },
+        pov: 'reset',
+        quality: 'low',
+      }
+    },
+    {
+      path: '/_work/_jeprendsquoi',
+      name: '_jeprendsquoi',
+      component: WorkDetails,
+      meta: {
+        title: i18n.global.t('work.title'),
+        filter: {
+          hue: '162deg',
+          brightness: '0.5',
+          invert: '0',
+          saturation: '0.75'
+        },
+        pov: 'reset',
+        quality: 'low'
+      }
+    },
+    {
+      path: '/_work/_jean_bobby_radio_awesome_ipsums',
+      name: '_jean_bobby_radio_awesome_ipsums',
+      component: WorkDetails,
+      meta: {
+        title: i18n.global.t('work.title'),
+        filter: {
+          hue: '162deg',
+          brightness: '0.5',
+          invert: '0',
+          saturation: '0.75'
+        },
+        pov: 'reset',
+        quality: 'low'
+      }
+    },
+    {
+      path: '/_work/_awesome_ipsums',
+      name: '_awesome_ipsums',
+      component: WorkDetails,
+      meta: {
+        title: i18n.global.t('work.title'),
+        filter: {
+          hue: '162deg',
+          brightness: '0.5',
+          invert: '0',
+          saturation: '0.75'
+        },
+        pov: 'reset',
+        quality: 'low'
+      }
+    },
+    {
+      path: '/_work/_iobeya_whiteboard',
+      name: '_iobeya_whiteboard',
+      component: WorkDetails,
       meta: {
         title: i18n.global.t('work.title'),
         filter: {
