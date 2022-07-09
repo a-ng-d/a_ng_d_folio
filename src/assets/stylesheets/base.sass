@@ -53,13 +53,66 @@ section
   display: flex
   flex-flow: column
   padding: var(--layout-section-gap) 0
-  gap: var(--layout-box-gap) 0
+  gap: var(--layout-box-gap)
 
 a
   text-decoration: none
 
   &:focus
     outline: none
+
+  &.link
+    position: relative
+    display: inline-flex
+    align-items: center
+    gap: var(--spacing-m-000)
+    z-index: 1
+    transition: var(--simple-transition)
+    color: var(--text-color)
+
+    &:after
+      content: ''
+      width: 100%
+      height: var(--sizing-xs-000)
+      position: absolute
+      left: 0
+      bottom: calc(var(--border-size) * -1)
+      border-radius: var(--full-border-radius)
+      transition: var(--simple-transition)
+      background-color: var(--text-color)
+      z-index: -1
+
+    &:hover, &:focus
+      &:after
+        height: 50%
+        left: calc(var(--border-size) * 4)
+
+    &:hover
+      --amplitude: var(--spacing-s-000)
+
+      animation: excited var(--duration-running) var(--ease-peps)
+
+      &:after
+        background: var(--border-active-color)
+
+    &:focus
+      transform: var(--focus-scale)
+
+      &:after
+        background: var(--border-focus-color)
+
+    &[data-theme="dark"]
+      --text-color: var(--color-cream)
+      --border-active-color: var(--border-active-color-inverted)
+
+    &.external-link
+      &:before
+        content: ''
+        width: var(--spacing-l-100)
+        height: var(--spacing-l-100)
+        border-radius: calc(var(--spacing-l-100) / 2)
+        background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01IDdDNC43MzQ3OCA3IDQuNDgwNDMgNy4xMDUzNiA0LjI5Mjg5IDcuMjkyODlDNC4xMDUzNiA3LjQ4MDQzIDQgNy43MzQ3OCA0IDhWMTlDNCAxOS4yNjUyIDQuMTA1MzYgMTkuNTE5NiA0LjI5Mjg5IDE5LjcwNzFDNC40ODA0MyAxOS44OTQ2IDQuNzM0NzggMjAgNSAyMEgxNkMxNi4yNjUyIDIwIDE2LjUxOTYgMTkuODk0NiAxNi43MDcxIDE5LjcwNzFDMTYuODk0NiAxOS41MTk2IDE3IDE5LjI2NTIgMTcgMTlWMTNDMTcgMTIuNDQ3NyAxNy40NDc3IDEyIDE4IDEyQzE4LjU1MjMgMTIgMTkgMTIuNDQ3NyAxOSAxM1YxOUMxOSAxOS43OTU3IDE4LjY4MzkgMjAuNTU4NyAxOC4xMjEzIDIxLjEyMTNDMTcuNTU4NyAyMS42ODM5IDE2Ljc5NTcgMjIgMTYgMjJINUM0LjIwNDM1IDIyIDMuNDQxMjkgMjEuNjgzOSAyLjg3ODY4IDIxLjEyMTNDMi4zMTYwNyAyMC41NTg3IDIgMTkuNzk1NiAyIDE5VjhDMiA3LjIwNDM1IDIuMzE2MDcgNi40NDEyOSAyLjg3ODY4IDUuODc4NjhDMy40NDEyOSA1LjMxNjA3IDQuMjA0MzUgNSA1IDVIMTFDMTEuNTUyMyA1IDEyIDUuNDQ3NzIgMTIgNkMxMiA2LjU1MjI4IDExLjU1MjMgNyAxMSA3SDVaIiBmaWxsPSIjNEY0QzREIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTQgM0MxNCAyLjQ0NzcyIDE0LjQ0NzcgMiAxNSAySDIxQzIxLjU1MjMgMiAyMiAyLjQ0NzcyIDIyIDNWOUMyMiA5LjU1MjI4IDIxLjU1MjMgMTAgMjEgMTBDMjAuNDQ3NyAxMCAyMCA5LjU1MjI4IDIwIDlWNEgxNUMxNC40NDc3IDQgMTQgMy41NTIyOCAxNCAzWiIgZmlsbD0iIzRGNEM0RCIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTIxLjcwNzEgMi4yOTI4OUMyMi4wOTc2IDIuNjgzNDIgMjIuMDk3NiAzLjMxNjU4IDIxLjcwNzEgMy43MDcxMUwxMC43MDcxIDE0LjcwNzFDMTAuMzE2NiAxNS4wOTc2IDkuNjgzNDIgMTUuMDk3NiA5LjI5Mjg5IDE0LjcwNzFDOC45MDIzNyAxNC4zMTY2IDguOTAyMzcgMTMuNjgzNCA5LjI5Mjg5IDEzLjI5MjlMMjAuMjkyOSAyLjI5Mjg5QzIwLjY4MzQgMS45MDIzNyAyMS4zMTY2IDEuOTAyMzcgMjEuNzA3MSAyLjI5Mjg5WiIgZmlsbD0iIzRGNEM0RCIvPgo8L3N2Zz4K) 50% no-repeat, var(--color-cream)
+
 
 p, figcaption
   @include text.current

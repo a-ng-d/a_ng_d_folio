@@ -209,9 +209,23 @@ const router = createRouter({
       path: '/_linkedin',
       name: 'linkedin',
       beforeEnter() {
-        window.open('https://www.linkedin.com/in/augrimaud/', '_blank')
+        window.open('https://www.linkedin.com/in/augrimaud', '_blank')
       }
     },
+    {
+      path: '/_work/_ui_color_palette/takeaway-1',
+      name: '_ui_color_palette takeaway 1',
+      beforeEnter() {
+        window.open('https://www.figma.com/community/plugin/1063959496693642315/UI-Color-Palette', '_blank')
+      }
+    },
+    {
+      path: '/_work/_ui_color_palette/takeaway-2',
+      name: '_ui_color_palette takeaway 2',
+      beforeEnter() {
+        window.open('https://github.com/inVoltag/figma-ui-color-palette', '_blank')
+      }
+    }
   ]
 })
 

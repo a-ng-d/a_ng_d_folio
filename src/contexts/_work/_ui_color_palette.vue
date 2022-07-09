@@ -106,7 +106,7 @@
         <InteractiveContainer
           :description="$t('work._ui_color_palette.takeaways.takeaway-1.description')"
           :cta="$t('work._ui_color_palette.takeaways.takeaway-1.linkLabel')"
-          :href="'/figma'"
+          :href="'/_work/_ui_color_palette/takeaway-1'"
         >
           <template #icon>
             <Figma :size="48" />
@@ -115,7 +115,7 @@
         <InteractiveContainer
           :description="$t('work._ui_color_palette.takeaways.takeaway-2.description')"
           :cta="$t('work._ui_color_palette.takeaways.takeaway-2.linkLabel')"
-          :href="'/github'"
+          :href="'/_work/_ui_color_palette/takeaway-2'"
         >
           <template #icon>
             <Github :size="48" />

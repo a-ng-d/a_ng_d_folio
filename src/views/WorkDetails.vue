@@ -45,7 +45,7 @@
           :theme="theme"
         >
           <template #plain>
-            <p class="enhanced">{{ description }}</p>
+            <p class="enhanced" v-html="description"></p>
           </template>
         </OneColumn>
       </section>
@@ -103,9 +103,20 @@
   .title, .description
     height: 100vh
     justify-content: center
-    background-color: var(--color-cream)
+
+  .title
+    padding: var(--sizing-s-000)
 
   // Aspect
+  .page
+    background-color: var(--color-creamy-sun)
+
+  .title
+    background: linear-gradient(var(--color-cream), var(--color-cream)) content-box, var(--gradient-biscarosse-sunset) padding-box
+
+  .description
+    background-color: var(--color-cream)
+
   .overview
     background-color: var(--color-soft-wind)
 </style>
