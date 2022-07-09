@@ -92,6 +92,7 @@
         :title="route.name"
         :description="route.meta.description"
         :misc="route.meta.misc"
+        :context="context"
         @projectsData="setDots($event)"
       />
     </Transition>

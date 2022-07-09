@@ -35,15 +35,15 @@ h3
 
 h4
   @include title.paragraph
-  margin: 0 0 var(--text-paragraph-space) 0
+  //margin: 0 0 var(--text-paragraph-space) 0
 
 h5
   @include title.large-accented-label
-  margin: 0 0 var(--text-paragraph-space) 0
+  //margin: 0 0 var(--text-paragraph-space) 0
 
 h6
   @include title.accented-label
-  margin: 0 0 var(--text-label-space) 0
+  //margin: 0 0 var(--text-label-space) 0
 
 h1, h2, h3, h4, h5, h6, p
   color: var(--text-color)
@@ -61,13 +61,13 @@ a
   &:focus
     outline: none
 
-p
+p, figcaption
   @include text.current
 
 p.enhanced
   @include text.enhanced
 
-p + p
+//p + p
   margin: var(--text-paragraph-space) 0 0 0
 
 // Responsive

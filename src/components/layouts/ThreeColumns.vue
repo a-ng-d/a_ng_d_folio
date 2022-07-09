@@ -1,6 +1,6 @@
 <script lang="ts">
   export default {
-    name: 'TwoColumns',
+    name: 'ThreeColumns',
     props: {
       title: String,
       theme: {
@@ -12,15 +12,18 @@
 </script>
 
 <template>
-  <div class="col-2" :data-theme="theme">
+  <div class="col-3" :data-theme="theme">
     <template v-if="title != undefined">
       <h3>{{ title }}</h3>
     </template>
-    <div class="col-2__columns">
-      <div class="col-2__column">
+    <div class="col-3__columns">
+      <div class="col-3__column">
         <slot name="left"></slot>
       </div>
-      <div class="col-2__column">
+      <div class="col-3__column">
+        <slot name="middle"></slot>
+      </div>
+      <div class="col-3__column">
         <slot name="right"></slot>
       </div>
     </div>
@@ -31,7 +34,7 @@
   @use '@/assets/stylesheets/base.sass' as device
 
   // Structure
-  .col-2
+  .col-3
     display: flex
     flex-flow: column nowrap
     padding: 0 var(--layout-center)
@@ -48,7 +51,7 @@
       gap: var(--layout-column-gap)
 
   @include device.mobile
-    .col-2
+    .col-3
       &__columns
         flex-flow: column nowrap
 

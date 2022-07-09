@@ -1,9 +1,15 @@
 <script lang="ts">
+  import Button from '@/components/ui/Button.vue'
+
   export default {
-    name: 'Container',
+    name: 'InteractiveContainer',
+    components: {
+      Button
+    },
     props: {
-      title: String,
-      description: String
+      description: String,
+      cta: String,
+      href: String
     }
   }
 </script>
@@ -12,10 +18,14 @@
   <div class="container">
     <div class="container__content">
       <slot name="icon"></slot>
-      <template v-if="title != undefined">
-        <h5>{{ title }}</h5>
-      </template>
       <p>{{ description }}</p>
+      <Button
+        type="secondary"
+        :path="href"
+        :label="cta"
+        layout="simple"
+        theme="default"
+      />
     </div>
   </div>
 </template>
@@ -30,11 +40,10 @@
 
     &__content
       display: flex
-      flex-flow: column nowrap
       gap: var(--layout-column-gap)
 
-    :deep(svg)
-      margin: 0 0 var(--layout-column-gap) 0
+    p
+      flex: 1
 
   // Aspect
   .container

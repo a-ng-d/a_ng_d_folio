@@ -5,7 +5,7 @@
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import Container from '@/components/ui/Container.vue'
-  import { } from 'lucide-vue-next'
+  import _ui_color_palette from '@/contexts/_work/_ui_color_palette.vue'
 
   export default {
     name: 'WorkDetails',
@@ -15,7 +15,8 @@
       ScrollingText,
       OneColumn,
       WrapColumn,
-      Container
+      Container,
+      _ui_color_palette
     },
     props: {
       title: String,
@@ -26,31 +27,20 @@
         type: String,
         default: 'default'
       }
-    },
-    data() {
-      return {
-
-      }
-    },
-    methods: {
-
-    },
-    created() {
-
     }
   }
 </script>
 
 <template>
   <main class="page">
-    <section class="details">
+    <article class="details">
       <section class="title">
         <ScrollingText
           :label="title"
           :theme="theme"
         />
       </section>
-      <section class="intro">
+      <section class="description">
         <OneColumn
           :theme="theme"
         >
@@ -92,10 +82,11 @@
           </template>
         </WrapColumn>
       </section>
-      <section class="content">
-        <Component :is="context" />
-      </section>
-    </section>
+      <Component
+        :is="context"
+        :theme="theme"
+      />
+    </article>
     <Footer
       alignment="center"
       :theme="theme"
@@ -104,6 +95,17 @@
 </template>
 
 <style scoped lang="sass">
+  // Structure
   .details
     grid-area: main
+    margin-top: calc(var(--header-height-size) * -1)
+
+  .title, .description
+    height: 100vh
+    justify-content: center
+    background-color: var(--color-cream)
+
+  // Aspect
+  .overview
+    background-color: var(--color-soft-wind)
 </style>
