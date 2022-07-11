@@ -8,33 +8,39 @@
       },
       src: String,
       alt: String,
-      caption: String,
+      caption: String
     }
   }
 </script>
 
 <template>
-  <figure>
-    <img v-if="type === 'image'" :src="src" :alt="alt" />
-    <video v-else-if="type === 'video'" controls>
-      <source :src="src" type="video/mp4" />
-    </video>
-    <figcaption>{{ caption }}</figcaption>
+  <figure class="figure">
+    <div class="figure__asset">
+      <img v-if="type === 'image'" :src="src" :alt="alt" />
+      <video v-else-if="type === 'video'" controls>
+        <source :src="src" type="video/mp4" />
+      </video>
+    </div>
+    <figcaption class="figure__caption" v-html="caption"></figcaption>
   </figure>
 </template>
 
 <style scoped lang="sass">
   // Structure
-  figure
+  .figure
     display: flex
     flex-flow: column
     gap: var(--layout-paragraph-gap)
 
-  img, video
-    width: 100%
-    border-radius: var(--regular-border-radius)
-    border: var(--fine-border)
+    &__asset
+      width: 100%
+      border-radius: var(--regular-border-radius)
+      box-shadow: var(--image-border)
+      overflow: hidden
 
-  figcaption
-    color: var(--color-sandstone)
+      img, video
+        width: 100%
+
+    &__caption
+      color: var(--color-sandstone)
 </style>

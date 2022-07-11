@@ -21,6 +21,8 @@
 </template>
 
 <style scoped lang="sass">
+  @use '@/assets/stylesheets/base.sass' as device
+    
   // Structure
   .container
     padding: var(--spacing-l-200)
@@ -35,6 +37,12 @@
 
     :deep(svg)
       margin: 0 0 var(--layout-column-gap) 0
+
+  @include device.mobile
+    .container
+      &__content
+        flex-flow: column nowrap
+        align-items: center
 
   // Aspect
   .container

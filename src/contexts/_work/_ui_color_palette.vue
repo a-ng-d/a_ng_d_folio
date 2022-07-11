@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Button from '@/components/ui/Button.vue'
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import ThreeColumns from '@/components/layouts/ThreeColumns.vue'
@@ -11,7 +10,6 @@
   export default {
     name: '_ui_color_palette',
     components: {
-      Button,
       OneColumn,
       WrapColumn,
       ThreeColumns,
@@ -47,24 +45,24 @@
   </section>
   <section>
     <WrapColumn
-      :title="$t('work._ui_color_palette.how.title')"
+      :title="$t('work._ui_color_palette.part-1.title')"
       :theme="theme"
     >
       <template #plain>
         <Figure
           type="video"
-          src="/src/assets/videos/_work/_ui_color_palette/video-1.mp4"
-          :caption="$t('work._ui_color_palette.how.caption-1')"
+          src="/src/assets/videos/_work/_ui_color_palette/article-asset-1.mp4"
+          :caption="$t('work._ui_color_palette.part-1.caption-1')"
         />
         <Figure
           type="video"
-          src="/src/assets/videos/_work/_ui_color_palette/video-2.mp4"
-          :caption="$t('work._ui_color_palette.how.caption-2')"
+          src="/src/assets/videos/_work/_ui_color_palette/article-asset-2.mp4"
+          :caption="$t('work._ui_color_palette.part-1.caption-2')"
         />
         <Figure
           type="video"
-          src="/src/assets/videos/_work/_ui_color_palette/video-3.mp4"
-          :caption="$t('work._ui_color_palette.how.caption-3')"
+          src="/src/assets/videos/_work/_ui_color_palette/article-asset-3.mp4"
+          :caption="$t('work._ui_color_palette.part-1.caption-3')"
         />
       </template>
     </WrapColumn>
@@ -133,13 +131,4 @@
 
   section:nth-child(2n + 1)
     background-color: var(--color-titanium-white)
-
-  section.challenge
-    background-color: var(--color-candy-floss)
-
-  section.success
-    background-color: var(--color-soft-wind)
-
-  section.takeaways
-    background: var(--gradient-biscarosse-sunset)
 </style>

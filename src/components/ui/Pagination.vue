@@ -25,7 +25,7 @@
         :key="`dots-${n}`">
       </div>
     </div>
-    <div class="pagination__label">
+    <div v-if="label !=''" class="pagination__label">
       <h6>{{ label }}</h6>
     </div>
   </div>

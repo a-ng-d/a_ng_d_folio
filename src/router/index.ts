@@ -106,7 +106,13 @@ const router = createRouter({
       name: '_jeprendsquoi',
       component: WorkDetails,
       meta: {
-        title: i18n.global.t('work.title'),
+        title: i18n.global.t('work._jeprendsquoi.title'),
+        description: i18n.global.t('work._jeprendsquoi.description'),
+        misc: {
+          date: i18n.global.t('work._jeprendsquoi.misc.date'),
+          objectives: i18n.global.t('work._jeprendsquoi.misc.objectives').split(', '),
+          roles: i18n.global.t('work._jeprendsquoi.misc.roles').split(', ')
+        },
         filter: {
           hue: '162deg',
           brightness: '0.5',
@@ -114,7 +120,7 @@ const router = createRouter({
           saturation: '0.75'
         },
         pov: 'reset',
-        quality: 'low'
+        quality: 'low',
       }
     },
     {
@@ -224,6 +230,27 @@ const router = createRouter({
       name: '_ui_color_palette takeaway 2',
       beforeEnter() {
         window.open('https://github.com/inVoltag/figma-ui-color-palette', '_blank')
+      }
+    },
+    {
+      path: '/_work/_jeprendsquoi/information',
+      name: '_jeprendsquoi information',
+      beforeEnter() {
+        window.open('https://yuka.io', '_blank')
+      }
+    },
+    {
+      path: '/_work/_jeprendsquoi/takeaway-1',
+      name: '_jeprendsquoi takeaway 1',
+      beforeEnter() {
+        window.open('https://testflight.apple.com/join/AmEZ2igV', '_blank')
+      }
+    },
+    {
+      path: '/_work/_jeprendsquoi/takeaway-2',
+      name: '_jeprendsquoi takeaway 2',
+      beforeEnter() {
+        window.open('https://testflight.apple.com/join/AmEZ2igV', '_blank')
       }
     }
   ]

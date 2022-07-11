@@ -45,6 +45,8 @@
 </template>
 
 <style scoped lang="sass">
+  @use '@/assets/stylesheets/base.sass' as device
+
   // Structure
   .main-menu
     position: fixed
@@ -80,4 +82,8 @@
     &--stuck
       z-index: 2
       box-shadow: 0 var(--header-height-size) 64rem -64rem v-bind(background) inset
+
+  @include device.mobile
+    .main-menu
+      gap: var(--layout-column-gap)
 </style>

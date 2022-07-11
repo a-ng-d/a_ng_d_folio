@@ -6,6 +6,7 @@
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import Container from '@/components/ui/Container.vue'
   import _ui_color_palette from '@/contexts/_work/_ui_color_palette.vue'
+  import _jeprendsquoi from '@/contexts/_work/_jeprendsquoi.vue'
 
   export default {
     name: 'WorkDetails',
@@ -16,16 +17,18 @@
       OneColumn,
       WrapColumn,
       Container,
-      _ui_color_palette
+      _ui_color_palette,
+      _jeprendsquoi
     },
     props: {
       title: String,
       description: String,
       misc: Object,
-      context: String,
-      theme: {
-        type: String,
-        default: 'default'
+      context: String
+    },
+    data() {
+      return {
+        theme: 'default'
       }
     }
   }
@@ -95,6 +98,8 @@
 </template>
 
 <style scoped lang="sass">
+  @use '@/assets/stylesheets/base.sass' as device
+
   // Structure
   .details
     grid-area: main
@@ -106,6 +111,10 @@
 
   .title
     padding: var(--sizing-s-000)
+
+  @include device.mobile
+    .description
+      height: fit-content
 
   // Aspect
   .page
@@ -119,4 +128,13 @@
 
   .overview
     background-color: var(--color-soft-wind)
+
+  :deep(section.challenge)
+    background-color: var(--color-candy-floss)
+
+  :deep(section.success)
+    background-color: var(--color-soft-wind)
+
+  :deep(section.takeaways)
+    background: var(--gradient-biscarosse-sunset)
 </style>

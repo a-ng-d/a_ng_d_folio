@@ -37,6 +37,8 @@
 </template>
 
 <style scoped lang="sass">
+  @use '@/assets/stylesheets/base.sass' as device
+
   // Structure
   .container
     padding: var(--spacing-l-200)
@@ -48,10 +50,19 @@
       display: flex
       gap: var(--layout-column-gap)
 
+    &__icon
+      padding: var(--spacing-s-000) 0 0 0
+
     &__description
       flex: 1
       display: flex
       align-items: center
+
+  @include device.mobile
+    .container
+      &__content
+        flex-flow: column nowrap
+        align-items: center
 
   // Aspect
   .container

@@ -93,7 +93,7 @@
         </Button>
         <Pagination
           v-else-if="context === 'work'"
-          :label="$t('work.friendlyName')"
+          :label="device != 'mobile' ? $t('work.friendlyName') : ''"
           :dots="dots"
           :theme="dots.theme"
         />

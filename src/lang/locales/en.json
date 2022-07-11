@@ -194,7 +194,7 @@
         "paragraph-1": "The plugin uses the LCH (Lightness-Chroma-Hue) model to generate colors according to the chosen lightness scale. The model LCH is relevant to make colors compliant with the WCAG standards.",
         "paragraph-2": "It works like the HSL (Hue-Saturation-Lightness) color model. The HSL is simple to use to build a color system, because the lightness can just be changed to create variants. The LCH too, but the Chroma, and the Hue are automatically adjusted to keep the colors within the sRGB gamut."
       },
-      "how": {
+      "part-1": {
         "title": "How does it work?",
         "caption-1": "The workflow is quite simple: Select some starting colors on the canvas, edit the lightness scale, then create the color palette.",
         "caption-2": "Then, edit the lightness scale (it will tweak the colors) and add them to the local styles.",
@@ -217,7 +217,50 @@
       "shortDescription": "Fruits and vegetables seasonality companion",
       "description": "I often go at the market, to buy some fresh and local food. For decades, my parents taught me consume local food is the best way to feed, because the local economy is stimulated and the carbon footprint is lower. So, avoiding supermarket and co. is a leitmotiv. However, the local market reveals its own limits because of some absurdities: find some cherries in winter (17€ a kilogram), some tomatoes or melons on november. The bitter conclusion is simple: strict seasonality is not yet a standard.",
       "misc": {
-        "date": "2021・Beta released"
+        "date": "2021・Beta released",
+        "objectives": "Checking a product's seasonality (fruits and vegetable), Encouraging people to contribute to the product's seasonality database",
+        "roles": "Building and maintaining the database, Creating a brand: jeprendsquoi (the daily helper), Designing a mobile companion to find the right information insitu (supermarket & market), Developing a mobile app with a no-code solution"
+      },
+      "challenge": {
+        "title": "The problem of non-seasonal food",
+        "paragraph-1": "A non-seasonal fruit or vegetable comes from:",
+        "paragraph-2": "<ul><li>Abroad, in a country where the cultivation is seasonal or locally unavailable</li><li>Cultivated in a greenhouse</li>",
+        "paragraph-3": "Abroad, the carbon footprint is high because of the transportation: by boat or plane. And yet, cultivate inside a greenhouse has a more expensive carbon footprint. Indeed, a greenhouse keeps a non-stop heat to simulate the season temperature, and make the cultivation grow. That is why we can see some tomatoes on november, they grow in a greenhouse in Brittany."
+      },
+      "part-1": {
+        "title": "A first prototype to solve the problem",
+        "paragraph-1": "There are a couple of tools to make some quick database. No-code is an interesting philosophy to build and test quickly something. Airtable has been chosen because its databases can use different visual representations. The grid was the most relevant view to retrieve a vegetable or a fruit and consult its data.",
+        "paragraph-2": "The limitation of this representation is the device context. Indeed, the main use case takes place outside, at the market or the supermarket. People are not used to bring their laptop to the supermarket. So, this solution is not viable for a real usage on the ground.",
+        "paragraph-3": "Nevertheless, people might take their smartphone! And Notion can be consulted with the native app or via a shared URL. The access point is a bit risky because people might loose the shared URL or their Notion account. So, make a mobile app should be safer.",
+        "caption-1": "The grid representation is clear enough to help user to retrieve the product he is looking for. Besides, Airtable provides a discrete search feature to help a bit more. The fruits and vegetables grid views have been divided into two databases in the first instance. Consult the <a href='https://airtable.com/shrjuPamh7D8dN0mD' class='link external-link' target='_blank'>fruits</a> and <a href='https://airtable.com/shr7bwEb4cuhWyREm' class='link external-link' target='_blank'>vegetables</a> databases.",
+        "caption-2": "Notion has merged the two Airtable databases into one. Notion operates in the same way and the reason of this migration is simple: Notion is my all-in-one digital workplace. <a href='https://www.notion.so/0a62c28a5f444ff482e676483f44d0d5' class='link external-link' target='_blank'>Consult the Fruits and Vegetables database</a>."
+      },
+      "part-2": {
+        "title": "Make the data alive and retrievable",
+        "paragraph-1": "The data are ready on Notion and can be represented on a mobile app as an interactive list with some additional features: filter, search, expand, share, and contribute. The app has been built with <a href='https://www.bravostudio.app/' class='link external-link' target='_blank'>Bravo Studio</a>, a no-code mobile app builder, that gathers API calls and Figma templates.",
+        "paragraph-2": "The brand has been created and developed around a simple question: What do I take? A question we ask at the supermarket. The purpose is to help people make environmentally friendly choices.",
+        "caption-1": "The list of fruits and vegetables is displayed as the main section. The list can be filtered by season.",
+        "caption-2": "The search feature allows user to find a specific product",
+        "caption-3": "The detailed page gives user the months of consumption and some additional information",
+        "caption-4": "Every user can contribute to the list, just by filling the form. A moderation step is required before publishing.",
+        "caption-5": "The templates are edited on Figma. Those pages are composed with placeholders, that will be replaced and duplicated thanks to API calls.",
+        "caption-6": "The brand has been created and developed around a simple question: What do I take? A question we ask at the supermarket. The purpose is to help people make environmentally friendly choices.",
+        "caption-7": "This looping animation is the mobile app loader when the page is not loaded yet.",
+        "caption-8": "On the splash screen, the logotype fades in to introduce the app.",
+        "info": {
+          "description": "Yuka was a great inspiration at developing the brand, the voice and the ton.",
+          "linkLabel": "Discover Yuka"
+        }
+      },
+      "takeaways": {
+        "takeaway-1": {
+          "description": "The Android app is available as an APK. It is an ongoing test beta version.",
+          "linkLabel": "Download the APK"
+        },
+        "takeaway-2": {
+          "description": "The iOS app is available on TestFlight. It is an ongoing test beta version: ",
+          "linkLabel": "Install the app"
+        }
       }
     },
     "_jean_bobby_radio": {
