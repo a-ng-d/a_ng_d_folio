@@ -5,7 +5,15 @@
   export default {
     name: 'Glitchscape',
     props: {
-      filter: [Object, String],
+      filter: {
+        type: [Object, String],
+        default: {
+          hue: '162deg',
+          brightness: '0.5',
+          invert: '0',
+          saturation: '0.75'
+        }
+      },
       pov: {
         type: String,
         default: 'reset'
