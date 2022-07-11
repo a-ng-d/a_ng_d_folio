@@ -17,15 +17,21 @@
 <template>
   <div class="container">
     <div class="container__content">
-      <slot name="icon"></slot>
-      <p>{{ description }}</p>
-      <Button
-        type="secondary"
-        :path="href"
-        :label="cta"
-        layout="simple"
-        theme="default"
-      />
+      <div class="container__icon">
+        <slot name="icon"></slot>
+      </div>
+      <div class="container__description">
+        <p>{{ description }}</p>
+      </div>
+      <div class="container__cta">
+        <Button
+          type="secondary"
+          :path="href"
+          :label="cta"
+          layout="simple"
+          theme="default"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -42,8 +48,10 @@
       display: flex
       gap: var(--layout-column-gap)
 
-    p
+    &__description
       flex: 1
+      display: flex
+      align-items: center
 
   // Aspect
   .container
