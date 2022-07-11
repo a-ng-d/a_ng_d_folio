@@ -264,6 +264,8 @@
 </template>
 
 <style scoped lang="sass">
+  @use '@/assets/stylesheets/base.sass' as device
+
   .page
     background: v-bind('projects[position].background')
     transition: background var(--duration-grandma) var(--ease-vroom)
@@ -273,6 +275,7 @@
     width: 100vw
     height: 100vh
     position: absolute
+    overflow: hidden
 
     &__item
       width: 100%
@@ -307,6 +310,7 @@
       display: flex
       flex-flow: column nowrap
       justify-content: space-between
+      gap: var(--layout-column-gap)
 
       &__description
         display: flex
@@ -334,6 +338,47 @@
 
       &__item
         --delay: var(--delay-hare)
+
+  @include device.tablet
+    .work
+      flex-flow: column nowrap
+
+      &__illustration
+        &__item
+          height: 125%
+
+      &__summary
+        flex: 1
+
+        &__actions
+          justify-content: center
+
+  @include device.mobile-landscape
+    .work
+      padding: 0 var(--layout-center)
+
+      &__illustration
+        display: none
+
+      &__summary
+        &__description
+          gap: var(--layout-label-gap)
+
+        &__actions
+          justify-content: center
+
+  @include device.mobile
+    .work
+      flex-flow: column nowrap
+
+      &__illustration
+        display: none
+
+      &__summary
+        flex: 1
+
+        &__actions
+          justify-content: center
 
   // Aspect
   [data-theme="dark"]
