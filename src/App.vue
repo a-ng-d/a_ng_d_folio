@@ -129,6 +129,7 @@
     :isGlitched="isGlitched"
     :scrollProgress="scrollProgress"
     :scrollLimit="pageHeight - viewHeight"
+    :view="view"
   />
 </template>
 

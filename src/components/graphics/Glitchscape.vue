@@ -16,11 +16,11 @@
       },
       pov: {
         type: String,
-        default: 'reset'
+        default: 'RESET'
       },
       quality: {
         type: String,
-        default: 'high'
+        default: 'HIGH'
       },
       isGlitched: Boolean,
       scrollProgress: {
@@ -30,7 +30,8 @@
       scrollLimit: {
         type: Number,
         required: true
-      }
+      },
+      view: String
     },
     data() {
       return {
@@ -40,14 +41,14 @@
     watch: {
       pov(to, from) {
         const actions = {
-          reset: () => this.glitchscape.povReset()
+          RESET: () => this.glitchscape.povReset()
         }
         return actions[to]?.() ?? 'No pov change'
       },
       quality(to, from) {
         const actions = {
-          low: () => this.glitchscape.lowQuality(),
-          high: () => this.glitchscape.highQuality()
+          LOW: () => this.glitchscape.lowQuality(),
+          HIGH: () => this.glitchscape.highQuality()
         }
         return actions[to]?.() ?? 'No pov change'
       },
@@ -59,6 +60,12 @@
       },
       scrollProgress(to, from) {
         return this.glitchscape.povZoom(this.scrollProgress, this.scrollLimit)
+      },
+      view(to, from) {
+        const actions = {
+          RESET: () => this.glitchscape.povReset()
+        }
+        return actions[this.pov]?.() ?? 'No pov change'
       }
     },
     mounted() {
@@ -467,7 +474,7 @@
 
         sk.povReset = () => pov.reset()
 
-        sk.povZoom = (scrollProgress, scrollLimit) => pov.zoom(scrollProgress, scrollLimit)
+        sk.povZoom = (scrollProgress, scrollLimit) => pov.zoom(scrollProgress, scrollLimit + 200)
 
         sk.lowQuality = () => {
           mountains.forEach(el => el.wireframe())

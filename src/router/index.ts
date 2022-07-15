@@ -28,8 +28,8 @@ const router = createRouter({
           invert: '0',
           saturation: '0.75'
         },
-        pov: 'reset',
-        quality: 'high'
+        pov: 'RESET',
+        quality: 'HIGH'
       }
     },
     {
@@ -46,8 +46,8 @@ const router = createRouter({
           invert: '1',
           saturation: '0.75'
         },
-        pov: 'scrolling…',
-        quality: 'high'
+        pov: 'RESET',
+        quality: 'HIGH'
       }
     },
     {
@@ -64,8 +64,8 @@ const router = createRouter({
           invert: '0',
           saturation: '0.75'
         },
-        pov: 'reset',
-        quality: 'high'
+        pov: 'RESET',
+        quality: 'HIGH'
       }
     },
     {
@@ -220,8 +220,8 @@ const router = createRouter({
           invert: '0',
           saturation: '0.75'
         },
-        pov: 'reset',
-        quality: 'high'
+        pov: 'RESET',
+        quality: 'HIGH'
       }
     },
     {
