@@ -93,27 +93,27 @@
         <div class="work__summary__description">
           <div class="work__title" :data-theme="theme">
             <Transition name="wheel" mode="out-in" :duration="duration" @before-leave="splitLetters" @before-enter="splitLetters" appear>
-              <h2 v-if="activeProjectCodeName === projects[0].meta.codeName">{{ $t(`work.${projects[0].meta.codeName}.shortTitle`) }}</h2>
-              <h2 v-else-if="activeProjectCodeName === projects[1].meta.codeName">{{ $t(`work.${projects[1].meta.codeName}.shortTitle`) }}</h2>
-              <h2 v-else-if="activeProjectCodeName === projects[2].meta.codeName">{{ $t(`work.${projects[2].meta.codeName}.shortTitle`) }}</h2>
-              <h2 v-else-if="activeProjectCodeName === projects[3].meta.codeName">{{ $t(`work.${projects[3].meta.codeName}.shortTitle`) }}</h2>
-              <h2 v-else-if="activeProjectCodeName === projects[4].meta.codeName">{{ $t(`work.${projects[4].meta.codeName}.shortTitle`) }}</h2>
+              <h2 v-if="activeProjectCodeName === projects[0].meta.codeName">{{ projects[0].meta.codeName }}</h2>
+              <h2 v-else-if="activeProjectCodeName === projects[1].meta.codeName">{{ projects[1].meta.codeName }}</h2>
+              <h2 v-else-if="activeProjectCodeName === projects[2].meta.codeName">{{ projects[2].meta.codeName }}</h2>
+              <h2 v-else-if="activeProjectCodeName === projects[3].meta.codeName">{{ projects[3].meta.codeName }}</h2>
+              <h2 v-else-if="activeProjectCodeName === projects[4].meta.codeName">{{ projects[4].meta.codeName }}</h2>
             </Transition>
             <Transition name="slide-right" :duration="duration * 1.5" mode="out-in" appear>
               <div v-if="activeProjectCodeName === projects[0].meta.codeName">
-                <p>{{ $t(`work.${projects[0].meta.codeName}.shortDescription`) }}</p>
+                <p>{{ projects[0].meta.summary }}</p>
               </div>
               <div v-else-if="activeProjectCodeName === projects[1].meta.codeName">
-                <p>{{ $t(`work.${projects[1].meta.codeName}.shortDescription`) }}</p>
+                <p>{{ projects[1].meta.summary }}</p>
               </div>
               <div v-else-if="activeProjectCodeName === projects[2].meta.codeName">
-                <p>{{ $t(`work.${projects[2].meta.codeName}.shortDescription`) }}</p>
+                <p>{{ projects[2].meta.summary }}</p>
               </div>
               <div v-else-if="activeProjectCodeName === projects[3].meta.codeName">
-                <p>{{ $t(`work.${projects[3].meta.codeName}.shortDescription`) }}</p>
+                <p>{{ projects[3].meta.summary }}</p>
               </div>
               <div v-else-if="activeProjectCodeName === projects[4].meta.codeName">
-                <p>{{ $t(`work.${projects[4].meta.codeName}.shortDescription`) }}</p>
+                <p>{{ projects[4].meta.summary }}</p>
               </div>
             </Transition>
           </div>
@@ -121,23 +121,23 @@
             <Transition class="work__data__item" name="slide-right" :duration="duration * 1.5" mode="out-in" appear>
               <li v-if="activeProjectCodeName === projects[0].meta.codeName">
                 <h6>{{ $t("global.date") }}</h6>
-                <p>{{ $t(`work.${projects[0].meta.codeName}.misc.date`) }}</p>
+                <p>{{ projects[0].meta.date }}</p>
               </li>
               <li v-else-if="activeProjectCodeName === projects[1].meta.codeName">
                 <h6>{{ $t("global.date") }}</h6>
-                <p>{{ $t(`work.${projects[1].meta.codeName}.misc.date`) }}</p>
+                <p>{{ projects[1].meta.date }}</p>
               </li>
               <li v-else-if="activeProjectCodeName === projects[2].meta.codeName">
                 <h6>{{ $t("global.date") }}</h6>
-                <p>{{ $t(`work.${projects[2].meta.codeName}.misc.date`) }}</p>
+                <p>{{ projects[2].meta.date }}</p>
               </li>
               <li v-else-if="activeProjectCodeName === projects[3].meta.codeName">
                 <h6>{{ $t("global.date") }}</h6>
-                <p>{{ $t(`work.${projects[3].meta.codeName}.misc.date`) }}</p>
+                <p>{{ projects[3].meta.date }}</p>
               </li>
               <li v-else-if="activeProjectCodeName === projects[4].meta.codeName">
                 <h6>{{ $t("global.date") }}</h6>
-                <p>{{ $t(`work.${projects[4].meta.codeName}.misc.date`) }}</p>
+                <p>{{ projects[4].meta.date }}</p>
               </li>
             </Transition>
           </ul>
