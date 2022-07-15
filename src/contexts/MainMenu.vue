@@ -19,7 +19,7 @@
     props: {
       device: {
         type: String,
-        default: 'desktop'
+        default: 'DESKTOP'
       },
       view: {
         type: String,
@@ -67,7 +67,7 @@
           type="secondary"
           :label="$t('global.back.home')"
           path="/"
-          :layout="device != 'mobile' ? 'ICON-LEFT' : 'ICON-ONLY'"
+          :layout="device != 'MOBILE' ? 'ICON-LEFT' : 'ICON-ONLY'"
           theme="DARK"
         >
           <template #icon>
@@ -79,7 +79,7 @@
           type="secondary"
           :label="$t('global.menu')"
           path="/_universes"
-          :layout="device != 'mobile' ? 'ICON-LEFT' : 'ICON-ONLY'"
+          :layout="device != 'MOBILE' ? 'ICON-LEFT' : 'ICON-ONLY'"
           theme="DEFAULT"
         >
           <template #icon>
@@ -95,7 +95,7 @@
           type="primary"
           :label="$t('global.back.home')"
           path="/"
-          :layout="device != 'mobile' ? 'ICON-RIGHT' : 'ICON-ONLY'"
+          :layout="device != 'MOBILE' ? 'ICON-RIGHT' : 'ICON-ONLY'"
         >
           <template #icon>
             <ArrowRight :size="24" />
@@ -103,7 +103,7 @@
         </Button>
         <Pagination
           v-else-if="view === 'WORK'"
-          :label="device != 'mobile' ? $t('work.friendlyName') : ''"
+          :label="device != 'MOBILE' ? $t('work.friendlyName') : ''"
           :pages="projects"
           :activePage="activeProjectPosition"
           :theme="projects[activeProjectPosition].meta.theme"

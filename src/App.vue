@@ -19,7 +19,7 @@
         pov: '',
         quality: '',
         view: '',
-        device: 'desktop',
+        device: 'DESKTOP',
         transition: 'scale-down',
         scrollProgress: 0,
         pageHeight: NaN,
@@ -89,8 +89,8 @@
       }
     },
     mounted() {
-      window.innerWidth < 461 ? this.device = 'mobile' : this.device
-      window.onresize = () => window.innerWidth < 461 ? this.device = 'mobile' : this.device = 'desktop'
+      window.innerWidth < 461 ? this.device = 'MOBILE' : this.device
+      window.onresize = () => window.innerWidth < 461 ? this.device = 'MOBILE' : this.device = 'DESKTOP'
     }
   }
 </script>
