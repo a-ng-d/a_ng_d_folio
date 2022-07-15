@@ -36,8 +36,17 @@
     <article class="details">
       <section class="title">
         <ScrollingText
-          :label="$t(`work.${project.codeName}.shortTitle`)"
+          :label="project.codeName"
+          direction="RIGHT"
           :theme="theme"
+          style="margin-left: calc(var(--sizing-s-000) * -1)"
+        />
+        <ScrollingText
+          :label="`Project #${project.position + 1}﹒${project.summary}﹒${project.date}﹒${$t('global.scrollDown')}﹒`"
+          direction="LEFT"
+          isSubTitle
+          :theme="theme"
+          style="margin-left: calc(var(--sizing-s-000) * -1)"
         />
       </section>
       <section class="description">
@@ -45,7 +54,7 @@
           :theme="theme"
         >
           <template #plain>
-            <p class="enhanced" v-html="$t(`work.${project.codeName}.description`)"></p>
+            <p class="enhanced" v-html="project.description"></p>
           </template>
         </OneColumn>
       </section>
@@ -60,7 +69,7 @@
           :theme="theme"
         >
           <template #plain>
-            <Container :description="$t(`work.${project.codeName}.misc.date`)" />
+            <Container :description="project.date" />
           </template>
         </WrapColumn>
         <WrapColumn
@@ -83,7 +92,7 @@
         </WrapColumn>
       </section>
       <Component
-        :is="$t(`work.${project.codeName}.shortTitle`)"
+        :is="project.codeName"
         :theme="theme"
       />
     </article>

@@ -19,6 +19,7 @@
     },
     "menu": "Menu",
     "go": "Go deeper",
+    "scrollDown": "Scroll down for discovering the approach",
     "overview": "Project at a glance",
     "date": "Date",
     "status": "Status",
@@ -269,7 +270,9 @@
       "shortDescription": "iObeya internal and participatory web radio",
       "description": "Before the COVID-19 pandemic, with my teammate in the UX team, we were used to listen to our Spotify collaborative playlist. A batch of various masterpieces from different personalities. There are some 90's hits: Trip Hop, Alternative rock, House… Some 80's hits: Goth, New Wave… Around 500 tracks we listened to everyday. And yet, a virus has co me, and the remote work was the new order. We were distributed. The problem is we cannot use Spotify as a web radio, in order to listen together to our music and react on it. Make our own web radio allows us to retrieve this office atmosphere: Jean-Bobby Radio.",
       "misc": {
-        "date": "2020・On-air"
+        "date": "2020・On-air",
+        "objectives": "Listening together to our Spotify collaborative playlist, Retrieving the office atmosphere",
+        "roles": "Defining the web radio back-end architecture, Creating a graphic universe around our company's mascot, Designing a simple web player and declining the universe through it, Developing and maintaining the web player"
       }
     },
     "_awesome_ipsums": {
@@ -278,7 +281,9 @@
       "shortDescription": "Design team’s own Lorem Ipsums from a simple Google Spreadsheet",
       "description": "Sketch is an UX tool, using diagrams to build user experiences, interfaces, prototypes, and illustrations… The tool can be extended with a plugin system. The purpose is to add features, or script actions. The idea of making a more fun Lorem Ipsum tool was a great opportunity to make a Sketch Plugin and understand how it works.",
       "misc": {
-        "date": "2019・Running"
+        "date": "2019・Running",
+        "objectives": "Allowing the design team to use custom lorem ipsums as fake content, Making the fake content collaborative",
+        "roles": "Developing the scripts to create/update/sync. the custom lorem ipsums"
       }
     },
     "_iobeya_whiteboard": {
@@ -287,7 +292,9 @@
       "shortDescription": "Go-to-SaaS solution to enhance iObeya virality and deployment",
       "description": "The Whiteboarding session is a lite version of  iObeya. Its purpose is to ease the deployment through a company by providing  a simple meeting framework, reinforcing the collaboration and introducing the solution. This feature was an opportunity to revamp the UI, follow a design philosophy, involve the team, and make user tests.",
       "misc": {
-        "date": "2018・Released"
+        "date": "2018・Released",
+        "objectives": "Easing the solution deployment, Go-to-SaaS, Reinforcing the position of iObeya on Innovation & Creativity sessions",
+        "roles": "Facilitating workshops by using the design thinking philosophy, Designing the vision, Revamping the UI, Writing the user stories"
       }
     }
   },

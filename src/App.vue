@@ -55,9 +55,12 @@
 
         if(from.meta.view === 'work' && to.meta.view === 'universes')
           this.transition = 'go-up'
-      },
-      activeProjectPosition(to, from) {
-        console.log(to, from)
+
+        if(from.meta.view === 'work' && to.meta.view === 'project')
+          this.transition = 'go-down'
+
+        if(from.meta.view === 'project' && to.meta.view === 'work')
+          this.transition = 'go-up'
       }
     },
     methods: {
