@@ -90,7 +90,7 @@ const router = createRouter({
       name: '_UI_COLOR_PALETTE',
       component: Project,
       meta: {
-        project: i18n.global.t('work._ui_color_palette.shortTitle'),
+        codeName: i18n.global.t('work._ui_color_palette.shortTitle'),
         position: 0,
         title: i18n.global.t('work._ui_color_palette.title'),
         objectives: i18n.global.t('work._ui_color_palette.misc.objectives').split(', '),
@@ -106,7 +106,7 @@ const router = createRouter({
       name: '_JEPRENDSQUOI',
       component: Project,
       meta: {
-        project: i18n.global.t('work._jeprendsquoi.shortTitle'),
+        codeName: i18n.global.t('work._jeprendsquoi.shortTitle'),
         position: 1,
         title: i18n.global.t('work._jeprendsquoi.title'),
         objectives: i18n.global.t('work._jeprendsquoi.misc.objectives').split(', '),
@@ -122,7 +122,7 @@ const router = createRouter({
       name: '_JEAN_BOBBY_RADIO',
       component: Project,
       meta: {
-        project: i18n.global.t('work._jean_bobby_radio.shortTitle'),
+        codeName: i18n.global.t('work._jean_bobby_radio.shortTitle'),
         position: 2,
         title: i18n.global.t('work.title'),
         view: 'project',
@@ -136,7 +136,7 @@ const router = createRouter({
       name: '_AWESOME_IPSUMS',
       component: Project,
       meta: {
-        project: i18n.global.t('work._awesome_ipsums.shortTitle'),
+        codeName: i18n.global.t('work._awesome_ipsums.shortTitle'),
         position: 3,
         title: i18n.global.t('work.title'),
         view: 'project',
@@ -150,7 +150,7 @@ const router = createRouter({
       name: '_IOBEYA_WHITEBOARD',
       component: Project,
       meta: {
-        project: i18n.global.t('work._iobeya_whiteboard.shortTitle'),
+        codeName: i18n.global.t('work._iobeya_whiteboard.shortTitle'),
         position: 4,
         title: i18n.global.t('work.title'),
         view: 'project',

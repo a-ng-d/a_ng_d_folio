@@ -37,7 +37,7 @@
     <article class="details">
       <section class="title">
         <ScrollingText
-          :label="$t(`work.${project.project}.shortTitle`)"
+          :label="$t(`work.${project.codeName}.shortTitle`)"
           :theme="theme"
         />
       </section>
@@ -46,7 +46,7 @@
           :theme="theme"
         >
           <template #plain>
-            <p class="enhanced" v-html="$t(`work.${project.project}.description`)"></p>
+            <p class="enhanced" v-html="$t(`work.${project.codeName}.description`)"></p>
           </template>
         </OneColumn>
       </section>
@@ -61,7 +61,7 @@
           :theme="theme"
         >
           <template #plain>
-            <Container :description="$t(`work.${project.project.project}.misc.date`)" />
+            <Container :description="$t(`work.${project.codeName.project}.misc.date`)" />
           </template>
         </WrapColumn>
         <WrapColumn
@@ -84,7 +84,7 @@
         </WrapColumn>
       </section>
       <Component
-        :is="$t(`work.${project.project}.shortTitle`)"
+        :is="$t(`work.${project.codeName}.shortTitle`)"
         :theme="theme"
       />
     </article>
