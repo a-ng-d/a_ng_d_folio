@@ -34,7 +34,9 @@
         this.filter = to.meta.filter
         this.pov = to.meta.pov
         this.quality = to.meta.quality
-        this.activeProjectPosition = to.meta.view === 'work' ? this.activeProjectPosition : to.meta.position
+        this.activeProjectPosition = to.meta.view === 'work' ? this.activeProjectPosition :
+                                     to.meta.view === 'project' ? to.meta.position :
+                                     0
 
         if(from.meta.view === 'home' && to.meta.view === 'id')
           this.transition = 'go-left'

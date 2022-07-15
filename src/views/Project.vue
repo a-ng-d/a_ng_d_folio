@@ -60,7 +60,7 @@
           :theme="theme"
         >
           <template #plain>
-            <Container :description="$t(`work.${project.codeName.project}.misc.date`)" />
+            <Container :description="$t(`work.${project.codeName}.misc.date`)" />
           </template>
         </WrapColumn>
         <WrapColumn
