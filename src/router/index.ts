@@ -20,7 +20,7 @@ const router = createRouter({
       component: Home,
       meta: {
         title: i18n.global.t('title'),
-        view: 'home',
+        view: 'HOME',
         theme: 'DARK',
         filter: {
           hue: '162deg',
@@ -38,7 +38,7 @@ const router = createRouter({
       component: Id,
       meta: {
         title: i18n.global.t('id.title'),
-        view: 'id',
+        view: 'ID',
         theme: 'DEFAULT',
         filter: {
           hue: '-78deg',
@@ -56,7 +56,7 @@ const router = createRouter({
       component: Universes,
       meta: {
         title: i18n.global.t('universes.title'),
-        view: 'universes',
+        view: 'UNIVERSES',
         theme: 'DARK',
         filter: {
           hue: '313deg',
@@ -73,7 +73,7 @@ const router = createRouter({
       name: '_CORE',
       component: Home,
       meta: {
-        view: 'core'
+        view: 'CORE'
       }
     },
     {
@@ -82,7 +82,7 @@ const router = createRouter({
       component: Work,
       meta: {
         title: i18n.global.t('work.title'),
-        view: 'work'
+        view: 'WORK'
       }
     },
     {
@@ -98,7 +98,7 @@ const router = createRouter({
         objectives: i18n.global.t('work._ui_color_palette.misc.objectives').split(', '),
         roles: i18n.global.t('work._ui_color_palette.misc.roles').split(', '),
         position: 0,
-        view: 'project',
+        view: 'PROJECT',
         illustration: UCPAnimation,
         background: '#88EBF9',
         theme: 'DEFAULT'
@@ -117,7 +117,7 @@ const router = createRouter({
         objectives: i18n.global.t('work._jeprendsquoi.misc.objectives').split(', '),
         roles: i18n.global.t('work._jeprendsquoi.misc.roles').split(', '),
         position: 1,
-        view: 'project',
+        view: 'PROJECT',
         illustration: '/src/assets/images/_work/_jeprendsquoi/illustration.png',
         background: '#FFF',
         theme: 'DEFAULT'
@@ -136,7 +136,7 @@ const router = createRouter({
         objectives: i18n.global.t('work._jean_bobby_radio.misc.objectives').split(', '),
         roles: i18n.global.t('work._jean_bobby_radio.misc.roles').split(', '),
         position: 2,
-        view: 'project',
+        view: 'PROJECT',
         illustration: JBRAnimation,
         background: '#190038',
         theme: 'DARK'
@@ -155,7 +155,7 @@ const router = createRouter({
         objectives: i18n.global.t('work._awesome_ipsums.misc.objectives').split(', '),
         roles: i18n.global.t('work._awesome_ipsums.misc.roles').split(', '),
         position: 3,
-        view: 'project',
+        view: 'PROJECT',
         illustration: AIAnimation,
         background: '#23A566',
         theme: 'DARK'
@@ -174,7 +174,7 @@ const router = createRouter({
         objectives: i18n.global.t('work._iobeya_whiteboard.misc.objectives').split(', '),
         roles: i18n.global.t('work._iobeya_whiteboard.misc.roles').split(', '),
         position: 4,
-        view: 'project',
+        view: 'PROJECT',
         illustration: IWAnimation,
         background: '#001D5E',
         theme: 'DARK'

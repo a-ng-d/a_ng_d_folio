@@ -100,7 +100,7 @@
       </template>
     </OneColumn>
     <WrapColumn
-      columns="4"
+      :columns="4"
       :theme="theme"
     >
       <template #plain>

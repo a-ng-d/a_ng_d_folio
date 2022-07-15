@@ -38,9 +38,9 @@
     methods: {
       changeLogotypeColor(view) {
         const actions = {
-          id: 'var(--color-soil)',
-          work: this.projects[this.activeProjectPosition].meta.theme == 'DEFAULT' ? 'var(--color-soil)' : 'var(--color-cream)',
-          project: 'var(--color-sandstone)'
+          ID: 'var(--color-soil)',
+          WORK: this.projects[this.activeProjectPosition].meta.theme == 'DEFAULT' ? 'var(--color-soil)' : 'var(--color-cream)',
+          PROJECT: 'var(--color-sandstone)'
         }
         return actions[view] ?? 'url(#gradient-biscarosse-sunset)'
       },
@@ -57,13 +57,13 @@
 <template>
   <Header
     :logotypeColor="changeLogotypeColor(view)"
-    :background="view === 'project' ? 'var(--color-cream)' : 'transparent'"
+    :background="view === 'PROJECT' ? 'var(--color-cream)' : 'transparent'"
     :scrollProgress="scrollProgress"
   >
     <template #left-part>
       <Transition name="switch" mode="out-in">
         <Button
-          v-if="view === 'universes'"
+          v-if="view === 'UNIVERSES'"
           type="secondary"
           :label="$t('global.back.home')"
           path="/"
@@ -75,7 +75,7 @@
           </template>
         </Button>
         <Button
-          v-else-if="view === 'work' || view === 'project'"
+          v-else-if="view === 'WORK' || view === 'PROJECT'"
           type="secondary"
           :label="$t('global.menu')"
           path="/_universes"
@@ -91,7 +91,7 @@
     <template #right-part>
       <Transition name="switch" mode="out-in">
         <Button
-          v-if="view === 'id'"
+          v-if="view === 'ID'"
           type="primary"
           :label="$t('global.back.home')"
           path="/"
@@ -102,14 +102,14 @@
           </template>
         </Button>
         <Pagination
-          v-else-if="view === 'work'"
+          v-else-if="view === 'WORK'"
           :label="device != 'mobile' ? $t('work.friendlyName') : ''"
           :pages="projects"
           :activePage="activeProjectPosition"
           :theme="projects[activeProjectPosition].meta.theme"
         />
         <Navigation
-          v-else-if="view === 'project'"
+          v-else-if="view === 'PROJECT'"
           :previousPage="previousProject()"
           rootPage="/_work"
           :nextPage="nextProject()"

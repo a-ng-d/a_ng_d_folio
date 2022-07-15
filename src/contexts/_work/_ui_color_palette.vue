@@ -46,7 +46,7 @@
   <section>
     <WrapColumn
       :title="$t('work._ui_color_palette.part-1.title')"
-      columns="3"
+      :columns="3"
       :theme="theme"
     >
       <template #plain>
