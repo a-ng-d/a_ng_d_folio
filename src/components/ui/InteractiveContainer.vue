@@ -29,7 +29,7 @@
           :path="href"
           :label="cta"
           layout="simple"
-          theme="default"
+          theme="DEFAULT"
         />
       </div>
     </div>

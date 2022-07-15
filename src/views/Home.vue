@@ -16,7 +16,7 @@
     props: {
       theme: {
         type: String,
-        default: 'default'
+        default: 'DEFAULT'
       }
     }
   }
@@ -85,7 +85,7 @@
     padding: var(--spacing-xl-600) var(--layout-center)
     //color: var(--text-color-dark)
 
-    &[data-theme="dark"]
+    &[data-theme="DARK"]
       --text-color: var(--color-cream)
 
     &__content

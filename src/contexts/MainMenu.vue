@@ -39,7 +39,7 @@
       changeLogotypeColor(view) {
         const actions = {
           id: 'var(--color-soil)',
-          work: this.projects[this.activeProjectPosition].meta.theme == 'default' ? 'var(--color-soil)' : 'var(--color-cream)',
+          work: this.projects[this.activeProjectPosition].meta.theme == 'DEFAULT' ? 'var(--color-soil)' : 'var(--color-cream)',
           project: 'var(--color-sandstone)'
         }
         return actions[view] ?? 'url(#gradient-biscarosse-sunset)'
@@ -68,7 +68,7 @@
           :label="$t('global.back.home')"
           path="/"
           :layout="device != 'mobile' ? 'left-icon' : 'icon-only'"
-          theme="dark"
+          theme="DARK"
         >
           <template #icon>
             <ArrowLeft :size="24" />
@@ -80,7 +80,7 @@
           :label="$t('global.menu')"
           path="/_universes"
           :layout="device != 'mobile' ? 'left-icon' : 'icon-only'"
-          theme="default"
+          theme="DEFAULT"
         >
           <template #icon>
             <Menu :size="24" />

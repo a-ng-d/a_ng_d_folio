@@ -10,7 +10,7 @@
       activePage: Number,
       theme: {
         type: String,
-        default: 'default'
+        default: 'DEFAULT'
       }
     }
   }
@@ -68,7 +68,7 @@
       &--active
         --alpha: 1
 
-  [data-theme="dark"]
+  [data-theme="DARK"]
     --text-color: var(--color-cream)
     --background-color: var(--color-cream)
 </style>

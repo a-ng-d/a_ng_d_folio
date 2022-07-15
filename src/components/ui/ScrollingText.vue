@@ -16,7 +16,7 @@
       },
       theme: {
         type: String,
-        default: 'default'
+        default: 'DEFAULT'
       }
     }
   }
@@ -52,6 +52,6 @@
     &__instance
       color: var(--text-color)
 
-  .scrolling-text[data-theme="dark"]
+  .scrolling-text[data-theme="DARK"]
     --text-color: var(--color-cream)
 </style>

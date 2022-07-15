@@ -145,7 +145,7 @@
         <div class="work__summary__actions">
           <Transition name="switch" mode="out-in" :duration="duration" style="--delay: 0ms" appear>
             <Button
-              v-if="theme === 'default'"
+              v-if="theme === 'DEFAULT'"
               type="secondary"
               path=""
               layout="icon-only"
@@ -157,7 +157,7 @@
               </template>
             </Button>
             <Button
-              v-else-if="theme === 'dark'"
+              v-else-if="theme === 'DARK'"
               type="secondary"
               path=""
               layout="icon-only"
@@ -171,7 +171,7 @@
           </Transition>
           <Transition name="switch" mode="out-in" :duration="duration" style="--delay: 100ms" appear>
             <Button
-              v-if="theme === 'default'"
+              v-if="theme === 'DEFAULT'"
               type="primary"
               :label="$t('global.go')"
               :path="`/_work/${activeProjectCodeName}`"
@@ -183,7 +183,7 @@
               </template>
             </Button>
             <Button
-              v-else-if="theme === 'dark'"
+              v-else-if="theme === 'DARK'"
               type="primary"
               :label="$t('global.go')"
               :path="`/_work/${activeProjectCodeName}`"
@@ -197,7 +197,7 @@
           </Transition>
           <Transition name="switch" mode="out-in" :duration="duration" style="--delay: 200ms" appear>
             <Button
-              v-if="theme === 'default'"
+              v-if="theme === 'DEFAULT'"
               type="secondary"
               path=""
               layout="icon-only"
@@ -209,7 +209,7 @@
               </template>
             </Button>
             <Button
-              v-else-if="theme === 'dark'"
+              v-else-if="theme === 'DARK'"
               type="secondary"
               path=""
               layout="icon-only"
@@ -349,7 +349,7 @@
           justify-content: center
 
   // Aspect
-  [data-theme="dark"]
+  [data-theme="DARK"]
     --text-color: var(--color-cream)
 
   // Animation

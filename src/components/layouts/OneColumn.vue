@@ -5,7 +5,7 @@
       title: String,
       theme: {
         type: String,
-        default: 'default'
+        default: 'DEFAULT'
       }
     }
   }
@@ -36,6 +36,6 @@
       gap: var(--layout-column-gap)
 
     // Aspect
-    [data-theme="dark"]
+    [data-theme="DARK"]
       --text-color: var(--color-cream)
 </style>

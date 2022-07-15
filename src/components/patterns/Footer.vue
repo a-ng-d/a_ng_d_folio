@@ -16,7 +16,7 @@
       },
       theme: {
         type: String,
-        default: 'default'
+        default: 'DEFAULT'
       }
     },
     data() {
@@ -41,7 +41,7 @@
         <Label
           :label="$t('footer.attribution')"
           underlined
-          :theme="theme === 'default' ? 'dark' : 'default'"
+          :theme="theme === 'DEFAULT' ? 'DARK' : 'DEFAULT'"
         />
       </RouterLink>
     </div>
@@ -89,7 +89,7 @@
       --background-color: var(--color-soil)
       --border-color: var(--color-cream)
 
-  [data-theme="dark"]
+  [data-theme="DARK"]
     .footer__tag
       --text-color: var(--color-soil)
       --background-color: var(--color-cream)
@@ -109,7 +109,7 @@
           height: 50%
           left: calc(var(--border-size) * 4)
 
-        &[data-theme="dark"]:after
+        &[data-theme="DARK"]:after
           --border-color: var(--color-sandstone)
 
     &__tag__link:focus

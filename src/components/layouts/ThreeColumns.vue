@@ -5,7 +5,7 @@
       title: String,
       theme: {
         type: String,
-        default: 'default'
+        default: 'DEFAULT'
       }
     }
   }
@@ -56,6 +56,6 @@
         flex-flow: column nowrap
 
   // Aspect`
-  [data-theme="dark"]
+  [data-theme="DARK"]
     --text-color: var(--color-cream)
 </style>

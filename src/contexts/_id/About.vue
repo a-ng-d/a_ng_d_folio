@@ -9,7 +9,7 @@
     props: {
       theme: {
         type: String,
-        default: 'default'
+        default: 'DEFAULT'
       }
     }
   }
@@ -34,6 +34,6 @@
 </template>
 
 <style scoped lang="sass">
-  [data-theme="dark"]
+  [data-theme="DARK"]
     --text-color: var(--color-cream)
 </style>

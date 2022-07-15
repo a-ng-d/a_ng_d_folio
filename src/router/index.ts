@@ -21,7 +21,7 @@ const router = createRouter({
       meta: {
         title: i18n.global.t('title'),
         view: 'home',
-        theme: 'dark',
+        theme: 'DARK',
         filter: {
           hue: '162deg',
           brightness: '0.5',
@@ -39,7 +39,7 @@ const router = createRouter({
       meta: {
         title: i18n.global.t('id.title'),
         view: 'id',
-        theme: 'default',
+        theme: 'DEFAULT',
         filter: {
           hue: '-78deg',
           brightness: '0.3',
@@ -57,7 +57,7 @@ const router = createRouter({
       meta: {
         title: i18n.global.t('universes.title'),
         view: 'universes',
-        theme: 'dark',
+        theme: 'DARK',
         filter: {
           hue: '313deg',
           brightness: '0.5',
@@ -101,7 +101,7 @@ const router = createRouter({
         view: 'project',
         illustration: UCPAnimation,
         background: '#88EBF9',
-        theme: 'default'
+        theme: 'DEFAULT'
       }
     },
     {
@@ -120,7 +120,7 @@ const router = createRouter({
         view: 'project',
         illustration: '/src/assets/images/_work/_jeprendsquoi/illustration.png',
         background: '#FFF',
-        theme: 'default'
+        theme: 'DEFAULT'
       }
     },
     {
@@ -139,7 +139,7 @@ const router = createRouter({
         view: 'project',
         illustration: JBRAnimation,
         background: '#190038',
-        theme: 'dark'
+        theme: 'DARK'
       }
     },
     {
@@ -158,7 +158,7 @@ const router = createRouter({
         view: 'project',
         illustration: AIAnimation,
         background: '#23A566',
-        theme: 'dark'
+        theme: 'DARK'
       }
     },
     {
@@ -177,7 +177,7 @@ const router = createRouter({
         view: 'project',
         illustration: IWAnimation,
         background: '#001D5E',
-        theme: 'dark'
+        theme: 'DARK'
       }
     },
     {
@@ -213,7 +213,7 @@ const router = createRouter({
       meta: {
         title: i18n.global.t('attribution.title'),
         view: 'attribution',
-        theme: 'default',
+        theme: 'DEFAULT',
         filter: {
           hue: '162deg',
           brightness: '0.5',

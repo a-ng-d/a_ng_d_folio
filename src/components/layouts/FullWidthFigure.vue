@@ -5,7 +5,7 @@
       caption: String,
       theme: {
         type: String,
-        default: 'default'
+        default: 'DEFAULT'
       }
     }
   }
@@ -44,6 +44,6 @@
       color: var(--color-sandstone)
 
     // Aspect
-    [data-theme="dark"]
+    [data-theme="DARK"]
       --text-color: var(--color-cream)
 </style>

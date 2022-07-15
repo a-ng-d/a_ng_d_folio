@@ -12,7 +12,7 @@ export default {
       },
       theme: {
         type: String,
-        default: 'default'
+        default: 'DEFAULT'
       }
     }
   }
@@ -56,7 +56,7 @@ export default {
         border-radius: var(--full-border-radius)
 
   // Aspect
-  [data-theme="dark"]
+  [data-theme="DARK"]
     --text-color: var(--color-cream)
     --border-color: var(--color-cream)
 

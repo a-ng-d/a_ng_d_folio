@@ -9,7 +9,7 @@
       },
       theme: {
         type: String,
-        default: 'default'
+        default: 'DEFAULT'
       }
     }
   }
@@ -76,6 +76,6 @@
           width: 75vw
 
     // Aspect
-    [data-theme="dark"]
+    [data-theme="DARK"]
       --text-color: var(--color-cream)
 </style>

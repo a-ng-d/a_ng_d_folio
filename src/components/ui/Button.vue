@@ -28,7 +28,7 @@
       position: String,
       theme: {
         type: String,
-        default: 'default'
+        default: 'DEFAULT'
       }
     },
     data() {
@@ -227,7 +227,7 @@
     &:hover
       --text-color: var(--color-soil)
 
-  .button--primary[data-theme="dark"]
+  .button--primary[data-theme="DARK"]
     --icon-color: var(--color-soil)
     --text-color: var(--color-soil)
     --outline-color: var(--color-cream)
@@ -266,7 +266,7 @@
     &:hover
       --text-color: var(--color-soil)
 
-  .button--secondary[data-theme="dark"]
+  .button--secondary[data-theme="DARK"]
     --icon-color: var(--color-cream)
     --text-color: var(--color-cream)
     --outline-color: var(--color-cream)

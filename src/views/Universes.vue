@@ -20,7 +20,7 @@
     props: {
       theme: {
         type: String,
-        default: 'default'
+        default: 'DEFAULT'
       }
     },
     data() {

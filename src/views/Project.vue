@@ -25,7 +25,7 @@
     },
     data() {
       return {
-        theme: 'default'
+        theme: 'DEFAULT'
       }
     }
   }

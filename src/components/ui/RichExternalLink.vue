@@ -12,7 +12,7 @@
       alt: String,
       theme: {
         type: String,
-        default: 'default'
+        default: 'DEFAULT'
       }
     }
   }
@@ -68,7 +68,7 @@
         overflow: hidden
 
   // Aspect
-  [data-theme="dark"]
+  [data-theme="DARK"]
     --icon-color: var(--color-soil)
     --text-color: var(--color-cream)
     --outline-color: var(--color-cream)
@@ -99,7 +99,7 @@
       transform: var(--focus-scale)
       z-index: 2
 
-  .rich-external-link[data-theme="dark"]
+  .rich-external-link[data-theme="DARK"]
     &:hover, &:focus
       --text-color: var(--color-soil)
       --border-color: var(--color-soil)

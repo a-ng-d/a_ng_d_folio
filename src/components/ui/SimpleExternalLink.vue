@@ -14,7 +14,7 @@
       alt: String,
       theme: {
         type: String,
-        default: 'default'
+        default: 'DEFAULT'
       }
     }
   }
@@ -49,7 +49,7 @@
       padding: var(--spacing-s-000) 0 0
 
   // Aspect
-  [data-theme="dark"]
+  [data-theme="DARK"]
     --icon-color: var(--color-cream)
     --border-active-color: var(--color-clay)
 
