@@ -19,8 +19,8 @@
       Ghost
     },
     props: {
-      scroll: Number,
-      pageHeight: Number,
+      scrollProgress: Number,
+      scrollLimit: Number,
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -33,7 +33,7 @@
         return ((value - oldMin) * newRange / oldRange) + newMin
       },
       parallax(start, end) {
-        return `${this.doMap(this.scroll, 0, this.pageHeight, start, end)}%`
+        return `${this.doMap(this.scrollProgress, 0, this.scrollLimit, start, end)}%`
       }
     }
   }

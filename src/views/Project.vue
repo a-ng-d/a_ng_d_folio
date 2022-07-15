@@ -22,8 +22,8 @@
     },
     props: {
       project: Object,
-      scroll: Number,
-      pageHeight: NaN
+      scrollProgress: Number,
+      scrollLimit: NaN
     },
     data() {
       return {
@@ -94,8 +94,8 @@
       </section>
       <Component
         :is="project.codeName"
-        :scroll="scroll"
-        :pageHeight="pageHeight"
+        :scrollProgress="scrollProgress"
+        :scrollLimit="scrollLimit"
         :theme="theme"
       />
     </article>

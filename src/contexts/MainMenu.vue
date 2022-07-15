@@ -25,7 +25,7 @@
         type: String,
         required: true
       },
-      scroll: {
+      scrollProgress: {
         type: Number,
         default: 0
       },
@@ -58,7 +58,7 @@
   <Header
     :logotypeColor="changeLogotypeColor(view)"
     :background="view === 'project' ? 'var(--color-cream)' : 'transparent'"
-    :scroll="scroll"
+    :scrollProgress="scrollProgress"
   >
     <template #left-part>
       <Transition name="switch" mode="out-in">

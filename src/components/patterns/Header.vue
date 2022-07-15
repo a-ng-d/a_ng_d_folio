@@ -10,7 +10,7 @@
         type: String,
         default: 'var(--color-deep-black)'
       },
-      scroll: {
+      scrollProgress: {
         type: Number,
         default: 0
       }
@@ -21,8 +21,8 @@
       }
     },
     watch: {
-      scroll(to, from) {
-        this.scroll > 0 ? this.isStuck = true : this.isStuck = false
+      scrollProgress(to, from) {
+        this.scrollProgress > 0 ? this.isStuck = true : this.isStuck = false
       }
     }
   }

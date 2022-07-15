@@ -23,11 +23,11 @@
         default: 'high'
       },
       isGlitched: Boolean,
-      scroll: {
+      scrollProgress: {
         type: Number,
         default: 0
       },
-      pageHeight: {
+      scrollLimit: {
         type: Number,
         required: true
       }
@@ -57,8 +57,8 @@
         else
           this.glitchscape.unglitch()
       },
-      scroll(to, from) {
-        return this.glitchscape.povZoom(this.scroll, this.pageHeight)
+      scrollProgress(to, from) {
+        return this.glitchscape.povZoom(this.scrollProgress, this.scrollLimit)
       }
     },
     mounted() {
@@ -467,7 +467,7 @@
 
         sk.povReset = () => pov.reset()
 
-        sk.povZoom = (scroll, pageHeight) => pov.zoom(scroll, pageHeight)
+        sk.povZoom = (scrollProgress, scrollLimit) => pov.zoom(scrollProgress, scrollLimit)
 
         sk.lowQuality = () => {
           mountains.forEach(el => el.wireframe())

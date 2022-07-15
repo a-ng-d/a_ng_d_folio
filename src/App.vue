@@ -21,8 +21,9 @@
         view: '',
         device: 'desktop',
         transition: 'scale-down',
-        scroll: 0,
+        scrollProgress: 0,
         pageHeight: NaN,
+        viewHeight: NaN,
         isGlitched: false,
         activeProjectPosition: 0
       }
@@ -66,7 +67,8 @@
     methods: {
       getScrollParams(e) {
         this.pageHeight = e.target.scrollHeight
-        this.scroll = e.target.scrollTop
+        this.scrollProgress = e.target.scrollTop
+        this.viewHeight = document.body.clientHeight
       },
       onAfterLeave(e) {
         e.style.transitionDelay = '0'
@@ -88,7 +90,7 @@
   <Logotype />
   <Transition name="pull-down" style="--delay: var(--delay-jogging)" @after-leave="onAfterLeave" appear>
     <MainMenu
-      :scroll="scroll"
+      :scrollProgress="scrollProgress"
       :view="view"
       :device="device"
       :projects="getProjects($router.options.routes)"
@@ -104,8 +106,8 @@
         :projects="getProjects($router.options.routes)"
         :activeProjectPosition="activeProjectPosition"
         :project="route.meta"
-        :scroll="scroll"
-        :pageHeight="pageHeight"
+        :scrollProgress="scrollProgress"
+        :scrollLimit="pageHeight - viewHeight"
         :theme="route.meta.theme"
         @activeProjectPosition="activeProjectPosition = $event"
       />
@@ -116,8 +118,8 @@
     :pov="pov"
     :quality="quality"
     :isGlitched="isGlitched"
-    :scroll="scroll"
-    :pageHeight="pageHeight"
+    :scrollProgress="scrollProgress"
+    :scrollLimit="pageHeight - viewHeight"
   />
 </template>
 
