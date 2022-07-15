@@ -22,7 +22,6 @@
     },
     watch: {
       scrollProgress(to, from) {
-        console.log(to)
         this.scrollProgress > 0 ? this.isStuck = true : this.isStuck = false
       }
     }

@@ -39,37 +39,37 @@
                                      to.meta.view === 'PROJECT' ? to.meta.position :
                                      0
 
-        if(from.meta.view === 'HOME' && to.meta.view === 'core')
+        if (from.meta.view === 'HOME' && to.meta.view === 'CORE')
           this.transition = 'go-left'
-
-        if(from.meta.view === 'core' && to.meta.view === 'HOME')
+        else if (from.meta.view === 'CORE' && to.meta.view === 'HOME')
           this.transition = 'go-right'
 
-        if(from.meta.view === 'HOME' && to.meta.view === 'lab')
+        if (from.meta.view === 'HOME' && to.meta.view === 'LAB')
           this.transition = 'go-right'
-
-        if(from.meta.view === 'lab' && to.meta.view === 'HOME')
+        else if (from.meta.view === 'LAB' && to.meta.view === 'HOME')
           this.transition = 'go-left'
 
-        if(from.meta.view === 'HOME' && to.meta.view === 'WORK')
+        if (from.meta.view === 'HOME' && to.meta.view === 'WORK')
           this.transition = 'go-down'
-
-        if(from.meta.view === 'WORK' && to.meta.view === 'HOME')
+        else if (from.meta.view === 'WORK' && to.meta.view === 'HOME')
           this.transition = 'go-up'
 
-        if(from.meta.view === 'WORK' && to.meta.view === 'PROJECT')
+        if (from.meta.view === 'WORK' && to.meta.view === 'PROJECT')
           this.transition = 'go-down'
-
-        if(from.meta.view === 'PROJECT' && to.meta.view === 'WORK')
+        else if (from.meta.view === 'PROJECT' && to.meta.view === 'WORK')
           this.transition = 'go-up'
 
-        if(to.meta.view === 'UNIVERSES')
-          this.transition = 'go-up'
+        if (from.meta.position - to.meta.position < 0)
+          this.transition = 'go-right'
+        else if (from.meta.position - to.meta.position > 0)
+          this.transition = 'go-left'
 
-        if(from.meta.view === 'UNIVERSES')
+        if (to.meta.view === 'UNIVERSES')
+          this.transition = 'go-up'
+        else if (from.meta.view === 'UNIVERSES')
           this.transition = 'go-down'
 
-        if(from.meta.view === 'UNIVERSES' && to.meta.view === 'HOME')
+        if (from.meta.view === 'UNIVERSES' && to.meta.view === 'HOME')
           this.transition = 'go-left'
       }
     },
@@ -84,6 +84,7 @@
       },
       getProjects(src) {
         let projects = src
+        projects.sort((a, b) => a.meta.position - b.meta.position)
         return projects.filter(project => project.meta.view === 'PROJECT')
       }
     },

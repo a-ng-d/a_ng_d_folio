@@ -28,6 +28,11 @@
         type: String,
         default: 'DEFAULT'
       }
+    },
+    data() {
+      return {
+        theme: "DEFAULT"
+      }
     }
   }
 </script>
