@@ -3,8 +3,11 @@
   "home": {
     "author": "aurélie_ng_rimaud_",
     "baseline": "Fresh blend of \nCreative technology,\nProduct design  &\nRogue-like love",
-    "id": "Take a look at the short summary",
-    "menu": "Discover more universes"
+    "id": "No time? Get a short summary",
+    "menu": "Discover more universes",
+    "work": "Consult the selected work",
+    "lab": "Take a look at the shots",
+    "core": "Visit the core values"
   },
   "footer": {
     "author": "Aurélien Grimaud aka nG⚡",

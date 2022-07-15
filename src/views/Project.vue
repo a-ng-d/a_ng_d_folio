@@ -43,7 +43,7 @@
           style="margin-left: calc(var(--sizing-s-000) * -1)"
         />
         <ScrollingText
-          :label="`${$t('global.navigate')}﹒${$t('global.discover')}﹒${project.date}﹒${project.summary}﹒Project #${project.position + 1}﹒`"
+          :label="$t('global.navigate') + $t('global.separator') + $t('global.discover') + $t('global.separator') + project.date + $t('global.separator') + project.summary + $t('global.separator') + 'Project #' + (project.position + 1) + $t('global.separator')"
           direction="RIGHT"
           isSubTitle
           :theme="theme"

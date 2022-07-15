@@ -227,6 +227,10 @@
     &:hover
       --text-color: var(--color-soil)
 
+      .button__icon--transparent
+        --icon-color: var(--color-soil)
+
+
   .button--primary[data-theme="DARK"]
     --icon-color: var(--color-soil)
     --text-color: var(--color-soil)
@@ -236,6 +240,9 @@
 
     .button__icon
       background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
+
+      &--transparent
+        background: transparent
 
       &:deep(svg)
         stroke: var(--icon-color)

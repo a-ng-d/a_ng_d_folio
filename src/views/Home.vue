@@ -2,7 +2,7 @@
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import ScrollingText from '@/components/ui/ScrollingText.vue'
-  import { ArrowLeft, ArrowRight } from 'lucide-vue-next'
+  import { ArrowLeft, ArrowDown, ArrowRight } from 'lucide-vue-next'
 
   export default {
     name: 'Home',
@@ -11,6 +11,7 @@
       Button,
       ScrollingText,
       ArrowLeft,
+      ArrowDown,
       ArrowRight
     },
     props: {
@@ -33,15 +34,15 @@
           />
         </Transition>
         <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 100ms)">
-          <p class="jumbotron__baseline enhanced">{{ $t("home.baseline") }}</p>
+          <h4 class="jumbotron__baseline">{{ $t("home.baseline") }}</h4>
         </Transition>
       </div>
       <div class="jumbotron__actions">
         <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 200ms)">
           <Button
             type="secondary"
-            :label="$t('home.id')"
-            path="/_id"
+            :label="$t('home.core')"
+            path="/_core"
             layout="ICON-LEFT"
             :theme="theme"
           >
@@ -53,8 +54,21 @@
         <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 300ms)">
           <Button
             type="primary"
-            :label="$t('home.menu')"
-            path="/_universes"
+            :label="$t('home.work')"
+            path="/_work"
+            layout="ICON-RIGHT"
+            :theme="theme"
+          >
+            <template #icon>
+              <ArrowDown :size="24" />
+            </template>
+          </Button>
+        </Transition>
+        <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 400ms)">
+          <Button
+            type="secondary"
+            :label="$t('home.lab')"
+            path="/_lab"
             layout="ICON-RIGHT"
             :theme="theme"
           >
@@ -93,7 +107,7 @@
       flex: 1
       flex-flow: column nowrap
       align-items: center
-      gap: var(--layout-paragraph-gap)
+      gap: var(--layout-column-gap)
       justify-content: center
 
     &__actions

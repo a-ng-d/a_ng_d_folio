@@ -39,22 +39,22 @@
                                      to.meta.view === 'project' ? to.meta.position :
                                      0
 
-        if(from.meta.view === 'home' && to.meta.view === 'id')
+        if(from.meta.view === 'home' && to.meta.view === 'core')
           this.transition = 'go-left'
 
-        if(from.meta.view === 'id' && to.meta.view === 'home')
+        if(from.meta.view === 'core' && to.meta.view === 'home')
           this.transition = 'go-right'
 
-        if(from.meta.view === 'home' && to.meta.view === 'universes')
+        if(from.meta.view === 'home' && to.meta.view === 'lab')
           this.transition = 'go-right'
 
-        if(from.meta.view === 'universes' && to.meta.view === 'home')
+        if(from.meta.view === 'lab' && to.meta.view === 'home')
           this.transition = 'go-left'
 
-        if(from.meta.view === 'universes' && to.meta.view === 'work')
+        if(from.meta.view === 'home' && to.meta.view === 'work')
           this.transition = 'go-down'
 
-        if(from.meta.view === 'work' && to.meta.view === 'universes')
+        if(from.meta.view === 'work' && to.meta.view === 'home')
           this.transition = 'go-up'
 
         if(from.meta.view === 'work' && to.meta.view === 'project')
@@ -62,6 +62,15 @@
 
         if(from.meta.view === 'project' && to.meta.view === 'work')
           this.transition = 'go-up'
+
+        if(to.meta.view === 'universes')
+          this.transition = 'go-up'
+
+        if(from.meta.view === 'universes')
+          this.transition = 'go-down'
+
+        if(from.meta.view === 'universes' && to.meta.view === 'home')
+          this.transition = 'go-left'
       }
     },
     methods: {
