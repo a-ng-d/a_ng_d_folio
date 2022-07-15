@@ -21,7 +21,6 @@
       _jeprendsquoi
     },
     props: {
-      activeProject: Number,
       project: Object
     },
     data() {

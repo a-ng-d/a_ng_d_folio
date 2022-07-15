@@ -19,15 +19,15 @@
     },
     props: {
       projects: [Array, Object],
-      activeProject: Number
+      activeProjectPosition: Number
     },
     data() {
       return {
-        currentProject: this.projects[this.activeProject].meta.codeName,
-        position: this.activeProject,
+        currentProject: this.projects[this.activeProjectPosition].meta.codeName,
+        position: this.activeProjectPosition,
         duration: 2000,
         direction: 'right',
-        theme: this.projects[this.activeProject].meta.theme
+        theme: this.projects[this.activeProjectPosition].meta.theme
       }
     },
     methods: {
@@ -44,7 +44,7 @@
       switchProject() {
         this.currentProject = this.projects[this.position].meta.codeName
         this.theme = this.projects[this.position].meta.theme
-        this.$emit('activeProject', this.position)
+        this.$emit('activeProjectPosition', this.position)
       },
       splitLetters(el) {
         const
@@ -63,7 +63,7 @@
       }
     },
     created() {
-      this.$emit('activeProject', this.position)
+      this.$emit('activeProjectPosition', this.position)
     }
   }
 </script>
@@ -235,7 +235,7 @@
   @use '@/assets/stylesheets/base.sass' as device
 
   .page
-    background: v-bind('projects[activeProject].meta.background')
+    background: v-bind('projects[activeProjectPosition].meta.background')
     transition: background var(--duration-grandma) var(--ease-vroom)
 
   //Structure

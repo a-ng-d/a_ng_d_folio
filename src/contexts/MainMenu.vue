@@ -33,22 +33,22 @@
         type: [Array, Object],
         default: []
       },
-      activeProject: Number
+      activeProjectPosition: Number
     },
     methods: {
       changeLogotypeColor(view) {
         const actions = {
           id: 'var(--color-soil)',
-          work: this.projects[this.activeProject].meta.theme == 'default' ? 'var(--color-soil)' : 'var(--color-cream)',
+          work: this.projects[this.activeProjectPosition].meta.theme == 'default' ? 'var(--color-soil)' : 'var(--color-cream)',
           project: 'var(--color-sandstone)'
         }
         return actions[view] ?? 'url(#gradient-biscarosse-sunset)'
       },
       previousProject() {
-        return this.projects[this.activeProject - 1 > 0 ? this.activeProject - 1 : this.projects.length - 1].path
+        return this.projects[this.activeProjectPosition - 1 > 0 ? this.activeProjectPosition - 1 : this.projects.length - 1].path
       },
       nextProject() {
-        return this.projects[this.activeProject + 1 < this.projects.length ? this.activeProject + 1 : 0].path
+        return this.projects[this.activeProjectPosition + 1 < this.projects.length ? this.activeProjectPosition + 1 : 0].path
       }
     }
   }
@@ -105,8 +105,8 @@
           v-else-if="view === 'work'"
           :label="device != 'mobile' ? $t('work.friendlyName') : ''"
           :pages="projects"
-          :activePage="activeProject"
-          :theme="projects[activeProject].meta.theme"
+          :activePage="activeProjectPosition"
+          :theme="projects[activeProjectPosition].meta.theme"
         />
         <Navigation
           v-else-if="view === 'project'"

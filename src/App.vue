@@ -24,7 +24,7 @@
         scroll: 0,
         pageHeight: NaN,
         isGlitched: false,
-        activeProject: 0
+        activeProjectPosition: 0
       }
     },
     watch: {
@@ -34,7 +34,7 @@
         this.filter = to.meta.filter
         this.pov = to.meta.pov
         this.quality = to.meta.quality
-        this.activeProject = to.meta.view === 'work' ? this.activeProject : to.meta.position
+        this.activeProjectPosition = to.meta.view === 'work' ? this.activeProjectPosition : to.meta.position
 
         if(from.meta.view === 'home' && to.meta.view === 'id')
           this.transition = 'go-left'
@@ -54,7 +54,7 @@
         if(from.meta.view === 'work' && to.meta.view === 'universes')
           this.transition = 'go-up'
       },
-      activeProject(to, from) {
+      activeProjectPosition(to, from) {
         console.log(to, from)
       }
     },
@@ -87,7 +87,7 @@
       :view="view"
       :device="device"
       :projects="getProjects($router.options.routes)"
-      :activeProject="activeProject"
+      :activeProjectPosition="activeProjectPosition"
     />
   </Transition>
   <RouterView @scroll.passive="getScrollParams" v-slot="{ Component, route }">
@@ -97,10 +97,10 @@
         :key="route.path"
         :view="view"
         :projects="getProjects($router.options.routes)"
-        :activeProject="activeProject"
+        :activeProjectPosition="activeProjectPosition"
         :project="route.meta"
         :theme="route.meta.theme"
-        @activeProject="activeProject = $event"
+        @activeProjectPosition="activeProjectPosition = $event"
       />
     </Transition>
   </RouterView>
