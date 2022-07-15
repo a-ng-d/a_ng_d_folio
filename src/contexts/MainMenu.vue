@@ -45,7 +45,6 @@
         return actions[view] ?? 'url(#gradient-biscarosse-sunset)'
       },
       previousProject() {
-        console.log(this.projects, this.activeProjectPosition)
         return this.projects[this.activeProjectPosition - 1 >= 0 ? this.activeProjectPosition - 1 : this.projects.length - 1].path
       },
       nextProject() {

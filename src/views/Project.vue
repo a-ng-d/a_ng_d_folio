@@ -23,15 +23,10 @@
     props: {
       project: Object,
       scrollProgress: Number,
-      scrollLimit: NaN,
+      scrollLimit: Number,
       theme: {
         type: String,
         default: 'DEFAULT'
-      }
-    },
-    data() {
-      return {
-        theme: "DEFAULT"
       }
     }
   }

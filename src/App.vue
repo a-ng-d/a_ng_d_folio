@@ -118,7 +118,7 @@
         :project="route.meta"
         :scrollProgress="scrollProgress"
         :scrollLimit="pageHeight - viewHeight"
-        :theme="route.meta.theme"
+        :theme="view === 'project' ? 'DEFAULT' : route.meta.theme"
         @activeProjectPosition="activeProjectPosition = $event"
       />
     </Transition>
