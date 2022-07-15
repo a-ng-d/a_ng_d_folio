@@ -37,13 +37,12 @@
       <section class="title">
         <ScrollingText
           :label="project.codeName"
-          direction="RIGHT"
           :theme="theme"
           style="margin-left: calc(var(--sizing-s-000) * -1)"
         />
         <ScrollingText
-          :label="`Project #${project.position + 1}﹒${project.summary}﹒${project.date}﹒${$t('global.scrollDown')}﹒`"
-          direction="LEFT"
+          :label="`${$t('global.navigate')}﹒${$t('global.discover')}﹒${project.date}﹒${project.summary}﹒Project #${project.position + 1}﹒`"
+          direction="RIGHT"
           isSubTitle
           :theme="theme"
           style="margin-left: calc(var(--sizing-s-000) * -1)"
