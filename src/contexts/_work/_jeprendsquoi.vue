@@ -19,9 +19,21 @@
       Ghost
     },
     props: {
+      scroll: Number,
+      pageHeight: Number,
       theme: {
         type: String,
         default: 'DEFAULT'
+      }
+    },
+    methods: {
+      doMap(value, oldMin, oldMax, newMin, newMax) {
+        const oldRange = oldMax - oldMin,
+              newRange = newMax - newMin
+        return ((value - oldMin) * newRange / oldRange) + newMin
+      },
+      parallax(start, end) {
+        return `${this.doMap(this.scroll, 0, this.pageHeight, start, end)}%`
       }
     }
   }
@@ -159,6 +171,8 @@
       </template>
     </WrapColumn>
   </section>
+  <section class="ending">
+  </section>
   <section class="takeaways">
     <OneColumn
       :title="$t('global.takeaways')"
@@ -195,4 +209,9 @@
 
   section:nth-child(2n + 1)
     background-color: var(--color-titanium-white)
+
+  .ending
+    height: 100vh
+    background: url(/src/assets/images/_work/_jeprendsquoi/ending-asset-2.png) 50% v-bind('parallax(400, 100)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-1.png) 35% v-bind('parallax(200, 100)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-3.png) 65% v-bind('parallax(300, 100)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-logotype.svg) 50% v-bind('parallax(300, 5)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-broccoli.png) 105% v-bind('parallax(300, 5)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-eggplant.png) 65% v-bind('parallax(200, 10)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-pumpkin.png) 40% v-bind('parallax(200, 10)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-leek.png) 15% v-bind('parallax(300, 30)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-tomato.png) -5% v-bind('parallax(200, 50)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-pear.png) 10% v-bind('parallax(300, 90)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-cherry.png) 90% v-bind('parallax(200, 70)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-lemon.png) 80% v-bind('parallax(300, 50)') no-repeat, var(--color-titanium-white)
+
 </style>

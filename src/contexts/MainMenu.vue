@@ -57,7 +57,7 @@
 <template>
   <Header
     :logotypeColor="changeLogotypeColor(view)"
-    :background="view === 'id' ? 'var(--color-candy-floss)' : 'transparent'"
+    :background="view === 'project' ? 'var(--color-cream)' : 'transparent'"
     :scroll="scroll"
   >
     <template #left-part>

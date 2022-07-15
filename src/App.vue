@@ -104,6 +104,8 @@
         :projects="getProjects($router.options.routes)"
         :activeProjectPosition="activeProjectPosition"
         :project="route.meta"
+        :scroll="scroll"
+        :pageHeight="pageHeight"
         :theme="route.meta.theme"
         @activeProjectPosition="activeProjectPosition = $event"
       />

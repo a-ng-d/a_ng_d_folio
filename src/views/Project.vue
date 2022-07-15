@@ -21,7 +21,9 @@
       _jeprendsquoi
     },
     props: {
-      project: Object
+      project: Object,
+      scroll: Number,
+      pageHeight: NaN
     },
     data() {
       return {
@@ -92,6 +94,8 @@
       </section>
       <Component
         :is="project.codeName"
+        :scroll="scroll"
+        :pageHeight="pageHeight"
         :theme="theme"
       />
     </article>
