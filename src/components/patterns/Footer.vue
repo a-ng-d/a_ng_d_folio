@@ -8,7 +8,7 @@
     props: {
       alignment: {
         type: String,
-        default: 'left'
+        default: 'LEFT'
       },
       animation: {
         type: Array,
@@ -21,9 +21,9 @@
     },
     data() {
       return {
-        flex: this.alignment === 'left' ? 'flex-start' :
-              this.alignment === 'center' ? 'center' :
-              this.alignment === 'right' ? 'flex-end' :
+        flex: this.alignment === 'LEFT' ? 'flex-start' :
+              this.alignment === 'CENTER' ? 'center' :
+              this.alignment === 'RIGHT' ? 'flex-end' :
               'flex-start'
       }
     }

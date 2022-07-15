@@ -44,7 +44,7 @@
       </article>
     </Transition>
     <Footer
-      alignment="center"
+      alignment="CENTER"
       :theme="theme"
     />
   </main>

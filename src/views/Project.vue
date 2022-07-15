@@ -97,7 +97,7 @@
       />
     </article>
     <Footer
-      alignment="center"
+      alignment="CENTER"
       :theme="theme"
     />
   </main>
