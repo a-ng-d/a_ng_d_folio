@@ -7,6 +7,10 @@
         type: Boolean,
         default: false
       },
+      columns: {
+        type: Number,
+        default: 2
+      },
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -45,7 +49,7 @@
       gap: var(--layout-box-gap) var(--layout-column-gap)
 
       & > :deep(*)
-        flex: 1 1 calc(50% - var(--layout-column-gap))
+        flex: 1 1 v-bind("columns == 3 ? 'calc(33% - var(--layout-column-gap))' : columns == 4 ? 'calc(25% - var(--layout-column-gap))' : 'calc(50% - var(--layout-column-gap))'")
 
     @include device.tablet
       &__content
