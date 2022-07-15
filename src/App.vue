@@ -18,40 +18,44 @@
         filter: '',
         pov: '',
         quality: '',
-        context: '',
+        view: '',
         device: 'desktop',
         transition: 'scale-down',
         scroll: 0,
         pageHeight: NaN,
         isGlitched: false,
-        dots: {}
+        activeProject: 0
       }
     },
     watch: {
       '$route' (to, from) {
-        this.context = to.name
+        this.view = to.meta.view
         document.title = to.meta.title
         this.filter = to.meta.filter
         this.pov = to.meta.pov
         this.quality = to.meta.quality
+        this.activeProject = to.meta.view === 'work' ? this.activeProject : to.meta.position
 
-        if(from.name === 'home' && to.name === 'id')
+        if(from.meta.view === 'home' && to.meta.view === 'id')
           this.transition = 'go-left'
 
-        if(from.name === 'id' && to.name === 'home')
+        if(from.meta.view === 'id' && to.meta.view === 'home')
           this.transition = 'go-right'
 
-        if(from.name === 'home' && to.name === 'universes')
+        if(from.meta.view === 'home' && to.meta.view === 'universes')
           this.transition = 'go-right'
 
-        if(from.name === 'universes' && to.name === 'home')
+        if(from.meta.view === 'universes' && to.meta.view === 'home')
           this.transition = 'go-left'
 
-        if(from.name === 'universes' && to.name === 'work')
+        if(from.meta.view === 'universes' && to.meta.view === 'work')
           this.transition = 'go-down'
 
-        if(from.name === 'work' && to.name === 'universes')
+        if(from.meta.view === 'work' && to.meta.view === 'universes')
           this.transition = 'go-up'
+      },
+      activeProject(to, from) {
+        console.log(to, from)
       }
     },
     methods: {
@@ -62,8 +66,9 @@
       onAfterLeave(e) {
         e.style.transitionDelay = '0'
       },
-      setDots(obj) {
-        this.dots = obj
+      getProjects(src) {
+        let projects = src
+        return projects.filter(project => project.meta.view === 'project')
       }
     },
     mounted() {
@@ -79,9 +84,10 @@
   <Transition name="pull-down" style="--delay: var(--delay-jogging)" @after-leave="onAfterLeave" appear>
     <MainMenu
       :scroll="scroll"
-      :context="context"
+      :view="view"
       :device="device"
-      :dots="dots"
+      :projects="getProjects($router.options.routes)"
+      :activeProject="activeProject"
     />
   </Transition>
   <RouterView @scroll.passive="getScrollParams" v-slot="{ Component, route }">
@@ -89,15 +95,23 @@
       <Component
         :is="Component"
         :key="route.path"
-        :title="route.name"
-        :description="route.meta.description"
-        :misc="route.meta.misc"
-        :context="context"
-        @projectsData="setDots($event)"
+        :view="view"
+        :projects="getProjects($router.options.routes)"
+        :activeProject="activeProject"
+        :project="route.meta"
+        :theme="route.meta.theme"
+        @activeProject="activeProject = $event"
       />
     </Transition>
   </RouterView>
-  <Glitchscape :filter="filter" :pov="pov" :quality="quality" :isGlitched="isGlitched" :scroll="scroll" :pageHeight="pageHeight" />
+  <Glitchscape
+    :filter="filter"
+    :pov="pov"
+    :quality="quality"
+    :isGlitched="isGlitched"
+    :scroll="scroll"
+    :pageHeight="pageHeight"
+  />
 </template>
 
 <style lang="sass">

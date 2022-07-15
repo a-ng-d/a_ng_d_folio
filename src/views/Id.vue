@@ -22,9 +22,10 @@
       Talks,
       Workshops
     },
-    data() {
-      return {
-        theme: 'default'
+    props: {
+      theme: {
+        type: String,
+        default: 'default'
       }
     }
   }

@@ -2,6 +2,7 @@
   import Header from '@/components/patterns/Header.vue'
   import Button from '@/components/ui/Button.vue'
   import Pagination from '@/components/ui/Pagination.vue'
+  import Navigation from '@/components/ui/Navigation.vue'
   import { ArrowRight, ArrowLeft, Menu } from 'lucide-vue-next'
 
   export default {
@@ -10,6 +11,7 @@
       Header,
       Button,
       Pagination,
+      Navigation,
       ArrowRight,
       ArrowLeft,
       Menu
@@ -19,7 +21,7 @@
         type: String,
         default: 'desktop'
       },
-      context: {
+      view: {
         type: String,
         required: true
       },
@@ -27,18 +29,26 @@
         type: Number,
         default: 0
       },
-      dots: {
-        type: Object,
-        default: {}
-      }
+      projects: {
+        type: [Array, Object],
+        default: []
+      },
+      activeProject: Number
     },
     methods: {
-      changeLogotypeColor(context) {
+      changeLogotypeColor(view) {
         const actions = {
           id: 'var(--color-soil)',
-          work: this.dots.theme == 'default' ? 'var(--color-soil)' : 'var(--color-cream)'
+          work: this.projects[this.activeProject].meta.theme == 'default' ? 'var(--color-soil)' : 'var(--color-cream)',
+          project: 'var(--color-sandstone)'
         }
-        return actions[context] ?? 'url(#gradient-biscarosse-sunset)'
+        return actions[view] ?? 'url(#gradient-biscarosse-sunset)'
+      },
+      previousProject() {
+        return this.projects[this.activeProject - 1 > 0 ? this.activeProject - 1 : this.projects.length - 1].path
+      },
+      nextProject() {
+        return this.projects[this.activeProject + 1 < this.projects.length ? this.activeProject + 1 : 0].path
       }
     }
   }
@@ -46,14 +56,14 @@
 
 <template>
   <Header
-    :logotypeColor="changeLogotypeColor(context)"
-    :background="context === 'id' ? 'var(--color-candy-floss)' : 'transparent'"
+    :logotypeColor="changeLogotypeColor(view)"
+    :background="view === 'id' ? 'var(--color-candy-floss)' : 'transparent'"
     :scroll="scroll"
   >
     <template #left-part>
       <Transition name="switch" mode="out-in">
         <Button
-          v-if="context === 'universes'"
+          v-if="view === 'universes'"
           type="secondary"
           :label="$t('global.back.home')"
           path="/"
@@ -65,7 +75,7 @@
           </template>
         </Button>
         <Button
-          v-else-if="context === 'work'"
+          v-else-if="view === 'work' || view === 'project'"
           type="secondary"
           :label="$t('global.menu')"
           path="/_universes"
@@ -81,7 +91,7 @@
     <template #right-part>
       <Transition name="switch" mode="out-in">
         <Button
-          v-if="context === 'id'"
+          v-if="view === 'id'"
           type="primary"
           :label="$t('global.back.home')"
           path="/"
@@ -92,10 +102,17 @@
           </template>
         </Button>
         <Pagination
-          v-else-if="context === 'work'"
+          v-else-if="view === 'work'"
           :label="device != 'mobile' ? $t('work.friendlyName') : ''"
-          :dots="dots"
-          :theme="dots.theme"
+          :pages="projects"
+          :activePage="activeProject"
+          :theme="projects[activeProject].meta.theme"
+        />
+        <Navigation
+          v-else-if="view === 'project'"
+          :previousPage="previousProject()"
+          rootPage="/_work"
+          :nextPage="nextProject()"
         />
       </Transition>
     </template>

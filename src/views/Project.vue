@@ -9,7 +9,7 @@
   import _jeprendsquoi from '@/contexts/_work/_jeprendsquoi.vue'
 
   export default {
-    name: 'WorkDetails',
+    name: 'Project',
     components: {
       Footer,
       Button,
@@ -21,10 +21,8 @@
       _jeprendsquoi
     },
     props: {
-      title: String,
-      description: String,
-      misc: Object,
-      context: String
+      activeProject: Number,
+      project: Object
     },
     data() {
       return {
@@ -39,7 +37,7 @@
     <article class="details">
       <section class="title">
         <ScrollingText
-          :label="title"
+          :label="$t(`work.${project.project}.shortTitle`)"
           :theme="theme"
         />
       </section>
@@ -48,7 +46,7 @@
           :theme="theme"
         >
           <template #plain>
-            <p class="enhanced" v-html="description"></p>
+            <p class="enhanced" v-html="$t(`work.${project.project}.description`)"></p>
           </template>
         </OneColumn>
       </section>
@@ -63,7 +61,7 @@
           :theme="theme"
         >
           <template #plain>
-            <Container :description="misc.date" />
+            <Container :description="$t(`work.${project.project.project}.misc.date`)" />
           </template>
         </WrapColumn>
         <WrapColumn
@@ -72,7 +70,7 @@
           :theme="theme"
         >
           <template #plain>
-            <Container v-for="(objective, index) in misc.objectives" :title="`#${index + 1}`" :description="objective" />
+            <Container v-for="(objective, index) in project.objectives" :title="`#${index + 1}`" :description="objective" />
           </template>
         </WrapColumn>
         <WrapColumn
@@ -81,12 +79,12 @@
           :theme="theme"
         >
           <template #plain>
-            <Container v-for="(role, index) in misc.roles" :title="`#${index + 1}`" :description="role" />
+            <Container v-for="(role, index) in project.roles" :title="`#${index + 1}`" :description="role" />
           </template>
         </WrapColumn>
       </section>
       <Component
-        :is="context"
+        :is="$t(`work.${project.project}.shortTitle`)"
         :theme="theme"
       />
     </article>

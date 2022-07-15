@@ -17,6 +17,12 @@
       Mail,
       Archive
     },
+    props: {
+      theme: {
+        type: String,
+        default: 'default'
+      }
+    },
     data() {
       return {
         tooltip: {
@@ -45,8 +51,7 @@
             path: '/_archive',
             icon: 'Archive'
           },
-        ],
-        theme: 'dark'
+        ]
       }
     },
     methods: {

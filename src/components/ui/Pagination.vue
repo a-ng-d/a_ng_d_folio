@@ -3,10 +3,11 @@
     name: 'Pagination',
     props: {
       label: String,
-      dots: {
-        type: Object,
+      pages: {
+        type: [Array, Object],
         required: true
       },
+      activePage: Number,
       theme: {
         type: String,
         default: 'default'
@@ -19,9 +20,9 @@
   <div class="pagination" :data-theme="theme">
     <div class="pagination__dots">
       <div
-        v-for="n in dots.total"
+        v-for="n in pages.length"
         class="pagination__dot"
-        :class="n == dots.active + 1 ? 'pagination__dot--active' : ''"
+        :class="n == activePage + 1 ? 'pagination__dot--active' : ''"
         :key="`dots-${n}`">
       </div>
     </div>

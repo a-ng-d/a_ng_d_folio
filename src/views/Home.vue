@@ -13,9 +13,10 @@
       ArrowLeft,
       ArrowRight
     },
-    data() {
-      return {
-        theme: 'dark'
+    props: {
+      theme: {
+        type: String,
+        default: 'default'
       }
     }
   }

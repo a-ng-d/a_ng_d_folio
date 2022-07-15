@@ -17,41 +17,17 @@
       ArrowRight,
       ArrowDown
     },
+    props: {
+      projects: [Array, Object],
+      activeProject: Number
+    },
     data() {
       return {
-        projects: [{
-            name: '_ui_color_palette',
-            illustration: UCPAnimation,
-            background: '#88EBF9',
-            theme: 'default'
-          },
-          {
-            name: '_jeprendsquoi',
-            illustration: '/src/assets/images/_work/_jeprendsquoi/illustration.png',
-            background: '#FFF',
-            theme: 'default'
-          }, {
-            name: '_jean_bobby_radio',
-            illustration: JBRAnimation,
-            background: '#190038',
-            theme: 'dark'
-          }, {
-            name: '_awesome_ipsums',
-            illustration: AIAnimation,
-            background: '#23A566',
-            theme: 'dark'
-          }, {
-            name: '_iobeya_whiteboard',
-            illustration: IWAnimation,
-            background: '#001D5E',
-            theme: 'dark'
-        }],
-        currentProject: '_ui_color_palette',
-        position: 0,
-        projectPath: '',
+        currentProject: this.projects[this.activeProject].meta.project,
+        position: this.activeProject,
         duration: 2000,
         direction: 'right',
-        theme: 'default'
+        theme: this.projects[this.activeProject].meta.theme
       }
     },
     methods: {
@@ -66,13 +42,9 @@
         this.switchProject()
       },
       switchProject() {
-        this.currentProject = this.projects[this.position].name
-        this.theme = this.projects[this.position].theme
-        this.$emit('projectsData', {
-          total: this.projects.length,
-          active: this.position,
-          theme: this.projects[this.position].theme
-        })
+        this.currentProject = this.projects[this.position].meta.project
+        this.theme = this.projects[this.position].meta.theme
+        this.$emit('activeProject', this.position)
       },
       splitLetters(el) {
         const
@@ -91,11 +63,7 @@
       }
     },
     created() {
-      this.$emit('projectsData', {
-        total: this.projects.length,
-        active: this.position,
-        theme: this.projects[this.position].theme
-      })
+      this.$emit('activeProject', this.position)
     }
   }
 </script>
@@ -104,72 +72,72 @@
   <main class="page">
     <div class="background">
       <Transition name="scale-up" :duration="duration" mode="out-in" class="background__item" appear>
-        <div v-if="currentProject === projects[0].name" style="background: url(/src/assets/images/_work/_ui_color_palette/background.svg) 50% / cover no-repeat"></div>
-        <div v-else-if="currentProject === projects[1].name" style="background: url(/src/assets/images/_work/_jeprendsquoi/background.svg) 50% / cover no-repeat"></div>
-        <div v-else-if="currentProject === projects[2].name" style="background: url(/src/assets/images/_work/_jean_bobby_radio/background.png) 50% repeat ; mix-blend-mode : color-dodge"></div>
-        <div v-else-if="currentProject === projects[3].name"></div>
-        <div v-else-if="currentProject === projects[4].name" style="background: url(/src/assets/images/_work/_iobeya_whiteboard/background.png) 0% 0% no-repeat ; mix-blend-mode : overlay"></div>
+        <div v-if="currentProject === projects[0].meta.project" style="background: url(/src/assets/images/_work/_ui_color_palette/background.svg) 50% / cover no-repeat"></div>
+        <div v-else-if="currentProject === projects[1].meta.project" style="background: url(/src/assets/images/_work/_jeprendsquoi/background.svg) 50% / cover no-repeat"></div>
+        <div v-else-if="currentProject === projects[2].meta.project" style="background: url(/src/assets/images/_work/_jean_bobby_radio/background.png) 50% repeat ; mix-blend-mode : color-dodge"></div>
+        <div v-else-if="currentProject === projects[3].meta.project"></div>
+        <div v-else-if="currentProject === projects[4].meta.project" style="background: url(/src/assets/images/_work/_iobeya_whiteboard/background.png) 0% 0% no-repeat ; mix-blend-mode : overlay"></div>
       </Transition>
     </div>
     <section class="work">
       <div class="work__illustration" :style="direction === 'right' ? '--offset: -100vw' : '--offset: 100vw'">
         <Transition name="across" :duration="duration" mode="out-in" class="work__illustration__item" appear>
-          <Vue3Lottie v-if="currentProject === projects[0].name" :animationData="projects[0].illustration" />
-          <img v-else-if="currentProject === projects[1].name" :src="projects[1].illustration" />
-          <Vue3Lottie v-else-if="currentProject === projects[2].name" :animationData="projects[2].illustration" />
-          <Vue3Lottie v-else-if="currentProject === projects[3].name" :animationData="projects[3].illustration" />
-          <Vue3Lottie v-else-if="currentProject === projects[4].name" :animationData="projects[4].illustration" />
+          <Vue3Lottie v-if="currentProject === projects[0].meta.project" :animationData="projects[0].meta.illustration" />
+          <img v-else-if="currentProject === projects[1].meta.project" :src="projects[1].meta.illustration" />
+          <Vue3Lottie v-else-if="currentProject === projects[2].meta.project" :animationData="projects[2].meta.illustration" />
+          <Vue3Lottie v-else-if="currentProject === projects[3].meta.project" :animationData="projects[3].meta.illustration" />
+          <Vue3Lottie v-else-if="currentProject === projects[4].meta.project" :animationData="projects[4].meta.illustration" />
         </Transition>
       </div>
       <aside class="work__summary">
         <div class="work__summary__description">
           <div class="work__title" :data-theme="theme">
             <Transition name="wheel" mode="out-in" :duration="duration" @before-leave="splitLetters" @before-enter="splitLetters" appear>
-              <h2 v-if="currentProject === projects[0].name">{{ $t(`work.${projects[0].name}.shortTitle`) }}</h2>
-              <h2 v-else-if="currentProject === projects[1].name">{{ $t(`work.${projects[1].name}.shortTitle`) }}</h2>
-              <h2 v-else-if="currentProject === projects[2].name">{{ $t(`work.${projects[2].name}.shortTitle`) }}</h2>
-              <h2 v-else-if="currentProject === projects[3].name">{{ $t(`work.${projects[3].name}.shortTitle`) }}</h2>
-              <h2 v-else-if="currentProject === projects[4].name">{{ $t(`work.${projects[4].name}.shortTitle`) }}</h2>
+              <h2 v-if="currentProject === projects[0].meta.project">{{ $t(`work.${projects[0].meta.project}.shortTitle`) }}</h2>
+              <h2 v-else-if="currentProject === projects[1].meta.project">{{ $t(`work.${projects[1].meta.project}.shortTitle`) }}</h2>
+              <h2 v-else-if="currentProject === projects[2].meta.project">{{ $t(`work.${projects[2].meta.project}.shortTitle`) }}</h2>
+              <h2 v-else-if="currentProject === projects[3].meta.project">{{ $t(`work.${projects[3].meta.project}.shortTitle`) }}</h2>
+              <h2 v-else-if="currentProject === projects[4].meta.project">{{ $t(`work.${projects[4].meta.project}.shortTitle`) }}</h2>
             </Transition>
             <Transition name="slide-right" :duration="duration * 1.5" mode="out-in" appear>
-              <div v-if="currentProject === projects[0].name">
-                <p>{{ $t(`work.${projects[0].name}.shortDescription`) }}</p>
+              <div v-if="currentProject === projects[0].meta.project">
+                <p>{{ $t(`work.${projects[0].meta.project}.shortDescription`) }}</p>
               </div>
-              <div v-else-if="currentProject === projects[1].name">
-                <p>{{ $t(`work.${projects[1].name}.shortDescription`) }}</p>
+              <div v-else-if="currentProject === projects[1].meta.project">
+                <p>{{ $t(`work.${projects[1].meta.project}.shortDescription`) }}</p>
               </div>
-              <div v-else-if="currentProject === projects[2].name">
-                <p>{{ $t(`work.${projects[2].name}.shortDescription`) }}</p>
+              <div v-else-if="currentProject === projects[2].meta.project">
+                <p>{{ $t(`work.${projects[2].meta.project}.shortDescription`) }}</p>
               </div>
-              <div v-else-if="currentProject === projects[3].name">
-                <p>{{ $t(`work.${projects[3].name}.shortDescription`) }}</p>
+              <div v-else-if="currentProject === projects[3].meta.project">
+                <p>{{ $t(`work.${projects[3].meta.project}.shortDescription`) }}</p>
               </div>
-              <div v-else-if="currentProject === projects[4].name">
-                <p>{{ $t(`work.${projects[4].name}.shortDescription`) }}</p>
+              <div v-else-if="currentProject === projects[4].meta.project">
+                <p>{{ $t(`work.${projects[4].meta.project}.shortDescription`) }}</p>
               </div>
             </Transition>
           </div>
           <ul class="work__data" :data-theme="theme">
             <Transition class="work__data__item" name="slide-right" :duration="duration * 1.5" mode="out-in" appear>
-              <li v-if="currentProject === projects[0].name">
+              <li v-if="currentProject === projects[0].meta.project">
                 <h6>{{ $t("global.date") }}</h6>
-                <p>{{ $t(`work.${projects[0].name}.misc.date`) }}</p>
+                <p>{{ $t(`work.${projects[0].meta.project}.misc.date`) }}</p>
               </li>
-              <li v-else-if="currentProject === projects[1].name">
+              <li v-else-if="currentProject === projects[1].meta.project">
                 <h6>{{ $t("global.date") }}</h6>
-                <p>{{ $t(`work.${projects[1].name}.misc.date`) }}</p>
+                <p>{{ $t(`work.${projects[1].meta.project}.misc.date`) }}</p>
               </li>
-              <li v-else-if="currentProject === projects[2].name">
+              <li v-else-if="currentProject === projects[2].meta.project">
                 <h6>{{ $t("global.date") }}</h6>
-                <p>{{ $t(`work.${projects[2].name}.misc.date`) }}</p>
+                <p>{{ $t(`work.${projects[2].meta.project}.misc.date`) }}</p>
               </li>
-              <li v-else-if="currentProject === projects[3].name">
+              <li v-else-if="currentProject === projects[3].meta.project">
                 <h6>{{ $t("global.date") }}</h6>
-                <p>{{ $t(`work.${projects[3].name}.misc.date`) }}</p>
+                <p>{{ $t(`work.${projects[3].meta.project}.misc.date`) }}</p>
               </li>
-              <li v-else-if="currentProject === projects[4].name">
+              <li v-else-if="currentProject === projects[4].meta.project">
                 <h6>{{ $t("global.date") }}</h6>
-                <p>{{ $t(`work.${projects[4].name}.misc.date`) }}</p>
+                <p>{{ $t(`work.${projects[4].meta.project}.misc.date`) }}</p>
               </li>
             </Transition>
           </ul>
@@ -267,7 +235,7 @@
   @use '@/assets/stylesheets/base.sass' as device
 
   .page
-    background: v-bind('projects[position].background')
+    background: v-bind('projects[activeProject].meta.background')
     transition: background var(--duration-grandma) var(--ease-vroom)
 
   //Structure
