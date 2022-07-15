@@ -28,7 +28,7 @@
           type="secondary"
           :path="href"
           :label="cta"
-          layout="simple"
+          layout="SIMPLE"
           theme="DEFAULT"
         />
       </div>

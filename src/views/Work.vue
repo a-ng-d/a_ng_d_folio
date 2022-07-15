@@ -148,7 +148,7 @@
               v-if="theme === 'DEFAULT'"
               type="secondary"
               path=""
-              layout="icon-only"
+              layout="ICON-ONLY"
               :theme="theme"
               @click="previousProject"
             >
@@ -160,7 +160,7 @@
               v-else-if="theme === 'DARK'"
               type="secondary"
               path=""
-              layout="icon-only"
+              layout="ICON-ONLY"
               :theme="theme"
               @click="previousProject"
             >
@@ -175,7 +175,7 @@
               type="primary"
               :label="$t('global.go')"
               :path="`/_work/${activeProjectCodeName}`"
-              layout="left-icon"
+              layout="ICON-LEFT"
               :theme="theme"
             >
               <template #icon>
@@ -187,7 +187,7 @@
               type="primary"
               :label="$t('global.go')"
               :path="`/_work/${activeProjectCodeName}`"
-              layout="left-icon"
+              layout="ICON-LEFT"
               :theme="theme"
             >
               <template #icon>
@@ -200,7 +200,7 @@
               v-if="theme === 'DEFAULT'"
               type="secondary"
               path=""
-              layout="icon-only"
+              layout="ICON-ONLY"
               :theme="theme"
               @click="nextProject"
             >
@@ -212,7 +212,7 @@
               v-else-if="theme === 'DARK'"
               type="secondary"
               path=""
-              layout="icon-only"
+              layout="ICON-ONLY"
               :theme="theme"
               @click="nextProject"
             >

@@ -15,7 +15,7 @@
       path: String,
       layout: {
         type: String,
-        default: 'simple'
+        default: 'SIMPLE'
       },
       extensible: {
         type: Boolean,
@@ -48,7 +48,7 @@
 
 <template>
 
-  <template v-if="layout === 'simple'">
+  <template v-if="layout === 'SIMPLE'">
     <RouterLink
       :to="path"
       class="button"
@@ -70,7 +70,7 @@
     </RouterLink>
   </template>
 
-  <template v-else-if="layout === 'icon-only'">
+  <template v-else-if="layout === 'ICON-ONLY'">
     <RouterLink
       :to="path"
       class="button"
@@ -91,7 +91,7 @@
     </RouterLink>
   </template>
 
-  <template v-else-if="layout === 'left-icon'">
+  <template v-else-if="layout === 'ICON-LEFT'">
     <RouterLink
       :to="path"
       class="button"
@@ -116,7 +116,7 @@
     </RouterLink>
   </template>
 
-  <template v-else-if="layout === 'right-icon'">
+  <template v-else-if="layout === 'ICON-RIGHT'">
     <RouterLink
       :to="path"
       class="button"

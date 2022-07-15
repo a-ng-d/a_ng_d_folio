@@ -67,7 +67,7 @@
           type="secondary"
           :label="$t('global.back.home')"
           path="/"
-          :layout="device != 'mobile' ? 'left-icon' : 'icon-only'"
+          :layout="device != 'mobile' ? 'ICON-LEFT' : 'ICON-ONLY'"
           theme="DARK"
         >
           <template #icon>
@@ -79,7 +79,7 @@
           type="secondary"
           :label="$t('global.menu')"
           path="/_universes"
-          :layout="device != 'mobile' ? 'left-icon' : 'icon-only'"
+          :layout="device != 'mobile' ? 'ICON-LEFT' : 'ICON-ONLY'"
           theme="DEFAULT"
         >
           <template #icon>
@@ -95,7 +95,7 @@
           type="primary"
           :label="$t('global.back.home')"
           path="/"
-          :layout="device != 'mobile' ? 'right-icon' : 'icon-only'"
+          :layout="device != 'mobile' ? 'ICON-RIGHT' : 'ICON-ONLY'"
         >
           <template #icon>
             <ArrowRight :size="24" />

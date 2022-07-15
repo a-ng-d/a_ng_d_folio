@@ -23,7 +23,7 @@
     <Button
       type="secondary"
       :path="previousPage"
-      layout="icon-only"
+      layout="ICON-ONLY"
     >
       <template #icon>
         <ArrowLeft :size="24" />
@@ -32,7 +32,7 @@
     <Button
       type="primary"
       :path="rootPage"
-      layout="icon-only"
+      layout="ICON-ONLY"
     >
       <template #icon>
         <ArrowUp :size="24" />
@@ -41,7 +41,7 @@
     <Button
       type="secondary"
       :path="nextPage"
-      layout="icon-only"
+      layout="ICON-ONLY"
     >
       <template #icon>
         <ArrowRight :size="24" />

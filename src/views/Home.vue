@@ -42,7 +42,7 @@
             type="secondary"
             :label="$t('home.id')"
             path="/_id"
-            layout="left-icon"
+            layout="ICON-LEFT"
             :theme="theme"
           >
             <template #icon>
@@ -55,7 +55,7 @@
             type="primary"
             :label="$t('home.menu')"
             path="/_universes"
-            layout="right-icon"
+            layout="ICON-RIGHT"
             :theme="theme"
           >
             <template #icon>

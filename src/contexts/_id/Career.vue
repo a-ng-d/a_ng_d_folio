@@ -33,7 +33,7 @@
           type="secondary"
           :label="$t('id.career.resume')"
           path="/_resume"
-          layout="left-icon"
+          layout="ICON-LEFT"
           extensible
           :theme="theme"
         >
@@ -47,7 +47,7 @@
           type="secondary"
           :label="$t('id.career.linkedIn')"
           path="/_linkedin"
-          layout="left-icon"
+          layout="ICON-LEFT"
           extensible
           :theme="theme"
         >

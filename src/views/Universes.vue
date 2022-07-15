@@ -89,7 +89,7 @@
               :id="universe.name"
               type="primary"
               :path="universe.path"
-              layout="icon-only"
+              layout="ICON-ONLY"
               position="random"
               @mouseover="expandTooltip"
               @mouseout="collapseTooltip"
