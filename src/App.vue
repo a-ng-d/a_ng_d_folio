@@ -25,7 +25,8 @@
         pageHeight: NaN,
         viewHeight: NaN,
         isGlitched: false,
-        activeProjectPosition: 0
+        activeProjectPosition: 0,
+        numberOfProjects: NaN
       }
     },
     watch: {
@@ -59,9 +60,9 @@
         else if (from.meta.view === 'PROJECT' && to.meta.view === 'WORK')
           this.transition = 'go-up'
 
-        if (from.meta.position - to.meta.position < 0)
+        if (from.meta.position - to.meta.position == -1 || from.meta.position - to.meta.position == this.numberOfProjects - 1)
           this.transition = 'go-right'
-        else if (from.meta.position - to.meta.position > 0)
+        else if (from.meta.position - to.meta.position == 1 || from.meta.position - to.meta.position == -this.numberOfProjects + 1)
           this.transition = 'go-left'
 
         if (to.meta.view === 'UNIVERSES')
@@ -83,9 +84,10 @@
         e.style.transitionDelay = '0'
       },
       getProjects(src) {
-        let projects = src
-        projects.sort((a, b) => a.meta.position - b.meta.position)
-        return projects.filter(project => project.meta.view === 'PROJECT')
+        let projects = src.map(a => a)
+        projects = projects.filter(project => project.meta.view === 'PROJECT').sort((a, b) => a.meta.position - b.meta.position)
+        this.numberOfProjects = projects.length
+        return projects
       }
     },
     mounted() {
@@ -118,7 +120,7 @@
         :project="route.meta"
         :scrollProgress="scrollProgress"
         :scrollLimit="pageHeight - viewHeight"
-        :theme="view === 'project' ? 'DEFAULT' : route.meta.theme"
+        :theme="view === 'PROJECT' ? 'DEFAULT' : route.meta.theme"
         @activeProjectPosition="activeProjectPosition = $event"
       />
     </Transition>
