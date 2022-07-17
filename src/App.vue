@@ -4,6 +4,7 @@
   import Logotype from '@/components/graphics/Logotype.vue'
   import MainMenu from '@/contexts/MainMenu.vue'
   import Glitchscape from '@/components/graphics/Glitchscape.vue'
+  import Particles from '@/components/graphics/Particles.vue'
 
   export default {
     name: 'App',
@@ -11,7 +12,8 @@
       Filter,
       Logotype,
       MainMenu,
-      Glitchscape
+      Glitchscape,
+      Particles
     },
     data() {
       return {
@@ -25,6 +27,8 @@
         pageHeight: NaN,
         viewHeight: NaN,
         isGlitched: false,
+        isExpanded: false,
+        isTransited: false,
         activeProjectPosition: 0,
         numberOfProjects: NaN
       }
@@ -80,8 +84,16 @@
         this.scrollProgress = e.target.scrollTop
         this.viewHeight = document.body.clientHeight
       },
-      onAfterLeave(e) {
+      resetDelay(e) {
         e.style.transitionDelay = '0'
+      },
+      expandParticles() {
+        this.isExpanded = true
+        this.isTransited = true
+      },
+      collapseParticles() {
+        this.isExpanded = false
+        setTimeout(() => this.isTransited = false, 1000)
       },
       getProjects(src) {
         let projects = src.map(a => a)
@@ -100,7 +112,13 @@
 <template>
   <Filter />
   <Logotype />
-  <Transition name="pull-down" style="--delay: var(--delay-jogging)" @after-leave="onAfterLeave" appear>
+  <Particles
+    :weight="160"
+    :isExpanded="isExpanded"
+    :movement="transition"
+    :style="`position: absolute ; z-index: ${isTransited ? '2' : '-1'}`"
+  />
+  <Transition name="pull-down" style="--delay: var(--delay-jogging)" @after-leave="resetDelay" appear>
     <MainMenu
       :scrollProgress="scrollProgress"
       :view="view"
@@ -110,14 +128,14 @@
     />
   </Transition>
   <RouterView @scroll.passive="getScrollParams" v-slot="{ Component, route }">
-    <Transition :name="transition" @after-enter="" @before-leave="">
+    <Transition :name="transition" @before-leave="expandParticles" @after-enter="collapseParticles">
       <Component
         :is="Component"
         :key="route.path"
         :view="view"
         :projects="getProjects($router.options.routes)"
-        :activeProjectPosition="activeProjectPosition"
         :project="route.meta"
+        :activeProjectPosition="activeProjectPosition"
         :scrollProgress="scrollProgress"
         :scrollLimit="pageHeight - viewHeight"
         :theme="view === 'PROJECT' ? 'DEFAULT' : route.meta.theme"

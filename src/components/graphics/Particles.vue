@@ -10,6 +10,13 @@
       weight: {
         type: Number,
         default: 16
+      },
+      direction: {
+        type: String,
+        default: 'horizontal'
+      },
+      movement: {
+        type: String
       }
     },
     data() {
@@ -21,6 +28,15 @@
     watch: {
       isExpanded(to, from) {
         to ? this.particles.expand() : this.particles.collapse()
+      },
+      movement(to, from) {
+        const actions = {
+          'go-up': () => this.particles.goUp(to),
+          'go-right': () => this.particles.goRight(to),
+          'go-down': () => this.particles.goDown(to),
+          'go-left': () => this.particles.goLeft(to)
+        }
+        return actions[to]?.() ?? 'No pov change'
       }
     },
     mounted() {
@@ -49,7 +65,7 @@
               y2: this.props.y2
             }
             this.size = {
-              width: (this.position.x2 - this.position.x1)
+              width: (this.position.x2 - this.position.x1) > 0 ? (this.position.x2 - this.position.x1) : (this.position.y2 - this.position.y1)
             }
             this.params = {
               color: colors[random(0, colors.length)],
@@ -59,7 +75,8 @@
               order: 0,
               gap: 8,
               isExpanded: false,
-              resetTime: false
+              resetTime: false,
+              movement: 'go-left'
             }
           }
 
@@ -81,6 +98,8 @@
             this.params.isExpanded = false
           }
 
+          changeMovement = (movement) => this.params.movement = movement
+
           move = () => {
             if (this.params.isExpanded && sk.millis() - time > this.params.gap * this.params.order)
               this.params.move = sk.lerp(this.params.move, 0, this.params.speed * 2)
@@ -95,30 +114,45 @@
             sk.strokeCap(sk.ROUND)
             sk.strokeWeight(this.params.weight)
             sk.drawingContext.setLineDash([this.size.width, this.size.width + 1])
-            sk.drawingContext.lineDashOffset = this.params.move
+            sk.drawingContext.lineDashOffset = this.params.movement === 'go-up' ? this.params.move : this.params.movement === 'go-left' ? this.params.move : -this.params.move
             sk.line(this.position.x1, this.position.y1, this.position.x2, this.position.y2)
           }
 
         }
 
-        sk.makeUnits = (reset) => {
-          if (reset === 'reset')
+        sk.makeUnits = (direction) => {
+          if (direction === 'reset')
             units = []
-
-          for (let limitY = 0 ; limitY <= sk.height ;) {
-            for (let limitX = 0 ; limitX <= sk.width ;) {
-              let rX = sk.int(random(weight, weight * 6))
-              units.push(new Unit({
-                x1: limitX,
-                y1: limitY,
-                x2: limitX + rX,
-                y2: limitY,
-                weight: weight
-              }))
-              limitX += rX
+          else if (direction === 'vertical')
+            for (let limitX = 0 ; limitX <= sk.width + weight ;) {
+              for (let limitY = 0 ; limitY <= sk.height ;) {
+                let rY = sk.int(random(weight, weight * 6))
+                units.push(new Unit({
+                  x1: limitX,
+                  y1: limitY,
+                  x2: limitX,
+                  y2: limitY + rY,
+                  weight: weight
+                }))
+                limitY += rY
+              }
+              limitX += weight
             }
-            limitY += weight
-          }
+            else if (direction === 'horizontal')
+              for (let limitY = 0 ; limitY <= sk.height + weight ;) {
+                for (let limitX = 0 ; limitX <= sk.width ;) {
+                  let rX = sk.int(random(weight, weight * 6))
+                  units.push(new Unit({
+                    x1: limitX,
+                    y1: limitY,
+                    x2: limitX + rX,
+                    y2: limitY,
+                    weight: weight
+                  }))
+                  limitX += rX
+                }
+                limitY += weight
+              }
         }
 
         // Sketch
@@ -127,9 +161,10 @@
           sk.createCanvas(this.$el.clientWidth, this.$el.clientHeight).parent(this.uuid)
           sk.colorMode(sk.HSL)
           sk.rectMode(sk.CENTER)
+
           sk.frameRate(fps)
 
-          sk.makeUnits()
+          sk.makeUnits(this.direction)
 
         }
 
@@ -144,6 +179,30 @@
         sk.expand = () => units.forEach(unit => unit.expand(units.length))
 
         sk.collapse = () => units.forEach(unit => unit.collapse())
+
+        sk.goUp = (movement) => {
+          sk.makeUnits('reset')
+          sk.makeUnits('vertical')
+          units.forEach(unit => unit.changeMovement(movement))
+        }
+
+        sk.goRight = (movement) => {
+          sk.makeUnits('reset')
+          sk.makeUnits('horizontal')
+          units.forEach(unit => unit.changeMovement(movement))
+        }
+
+        sk.goDown = (movement) => {
+          sk.makeUnits('reset')
+          sk.makeUnits('vertical')
+          units.forEach(unit => unit.changeMovement(movement))
+        }
+
+        sk.goLeft = (movement) => {
+          sk.makeUnits('reset')
+          sk.makeUnits('horizontal')
+          units.forEach(unit => unit.changeMovement(movement))
+        }
 
         sk.windowResized = () => {
           sk.resizeCanvas(this.$el.clientWidth, this.$el.clientHeight)
