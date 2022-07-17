@@ -57,7 +57,7 @@
               move: this.size.width,
               speed: 0.1,
               order: 0,
-              gap: 3,
+              gap: 4,
               isExpanded: false,
               resetTime: false
             }
@@ -70,6 +70,7 @@
               this.params.resetTime = true
             }
             this.params.isExpanded = true
+            this.params.move = this.size.width
           }
 
           collapse = () => {
@@ -82,9 +83,9 @@
 
           move = () => {
             if (this.params.isExpanded && sk.millis() - time > this.params.gap * this.params.order)
-              this.params.move = sk.lerp(this.params.move, 0, this.params.speed)
+              this.params.move = sk.lerp(this.params.move, 0, this.params.speed * 2)
             else if (!this.params.isExpanded && sk.millis() - time > this.params.gap * this.params.order)
-              this.params.move = sk.lerp(this.params.move, this.size.width + 1, this.params.speed * 4)
+              this.params.move = sk.lerp(this.params.move, -(this.size.width + 1), this.params.speed * 4)
 
             this.draw()
           }
@@ -106,7 +107,7 @@
 
           for (let limitY = 0 ; limitY <= sk.height ;) {
             for (let limitX = 0 ; limitX <= sk.width ;) {
-              let rX = sk.int(random(8, 48))
+              let rX = sk.int(random(weight, weight * 6))
               units.push(new Unit({
                 x1: limitX,
                 y1: limitY,
