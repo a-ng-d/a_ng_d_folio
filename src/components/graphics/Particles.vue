@@ -9,7 +9,7 @@
       isExpanded: Boolean,
       weight: {
         type: Number,
-        default: 8
+        default: 16
       }
     },
     data() {
@@ -57,7 +57,7 @@
               move: this.size.width,
               speed: 0.1,
               order: 0,
-              gap: 4,
+              gap: 8,
               isExpanded: false,
               resetTime: false
             }
