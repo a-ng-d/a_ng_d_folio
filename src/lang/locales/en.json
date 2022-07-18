@@ -36,7 +36,7 @@
     "takeaways" : "Takeaways!"
   },
   "id": {
-    "title": "ID card﹒nG⚡️ aka. Aurélien Grimaud",
+    "title": "_ID_card﹒nG⚡️ aka. Aurélien Grimaud",
     "about": {
       "title": "你好 nǐ hǎo!",
       "experience": "I’m Aurélien all over the world or 立安 lì ān in China. Currently Product designer at <span class='label' data-highlighted='true'>iObeya</span> for {year} years and an UI + </code> enthousiast.",
@@ -159,7 +159,7 @@
     }
   },
   "universes": {
-    "title": "Universes﹒nG⚡️ aka. Aurélien Grimaud",
+    "title": "_Universes﹒nG⚡️ aka. Aurélien Grimaud",
     "core": {
       "title": "_Core",
       "description": "My adventure as a Product Designer at iObeya teach me what I really love to do and what I really want to keep doing during my career."
@@ -181,8 +181,11 @@
       "description": "Watch my creative work before iObeya"
     }
   },
+  "core": {
+    "title": "_Core_values﹒nG⚡️ aka. Aurélien Grimaud"
+  },
   "work": {
-    "title": "Selected work﹒nG⚡️ aka. Aurélien Grimaud",
+    "title": "_Selected_work﹒nG⚡️ aka. Aurélien Grimaud",
     "friendlyName": "_Selected_work",
     "_ui_color_palette": {
       "title": "_ui_color_palette﹒nG⚡️ aka. Aurélien Grimaud",
@@ -301,6 +304,9 @@
         "roles": "Facilitating workshops by using the design thinking philosophy, Designing the vision, Revamping the UI, Writing the user stories"
       }
     }
+  },
+  "lab": {
+    "title": "_Shots_lab﹒nG⚡️ aka. Aurélien Grimaud"
   },
   "attribution": {
     "title": "Attribution﹒nG⚡️ aka. Aurélien Grimaud",

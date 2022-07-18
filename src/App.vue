@@ -118,7 +118,7 @@
     :movement="transition"
     :style="`position: absolute ; z-index: ${isTransited ? '2' : '-1'}`"
   />
-  <Transition name="pull-down" style="--delay: var(--delay-jogging)" @after-leave="resetDelay" appear>
+  <Transition name="pull-down" style="--delay: var(--duration-turtoise)" @after-leave="resetDelay" appear>
     <MainMenu
       :scrollProgress="scrollProgress"
       :view="view"

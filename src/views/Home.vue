@@ -27,18 +27,18 @@
   <main class="page">
     <section class="jumbotron">
       <div class="jumbotron__content" :data-theme="theme">
-        <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 0ms)">
+        <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + 0ms)" appear>
           <ScrollingText
             :label="$t('home.author')"
             :theme="theme"
           />
         </Transition>
-        <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 100ms)">
+        <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + 100ms)" appear>
           <h4 class="jumbotron__baseline">{{ $t("home.baseline") }}</h4>
         </Transition>
       </div>
       <div class="jumbotron__actions">
-        <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 200ms)">
+        <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + 200ms)" appear>
           <Button
             type="secondary"
             :label="$t('home.core')"
@@ -51,7 +51,7 @@
             </template>
           </Button>
         </Transition>
-        <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 300ms)">
+        <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + 300ms)" appear>
           <Button
             type="primary"
             :label="$t('home.work')"
@@ -64,7 +64,7 @@
             </template>
           </Button>
         </Transition>
-        <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 400ms)">
+        <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + 400ms)" appear>
           <Button
             type="secondary"
             :label="$t('home.lab')"
@@ -79,10 +79,12 @@
         </Transition>
       </div>
     </section>
-    <Footer
-      alignment="left"
-      :theme="theme"
-    />
+    <Transition name="pull-up" style="--delay: var(--duration-turtoise)" appear>
+      <Footer
+        alignment="L"
+        :theme="theme"
+      />
+    </Transition>
   </main>
 </template>
 

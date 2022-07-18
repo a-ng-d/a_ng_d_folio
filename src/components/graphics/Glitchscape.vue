@@ -416,8 +416,8 @@
               x: random(-sk.width * 4, sk.width * 4),
               y: sk.height * 0.5,
               zRange: [-sk.height * 4, 0],
-              foreground: colors.softWind,
-              background: colors.soil
+              foreground: colors.cream,
+              background: colors.creamySun
             }))
           for (let i = 0 ; i < cNumber ; i++)
             clouds.push(new Cloud({
@@ -427,8 +427,8 @@
               y: random(-sk.height * 0.2, sk.height * 0.4),
               zRange: [-sk.height * 4, 0],
               rows: sk.int(random(3, 5)),
-              foreground: colors.cream,
-              background: colors.soil
+              foreground: colors.clay,
+              background: colors.creamySun
             }))
 
           mountains.sort((a, b) => a.position.z - b.position.z)
@@ -444,7 +444,7 @@
 
           sk.clear()
 
-          sk.background(colors.soil.hue, colors.soil.saturation, colors.soil.lightness)
+          sk.background(colors.creamySun.hue, colors.creamySun.saturation, colors.creamySun.lightness)
 
           // camera
           pov.move()
@@ -461,7 +461,7 @@
           sk.push()
             sk.blendMode(sk.DIFFERENCE)
             sk.noStroke()
-            sk.fill(colors.soil.hue, colors.soil.saturation, colors.soil.lightness, alpha)
+            sk.fill(colors.creamySun.hue, colors.creamySun.saturation, colors.creamySun.lightness, alpha)
             sk.translate(0, (sk.height * 0.5) - 10, 0)
             sk.rotateX(sk.PI / 2)
             sk.rect(0, 0, sk.width * 6, sk.height * 8)

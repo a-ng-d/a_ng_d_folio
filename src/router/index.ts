@@ -21,12 +21,12 @@ const router = createRouter({
       meta: {
         title: i18n.global.t('title'),
         view: 'HOME',
-        theme: 'DARK',
+        theme: 'DEFAULT',
         filter: {
-          hue: '162deg',
-          brightness: '0.5',
+          hue: '0deg',
+          brightness: '1',
           invert: '0',
-          saturation: '0.75'
+          saturation: '0.5'
         },
         pov: 'RESET',
         quality: 'HIGH'
@@ -42,9 +42,9 @@ const router = createRouter({
         theme: 'DEFAULT',
         filter: {
           hue: '-78deg',
-          brightness: '0.3',
+          brightness: '1',
           invert: '1',
-          saturation: '0.75'
+          saturation: '0.5'
         },
         pov: 'RESET',
         quality: 'HIGH'
@@ -59,10 +59,10 @@ const router = createRouter({
         view: 'UNIVERSES',
         theme: 'DARK',
         filter: {
-          hue: '313deg',
-          brightness: '0.5',
-          invert: '0',
-          saturation: '0.75'
+          hue: '160deg',
+          brightness: '1',
+          invert: '1',
+          saturation: '0.5'
         },
         pov: 'RESET',
         quality: 'HIGH'
@@ -73,7 +73,17 @@ const router = createRouter({
       name: '_CORE',
       component: Home,
       meta: {
-        view: 'CORE'
+        title: i18n.global.t('core.title'),
+        view: 'CORE',
+        theme: 'DEFAULT',
+        filter: {
+          hue: '190deg',
+          brightness: '1',
+          invert: '0',
+          saturation: '0.5'
+        },
+        pov: 'RESET',
+        quality: 'HIGH'
       }
     },
     {
@@ -185,7 +195,17 @@ const router = createRouter({
       name: '_LAB',
       component: Home,
       meta: {
-        view: 'lab'
+        title: i18n.global.t('lab.title'),
+        view: 'LAB',
+        theme: 'DEFAULT',
+        filter: {
+          hue: '120deg',
+          brightness: '1',
+          invert: '0',
+          saturation: '0.5'
+        },
+        pov: 'RESET',
+        quality: 'HIGH'
       }
     },
     {

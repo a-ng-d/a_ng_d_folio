@@ -40,9 +40,10 @@
         const actions = {
           ID: 'var(--color-soil)',
           WORK: this.projects[this.activeProjectPosition].meta.theme == 'DEFAULT' ? 'var(--color-soil)' : 'var(--color-cream)',
-          PROJECT: 'var(--color-sandstone)'
+          PROJECT: 'var(--color-sandstone)',
+          UNIVERSES: 'var(--color-cream)'
         }
-        return actions[view] ?? 'url(#gradient-biscarosse-sunset)'
+        return actions[view] ?? 'var(--color-soil)'
       },
       previousProject() {
         return this.projects[this.activeProjectPosition - 1 >= 0 ? this.activeProjectPosition - 1 : this.projects.length - 1].path
