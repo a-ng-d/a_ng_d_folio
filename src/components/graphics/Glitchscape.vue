@@ -8,10 +8,10 @@
       filter: {
         type: [Object, String],
         default: {
-          hue: '162deg',
-          brightness: '0.5',
+          hue: '0deg',
+          brightness: '1',
           invert: '0',
-          saturation: '0.75'
+          saturation: '0.5'
         }
       },
       pov: {
@@ -31,7 +31,11 @@
         type: Number,
         required: true
       },
-      view: String
+      view: String,
+      numberOfProjects: {
+        type: Number,
+        default: 3
+      }
     },
     data() {
       return {
@@ -41,7 +45,13 @@
     watch: {
       pov(to, from) {
         const actions = {
-          RESET: () => this.glitchscape.povReset()
+          RESET: () => this.glitchscape.povReset(),
+          BIRDEYE_1: () => this.glitchscape.povBirdEye(1),
+          BIRDEYE_2: () => this.glitchscape.povBirdEye(2),
+          BIRDEYE_3: () => this.glitchscape.povBirdEye(3),
+          BIRDEYE_4: () => this.glitchscape.povBirdEye(4),
+          BIRDEYE_5: () => this.glitchscape.povBirdEye(5),
+          WISEEYE: () => this.glitchscape.povWiseEye()
         }
         return actions[to]?.() ?? 'No pov change'
       },
@@ -75,7 +85,9 @@
           mNumber = 140,
           cNumber = mNumber / 4,
           quality = 50,
-          colors = HSLColors
+          colors = HSLColors,
+          limitX = window.innerWidth * 5,
+          limitZ = window.innerHeight * 5
 
         let
           fps = 30,
@@ -338,6 +350,11 @@
                   z: 0
                 }
               },
+              progress: {
+                x: 0,
+                y: 0,
+                z: 0
+              },
               speed: 0,
               isPushed: false
             }
@@ -351,19 +368,22 @@
             this.params.target.center.x = center[0]
             this.params.target.center.y = center[1]
             this.params.target.center.z = center[2]
+            this.params.progress.x = 0
+            this.params.progress.y = 0
+            this.params.progress.z = 0
           }
 
           move = () => {
-            this.position.x = sk.lerp(this.position.x, this.params.target.position.x, this.params.speed)
-            this.position.y = sk.lerp(this.position.y, this.params.target.position.y, this.params.speed)
-            this.position.z = sk.lerp(this.position.z, this.params.target.position.z, this.params.speed)
+            this.position.x = sk.lerp(this.position.x, this.params.progress.x == 0 ? this.params.target.position.x : this.params.progress.x, this.params.speed)
+            this.position.y = sk.lerp(this.position.y, this.params.progress.y == 0 ? this.params.target.position.y : this.params.progress.y, this.params.speed)
+            this.position.z = sk.lerp(this.position.z, this.params.progress.z == 0 ? this.params.target.position.z : this.params.progress.z, this.params.speed)
             this.center.x = sk.lerp(this.center.x, this.params.target.center.x, this.params.speed)
             this.center.y = sk.lerp(this.center.y, this.params.target.center.y, this.params.speed)
             this.center.z = sk.lerp(this.center.z, this.params.target.center.z, this.params.speed)
 
             if (this.params.isPushed) {
-              this.position.x = sk.lerp(this.position.x, sk.map(sk.mouseX, 0, sk.width, sk.width * 0.1, -sk.width * 0.1), 0.1)
-              this.position.y = sk.lerp(this.position.y, sk.map(sk.mouseY, 0, sk.height, sk.height * 0.1, -sk.height * 0.1), 0.1)
+              this.position.x = sk.lerp(this.position.x, this.params.target.position.x + sk.map(sk.mouseX, 0, sk.width, sk.width * 0.1, -sk.width * 0.1), 0.1)
+              this.position.y = sk.lerp(this.position.y, this.params.target.position.y + sk.map(sk.mouseY, 0, sk.height, sk.height * 0.1, -sk.height * 0.1), 0.1)
             }
 
             this.draw()
@@ -374,8 +394,10 @@
           reset = () => this.animate(0.05, [0, -window.innerHeight * 0.2, 0], [0, 0, -window.innerHeight * 2])
 
           zoom = (scrollPosition, pageLimitMax) => {
-            this.position.z = sk.map(scrollPosition, 0, pageLimitMax, 0, this.center.z)
-            this.params.speed = 0
+            this.params.progress.x = sk.map(scrollPosition, 0, pageLimitMax, this.params.target.position.x, this.params.target.center.x)
+            this.params.progress.y = sk.map(scrollPosition, 0, pageLimitMax, this.params.target.position.y, this.params.target.center.y)
+            this.params.progress.z = sk.map(scrollPosition, 0, pageLimitMax, this.params.target.position.z, this.params.target.center.z)
+            //this.params.speed = 0
           }
 
           draw = () => {
@@ -413,9 +435,9 @@
             mountains.push(new Mountain({
               widthRange: [sk.width * 0.25, sk.width],
               heightRange: [-sk.height * 0.2, -sk.height * 0.4],
-              x: random(-sk.width * 4, sk.width * 4),
+              x: random(-limitX, limitX),
               y: sk.height * 0.5,
-              zRange: [-sk.height * 4, 0],
+              zRange: [-limitZ, 0],
               foreground: colors.cream,
               background: colors.creamySun
             }))
@@ -423,9 +445,9 @@
             clouds.push(new Cloud({
               widthRange: [sk.width * 0.25, sk.width],
               heightRange: [-sk.height * 0.01, -sk.height * 0.05],
-              x: random(-sk.width * 4, sk.width * 4),
+              x: random(-limitX, limitX),
               y: random(-sk.height * 0.2, sk.height * 0.4),
-              zRange: [-sk.height * 4, 0],
+              zRange: [-limitZ, 0],
               rows: sk.int(random(3, 5)),
               foreground: colors.clay,
               background: colors.creamySun
@@ -440,7 +462,7 @@
 
         sk.draw = () => {
 
-          alpha = sk.lerp(alpha, 0.6, 0.001)
+          alpha = sk.lerp(alpha, 0.5, 0.01)
 
           sk.clear()
 
@@ -464,15 +486,42 @@
             sk.fill(colors.creamySun.hue, colors.creamySun.saturation, colors.creamySun.lightness, alpha)
             sk.translate(0, (sk.height * 0.5) - 10, 0)
             sk.rotateX(sk.PI / 2)
-            sk.rect(0, 0, sk.width * 6, sk.height * 8)
+            sk.rect(0, 0, limitX * 3, limitX * 3)
           sk.pop()
 
         }
 
         // Events
-        sk.povCore = () => pov.animate(0.1, [0, (-sk.height * 0.1), -sk.height * 1.75], [0, 0, (-sk.height * 2)])
-
         sk.povReset = () => pov.reset()
+
+        sk.povBirdEye = (increment) => pov.animate(
+          0.05,
+          [
+            sk.map(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
+            -window.innerHeight * 2,
+            window.innerHeight
+          ],
+          [
+            sk.map(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
+            0,
+            -window.innerHeight * 2
+          ]
+        )
+
+        sk.povWiseEye = () => pov.animate(
+          0.05,
+          [
+            0,
+            -window.innerHeight * 0.1
+            ,
+            0
+          ],
+          [
+            0,
+            -window.innerHeight,
+            -window.innerHeight * 2
+          ]
+        )
 
         sk.povZoom = (scrollProgress, scrollLimit) => pov.zoom(scrollProgress, scrollLimit + 200)
 

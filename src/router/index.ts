@@ -64,7 +64,7 @@ const router = createRouter({
           invert: '1',
           saturation: '0.5'
         },
-        pov: 'RESET',
+        pov: 'WISEEYE',
         quality: 'HIGH'
       }
     },
@@ -98,7 +98,8 @@ const router = createRouter({
           brightness: '1.25',
           invert: '0',
           saturation: '0'
-        }
+        },
+        pov: 'BIRDEYE_3'
       }
     },
     {
@@ -123,7 +124,8 @@ const router = createRouter({
           brightness: '1.25',
           invert: '0',
           saturation: '0'
-        }
+        },
+        pov: 'BIRDEYE_1'
       }
     },
     {
@@ -148,7 +150,8 @@ const router = createRouter({
           brightness: '1.25',
           invert: '0',
           saturation: '0'
-        }
+        },
+        pov: 'BIRDEYE_2'
       }
     },
     {
@@ -173,7 +176,8 @@ const router = createRouter({
           brightness: '1.25',
           invert: '0',
           saturation: '0'
-        }
+        },
+        pov: 'BIRDEYE_3'
       }
     },
     {
@@ -198,7 +202,8 @@ const router = createRouter({
           brightness: '1.25',
           invert: '0',
           saturation: '0'
-        }
+        },
+        pov: 'BIRDEYE_4'
       }
     },
     {
@@ -223,7 +228,8 @@ const router = createRouter({
           brightness: '1.25',
           invert: '0',
           saturation: '0'
-        }
+        },
+        pov: 'BIRDEYE_5'
       }
     },
     {
