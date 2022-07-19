@@ -8,6 +8,7 @@
   import _ui_color_palette from '@/contexts/_work/_ui_color_palette.vue'
   import _jeprendsquoi from '@/contexts/_work/_jeprendsquoi.vue'
   import _jean_bobby_radio from '@/contexts/_work/_jean_bobby_radio.vue'
+  import _awesome_ipsums from '@/contexts/_work/_awesome_ipsums.vue'
 
   export default {
     name: 'Project',
@@ -20,7 +21,8 @@
       Container,
       _ui_color_palette,
       _jeprendsquoi,
-      _jean_bobby_radio
+      _jean_bobby_radio,
+      _awesome_ipsums
     },
     props: {
       project: Object,

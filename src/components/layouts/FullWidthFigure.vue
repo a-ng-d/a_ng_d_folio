@@ -60,7 +60,7 @@
     // Aspect
     .figure
       &__asset
-        background-color: v-bind('background')
+        background: v-bind('background')
 
     [data-theme="DARK"]
       --text-color: var(--color-cream)
