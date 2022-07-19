@@ -93,13 +93,16 @@
   @use '@/assets/stylesheets/base.sass' as device
 
   // Structure
+  .page
+    height: 100vh
+    overflow: hidden
+
   .jumbotron
     grid-area: main
     display: flex
     flex-flow: column nowrap
     justify-content: space-between
     padding: var(--spacing-xl-600) var(--layout-center)
-    //color: var(--text-color-dark)
 
     &[data-theme="DARK"]
       --text-color: var(--color-cream)
