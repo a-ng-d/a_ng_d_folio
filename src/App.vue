@@ -40,6 +40,7 @@
         this.filter = to.meta.filter
         this.pov = to.meta.pov
         this.quality = to.meta.quality
+        this.scrollProgress = 0
         this.activeProjectPosition = to.meta.view === 'WORK' ? this.activeProjectPosition :
                                      to.meta.view === 'PROJECT' ? to.meta.position :
                                      0
@@ -128,7 +129,7 @@
     />
   </Transition>
   <RouterView @scroll.passive="getScrollParams" v-slot="{ Component, route }">
-    <Transition :name="transition" @before-leave="expandParticles" @after-enter="collapseParticles">
+    <Transition :name="transition" mode="out-in" @leave="expandParticles" @before-enter="collapseParticles">
       <Component
         :is="Component"
         :key="route.path"

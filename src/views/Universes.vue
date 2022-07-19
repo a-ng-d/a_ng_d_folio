@@ -84,7 +84,7 @@
       </div>
       <ul class="menu__items">
         <li v-for="(universe, index) in universes" :key="universe.name">
-          <Transition name="slide-up" appear :style="`--delay: calc(var(--duration-turtoise) + ${index * 100}ms)`">
+          <Transition name="slide-up" appear :style="`--delay: calc(var(--delay-turtoise) + ${index * 100}ms)`">
             <Button
               :id="universe.name"
               type="primary"

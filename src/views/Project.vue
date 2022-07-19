@@ -36,18 +36,21 @@
   <main class="page">
     <article class="details">
       <section class="title">
-        <ScrollingText
-          :label="project.codeName"
-          :theme="theme"
-          style="margin-left: calc(var(--sizing-s-000) * -1)"
-        />
-        <ScrollingText
-          :label="$t('global.navigate') + $t('global.separator') + $t('global.discover') + $t('global.separator') + project.date + $t('global.separator') + project.summary + $t('global.separator') + 'Project #' + (project.position + 1) + $t('global.separator')"
-          direction="RIGHT"
-          isSubTitle
-          :theme="theme"
-          style="margin-left: calc(var(--sizing-s-000) * -1)"
-        />
+        <Transition name="slide-up" style="--delay: var(--delay-turtoise)" appear>
+          <ScrollingText
+            :label="project.codeName"
+            :theme="theme"
+          />
+        </Transition>
+        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * 0.5))" appear>
+          <ScrollingText
+            :label="$t('global.navigate') + $t('global.separator') + $t('global.discover') + $t('global.separator') + project.date + $t('global.separator') + project.summary + $t('global.separator') + 'Project #' + (project.position + 1) + $t('global.separator')"
+            direction="RIGHT"
+            isSubTitle
+            :theme="theme"
+            style="margin-left: calc(var(--sizing-s-000) * -1)"
+          />
+        </Transition>
       </section>
       <section class="description">
         <OneColumn
@@ -101,6 +104,7 @@
     <Footer
       alignment="CENTER"
       :theme="theme"
+      style="background-color: var(--color-creamy-sun)"
     />
   </main>
 </template>
@@ -117,22 +121,13 @@
     height: 100vh
     justify-content: center
 
-  .title
-    padding: var(--sizing-s-000)
-
   @include device.mobile
     .description
       height: fit-content
 
   // Aspect
-  .page
-    background-color: var(--color-creamy-sun)
-
-  .title
-    background: linear-gradient(var(--color-cream), var(--color-cream)) content-box, var(--gradient-biscarosse-sunset) padding-box
-
   .description
-    background-color: var(--color-cream)
+    background-color: var(--color-titanium-white)
 
   .overview
     background-color: var(--color-soft-wind)
@@ -145,4 +140,5 @@
 
   :deep(section.takeaways)
     background: var(--gradient-biscarosse-sunset)
+
 </style>

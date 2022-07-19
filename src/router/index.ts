@@ -92,7 +92,13 @@ const router = createRouter({
       component: Work,
       meta: {
         title: i18n.global.t('work.title'),
-        view: 'WORK'
+        view: 'WORK',
+        filter: {
+          hue: '0deg',
+          brightness: '1.25',
+          invert: '0',
+          saturation: '0'
+        }
       }
     },
     {
@@ -111,7 +117,13 @@ const router = createRouter({
         view: 'PROJECT',
         illustration: UCPAnimation,
         background: '#88EBF9',
-        theme: 'DEFAULT'
+        theme: 'DEFAULT',
+        filter: {
+          hue: '0deg',
+          brightness: '1.25',
+          invert: '0',
+          saturation: '0'
+        }
       }
     },
     {
@@ -130,7 +142,13 @@ const router = createRouter({
         view: 'PROJECT',
         illustration: '/src/assets/images/_work/_jeprendsquoi/illustration.png',
         background: '#FFF',
-        theme: 'DEFAULT'
+        theme: 'DEFAULT',
+        filter: {
+          hue: '0deg',
+          brightness: '1.25',
+          invert: '0',
+          saturation: '0'
+        }
       }
     },
     {
@@ -149,7 +167,13 @@ const router = createRouter({
         view: 'PROJECT',
         illustration: JBRAnimation,
         background: '#190038',
-        theme: 'DARK'
+        theme: 'DARK',
+        filter: {
+          hue: '0deg',
+          brightness: '1.25',
+          invert: '0',
+          saturation: '0'
+        }
       }
     },
     {
@@ -168,7 +192,13 @@ const router = createRouter({
         view: 'PROJECT',
         illustration: AIAnimation,
         background: '#23A566',
-        theme: 'DARK'
+        theme: 'DARK',
+        filter: {
+          hue: '0deg',
+          brightness: '1.25',
+          invert: '0',
+          saturation: '0'
+        }
       }
     },
     {
@@ -187,7 +217,13 @@ const router = createRouter({
         view: 'PROJECT',
         illustration: IWAnimation,
         background: '#001D5E',
-        theme: 'DARK'
+        theme: 'DARK',
+        filter: {
+          hue: '0deg',
+          brightness: '1.25',
+          invert: '0',
+          saturation: '0'
+        }
       }
     },
     {

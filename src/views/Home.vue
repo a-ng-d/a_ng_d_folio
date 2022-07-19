@@ -27,18 +27,18 @@
   <main class="page">
     <section class="jumbotron">
       <div class="jumbotron__content" :data-theme="theme">
-        <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + 0ms)" appear>
+        <Transition name="slide-up" style="--delay: var(--delay-turtoise)" appear>
           <ScrollingText
             :label="$t('home.author')"
             :theme="theme"
           />
         </Transition>
-        <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + 100ms)" appear>
+        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * 0.5))" appear>
           <h4 class="jumbotron__baseline">{{ $t("home.baseline") }}</h4>
         </Transition>
       </div>
       <div class="jumbotron__actions">
-        <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + 200ms)" appear>
+        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * 1))" appear>
           <Button
             type="secondary"
             :label="$t('home.core')"
@@ -51,7 +51,7 @@
             </template>
           </Button>
         </Transition>
-        <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + 300ms)" appear>
+        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * 1.5))" appear>
           <Button
             type="primary"
             :label="$t('home.work')"
@@ -64,7 +64,7 @@
             </template>
           </Button>
         </Transition>
-        <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + 400ms)" appear>
+        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * 2))" appear>
           <Button
             type="secondary"
             :label="$t('home.lab')"
@@ -79,7 +79,7 @@
         </Transition>
       </div>
     </section>
-    <Transition name="pull-up" style="--delay: var(--duration-turtoise)" appear>
+    <Transition name="pull-up" style="--delay: var(--delay-turtoise)" appear>
       <Footer
         alignment="L"
         :theme="theme"

@@ -128,8 +128,8 @@
 <style scoped lang="sass">
   // Structure
   section:nth-child(2n)
-    background-color: var(--color-cream)
+    background-color: transparent
 
   section:nth-child(2n + 1)
-    background-color: var(--color-titanium-white)
+    background-color: var(--color-cream)
 </style>

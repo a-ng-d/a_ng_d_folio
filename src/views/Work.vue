@@ -224,10 +224,12 @@
         </div>
       </aside>
     </section>
-    <Footer
-      alignment="left"
-      :theme="theme"
-    />
+    <Transition name="pull-up" style="--delay: var(--delay-turtoise)" appear>
+      <Footer
+        alignment="left"
+        :theme="theme"
+      />
+    </Transition>
   </main>
 </template>
 
