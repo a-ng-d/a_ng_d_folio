@@ -90,11 +90,9 @@
       },
       expandParticles() {
         this.isExpanded = true
-        this.isTransited = true
       },
       collapseParticles() {
-        this.isExpanded = false
-        setTimeout(() => this.isTransited = false, 1000)
+        setTimeout(() => this.isExpanded = false, 200)
       },
       getProjects(src) {
         let projects = src.map(a => a)
@@ -129,7 +127,7 @@
     />
   </Transition>
   <RouterView @scroll.passive="getScrollParams" v-slot="{ Component, route }">
-    <Transition :name="transition" mode="out-in" @leave="expandParticles" @before-enter="collapseParticles">
+    <Transition :name="transition" mode="out-in" @before-leave="isTransited = true" @leave="expandParticles" @enter="collapseParticles" @after-enter="isTransited = false">
       <Component
         :is="Component"
         :key="route.path"
