@@ -7,6 +7,7 @@
   import Container from '@/components/ui/Container.vue'
   import _ui_color_palette from '@/contexts/_work/_ui_color_palette.vue'
   import _jeprendsquoi from '@/contexts/_work/_jeprendsquoi.vue'
+  import _jean_bobby_radio from '@/contexts/_work/_jean_bobby_radio.vue'
 
   export default {
     name: 'Project',
@@ -18,7 +19,8 @@
       WrapColumn,
       Container,
       _ui_color_palette,
-      _jeprendsquoi
+      _jeprendsquoi,
+      _jean_bobby_radio
     },
     props: {
       project: Object,

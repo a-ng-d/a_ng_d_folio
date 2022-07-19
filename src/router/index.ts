@@ -355,6 +355,36 @@ const router = createRouter({
       meta: {
         view: 'n/a'
       }
+    },
+    {
+      path: '/_work/_jean_bobby_radio/information',
+      name: '_JEPRENDSQUOI_INFORMATION',
+      beforeEnter() {
+        window.open('https://involtag.notion.site/Monter-une-webradio-d-entreprise-avec-peu-de-moyens-8f64fad1b661454999baa1f65ea27c11', '_blank')
+      },
+      meta: {
+        view: 'n/a'
+      }
+    },
+    {
+      path: '/_work/_jean_bobby_radio/takeaway-1',
+      name: '_JEPRENDSQUOI_TAKEAWAY_1',
+      beforeEnter() {
+        window.open('https://jean-bobby.radio.fm/', '_blank')
+      },
+      meta: {
+        view: 'n/a'
+      }
+    },
+    {
+      path: '/_work/_jean_bobby_radio/takeaway-2',
+      name: '_JEPRENDSQUOI_TAKEAWAY_2',
+      beforeEnter() {
+        window.open('https://github.com/inVoltag/jean-bobby-radio', '_blank')
+      },
+      meta: {
+        view: 'n/a'
+      }
     }
   ]
 })

@@ -51,7 +51,7 @@
       gap: var(--layout-column-gap)
 
     &__icon
-      padding: var(--spacing-s-000) 0 0 0
+      padding: var(--spacing-xs-000) 0
 
     &__description
       flex: 1

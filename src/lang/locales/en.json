@@ -280,6 +280,36 @@
         "date": "2020・On-air",
         "objectives": "Listening together to our Spotify collaborative playlist, Retrieving the office atmosphere",
         "roles": "Defining the web radio back-end architecture, Creating a graphic universe around our company's mascot, Designing a simple web player and declining the universe through it, Developing and maintaining the web player"
+      },
+      "part-1": {
+        "title": "Let's start the broadcasting system",
+        "paragraph-1": "TBuild a web radio from scratch is not as easy as expected. The challenge was interesting because a web radio is a complex system where each component is connected to broadcast audio to whom wants to listen to. To explain a bit, the audio is played from a classic computer, then it is encoded and sent to a broadcasting server, and finally, the audio can be played from a player.",
+        "caption-1": "The web radio system has been designed thanks to a couple of open-source and free solutions as <a href='https://icecast.org' class='link external-link' target='_blank'>Icecast</a> or <a href='https://www.rocketbroadcaster.com' class='link external-link' target='_blank'>Rocket Broadcaster</a>",
+        "info": {
+          "description": "This article explains the detailed flow for the most curious",
+          "linkLabel": "Read the article"
+        }
+      },
+      "part-2": {
+        "title": "Bring the motion design at the front-stage",
+        "paragraph-1": "The web player gathers few actions: Play/Pause, Volume, Now playing information and notifications, the collaborative playlist and the sound folder link, some information about the project and a feedback zone. The middle of the stage is the most important part of the player: the looping animation.",
+        "caption-1": "Around the edge are the player's controls, to get more space at the middle of the stage: Jean-Bobby All Around the World."
+      },
+      "part-3": {
+        "title": "Our mascot, All Around the World",
+        "paragraph-1": "Jean-Bobby is our company's mascot. We are used to get him during our trips or events. He has become a running gag because a lot a people liked to take him on holidays. Jean-Bobby has seen the beauty of our world while being the heart of iObeya (ex-KAP IT).",
+        "paragraph-2": "This animated loop is a tribute to this period. The best pictures have been a great inspiration and have been compiled into one short animation.",
+        "caption-1": "This animation has been a great opportunity at using <a href='https://airbnb.design/lottie/' class='link external-link' target='_blank'>Lottie</a> to generate a web-compliant animation. From an Adobe After Effects composition to an animated SVG."
+      },
+      "takeaways": {
+        "takeaway-1": {
+          "description": "The radio can be played on demand",
+          "linkLabel": "Listen to the radio"
+        },
+        "takeaway-2": {
+          "description": "Jean-Bobby Radio is an open-source project. You can take a glance at the source code on Github.",
+          "linkLabel": "Watch the repository"
+        }
       }
     },
     "_awesome_ipsums": {

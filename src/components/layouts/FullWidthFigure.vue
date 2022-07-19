@@ -3,6 +3,17 @@
     name: 'FullWidthFigure',
     props: {
       caption: String,
+      height: {
+        type: Number,
+      },
+      isCentered: {
+        type: Boolean,
+        default: false
+      },
+      background: {
+        type: String,
+        default: 'transparent'
+      },
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -34,7 +45,10 @@
 
     &__asset
       width: 100%
+      height: v-bind("height == undefined ? 'fit-content' : height + 'rem'")
       box-shadow: var(--image-border)
+      overflow: hidden
+      padding: v-bind("isCentered ? '0 var(--layout-center)' : '0'")
 
       :deep(img), :deep(iframe)
         width: 100%
@@ -44,6 +58,10 @@
       color: var(--color-sandstone)
 
     // Aspect
+    .figure
+      &__asset
+        background-color: v-bind('background')
+
     [data-theme="DARK"]
       --text-color: var(--color-cream)
 </style>
