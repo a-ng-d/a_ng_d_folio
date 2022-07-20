@@ -80,7 +80,6 @@
         fill: v-bind(logotypeColor)
 
     &--stuck
-      z-index: 2
       box-shadow: 0 var(--header-height-size) 64rem -64rem v-bind(background) inset
 
   @include device.mobile

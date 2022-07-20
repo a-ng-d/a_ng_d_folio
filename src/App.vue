@@ -76,7 +76,7 @@
             let diff = from.meta.position - to.meta.position
             diff == this.numberOfProjects - 1 ? diff = -1 : diff
             diff == -this.numberOfProjects + 1 ? diff = 1 : diff
-            return diff < 0 ? this.transition = 'go-right' : this.transition = 'go-left'
+            return diff < 0 ? this.transition = 'push-right' : this.transition = 'push-left'
           },
           'UNIVERSES > HOME': () => {
             this.transition = 'go-left'
