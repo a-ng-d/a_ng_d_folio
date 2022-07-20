@@ -153,5 +153,4 @@
   section.ending
     height: 100vh
     background: url(/src/assets/images/_work/_awesome_ipsums/ending-asset-3.svg) 100% 0 no-repeat , url(/src/assets/images/_work/_awesome_ipsums/ending-asset-2.svg) 55% v-bind('parallax(50, 55)') no-repeat, url(/src/assets/images/_work/_awesome_ipsums/ending-asset-1.svg) 50% v-bind('parallax(-50, 50)') no-repeat, #23A566
-
 </style>

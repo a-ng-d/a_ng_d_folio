@@ -158,5 +158,4 @@
   section.ending
     height: 100vh
     background: url(/src/assets/images/_work/_jean_bobby_radio/ending-asset-2.svg) 50% v-bind('parallax(0, 50)') no-repeat, url(/src/assets/images/_work/_jean_bobby_radio/ending-asset-1.png) 0 v-bind('parallax(-50, 50)') no-repeat, #190038
-
 </style>

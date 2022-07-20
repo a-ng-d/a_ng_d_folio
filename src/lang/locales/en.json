@@ -33,6 +33,7 @@
     "like": "Like",
     "comments": "Comments",
     "installations": "Installations",
+    "credit": "Credit",
     "takeaways" : "Takeaways!"
   },
   "id": {
@@ -232,7 +233,7 @@
       "challenge": {
         "title": "The problem of non-seasonal food",
         "paragraph-1": "A non-seasonal fruit or vegetable comes from:",
-        "paragraph-2": "<ul><li>Abroad, in a country where the cultivation is seasonal or locally unavailable</li><li>Cultivated in a greenhouse</li>",
+        "paragraph-2": "<ul><li>Abroad, in a country where the cultivation is seasonal or locally unavailable</li><li>Cultivated in a greenhouse</li></ul>",
         "paragraph-3": "Abroad, the carbon footprint is high because of the transportation: by boat or plane. And yet, cultivate inside a greenhouse has a more expensive carbon footprint. Indeed, a greenhouse keeps a non-stop heat to simulate the season temperature, and make the cultivation grow. That is why we can see some tomatoes on november, they grow in a greenhouse in Brittany."
       },
       "part-1": {
@@ -356,6 +357,75 @@
         "date": "2018・Released",
         "objectives": "Easing the solution deployment, Go-to-SaaS, Reinforcing the position of iObeya on Innovation & Creativity sessions",
         "roles": "Facilitating workshops by using the design thinking philosophy, Designing the vision, Revamping the UI, Writing the user stories"
+      },
+      "challenge": {
+        "title": "What is the problem?",
+        "paragraph-1": "iObeya is a structured and strict software. The model is a room = a declared team = a project. This model has some limitations:",
+        "paragraph-2": "<ul><li>Hard to be deployed through a large company</li><li>Heavy workflow between the requester and the IT service</li></ul>",
+        "paragraph-3": "The platform is fully customizable but the users must be declared and allocated by hand. Besides, the license limits the number of users in a room.",
+        "paragraph-4": "The strict and heavy users management is a big pain, and we wonder how can we open the app to any user."
+      },
+      "part-1": {
+        "title": "Defining several low-fi flows to make stakeholders aligned",
+        "paragraph-1": "We needed to validate our assumptions by drafting a first version. First, making stakeholders aligned was a requirement. We started with some business and user outcomes. The main challenge was to open a little bit more the application to external users (a step towards a SaaS solution).",
+        "paragraph-2": "We planned 3 stories on the same session: the facilitator, the declared and external participants. First, we did a storymap to draw the three detailed userflows and prioritize their features. This activity involved the PM, UX, and DEV part.",
+        "paragraph-3": "The team involvement was a rewarding experience because some of their ideas have unlocked some uncomfortable situation. As a designer, we must facilitate creative meeting and unlock people capability.",
+        "caption-1": "The Lean UX is a canvas that gathers business/user outcomes, and the solution to respond to the opportunity.",
+        "caption-2": "The userflow is full of comments because every person in the team is involved and encouraged to give feedback. A strong solution is built by a succession of reviews."
+      },
+      "part-2": {
+        "title": "An opportunity to think different",
+        "paragraph-1": "Make a SaaS solution was a business opportunity to catch more users and let the app viral through a large organization. We planned to revamp the UI because making a clear separation between a classic board and an whiteboard may be necessary (for example: Figma and Figjam).",
+        "paragraph-2": "The classic board presents a heavy and dark header, a lot of tools and utilities. A whiteboard has a lighter aspect, to introduce a lite version of the application. The result of this UI revamping is an entire whiteboarding session, animated by 3 users, Pierre (the facilitator), Paul (participant) and Jacqueline (external participant). This concept was a nice opportunity of using the emotional design philosophy.",
+        "paragraph-3": "Several prototypes have been created to get the stakeholders' approval. Conclusion, our assumptions have been validated after showing the entire session. The stakeholders thought their problem should be resolved with the whiteboarding session.",
+        "caption-1": "A whiteboard",
+        "caption-2": "A classic board",
+        "caption-3": "This cartography details the interaction between the three users during the whiteboard session",
+        "info-1": {
+          "description": "Pierre: the facilitator",
+          "linkLabel": "Launch the whiteboarding session"
+        },
+        "info-2": {
+          "description": "Paul: the participant",
+          "linkLabel": "Join the whiteboarding session"
+        },
+        "info-3": {
+          "description": "Jacqueline: the external participant",
+          "linkLabel": "Join the whiteboarding session"
+        }
+      },
+      "part-3": {
+        "title": "Technical feasibility enters the field",
+        "paragraph-1": "The green light is turned on, so we could go deeper in the detailed specs. First, a technical exploration was required because the UI revamping implied front-end changes. Indeed, the application is built with modules and the whiteboarding session is one of them. Nevertheless, a lot of discussions brought us to roll over. In order to deliver quickly the feature, we made some concessions: the lite version of the interface was postponed. Nevertheless, we got to add some soft touches of illustration and animation, to introduce the emotional design.",
+        "paragraph-2": "Despite the roll back, the solution responded to the companies' problem: do an activity with any users and outside a room.",
+        "caption-1": "The speedy board is the whiteboarding session metaphor",
+        "caption-2": "A purged whiteboarding session brings the user to a sad wrinkled paper 404 page",
+        "caption-3": "This animation makes a transition between contexts while onboarding the end-user",
+        "caption-4": "The final userflows, ready-to-dev."
+      },
+      "credit": {
+        "contributor-1": {
+          "name": "Julien Bréhier",
+          "role": "VP of Product Design"
+        },
+        "contributor-2": {
+          "name": "Pierrick Dugast",
+          "role": "Engineering Manager"
+        },
+        "contributor-3": {
+          "name": "Morsi Ben Ayed",
+          "role": "Lead Developer"
+        },
+        "contributor-4": {
+          "name": "Yoann Lheude",
+          "role": "Senior Product manager"
+        }
+      },
+      "takeaways": {
+        "takeaway-1": {
+          "description": "Extract of the final user flow",
+          "linkLabel": "Launch a whiteboard session"
+        }
       }
     }
   },

@@ -9,6 +9,7 @@
   import _jeprendsquoi from '@/contexts/_work/_jeprendsquoi.vue'
   import _jean_bobby_radio from '@/contexts/_work/_jean_bobby_radio.vue'
   import _awesome_ipsums from '@/contexts/_work/_awesome_ipsums.vue'
+  import _iobeya_whiteboard from '@/contexts/_work/_iobeya_whiteboard.vue'
 
   export default {
     name: 'Project',
@@ -22,7 +23,8 @@
       _ui_color_palette,
       _jeprendsquoi,
       _jean_bobby_radio,
-      _awesome_ipsums
+      _awesome_ipsums,
+      _iobeya_whiteboard
     },
     props: {
       project: Object,
@@ -139,7 +141,10 @@
   :deep(section.challenge)
     background-color: var(--color-candy-floss)
 
-  :deep(section.success)
+  :deep(section.success), :deep(section.credit)
+    background-color: var(--color-soft-wind)
+
+  :deep(section.credit)
     background-color: var(--color-soft-wind)
 
   :deep(section.takeaways)

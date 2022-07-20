@@ -391,7 +391,7 @@
 
           push = () => this.params.isPushed = true
 
-          reset = () => this.animate(0.05, [0, -window.innerHeight * 0.2, 0], [0, 0, -window.innerHeight * 2])
+          reset = () => this.animate(0.1, [0, -window.innerHeight * 0.2, 0], [0, 0, -window.innerHeight * 2])
 
           zoom = (scrollPosition, pageLimitMax) => {
             this.params.progress.x = sk.map(scrollPosition, 0, pageLimitMax, this.params.target.position.x, this.params.target.center.x)
@@ -495,7 +495,7 @@
         sk.povReset = () => pov.reset()
 
         sk.povBirdEye = (increment) => pov.animate(
-          0.05,
+          0.1,
           [
             sk.map(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
             -window.innerHeight * 2,
@@ -509,7 +509,7 @@
         )
 
         sk.povWiseEye = () => pov.animate(
-          0.05,
+          0.1,
           [
             0,
             -window.innerHeight * 0.1

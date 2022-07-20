@@ -28,7 +28,7 @@
         viewHeight: NaN,
         isGlitched: false,
         isExpanded: false,
-        isTransited: false,
+        isHardTransited: false,
         activeProjectPosition: 0,
         numberOfProjects: NaN
       }
@@ -45,38 +45,62 @@
                                      to.meta.view === 'PROJECT' ? to.meta.position :
                                      0
 
-        if (from.meta.view === 'HOME' && to.meta.view === 'CORE')
-          this.transition = 'go-left'
-        else if (from.meta.view === 'CORE' && to.meta.view === 'HOME')
-          this.transition = 'go-right'
+        const AB = {
+          'HOME > CORE': () => {
+            this.transition = 'go-left'
+            this.isHardTransited = true
+          },
+          'CORE > HOME': () => {
+            this.transition = 'go-right'
+            this.isHardTransited = true
+          },
+          'HOME > LAB': () => {
+            this.transition = 'go-right'
+            this.isHardTransited = true
+          },
+          'LAB > HOME': () => {
+            this.transition = 'go-left'
+            this.isHardTransited = true
+          },
+          'HOME > WORK': () => {
+            this.transition = 'go-down'
+            this.isHardTransited = true
+          },
+          'WORK > HOME': () => {
+            this.transition = 'go-up'
+            this.isHardTransited = true
+          },
+          'WORK > PROJECT': () => this.transition = 'go-down',
+          'PROJECT > WORK': () => this.transition = 'go-up',
+          'PROJECT > PROJECT': () => {
+            let diff = from.meta.position - to.meta.position
+            diff == this.numberOfProjects - 1 ? diff = -1 : diff
+            diff == -this.numberOfProjects + 1 ? diff = 1 : diff
+            return diff < 0 ? this.transition = 'go-right' : this.transition = 'go-left'
+          },
+          'UNIVERSES > HOME': () => {
+            this.transition = 'go-left'
+            this.isHardTransited = true
+          }
+        }
 
-        if (from.meta.view === 'HOME' && to.meta.view === 'LAB')
-          this.transition = 'go-right'
-        else if (from.meta.view === 'LAB' && to.meta.view === 'HOME')
-          this.transition = 'go-left'
+        const A = {
+          'UNIVERSES': () => {
+            this.transition = 'go-down'
+            this.isHardTransited = true
+          }
+        }
 
-        if (from.meta.view === 'HOME' && to.meta.view === 'WORK')
-          this.transition = 'go-down'
-        else if (from.meta.view === 'WORK' && to.meta.view === 'HOME')
-          this.transition = 'go-up'
+        const B = {
+          'UNIVERSES': () => {
+            this.transition = 'go-up'
+            this.isHardTransited = true
+          }
+        }
 
-        if (from.meta.view === 'WORK' && to.meta.view === 'PROJECT')
-          this.transition = 'go-down'
-        else if (from.meta.view === 'PROJECT' && to.meta.view === 'WORK')
-          this.transition = 'go-up'
-
-        if (from.meta.position - to.meta.position == -1 || from.meta.position - to.meta.position == this.numberOfProjects - 1)
-          this.transition = 'go-right'
-        else if (from.meta.position - to.meta.position == 1 || from.meta.position - to.meta.position == -this.numberOfProjects + 1)
-          this.transition = 'go-left'
-
-        if (to.meta.view === 'UNIVERSES')
-          this.transition = 'go-up'
-        else if (from.meta.view === 'UNIVERSES')
-          this.transition = 'go-down'
-
-        if (from.meta.view === 'UNIVERSES' && to.meta.view === 'HOME')
-          this.transition = 'go-left'
+        A[from.meta.view]?.()
+        B[to.meta.view]?.()
+        AB[`${from.meta.view} > ${to.meta.view}`]?.()
       }
     },
     methods: {
@@ -115,7 +139,7 @@
     :weight="160"
     :isExpanded="isExpanded"
     :movement="transition"
-    :style="`position: absolute ; z-index: ${isTransited ? '2' : '-1'}`"
+    :style="`position: absolute ; visibility: ${isHardTransited ? 'visible' : 'hidden'} ; z-index: 2`"
   />
   <Transition name="pull-down" style="--delay: var(--duration-turtoise)" @after-leave="resetDelay" appear>
     <MainMenu
@@ -127,7 +151,13 @@
     />
   </Transition>
   <RouterView @scroll.passive="getScrollParams" v-slot="{ Component, route }">
-    <Transition :name="transition" mode="out-in" @before-leave="isTransited = true" @leave="expandParticles" @enter="collapseParticles" @after-enter="isTransited = false">
+    <Transition
+      :name="transition"
+      :mode="isHardTransited ? 'out-in' : 'normal'"
+      @leave="expandParticles"
+      @enter="collapseParticles"
+      @after-enter="isHardTransited = false"
+    >
       <Component
         :is="Component"
         :key="route.path"
