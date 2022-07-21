@@ -153,7 +153,7 @@
   <RouterView @scroll.passive="getScrollParams" v-slot="{ Component, route }">
     <Transition
       :name="transition"
-      :mode="isHardTransited ? 'out-in' : 'normal'"
+      :mode="isHardTransited ? 'out-in' : 'default'"
       @leave="expandParticles"
       @enter="collapseParticles"
       @after-enter="isHardTransited = false"

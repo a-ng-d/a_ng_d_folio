@@ -2,10 +2,6 @@
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import { Vue3Lottie } from 'vue3-lottie'
-  import JBRAnimation from '@/assets/images/_work/_jean_bobby_radio/animation.json'
-  import UCPAnimation from '@/assets/images/_work/_ui_color_palette/animation.json'
-  import AIAnimation from '@/assets/images/_work/_awesome_ipsums/animation.json'
-  import IWAnimation from '@/assets/images/_work/_iobeya_whiteboard/animation.json'
   import { ArrowLeft, ArrowRight, ArrowDown } from 'lucide-vue-next'
 
   export default {

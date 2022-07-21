@@ -69,7 +69,7 @@
       :caption="$t('work._iobeya_whiteboard.part-1.caption-1')"
     >
       <template #asset>
-        <img src="/src/assets/images/_work/_iobeya_whiteboard/" />
+        <img src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-1.png" />
       </template>
     </FullWidthFigure>
     <OneColumn
@@ -85,13 +85,13 @@
       <template #left>
         <Figure
           type="image"
-          src="/src/assets/images/_work/_iobeya_whiteboard/"
+          src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-2.png"
         />
       </template>
       <template #right>
         <Figure
           type="image"
-          src="/src/assets/images/_work/_iobeya_whiteboard/"
+          src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-3.png"
         />
       </template>
     </TwoColumns>
@@ -99,7 +99,7 @@
       :caption="$t('work._iobeya_whiteboard.part-1.caption-2')"
     >
       <template #asset>
-        <img src="/src/assets/images/_work/_iobeya_whiteboard/" />
+        <img src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-4.png" />
       </template>
     </FullWidthFigure>
     <OneColumn
@@ -115,7 +115,7 @@
       <template #plain>
         <Figure
           type="image"
-          src="/src/assets/images/_work/_iobeya_whiteboard/"
+          src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-5.png"
         />
       </template>
     </OneColumn>
@@ -135,14 +135,14 @@
       <template #left>
         <Figure
           type="image"
-          src="/src/assets/images/_work/_iobeya_whiteboard/"
+          src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-6.png"
           :caption="$t('work._iobeya_whiteboard.part-2.caption-1')"
         />
       </template>
       <template #right>
         <Figure
           type="image"
-          src="/src/assets/images/_work/_iobeya_whiteboard/"
+          src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-7.png"
           :caption="$t('work._iobeya_whiteboard.part-2.caption-2')"
         />
       </template>
@@ -158,7 +158,7 @@
       :caption="$t('work._iobeya_whiteboard.part-2.caption-3')"
     >
       <template #asset>
-        <img src="/src/assets/images/_work/_iobeya_whiteboard/" />
+        <img src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-8.png" />
       </template>
     </FullWidthFigure>
     <OneColumn
@@ -217,23 +217,27 @@
       <template #left>
         <Figure
           type="image"
-          src="/src/assets/images/_work/_iobeya_whiteboard/"
+          src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-9.svg"
           :caption="$t('work._iobeya_whiteboard.part-3.caption-1')"
         />
       </template>
       <template #right>
         <Figure
           type="image"
-          src="/src/assets/images/_work/_iobeya_whiteboard/"
+          src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-10.svg"
           :caption="$t('work._iobeya_whiteboard.part-3.caption-2')"
         />
       </template>
     </TwoColumns>
     <FullWidthFigure
       :caption="$t('work._iobeya_whiteboard.part-3.caption-3')"
+      isCentered
+      background="#262626"
     >
       <template #asset>
-        <img src="/src/assets/images/_work/_iobeya_whiteboard/" />
+        <video autoplay loop muted>
+          <source src="/src/assets/videos/_work/_iobeya_whiteboard/article-asset-1.mp4" type="video/mp4" />
+        </video>
       </template>
     </FullWidthFigure>
     <OneColumn
@@ -247,7 +251,7 @@
       :caption="$t('work._iobeya_whiteboard.part-3.caption-4')"
     >
       <template #asset>
-        <img src="/src/assets/images/_work/_iobeya_whiteboard/" />
+        <img src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-11.png" />
       </template>
     </FullWidthFigure>
   </section>
@@ -272,9 +276,9 @@
     >
       <template #plain>
         <InteractiveContainer
-          :description="$t('work._awesome_ipsums.takeaways.takeaway-1.description')"
-          :cta="$t('work._awesome_ipsums.takeaways.takeaway-1.linkLabel')"
-          :href="'/_work/_awesome_ipsums/takeaway-1'"
+          :description="$t('work._iobeya_whiteboard.takeaways.takeaway-1.description')"
+          :cta="$t('work._iobeya_whiteboard.takeaways.takeaway-1.linkLabel')"
+          :href="'/_work/_iobeya_whiteboard/takeaway-1'"
         >
           <template #icon>
             <PlayCircle :size="48" />

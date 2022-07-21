@@ -405,6 +405,46 @@ const router = createRouter({
       meta: {
         view: 'n/a'
       }
+    },
+    {
+      path: '/_work/_iobeya_whiteboard/information-1',
+      name: '_IOBEYA_WHITEBOARD_INFORMATION_1',
+      beforeEnter() {
+        window.open('https://www.sketch.com/s/b9ca2e39-f0a3-40b1-9f85-80da81775840/a/rG3Pa7/play', '_blank')
+      },
+      meta: {
+        view: 'n/a'
+      }
+    },
+    {
+      path: '/_work/_iobeya_whiteboard/information-2',
+      name: '_IOBEYA_WHITEBOARD_INFORMATION_2',
+      beforeEnter() {
+        window.open('https://www.sketch.com/s/b9ca2e39-f0a3-40b1-9f85-80da81775840/a/mEQxdP/play', '_blank')
+      },
+      meta: {
+        view: 'n/a'
+      }
+    },
+    {
+      path: '/_work/_iobeya_whiteboard/information-3',
+      name: '_IOBEYA_WHITEBOARD_INFORMATION_3',
+      beforeEnter() {
+        window.open('https://www.sketch.com/s/b9ca2e39-f0a3-40b1-9f85-80da81775840/a/ep3x9z/play', '_blank')
+      },
+      meta: {
+        view: 'n/a'
+      }
+    },
+    {
+      path: '/_work/_iobeya_whiteboard/takeaway-1',
+      name: '_IOBEYA_WHITEBOARD_TAKEAWAY_1',
+      beforeEnter() {
+        window.open('https://www.sketch.com/s/b9ca2e39-f0a3-40b1-9f85-80da81775840/a/Zdpol7/play', '_blank')
+      },
+      meta: {
+        view: 'n/a'
+      }
     }
   ]
 })

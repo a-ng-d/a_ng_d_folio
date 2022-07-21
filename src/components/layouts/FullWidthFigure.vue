@@ -45,10 +45,12 @@
 
     &__asset
       width: 100%
+      display: v-bind("height == undefined ? 'flex' : 'block'")
       height: v-bind("height == undefined ? 'fit-content' : height + 'rem'")
       box-shadow: var(--image-border)
       overflow: hidden
       padding: v-bind("isCentered ? '0 var(--layout-center)' : '0'")
+      justify-content: v-bind("isCentered ? 'center' : 'flex-start'")
 
       :deep(img), :deep(iframe)
         width: 100%
