@@ -61,7 +61,7 @@
     &__asset
       display: flex
       width: 100%
-      border-radius: var(--regular-border-radius)
+      border-radius: var(--small-border-radius)
       box-shadow: var(--image-border)
       justify-content: center
       align-items: center
