@@ -85,7 +85,7 @@
 
       &--magnified
         box-shadow: none
-        transform: scale(v-bind("maxScale")) translate(v-bind("`${pathX}rem`"), v-bind("`${pathY}rem`"))
+        transform: scale(v-bind("maxScale")) translate(v-bind("`${pathX}px`"), v-bind("`${pathY}px`"))
         z-index: 5
         cursor: zoom-out
         border-radius: 0
