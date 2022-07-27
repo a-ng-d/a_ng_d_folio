@@ -41,7 +41,7 @@
 
 <template>
   <figure class="figure">
-    <div class="figure__asset" :class="isMagnified ? 'figure__asset--magnified' : null" @click="magnifier" @wheel.passive="isMagnified = false" @touchmove="isMagnified = false">
+    <div class="figure__asset" :class="isMagnified ? 'figure__asset--magnified' : null" @click="magnifier" @wheel.passive="isMagnified = false" @touchmove.passive="isMagnified = false">
       <img v-if="type === 'image'" :src="src" :alt="alt" />
       <video v-else-if="type === 'video'" controls>
         <source :src="src" type="video/mp4" />
