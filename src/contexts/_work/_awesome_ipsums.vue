@@ -1,6 +1,6 @@
 <script lang="ts">
   import OneColumn from '@/components/layouts/OneColumn.vue'
-  import WrapColumn from '@/components/layouts/WrapColumn.vue'
+  import TwoColumns from '@/components/layouts/TwoColumns.vue'
   import FullWidthFigure from '@/components/layouts/FullWidthFigure.vue'
   import InteractiveContainer from '@/components/ui/InteractiveContainer.vue'
   import Figure from '@/components/ui/Figure.vue'
@@ -10,7 +10,7 @@
     name: '_jean_bobby_radio',
     components: {
       OneColumn,
-      WrapColumn,
+      TwoColumns,
       FullWidthFigure,
       InteractiveContainer,
       Figure,
@@ -40,28 +40,24 @@
 
 <template>
   <section>
-    <OneColumn
+    <TwoColumns
       :title="$t('work._awesome_ipsums.part-1.title')"
       :theme="theme"
     >
-      <template #plain>
+      <template #left>
         <p>{{ $t('work._awesome_ipsums.part-1.paragraph-1') }}</p>
         <p v-html="$t('work._awesome_ipsums.part-1.paragraph-2')"></p>
         <p>{{ $t('work._awesome_ipsums.part-1.paragraph-3') }}</p>
         <p>{{ $t('work._awesome_ipsums.part-1.paragraph-4') }}</p>
       </template>
-    </OneColumn>
-    <OneColumn
-      :theme="theme"
-    >
-      <template #plain>
+      <template #right>
         <Figure
           type="image"
           src="/src/assets/images/_work/_awesome_ipsums/article-asset-1.png"
           :caption="$t('work._awesome_ipsums.part-1.caption-1')"
         />
       </template>
-    </OneColumn>
+    </TwoColumns>
   </section>
   <section>
     <OneColumn
