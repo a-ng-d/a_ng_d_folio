@@ -64,6 +64,7 @@
     &__left-part
       flex: 1
       display: flex
+      gap: var(--layout-column-gap)
 
     &__right-part
       justify-content: flex-end

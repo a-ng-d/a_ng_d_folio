@@ -77,10 +77,6 @@
             diff == this.numberOfProjects - 1 ? diff = -1 : diff
             diff == -this.numberOfProjects + 1 ? diff = 1 : diff
             return diff < 0 ? this.transition = 'push-right' : this.transition = 'push-left'
-          },
-          'UNIVERSES > HOME': () => {
-            this.transition = 'go-left'
-            this.isHardTransited = true
           }
         }
 
