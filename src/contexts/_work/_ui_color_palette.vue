@@ -23,6 +23,8 @@
       Github
     },
     props: {
+      scrollProgress: Number,
+      scrollLimit: Number,
       theme: {
         type: String,
         default: 'DEFAULT'
