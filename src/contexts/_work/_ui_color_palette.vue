@@ -4,7 +4,7 @@
   import ThreeColumns from '@/components/layouts/ThreeColumns.vue'
   import Container from '@/components/ui/Container.vue'
   import InteractiveContainer from '@/components/ui/InteractiveContainer.vue'
-  import Figure from '@/components/ui/Figure.vue'
+  import Figure from '@/components/patterns/Figure.vue'
   import { Heart, MessageCircle, Download, Figma, Github } from 'lucide-vue-next'
 
   export default {

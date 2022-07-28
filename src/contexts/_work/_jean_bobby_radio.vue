@@ -3,7 +3,7 @@
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import FullWidthFigure from '@/components/layouts/FullWidthFigure.vue'
   import InteractiveContainer from '@/components/ui/InteractiveContainer.vue'
-  import Figure from '@/components/ui/Figure.vue'
+  import Figure from '@/components/patterns/Figure.vue'
   import { Info, Github, Radio } from 'lucide-vue-next'
 
   export default {

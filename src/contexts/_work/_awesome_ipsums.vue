@@ -3,7 +3,7 @@
   import TwoColumns from '@/components/layouts/TwoColumns.vue'
   import FullWidthFigure from '@/components/layouts/FullWidthFigure.vue'
   import InteractiveContainer from '@/components/ui/InteractiveContainer.vue'
-  import Figure from '@/components/ui/Figure.vue'
+  import Figure from '@/components/patterns/Figure.vue'
   import { Download, Github } from 'lucide-vue-next'
 
   export default {

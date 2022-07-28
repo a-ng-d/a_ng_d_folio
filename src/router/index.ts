@@ -5,6 +5,7 @@ import Id from '../views/Id.vue'
 import Universes from '../views/Universes.vue'
 import Work from '../views/Work.vue'
 import Project from '../views/Project.vue'
+import Lab from '../views/Lab.vue'
 import Attribution from '../views/Attribution.vue'
 import JBRAnimation from '@/assets/images/_work/_jean_bobby_radio/animation.json'
 import UCPAnimation from '@/assets/images/_work/_ui_color_palette/animation.json'
@@ -235,7 +236,7 @@ const router = createRouter({
     {
       path: '/_lab',
       name: '_LAB',
-      component: Home,
+      component: Lab,
       meta: {
         title: i18n.global.t('lab.title'),
         view: 'LAB',

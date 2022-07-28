@@ -76,7 +76,7 @@
           </template>
         </Button>
         <Button
-          v-else-if="view === 'WORK' || view === 'PROJECT'"
+          v-else-if="view === 'WORK' || view === 'PROJECT' || view === 'LAB'"
           type="secondary"
           :label="$t('global.menu')"
           path="/_universes"
@@ -104,7 +104,7 @@
         </Button>
         <Pagination
           v-else-if="view === 'WORK'"
-          
+
           :pages="projects"
           :activePage="activeProjectPosition"
           :theme="projects[activeProjectPosition].meta.theme"

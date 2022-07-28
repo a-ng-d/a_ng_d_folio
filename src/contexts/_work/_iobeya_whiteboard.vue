@@ -5,7 +5,7 @@
   import FullWidthFigure from '@/components/layouts/FullWidthFigure.vue'
   import Container from '@/components/ui/Container.vue'
   import InteractiveContainer from '@/components/ui/InteractiveContainer.vue'
-  import Figure from '@/components/ui/Figure.vue'
+  import Figure from '@/components/patterns/Figure.vue'
   import { User, PlayCircle } from 'lucide-vue-next'
 
   export default {

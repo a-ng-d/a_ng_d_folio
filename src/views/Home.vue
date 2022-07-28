@@ -89,7 +89,6 @@
 </template>
 
 <style scoped lang="sass">
-  @use '@/assets/stylesheets/text-styles.sass' as text
   @use '@/assets/stylesheets/base.sass' as device
 
   // Structure
