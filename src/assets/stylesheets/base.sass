@@ -73,6 +73,7 @@ a
     z-index: 1
     transition: var(--simple-transition)
     color: var(--text-color)
+    border-radius: var(--full-border-radius)
 
     &:after
       content: ''
@@ -95,19 +96,22 @@ a
       --amplitude: var(--spacing-s-000)
 
       animation: excited var(--duration-running) var(--ease-peps)
+      z-index: 2
 
       &:after
         background: var(--border-active-color)
 
     &:focus
       transform: var(--focus-scale)
+      padding: 0 var(--sizing-m-000)
+      background-color: hsla(var(--hsl-titanium-white), .9)
 
       &:after
         background: var(--border-focus-color)
 
       &.external-link
         &:before
-          --border-active-color: var(--color-clear-water)
+          --border-active-color: var(--border-focus-color)
 
     &[data-theme="DARK"]
       --text-color: var(--color-cream)
