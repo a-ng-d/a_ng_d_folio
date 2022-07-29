@@ -3,7 +3,7 @@
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import ThreeColumns from '@/components/layouts/ThreeColumns.vue'
   import Container from '@/components/ui/Container.vue'
-  import InteractiveContainer from '@/components/ui/InteractiveContainer.vue'
+  import LinkContainer from '@/components/ui/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
   import { Heart, MessageCircle, Download, Figma, Github } from 'lucide-vue-next'
 
@@ -14,7 +14,7 @@
       WrapColumn,
       ThreeColumns,
       Container,
-      InteractiveContainer,
+      LinkContainer,
       Figure,
       Heart,
       MessageCircle,
@@ -105,7 +105,7 @@
         :theme="theme"
       >
         <template #plain>
-          <InteractiveContainer
+          <LinkContainer
             :description="$t('work._ui_color_palette.takeaways.takeaway-1.description')"
             :cta="$t('work._ui_color_palette.takeaways.takeaway-1.linkLabel')"
             :href="'/_work/_ui_color_palette/takeaway-1'"
@@ -113,8 +113,8 @@
             <template #icon>
               <Figma :size="48" />
             </template>
-          </InteractiveContainer>
-          <InteractiveContainer
+          </LinkContainer>
+          <LinkContainer
             :description="$t('work._ui_color_palette.takeaways.takeaway-2.description')"
             :cta="$t('work._ui_color_palette.takeaways.takeaway-2.linkLabel')"
             :href="'/_work/_ui_color_palette/takeaway-2'"
@@ -122,7 +122,7 @@
             <template #icon>
               <Github :size="48" />
             </template>
-          </InteractiveContainer>
+          </LinkContainer>
         </template>
       </OneColumn>
     </section>

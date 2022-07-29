@@ -2,7 +2,7 @@
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import FullWidthFigure from '@/components/layouts/FullWidthFigure.vue'
-  import InteractiveContainer from '@/components/ui/InteractiveContainer.vue'
+  import LinkContainer from '@/components/ui/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
   import { Info, Bot, Ghost } from 'lucide-vue-next'
 
@@ -12,7 +12,7 @@
       OneColumn,
       WrapColumn,
       FullWidthFigure,
-      InteractiveContainer,
+      LinkContainer,
       Figure,
       Info,
       Bot,
@@ -145,7 +145,7 @@
         :theme="theme"
       >
         <template #plain>
-          <InteractiveContainer
+          <LinkContainer
             :description="$t('work._jeprendsquoi.part-2.info.description')"
             :cta="$t('work._jeprendsquoi.part-2.info.linkLabel')"
             :href="'/_work/_jeprendsquoi/information'"
@@ -153,7 +153,7 @@
             <template #icon>
               <Info :size="48" />
             </template>
-          </InteractiveContainer>
+          </LinkContainer>
         </template>
       </OneColumn>
       <WrapColumn
@@ -181,7 +181,7 @@
         :theme="theme"
       >
         <template #plain>
-          <InteractiveContainer
+          <LinkContainer
             :description="$t('work._jeprendsquoi.takeaways.takeaway-1.description')"
             :cta="$t('work._jeprendsquoi.takeaways.takeaway-1.linkLabel')"
             :href="'/_work/_jeprendsquoi/takeaway-1'"
@@ -189,8 +189,8 @@
             <template #icon>
               <Bot :size="48" />
             </template>
-          </InteractiveContainer>
-          <InteractiveContainer
+          </LinkContainer>
+          <LinkContainer
             :description="$t('work._jeprendsquoi.takeaways.takeaway-2.description')"
             :cta="$t('work._jeprendsquoi.takeaways.takeaway-2.linkLabel')"
             :href="'/_work/_jeprendsquoi/takeaway-2'"
@@ -198,7 +198,7 @@
             <template #icon>
               <Ghost :size="48" />
             </template>
-          </InteractiveContainer>
+          </LinkContainer>
         </template>
       </OneColumn>
     </section>

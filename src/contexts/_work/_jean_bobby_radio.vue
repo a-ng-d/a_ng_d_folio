@@ -2,7 +2,7 @@
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import FullWidthFigure from '@/components/layouts/FullWidthFigure.vue'
-  import InteractiveContainer from '@/components/ui/InteractiveContainer.vue'
+  import LinkContainer from '@/components/ui/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
   import { Info, Github, Radio } from 'lucide-vue-next'
 
@@ -12,7 +12,7 @@
       OneColumn,
       WrapColumn,
       FullWidthFigure,
-      InteractiveContainer,
+      LinkContainer,
       Figure,
       Info,
       Github,
@@ -53,7 +53,7 @@
       :theme="theme"
     >
       <template #plain>
-        <InteractiveContainer
+        <LinkContainer
           :description="$t('work._jean_bobby_radio.part-1.info.description')"
           :cta="$t('work._jean_bobby_radio.part-1.info.linkLabel')"
           :href="'/_work/_jean_bobby_radio/information'"
@@ -61,7 +61,7 @@
           <template #icon>
             <Info :size="48" />
           </template>
-        </InteractiveContainer>
+        </LinkContainer>
       </template>
     </OneColumn>
     <FullWidthFigure
@@ -124,7 +124,7 @@
       :theme="theme"
     >
       <template #plain>
-        <InteractiveContainer
+        <LinkContainer
           :description="$t('work._jean_bobby_radio.takeaways.takeaway-1.description')"
           :cta="$t('work._jean_bobby_radio.takeaways.takeaway-1.linkLabel')"
           :href="'/_work/_jean_bobby_radio/takeaway-1'"
@@ -132,8 +132,8 @@
           <template #icon>
             <Radio :size="48" />
           </template>
-        </InteractiveContainer>
-        <InteractiveContainer
+        </LinkContainer>
+        <LinkContainer
           :description="$t('work._jean_bobby_radio.takeaways.takeaway-2.description')"
           :cta="$t('work._jean_bobby_radio.takeaways.takeaway-2.linkLabel')"
           :href="'/_work/_jean_bobby_radio/takeaway-2'"
@@ -141,7 +141,7 @@
           <template #icon>
             <Github :size="48" />
           </template>
-        </InteractiveContainer>
+        </LinkContainer>
       </template>
     </OneColumn>
   </section>

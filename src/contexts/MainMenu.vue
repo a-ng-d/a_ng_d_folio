@@ -3,7 +3,7 @@
   import Button from '@/components/ui/Button.vue'
   import Pagination from '@/components/ui/Pagination.vue'
   import Navigation from '@/components/ui/Navigation.vue'
-  import { ArrowRight, ArrowLeft, Rocket } from 'lucide-vue-next'
+  import { ArrowRight, ArrowDown, ArrowLeft, Rocket, Home } from 'lucide-vue-next'
 
   export default {
     name: 'MainMenu',
@@ -13,8 +13,10 @@
       Pagination,
       Navigation,
       ArrowRight,
+      ArrowDown,
       ArrowLeft,
-      Rocket
+      Rocket,
+      Home
     },
     props: {
       device: {
@@ -72,7 +74,7 @@
           theme="DARK"
         >
           <template #icon>
-            <ArrowLeft :size="24" />
+            <Home :size="24" />
           </template>
         </Button>
         <Button

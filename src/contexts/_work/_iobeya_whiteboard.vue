@@ -4,7 +4,7 @@
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import FullWidthFigure from '@/components/layouts/FullWidthFigure.vue'
   import Container from '@/components/ui/Container.vue'
-  import InteractiveContainer from '@/components/ui/InteractiveContainer.vue'
+  import LinkContainer from '@/components/ui/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
   import { User, PlayCircle } from 'lucide-vue-next'
 
@@ -16,7 +16,7 @@
       WrapColumn,
       FullWidthFigure,
       Container,
-      InteractiveContainer,
+      LinkContainer,
       Figure,
       User,
       PlayCircle
@@ -173,7 +173,7 @@
         :theme="theme"
       >
         <template #plain>
-          <InteractiveContainer
+          <LinkContainer
             :description="$t('work._iobeya_whiteboard.part-2.info-1.description')"
             :cta="$t('work._iobeya_whiteboard.part-2.info-1.linkLabel')"
             :href="'/_work/_iobeya_whiteboard/information-1'"
@@ -181,8 +181,8 @@
             <template #icon>
               <User :size="48" />
             </template>
-          </InteractiveContainer>
-          <InteractiveContainer
+          </LinkContainer>
+          <LinkContainer
             :description="$t('work._iobeya_whiteboard.part-2.info-2.description')"
             :cta="$t('work._iobeya_whiteboard.part-2.info-2.linkLabel')"
             :href="'/_work/_iobeya_whiteboard/information-2'"
@@ -190,8 +190,8 @@
             <template #icon>
               <User :size="48" />
             </template>
-          </InteractiveContainer>
-          <InteractiveContainer
+          </LinkContainer>
+          <LinkContainer
             :description="$t('work._iobeya_whiteboard.part-2.info-3.description')"
             :cta="$t('work._iobeya_whiteboard.part-2.info-3.linkLabel')"
             :href="'/_work/_iobeya_whiteboard/information-3'"
@@ -199,7 +199,7 @@
             <template #icon>
               <User :size="48" />
             </template>
-          </InteractiveContainer>
+          </LinkContainer>
         </template>
       </OneColumn>
     </section>
@@ -276,7 +276,7 @@
         :theme="theme"
       >
         <template #plain>
-          <InteractiveContainer
+          <LinkContainer
             :description="$t('work._iobeya_whiteboard.takeaways.takeaway-1.description')"
             :cta="$t('work._iobeya_whiteboard.takeaways.takeaway-1.linkLabel')"
             :href="'/_work/_iobeya_whiteboard/takeaway-1'"
@@ -284,7 +284,7 @@
             <template #icon>
               <PlayCircle :size="48" />
             </template>
-          </InteractiveContainer>
+          </LinkContainer>
         </template>
       </OneColumn>
     </section>

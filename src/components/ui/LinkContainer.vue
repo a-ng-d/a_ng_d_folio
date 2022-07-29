@@ -2,7 +2,7 @@
   import Button from '@/components/ui/Button.vue'
 
   export default {
-    name: 'InteractiveContainer',
+    name: 'LinkContainer',
     components: {
       Button
     },

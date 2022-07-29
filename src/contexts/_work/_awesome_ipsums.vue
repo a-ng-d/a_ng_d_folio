@@ -2,7 +2,7 @@
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import TwoColumns from '@/components/layouts/TwoColumns.vue'
   import FullWidthFigure from '@/components/layouts/FullWidthFigure.vue'
-  import InteractiveContainer from '@/components/ui/InteractiveContainer.vue'
+  import LinkContainer from '@/components/ui/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
   import { Download, Github } from 'lucide-vue-next'
 
@@ -12,7 +12,7 @@
       OneColumn,
       TwoColumns,
       FullWidthFigure,
-      InteractiveContainer,
+      LinkContainer,
       Figure,
       Download,
       Github
@@ -116,7 +116,7 @@
         :theme="theme"
       >
         <template #plain>
-          <InteractiveContainer
+          <LinkContainer
             :description="$t('work._awesome_ipsums.takeaways.takeaway-1.description')"
             :cta="$t('work._awesome_ipsums.takeaways.takeaway-1.linkLabel')"
             :href="'/_work/_awesome_ipsums/takeaway-1'"
@@ -124,8 +124,8 @@
             <template #icon>
               <Download :size="48" />
             </template>
-          </InteractiveContainer>
-          <InteractiveContainer
+          </LinkContainer>
+          <LinkContainer
             :description="$t('work._awesome_ipsums.takeaways.takeaway-2.description')"
             :cta="$t('work._awesome_ipsums.takeaways.takeaway-2.linkLabel')"
             :href="'/_work/_awesome_ipsums/takeaway-2'"
@@ -133,7 +133,7 @@
             <template #icon>
               <Github :size="48" />
             </template>
-          </InteractiveContainer>
+          </LinkContainer>
         </template>
       </OneColumn>
     </section>
