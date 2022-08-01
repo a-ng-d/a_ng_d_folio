@@ -176,7 +176,7 @@
           <LinkContainer
             :description="$t('work._iobeya_whiteboard.part-2.info-1.description')"
             :cta="$t('work._iobeya_whiteboard.part-2.info-1.linkLabel')"
-            :href="'/_work/_iobeya_whiteboard/information-1'"
+            href="https://www.sketch.com/s/b9ca2e39-f0a3-40b1-9f85-80da81775840/a/rG3Pa7/play"
           >
             <template #icon>
               <User :size="48" />
@@ -185,7 +185,7 @@
           <LinkContainer
             :description="$t('work._iobeya_whiteboard.part-2.info-2.description')"
             :cta="$t('work._iobeya_whiteboard.part-2.info-2.linkLabel')"
-            :href="'/_work/_iobeya_whiteboard/information-2'"
+            href="https://www.sketch.com/s/b9ca2e39-f0a3-40b1-9f85-80da81775840/a/mEQxdP/play"
           >
             <template #icon>
               <User :size="48" />
@@ -194,7 +194,7 @@
           <LinkContainer
             :description="$t('work._iobeya_whiteboard.part-2.info-3.description')"
             :cta="$t('work._iobeya_whiteboard.part-2.info-3.linkLabel')"
-            :href="'/_work/_iobeya_whiteboard/information-3'"
+            href="https://www.sketch.com/s/b9ca2e39-f0a3-40b1-9f85-80da81775840/a/ep3x9z/play"
           >
             <template #icon>
               <User :size="48" />
@@ -279,7 +279,7 @@
           <LinkContainer
             :description="$t('work._iobeya_whiteboard.takeaways.takeaway-1.description')"
             :cta="$t('work._iobeya_whiteboard.takeaways.takeaway-1.linkLabel')"
-            :href="'/_work/_iobeya_whiteboard/takeaway-1'"
+            href="https://www.sketch.com/s/b9ca2e39-f0a3-40b1-9f85-80da81775840/a/Zdpol7/play"
           >
             <template #icon>
               <PlayCircle :size="48" />

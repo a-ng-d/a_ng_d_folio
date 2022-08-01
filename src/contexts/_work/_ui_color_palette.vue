@@ -108,7 +108,7 @@
           <LinkContainer
             :description="$t('work._ui_color_palette.takeaways.takeaway-1.description')"
             :cta="$t('work._ui_color_palette.takeaways.takeaway-1.linkLabel')"
-            :href="'/_work/_ui_color_palette/takeaway-1'"
+            href="https://www.figma.com/community/plugin/1063959496693642315/UI-Color-Palette"
           >
             <template #icon>
               <Figma :size="48" />
@@ -117,7 +117,7 @@
           <LinkContainer
             :description="$t('work._ui_color_palette.takeaways.takeaway-2.description')"
             :cta="$t('work._ui_color_palette.takeaways.takeaway-2.linkLabel')"
-            :href="'/_work/_ui_color_palette/takeaway-2'"
+            href="https://github.com/inVoltag/figma-ui-color-palette"
           >
             <template #icon>
               <Github :size="48" />

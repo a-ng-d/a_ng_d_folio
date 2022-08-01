@@ -56,7 +56,7 @@
         <LinkContainer
           :description="$t('work._jean_bobby_radio.part-1.info.description')"
           :cta="$t('work._jean_bobby_radio.part-1.info.linkLabel')"
-          :href="'/_work/_jean_bobby_radio/information'"
+          href="https://involtag.notion.site/Monter-une-webradio-d-entreprise-avec-peu-de-moyens-8f64fad1b661454999baa1f65ea27c11"
         >
           <template #icon>
             <Info :size="48" />
@@ -127,7 +127,7 @@
         <LinkContainer
           :description="$t('work._jean_bobby_radio.takeaways.takeaway-1.description')"
           :cta="$t('work._jean_bobby_radio.takeaways.takeaway-1.linkLabel')"
-          :href="'/_work/_jean_bobby_radio/takeaway-1'"
+          href="https://jean-bobby.radio.fm"
         >
           <template #icon>
             <Radio :size="48" />
@@ -136,7 +136,7 @@
         <LinkContainer
           :description="$t('work._jean_bobby_radio.takeaways.takeaway-2.description')"
           :cta="$t('work._jean_bobby_radio.takeaways.takeaway-2.linkLabel')"
-          :href="'/_work/_jean_bobby_radio/takeaway-2'"
+          href="https://github.com/inVoltag/jean-bobby-radio"
         >
           <template #icon>
             <Github :size="48" />

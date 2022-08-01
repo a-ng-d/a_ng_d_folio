@@ -119,7 +119,7 @@
           <LinkContainer
             :description="$t('work._awesome_ipsums.takeaways.takeaway-1.description')"
             :cta="$t('work._awesome_ipsums.takeaways.takeaway-1.linkLabel')"
-            :href="'/_work/_awesome_ipsums/takeaway-1'"
+            href="https://github.com/inVoltag/sketch-awesome-ipsums/releases/latest/download/awesome-ipsums.sketchplugin.zip"
           >
             <template #icon>
               <Download :size="48" />
@@ -128,7 +128,7 @@
           <LinkContainer
             :description="$t('work._awesome_ipsums.takeaways.takeaway-2.description')"
             :cta="$t('work._awesome_ipsums.takeaways.takeaway-2.linkLabel')"
-            :href="'/_work/_awesome_ipsums/takeaway-2'"
+            href="https://github.com/inVoltag/sketch-awesome-ipsums"
           >
             <template #icon>
               <Github :size="48" />

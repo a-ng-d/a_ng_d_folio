@@ -148,7 +148,7 @@
           <LinkContainer
             :description="$t('work._jeprendsquoi.part-2.info.description')"
             :cta="$t('work._jeprendsquoi.part-2.info.linkLabel')"
-            :href="'/_work/_jeprendsquoi/information'"
+            href="https://yuka.io"
           >
             <template #icon>
               <Info :size="48" />
@@ -184,7 +184,7 @@
           <LinkContainer
             :description="$t('work._jeprendsquoi.takeaways.takeaway-1.description')"
             :cta="$t('work._jeprendsquoi.takeaways.takeaway-1.linkLabel')"
-            :href="'/_work/_jeprendsquoi/takeaway-1'"
+            href="https://testflight.apple.com/join/AmEZ2igV"
           >
             <template #icon>
               <Bot :size="48" />
@@ -193,7 +193,7 @@
           <LinkContainer
             :description="$t('work._jeprendsquoi.takeaways.takeaway-2.description')"
             :cta="$t('work._jeprendsquoi.takeaways.takeaway-2.linkLabel')"
-            :href="'/_work/_jeprendsquoi/takeaway-2'"
+            href="https://testflight.apple.com/join/AmEZ2igV"
           >
             <template #icon>
               <Ghost :size="48" />
