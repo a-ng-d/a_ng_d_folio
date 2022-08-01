@@ -35,42 +35,24 @@
       return {
         isExtensible: this.extensible ? '100%' : 'fit-content',
         randomPosition: `position: absolute ; top: ${this.random(0, 80)}% ; left: ${this.random(0, 80)}%`,
-        isExpanded: false
+        isExpanded: false,
+        isExternal: false
       }
     },
     methods: {
       random(min, max) {
         return Math.floor(Math.random() * (max - min)) + min
       }
+    },
+    created() {
+      this.path.indexOf('http') == 0 ? this.isExternal = true : this.isExternal
     }
   }
 </script>
 
 <template>
 
-  <template v-if="layout === 'SIMPLE'">
-    <RouterLink
-      :to="path"
-      class="button"
-      :class="`button--${type}`"
-      @mouseover="isExpanded = !isExpanded"
-      @mouseout="isExpanded = !isExpanded"
-      :data-theme="theme"
-    >
-      <div class="button__content">
-        <div class="button__label">
-          <span>
-            {{ label }}
-          </span>
-        </div>
-      </div>
-      <div class="button__background">
-        <Particles :isExpanded="isExpanded" />
-      </div>
-    </RouterLink>
-  </template>
-
-  <template v-else-if="layout === 'ICON-ONLY'">
+  <template v-if="!isExternal">
     <RouterLink
       :to="path"
       class="button"
@@ -81,30 +63,10 @@
       :data-theme="theme"
     >
       <div class="button__content">
-        <div class="button__icon button__icon--transparent">
+        <div v-if="layout != 'SIMPLE'" class="button__icon" :class="layout === 'ICON-ONLY' ? 'button__icon--transparent' : null">
           <slot name="icon"></slot>
         </div>
-      </div>
-      <div class="button__background">
-        <Particles :isExpanded="isExpanded" />
-      </div>
-    </RouterLink>
-  </template>
-
-  <template v-else-if="layout === 'ICON-LEFT'">
-    <RouterLink
-      :to="path"
-      class="button"
-      :class="`button--${type}`"
-      @mouseover="isExpanded = !isExpanded"
-      @mouseout="isExpanded = !isExpanded"
-      :data-theme="theme"
-    >
-      <div class="button__content">
-        <div class="button__icon">
-          <slot name="icon"></slot>
-        </div>
-        <div class="button__label">
+        <div v-if="layout != 'ICON-ONLY'" class="button__label">
           <span>
             {{ label }}
           </span>
@@ -116,29 +78,31 @@
     </RouterLink>
   </template>
 
-  <template v-else-if="layout === 'ICON-RIGHT'">
-    <RouterLink
-      :to="path"
+  <template v-else>
+    <a
+      :href="path"
       class="button"
       :class="`button--${type}`"
       @mouseover="isExpanded = !isExpanded"
       @mouseout="isExpanded = !isExpanded"
       :data-theme="theme"
+      :style="position === 'random' ? randomPosition : ''"
+      target="_blank"
     >
       <div class="button__content">
-        <div class="button__label">
+        <div v-if="layout != 'SIMPLE'" class="button__icon" :class="layout === 'ICON-ONLY' ? 'button__icon--transparent' : null">
+          <slot name="icon"></slot>
+        </div>
+        <div v-if="layout != 'ICON-ONLY'" class="button__label">
           <span>
             {{ label }}
           </span>
-        </div>
-        <div class="button__icon">
-          <slot name="icon"></slot>
         </div>
       </div>
       <div class="button__background">
         <Particles :isExpanded="isExpanded" />
       </div>
-    </RouterLink>
+    </a>
   </template>
 
 </template>
@@ -168,6 +132,7 @@
     &__icon
       display: flex
       flex: 0 0 var(--button-height-size)
+      order: v-bind("layout === 'ICON-RIGHT' ? '1' : '0' ")
       width: var(--button-height-size)
       justify-content: center
       align-items: center
