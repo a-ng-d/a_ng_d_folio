@@ -39,7 +39,7 @@
   <div class="asset-container" @click="magnifier">
     <div class="asset-container__content">
       <div class="asset-container__asset">
-        <Transition name="fade" mode="in-out">
+        <Transition name="fade" mode="in-out" :style="`--delay: ${isMagnified ? '0ms' : 'var(--delay-jogging)'}`">
           <img v-if="!isMagnified" :src="thumbnail" :alt="alt" />
           <video v-else-if="isMagnified && type === 'video'" autoplay mute loop>
             <source :src="hdnail" type="video/mp4" />
@@ -76,6 +76,7 @@
     padding: var(--spacing-l-200)
     border-radius: var(--regular-border-radius)
     transition: var(--simple-transition)
+    transition-delay: v-bind("isMagnified ? '0' : 'var(--duration-jogging)'")
     transform-origin: center center
     cursor: pointer
 
@@ -94,7 +95,8 @@
       box-shadow: var(--inner-border)
       border-radius: var(--small-border-radius)
       transition: var(--simple-transition)
-      opacity: v-bind("isMagnified ? '1' : '.6'")
+      transition-delay: v-bind("isMagnified ? '0' : 'var(--duration-jogging)'")
+      filter: v-bind("isMagnified ? 'brightness(1)' : 'brightness(0.5)'")
 
       img, video
         height: 100%
