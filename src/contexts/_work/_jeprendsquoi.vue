@@ -5,6 +5,7 @@
   import LinkContainer from '@/components/ui/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
   import { Info, Bot, Ghost } from 'lucide-vue-next'
+  import { doMap } from '@/utilities/operations'
 
   export default {
     name: '_jeprendsquoi',
@@ -27,13 +28,8 @@
       }
     },
     methods: {
-      doMap(value, oldMin, oldMax, newMin, newMax) {
-        const oldRange = oldMax - oldMin,
-              newRange = newMax - newMin
-        return ((value - oldMin) * newRange / oldRange) + newMin
-      },
       parallax(start, end) {
-        return `${this.doMap(this.scrollProgress, 0, this.scrollLimit, start, end)}%`
+        return `${doMap(this.scrollProgress, 0, this.scrollLimit, start, end)}%`
       }
     }
   }

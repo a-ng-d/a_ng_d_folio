@@ -2,6 +2,7 @@
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import AssetContainer from '@/components/ui/AssetContainer.vue'
+  import { doMap } from '@/utilities/operations'
 
   export default {
     name: 'Lab',
@@ -78,11 +79,6 @@
       }
     },
     methods: {
-      doMap(value, oldMin, oldMax, newMin, newMax) {
-        const oldRange = oldMax - oldMin,
-              newRange = newMax - newMin
-        return ((value - oldMin) * newRange / oldRange) + newMin
-      },
       smoothScroll(e) {
         let timer, delta
         const paddingLeft = parseFloat(window.getComputedStyle(e.target, null).getPropertyValue('padding-left')),
@@ -99,8 +95,8 @@
         delta = Math.abs(this.scrollParams.currentPosition - this.scrollParams.snapPosition)
         this.scrollParams.currentPosition == 0 ? this.scrollParams.velocity = 1 :
                                                  this.scrollParams.currentPosition > maxScroll - 1 ? this.scrollParams.velocity = 1 :
-                                                 this.scrollParams.velocity = this.doMap(delta, 1, 400, 1, 1.5)
-        this.scrollParams.gap = this.doMap(this.scrollParams.velocity, 1, 1.5, 1, 4)
+                                                 this.scrollParams.velocity = doMap(delta, 1, 400, 1, 1.5)
+        this.scrollParams.gap = doMap(this.scrollParams.velocity, 1, 1.5, 1, 4)
       }
     }
   }
