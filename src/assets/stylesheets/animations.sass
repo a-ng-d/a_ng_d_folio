@@ -313,3 +313,13 @@
 
 .scale-up-leave-to
   transform: scale(1.25)
+
+// Fade transition
+.fade-enter-active,
+.fade-leave-active
+  position: absolute !important
+  transition: all var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom) !important
+
+.fade-enter-from,
+.fade-leave-to
+  opacity: 0
