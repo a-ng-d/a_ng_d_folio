@@ -1,6 +1,6 @@
 <script lang="ts">
   import P5 from 'p5'
-  import { HSLColors } from '@/assets/Colors'
+  import { HSLColors } from '@/utilities/colors'
 
   export default {
     name: 'Glitchscape',

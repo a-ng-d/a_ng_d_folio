@@ -1,7 +1,7 @@
 <script lang="ts">
   import P5 from 'p5'
   import { v4 as uuidv4 } from 'uuid'
-  import { HSLColors } from '@/assets/Colors'
+  import { HSLColors } from '@/utilities/colors'
 
   export default {
     name: 'Particles',
