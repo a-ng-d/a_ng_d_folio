@@ -48,7 +48,7 @@
 
     &__content
       display: flex
-      gap: var(--layout-column-gap)
+      gap: 0 var(--layout-column-gap)
 
     &__icon
       padding: var(--spacing-xs-000) 0

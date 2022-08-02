@@ -123,7 +123,7 @@
     padding: var(--spacing-xl-600) var(--layout-center)
     display: flex
     flex-flow: column nowrap
-    gap: var(--layout-column-gap) 0
+    gap: var(--layout-row-gap) 0
 
     &__info
       display: flex
@@ -138,7 +138,7 @@
     &__items
       display: flex
       flex: 1
-      gap: var(--layout-column-gap)
+      gap: 0 var(--layout-column-gap)
       padding: 0
 
       & > li

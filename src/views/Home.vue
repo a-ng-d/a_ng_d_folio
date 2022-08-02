@@ -111,7 +111,7 @@
       flex: 1
       flex-flow: column nowrap
       align-items: center
-      gap: var(--layout-column-gap)
+      gap: var(--layout-row-gap) 0
       justify-content: center
 
     &__actions

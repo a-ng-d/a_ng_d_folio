@@ -117,6 +117,6 @@
       width: max-content
       height: 100%
       flex-flow: row-reverse nowrap
-      gap: var(--layout-column-gap)
+      gap: 0 var(--layout-column-gap)
       align-items: stretch
 </style>

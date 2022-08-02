@@ -54,5 +54,5 @@
   // Structure
   .navigation
     display: flex
-    gap: var(--layout-column-gap)
+    gap: 0 var(--layout-column-gap)
 </style>

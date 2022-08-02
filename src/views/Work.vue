@@ -254,7 +254,7 @@
     display: flex
     flex-flow: row nowrap
     padding: var(--spacing-xl-600) var(--layout-center)
-    gap: var(--layout-column-gap)
+    gap: 0 var(--layout-column-gap)
 
     &__background
       width: 100%
@@ -276,7 +276,7 @@
       display: flex
       flex-flow: column nowrap
       justify-content: space-between
-      gap: var(--layout-column-gap)
+      gap: var(--layout-row-gap) 0
 
       &__description
         display: flex
@@ -285,7 +285,7 @@
 
       &__actions
         display: flex
-        gap: var(--layout-column-gap)
+        gap: 0 var(--layout-column-gap)
 
     &__title
       display: flex
@@ -300,7 +300,7 @@
       display: flex
       flex-flow: column nowrap
       padding: 0
-      gap: var(--layout-column-gap)
+      gap: var(--layout-row-gap) 0
 
       &__item
         --delay: var(--delay-hare)

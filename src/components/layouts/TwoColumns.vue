@@ -39,13 +39,13 @@
 
     &__columns
       display: flex
-      gap: var(--layout-column-gap)
+      gap: 0 var(--layout-column-gap)
 
     &__column
       display: flex
       flex-flow: column nowrap
       flex: 1
-      gap: var(--layout-column-gap)
+      gap: var(--layout-row-gap) 0
 
   @include device.mobile
     .col-2

@@ -82,7 +82,7 @@
     &__content
       display: flex
       flex-flow: column nowrap
-      gap: var(--layout-column-gap)
+      gap: var(--layout-row-gap) 0
       height: 100%
       pointer-events: none
 

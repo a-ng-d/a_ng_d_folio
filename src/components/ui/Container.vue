@@ -22,7 +22,7 @@
 
 <style scoped lang="sass">
   @use '@/assets/stylesheets/base.sass' as device
-    
+
   // Structure
   .container
     padding: var(--spacing-l-200)
@@ -33,7 +33,7 @@
     &__content
       display: flex
       flex-flow: column nowrap
-      gap: var(--layout-column-gap)
+      gap: var(--layout-row-gap) 0
 
     :deep(svg)
       margin: 0 0 var(--layout-column-gap) 0

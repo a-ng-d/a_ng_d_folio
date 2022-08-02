@@ -34,7 +34,7 @@
   // Structure
   .rich-external-link
     display: flex
-    gap: var(--layout-column-gap)
+    gap: var(--layout-row-gap) var(--layout-column-gap)
     padding: var(--spacing-l-000)
     border: var(--border-size) solid transparent
     border-radius: var(--regular-border-radius)

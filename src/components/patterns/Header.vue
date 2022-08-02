@@ -64,7 +64,7 @@
     &__left-part
       flex: 1
       display: flex
-      gap: var(--layout-column-gap)
+      gap: 0 var(--layout-column-gap)
 
     &__right-part
       justify-content: flex-end
@@ -85,5 +85,5 @@
 
   @include device.mobile
     .main-menu
-      gap: var(--layout-column-gap)
+      gap: 0 var(--layout-column-gap)
 </style>
