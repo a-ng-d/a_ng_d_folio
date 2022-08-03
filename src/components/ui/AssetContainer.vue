@@ -16,7 +16,11 @@
       alt: String,
       type: String,
       sourceName: String,
-      sourceLink: String
+      sourceLink: String,
+      unmagnify: {
+        type: Boolean,
+        default: false
+      }
     },
     data() {
       return {
@@ -30,6 +34,11 @@
 
         this.isMagnified = !this.isMagnified
         this.assetWidth = width + 100 + 'rem'
+      }
+    },
+    watch: {
+      unmagnify(to, from) {
+        to == true ? this.isMagnified = false : this.isMagnified
       }
     }
   }

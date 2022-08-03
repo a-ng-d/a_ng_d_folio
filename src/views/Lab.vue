@@ -75,7 +75,8 @@
           snapPosition: NaN,
           velocity: 1,
           gap: 1
-        }
+        },
+        active: ''
       }
     },
     methods: {
@@ -115,6 +116,8 @@
             :sourceName="shot.sourceName"
             :sourceLink="shot.sourceLink"
             :key="`shot-${index + 1}`"
+            @click.passive="active = `shot-${index + 1}`"
+            :unmagnify="active === `shot-${index + 1}` ? false : true"
           />
         </Transition>
       </div>
