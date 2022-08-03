@@ -71,8 +71,8 @@
           }
         ],
         scrollParams: {
-          currentPosition: NaN,
-          snapPosition: NaN,
+          currentPosition: 0,
+          snapPosition: 0,
           velocity: 1,
           gap: 1
         },
