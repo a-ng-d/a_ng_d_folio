@@ -399,7 +399,7 @@
 
           push = () => this.params.isPushed = true
 
-          reset = () => this.animate(.1, [0, window.innerHeight * .2, 0], [0, window.innerHeight * .2, -window.innerHeight * 2])
+          reset = () => this.animate(.1, [0, window.innerHeight * .2, -window.innerHeight * .1], [0, window.innerHeight * .2, -window.innerHeight * 2])
 
           zoom = (scrollPosition, pageLimitMax) => {
             this.params.progress.x = sk.map(scrollPosition, 0, pageLimitMax, this.params.target.position.x, this.params.target.center.x)
@@ -454,7 +454,7 @@
               widthRange: [sk.width * .25, sk.width],
               heightRange: [-sk.height * .01, -sk.height * .05],
               x: random(-limitX, limitX),
-              y: random(-sk.height * .2, sk.height * .4),
+              y: random(-sk.height * .1, -sk.height * .4),
               zRange: [-limitZ, 0],
               rows: sk.int(random(3, 5)),
               foreground: colors.clay,
@@ -470,7 +470,7 @@
 
         sk.draw = () => {
 
-          alpha = sk.lerp(alpha, .5, .01)
+          alpha = sk.lerp(alpha, .6, .01)
 
           sk.clear()
 
