@@ -96,7 +96,15 @@
           mountains = [],
           clouds = []
 
-        const random = (min, max) => Math.floor(Math.random() * (max - min)) + min
+        const random = (min, max) => Math.floor(Math.random() * (max - min)) + min,
+              twoRangesRandom = (rangeLeftMin, rangeLeftMax, rangeRightMin, rangeRightMax) => {
+                const randomLeft = random(rangeLeftMin, rangeLeftMax),
+                      randomRight = random(rangeRightMin, rangeRightMax),
+                      dice = Math.random()
+
+                const dicer = dice < .5 ? randomLeft : randomRight
+                return dicer
+              }
 
         // Elements
         class Mountain {
@@ -195,7 +203,7 @@
             const randomColor = Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
 
             sk.push()
-              sk.translate(this.position.x, this.position.y, this.position.z)
+              sk.translate(this.position.x - (this.size.width / 2), this.position.y, this.position.z)
               sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
               sk.stroke(this.deepHue(), this.deepSaturation(), this.deepLightness())
               sk.strokeWeight(1)
@@ -391,7 +399,7 @@
 
           push = () => this.params.isPushed = true
 
-          reset = () => this.animate(0.1, [0, -window.innerHeight * 0.2, 0], [0, 0, -window.innerHeight * 2])
+          reset = () => this.animate(0.1, [0, window.innerHeight * 0.2, 0], [0, window.innerHeight * 0.2, -window.innerHeight * 2])
 
           zoom = (scrollPosition, pageLimitMax) => {
             this.params.progress.x = sk.map(scrollPosition, 0, pageLimitMax, this.params.target.position.x, this.params.target.center.x)
@@ -434,8 +442,8 @@
           for (let i = 0 ; i < mNumber ; i++)
             mountains.push(new Mountain({
               widthRange: [sk.width * 0.25, sk.width],
-              heightRange: [-sk.height * 0.2, -sk.height * 0.4],
-              x: random(-limitX, limitX),
+              heightRange: [-sk.height * 0.5, -sk.height * 1],
+              x: twoRangesRandom(-limitX, -sk.width * .5, sk.width * .5, limitX),
               y: sk.height * 0.5,
               zRange: [-limitZ, 0],
               foreground: colors.cream,
