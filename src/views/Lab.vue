@@ -21,37 +21,9 @@
       return {
         shots: [
           {
-            name: 'Soundbox card',
-            sourceName: 'Codepen',
-            sourceLink: 'https://codepen.io/inVoltag/full/QdOVQQ',
-            sourceType: 'video',
-            sourceFormat: 'mp4'
-          },
-          {
-            name: 'What\'s in the gift?',
+            name: 'SCI-FI UI #1',
             sourceName: 'Dribbble',
-            sourceLink: 'https://dribbble.com/shots/3945533-Anniversary-What-s-in-the-gift',
-            sourceType: 'image',
-            sourceFormat: 'gif'
-          },
-          {
-            name: 'Ciblémie',
-            sourceName: 'Dribbble',
-            sourceLink: 'https://dribbble.com/shots/5834075-Cibl-mie-Slider',
-            sourceType: 'video',
-            sourceFormat: 'mp4'
-          },
-          {
-            name: '💛 Funky 💜 Play button',
-            sourceName: 'Dribbble',
-            sourceLink: 'https://dribbble.com/shots/11472664--Funky-Play-button',
-            sourceType: 'video',
-            sourceFormat: 'mp4'
-          },
-          {
-            name: 'All Around The World',
-            sourceName: 'Dribbble',
-            sourceLink: 'https://dribbble.com/shots/15606194-All-Around-The-World',
+            sourceLink: 'https://dribbble.com/shots/6383160-SCI-FI-UI-1-WAVING-SQUARE-PARTICLE',
             sourceType: 'video',
             sourceFormat: 'mp4'
           },
@@ -63,9 +35,37 @@
             sourceFormat: 'mp4'
           },
           {
-            name: 'SCI-FI UI #1',
+            name: 'All Around The World',
             sourceName: 'Dribbble',
-            sourceLink: 'https://dribbble.com/shots/6383160-SCI-FI-UI-1-WAVING-SQUARE-PARTICLE',
+            sourceLink: 'https://dribbble.com/shots/15606194-All-Around-The-World',
+            sourceType: 'video',
+            sourceFormat: 'mp4'
+          },
+          {
+            name: '💛 Funky 💜 Play button',
+            sourceName: 'Dribbble',
+            sourceLink: 'https://dribbble.com/shots/11472664--Funky-Play-button',
+            sourceType: 'video',
+            sourceFormat: 'mp4'
+          },
+          {
+            name: 'Ciblémie',
+            sourceName: 'Dribbble',
+            sourceLink: 'https://dribbble.com/shots/5834075-Cibl-mie-Slider',
+            sourceType: 'video',
+            sourceFormat: 'mp4'
+          },
+          {
+            name: 'What\'s in the gift?',
+            sourceName: 'Dribbble',
+            sourceLink: 'https://dribbble.com/shots/3945533-Anniversary-What-s-in-the-gift',
+            sourceType: 'image',
+            sourceFormat: 'gif'
+          },
+          {
+            name: 'Soundbox card',
+            sourceName: 'Codepen',
+            sourceLink: 'https://codepen.io/inVoltag/full/QdOVQQ',
             sourceType: 'video',
             sourceFormat: 'mp4'
           }
@@ -107,16 +107,17 @@
   <main class="page">
     <section class="shots" @scroll="smoothScroll">
       <div class="shots__container">
-        <Transition v-for="(shot, index) in shots" name="slide-up" :style="`--delay: calc(var(--delay-turtoise) + (var(--duration-step) * ${((shots.length - index) * .5) - .5}))`" appear>
+        <Transition v-for="(shot, index) in shots" name="slide-up" :style="`--delay: calc(var(--delay-turtoise) + (var(--duration-step) * ${(index * .5) - .5}))`" appear>
           <AssetContainer
             :title="shot.name"
-            :thumbnail="`/src/assets/images/_lab/sd/asset-${index + 1}.png`"
-            :hdnail="`/src/assets/images/_lab/hd/asset-${index + 1}.${shot.sourceFormat}`"
+            :thumbnail="`/src/assets/images/_lab/sd/asset-${shots.length - index}.png`"
+            :hdnail="`/src/assets/images/_lab/hd/asset-${shots.length - index}.${shot.sourceFormat}`"
             :type="shot.sourceType"
             :sourceName="shot.sourceName"
             :sourceLink="shot.sourceLink"
             :key="`shot-${index + 1}`"
             @click.passive="active = `shot-${index + 1}`"
+            @keyup.enter="active = `shot-${index + 1}`"
             :unmagnify="active === `shot-${index + 1}` ? false : true"
           />
         </Transition>
@@ -152,7 +153,7 @@
       display: flex
       width: max-content
       height: 100%
-      flex-flow: row-reverse nowrap
+      flex-flow: row nowrap
       gap: 0 calc(var(--layout-column-gap) * var(--multiplier))
       align-items: stretch
       transition: all 200ms linear

@@ -45,7 +45,7 @@
 </script>
 
 <template>
-  <div class="asset-container" @click="magnifier">
+  <div class="asset-container" @click="magnifier" @keyup.enter="magnifier" tabindex="0">
     <div class="asset-container__content">
       <div class="asset-container__asset">
         <Transition name="fade" mode="in-out" :style="`--delay: ${isMagnified ? '0ms' : 'var(--delay-jogging)'}`">
@@ -85,7 +85,6 @@
     padding: var(--spacing-l-200)
     border-radius: var(--regular-border-radius)
     transition: var(--simple-transition)
-    transition-delay: v-bind("isMagnified ? '0' : 'var(--duration-jogging)'")
     cursor: pointer
 
     &__content
@@ -103,7 +102,6 @@
       box-shadow: var(--inner-border)
       border-radius: var(--small-border-radius)
       transition: var(--simple-transition)
-      transition-delay: v-bind("isMagnified ? '0' : 'var(--duration-jogging)'")
       filter: v-bind("isMagnified ? 'brightness(1)' : 'brightness(0.5)'")
 
       img, video
@@ -120,6 +118,7 @@
         white-space: nowrap
         overflow: hidden
         text-overflow: ellipsis
+        padding: var(--spacing-s-000) 0
 
       & > a.button
         pointer-events: auto
@@ -129,4 +128,13 @@
     background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
     border: var(--border-size) solid transparent
     box-shadow: 0 0 0 var(--button-border-size) var(--outline-color)
+
+  // Event
+  .asset-container
+    &:focus
+      --outline-color: var(--border-focus-color)
+      transform: var(--focus-scale)
+      outline: none
+      z-index: 1
+
 </style>
