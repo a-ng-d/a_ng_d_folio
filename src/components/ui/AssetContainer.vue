@@ -77,7 +77,6 @@
     border-radius: var(--regular-border-radius)
     transition: var(--simple-transition)
     transition-delay: v-bind("isMagnified ? '0' : 'var(--duration-jogging)'")
-    transform-origin: center center
     cursor: pointer
 
     &__content
