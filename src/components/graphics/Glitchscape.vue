@@ -520,8 +520,7 @@
           .1,
           [
             0,
-            -window.innerHeight * .1
-            ,
+            window.innerHeight * .2,
             0
           ],
           [
