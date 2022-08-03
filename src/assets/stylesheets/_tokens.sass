@@ -42,9 +42,9 @@
   // Values
   //// Scale
   --scale-ref: 16
-  --scale-xs-000: var(--scale-ref) * 0.25
-  --scale-s-000: var(--scale-ref) * 0.5
-  --scale-s-100: var(--scale-ref) * 0.75
+  --scale-xs-000: var(--scale-ref) * .25
+  --scale-s-000: var(--scale-ref) * .5
+  --scale-s-100: var(--scale-ref) * .75
   --scale-m-000: var(--scale-ref)
   --scale-m-100: var(--scale-ref) * 1.25
   --scale-m-200: var(--scale-ref) * 1.5
@@ -66,7 +66,7 @@
   --scale-xxl-200: var(--scale-ref) * 9
   --scale-xxl-300: var(--scale-ref) * 8.5
   --scale-xxl-400: var(--scale-ref) * 10
-  --scale-xxl-500: var(--scale-ref) * 10.5
+  --scale-xxl-500: var(--scale-ref) * 1.5
   --scale-xxl-600: var(--scale-ref) * 11
   --scale-xxl-700: var(--scale-ref) * 11.5
   --scale-xxl-800: var(--scale-ref) * 12
@@ -198,14 +198,14 @@
   --font-style-italic: italic
 
   //// Letter spacing
-  --letter-spacing-medium: 0.05em
+  --letter-spacing-medium: .05em
 
   // Animation
   //// Easing
   --ease-peps: cubic-bezier(.03, .85, .36, 1)
-  --ease-rebound: cubic-bezier(0, 1.5, 0.5, 1)
-  --ease-inverted-rebound: cubic-bezier(0.5, 0, 1, -0.5)
-  --ease-vroom: cubic-bezier(0.86, 0.12, 0.12, 0.86)
+  --ease-rebound: cubic-bezier(0, 1.5, .5, 1)
+  --ease-inverted-rebound: cubic-bezier(.5, 0, 1, -.5)
+  --ease-vroom: cubic-bezier(.86, .12, .12, .86)
 
   //// Duration
   --duration-step: 200ms
@@ -217,7 +217,7 @@
   --duration-snail: calc(var(--duration-step) * 32)
 
   //// Delay
-  --delay-asynchrone: calc(var(--duration-step) * 0.15)
+  --delay-asynchrone: calc(var(--duration-step) * .15)
   --delay-hare: calc(var(--duration-step) * 1)
   --delay-running: calc(var(--duration-step) * 2)
   --delay-jogging: calc(var(--duration-step) * 4)

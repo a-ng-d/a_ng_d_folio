@@ -48,7 +48,7 @@
             :theme="theme"
           />
         </Transition>
-        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * 0.5))" appear>
+        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * .5))" appear>
           <ScrollingText
             :label="$t('global.navigate') + $t('global.separator') + $t('global.discover') + $t('global.separator') + project.date + $t('global.separator') + project.summary + $t('global.separator') + 'Project #' + (project.position + 1) + $t('global.separator')"
             direction="RIGHT"

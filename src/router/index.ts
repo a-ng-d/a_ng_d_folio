@@ -27,7 +27,7 @@ const router = createRouter({
           hue: '0deg',
           brightness: '1',
           invert: '0',
-          saturation: '0.5'
+          saturation: '.5'
         },
         pov: 'RESET',
         quality: 'HIGH'
@@ -45,7 +45,7 @@ const router = createRouter({
           hue: '-78deg',
           brightness: '1',
           invert: '1',
-          saturation: '0.5'
+          saturation: '.5'
         },
         pov: 'RESET',
         quality: 'HIGH'
@@ -63,7 +63,7 @@ const router = createRouter({
           hue: '160deg',
           brightness: '1',
           invert: '1',
-          saturation: '0.5'
+          saturation: '.5'
         },
         pov: 'WISEEYE',
         quality: 'HIGH'
@@ -81,7 +81,7 @@ const router = createRouter({
           hue: '190deg',
           brightness: '1',
           invert: '0',
-          saturation: '0.5'
+          saturation: '.5'
         },
         pov: 'RESET',
         quality: 'HIGH'
@@ -245,7 +245,7 @@ const router = createRouter({
           hue: '120deg',
           brightness: '1',
           invert: '0',
-          saturation: '0.5'
+          saturation: '.5'
         },
         pov: 'RESET',
         quality: 'HIGH'
@@ -279,9 +279,9 @@ const router = createRouter({
         theme: 'DEFAULT',
         filter: {
           hue: '162deg',
-          brightness: '0.5',
+          brightness: '.5',
           invert: '0',
-          saturation: '0.75'
+          saturation: '.75'
         },
         pov: 'RESET',
         quality: 'HIGH'

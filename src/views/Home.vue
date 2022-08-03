@@ -33,7 +33,7 @@
             :theme="theme"
           />
         </Transition>
-        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * 0.5))" appear>
+        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * .5))" appear>
           <h4 class="jumbotron__baseline">{{ $t("home.baseline") }}</h4>
         </Transition>
       </div>

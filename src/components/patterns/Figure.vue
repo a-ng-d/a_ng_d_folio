@@ -26,8 +26,8 @@
               h = e.target.getBoundingClientRect().height,
               refX = document.body.clientWidth / 2,
               refY = document.body.clientHeight / 2,
-              scaleX = (document.body.clientWidth - (document.body.clientWidth * 0.08)) / w,
-              scaleY = (document.body.clientHeight - (document.body.clientWidth * 0.16)) / h,
+              scaleX = (document.body.clientWidth - (document.body.clientWidth * .08)) / w,
+              scaleY = (document.body.clientHeight - (document.body.clientWidth * .16)) / h,
               refScale = Math.min(scaleX, scaleY)
 
         this.isMagnified = !this.isMagnified

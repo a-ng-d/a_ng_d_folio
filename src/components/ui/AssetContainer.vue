@@ -102,7 +102,7 @@
       box-shadow: var(--inner-border)
       border-radius: var(--small-border-radius)
       transition: var(--simple-transition)
-      filter: v-bind("isMagnified ? 'brightness(1)' : 'brightness(0.5)'")
+      filter: v-bind("isMagnified ? 'brightness(1)' : 'brightness(.5)'")
 
       img, video
         height: 100%

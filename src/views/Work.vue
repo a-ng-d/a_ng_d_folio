@@ -370,8 +370,8 @@
     transition: transform var(--duration-jogging) var(--ease-rebound)
 
   :deep(.across-leave-to)
-    transform: translateX(var(--offset)) scale(0.25)
+    transform: translateX(var(--offset)) scale(.25)
 
   :deep(.across-enter-from)
-    transform: translateX(calc(var(--offset) * -1)) scale(0.25)
+    transform: translateX(calc(var(--offset) * -1)) scale(.25)
 </style>

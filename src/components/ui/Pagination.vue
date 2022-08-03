@@ -60,7 +60,7 @@
   // Aspect
   .pagination
     &__dot
-      --alpha: 0.3
+      --alpha: .3
 
       background-color: var(--background-color)
       opacity: var(--alpha)

@@ -11,7 +11,7 @@
           hue: '0deg',
           brightness: '1',
           invert: '0',
-          saturation: '0.5'
+          saturation: '.5'
         }
       },
       pov: {
@@ -123,7 +123,7 @@
             this.params = {
               radius: sk.int(sk.abs(this.size.height / 4)),
               radians: sk.radians(90),
-              speed: 0.1,
+              speed: .1,
               order: 0,
               gap: 5,
               isGlitched: false,
@@ -233,7 +233,7 @@
             }
             this.params = {
               rows: [],
-              speed: 0.1,
+              speed: .1,
               order: 0,
               gap: 30,
               start: sk.height,
@@ -242,8 +242,8 @@
             }
             for (let i = 1 ; i < this.props.rows ; i++)
               this.params.rows.push({
-                width: sk.int(this.size.width * random(0.5, 1)),
-                height: sk.int(this.size.height * random(0.5, 1)),
+                width: sk.int(this.size.width * random(.5, 1)),
+                height: sk.int(this.size.height * random(.5, 1)),
                 x: sk.int(random(-this.size.width / 4, this.size.width / 4))
               })
             this.backup = {}
@@ -390,8 +390,8 @@
             this.center.z = sk.lerp(this.center.z, this.params.target.center.z, this.params.speed)
 
             if (this.params.isPushed) {
-              this.position.x = sk.lerp(this.position.x, this.params.target.position.x + sk.map(sk.mouseX, 0, sk.width, sk.width * 0.1, -sk.width * 0.1), 0.1)
-              this.position.y = sk.lerp(this.position.y, this.params.target.position.y + sk.map(sk.mouseY, 0, sk.height, sk.height * 0.1, -sk.height * 0.1), 0.1)
+              this.position.x = sk.lerp(this.position.x, this.params.target.position.x + sk.map(sk.mouseX, 0, sk.width, sk.width * .1, -sk.width * .1), .1)
+              this.position.y = sk.lerp(this.position.y, this.params.target.position.y + sk.map(sk.mouseY, 0, sk.height, sk.height * .1, -sk.height * .1), .1)
             }
 
             this.draw()
@@ -399,7 +399,7 @@
 
           push = () => this.params.isPushed = true
 
-          reset = () => this.animate(0.1, [0, window.innerHeight * 0.2, 0], [0, window.innerHeight * 0.2, -window.innerHeight * 2])
+          reset = () => this.animate(.1, [0, window.innerHeight * .2, 0], [0, window.innerHeight * .2, -window.innerHeight * 2])
 
           zoom = (scrollPosition, pageLimitMax) => {
             this.params.progress.x = sk.map(scrollPosition, 0, pageLimitMax, this.params.target.position.x, this.params.target.center.x)
@@ -424,7 +424,7 @@
         // Sketch
         let pov = new Pov({
           x: 0,
-          y: -window.innerHeight * 0.2,
+          y: -window.innerHeight * .2,
           z: -window.innerHeight * 2,
           cX: 0,
           cY: 0,
@@ -441,20 +441,20 @@
           // particles setting
           for (let i = 0 ; i < mNumber ; i++)
             mountains.push(new Mountain({
-              widthRange: [sk.width * 0.25, sk.width],
-              heightRange: [-sk.height * 0.5, -sk.height * 1],
+              widthRange: [sk.width * .25, sk.width],
+              heightRange: [-sk.height * .5, -sk.height * 1],
               x: twoRangesRandom(-limitX, -sk.width * .5, sk.width * .5, limitX),
-              y: sk.height * 0.5,
+              y: sk.height * .5,
               zRange: [-limitZ, 0],
               foreground: colors.cream,
               background: colors.creamySun
             }))
           for (let i = 0 ; i < cNumber ; i++)
             clouds.push(new Cloud({
-              widthRange: [sk.width * 0.25, sk.width],
-              heightRange: [-sk.height * 0.01, -sk.height * 0.05],
+              widthRange: [sk.width * .25, sk.width],
+              heightRange: [-sk.height * .01, -sk.height * .05],
               x: random(-limitX, limitX),
-              y: random(-sk.height * 0.2, sk.height * 0.4),
+              y: random(-sk.height * .2, sk.height * .4),
               zRange: [-limitZ, 0],
               rows: sk.int(random(3, 5)),
               foreground: colors.clay,
@@ -470,7 +470,7 @@
 
         sk.draw = () => {
 
-          alpha = sk.lerp(alpha, 0.5, 0.01)
+          alpha = sk.lerp(alpha, .5, .01)
 
           sk.clear()
 
@@ -492,7 +492,7 @@
             sk.blendMode(sk.DIFFERENCE)
             sk.noStroke()
             sk.fill(colors.creamySun.hue, colors.creamySun.saturation, colors.creamySun.lightness, alpha)
-            sk.translate(0, (sk.height * 0.5) - 10, 0)
+            sk.translate(0, (sk.height * .5) - 10, 0)
             sk.rotateX(sk.PI / 2)
             sk.rect(0, 0, limitX * 3, limitX * 3)
           sk.pop()
@@ -503,7 +503,7 @@
         sk.povReset = () => pov.reset()
 
         sk.povBirdEye = (increment) => pov.animate(
-          0.1,
+          .1,
           [
             sk.map(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
             -window.innerHeight * 2,
@@ -517,10 +517,10 @@
         )
 
         sk.povWiseEye = () => pov.animate(
-          0.1,
+          .1,
           [
             0,
-            -window.innerHeight * 0.1
+            -window.innerHeight * .1
             ,
             0
           ],
