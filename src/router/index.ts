@@ -60,10 +60,10 @@ const router = createRouter({
         view: 'UNIVERSES',
         theme: 'DARK',
         filter: {
-          hue: '160deg',
+          hue: '20deg',
           brightness: '1',
           invert: '1',
-          saturation: '.5'
+          saturation: '.3'
         },
         pov: 'WISEEYE',
         quality: 'HIGH'
