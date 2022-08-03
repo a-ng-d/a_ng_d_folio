@@ -73,15 +73,6 @@
 <template>
   <main class="page">
     <section class="menu">
-      <div class="menu__info">
-        <Transition name="switch">
-          <Container
-            v-if="tooltip.isActive"
-            :title="tooltip.title"
-            :description="tooltip.description"
-          />
-        </Transition>
-      </div>
       <ul class="menu__items">
         <li v-for="(universe, index) in universes" :key="universe.name">
           <Transition name="slide-up" appear :style="`--delay: calc(var(--delay-turtoise) + ${index * 100}ms)`">
@@ -104,6 +95,15 @@
           </Transition>
         </li>
       </ul>
+      <div class="menu__info">
+        <Transition name="switch">
+          <Container
+            v-if="tooltip.isActive"
+            :title="tooltip.title"
+            :description="tooltip.description"
+          />
+        </Transition>
+      </div>
     </section>
     <Transition name="pull-up" style="--delay: var(--delay-turtoise)" appear>
       <Footer
