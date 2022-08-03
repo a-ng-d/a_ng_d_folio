@@ -131,38 +131,38 @@
 
 //// Push up
 .push-up-leave-to
-  transform: translateY(-100%)
+  transform: translateY(-100%) !important
   background-color: hsla(0, 0%, 100%, .8)
 
 .push-up-enter-from
-  transform: translateY(100%)
+  transform: translateY(100%) !important
   background-color: hsla(0, 0%, 100%, .8)
 
 //// Push left
 .push-left-leave-to
-  transform: translateX(100%)
+  transform: translateX(100%) !important
   background-color: hsla(0, 0%, 100%, .8)
 
 .push-left-enter-from
-  transform: translateX(-100%)
+  transform: translateX(-100%) !important
   background-color: hsla(0, 0%, 100%, .8)
 
 //// Push down
 .push-down-leave-to
-  transform: translateY(100%)
+  transform: translateY(100%) !important
   background-color: hsla(0, 0%, 100%, .8)
 
 .push-down-enter-from
-  transform: translateY(-100%)
+  transform: translateY(-100%) !important
   background-color: hsla(0, 0%, 100%, .8)
 
 //// Push right
 .push-right-leave-to
-  transform: translateX(-100%)
+  transform: translateX(-100%) !important
   background-color: hsla(0, 0%, 100%, .8)
 
 .push-right-enter-from
-  transform: translateX(100%)
+  transform: translateX(100%) !important
   background-color: hsla(0, 0%, 100%, .8)
 
 // Pull transitions
@@ -175,22 +175,22 @@
 //// Pull up
 .pull-up-enter-from,
 .pull-up-leave-to
-  transform: translateY(100%)
+  transform: translateY(100%) !important
 
 //// Pull right
 .pull-right-enter-from,
 .pull-right-leave-to
-  transform: translateX(100%)
+  transform: translateX(100%) !important
 
 //// Pull down
 .pull-down-enter-from,
 .pull-down-leave-to
-  transform: translateY(-100%)
+  transform: translateY(-100%) !important
 
 //// Pull left
 .pull-left-enter-from,
 .pull-left-leave-to
-  transform: translateX(-100%)
+  transform: translateX(-100%) !important
 
 //// Slide transitions
 .slide-up-leave-active,
@@ -207,70 +207,70 @@
 
 //// Slide up
 .slide-up-leave-from
-  transform: translateY(0)
+  transform: translateY(0) !important
   opacity: 1
 
 .slide-up-leave-to
-  transform: translateY(calc(var(--gap, var(--spacing-xl-000)) * -1))
+  transform: translateY(calc(var(--gap, var(--spacing-xl-000)) * -1)) !important
   opacity: 0
 
 .slide-up-enter-from
-  transform: translateY(var(--gap, var(--spacing-xl-000)))
+  transform: translateY(var(--gap, var(--spacing-xl-000))) !important
   opacity: 0
 
 .slide-up-enter-to
-  transform: translateY(0)
+  transform: translateY(0) !important
   opacity: 1
 
 //// Slide right
 .slide-right-leave-from
-  transform: translateX(0)
+  transform: translateX(0) !important
   opacity: 1
 
 .slide-right-leave-to
-  transform: translateX(var(--gap, var(--spacing-xl-000)))
+  transform: translateX(var(--gap, var(--spacing-xl-000))) !important
   opacity: 0
 
 .slide-right-enter-from
-  transform: translateX(calc(var(--gap, var(--spacing-xl-000)) * -1))
+  transform: translateX(calc(var(--gap, var(--spacing-xl-000)) * -1)) !important
   opacity: 0
 
 .slide-right-enter-to
-  transform: translateX(0)
+  transform: translateX(0) !important
   opacity: 1
 
 //// Slide down
 .slide-down-leave-from
-  transform: translateY(0)
+  transform: translateY(0) !important
   opacity: 1
 
 .slide-down-leave-to
-  transform: translateY(var(--gap, var(--spacing-xl-000)))
+  transform: translateY(var(--gap, var(--spacing-xl-000))) !important
   opacity: 0
 
 .slide-down-enter-from
-  transform: translateY(calc(var(--gap, var(--spacing-xl-000)) * -1))
+  transform: translateY(calc(var(--gap, var(--spacing-xl-000)) * -1)) !important
   opacity: 0
 
 .slide-down-enter-to
-  transform: translateY(0)
+  transform: translateY(0) !important
   opacity: 1
 
 //// Slide left
 .slide-left-leave-from
-  transform: translateX(0)
+  transform: translateX(0) !important
   opacity: 1
 
 .slide-left-leave-to
-  transform: translateX(calc(var(--gap, var(--spacing-xl-000)) * -1))
+  transform: translateX(calc(var(--gap, var(--spacing-xl-000)) * -1)) !important
   opacity: 0
 
 .slide-left-enter-from
-  transform: translateX(var(--gap, var(--spacing-xl-000)))
+  transform: translateX(var(--gap, var(--spacing-xl-000))) !important
   opacity: 0
 
 .slide-left-enter-to
-  transform: translateX(0)
+  transform: translateX(0) !important
   opacity: 1
 
 // Switch transitions
@@ -289,10 +289,10 @@
   opacity: 0
 
 .switch-enter-from
-  transform: translateY(50%)
+  transform: translateY(50%) !important
 
 .switch-leave-to
-  transform: scale(0)
+  transform: scale(0) !important
 
 // Scale transition
 //// Scale up
@@ -309,10 +309,10 @@
   opacity: 0
 
 .scale-up-enter-from
-  transform: scale(1.25)
+  transform: scale(1.25) !important
 
 .scale-up-leave-to
-  transform: scale(1.25)
+  transform: scale(1.25) !important
 
 // Fade transition
 .fade-enter-active,
