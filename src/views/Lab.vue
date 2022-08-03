@@ -106,16 +106,17 @@
   <main class="page">
     <section class="shots" @scroll="smoothScroll">
       <div class="shots__container">
-        <AssetContainer
-          v-for="(shot, index) in shots"
-          :title="shot.name"
-          :thumbnail="`/src/assets/images/_lab/sd/asset-${index + 1}.png`"
-          :hdnail="`/src/assets/images/_lab/hd/asset-${index + 1}.${shot.sourceFormat}`"
-          :type="shot.sourceType"
-          :sourceName="shot.sourceName"
-          :sourceLink="shot.sourceLink"
-          :key="`shot-${index + 1}`"
-        />
+        <Transition v-for="(shot, index) in shots" name="slide-up" :style="`--delay: calc(var(--delay-turtoise) + (var(--duration-step) * ${((shots.length - index) * .5) - .5}))`" appear>
+          <AssetContainer
+            :title="shot.name"
+            :thumbnail="`/src/assets/images/_lab/sd/asset-${index + 1}.png`"
+            :hdnail="`/src/assets/images/_lab/hd/asset-${index + 1}.${shot.sourceFormat}`"
+            :type="shot.sourceType"
+            :sourceName="shot.sourceName"
+            :sourceLink="shot.sourceLink"
+            :key="`shot-${index + 1}`"
+          />
+        </Transition>
       </div>
     </section>
     <Transition name="pull-up" style="--delay: var(--delay-turtoise)" appear>
@@ -143,13 +144,13 @@
 
     &__container
       --scale-y: v-bind("1 / scrollParams.velocity")
-      --gap: v-bind("scrollParams.gap")
+      --multiplier: v-bind("scrollParams.gap")
 
       display: flex
       width: max-content
       height: 100%
       flex-flow: row-reverse nowrap
-      gap: 0 calc(var(--layout-column-gap) * var(--gap))
+      gap: 0 calc(var(--layout-column-gap) * var(--multiplier))
       align-items: stretch
       transition: all 200ms linear
       transform: scaleY(var(--scale-y))
