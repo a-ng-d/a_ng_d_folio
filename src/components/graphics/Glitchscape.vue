@@ -84,6 +84,7 @@
         const
           mNumber = 140,
           cNumber = mNumber / 4,
+          sNumber = mNumber * 8,
           quality = 50,
           colors = HSLColors,
           limitX = window.innerWidth * 5,
@@ -94,7 +95,8 @@
           speed = 2,
           alpha = 1,
           mountains = [],
-          clouds = []
+          clouds = [],
+          stars = []
 
         const random = (min, max) => Math.floor(Math.random() * (max - min)) + min,
               twoRangesRandom = (rangeLeftMin, rangeLeftMax, rangeRightMin, rangeRightMax) => {
@@ -331,6 +333,74 @@
 
         }
 
+        class Star {
+
+          constructor(props) {
+            this.props = props
+            this.size = sk.int(random(this.props.sizeRange[0], this.props.sizeRange[1]))
+            this.position = {
+              x: sk.int(this.props.x),
+              y: sk.int(random(this.props.yRange[0], this.props.yRange[1])),
+              z: sk.int(this.props.z)
+            }
+            this.params = {
+              speed: .1,
+              isGlitched: false,
+              isStrokedOnly: false
+            }
+            this.backup = {}
+          }
+
+          deepHue = () => sk.map(this.position.y, this.props.yRange[0], this.props.yRange[1], this.props.background.hue, this.props.foreground.hue)
+
+          deepSaturation = () => sk.map(this.position.y, this.props.yRange[0], this.props.yRange[1], this.props.background.saturation, this.props.foreground.saturation)
+
+          deepLightness = () => sk.map(this.position.y, this.props.yRange[0], this.props.yRange[1], this.props.background.lightness, this.props.foreground.lightness)
+
+          glitch = () => {
+            this.backup = {
+              size: this.size.width
+            }
+            this.params.isGlitched = true
+          }
+
+          unglitch = () => {
+            this.params.isGlitched = false
+            this.size = this.backup.size
+          }
+
+          unglitch = () => {
+            this.params.isGlitched = false
+            this.params.rows = this.backup.rows
+          }
+
+          wireframe = () => this.params.isStrokedOnly = true
+
+          unwireframe = () => this.params.isStrokedOnly = false
+
+          move = () => {
+            if (this.params.isGlitched)
+              this.size = random(0, this.backup.size * 2)
+
+            this.draw()
+          }
+
+          draw = () => {
+            const randomColor = Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
+
+            sk.push()
+              sk.translate(this.position.x, this.position.y, this.position.z)
+              sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
+              sk.stroke(this.deepHue(), this.deepSaturation(), this.deepLightness())
+              sk.strokeWeight(1)
+              this.params.isGlitched ? sk.fill(randomColor.hue, randomColor.saturation, randomColor.lightness) : null
+              this.params.isStrokedOnly ? sk.noFill() : null
+              sk.sphere(this.size, 6, 16)
+            sk.pop()
+          }
+
+        }
+
         class Pov {
 
           constructor(props) {
@@ -460,6 +530,15 @@
               foreground: colors.clay,
               background: colors.creamySun
             }))
+          for (let i = 0 ; i < sNumber ; i++)
+            stars.push(new Star({
+              sizeRange: [-sk.height * .01, -sk.height * .02],
+              x: random(-limitX * 3, limitX * 3),
+              yRange: [-sk.height * 3, -sk.height * 5],
+              z: random(-limitZ * 3, limitZ * 3),
+              foreground: colors.soil,
+              background: colors.clay
+            }))
 
           mountains.sort((a, b) => a.position.z - b.position.z)
           mountains.forEach((mountain, index) => { mountain.params.order = index })
@@ -486,6 +565,9 @@
 
           // clouds
           clouds.forEach(cloud => cloud.move())
+
+          // stars
+          stars.forEach(star => star.move())
 
           // floor
           sk.push()
