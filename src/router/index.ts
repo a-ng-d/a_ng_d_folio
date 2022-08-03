@@ -263,7 +263,7 @@ const router = createRouter({
       path: '/_archive',
       name: '_ARCHIVE',
       beforeEnter() {
-        window.open('https://involt.io', '_blank')
+        window.open('https://school.involt.io', '_blank')
       },
       meta: {
         view: 'n/a'
