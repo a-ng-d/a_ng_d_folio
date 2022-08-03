@@ -243,7 +243,7 @@ const router = createRouter({
         theme: 'DEFAULT',
         filter: {
           hue: '120deg',
-          brightness: '1.2',
+          brightness: '1',
           invert: '0',
           saturation: '.3'
         },
