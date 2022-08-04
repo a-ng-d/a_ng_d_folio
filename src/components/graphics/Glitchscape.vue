@@ -50,7 +50,8 @@
           BIRDEYE_3: () => this.glitchscape.povBirdEye(3),
           BIRDEYE_4: () => this.glitchscape.povBirdEye(4),
           BIRDEYE_5: () => this.glitchscape.povBirdEye(5),
-          WISEEYE: () => this.glitchscape.povWiseEye()
+          WISEEYE: () => this.glitchscape.povWiseEye(),
+          GLOBAL: () => this.glitchscape.povGlobal(),
         }
         return actions[to]?.() ?? 'No pov change'
       },
@@ -462,7 +463,6 @@
 
           push = () => this.params.isPushed = true
 
-          reset = () => this.animate(.1, [0, window.innerHeight * .2, -window.innerHeight * .1], [0, window.innerHeight * .2, -window.innerHeight * 2])
 
           zoom = (scrollPosition, pageLimitMax) => {
             this.params.progress.x = sk.map(scrollPosition, 0, pageLimitMax, this.params.target.position.x, this.params.target.center.x)
@@ -575,7 +575,19 @@
         }
 
         // Events
-        sk.povReset = () => pov.reset()
+        sk.povReset = () => pov.animate(
+          .1,
+          [
+            0,
+            -window.innerHeight * .5,
+            -window.innerHeight * .1
+          ],
+          [
+            0,
+            -window.innerHeight * .5,
+            -window.innerHeight * 2
+          ]
+        )
 
         sk.povBirdEye = (increment) => pov.animate(
           .1,
@@ -595,12 +607,26 @@
           .1,
           [
             0,
-            window.innerHeight * .2,
+            -window.innerHeight * .5,
             0
           ],
           [
             0,
-            -window.innerHeight,
+            -window.innerHeight * 2,
+            -window.innerHeight * 2
+          ]
+        )
+
+        sk.povGlobal = () => pov.animate(
+          .1,
+          [
+            0,
+            -window.innerHeight * 4,
+            window.innerHeight * 3
+          ],
+          [
+            0,
+            -window.innerHeight * .1,
             -window.innerHeight * 2
           ]
         )
