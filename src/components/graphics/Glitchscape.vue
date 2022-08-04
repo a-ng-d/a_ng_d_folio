@@ -517,7 +517,7 @@
               widthRange: [sk.width * .25, sk.width],
               heightRange: [-sk.height * .01, -sk.height * .05],
               x: random(-limitX, limitX),
-              y: random(-sk.height * .1, -sk.height * .4),
+              y: random(-sk.height * .2, -sk.height * .8),
               zRange: [-limitZ, 0],
               rows: sk.int(random(3, 5)),
               foreground: colors.clay,
