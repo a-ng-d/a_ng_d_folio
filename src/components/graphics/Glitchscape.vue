@@ -81,7 +81,7 @@
           sNumber = mNumber * 8,
           quality = 50,
           colors = HSLColors,
-          limitX = window.innerWidth * 5,
+          limitX = window.innerWidth * 2.5,
           limitY = window.innerHeight * 10,
           limitZ = window.innerHeight * 5
 
