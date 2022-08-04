@@ -390,7 +390,7 @@
               sk.strokeWeight(1)
               this.params.isGlitched ? sk.fill(randomColor.hue, randomColor.saturation, randomColor.lightness) : null
               this.params.isStrokedOnly ? sk.noFill() : null
-              sk.sphere(this.size, 6, 16)
+              sk.sphere(this.size, 3, 16)
             sk.pop()
           }
 
