@@ -12,7 +12,10 @@
         default: 'primary'
       },
       label: String,
-      path: String,
+      path: {
+        type: String,
+        default: ''
+      },
       layout: {
         type: String,
         default: 'SIMPLE'

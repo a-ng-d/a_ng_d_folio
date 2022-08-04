@@ -143,7 +143,6 @@
             <Button
               v-if="theme === 'DEFAULT'"
               type="secondary"
-              path=""
               layout="ICON-ONLY"
               :theme="theme"
               @click="previousProject"
@@ -155,7 +154,6 @@
             <Button
               v-else-if="theme === 'DARK'"
               type="secondary"
-              path=""
               layout="ICON-ONLY"
               :theme="theme"
               @click="previousProject"
@@ -195,7 +193,6 @@
             <Button
               v-if="theme === 'DEFAULT'"
               type="secondary"
-              path=""
               layout="ICON-ONLY"
               :theme="theme"
               @click="nextProject"
@@ -207,7 +204,6 @@
             <Button
               v-else-if="theme === 'DARK'"
               type="secondary"
-              path=""
               layout="ICON-ONLY"
               :theme="theme"
               @click="nextProject"
