@@ -31,7 +31,6 @@
         type: Number,
         required: true
       },
-      view: String,
       numberOfProjects: {
         type: Number,
         default: 3
@@ -70,12 +69,6 @@
       },
       scrollProgress(to, from) {
         return this.glitchscape.povZoom(this.scrollProgress, this.scrollLimit)
-      },
-      view(to, from) {
-        const actions = {
-          RESET: () => this.glitchscape.povReset()
-        }
-        return actions[this.pov]?.() ?? 'No pov change'
       }
     },
     mounted() {
