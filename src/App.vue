@@ -95,7 +95,7 @@
         }
 
         A[from.meta.view]?.()
-        B[to.meta.view]?.()
+        from.name != undefined ? B[to.meta.view]?.() : null
         AB[`${from.meta.view} > ${to.meta.view}`]?.()
       }
     },
