@@ -18,8 +18,6 @@
 <template>
   <main class="page">
     <section class="empty">
-      <div class="empty__content" :data-theme="theme">
-      </div>
       <div class="empty__actions">
         <Button
           type="secondary"
@@ -76,30 +74,21 @@
 
 <style scoped lang="sass">
   // Structure
-  .page
-    height: 100vh
-    overflow: hidden
-
   .empty
     grid-area: main
     display: flex
     flex-flow: column nowrap
     justify-content: space-between
     padding: var(--spacing-xl-600) var(--layout-center)
+    height: 10000rem
 
     &[data-theme="DARK"]
       --text-color: var(--color-cream)
-
-    &__content
-      display: flex
-      flex: 1
-      flex-flow: column nowrap
-      align-items: center
-      gap: var(--layout-row-gap) 0
-      justify-content: center
 
     &__actions
       display: flex
       justify-content: space-between
       gap: var(--spacing-xl-000)
+      position: fixed
+      bottom: 96rem
 </style>
