@@ -570,6 +570,7 @@
             sk.translate(0, (sk.height * .5) - 10, 0)
             sk.rotateX(sk.PI / 2)
             sk.rect(0, 0, limitX * 3, limitX * 3)
+            sk.rect(0, 0, limitX * 4, limitZ * 4)
           sk.pop()
 
         }
