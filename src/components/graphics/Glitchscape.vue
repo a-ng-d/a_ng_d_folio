@@ -651,11 +651,13 @@
         sk.glitch = () => {
           mountains.forEach(el => el.glitch())
           clouds.forEach(el => el.glitch())
+          stars.forEach(el => el.glitch())
         }
 
         sk.unglitch = () => {
           mountains.forEach(el => el.unglitch())
           clouds.forEach(el => el.unglitch())
+          stars.forEach(el => el.unglitch())
         }
 
         sk.windowResized = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
