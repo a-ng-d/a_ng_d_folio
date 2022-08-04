@@ -7,6 +7,7 @@ import Work from '../views/Work.vue'
 import Project from '../views/Project.vue'
 import Lab from '../views/Lab.vue'
 import Attribution from '../views/Attribution.vue'
+import Empty from '../views/Empty.vue'
 import JBRAnimation from '@/assets/images/_work/_jean_bobby_radio/animation.json'
 import UCPAnimation from '@/assets/images/_work/_ui_color_palette/animation.json'
 import AIAnimation from '@/assets/images/_work/_awesome_ipsums/animation.json'
@@ -286,7 +287,25 @@ const router = createRouter({
         pov: 'RESET',
         quality: 'HIGH'
       }
-    }
+    },
+    {
+      path: '/_glitchscape',
+      name: '_GLITCHSCAPE',
+      component: Empty,
+      meta: {
+        title: 'Glitchscape controler',
+        view: 'EMPTY',
+        theme: 'DEFAULT',
+        filter: {
+          hue: '0deg',
+          brightness: '1',
+          invert: '0',
+          saturation: '.5'
+        },
+        pov: 'GLOBAL',
+        quality: 'HIGH'
+      }
+    },
   ]
 })
 

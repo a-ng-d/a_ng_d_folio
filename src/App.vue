@@ -165,6 +165,7 @@
         :scrollLimit="pageHeight - viewHeight"
         :theme="view === 'PROJECT' ? 'DEFAULT' : route.meta.theme"
         @activeProjectPosition="activeProjectPosition = $event"
+        @pov="pov = $event"
       />
     </Transition>
   </RouterView>
@@ -175,7 +176,6 @@
     :isGlitched="isGlitched"
     :scrollProgress="scrollProgress"
     :scrollLimit="pageHeight - viewHeight"
-    :view="view"
     :numberOfProjects="numberOfProjects"
   />
 </template>
