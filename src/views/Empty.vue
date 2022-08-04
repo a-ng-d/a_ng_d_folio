@@ -89,6 +89,9 @@
       display: flex
       justify-content: space-between
       gap: var(--spacing-xl-000)
+      width: 100%
       position: fixed
-      bottom: 96rem
+      left: 0
+      bottom: 0
+      padding: var(--spacing-l-000)
 </style>
