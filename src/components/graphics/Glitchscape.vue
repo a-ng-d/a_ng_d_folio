@@ -82,6 +82,7 @@
           quality = 50,
           colors = HSLColors,
           limitX = window.innerWidth * 5,
+          limitY = window.innerHeight * 10,
           limitZ = window.innerHeight * 5
 
         let
@@ -463,7 +464,6 @@
 
           push = () => this.params.isPushed = true
 
-
           zoom = (scrollPosition, pageLimitMax) => {
             this.params.progress.x = sk.map(scrollPosition, 0, pageLimitMax, this.params.target.position.x, this.params.target.center.x)
             this.params.progress.y = sk.map(scrollPosition, 0, pageLimitMax, this.params.target.position.y, this.params.target.center.y)
@@ -527,7 +527,7 @@
             stars.push(new Star({
               sizeRange: [-sk.height * .01, -sk.height * .02],
               x: random(-limitX * 3, limitX * 3),
-              yRange: [-sk.height * 3, -sk.height * 5],
+              yRange: [-limitY * 0.5, -limitY],
               z: random(-limitZ * 3, limitZ * 3),
               foreground: colors.soil,
               background: colors.clay
