@@ -505,8 +505,8 @@
           for (let i = 0 ; i < mNumber ; i++)
             mountains.push(new Mountain({
               widthRange: [sk.width * .25, sk.width],
-              heightRange: [-sk.height * .5, -sk.height * 1],
-              x: twoRangesRandom(-limitX, -sk.width * .5, sk.width * .5, limitX),
+              heightRange: [-sk.height * 2, -sk.height * 3],
+              x: twoRangesRandom(-limitX, -sk.width * .75, sk.width * .75, limitX),
               y: sk.height * .5,
               zRange: [-limitZ, 0],
               foreground: colors.cream,
@@ -569,7 +569,6 @@
             sk.fill(colors.creamySun.hue, colors.creamySun.saturation, colors.creamySun.lightness, alpha)
             sk.translate(0, (sk.height * .5) - 10, 0)
             sk.rotateX(sk.PI / 2)
-            sk.rect(0, 0, limitX * 3, limitX * 3)
             sk.rect(0, 0, limitX * 4, limitZ * 4)
           sk.pop()
 
