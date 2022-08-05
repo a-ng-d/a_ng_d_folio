@@ -541,7 +541,7 @@
             pov.center.y,
             pov.center.z
           )
-          camera.perspective(sk.PI / 3, sk.width / sk.height, 1, -limitZ)
+          camera.perspective(sk.PI / 3, sk.width / sk.height, 1, limitZ * 2)
 
           sk.blendMode(sk.BLEND)
 
@@ -559,7 +559,7 @@
             sk.blendMode(sk.DIFFERENCE)
             sk.noStroke()
             sk.fill(colors.creamySun.hue, colors.creamySun.saturation, colors.creamySun.lightness, alpha)
-            sk.translate(0, (sk.height * .5) - 100, 0)
+            sk.translate(0, (sk.height * .5) - 10, 0)
             sk.rotateX(sk.PI / 2)
             sk.rect(0, 0, limitX * 4, limitZ * 4)
           sk.pop()
