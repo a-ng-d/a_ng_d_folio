@@ -228,16 +228,14 @@
 <style scoped lang="sass">
   @use '@/assets/stylesheets/base.sass' as device
 
-  .page
-    background: v-bind('projects[activeProjectPosition].meta.background')
-    transition: background var(--duration-grandma) var(--ease-vroom)
-
   //Structure
   .background
     width: 100vw
     height: 100vh
     position: absolute
     overflow: hidden
+    background: v-bind('projects[activeProjectPosition].meta.background')
+    transition: background var(--duration-grandma) var(--ease-vroom)
 
     &__item
       width: 100%
