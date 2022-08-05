@@ -40,7 +40,7 @@
 
 <template>
   <main class="page">
-    <article class="details">
+    <article class="project">
       <section class="title">
         <Transition name="slide-up" style="--delay: var(--delay-turtoise)" appear>
           <ScrollingText
@@ -119,9 +119,12 @@
   @use '@/assets/stylesheets/base.sass' as device
 
   // Structure
-  .details
+  .project
     grid-area: main
     margin-top: calc(var(--header-height-size) * -1)
+
+    &[data-theme="DARK"]
+      --text-color: var(--color-cream)
 
   .title, .description
     height: 100vh
