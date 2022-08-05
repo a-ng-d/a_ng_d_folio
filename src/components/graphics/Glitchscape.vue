@@ -92,6 +92,7 @@
           fps = 30,
           speed = 2,
           alpha = 1,
+          camera,
           mountains = [],
           clouds = [],
           stars = []
@@ -451,8 +452,6 @@
               this.position.x = sk.lerp(this.position.x, this.params.target.position.x + doMap(sk.mouseX, 0, sk.width, sk.width * .1, -sk.width * .1), .1)
               this.position.y = sk.lerp(this.position.y, this.params.target.position.y + doMap(sk.mouseY, 0, sk.height, sk.height * .1, -sk.height * .1), .1)
             }
-
-            this.draw()
           }
 
           push = () => this.params.isPushed = true
@@ -461,18 +460,6 @@
             this.params.progress.x = doMap(scrollPosition, 0, pageLimitMax, this.params.target.position.x, this.params.target.center.x)
             this.params.progress.y = doMap(scrollPosition, 0, pageLimitMax, this.params.target.position.y, this.params.target.center.y)
             this.params.progress.z = doMap(scrollPosition, 0, pageLimitMax, this.params.target.position.z, this.params.target.center.z)
-            //this.params.speed = 0
-          }
-
-          draw = () => {
-            sk.camera(
-              this.position.x,
-              this.position.y,
-              this.position.z,
-              this.center.x,
-              this.center.y,
-              this.center.z
-            )
           }
 
         }
@@ -493,6 +480,7 @@
           sk.colorMode(sk.HSL)
           sk.rectMode(sk.CENTER)
           sk.frameRate(fps)
+          camera = sk.createCamera()
 
           // particles setting
           for (let i = 0 ; i < mNumber ; i++)
@@ -543,6 +531,17 @@
 
           // camera
           pov.move()
+          camera.setPosition(
+            pov.position.x,
+            pov.position.y,
+            pov.position.z
+          )
+          camera.lookAt(
+            pov.center.x,
+            pov.center.y,
+            pov.center.z
+          )
+          camera.perspective(sk.PI / 3, sk.width / sk.height, 1, -limitZ)
 
           sk.blendMode(sk.BLEND)
 
