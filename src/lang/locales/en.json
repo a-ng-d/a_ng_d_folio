@@ -183,7 +183,12 @@
     }
   },
   "core": {
-    "title": "_Core_values﹒nG⚡️ aka. Aurélien Grimaud"
+    "title": "_Core_values﹒nG⚡️ aka. Aurélien Grimaud",
+    "friendlyName": "_Core_values",
+    "intro": {
+      "title": "nG_for_aurélien_grimaud",
+      "subtitle": "nG for \"engineer\" or N-GIN (Crash Bandicoot on PS1)﹒Watch my story by scrolling down﹒You may find an echo 😉﹒"
+    }
   },
   "work": {
     "title": "_Selected_work﹒nG⚡️ aka. Aurélien Grimaud",

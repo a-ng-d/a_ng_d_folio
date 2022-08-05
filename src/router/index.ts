@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { i18n } from '@/lang'
 import Home from '../views/Home.vue'
 import Id from '../views/Id.vue'
+import Core from '../views/Core.vue'
 import Universes from '../views/Universes.vue'
 import Work from '../views/Work.vue'
 import Project from '../views/Project.vue'
@@ -73,7 +74,7 @@ const router = createRouter({
     {
       path: '/_core',
       name: '_CORE',
-      component: Home,
+      component: Core,
       meta: {
         title: i18n.global.t('core.title'),
         view: 'CORE',
@@ -302,7 +303,7 @@ const router = createRouter({
           invert: '0',
           saturation: '.5'
         },
-        pov: 'GLOBAL',
+        pov: 'RESET',
         quality: 'HIGH'
       }
     },
