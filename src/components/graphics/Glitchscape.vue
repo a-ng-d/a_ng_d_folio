@@ -194,7 +194,7 @@
             const randomColor = Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
 
             sk.push()
-              sk.translate(this.position.x - (this.size.width / 2), this.position.y, this.position.z)
+              sk.translate(this.position.x - (this.size.width * .75), this.position.y, this.position.z)
               sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
               sk.stroke(this.deepHue(), this.deepSaturation(), this.deepLightness())
               sk.strokeWeight(1)
@@ -496,7 +496,7 @@
           for (let i = 0 ; i < cNumber ; i++)
             clouds.push(new Cloud({
               widthRange: [sk.width * .25, sk.width],
-              heightRange: [-sk.height * .01, -sk.height * .05],
+              heightRange: [-sk.height * .05, -sk.height * .1],
               x: random(-limitX, limitX),
               y: random(-sk.height * .2, -sk.height * .8),
               zRange: [-limitZ, 0],
@@ -559,7 +559,7 @@
             sk.blendMode(sk.DIFFERENCE)
             sk.noStroke()
             sk.fill(colors.creamySun.hue, colors.creamySun.saturation, colors.creamySun.lightness, alpha)
-            sk.translate(0, (sk.height * .5) - 10, 0)
+            sk.translate(0, (sk.height * .5) - 100, 0)
             sk.rotateX(sk.PI / 2)
             sk.rect(0, 0, limitX * 4, limitZ * 4)
           sk.pop()
@@ -599,12 +599,12 @@
           .1,
           [
             0,
-            -scrHeight * .5,
+            -scrHeight * 1,
             0
           ],
           [
             0,
-            -scrHeight * 2,
+            -scrHeight * 5,
             -limitZ * .5
           ]
         )
