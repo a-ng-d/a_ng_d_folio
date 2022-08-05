@@ -82,9 +82,11 @@
           sNumber = mNumber * 8,
           quality = 50,
           colors = HSLColors,
-          limitX = window.innerWidth * 2.5,
-          limitY = window.innerHeight * 10,
-          limitZ = window.innerHeight * 5
+          scrWidth = window.innerWidth,
+          scrHeight = window.innerHeight,
+          limitX = scrWidth * 2.5,
+          limitY = scrHeight * 10,
+          limitZ = scrHeight * 20
 
         let
           fps = 30,
@@ -478,11 +480,11 @@
         // Sketch
         let pov = new Pov({
           x: 0,
-          y: -window.innerHeight * .2,
-          z: -window.innerHeight * 2,
+          y: -scrHeight * .2,
+          z: -scrHeight * 2,
           cX: 0,
           cY: 0,
-          cZ: -window.innerHeight * 4
+          cZ: -scrHeight * 4
         })
 
         sk.setup = () => {
@@ -570,13 +572,13 @@
           .1,
           [
             0,
-            -window.innerHeight * .5,
-            -window.innerHeight * .1
+            -scrHeight * .5,
+            -scrHeight * .1
           ],
           [
             0,
-            -window.innerHeight * .5,
-            -window.innerHeight * 2
+            -scrHeight * .5,
+            -limitZ
           ]
         )
 
@@ -590,7 +592,7 @@
           [
             doMap(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
             0,
-            -window.innerHeight * 2
+            -limitZ * .5
           ]
         )
 
@@ -598,13 +600,13 @@
           .1,
           [
             0,
-            -window.innerHeight * .5,
+            -scrHeight * .5,
             0
           ],
           [
             0,
-            -window.innerHeight * 2,
-            -window.innerHeight * 2
+            -scrHeight * 2,
+            -limitZ * .5
           ]
         )
 
@@ -612,13 +614,13 @@
           .1,
           [
             0,
-            -window.innerHeight * 4,
-            window.innerHeight * 3
+            -scrHeight * 4,
+            scrHeight * 3
           ],
           [
             0,
-            -window.innerHeight * .1,
-            -window.innerHeight * 2
+            -scrHeight * .1,
+            -limitZ * .5
           ]
         )
 
