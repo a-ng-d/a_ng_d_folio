@@ -1,6 +1,7 @@
 <script lang="ts">
   import P5 from 'p5'
   import { HSLColors } from '@/utilities/colors'
+  import { doMap, random, twoRangesRandom } from '@/utilities/operations'
 
   export default {
     name: 'Glitchscape',
@@ -93,16 +94,6 @@
           clouds = [],
           stars = []
 
-        const random = (min, max) => Math.floor(Math.random() * (max - min)) + min,
-              twoRangesRandom = (rangeLeftMin, rangeLeftMax, rangeRightMin, rangeRightMax) => {
-                const randomLeft = random(rangeLeftMin, rangeLeftMax),
-                      randomRight = random(rangeRightMin, rangeRightMax),
-                      dice = Math.random()
-
-                const dicer = dice < .5 ? randomLeft : randomRight
-                return dicer
-              }
-
         // Elements
         class Mountain {
 
@@ -129,11 +120,11 @@
             this.backup = {}
           }
 
-          deepHue = () => sk.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.hue, this.props.foreground.hue)
+          deepHue = () => doMap(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.hue, this.props.foreground.hue)
 
-          deepSaturation = () => sk.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.saturation, this.props.foreground.saturation)
+          deepSaturation = () => doMap(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.saturation, this.props.foreground.saturation)
 
-          deepLightness = () => sk.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.lightness, this.props.foreground.lightness)
+          deepLightness = () => doMap(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.lightness, this.props.foreground.lightness)
 
           glitch = () => {
             this.backup = {
@@ -246,11 +237,11 @@
             this.backup = {}
           }
 
-          deepHue = () => sk.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.hue, this.props.foreground.hue)
+          deepHue = () => doMap(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.hue, this.props.foreground.hue)
 
-          deepSaturation = () => sk.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.saturation, this.props.foreground.saturation)
+          deepSaturation = () => doMap(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.saturation, this.props.foreground.saturation)
 
-          deepLightness = () => sk.map(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.lightness, this.props.foreground.lightness)
+          deepLightness = () => doMap(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.lightness, this.props.foreground.lightness)
 
           glitch = () => {
             this.backup.rows = this.params.rows.map(row => {
@@ -346,11 +337,11 @@
             this.backup = {}
           }
 
-          deepHue = () => sk.map(this.position.y, this.props.yRange[0], this.props.yRange[1], this.props.background.hue, this.props.foreground.hue)
+          deepHue = () => doMap(this.position.y, this.props.yRange[0], this.props.yRange[1], this.props.background.hue, this.props.foreground.hue)
 
-          deepSaturation = () => sk.map(this.position.y, this.props.yRange[0], this.props.yRange[1], this.props.background.saturation, this.props.foreground.saturation)
+          deepSaturation = () => doMap(this.position.y, this.props.yRange[0], this.props.yRange[1], this.props.background.saturation, this.props.foreground.saturation)
 
-          deepLightness = () => sk.map(this.position.y, this.props.yRange[0], this.props.yRange[1], this.props.background.lightness, this.props.foreground.lightness)
+          deepLightness = () => doMap(this.position.y, this.props.yRange[0], this.props.yRange[1], this.props.background.lightness, this.props.foreground.lightness)
 
           glitch = () => {
             this.backup = {
@@ -455,8 +446,8 @@
             this.center.z = sk.lerp(this.center.z, this.params.target.center.z, this.params.speed)
 
             if (this.params.isPushed) {
-              this.position.x = sk.lerp(this.position.x, this.params.target.position.x + sk.map(sk.mouseX, 0, sk.width, sk.width * .1, -sk.width * .1), .1)
-              this.position.y = sk.lerp(this.position.y, this.params.target.position.y + sk.map(sk.mouseY, 0, sk.height, sk.height * .1, -sk.height * .1), .1)
+              this.position.x = sk.lerp(this.position.x, this.params.target.position.x + doMap(sk.mouseX, 0, sk.width, sk.width * .1, -sk.width * .1), .1)
+              this.position.y = sk.lerp(this.position.y, this.params.target.position.y + doMap(sk.mouseY, 0, sk.height, sk.height * .1, -sk.height * .1), .1)
             }
 
             this.draw()
@@ -465,9 +456,9 @@
           push = () => this.params.isPushed = true
 
           zoom = (scrollPosition, pageLimitMax) => {
-            this.params.progress.x = sk.map(scrollPosition, 0, pageLimitMax, this.params.target.position.x, this.params.target.center.x)
-            this.params.progress.y = sk.map(scrollPosition, 0, pageLimitMax, this.params.target.position.y, this.params.target.center.y)
-            this.params.progress.z = sk.map(scrollPosition, 0, pageLimitMax, this.params.target.position.z, this.params.target.center.z)
+            this.params.progress.x = doMap(scrollPosition, 0, pageLimitMax, this.params.target.position.x, this.params.target.center.x)
+            this.params.progress.y = doMap(scrollPosition, 0, pageLimitMax, this.params.target.position.y, this.params.target.center.y)
+            this.params.progress.z = doMap(scrollPosition, 0, pageLimitMax, this.params.target.position.z, this.params.target.center.z)
             //this.params.speed = 0
           }
 
@@ -592,12 +583,12 @@
         sk.povBirdEye = (increment) => pov.animate(
           .1,
           [
-            sk.map(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
-            -window.innerHeight * 2,
-            window.innerHeight
+            doMap(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
+            -scrHeight * 2,
+            scrHeight
           ],
           [
-            sk.map(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
+            doMap(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
             0,
             -window.innerHeight * 2
           ]
