@@ -467,11 +467,11 @@
         // Sketch
         let pov = new Pov({
           x: 0,
-          y: -scrHeight * .2,
-          z: -scrHeight * 2,
+          y: -window.innerHeight * .2,
+          z: -window.innerHeight * 2,
           cX: 0,
           cY: 0,
-          cZ: -scrHeight * 4
+          cZ: -window.innerHeight * 4
         })
 
         sk.setup = () => {
@@ -571,12 +571,12 @@
           .1,
           [
             0,
-            -scrHeight * .5,
-            -scrHeight * .1
+            -sk.height * .5,
+            -sk.height * .1
           ],
           [
             0,
-            -scrHeight * .5,
+            -sk.height * .5,
             -limitZ
           ]
         )
@@ -585,8 +585,8 @@
           .1,
           [
             doMap(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
-            -scrHeight * 2,
-            scrHeight
+            -sk.height * 2,
+            sk.height
           ],
           [
             doMap(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
@@ -599,12 +599,12 @@
           .1,
           [
             0,
-            -scrHeight * 1,
+            -sk.height * 1,
             0
           ],
           [
             0,
-            -scrHeight * 5,
+            -sk.height * 5,
             -limitZ * .5
           ]
         )
@@ -613,12 +613,12 @@
           .1,
           [
             0,
-            -scrHeight * 4,
-            scrHeight * 3
+            -sk.height * 4,
+            sk.height * 3
           ],
           [
             0,
-            -scrHeight * .1,
+            -sk.height * .1,
             -limitZ * .5
           ]
         )
