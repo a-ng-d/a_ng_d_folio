@@ -201,6 +201,7 @@
 
         sk.windowResized = () => {
           sk.resizeCanvas(this.$el.clientWidth, this.$el.clientHeight)
+          sk.makeUnits('horizontal')
         }
 
       })
