@@ -17,10 +17,10 @@ export const twoRangesRandom = (rangeLeftMin, rangeLeftMax, rangeRightMin, range
 }
 
 let timer, delta, velocity, currentPosition, snapPosition
-export const scrollVelocity = (target) => {
+export const scrollVelocity = (target, child) => {
   const paddingLeft = parseFloat(window.getComputedStyle(target, null).getPropertyValue('padding-left')),
         paddingRight = parseFloat(window.getComputedStyle(target, null).getPropertyValue('padding-right')),
-        maxScroll = Math.floor(target.children[0].clientWidth - target.clientWidth + paddingLeft + paddingRight)
+        maxScroll = Math.floor(child.clientWidth - target.clientWidth + paddingLeft + paddingRight)
 
   velocity = 1
   delta = 0
