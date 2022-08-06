@@ -2,6 +2,7 @@
   import P5 from 'p5'
   import { v4 as uuidv4 } from 'uuid'
   import { HSLColors } from '@/utilities/colors'
+  import { random } from '@/utilities/operations'
 
   export default {
     name: 'Particles',
@@ -50,8 +51,6 @@
           fps = 30,
           units = [],
           time = 0
-
-        const random = (min, max) => Math.floor(Math.random() * (max - min)) + min
 
         // Elements
         class Unit {
