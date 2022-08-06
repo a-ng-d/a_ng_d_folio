@@ -2,7 +2,7 @@
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import AssetContainer from '@/components/ui/AssetContainer.vue'
-  import { doMap } from '@/utilities/operations'
+  import { doMap, scrollVelocity } from '@/utilities/operations'
 
   export default {
     name: 'Lab',
@@ -71,8 +71,6 @@
           }
         ],
         scrollParams: {
-          currentPosition: 0,
-          snapPosition: 0,
           velocity: 1,
           gap: 1
         },
@@ -81,22 +79,7 @@
     },
     methods: {
       smoothScroll(e) {
-        let timer, delta
-        const paddingLeft = parseFloat(window.getComputedStyle(e.target, null).getPropertyValue('padding-left')),
-              paddingRight = parseFloat(window.getComputedStyle(e.target, null).getPropertyValue('padding-right')),
-              maxScroll = Math.floor(e.target.children[0].clientWidth - e.target.clientWidth + paddingLeft + paddingRight)
-
-        this.scrollParams.velocity = 1
-        delta = 0
-        this.scrollParams.currentPosition = e.target.scrollLeft
-        clearTimeout(timer)
-        timer = setInterval(() => {
-          this.scrollParams.snapPosition = e.target.scrollLeft
-        }, 10)
-        delta = Math.abs(this.scrollParams.currentPosition - this.scrollParams.snapPosition)
-        this.scrollParams.currentPosition == 0 ? this.scrollParams.velocity = 1 :
-                                                 this.scrollParams.currentPosition > maxScroll - 1 ? this.scrollParams.velocity = 1 :
-                                                 this.scrollParams.velocity = doMap(delta, 1, 400, 1, 1.5)
+        this.scrollParams.velocity = scrollVelocity(e.target)
         this.scrollParams.gap = doMap(this.scrollParams.velocity, 1, 1.5, 1, 4)
       }
     }

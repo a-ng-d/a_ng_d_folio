@@ -15,3 +15,24 @@ export const twoRangesRandom = (rangeLeftMin, rangeLeftMax, rangeRightMin, range
   const dicer = dice < .5 ? randomLeft : randomRight
   return dicer
 }
+
+let timer, delta, velocity, currentPosition, snapPosition
+export const scrollVelocity = (target) => {
+  const paddingLeft = parseFloat(window.getComputedStyle(target, null).getPropertyValue('padding-left')),
+        paddingRight = parseFloat(window.getComputedStyle(target, null).getPropertyValue('padding-right')),
+        maxScroll = Math.floor(target.children[0].clientWidth - target.clientWidth + paddingLeft + paddingRight)
+
+  velocity = 1
+  delta = 0
+  currentPosition = target.scrollLeft
+  clearTimeout(timer)
+  timer = setInterval(() => {
+    snapPosition = target.scrollLeft
+  }, 10)
+  delta = Math.abs(currentPosition - snapPosition)
+  currentPosition == 0 ? velocity = 1 :
+                         currentPosition > maxScroll - 1 ? velocity = 1 :
+                         velocity = doMap(delta, 1, 400, 1, 1.5)
+
+  return velocity
+}
