@@ -120,9 +120,9 @@
         }
 
         sk.makeUnits = (direction) => {
-          if (direction === 'reset')
-            units = []
-          else if (direction === 'vertical')
+          units = []
+
+          if (direction === 'vertical')
             for (let limitX = 0 ; limitX <= sk.width + weight ;) {
               for (let limitY = 0 ; limitY <= sk.height ;) {
                 let rY = sk.int(random(weight, weight * 6))
@@ -180,32 +180,27 @@
         sk.collapse = () => units.forEach(unit => unit.collapse())
 
         sk.goUp = (movement) => {
-          sk.makeUnits('reset')
           sk.makeUnits('vertical')
           units.forEach(unit => unit.changeMovement(movement))
         }
 
         sk.goRight = (movement) => {
-          sk.makeUnits('reset')
           sk.makeUnits('horizontal')
           units.forEach(unit => unit.changeMovement(movement))
         }
 
         sk.goDown = (movement) => {
-          sk.makeUnits('reset')
           sk.makeUnits('vertical')
           units.forEach(unit => unit.changeMovement(movement))
         }
 
         sk.goLeft = (movement) => {
-          sk.makeUnits('reset')
           sk.makeUnits('horizontal')
           units.forEach(unit => unit.changeMovement(movement))
         }
 
         sk.windowResized = () => {
           sk.resizeCanvas(this.$el.clientWidth, this.$el.clientHeight)
-          sk.makeUnits('reset')
         }
 
       })
