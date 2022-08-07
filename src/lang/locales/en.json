@@ -186,8 +186,40 @@
     "title": "@:universes.core.title@:global.separator@:global.author",
     "friendlyName": "@:universes.core.title",
     "intro": {
-      "title": "nG_for_aurélien_grimaud",
-      "subtitle": "nG for \"engineer\" or N-GIN (Crash Bandicoot on PS1)﹒Watch my story by scrolling down﹒You may find an echo 😉﹒"
+      "title": "nG_for_aurélien_grimaud_",
+      "subtitle": "{'You may find an echo 😉'}@:global.separator{'Watch my story by scrolling down'}@:global.separator{'Also for \"ENGINEER\", \"N-GIN\" (Crash Bandicoot on PS1), \"ENERGY\"'}"
+    },
+    "productDesign": {
+      "title": "_product_design",
+      "mission-1": "Help Product Management to prioritize",
+      "mission-2": "Define user stories and user flows"
+    },
+    "creativeTechnology": {
+      "title": "_creative_technology",
+      "mission-1": "Create high-fidelity prototype",
+      "mission-2": "Unleash personality through UI",
+      "mission-3": "Industrialize design through organization"
+    },
+    "facilitation": {
+      "title": "_facilitation",
+      "mission-1": "Help teammates to reach their purpose",
+      "mission-2": "Organize workshop to define and solve a problem together",
+      "mission-3": "Teach design to developers, teach code to designers"
+    },
+    "communication": {
+      "title": "_communication",
+      "mission-1": "Good handoff, good specs",
+      "mission-2": "Talking and writing"
+    },
+    "participatory": {
+      "title": "_participatory",
+      "mission-1": "Make local great again",
+      "mission-2": "Connect and inspire people"
+    },
+    "sustainable": {
+      "title": "_sustainable",
+      "mission-1": "Let another chance to things",
+      "mission-2": "Just do it (yourself)"
     }
   },
   "work": {
