@@ -61,7 +61,7 @@
     <article class="story">
       <section class="story__intro">
         <div class="story__content" :class="section === 'section-1' ? 'story__content--centered' : null">
-          <div class="story__content--only-ground">
+          <div class="story__content--intro">
             <Transition name="slide-up" style="--delay: var(--delay-turtoise)" appear>
               <ScrollingText
                 :label="$t('core.intro.title')"
@@ -82,121 +82,121 @@
       </section>
       <section class="story__stop">
         <div class="story__content" :class="section === 'section-2' ? 'story__content--centered' : null">
-          <div class="story__content--first-ground">
+          <div class="story__content--order-1">
             <h1>{{ $t('core.productDesign.title') }}</h1>
           </div>
-          <div class="story__content--second-ground">
+          <div class="story__content--order-2">
             <h3>{{ $t('core.productDesign.summary') }}</h3>
           </div>
-          <div class="story__content--third-ground">
+          <div class="story__content--order-3">
             <h6>{{ $t('core.productDesign.mission-1') }}</h6>
           </div>
-          <div class="story__content--fourth-ground">
+          <div class="story__content--order-4">
             <h6>{{ $t('core.productDesign.mission-2') }}</h6>
           </div>
-          <div class="story__content--fiveth-ground">
+          <div class="story__content--order-5">
             <h6>{{ $t('core.productDesign.mission-3') }}</h6>
           </div>
         </div>
       </section>
       <section class="story__stop">
         <div class="story__content" :class="section === 'section-3' ? 'story__content--centered' : null">
-          <div class="story__content--first-ground">
+          <div class="story__content--order-1">
             <h1>{{ $t('core.creativeTechnology.title') }}</h1>
           </div>
-          <div class="story__content--second-ground">
+          <div class="story__content--order-2">
             <h3>{{ $t('core.creativeTechnology.summary') }}</h3>
           </div>
-          <div class="story__content--third-ground">
+          <div class="story__content--order-3">
             <h6>{{ $t('core.creativeTechnology.mission-1') }}</h6>
           </div>
-          <div class="story__content--fourth-ground">
+          <div class="story__content--order-4">
             <h6>{{ $t('core.creativeTechnology.mission-2') }}</h6>
           </div>
-          <div class="story__content--fiveth-ground">
+          <div class="story__content--order-5">
             <h6>{{ $t('core.creativeTechnology.mission-3') }}</h6>
           </div>
         </div>
       </section>
       <section class="story__stop">
         <div class="story__content" :class="section === 'section-4' ? 'story__content--centered' : null">
-          <div class="story__content--first-ground">
+          <div class="story__content--order-1">
             <h1>{{ $t('core.facilitation.title') }}</h1>
           </div>
-          <div class="story__content--second-ground">
+          <div class="story__content--order-2">
             <h3>{{ $t('core.facilitation.summary') }}</h3>
           </div>
-          <div class="story__content--third-ground">
+          <div class="story__content--order-3">
             <h6>{{ $t('core.facilitation.mission-1') }}</h6>
           </div>
-          <div class="story__content--fourth-ground">
+          <div class="story__content--order-4">
             <h6>{{ $t('core.facilitation.mission-2') }}</h6>
           </div>
-          <div class="story__content--fiveth-ground">
+          <div class="story__content--order-5">
             <h6>{{ $t('core.facilitation.mission-3') }}</h6>
           </div>
         </div>
       </section>
       <section class="story__stop">
         <div class="story__content" :class="section === 'section-5' ? 'story__content--centered' : null">
-          <div class="story__content--first-ground">
+          <div class="story__content--order-1">
             <h1>{{ $t('core.communication.title') }}</h1>
           </div>
-          <div class="story__content--second-ground">
+          <div class="story__content--order-2">
             <h3>{{ $t('core.communication.summary') }}</h3>
           </div>
-          <div class="story__content--third-ground">
+          <div class="story__content--order-3">
             <h6>{{ $t('core.communication.mission-1') }}</h6>
           </div>
-          <div class="story__content--fourth-ground">
+          <div class="story__content--order-4">
             <h6>{{ $t('core.communication.mission-2') }}</h6>
           </div>
-          <div class="story__content--fiveth-ground">
+          <div class="story__content--order-5">
             <h6>{{ $t('core.communication.mission-3') }}</h6>
           </div>
         </div>
       </section>
       <section class="story__stop">
         <div class="story__content" :class="section === 'section-6' ? 'story__content--centered' : null">
-          <div class="story__content--first-ground">
+          <div class="story__content--order-1">
             <h1>{{ $t('core.human.title') }}</h1>
           </div>
-          <div class="story__content--second-ground">
+          <div class="story__content--order-2">
             <h3>{{ $t('core.human.summary') }}</h3>
           </div>
-          <div class="story__content--third-ground">
+          <div class="story__content--order-3">
             <h6>{{ $t('core.human.mission-1') }}</h6>
           </div>
-          <div class="story__content--fourth-ground">
+          <div class="story__content--order-4">
             <h6>{{ $t('core.human.mission-2') }}</h6>
           </div>
-          <div class="story__content--fiveth-ground">
+          <div class="story__content--order-5">
             <h6>{{ $t('core.human.mission-3') }}</h6>
           </div>
         </div>
       </section>
       <section class="story__stop">
         <div class="story__content" :class="section === 'section-7' ? 'story__content--centered' : null">
-          <div class="story__content--first-ground">
+          <div class="story__content--order-1">
             <h1>{{ $t('core.extra.title') }}</h1>
           </div>
-          <div class="story__content--second-ground">
+          <div class="story__content--order-2">
             <h3>{{ $t('core.extra.summary') }}</h3>
           </div>
-          <div class="story__content--third-ground">
+          <div class="story__content--order-3">
             <h6>{{ $t('core.extra.mission-1') }}</h6>
           </div>
-          <div class="story__content--fourth-ground">
+          <div class="story__content--order-4">
             <h6>{{ $t('core.extra.mission-2') }}</h6>
           </div>
-          <div class="story__content--fiveth-ground">
+          <div class="story__content--order-5">
             <h6>{{ $t('core.extra.mission-3') }}</h6>
           </div>
         </div>
       </section>
       <section class="story__stop">
         <div class="story__content" :class="section === 'section-8' ? 'story__content--centered' : null">
-          <div class="story__content--first-ground">
+          <div class="story__content--outro">
             <h1>Bye</h1>
           </div>
         </div>
@@ -243,34 +243,40 @@
         flex-flow: column
         visibility: visible
 
-      &--only-ground
-        transform: perspective(v-bind("perspective + 'vh'")) translate3d(0, 0, v-bind("translation + 'vh'"))
-        opacity: 1
+      &--intro, &--outro
         display: flex
         flex-flow: column nowrap
         gap: var(--layout-row-gap) 0
 
-      &--first-ground
+      &--intro
+        transform: perspective(v-bind("perspective + 'vh'")) translate3d(0, 0, v-bind("translation + 'vh'"))
+        opacity: 1
+
+      &--outro
+        transform: perspective(v-bind("perspective + 'vh'")) translate3d(0, 0, v-bind("translation + 'vh'"))
+        opacity: v-bind("opacity")
+
+      &--order-1
         transform: perspective(v-bind("perspective * .1 + 'vh'")) translate3d(0, 0, v-bind("translation + 'vh'"))
         opacity: v-bind("opacity")
         order: 2
 
-      &--second-ground
+      &--order-2
         transform: perspective(v-bind("perspective *.2 + 'vh'")) translate3d(0, 0, v-bind("translation + 'vh'"))
         opacity: v-bind("opacity")
         order: 3
 
-      &--third-ground
+      &--order-3
         transform: perspective(v-bind("perspective * .8 + 'vh'")) translate3d(0, 0, v-bind("translation + 'vh'"))
         opacity: v-bind("opacity")
         order: 1
 
-      &--fourth-ground
+      &--order-4
         transform: perspective(v-bind("perspective * .9 + 'vh'")) translate3d(0, 100%, v-bind("translation + 'vh'"))
         opacity: v-bind("opacity")
         order: 1
 
-      &--fiveth-ground
+      &--order-5
         transform: perspective(v-bind("perspective + 'vh'")) translate3d(0, 200%, v-bind("translation + 'vh'"))
         opacity: v-bind("opacity")
         order: 1
