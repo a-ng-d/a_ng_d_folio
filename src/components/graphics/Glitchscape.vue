@@ -54,14 +54,14 @@
           WISEEYE: () => this.glitchscape.povWiseEye(),
           GLOBAL: () => this.glitchscape.povGlobal(),
         }
-        return actions[to]?.() ?? 'No pov change'
+        return actions[to]?.() ?? 'No POV matches'
       },
       quality(to, from) {
         const actions = {
           LOW: () => this.glitchscape.lowQuality(),
           HIGH: () => this.glitchscape.highQuality()
         }
-        return actions[to]?.() ?? 'No pov change'
+        return actions[to]?.() ?? 'No quality matches'
       },
       isGlitched(to, from) {
         if (to)
@@ -118,7 +118,8 @@
               order: 0,
               gap: 5,
               isGlitched: false,
-              isStrokedOnly: false
+              isStrokedOnly: false,
+              alpha: 1
             }
             this.backup = {}
           }
@@ -167,6 +168,11 @@
               this.params.radius = random(0, this.backup.params.radius)
             }
 
+            if (this.params.isStrokedOnly)
+              this.params.alpha = sk.lerp(this.params.alpha, 0, this.params.speed)
+            else
+              this.params.alpha = sk.lerp(this.params.alpha, 1, this.params.speed)
+
             this.draw()
           }
 
@@ -195,11 +201,10 @@
 
             sk.push()
               sk.translate(this.position.x - (this.size.width * .75), this.position.y, this.position.z)
-              sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
+              sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness(), this.params.alpha)
               sk.stroke(this.deepHue(), this.deepSaturation(), this.deepLightness())
               sk.strokeWeight(1)
               this.params.isGlitched ? sk.fill(randomColor.hue, randomColor.saturation, randomColor.lightness) : null
-              this.params.isStrokedOnly ? sk.noFill() : null
               sk.rectMode(sk.CORNER)
               sk.ellipseMode(sk.CORNER)
               this.extrusion()
@@ -229,7 +234,8 @@
               gap: 30,
               start: sk.height,
               isGlitched: false,
-              isStrokedOnly: false
+              isStrokedOnly: false,
+              alpha: 1
             }
             for (let i = 1 ; i < this.props.rows ; i++)
               this.params.rows.push({
@@ -288,6 +294,11 @@
               })
             }
 
+            if (this.params.isStrokedOnly)
+              this.params.alpha = sk.lerp(this.params.alpha, 0, this.params.speed)
+            else
+              this.params.alpha = sk.lerp(this.params.alpha, 1, this.params.speed)
+
             this.draw()
           }
 
@@ -308,11 +319,10 @@
 
             sk.push()
               sk.translate(this.position.x, this.params.start, this.position.z)
-              sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
+              sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness(), this.params.alpha)
               sk.stroke(this.deepHue(), this.deepSaturation(), this.deepLightness())
               sk.strokeWeight(1)
               this.params.isGlitched ? sk.fill(randomColor.hue, randomColor.saturation, randomColor.lightness) : null
-              this.params.isStrokedOnly ? sk.noFill() : null
               this.params.rows.forEach(row => {
                 this.drow(row.x, offsetY, row.width, row.height)
                 offsetY += row.height
@@ -335,7 +345,8 @@
             this.params = {
               speed: .1,
               isGlitched: false,
-              isStrokedOnly: false
+              isStrokedOnly: false,
+              alpha: 1
             }
             this.backup = {}
           }
@@ -358,11 +369,6 @@
             this.size = this.backup.size
           }
 
-          unglitch = () => {
-            this.params.isGlitched = false
-            this.params.rows = this.backup.rows
-          }
-
           wireframe = () => this.params.isStrokedOnly = true
 
           unwireframe = () => this.params.isStrokedOnly = false
@@ -379,11 +385,10 @@
 
             sk.push()
               sk.translate(this.position.x, this.position.y, this.position.z)
-              sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness())
+              sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness(), this.params.alpha)
               sk.stroke(this.deepHue(), this.deepSaturation(), this.deepLightness())
               sk.strokeWeight(1)
               this.params.isGlitched ? sk.fill(randomColor.hue, randomColor.saturation, randomColor.lightness) : null
-              this.params.isStrokedOnly ? sk.noFill() : null
               sk.sphere(this.size, 3, 16)
             sk.pop()
           }

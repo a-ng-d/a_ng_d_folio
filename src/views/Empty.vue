@@ -67,6 +67,18 @@
           :theme="theme"
           @click="$emit('pov', 'GLOBAL')"
         />
+        <Button
+          type="secondary"
+          label="High quality"
+          :theme="theme"
+          @click="$emit('quality', 'HIGH')"
+        />
+        <Button
+          type="secondary"
+          label="Low quality"
+          :theme="theme"
+          @click="$emit('quality', 'LOW')"
+        />
       </div>
     </section>
   </main>
@@ -87,6 +99,7 @@
 
     &__actions
       display: flex
+      flex-flow: row wrap
       justify-content: space-between
       gap: var(--spacing-xl-000)
       width: 100%

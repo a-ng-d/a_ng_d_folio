@@ -167,6 +167,7 @@
         :theme="view === 'PROJECT' ? 'DEFAULT' : route.meta.theme"
         @activeProjectPosition="activeProjectPosition = $event"
         @pov="pov = $event"
+        @quality="quality = $event"
       />
     </Transition>
   </RouterView>
