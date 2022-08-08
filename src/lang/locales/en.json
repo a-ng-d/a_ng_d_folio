@@ -191,35 +191,45 @@
     },
     "productDesign": {
       "title": "_product_design",
-      "mission-1": "Help Product Management to prioritize",
-      "mission-2": "Define user stories and user flows"
+      "summary": "What is my mission",
+      "mission-1": "Translate a business problem or aspiration into a suitable and valid solution",
+      "mission-2": "Prioritize according to the impact and effort",
+      "mission-3": "Represent and defend the end-users' interests"
     },
     "creativeTechnology": {
       "title": "_creative_technology",
+      "summary": "What I extend to enhance my mission",
       "mission-1": "Create high-fidelity prototype",
       "mission-2": "Unleash personality through UI",
-      "mission-3": "Industrialize design through organization"
+      "mission-3": "Industrialize design through an organization"
     },
     "facilitation": {
       "title": "_facilitation",
+      "summary": "How I enable collective intelligence",
       "mission-1": "Help teammates to reach their purpose",
       "mission-2": "Organize workshop to define and solve a problem together",
       "mission-3": "Teach design to developers, teach code to designers"
     },
     "communication": {
       "title": "_communication",
-      "mission-1": "Good handoff, good specs",
-      "mission-2": "Talking and writing"
+      "summary": "How I share knowledge",
+      "mission-1": "Make a good handoff for good specs",
+      "mission-2": "Write work experiences with articles",
+      "mission-3": "Teach people the next challenges"
     },
-    "participatory": {
-      "title": "_participatory",
-      "mission-1": "Make local great again",
-      "mission-2": "Connect and inspire people"
+    "human": {
+      "title": "_human_first",
+      "summary": "Where I would to work",
+      "mission-1": "Care people with Healthtech",
+      "mission-2": "Make education more accessible with Edutech",
+      "mission-3": "Connect people with Collaborative economy"
     },
-    "sustainable": {
-      "title": "_sustainable",
-      "mission-1": "Let another chance to things",
-      "mission-2": "Just do it (yourself)"
+    "extra": {
+      "title": "_extra",
+      "summary": "Some extra(power)",
+      "mission-1": "Build side projects from scratch",
+      "mission-2": "Give a second life to furnitures and objects",
+      "mission-3": "Spend time to sustain old bikes"
     }
   },
   "work": {
