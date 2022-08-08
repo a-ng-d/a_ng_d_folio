@@ -383,6 +383,11 @@
               this.position.z = random(-limitZ * 3, limitZ * 3)
             }
 
+            if (this.params.isStrokedOnly)
+              this.params.alpha = sk.lerp(this.params.alpha, 0, this.params.speed)
+            else
+              this.params.alpha = sk.lerp(this.params.alpha, 1, this.params.speed)
+
             this.draw()
           }
 
