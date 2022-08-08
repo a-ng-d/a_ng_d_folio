@@ -19,66 +19,131 @@
   <main class="page">
     <section class="empty">
       <div class="empty__actions">
-        <Button
-          type="secondary"
-          label="Reset"
-          :theme="theme"
-          @click="$emit('pov', 'RESET')"
-        />
-        <Button
-          type="secondary"
-          label="Wise eye"
-          :theme="theme"
-          @click="$emit('pov', 'WISEEYE')"
-        />
-        <Button
-          type="secondary"
-          label="Bird eye 1"
-          :theme="theme"
-          @click="$emit('pov', 'BIRDEYE_1')"
-        />
-        <Button
-          type="secondary"
-          label="Bird eye 2"
-          :theme="theme"
-          @click="$emit('pov', 'BIRDEYE_2')"
-        />
-        <Button
-          type="secondary"
-          label="Bird eye 3"
-          :theme="theme"
-          @click="$emit('pov', 'BIRDEYE_3')"
-        />
-        <Button
-          type="secondary"
-          label="Bird eye 4"
-          :theme="theme"
-          @click="$emit('pov', 'BIRDEYE_4')"
-        />
-        <Button
-          type="secondary"
-          label="Bird eye 5"
-          :theme="theme"
-          @click="$emit('pov', 'BIRDEYE_5')"
-        />
-        <Button
-          type="secondary"
-          label="Global"
-          :theme="theme"
-          @click="$emit('pov', 'GLOBAL')"
-        />
-        <Button
-          type="secondary"
-          label="High quality"
-          :theme="theme"
-          @click="$emit('quality', 'HIGH')"
-        />
-        <Button
-          type="secondary"
-          label="Low quality"
-          :theme="theme"
-          @click="$emit('quality', 'LOW')"
-        />
+        <div class="empty__actions__row">
+          <p>Camera</p>
+          <Button
+            type="secondary"
+            label="Reset"
+            :theme="theme"
+            @click="$emit('pov', 'RESET')"
+          />
+          <Button
+            type="secondary"
+            label="Wise"
+            :theme="theme"
+            @click="$emit('pov', 'WISEEYE')"
+          />
+          <Button
+            type="secondary"
+            label="Bird 1"
+            :theme="theme"
+            @click="$emit('pov', 'BIRDEYE_1')"
+          />
+          <Button
+            type="secondary"
+            label="Bird 2"
+            :theme="theme"
+            @click="$emit('pov', 'BIRDEYE_2')"
+          />
+          <Button
+            type="secondary"
+            label="Bird 3"
+            :theme="theme"
+            @click="$emit('pov', 'BIRDEYE_3')"
+          />
+          <Button
+            type="secondary"
+            label="Bird 4"
+            :theme="theme"
+            @click="$emit('pov', 'BIRDEYE_4')"
+          />
+          <Button
+            type="secondary"
+            label="Bird 5"
+            :theme="theme"
+            @click="$emit('pov', 'BIRDEYE_5')"
+          />
+          <Button
+            type="secondary"
+            label="Global"
+            :theme="theme"
+            @click="$emit('pov', 'GLOBAL')"
+          />
+        </div>
+        <div class="empty__actions__row">
+          <p>Quality</p>
+          <Button
+            type="secondary"
+            label="High quality"
+            :theme="theme"
+            @click="$emit('quality', 'HIGH')"
+          />
+          <Button
+            type="secondary"
+            label="Low quality"
+            :theme="theme"
+            @click="$emit('quality', 'LOW')"
+          />
+          <Button
+            type="secondary"
+            label="Glitch"
+            :theme="theme"
+            @click="$emit('glitch', true)"
+          />
+          <Button
+            type="secondary"
+            label="Unglitch"
+            :theme="theme"
+            @click="$emit('glitch', false)"
+          />
+        </div>
+        <div class="empty__actions__row">
+          <p>Filter</p>
+          <Button
+            type="secondary"
+            label="Creamy sun"
+            :theme="theme"
+            @click="$emit('filter', {
+              hue: '0deg',
+              brightness: '1',
+              invert: '0',
+              saturation: '.5'
+            })"
+          />
+          <Button
+            type="secondary"
+            label="Soft wind"
+            :theme="theme"
+            @click="$emit('filter', {
+              hue: '120deg',
+              brightness: '1',
+              invert: '0',
+              saturation: '.3'
+            })"
+          />
+          <Button
+            type="secondary"
+            label="Candy floss"
+            :theme="theme"
+            @click="$emit('filter', {
+              hue: '190deg',
+              brightness: '1',
+              invert: '0',
+              saturation: '.5'
+            })"
+          />
+          <Button
+            type="secondary"
+            label="Invert"
+            :theme="theme"
+            @click="$emit('filter', {
+              hue: '20deg',
+              brightness: '1',
+              invert: '1',
+              saturation: '.3'
+            })"
+          />
+        </div>
       </div>
     </section>
   </main>
@@ -99,12 +164,24 @@
 
     &__actions
       display: flex
-      flex-flow: row wrap
-      justify-content: space-between
-      gap: var(--spacing-xl-000)
+      flex-flow: column
       width: 100%
       position: fixed
       left: 0
       bottom: 0
       padding: var(--spacing-l-000)
+      gap: var(--spacing-l-000)
+
+      &__row
+        display: flex
+        flex-flow: row nowrap
+        gap: var(--spacing-m-000)
+        align-items: center
+
+        & > p
+          flex: 0 1 100rem
+
+        & > a
+          flex: 1
+
 </style>

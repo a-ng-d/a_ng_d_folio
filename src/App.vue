@@ -168,6 +168,8 @@
         @activeProjectPosition="activeProjectPosition = $event"
         @pov="pov = $event"
         @quality="quality = $event"
+        @glitch="isGlitched = $event"
+        @filter="filter = $event"
       />
     </Transition>
   </RouterView>
