@@ -35,7 +35,7 @@
         default: 'DEFAULT'
       }
     },
-    data() {
+    data: function() {
       return {
         isExtensible: this.extensible ? '100%' : 'fit-content',
         randomPosition: `position: absolute ; top: ${random(0, 80)}% ; left: ${random(0, 80)}%`,
@@ -43,7 +43,7 @@
         isExternal: false
       }
     },
-    created() {
+    created: function() {
       this.path.indexOf('http') == 0 ? this.isExternal = true : this.isExternal
     }
   }

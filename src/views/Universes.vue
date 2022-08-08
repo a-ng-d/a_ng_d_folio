@@ -23,7 +23,7 @@
         default: 'DEFAULT'
       }
     },
-    data() {
+    data: function() {
       return {
         tooltip: {
           isActive: false

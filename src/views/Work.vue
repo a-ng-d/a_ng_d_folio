@@ -17,7 +17,7 @@
       projects: [Array, Object],
       activeProjectPosition: Number
     },
-    data() {
+    data: function() {
       return {
         activeProjectCodeName: this.projects[this.activeProjectPosition].meta.codeName,
         position: this.activeProjectPosition,
@@ -58,7 +58,7 @@
         })
       }
     },
-    created() {
+    created: function() {
       this.$emit('activeProjectPosition', this.position)
     }
   }

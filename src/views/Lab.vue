@@ -17,7 +17,7 @@
         default: 'DEFAULT'
       }
     },
-    data() {
+    data: function() {
       return {
         shots: [
           {

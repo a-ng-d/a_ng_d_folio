@@ -20,7 +20,7 @@
         type: String
       }
     },
-    data() {
+    data: function() {
       return {
         uuid: uuidv4(),
         particles: null
@@ -40,7 +40,7 @@
         return actions[to]?.() ?? 'No pov change'
       }
     },
-    mounted() {
+    mounted: function() {
         this.particles = new P5((sk) => {
 
         const

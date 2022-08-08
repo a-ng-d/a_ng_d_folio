@@ -15,7 +15,7 @@
         default: 0
       }
     },
-    data() {
+    data: function() {
       return {
         isStuck: false
       }

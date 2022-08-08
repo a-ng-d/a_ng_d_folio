@@ -14,7 +14,7 @@
         default: 'DEFAULT'
       }
     },
-    data() {
+    data: function() {
       return {
         links: ['link-1', 'link-2']
       }

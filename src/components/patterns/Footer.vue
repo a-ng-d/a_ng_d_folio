@@ -19,7 +19,7 @@
         default: 'DEFAULT'
       }
     },
-    data() {
+    data: function() {
       return {
         flex: this.alignment === 'LEFT' ? 'flex-start' :
               this.alignment === 'CENTER' ? 'center' :

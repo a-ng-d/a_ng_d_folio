@@ -10,7 +10,7 @@
       alt: String,
       caption: String
     },
-    data() {
+    data: function() {
       return {
         isMagnified: false,
         maxScale: 1,

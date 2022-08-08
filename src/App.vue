@@ -15,7 +15,7 @@
       Glitchscape,
       Particles
     },
-    data() {
+    data: function() {
       return {
         filter: '',
         pov: '',
@@ -122,7 +122,7 @@
         return projects
       }
     },
-    mounted() {
+    mounted: function() {
       window.innerWidth < 461 ? this.device = 'MOBILE' : this.device
       window.onresize = () => window.innerWidth < 461 ? this.device = 'MOBILE' : this.device = 'DESKTOP'
     }

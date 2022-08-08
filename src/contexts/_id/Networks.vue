@@ -20,7 +20,7 @@
         default: 'DEFAULT'
       }
     },
-    data() {
+    data: function() {
       return {
         networks: [
           {

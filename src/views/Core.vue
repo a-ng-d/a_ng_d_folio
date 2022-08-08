@@ -19,7 +19,7 @@
         default: 'DEFAULT'
       }
     },
-    data() {
+    data: function() {
       return {
         triggers: [],
         section: 'section-1',
@@ -41,7 +41,7 @@
         })
       }
     },
-    mounted() {
+    mounted: function() {
       const triggers = this.$el.children[0].children
       triggers.forEach(trigger => {
         this.triggers.push({

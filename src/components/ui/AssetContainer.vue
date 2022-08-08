@@ -22,7 +22,7 @@
         default: false
       }
     },
-    data() {
+    data: function() {
       return {
         isMagnified: false,
         assetWidth: 0

@@ -37,7 +37,7 @@
         default: 3
       }
     },
-    data() {
+    data: function() {
       return {
         glitchscape: null
       }
@@ -73,7 +73,7 @@
         return this.glitchscape.povZoom(this.scrollProgress, this.scrollLimit)
       }
     },
-    mounted() {
+    mounted: function() {
       this.glitchscape = new P5((sk) => {
 
         const
