@@ -583,7 +583,7 @@
         }
 
         // Events
-        sk.povReset = () => pov.animate(
+        sk.povReset = () => setTimeout(() => pov.animate(
           .1,
           [
             0,
@@ -595,9 +595,9 @@
             -sk.height * .5,
             -limitZ
           ]
-        )
+        ), 100)
 
-        sk.povBirdEye = (increment) => pov.animate(
+        sk.povBirdEye = (increment) => setTimeout(() => pov.animate(
           .1,
           [
             doMap(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
@@ -609,9 +609,9 @@
             0,
             -limitZ * .5
           ]
-        )
+        ), 100)
 
-        sk.povWiseEye = () => pov.animate(
+        sk.povWiseEye = () => setTimeout(() => pov.animate(
           .1,
           [
             0,
@@ -623,9 +623,9 @@
             -sk.height * 5,
             -limitZ * .5
           ]
-        )
+        ), 100)
 
-        sk.povGlobal = () => pov.animate(
+        sk.povGlobal = () => setTimeout(() => pov.animate(
           .1,
           [
             0,
@@ -637,35 +637,36 @@
             -sk.height * .1,
             -limitZ * .5
           ]
-        )
+        ), 100)
 
         sk.povZoom = (scrollProgress, scrollLimit) => pov.zoom(scrollProgress, scrollLimit + 200)
 
         sk.lowQuality = () => {
-          mountains.forEach(el => el.wireframe())
-          clouds.forEach(el => el.wireframe())
+          setTimeout(() => {
+            mountains.forEach(mountain => mountain.wireframe())
+            clouds.forEach(cloud => cloud.wireframe())
+            stars.forEach(star => star.wireframe())
+          }, 100)
+
         }
 
         sk.highQuality = () => {
-          mountains.forEach(el => el.unwireframe())
-          clouds.forEach(el => el.unwireframe())
+          setTimeout(() => {
+            mountains.forEach(mountain => mountain.unwireframe())
+            clouds.forEach(cloud => cloud.unwireframe())
+            stars.forEach(star => star.unwireframe())
+          }, 100)
         }
 
-        sk.mouseMoved = () => pov.push()
-
-        sk.touchMoved = () => pov.push()
-
         sk.glitch = () => {
-          mountains.forEach(el => el.glitch())
-          clouds.forEach(el => el.glitch())
-          stars.forEach(el => el.glitch())
+          mountains.forEach(mountain => mountain.glitch())
+          clouds.forEach(cloud => cloud.glitch())
           stars.forEach(star => star.glitch())
         }
 
         sk.unglitch = () => {
-          mountains.forEach(el => el.unglitch())
-          clouds.forEach(el => el.unglitch())
-          stars.forEach(el => el.unglitch())
+          mountains.forEach(mountain => mountain.unglitch())
+          clouds.forEach(cloud => cloud.unglitch())
           stars.forEach(star => star.unglitch())
         }
 
