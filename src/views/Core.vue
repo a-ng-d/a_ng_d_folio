@@ -227,8 +227,7 @@
       height: 300vh
 
     &__content
-      opacity: v-bind("section != 'section-1' ? 0 : 1")
-      visibility: hidden
+      opacity: 0
 
       &--centered
         position: fixed
@@ -241,7 +240,6 @@
         justify-content: center
         align-items: center
         flex-flow: column
-        visibility: visible
 
       &--intro, &--outro
         display: flex
