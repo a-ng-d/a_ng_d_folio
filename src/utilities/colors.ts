@@ -60,3 +60,36 @@ export const HSLColors = {
     type: 'secondary'
   }
 }
+
+export const filters = {
+  creamySun: {
+    hue: '0deg',
+    brightness: '1',
+    invert: '0',
+    saturation: '.5'
+  },
+  nightly: {
+    hue: '20deg',
+    brightness: '1',
+    invert: '1',
+    saturation: '.3'
+  },
+  candyFloss: {
+    hue: '190deg',
+    brightness: '1',
+    invert: '0',
+    saturation: '.5'
+  },
+  softWind: {
+    hue: '120deg',
+    brightness: '1',
+    invert: '0',
+    saturation: '.3'
+  },
+  greyscale: {
+    hue: '0deg',
+    brightness: '1.25',
+    invert: '0',
+    saturation: '0'
+  }
+}

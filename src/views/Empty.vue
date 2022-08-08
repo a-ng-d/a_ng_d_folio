@@ -1,5 +1,6 @@
 <script lang="ts">
   import Button from '@/components/ui/Button.vue'
+  import { filters } from '@/utilities/colors'
 
   export default {
     name: 'Empty',
@@ -10,6 +11,11 @@
       theme: {
         type: String,
         default: 'DEFAULT'
+      }
+    },
+    data: function() {
+      return {
+        filters : filters
       }
     }
   }
@@ -103,45 +109,31 @@
             type="secondary"
             label="Creamy sun"
             :theme="theme"
-            @click="$emit('filter', {
-              hue: '0deg',
-              brightness: '1',
-              invert: '0',
-              saturation: '.5'
-            })"
+            @click="$emit('filter', filters.creamySun)"
           />
           <Button
             type="secondary"
             label="Soft wind"
             :theme="theme"
-            @click="$emit('filter', {
-              hue: '120deg',
-              brightness: '1',
-              invert: '0',
-              saturation: '.3'
-            })"
+            @click="$emit('filter', filters.softWind)"
           />
           <Button
             type="secondary"
             label="Candy floss"
             :theme="theme"
-            @click="$emit('filter', {
-              hue: '190deg',
-              brightness: '1',
-              invert: '0',
-              saturation: '.5'
-            })"
+            @click="$emit('filter', filters.candyFloss)"
           />
           <Button
             type="secondary"
-            label="Invert"
+            label="Grayscale"
             :theme="theme"
-            @click="$emit('filter', {
-              hue: '20deg',
-              brightness: '1',
-              invert: '1',
-              saturation: '.3'
-            })"
+            @click="$emit('filter', filters.greyscale)"
+          />
+          <Button
+            type="secondary"
+            label="Nightly"
+            :theme="theme"
+            @click="$emit('filter', filters.nightly)"
           />
         </div>
       </div>

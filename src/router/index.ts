@@ -13,6 +13,7 @@ import JBRAnimation from '@/assets/images/_work/_jean_bobby_radio/animation.json
 import UCPAnimation from '@/assets/images/_work/_ui_color_palette/animation.json'
 import AIAnimation from '@/assets/images/_work/_awesome_ipsums/animation.json'
 import IWAnimation from '@/assets/images/_work/_iobeya_whiteboard/animation.json'
+import { filters } from '@/utilities/colors.ts'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,12 +26,7 @@ const router = createRouter({
         title: i18n.global.t('title'),
         view: 'HOME',
         theme: 'DEFAULT',
-        filter: {
-          hue: '0deg',
-          brightness: '1',
-          invert: '0',
-          saturation: '.5'
-        },
+        filter: filters.creamySun,
         pov: 'RESET',
         quality: 'HIGH'
       }
@@ -43,12 +39,7 @@ const router = createRouter({
         title: i18n.global.t('id.title'),
         view: 'ID',
         theme: 'DEFAULT',
-        filter: {
-          hue: '-78deg',
-          brightness: '1',
-          invert: '1',
-          saturation: '.5'
-        },
+        filter: filters.softWind,
         pov: 'RESET',
         quality: 'HIGH'
       }
@@ -61,12 +52,7 @@ const router = createRouter({
         title: i18n.global.t('universes.title'),
         view: 'UNIVERSES',
         theme: 'DARK',
-        filter: {
-          hue: '20deg',
-          brightness: '1',
-          invert: '1',
-          saturation: '.3'
-        },
+        filter: filters.nightly,
         pov: 'WISEEYE',
         quality: 'HIGH'
       }
@@ -79,12 +65,7 @@ const router = createRouter({
         title: i18n.global.t('core.title'),
         view: 'CORE',
         theme: 'DEFAULT',
-        filter: {
-          hue: '190deg',
-          brightness: '1',
-          invert: '0',
-          saturation: '.5'
-        },
+        filter: filters.candyFloss,
         pov: 'RESET',
         quality: 'HIGH'
       }
@@ -96,12 +77,7 @@ const router = createRouter({
       meta: {
         title: i18n.global.t('work.title'),
         view: 'WORK',
-        filter: {
-          hue: '0deg',
-          brightness: '1.25',
-          invert: '0',
-          saturation: '0'
-        },
+        filter: filters.greyscale,
         pov: 'BIRDEYE_3',
         quality: 'LOW'
       }
@@ -123,12 +99,7 @@ const router = createRouter({
         illustration: UCPAnimation,
         background: '#88EBF9',
         theme: 'DEFAULT',
-        filter: {
-          hue: '0deg',
-          brightness: '1.25',
-          invert: '0',
-          saturation: '0'
-        },
+        filter: filters.greyscale,
         pov: 'BIRDEYE_1',
         quality: 'LOW'
       }
@@ -150,12 +121,7 @@ const router = createRouter({
         illustration: '/src/assets/images/_work/_jeprendsquoi/illustration.png',
         background: '#FFF',
         theme: 'DEFAULT',
-        filter: {
-          hue: '0deg',
-          brightness: '1.25',
-          invert: '0',
-          saturation: '0'
-        },
+        filter: filters.greyscale,
         pov: 'BIRDEYE_2',
         quality: 'LOW'
       }
@@ -177,12 +143,7 @@ const router = createRouter({
         illustration: JBRAnimation,
         background: '#190038',
         theme: 'DARK',
-        filter: {
-          hue: '0deg',
-          brightness: '1.25',
-          invert: '0',
-          saturation: '0'
-        },
+        filter: filters.greyscale,
         pov: 'BIRDEYE_3',
         quality: 'LOW'
       }
@@ -204,12 +165,7 @@ const router = createRouter({
         illustration: AIAnimation,
         background: '#23A566',
         theme: 'DARK',
-        filter: {
-          hue: '0deg',
-          brightness: '1.25',
-          invert: '0',
-          saturation: '0'
-        },
+        filter: filters.greyscale,
         pov: 'BIRDEYE_4',
         quality: 'LOW'
       }
@@ -231,12 +187,7 @@ const router = createRouter({
         illustration: IWAnimation,
         background: '#001D5E',
         theme: 'DARK',
-        filter: {
-          hue: '0deg',
-          brightness: '1.25',
-          invert: '0',
-          saturation: '0'
-        },
+        filter: filters.greyscale,
         pov: 'BIRDEYE_5',
         quality: 'LOW'
       }
@@ -249,12 +200,7 @@ const router = createRouter({
         title: i18n.global.t('lab.title'),
         view: 'LAB',
         theme: 'DEFAULT',
-        filter: {
-          hue: '120deg',
-          brightness: '1',
-          invert: '0',
-          saturation: '.3'
-        },
+        filter: filters.softWind,
         pov: 'RESET',
         quality: 'HIGH'
       }
@@ -285,12 +231,7 @@ const router = createRouter({
         title: i18n.global.t('attribution.title'),
         view: 'attribution',
         theme: 'DEFAULT',
-        filter: {
-          hue: '162deg',
-          brightness: '.5',
-          invert: '0',
-          saturation: '.75'
-        },
+        filter: filters.softWind,
         pov: 'RESET',
         quality: 'HIGH'
       }
@@ -303,14 +244,9 @@ const router = createRouter({
         title: 'Glitchscape controler',
         view: 'EMPTY',
         theme: 'DEFAULT',
-        filter: {
-          hue: '0deg',
-          brightness: '1',
-          invert: '0',
-          saturation: '.5'
-        },
-        pov: 'GLOBAL',
-        quality: 'LOW'
+        filter: filters.creamySun,
+        pov: 'RESET',
+        quality: 'HIGH'
       }
     },
   ]
