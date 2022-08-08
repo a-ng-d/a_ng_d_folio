@@ -158,6 +158,7 @@
         -webkit-line-clamp: 2
         -webkit-box-orient: vertical
         overflow: hidden
+        padding: var(--spacing-xs-000) 0
 
     &__background
       position: absolute
