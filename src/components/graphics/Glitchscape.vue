@@ -279,7 +279,7 @@
               this.position.z = this.props.zRange[0]
 
             if (this.position.x <= sk.width * 4)
-              this.position.x += speed / 4
+              this.position.x += speed / 2
             else
               this.position.x = -sk.width * 4
 
