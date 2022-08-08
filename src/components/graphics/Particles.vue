@@ -217,8 +217,9 @@
   .canvas-container
     width: 100%
     height: 100%
+    pointer-events: none
 
     & > canvas
       width: 100%
-      height: 100% 
+      height: 100%
 </style>
