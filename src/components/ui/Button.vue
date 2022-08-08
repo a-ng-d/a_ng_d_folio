@@ -1,5 +1,6 @@
 <script lang="ts">
   import Particles from '@/components/graphics/Particles.vue'
+  import { random } from '@/utilities/operations'
 
   export default {
     name: 'Button',
@@ -37,14 +38,9 @@
     data() {
       return {
         isExtensible: this.extensible ? '100%' : 'fit-content',
-        randomPosition: `position: absolute ; top: ${this.random(0, 80)}% ; left: ${this.random(0, 80)}%`,
+        randomPosition: `position: absolute ; top: ${random(0, 80)}% ; left: ${random(0, 80)}%`,
         isExpanded: false,
         isExternal: false
-      }
-    },
-    methods: {
-      random(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min
       }
     },
     created() {
