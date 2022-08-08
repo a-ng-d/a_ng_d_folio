@@ -359,14 +359,18 @@
 
           glitch = () => {
             this.backup = {
-              size: this.size.width
+              position: {
+                x: this.position.x,
+                z: this.position.z
+              }
             }
             this.params.isGlitched = true
           }
 
           unglitch = () => {
             this.params.isGlitched = false
-            this.size = this.backup.size
+            this.position.x = this.backup.position.x
+            this.position.z = this.backup.position.z
           }
 
           wireframe = () => this.params.isStrokedOnly = true
@@ -374,8 +378,10 @@
           unwireframe = () => this.params.isStrokedOnly = false
 
           move = () => {
-            if (this.params.isGlitched)
-              this.size = random(0, this.backup.size * 2)
+            if (this.params.isGlitched) {
+              this.position.x = random(-limitX * 3, limitX * 3)
+              this.position.z = random(-limitZ * 3, limitZ * 3)
+            }
 
             this.draw()
           }
@@ -648,12 +654,14 @@
           mountains.forEach(el => el.glitch())
           clouds.forEach(el => el.glitch())
           stars.forEach(el => el.glitch())
+          stars.forEach(star => star.glitch())
         }
 
         sk.unglitch = () => {
           mountains.forEach(el => el.unglitch())
           clouds.forEach(el => el.unglitch())
           stars.forEach(el => el.unglitch())
+          stars.forEach(star => star.unglitch())
         }
 
         sk.windowResized = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
