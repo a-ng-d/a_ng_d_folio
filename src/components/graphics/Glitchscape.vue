@@ -670,6 +670,10 @@
           stars.forEach(star => star.unglitch())
         }
 
+        sk.mouseMoved = () => pov.push()
+
+        sk.touchMoved = () => pov.push()
+
         sk.windowResized = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
       })
     }
