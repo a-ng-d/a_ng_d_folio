@@ -230,6 +230,11 @@
       "mission-1": "Build side projects from scratch",
       "mission-2": "Give a second life to furnitures and objects",
       "mission-3": "Spend time to sustain old bikes"
+    },
+    "outro": {
+      "title": "_that's_all!",
+      "retry": "Restart the story",
+      "id": "Read the brief summary"
     }
   },
   "work": {

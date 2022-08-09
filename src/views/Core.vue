@@ -2,6 +2,7 @@
   import Button from '@/components/ui/Button.vue'
   import ScrollingText from '@/components/ui/ScrollingText.vue'
   import Footer from '@/components/patterns/Footer.vue'
+  import { SkipBack } from 'lucide-vue-next'
   import { doMap } from '@/utilities/operations'
   import { easeInOutExpo, easeInOutCubic } from '@/utilities/easings'
 
@@ -10,7 +11,8 @@
     components: {
       Button,
       ScrollingText,
-      Footer
+      Footer,
+      SkipBack
     },
     props: {
       scrollProgress: Number,
@@ -211,7 +213,18 @@
       <section class="story__outro">
         <div class="story__content" :class="section === 'section-8' ? 'story__content--centered' : null">
           <div class="story__content--outro">
-            <h1>Bye</h1>
+            <h1>{{ $t('core.outro.title') }}</h1>
+            <Button
+              type="secondary"
+              :label="$t('core.outro.retry')"
+              layout="ICON-LEFT"
+              :theme="theme"
+              @click="backToForeground"
+            >
+              <template #icon>
+                <SkipBack :size="24" />
+              </template>
+            </Button>
           </div>
         </div>
       </section>
@@ -259,6 +272,7 @@
         transform: translate(-50%, -50%)
         pointer-events: none
         opacity: 1
+        max-width: 100%
         display: flex
         justify-content: center
         align-items: center
@@ -268,6 +282,7 @@
         display: flex
         flex-flow: column nowrap
         gap: var(--layout-row-gap) 0
+        align-items: center
 
       &--intro
         transform: perspective(v-bind("perspective + 'vh'")) translate3d(0, 0, v-bind("translation + 'vh'"))
