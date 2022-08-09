@@ -81,7 +81,7 @@
 
   // Structure
   .asset-container
-    width: v-bind("isMagnified ? assetWidth : '20vw'")
+    width: v-bind("isMagnified ? assetWidth : '40vh'")
     padding: var(--spacing-l-200)
     border-radius: var(--regular-border-radius)
     transition: var(--simple-transition)
