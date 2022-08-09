@@ -77,6 +77,14 @@
             diff == this.numberOfProjects - 1 ? diff = -1 : diff
             diff == -this.numberOfProjects + 1 ? diff = 1 : diff
             return diff < 0 ? this.transition = 'push-right' : this.transition = 'push-left'
+          },
+          'HOME > ID': () => {
+            this.transition = 'go-up'
+            this.isHardTransited = true
+          },
+          'ID > HOME': () => {
+            this.transition = 'go-down'
+            this.isHardTransited = true
           }
         }
 

@@ -39,7 +39,7 @@ const router = createRouter({
         title: i18n.global.t('id.title'),
         view: 'ID',
         theme: 'DEFAULT',
-        filter: filters.softWind,
+        filter: filters.greyscale,
         pov: 'RESET',
         quality: 'HIGH'
       }

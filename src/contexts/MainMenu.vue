@@ -3,7 +3,7 @@
   import Button from '@/components/ui/Button.vue'
   import Pagination from '@/components/ui/Pagination.vue'
   import Navigation from '@/components/ui/Navigation.vue'
-  import { ArrowRight, ArrowDown, ArrowLeft, Rocket, Home } from 'lucide-vue-next'
+  import { ArrowRight, ArrowDown, ArrowLeft, Rocket, Home, Scroll } from 'lucide-vue-next'
 
   export default {
     name: 'MainMenu',
@@ -16,7 +16,8 @@
       ArrowDown,
       ArrowLeft,
       Rocket,
-      Home
+      Home,
+      Scroll
     },
     props: {
       device: {
@@ -101,7 +102,7 @@
           :layout="device != 'MOBILE' ? 'ICON-RIGHT' : 'ICON-ONLY'"
         >
           <template #icon>
-            <ArrowRight :size="24" />
+            <ArrowDown :size="24" />
           </template>
         </Button>
         <Pagination
@@ -117,6 +118,17 @@
           rootPage="/_work"
           :nextPage="nextProject()"
         />
+        <Button
+          v-else-if="view === 'HOME'"
+          type="secondary"
+          :label="$t('home.id')"
+          path="/_id"
+          :layout="device != 'MOBILE' ? 'ICON-RIGHT' : 'ICON-ONLY'"
+        >
+          <template #icon>
+            <Scroll :size="24" />
+          </template>
+        </Button>
       </Transition>
     </template>
   </Header>
