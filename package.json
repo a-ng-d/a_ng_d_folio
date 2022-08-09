@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "chroma-js": "^2.4.2",
-    "lucide-vue-next": "^0.35.0",
+    "lucide-vue-next": "^0.84.0",
     "p5": "^1.4.1",
     "uuid": "^8.3.2",
     "vue": "^3.2.33",
