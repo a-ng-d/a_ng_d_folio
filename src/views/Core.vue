@@ -208,7 +208,7 @@
           </div>
         </div>
       </section>
-      <section class="story__stop">
+      <section class="story__outro">
         <div class="story__content" :class="section === 'section-8' ? 'story__content--centered' : null">
           <div class="story__content--outro">
             <h1>Bye</h1>
@@ -237,11 +237,20 @@
     &__intro
       height: 100vh
 
+    &__outro
+      height: 200vh
+
     &__stop
       height: 300vh
 
     &__content
       opacity: 0
+
+      h1, h3, h6
+        white-space: nowrap
+
+      a
+        pointer-events: visible
 
       &--centered
         position: fixed
@@ -265,7 +274,7 @@
         opacity: 1
 
       &--outro
-        transform: perspective(v-bind("perspective + 'vh'")) translate3d(0, 0, v-bind("translation + 'vh'"))
+        transform: perspective(v-bind("perspective + 'vh'")) translate3d(0, 0, v-bind("translation < 0 ? translation + 'vh' : 0"))
         opacity: v-bind("opacity")
 
       &--order-1
