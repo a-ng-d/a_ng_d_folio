@@ -49,8 +49,8 @@
       backToForeground() {
         let animateScroll
         this.progress += 0.01
-        this.$el.scrollTop = easeInOutCubic(this.progress, this.scrollLimit, -this.scrollLimit - 10, 10)
-        if (this.progress <= 10) animateScroll = requestAnimationFrame(this.backToForeground)
+        this.$el.scrollTop = easeInOutCubic(this.progress, this.scrollLimit, -this.scrollLimit - 10, 5)
+        if (this.progress <= 5) animateScroll = requestAnimationFrame(this.backToForeground)
         else {
           cancelAnimationFrame(animateScroll)
           this.progress = 0
