@@ -2,7 +2,8 @@
   import Button from '@/components/ui/Button.vue'
   import ScrollingText from '@/components/ui/ScrollingText.vue'
   import Footer from '@/components/patterns/Footer.vue'
-  import { doMap, random, twoRangesRandom } from '@/utilities/operations'
+  import { doMap } from '@/utilities/operations'
+  import { easeInOutExpo, easeInOutCubic } from '@/utilities/easings'
 
   export default {
     name: 'Core',
@@ -25,7 +26,8 @@
         section: 'section-1',
         perspective: 300,
         translation: 0,
-        opacity: 1
+        opacity: 1,
+        progress: 0
       }
     },
     watch: {
@@ -39,6 +41,18 @@
             to < trigger.middle ? index != 0 ? this.opacity = doMap(to, trigger.top, trigger.middle, 0, 1) : this.opacity = 1 : this.opacity = 1
           }
         })
+      }
+    },
+    methods: {
+      backToForeground() {
+        let animateScroll
+        this.progress += 0.01
+        this.$el.scrollTop = easeInOutCubic(this.progress, this.scrollLimit, -this.scrollLimit - 10, 10)
+        if (this.progress <= 10) animateScroll = requestAnimationFrame(this.backToForeground)
+        else {
+          cancelAnimationFrame(animateScroll)
+          this.progress = 0
+        }
       }
     },
     mounted: function() {
