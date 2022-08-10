@@ -44,7 +44,7 @@
           ID: 'var(--color-soil)',
           WORK: this.projects[this.activeProjectPosition].meta.theme == 'DEFAULT' ? 'var(--color-soil)' : 'var(--color-cream)',
           PROJECT: 'var(--color-sandstone)',
-          UNIVERSES: 'var(--color-cream)'
+          UNIVERSE: 'var(--color-cream)'
         }
         return actions[view] ?? 'var(--color-soil)'
       },
@@ -67,7 +67,7 @@
     <template #left-part>
       <Transition name="switch" mode="out-in">
         <Button
-          v-if="view === 'UNIVERSES'"
+          v-if="view === 'UNIVERSE'"
           type="secondary"
           :label="$t('global.back.home')"
           path="/"
@@ -82,7 +82,7 @@
           v-else-if="view === 'WORK' || view === 'PROJECT' || view === 'LAB' || view === 'CORE'"
           type="secondary"
           :label="$t('global.menu')"
-          path="/_universes"
+          path="/_universe"
           :layout="device != 'MOBILE' ? 'ICON-LEFT' : 'ICON-ONLY'"
           theme="DEFAULT"
         >

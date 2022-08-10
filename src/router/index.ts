@@ -3,7 +3,7 @@ import { i18n } from '@/lang'
 import Home from '../views/Home.vue'
 import Id from '../views/Id.vue'
 import Core from '../views/Core.vue'
-import Universes from '../views/Universes.vue'
+import Universe from '../views/Universe.vue'
 import Work from '../views/Work.vue'
 import Project from '../views/Project.vue'
 import Lab from '../views/Lab.vue'
@@ -45,12 +45,12 @@ const router = createRouter({
       }
     },
     {
-      path: '/_universes',
-      name: '_UNIVERSES',
-      component: Universes,
+      path: '/_universe',
+      name: '_UNIVERSE',
+      component: Universe,
       meta: {
-        title: i18n.global.t('universes.title'),
-        view: 'UNIVERSES',
+        title: i18n.global.t('universe.title'),
+        view: 'UNIVERSE',
         theme: 'DARK',
         filter: filters.nightly,
         pov: 'WISEEYE',

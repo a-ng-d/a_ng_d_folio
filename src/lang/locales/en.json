@@ -20,7 +20,7 @@
       "root": "Back to root",
       "home": "Back to Home"
     },
-    "menu": "Universes",
+    "menu": "Universe",
     "go": "Go deeper",
     "discover": "Discovering the approach by scrolling down",
     "navigate": "Navigate between projects by using the arrows",
@@ -41,7 +41,7 @@
     "about": {
       "title": "你好 nǐ hǎo!",
       "experience": "I’m Aurélien all over the world or 立安 lì ān in China. Currently Product designer at <span class='label' data-highlighted='true'>iObeya</span> for {year} years and an UI + </code> enthousiast.",
-      "mission": "Filling the gap between designers and developpers universes is my leitmotiv, by learning code and teaching design (at the design schools).",
+      "mission": "Filling the gap between designers and developpers universe is my leitmotiv, by learning code and teaching design (at the design schools).",
       "activities": "I also write about <span class='label' data-highlighted='true'>team collaboration</span>, <span class='label' data-highlighted='true'>design thinking</span> and <span class='label' data-highlighted='true'>design system</span>, animate meetup, participate in a french design system community (Design System France).",
       "side": "Otherwise, I customize furnitures and explore procedural animation."
     },
@@ -159,8 +159,8 @@
       }
     }
   },
-  "universes": {
-    "title": "_Universes@:global.separator@:global.author",
+  "universe": {
+    "title": "_Universe@:global.separator@:global.author",
     "core": {
       "title": "_Core_values",
       "description": "My adventure as a Product Designer at iObeya teach me what I really love to do and what I really want to keep doing during my career."
@@ -183,8 +183,8 @@
     }
   },
   "core": {
-    "title": "@:universes.core.title@:global.separator@:global.author",
-    "friendlyName": "@:universes.core.title",
+    "title": "@:universe.core.title@:global.separator@:global.author",
+    "friendlyName": "@:universe.core.title",
     "intro": {
       "title": "nG_for_aurélien_grimaud_",
       "subtitle": "{'You may find an echo 😉'}@:global.separator{'Watch my story by scrolling down'}@:global.separator{'Also for \"ENGINEER\", \"N-GIN\" (Crash Bandicoot on PS1), \"ENERGY\"'}@:global.separator"
@@ -238,8 +238,8 @@
     }
   },
   "work": {
-    "title": "@:universes.work.title@:global.separator@:global.author",
-    "friendlyName": "@:universes.work.title",
+    "title": "@:universe.work.title@:global.separator@:global.author",
+    "friendlyName": "@:universe.work.title",
     "_ui_color_palette": {
       "title": "@:work._ui_color_palette.shortTitle@:global.separator@:global.author",
       "shortTitle": "_ui_color_palette",
@@ -482,7 +482,7 @@
     }
   },
   "lab": {
-    "title": "@:universes.lab.title@:global.separator@:global.author"
+    "title": "@:universe.lab.title@:global.separator@:global.author"
   },
   "attribution": {
     "title": "Attribution@:global.separator@:global.author",

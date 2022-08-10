@@ -6,7 +6,7 @@
   import { Heart, Briefcase, FlaskConical, Mail, Archive } from 'lucide-vue-next'
 
   export default {
-    name: 'Universes',
+    name: 'Universe',
     components: {
       Footer,
       Button,
@@ -28,7 +28,7 @@
         tooltip: {
           isActive: false
         },
-        universes: [
+        universe: [
           {
             name: 'core',
             path: '/_core',
@@ -58,8 +58,8 @@
       expandTooltip(e) {
         this.tooltip.isActive = true
         this.tooltip.name = e.target.id
-        this.tooltip.title = i18n.global.t(`universes.${e.target.id}.title`)
-        this.tooltip.description = i18n.global.t(`universes.${e.target.id}.description`)
+        this.tooltip.title = i18n.global.t(`universe.${e.target.id}.title`)
+        this.tooltip.description = i18n.global.t(`universe.${e.target.id}.description`)
       },
       collapseTooltip(e) {
         this.tooltip = {
@@ -74,7 +74,7 @@
   <main class="page">
     <section class="menu">
       <ul class="menu__items">
-        <li v-for="(universe, index) in universes" :key="universe.name">
+        <li v-for="(universe, index) in universe" :key="universe.name">
           <Transition name="slide-up" appear :style="`--delay: calc(var(--delay-turtoise) + ${index * 100}ms)`">
             <Button
               :id="universe.name"

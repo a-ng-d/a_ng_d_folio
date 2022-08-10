@@ -89,14 +89,14 @@
         }
 
         const A = {
-          'UNIVERSES': () => {
+          'UNIVERSE': () => {
             this.transition = 'go-down'
             this.isHardTransited = true
           }
         }
 
         const B = {
-          'UNIVERSES': () => {
+          'UNIVERSE': () => {
             this.transition = 'go-up'
             this.isHardTransited = true
           }
