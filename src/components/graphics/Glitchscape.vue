@@ -573,12 +573,9 @@
 
           // floor
           sk.push()
-            sk.blendMode(sk.DIFFERENCE)
             sk.noStroke()
             sk.fill(colors.creamySun.hue, colors.creamySun.saturation, colors.creamySun.lightness, alpha)
-            sk.translate(0, (sk.height * .5) - 10, 0)
-            sk.rotateX(sk.PI / 2)
-            sk.rect(0, 0, limitX * 4, limitZ * 4)
+            sk.box(limitX * 10, 5, limitZ * 10)
           sk.pop()
 
         }
