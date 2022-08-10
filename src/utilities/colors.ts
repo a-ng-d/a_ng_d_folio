@@ -96,5 +96,33 @@ export const filters = {
     invert: '0',
     saturation: '1',
     grayscale: '100%'
+  },
+  _ui_color_palette: {
+    hue: '128deg',
+    brightness: '1',
+    invert: '0',
+    saturation: '.55',
+    grayscale: '0%'
+  },
+  _jean_bobby_radio: {
+    hue: '32deg',
+    brightness: '1',
+    invert: '1',
+    saturation: '.3',
+    grayscale: '0%'
+  },
+  _awesome_ipsums: {
+    hue: '85deg',
+    brightness: '.7',
+    invert: '0',
+    saturation: '1',
+    grayscale: '0%'
+  },
+  _iobeya_whiteboard: {
+    hue: '343deg',
+    brightness: '1.5',
+    invert: '1',
+    saturation: '.7',
+    grayscale: '0%'
   }
 }

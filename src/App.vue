@@ -174,6 +174,8 @@
         :scrollLimit="pageHeight - viewHeight"
         :theme="view === 'PROJECT' ? 'DEFAULT' : route.meta.theme"
         @activeProjectPosition="activeProjectPosition = $event"
+        @activeProjectBackground="filter = $event"
+        @activeProjectPov="pov = $event"
         @pov="pov = $event"
         @quality="quality = $event"
         @glitch="isGlitched = $event"

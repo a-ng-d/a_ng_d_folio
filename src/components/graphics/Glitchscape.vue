@@ -709,6 +709,6 @@
     height: 100vh
     position: fixed
     top: 0
-    transition: var(--slow-transition)
+    transition: var(--grandma-transition)
     z-index: -1
 </style>

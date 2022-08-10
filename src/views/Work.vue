@@ -41,6 +41,8 @@
         this.activeProjectCodeName = this.projects[this.position].meta.codeName
         this.theme = this.projects[this.position].meta.theme
         this.$emit('activeProjectPosition', this.position)
+        this.$emit('activeProjectBackground', this.projects[this.position].meta.background)
+        setTimeout(() => this.$emit('activeProjectPov', this.projects[this.position].meta.pov), 1500)
       },
       splitLetters(el) {
         const
@@ -60,6 +62,8 @@
     },
     created: function() {
       this.$emit('activeProjectPosition', this.position)
+      this.$emit('activeProjectBackground', this.projects[this.position].meta.background)
+      this.$emit('activeProjectPov', this.projects[this.position].meta.pov)
     }
   }
 </script>
@@ -68,11 +72,11 @@
   <main class="page">
     <div class="background">
       <Transition name="scale-up" :duration="duration" mode="out-in" class="background__item" appear>
-        <div v-if="activeProjectCodeName === projects[0].meta.codeName" style="background: url(/src/assets/images/_work/_ui_color_palette/background.svg) 50% / cover no-repeat"></div>
+        <div v-if="activeProjectCodeName === projects[0].meta.codeName"></div>
         <div v-else-if="activeProjectCodeName === projects[1].meta.codeName" style="background: url(/src/assets/images/_work/_jeprendsquoi/background.svg) 50% / cover no-repeat"></div>
-        <div v-else-if="activeProjectCodeName === projects[2].meta.codeName" style="background: url(/src/assets/images/_work/_jean_bobby_radio/background.png) 50% repeat ; mix-blend-mode : color-dodge"></div>
+        <div v-else-if="activeProjectCodeName === projects[2].meta.codeName" style="background: url(/src/assets/images/_work/_jean_bobby_radio/background.png) 50% repeat"></div>
         <div v-else-if="activeProjectCodeName === projects[3].meta.codeName"></div>
-        <div v-else-if="activeProjectCodeName === projects[4].meta.codeName" style="background: url(/src/assets/images/_work/_iobeya_whiteboard/background.png) 0% 0% no-repeat ; mix-blend-mode : overlay"></div>
+        <div v-else-if="activeProjectCodeName === projects[4].meta.codeName" style="background: url(/src/assets/images/_work/_iobeya_whiteboard/background.png) 0% 0% no-repeat"></div>
       </Transition>
     </div>
     <section class="work">
@@ -234,8 +238,7 @@
     height: 100vh
     position: absolute
     overflow: hidden
-    background: v-bind('projects[activeProjectPosition].meta.background')
-    transition: background var(--duration-grandma) var(--ease-vroom)
+    transition: var(--grandma-transition)
 
     &__item
       width: 100%
