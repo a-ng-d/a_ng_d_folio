@@ -115,9 +115,9 @@
             this.params = {
               radius: sk.int(sk.abs(this.size.height / 4)),
               radians: sk.radians(90),
-              speed: .1,
+              speed: .05,
               order: 0,
-              gap: 5,
+              gap: 20,
               isGlitched: false,
               isStrokedOnly: false,
               alpha: 1
@@ -201,7 +201,7 @@
             const randomColor = Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
 
             sk.push()
-              sk.translate(this.position.x - (this.size.width * .75), this.position.y, this.position.z)
+              sk.translate(this.position.x < 0 ? this.position.x - this.size.width : this.position.x, this.position.y, this.position.z)
               sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness(), this.params.alpha)
               sk.stroke(this.deepHue(), this.deepSaturation(), this.deepLightness())
               sk.strokeWeight(1)
@@ -232,7 +232,7 @@
               rows: [],
               speed: .1,
               order: 0,
-              gap: 30,
+              gap: 40,
               start: sk.height,
               isGlitched: false,
               isStrokedOnly: false,
@@ -440,7 +440,8 @@
                 z: 0
               },
               speed: 0,
-              isPushed: false
+              isPushed: false,
+              isScrolling: false
             }
           }
 
@@ -458,25 +459,28 @@
           }
 
           move = () => {
-            this.position.x = sk.lerp(this.position.x, this.params.progress.x == 0 ? this.params.target.position.x : this.params.progress.x, this.params.speed)
-            this.position.y = sk.lerp(this.position.y, this.params.progress.y == 0 ? this.params.target.position.y : this.params.progress.y, this.params.speed)
-            this.position.z = sk.lerp(this.position.z, this.params.progress.z == 0 ? this.params.target.position.z : this.params.progress.z, this.params.speed)
+            this.position.x = sk.lerp(this.position.x, this.params.progress.x == 0 ? this.params.target.position.x : this.params.progress.x, this.isScrolling ? 0.5 : this.params.speed)
+            this.position.y = sk.lerp(this.position.y, this.params.progress.y == 0 ? this.params.target.position.y : this.params.progress.y, this.isScrolling ? 0.5 : this.params.speed)
+            this.position.z = sk.lerp(this.position.z, this.params.progress.z == 0 ? this.params.target.position.z : this.params.progress.z, this.isScrolling ? 0.5 : this.params.speed)
             this.center.x = sk.lerp(this.center.x, this.params.target.center.x, this.params.speed)
             this.center.y = sk.lerp(this.center.y, this.params.target.center.y, this.params.speed)
             this.center.z = sk.lerp(this.center.z, this.params.target.center.z, this.params.speed)
 
             if (this.params.isPushed) {
-              this.position.x = sk.lerp(this.position.x, this.params.target.position.x + doMap(sk.mouseX, 0, sk.width, sk.width * .1, -sk.width * .1), .1)
-              this.position.y = sk.lerp(this.position.y, this.params.target.position.y + doMap(sk.mouseY, 0, sk.height, sk.height * .1, -sk.height * .1), .1)
+              this.position.x = sk.lerp(this.position.x, this.params.target.position.x + doMap(sk.mouseX, 0, sk.width, sk.width * .2, -sk.width * .2), .1)
+              this.position.y = sk.lerp(this.position.y, this.params.target.position.y + doMap(sk.mouseY, 0, sk.height, sk.height * .2, -sk.height * .2), .1)
             }
+
+            this.isScrolling = false
           }
 
           push = () => this.params.isPushed = true
 
-          zoom = (scrollPosition, pageLimitMax) => {
-            this.params.progress.x = doMap(scrollPosition, 0, pageLimitMax, this.params.target.position.x, this.params.target.center.x)
-            this.params.progress.y = doMap(scrollPosition, 0, pageLimitMax, this.params.target.position.y, this.params.target.center.y)
-            this.params.progress.z = doMap(scrollPosition, 0, pageLimitMax, this.params.target.position.z, this.params.target.center.z)
+          zoom = (scrollPosition, scrollLimit) => {
+            this.isScrolling = true
+            this.params.progress.x = doMap(scrollPosition, 0, scrollLimit, this.params.target.position.x, this.params.target.center.x)
+            this.params.progress.y = doMap(scrollPosition, 0, scrollLimit, this.params.target.position.y, this.params.target.center.y)
+            this.params.progress.z = doMap(scrollPosition, 0, scrollLimit, this.params.target.position.z, this.params.target.center.z)
           }
 
         }
@@ -558,9 +562,7 @@
             pov.center.y,
             pov.center.z
           )
-          camera.perspective(sk.PI / 3, sk.width / sk.height, 1, limitZ * 2)
-
-          sk.blendMode(sk.BLEND)
+          camera.perspective(sk.PI / 5, sk.width / sk.height, 10, limitZ * 2)
 
           // mountains
           mountains.forEach(mountain => mountain.move())
@@ -618,7 +620,7 @@
           ],
           [
             0,
-            -sk.height * 5,
+            -sk.height * 10,
             -limitZ * .5
           ]
         ), 100)
