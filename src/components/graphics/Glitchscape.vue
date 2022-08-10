@@ -35,7 +35,8 @@
       numberOfProjects: {
         type: Number,
         default: 3
-      }
+      },
+      view: String
     },
     data: function() {
       return {
@@ -681,15 +682,27 @@
 </script>
 
 <template>
-  <div class="background" id="sketch" :style="`filter: hue-rotate(${filter.hue}) brightness(${filter.brightness}) invert(${filter.invert}) saturate(${filter.saturation})`">
-  </div>
+  <Transition name="fade" appear>
+    <div v-if="view === 'ID'" class="gradient"></div>
+  </Transition>
+  <div class="background" id="sketch" :style="`filter: hue-rotate(${filter.hue}) brightness(${filter.brightness}) invert(${filter.invert}) saturate(${filter.saturation})`"></div>
 </template>
 
 <style lang="sass">
+  .gradient
+    width: 100vw
+    height: 100vh
+    position: fixed
+    z-index: 0
+    top: 0
+    background-image: var(--gradient-biscarosse-sunset)
+    mix-blend-mode: multiply
+
   .background
     width: 100vw
     height: 100vh
     position: fixed
     top: 0
     transition: var(--slow-transition)
+    z-index: -1
 </style>

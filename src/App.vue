@@ -189,6 +189,7 @@
     :scrollProgress="scrollProgress"
     :scrollLimit="pageHeight - viewHeight"
     :numberOfProjects="numberOfProjects"
+    :view="view"
   />
 </template>
 
