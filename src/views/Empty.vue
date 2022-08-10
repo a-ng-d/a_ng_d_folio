@@ -127,7 +127,7 @@
             type="secondary"
             label="Grayscale"
             :theme="theme"
-            @click="$emit('filter', filters.greyscale)"
+            @click="$emit('filter', filters.grayscale)"
           />
           <Button
             type="secondary"

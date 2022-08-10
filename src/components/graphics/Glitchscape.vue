@@ -685,7 +685,13 @@
   <Transition name="fade" appear>
     <div v-if="view === 'ID'" class="gradient"></div>
   </Transition>
-  <div class="background" id="sketch" :style="`filter: hue-rotate(${filter.hue}) brightness(${filter.brightness}) invert(${filter.invert}) saturate(${filter.saturation})`"></div>
+  <div class="background" id="sketch" :style="`
+    filter: hue-rotate(${filter.hue})
+    brightness(${filter.brightness})
+    invert(${filter.invert})
+    saturate(${filter.saturation})
+    grayscale(${filter.grayscale})
+  `"></div>
 </template>
 
 <style lang="sass">

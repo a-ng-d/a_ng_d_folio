@@ -15,25 +15,25 @@ export const HSLColors = {
     hue: 340,
     saturation: 2,
     lightness: 30,
-    type: 'greyscale'
+    type: 'grayscale'
   },
   sandstone: {
     hue: 345,
     saturation: 2,
     lightness: 61,
-    type: 'greyscale'
+    type: 'grayscale'
   },
   clay: {
     hue: 3,
     saturation: 4,
     lightness: 78,
-    type: 'greyscale'
+    type: 'grayscale'
   },
   cream: {
     hue: 3,
     saturation: 14,
     lightness: 96,
-    type: 'greyscale'
+    type: 'grayscale'
   },
   creamySun: {
     hue: 49,
@@ -66,30 +66,35 @@ export const filters = {
     hue: '0deg',
     brightness: '1',
     invert: '0',
-    saturation: '.5'
+    saturation: '.5',
+    grayscale: '0%'
   },
   nightly: {
     hue: '20deg',
     brightness: '1',
     invert: '1',
-    saturation: '.3'
+    saturation: '.3',
+    grayscale: '0%'
   },
   candyFloss: {
     hue: '190deg',
     brightness: '1',
     invert: '0',
-    saturation: '.5'
+    saturation: '.5',
+    grayscale: '0%'
   },
   softWind: {
     hue: '120deg',
     brightness: '1',
     invert: '0',
-    saturation: '.3'
+    saturation: '.3',
+    grayscale: '0%'
   },
-  greyscale: {
+  grayscale: {
     hue: '0deg',
-    brightness: '1.25',
+    brightness: '1.5',
     invert: '0',
-    saturation: '0'
+    saturation: '1',
+    grayscale: '100%'
   }
 }

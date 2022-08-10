@@ -39,7 +39,7 @@ const router = createRouter({
         title: i18n.global.t('id.title'),
         view: 'ID',
         theme: 'DEFAULT',
-        filter: filters.greyscale,
+        filter: filters.grayscale,
         pov: 'RESET',
         quality: 'HIGH'
       }
@@ -77,7 +77,7 @@ const router = createRouter({
       meta: {
         title: i18n.global.t('work.title'),
         view: 'WORK',
-        filter: filters.greyscale,
+        filter: filters.grayscale,
         pov: 'BIRDEYE_3',
         quality: 'LOW'
       }
@@ -99,7 +99,7 @@ const router = createRouter({
         illustration: UCPAnimation,
         background: '#88EBF9',
         theme: 'DEFAULT',
-        filter: filters.greyscale,
+        filter: filters.grayscale,
         pov: 'BIRDEYE_1',
         quality: 'LOW'
       }
@@ -121,7 +121,7 @@ const router = createRouter({
         illustration: '/src/assets/images/_work/_jeprendsquoi/illustration.png',
         background: '#FFF',
         theme: 'DEFAULT',
-        filter: filters.greyscale,
+        filter: filters.grayscale,
         pov: 'BIRDEYE_2',
         quality: 'LOW'
       }
@@ -143,7 +143,7 @@ const router = createRouter({
         illustration: JBRAnimation,
         background: '#190038',
         theme: 'DARK',
-        filter: filters.greyscale,
+        filter: filters.grayscale,
         pov: 'BIRDEYE_3',
         quality: 'LOW'
       }
@@ -165,7 +165,7 @@ const router = createRouter({
         illustration: AIAnimation,
         background: '#23A566',
         theme: 'DARK',
-        filter: filters.greyscale,
+        filter: filters.grayscale,
         pov: 'BIRDEYE_4',
         quality: 'LOW'
       }
@@ -187,7 +187,7 @@ const router = createRouter({
         illustration: IWAnimation,
         background: '#001D5E',
         theme: 'DARK',
-        filter: filters.greyscale,
+        filter: filters.grayscale,
         pov: 'BIRDEYE_5',
         quality: 'LOW'
       }
@@ -231,7 +231,7 @@ const router = createRouter({
         title: i18n.global.t('attribution.title'),
         view: 'attribution',
         theme: 'DEFAULT',
-        filter: filters.softWind,
+        filter: filters.grayscale,
         pov: 'RESET',
         quality: 'HIGH'
       }
