@@ -47,11 +47,11 @@
       pov(to, from) {
         const actions = {
           RESET: () => this.glitchscape.povReset(),
-          BIRDEYE_1: () => this.glitchscape.povBirdEye(1),
-          BIRDEYE_2: () => this.glitchscape.povBirdEye(2),
-          BIRDEYE_3: () => this.glitchscape.povBirdEye(3),
-          BIRDEYE_4: () => this.glitchscape.povBirdEye(4),
-          BIRDEYE_5: () => this.glitchscape.povBirdEye(5),
+          MIRROR_1: () => this.glitchscape.povMirror(1),
+          MIRROR_2: () => this.glitchscape.povMirror(2),
+          MIRROR_3: () => this.glitchscape.povMirror(3),
+          MIRROR_4: () => this.glitchscape.povMirror(4),
+          MIRROR_5: () => this.glitchscape.povMirror(5),
           WISEEYE: () => this.glitchscape.povWiseEye(),
           GLOBAL: () => this.glitchscape.povGlobal(),
         }
@@ -598,8 +598,8 @@
           ]
         ), 100)
 
-        sk.povBirdEye = (increment) => setTimeout(() => pov.animate(
-          .1,
+        sk.povMirror = (increment) => setTimeout(() => pov.animate(
+          .05,
           [
             doMap(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
             -sk.height * 2,

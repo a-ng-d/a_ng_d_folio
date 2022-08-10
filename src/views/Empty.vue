@@ -41,33 +41,33 @@
           />
           <Button
             type="secondary"
-            label="Bird 1"
+            label="Mirror 1"
             :theme="theme"
-            @click="$emit('pov', 'BIRDEYE_1')"
+            @click="$emit('pov', 'MIRROR_1')"
           />
           <Button
             type="secondary"
-            label="Bird 2"
+            label="Mirror 2"
             :theme="theme"
-            @click="$emit('pov', 'BIRDEYE_2')"
+            @click="$emit('pov', 'MIRROR_2')"
           />
           <Button
             type="secondary"
-            label="Bird 3"
+            label="Mirror 3"
             :theme="theme"
-            @click="$emit('pov', 'BIRDEYE_3')"
+            @click="$emit('pov', 'MIRROR_3')"
           />
           <Button
             type="secondary"
-            label="Bird 4"
+            label="Mirror 4"
             :theme="theme"
-            @click="$emit('pov', 'BIRDEYE_4')"
+            @click="$emit('pov', 'MIRROR_4')"
           />
           <Button
             type="secondary"
-            label="Bird 5"
+            label="Mirror 5"
             :theme="theme"
-            @click="$emit('pov', 'BIRDEYE_5')"
+            @click="$emit('pov', 'MIRROR_5')"
           />
           <Button
             type="secondary"

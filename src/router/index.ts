@@ -78,7 +78,7 @@ const router = createRouter({
         title: i18n.global.t('work.title'),
         view: 'WORK',
         filter: filters.grayscale,
-        pov: 'BIRDEYE_3',
+        pov: 'MIRROR_3',
         quality: 'LOW'
       }
     },
@@ -100,7 +100,7 @@ const router = createRouter({
         background: filters._ui_color_palette,
         theme: 'DEFAULT',
         filter: filters.grayscale,
-        pov: 'BIRDEYE_1',
+        pov: 'MIRROR_1',
         quality: 'LOW'
       }
     },
@@ -122,7 +122,7 @@ const router = createRouter({
         background: filters.grayscale,
         theme: 'DEFAULT',
         filter: filters.grayscale,
-        pov: 'BIRDEYE_2',
+        pov: 'MIRROR_2',
         quality: 'LOW'
       }
     },
@@ -144,7 +144,7 @@ const router = createRouter({
         background: filters._jean_bobby_radio,
         theme: 'DARK',
         filter: filters.grayscale,
-        pov: 'BIRDEYE_3',
+        pov: 'MIRROR_3',
         quality: 'LOW'
       }
     },
@@ -166,7 +166,7 @@ const router = createRouter({
         background: filters._awesome_ipsums,
         theme: 'DARK',
         filter: filters.grayscale,
-        pov: 'BIRDEYE_4',
+        pov: 'MIRROR_4',
         quality: 'LOW'
       }
     },
@@ -188,7 +188,7 @@ const router = createRouter({
         background: filters._iobeya_whiteboard,
         theme: 'DARK',
         filter: filters.grayscale,
-        pov: 'BIRDEYE_5',
+        pov: 'MIRROR_5',
         quality: 'LOW'
       }
     },
@@ -245,7 +245,7 @@ const router = createRouter({
         view: 'EMPTY',
         theme: 'DEFAULT',
         filter: filters.creamySun,
-        pov: 'GLOBAL',
+        pov: 'RESET',
         quality: 'HIGH'
       }
     },
