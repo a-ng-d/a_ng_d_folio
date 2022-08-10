@@ -116,7 +116,7 @@
 
     &__actions
       display: flex
-      justify-content: space-between
+      justify-content: space-around
       gap: var(--spacing-xl-000)
 
   @include device.mobile-landscape
