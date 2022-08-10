@@ -585,15 +585,15 @@
 
         // Events
         sk.povReset = () => setTimeout(() => pov.animate(
-          .1,
+          .05,
           [
             0,
-            -sk.height * .5,
+            -sk.height * .75,
             -sk.height * .1
           ],
           [
             0,
-            -sk.height * .5,
+            -sk.height * .75,
             -limitZ
           ]
         ), 100)
@@ -602,13 +602,13 @@
           .05,
           [
             doMap(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
-            -sk.height * 2,
-            sk.height
+            sk.height * 2,
+            -sk.height * .1
           ],
           [
             doMap(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
-            0,
-            -limitZ * .5
+            sk.height * 2,
+            -limitZ
           ]
         ), 100)
 
@@ -616,8 +616,8 @@
           .05,
           [
             0,
-            -sk.height * 1,
-            0
+            -sk.height * .75,
+            -sk.height * .1
           ],
           [
             0,
@@ -627,11 +627,11 @@
         ), 100)
 
         sk.povGlobal = () => setTimeout(() => pov.animate(
-          .1,
+          .05,
           [
             0,
-            -sk.height * 4,
-            sk.height * 3
+            -sk.height * 10,
+            sk.height * 5
           ],
           [
             0,
