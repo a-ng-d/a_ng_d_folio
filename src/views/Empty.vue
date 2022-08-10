@@ -17,6 +17,12 @@
       return {
         filters : filters
       }
+    },
+    methods: {
+      changeParam(event, message) {
+        this.$emit(event, message)
+        setTimeout(() => this.$el.scrollTop = 0, 2000)
+      }
     }
   }
 </script>
@@ -31,13 +37,13 @@
             type="secondary"
             label="Reset"
             :theme="theme"
-            @click="$emit('pov', 'RESET')"
+            @click="changeParam('pov', 'RESET')"
           />
           <Button
             type="secondary"
             label="Don't look up"
             :theme="theme"
-            @click="$emit('pov', 'DONTLOOKUP')"
+            @click="changeParam('pov', 'DONTLOOKUP')"
           />
           <Button
             type="secondary"
@@ -49,31 +55,31 @@
             type="secondary"
             label="Mirror 2"
             :theme="theme"
-            @click="$emit('pov', 'MIRROR_2')"
+            @click="changeParam('pov', 'MIRROR_2')"
           />
           <Button
             type="secondary"
             label="Mirror 3"
             :theme="theme"
-            @click="$emit('pov', 'MIRROR_3')"
+            @click="changeParam('pov', 'MIRROR_3')"
           />
           <Button
             type="secondary"
             label="Mirror 4"
             :theme="theme"
-            @click="$emit('pov', 'MIRROR_4')"
+            @click="changeParam('pov', 'MIRROR_4')"
           />
           <Button
             type="secondary"
             label="Mirror 5"
             :theme="theme"
-            @click="$emit('pov', 'MIRROR_5')"
+            @click="changeParam('pov', 'MIRROR_5')"
           />
           <Button
             type="secondary"
             label="Global"
             :theme="theme"
-            @click="$emit('pov', 'GLOBAL')"
+            @click="changeParam('pov', 'GLOBAL')"
           />
         </div>
         <div class="empty__actions__row">
@@ -82,25 +88,25 @@
             type="secondary"
             label="High quality"
             :theme="theme"
-            @click="$emit('quality', 'HIGH')"
+            @click="changeParam('quality', 'HIGH')"
           />
           <Button
             type="secondary"
             label="Low quality"
             :theme="theme"
-            @click="$emit('quality', 'LOW')"
+            @click="changeParam('quality', 'LOW')"
           />
           <Button
             type="secondary"
             label="Glitch"
             :theme="theme"
-            @click="$emit('glitch', true)"
+            @click="changeParam('glitch', true)"
           />
           <Button
             type="secondary"
             label="Unglitch"
             :theme="theme"
-            @click="$emit('glitch', false)"
+            @click="changeParam('glitch', false)"
           />
         </div>
         <div class="empty__actions__row">
@@ -109,31 +115,31 @@
             type="secondary"
             label="Creamy sun"
             :theme="theme"
-            @click="$emit('filter', filters.creamySun)"
+            @click="changeParam('filter', filters.creamySun)"
           />
           <Button
             type="secondary"
             label="Soft wind"
             :theme="theme"
-            @click="$emit('filter', filters.softWind)"
+            @click="changeParam('filter', filters.softWind)"
           />
           <Button
             type="secondary"
             label="Candy floss"
             :theme="theme"
-            @click="$emit('filter', filters.candyFloss)"
+            @click="changeParam('filter', filters.candyFloss)"
           />
           <Button
             type="secondary"
             label="Grayscale"
             :theme="theme"
-            @click="$emit('filter', filters.grayscale)"
+            @click="changeParam('filter', filters.grayscale)"
           />
           <Button
             type="secondary"
             label="Nightly"
             :theme="theme"
-            @click="$emit('filter', filters.nightly)"
+            @click="changeParam('filter', filters.nightly)"
           />
         </div>
       </div>
