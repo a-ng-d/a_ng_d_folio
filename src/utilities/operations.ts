@@ -16,7 +16,11 @@ export const twoRangesRandom = (rangeLeftMin, rangeLeftMax, rangeRightMin, range
   return dicer
 }
 
-let timer, delta, velocity, currentPosition, snapPosition
+let timer,
+    delta = 0,
+    velocity = 0,
+    currentPosition = 0,
+    snapPosition = 0
 export const scrollVelocity = (target, child) => {
   const paddingLeft = parseFloat(window.getComputedStyle(target, null).getPropertyValue('padding-left')),
         paddingRight = parseFloat(window.getComputedStyle(target, null).getPropertyValue('padding-right')),
