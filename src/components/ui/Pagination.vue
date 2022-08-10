@@ -55,7 +55,7 @@
 
     &__label
       --text-label-space: 0
-      transition: all var(--duration-grandma) var(--ease-vroom)
+      transition: var(--grandma-transition)
 
   // Aspect
   .pagination
