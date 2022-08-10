@@ -68,7 +68,7 @@
       <Transition name="switch" mode="out-in">
         <Button
           v-if="view === 'UNIVERSE'"
-          type="secondary"
+          type="primary"
           :label="$t('global.back.home')"
           path="/"
           :layout="device != 'MOBILE' ? 'ICON-LEFT' : 'ICON-ONLY'"
