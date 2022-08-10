@@ -119,10 +119,10 @@ export const filters = {
     grayscale: '0%'
   },
   _awesome_ipsums: {
-    hue: '85deg',
+    hue: '82deg',
     brightness: '.7',
     invert: '0',
-    saturation: '1',
+    saturation: '.9',
     grayscale: '0%'
   },
   _iobeya_whiteboard: {
