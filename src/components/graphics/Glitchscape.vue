@@ -85,9 +85,9 @@
           colors = HSLColors,
           scrWidth = window.innerWidth,
           scrHeight = window.innerHeight,
-          limitX = scrWidth * 2.5,
+          limitX = scrWidth * 2,
           limitY = scrHeight * 10,
-          limitZ = scrHeight * 20
+          limitZ = scrHeight * 40
 
         let
           fps = 60,
@@ -502,9 +502,9 @@
           // particles setting
           for (let i = 0 ; i < mNumber ; i++)
             mountains.push(new Mountain({
-              widthRange: [sk.width * .25, sk.width],
-              heightRange: [-sk.height * 2, -sk.height * 3],
-              x: twoRangesRandom(-limitX, -sk.width * .75, sk.width * .75, limitX),
+              widthRange: [sk.width * 4, sk.width * 6],
+              heightRange: [-sk.height * 3, -sk.height * 5],
+              x: twoRangesRandom(-limitX, -sk.width *.75, sk.width *.75, limitX),
               y: sk.height * .5,
               zRange: [-limitZ, 0],
               foreground: colors.cream,
