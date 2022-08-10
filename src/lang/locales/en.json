@@ -6,7 +6,7 @@
     "id": "Resume",
     "work": "Selected work",
     "lab": "Shots lab",
-    "core": "Core values"
+    "core": "Story"
   },
   "footer": {
     "author": "Aurélien Grimaud aka nG⚡",
@@ -187,7 +187,7 @@
     "friendlyName": "@:universes.core.title",
     "intro": {
       "title": "nG_for_aurélien_grimaud_",
-      "subtitle": "{'You may find an echo 😉'}@:global.separator{'Watch my story by scrolling down'}@:global.separator{'Also for \"ENGINEER\", \"N-GIN\" (Crash Bandicoot on PS1), \"ENERGY\"'}"
+      "subtitle": "{'You may find an echo 😉'}@:global.separator{'Watch my story by scrolling down'}@:global.separator{'Also for \"ENGINEER\", \"N-GIN\" (Crash Bandicoot on PS1), \"ENERGY\"'}@:global.separator"
     },
     "productDesign": {
       "title": "_product_design",
@@ -219,7 +219,7 @@
     },
     "human": {
       "title": "_human_first",
-      "summary": "Where I would to work",
+      "summary": "What is important for me",
       "mission-1": "Care people with Healthtech",
       "mission-2": "Make education more accessible with Edutech",
       "mission-3": "Connect people with Collaborative economy"
@@ -233,7 +233,7 @@
     },
     "outro": {
       "title": "_that's_all!",
-      "retry": "Restart the story",
+      "retry": "Rewind the story",
       "id": "Read the brief summary"
     }
   },
