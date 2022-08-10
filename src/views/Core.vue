@@ -29,7 +29,8 @@
         perspective: 300,
         translation: 0,
         opacity: 1,
-        progress: 0
+        progress: 0,
+        remainingScroll: 0
       }
     },
     watch: {
@@ -48,12 +49,13 @@
     methods: {
       backToForeground() {
         let animateScroll
+        if (this.progress === 0) this.remainingScroll = this.scrollLimit - (this.scrollLimit - this.$el.scrollTop)
         this.progress += 0.01
-        this.$el.scrollTop = easeInOutCubic(this.progress, this.scrollLimit, -this.scrollLimit - 10, 5)
-        if (this.progress <= 5) animateScroll = requestAnimationFrame(this.backToForeground)
+        this.$el.scrollTop = easeInOutCubic(this.progress, this.remainingScroll, -this.remainingScroll - 10, 5)
+        if (this.progress <= 5 || this.$el.scrollTop > 1) animateScroll = requestAnimationFrame(this.backToForeground)
         else {
           cancelAnimationFrame(animateScroll)
-          this.progress = 0
+          this.progress = this.remainingScroll = 0
         }
       }
     },
