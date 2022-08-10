@@ -35,9 +35,9 @@
           />
           <Button
             type="secondary"
-            label="Wise"
+            label="Don't look up"
             :theme="theme"
-            @click="$emit('pov', 'WISEEYE')"
+            @click="$emit('pov', 'DONTLOOKUP')"
           />
           <Button
             type="secondary"

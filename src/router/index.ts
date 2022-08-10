@@ -53,7 +53,7 @@ const router = createRouter({
         view: 'UNIVERSE',
         theme: 'DARK',
         filter: filters.nightly,
-        pov: 'WISEEYE',
+        pov: 'DONTLOOKUP',
         quality: 'HIGH'
       }
     },

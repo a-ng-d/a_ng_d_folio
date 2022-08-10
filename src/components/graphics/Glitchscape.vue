@@ -52,7 +52,7 @@
           MIRROR_3: () => this.glitchscape.povMirror(3),
           MIRROR_4: () => this.glitchscape.povMirror(4),
           MIRROR_5: () => this.glitchscape.povMirror(5),
-          WISEEYE: () => this.glitchscape.povWiseEye(),
+          DONTLOOKUP: () => this.glitchscape.povDontLookUp(),
           GLOBAL: () => this.glitchscape.povGlobal(),
         }
         return actions[to]?.() ?? 'No POV matches'
@@ -612,8 +612,8 @@
           ]
         ), 100)
 
-        sk.povWiseEye = () => setTimeout(() => pov.animate(
-          .1,
+        sk.povDontLookUp = () => setTimeout(() => pov.animate(
+          .05,
           [
             0,
             -sk.height * 1,
