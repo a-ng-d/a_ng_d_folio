@@ -92,7 +92,7 @@ export const filters = {
   },
   grayscale: {
     hue: '0deg',
-    brightness: '1.5',
+    brightness: '1.1',
     invert: '0',
     saturation: '1',
     grayscale: '100%'
@@ -103,6 +103,13 @@ export const filters = {
     invert: '0',
     saturation: '.55',
     grayscale: '0%'
+  },
+  _jeprendsquoi: {
+    hue: '0deg',
+    brightness: '1.5',
+    invert: '0',
+    saturation: '1',
+    grayscale: '100%'
   },
   _jean_bobby_radio: {
     hue: '32deg',

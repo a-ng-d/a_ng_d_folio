@@ -119,7 +119,7 @@ const router = createRouter({
         position: 1,
         view: 'PROJECT',
         illustration: '/src/assets/images/_work/_jeprendsquoi/illustration.png',
-        background: filters.grayscale,
+        background: filters._jeprendsquoi,
         theme: 'DEFAULT',
         filter: filters.grayscale,
         pov: 'MIRROR_2',
