@@ -78,8 +78,8 @@
       this.glitchscape = new P5((sk) => {
 
         const
-          mNumber = 140,
-          cNumber = mNumber / 4,
+          mNumber = 40,
+          cNumber = mNumber / 2,
           sNumber = mNumber * 8,
           quality = 50,
           colors = HSLColors,
@@ -90,7 +90,7 @@
           limitZ = scrHeight * 20
 
         let
-          fps = 30,
+          fps = 60,
           speed = 2,
           alpha = 1,
           camera,
