@@ -540,7 +540,7 @@
 
         sk.draw = () => {
 
-          alpha = sk.lerp(alpha, .6, .01)
+          alpha = sk.lerp(alpha, .7, .01)
 
           sk.clear()
 
