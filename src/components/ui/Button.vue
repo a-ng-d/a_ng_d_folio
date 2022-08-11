@@ -112,16 +112,29 @@
 
   // Structure
   .button
+    --background-color: transparent
+
     display: flex
     align-items: stretch
     width: v-bind(isExtensible)
     height: var(--button-height-size)
     padding: 0
+    background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
     border-radius: calc(var(--button-height-size) / 2)
     border: var(--button-border-size) solid transparent
     transform-origin: center center
     box-shadow: 0 0 0 var(--border-size) var(--outline-color)
+    overflow: hidden
     transition: var(--simple-transition)
+
+    &:before
+      content: ''
+      background-color: var(--background-color)
+      width: 100%
+      height: 100%
+      position: absolute
+      top: 0
+      transition: var(--slow-transition)
 
     &__content
       display: flex
@@ -137,12 +150,29 @@
       justify-content: center
       align-items: center
       margin: calc(var(--button-border-size) * -1)
+      background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
       border-radius: calc(var(--button-height-size) / 2)
       border: var(--button-border-size) solid transparent
+      overflow: hidden
+
+      &--transparent
+        --background-color: transparent
+
+        background: transparent
+
+      &:before
+        content: ''
+        background-color: var(--background-color)
+        width: 100%
+        height: 100%
+        position: absolute
+        top: 0
+        transition: var(--slow-transition)
 
       &:deep(svg)
         width: var(--icon-size-regular)
         height: var(--icon-size-regular)
+        transition: var(--slow-transition)
 
     &__label
       display: flex
@@ -175,15 +205,9 @@
     --icon-color: var(--color-cream)
     --text-color: var(--color-cream)
     --outline-color: var(--color-soil)
-
-    background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
+    --background-color: var(--color-soil)
 
     .button__icon
-      background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
-
-      &--transparent
-        background: transparent
-
       &:deep(svg)
         stroke: var(--icon-color)
 
@@ -196,20 +220,13 @@
       .button__icon--transparent
         --icon-color: var(--color-soil)
 
-
   .button--primary[data-theme="DARK"]
     --icon-color: var(--color-soil)
     --text-color: var(--color-soil)
     --outline-color: var(--color-cream)
-
-    background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
+    --background-color: var(--color-cream)
 
     .button__icon
-      background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
-
-      &--transparent
-        background: transparent
-
       &:deep(svg)
         stroke: var(--icon-color)
 
@@ -221,15 +238,9 @@
     --icon-color: var(--color-soil)
     --text-color: var(--color-soil)
     --outline-color: var(--color-soil)
-
-    background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box, transparent
+    --background-color: var(--color-cream)
 
     .button__icon
-      background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
-
-      &--transparent
-        background: transparent
-
       &:deep(svg)
         stroke: var(--icon-color)
 
@@ -243,15 +254,9 @@
     --icon-color: var(--color-cream)
     --text-color: var(--color-cream)
     --outline-color: var(--color-cream)
-
-    background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box, transparent
+    --background-color: var(--color-soil)
 
     .button__icon
-      background: linear-gradient(var(--color-soil), var(--color-soil)) padding-box, var(--gradient-biscarosse-sunset) border-box
-
-      &--transparent
-        background: transparent
-
       &:deep(svg)
         stroke: var(--icon-color)
 
