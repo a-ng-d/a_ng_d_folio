@@ -79,7 +79,7 @@
           </template>
         </Button>
         <Button
-          v-else-if="view === 'WORK' || view === 'PROJECT' || view === 'LAB' || view === 'CORE'"
+          v-else-if="view != 'UNIVERSE' || view != 'HOME'"
           type="secondary"
           :label="$t('global.menu')"
           path="/_universe"
