@@ -49,7 +49,6 @@
         return actions[view] ?? 'var(--color-soil)'
       },
       opaqueBackground(view) {
-        console.log(view)
         const actions = {
           ID: 'var(--color-soft-wind)',
           CORE: 'var(--color-candy-floss)',
@@ -123,7 +122,6 @@
         </Button>
         <Pagination
           v-else-if="view === 'WORK'"
-
           :pages="projects"
           :activePage="activeProjectPosition"
           :theme="projects[activeProjectPosition].meta.theme"
