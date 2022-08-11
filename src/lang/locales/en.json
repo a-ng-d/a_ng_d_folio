@@ -11,19 +11,6 @@
     "attribution": "_Attribution",
     "archive": "_Ancient_work"
   },
-  "home": {
-    "author": "aurél/en_gr/maud_",
-    "baseline": "Fresh blend of  Creative technology, Product design  & Rogue-like love",
-    "id": "Resume",
-    "work": "Selected work",
-    "lab": "Shots lab",
-    "core": "Story"
-  },
-  "footer": {
-    "author": "Aurélien Grimaud aka nG⚡",
-    "license": "CC-BY {year}",
-    "attribution": "Attribution"
-  },
   "global": {
     "author": "nG⚡️ aka. Aurélien Grimaud",
     "separator": "・",
@@ -46,6 +33,19 @@
     "installations": "Installations",
     "credit": "Credit",
     "takeaways" : "Takeaways!"
+  },
+  "home": {
+    "author": "aurél/en_gr/maud_",
+    "baseline": "Fresh blend of  Creative technology, Product design  & Rogue-like love",
+    "id": "Resume",
+    "work": "Selected work",
+    "lab": "Shots lab",
+    "core": "Story"
+  },
+  "footer": {
+    "author": "Aurélien Grimaud aka nG⚡",
+    "license": "CC-BY {year}",
+    "attribution": "Attribution"
   },
   "id": {
     "title": "@:glossary.id@:global.separator@:global.author",
