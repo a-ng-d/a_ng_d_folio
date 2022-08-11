@@ -77,6 +77,12 @@
           />
           <Button
             type="secondary"
+            label="Side"
+            :theme="theme"
+            @click="changeParam('pov', 'SIDE')"
+          />
+          <Button
+            type="secondary"
             label="Global"
             :theme="theme"
             @click="changeParam('pov', 'GLOBAL')"

@@ -53,6 +53,7 @@
           MIRROR_4: () => this.glitchscape.povMirror(4),
           MIRROR_5: () => this.glitchscape.povMirror(5),
           DONTLOOKUP: () => this.glitchscape.povDontLookUp(),
+          SIDE: () => this.glitchscape.povSide(),
           GLOBAL: () => this.glitchscape.povGlobal(),
         }
         return actions[to]?.() ?? 'No POV matches'
@@ -421,6 +422,10 @@
               y: this.props.cY,
               z: this.props.cZ
             }
+            this.rotation = {
+              v: this.props.rV,
+              h: this.props.rH
+            }
             this.params = {
               target: {
                 position: {
@@ -432,6 +437,10 @@
                   x: 0,
                   y: 0,
                   z: 0
+                },
+                rotation: {
+                  v: 0,
+                  h: 0
                 }
               },
               progress: {
@@ -439,13 +448,12 @@
                 y: 0,
                 z: 0
               },
-              speed: 0,
-              isPushed: false,
-              isScrolling: false
+              speed: 0.1,
+              isPushed: false
             }
           }
 
-          animate = (speed, position, center) => {
+          animate = (speed, position, center, rotation) => {
             this.params.speed = speed
             this.params.target.position.x = position[0]
             this.params.target.position.y = position[1]
@@ -453,46 +461,42 @@
             this.params.target.center.x = center[0]
             this.params.target.center.y = center[1]
             this.params.target.center.z = center[2]
-            this.params.progress.x = 0
-            this.params.progress.y = 0
-            this.params.progress.z = 0
+            this.params.target.rotation.v = rotation[0]
+            this.params.target.rotation.h = rotation[1]
           }
 
           move = () => {
-            this.position.x = sk.lerp(this.position.x, this.params.progress.x == 0 ? this.params.target.position.x : this.params.progress.x, this.isScrolling ? 0.5 : this.params.speed)
-            this.position.y = sk.lerp(this.position.y, this.params.progress.y == 0 ? this.params.target.position.y : this.params.progress.y, this.isScrolling ? 0.5 : this.params.speed)
-            this.position.z = sk.lerp(this.position.z, this.params.progress.z == 0 ? this.params.target.position.z : this.params.progress.z, this.isScrolling ? 0.5 : this.params.speed)
+            this.position.x = sk.lerp(this.position.x, this.params.target.position.x, this.params.speed)
+            this.position.y = sk.lerp(this.position.y, this.params.target.position.y, this.params.speed)
+            this.position.z = sk.lerp(this.position.z, this.params.target.position.z, this.params.speed)
             this.center.x = sk.lerp(this.center.x, this.params.target.center.x, this.params.speed)
             this.center.y = sk.lerp(this.center.y, this.params.target.center.y, this.params.speed)
             this.center.z = sk.lerp(this.center.z, this.params.target.center.z, this.params.speed)
+            this.rotation.v = sk.lerp(this.rotation.v, this.params.target.rotation.v, this.params.speed)
+            this.rotation.h = sk.lerp(this.rotation.h, this.params.target.rotation.h, this.params.speed)
 
             if (this.params.isPushed) {
               this.position.x = sk.lerp(this.position.x, this.params.target.position.x + doMap(sk.mouseX, 0, sk.width, sk.width * .2, -sk.width * .2), .1)
               this.position.y = sk.lerp(this.position.y, this.params.target.position.y + doMap(sk.mouseY, 0, sk.height, sk.height * .2, -sk.height * .2), .1)
             }
-
-            this.isScrolling = false
           }
 
           push = () => this.params.isPushed = true
 
-          zoom = (scrollPosition, scrollLimit) => {
-            this.isScrolling = true
-            this.params.progress.x = doMap(scrollPosition, 0, scrollLimit, this.params.target.position.x, this.params.target.center.x)
-            this.params.progress.y = doMap(scrollPosition, 0, scrollLimit, this.params.target.position.y, this.params.target.center.y)
-            this.params.progress.z = doMap(scrollPosition, 0, scrollLimit, this.params.target.position.z, this.params.target.center.z)
-          }
+          zoom = (scrollPosition, scrollLimit) => this.params.progress.z = doMap(scrollPosition, 0, scrollLimit, 0, this.params.target.center.z)
 
         }
 
         // Sketch
         let pov = new Pov({
           x: 0,
-          y: -window.innerHeight * .2,
-          z: -window.innerHeight * 2,
+          y: -window.innerHeight * .75,
+          z: -limitZ,
           cX: 0,
-          cY: 0,
-          cZ: -window.innerHeight * 4
+          cY: -window.innerHeight * .75,
+          cZ: -limitZ,
+          rH: 0,
+          rV: 0
         })
 
         sk.setup = () => {
@@ -562,7 +566,10 @@
             pov.center.y,
             pov.center.z
           )
-          camera.perspective(sk.PI / 5, sk.width / sk.height, 10, limitZ * 2)
+          camera.perspective(Math.PI / 3, sk.width / sk.height, 100, limitZ * 2)
+          camera.pan(pov.rotation.v)
+          camera.tilt(pov.rotation.h)
+          camera.move(0, 0, pov.params.progress.z)
 
           // mountains
           mountains.forEach(mountain => mountain.move())
@@ -594,6 +601,10 @@
             0,
             -sk.height * .75,
             -limitZ
+          ],
+          [
+            0,
+            0
           ]
         ), 100)
 
@@ -601,13 +612,17 @@
           .05,
           [
             doMap(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
-            sk.height * 2,
+            sk.height * 5,
             -sk.height * .1
           ],
           [
             doMap(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
-            sk.height * 2,
+            sk.height * .75,
             -limitZ
+          ],
+          [
+            0,
+            0
           ]
         ), 100)
 
@@ -615,13 +630,35 @@
           .05,
           [
             0,
-            -sk.height * .75,
+            -sk.height * 2,
             -sk.height * .1
           ],
           [
             0,
             -sk.height * 10,
             -limitZ * .5
+          ],
+          [
+            0,
+            0
+          ]
+        ), 100)
+
+        sk.povSide = () => setTimeout(() => pov.animate(
+          .05,
+          [
+            limitX * 4,
+            -sk.height * .75,
+            -limitZ * .5
+          ],
+          [
+            limitX * 4,
+            -sk.height * .75,
+            -limitZ
+          ],
+          [
+            Math.PI / 2,
+            0
           ]
         ), 100)
 
@@ -636,6 +673,10 @@
             0,
             -sk.height * .1,
             -limitZ * .5
+          ],
+          [
+            0,
+            0
           ]
         ), 100)
 

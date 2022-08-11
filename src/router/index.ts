@@ -202,7 +202,7 @@ const router = createRouter({
         view: 'LAB',
         theme: 'DEFAULT',
         filter: filters.softWind,
-        pov: 'RESET',
+        pov: 'SIDE',
         quality: 'HIGH'
       }
     },
