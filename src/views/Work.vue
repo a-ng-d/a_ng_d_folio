@@ -142,13 +142,12 @@
             </Transition>
           </ul>
         </div>
-        <div class="work__summary__actions">
-          <Transition name="switch" mode="out-in" :duration="duration" style="--delay: 0ms" appear>
+        <Transition name="slide-right" :duration="duration * 2" mode="out-in" appear>
+          <div class="work__summary__actions">
             <Button
-              v-if="theme === 'DEFAULT'"
               type="secondary"
               layout="ICON-ONLY"
-              :theme="theme"
+              :theme="projects[activeProjectPosition].meta.theme"
               @click="previousProject"
             >
               <template #icon>
@@ -156,68 +155,28 @@
               </template>
             </Button>
             <Button
-              v-else-if="theme === 'DARK'"
-              type="secondary"
-              layout="ICON-ONLY"
-              :theme="theme"
-              @click="previousProject"
-            >
-              <template #icon>
-                <ArrowLeft :size="24" />
-              </template>
-            </Button>
-          </Transition>
-          <Transition name="switch" mode="out-in" :duration="duration" style="--delay: 100ms" appear>
-            <Button
-              v-if="theme === 'DEFAULT'"
               type="primary"
               :label="$t('global.go')"
               :path="`/_work/${activeProjectCodeName}`"
               layout="ICON-LEFT"
-              :theme="theme"
+              :theme="projects[activeProjectPosition].meta.theme"
             >
               <template #icon>
                 <ArrowDown :size="24" />
               </template>
             </Button>
             <Button
-              v-else-if="theme === 'DARK'"
-              type="primary"
-              :label="$t('global.go')"
-              :path="`/_work/${activeProjectCodeName}`"
-              layout="ICON-LEFT"
-              :theme="theme"
-            >
-              <template #icon>
-                <ArrowDown :size="24" />
-              </template>
-            </Button>
-          </Transition>
-          <Transition name="switch" mode="out-in" :duration="duration" style="--delay: 200ms" appear>
-            <Button
-              v-if="theme === 'DEFAULT'"
               type="secondary"
               layout="ICON-ONLY"
-              :theme="theme"
+              :theme="projects[activeProjectPosition].meta.theme"
               @click="nextProject"
             >
               <template #icon>
                 <ArrowRight :size="24" />
               </template>
             </Button>
-            <Button
-              v-else-if="theme === 'DARK'"
-              type="secondary"
-              layout="ICON-ONLY"
-              :theme="theme"
-              @click="nextProject"
-            >
-              <template #icon>
-                <ArrowRight :size="24" />
-              </template>
-            </Button>
-          </Transition>
-        </div>
+          </div>
+        </Transition>
       </aside>
     </section>
     <Transition name="pull-up" style="--delay: var(--delay-turtoise)" appear>
@@ -283,6 +242,9 @@
       &__actions
         display: flex
         gap: 0 var(--layout-column-gap)
+
+        a:nth-child(2)
+          flex: 1
 
     &__title
       display: flex
