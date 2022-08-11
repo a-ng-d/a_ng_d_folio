@@ -57,6 +57,13 @@
         }
         return actions[view] ?? 'transparent'
       },
+      changeUniverseButtonTheme(view) {
+
+        const actions = {
+          WORK: this.projects[this.activeProjectPosition].meta.theme,
+        }
+        return actions[view] ?? 'DEFAULT'
+      },
       previousProject() {
         return this.projects[this.activeProjectPosition - 1 >= 0 ? this.activeProjectPosition - 1 : this.projects.length - 1].path
       },
@@ -93,7 +100,7 @@
           :label="$t('global.menu')"
           path="/_universe"
           :layout="device != 'MOBILE' ? 'ICON-LEFT' : 'ICON-ONLY'"
-          theme="DEFAULT"
+          :theme="changeUniverseButtonTheme(view)"
         >
           <template #icon>
             <Rocket :size="24" />
