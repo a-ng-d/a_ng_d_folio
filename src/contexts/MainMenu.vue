@@ -48,6 +48,15 @@
         }
         return actions[view] ?? 'var(--color-soil)'
       },
+      opaqueBackground(view) {
+        console.log(view)
+        const actions = {
+          ID: 'var(--color-soft-wind)',
+          CORE: 'var(--color-candy-floss)',
+          PROJECT: 'var(--color-cream)'
+        }
+        return actions[view] ?? 'transparent'
+      },
       previousProject() {
         return this.projects[this.activeProjectPosition - 1 >= 0 ? this.activeProjectPosition - 1 : this.projects.length - 1].path
       },
@@ -61,7 +70,7 @@
 <template>
   <Header
     :logotypeColor="changeLogotypeColor(view)"
-    :background="view === 'PROJECT' ? 'var(--color-cream)' : 'transparent'"
+    :background="opaqueBackground(view)"
     :scrollProgress="scrollProgress"
   >
     <template #left-part>
