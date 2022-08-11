@@ -701,7 +701,7 @@
     z-index: 0
     top: 0
     background-image: var(--gradient-biscarosse-sunset)
-    mix-blend-mode: multiply
+    mix-blend-mode: color
 
   .background
     width: 100vw
