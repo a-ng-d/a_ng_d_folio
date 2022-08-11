@@ -58,7 +58,7 @@
     gap: var(--layout-section-gap)
     align-items: center
     justify-content: space-between
-    transition: var(--simple-transition)
+    transition: var(--slow-transition)
 
     &__right-part,
     &__left-part
