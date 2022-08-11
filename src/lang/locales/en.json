@@ -198,8 +198,15 @@
     "title": "@:glossary.core@:global.separator@:global.author",
     "friendlyName": "@:glossary.core",
     "intro": {
-      "title": "nG_for_aurélien_grimaud_",
+      "title": "@:glossary.core",
       "subtitle": "{'You may find an echo 😉'}@:global.separator{'Watch my story by scrolling down'}@:global.separator{'Also for \"ENGINEER\", \"N-GIN\" (Crash Bandicoot on PS1), \"ENERGY\"'}@:global.separator"
+    },
+    "personal": {
+      "title": "_ng_for_aurélien_grimaud",
+      "summary": "My core values",
+      "mission-1": "Product and technology enthousiast",
+      "mission-2": "Energy Transition supporter",
+      "mission-3": "People potential enabler"
     },
     "productDesign": {
       "title": "_product_design",
@@ -210,8 +217,8 @@
     },
     "creativeTechnology": {
       "title": "_creative_technology",
-      "summary": "What I extend to enhance my mission",
-      "mission-1": "Create high-fidelity prototype",
+      "summary": "What I extend to achieve my mission",
+      "mission-1": "Create very high-fidelity prototype",
       "mission-2": "Unleash personality through UI",
       "mission-3": "Industrialize design through an organization"
     },

@@ -101,6 +101,25 @@
       <section class="story__stop">
         <div class="story__content" :class="section === 'section-2' ? 'story__content--centered' : null">
           <div class="story__content--order-1">
+            <h1>{{ $t('core.personal.title') }}</h1>
+          </div>
+          <div class="story__content--order-2">
+            <h3>{{ $t('core.personal.summary') }}</h3>
+          </div>
+          <div class="story__content--order-3">
+            <h6>{{ $t('core.personal.mission-1') }}</h6>
+          </div>
+          <div class="story__content--order-4">
+            <h6>{{ $t('core.personal.mission-2') }}</h6>
+          </div>
+          <div class="story__content--order-5">
+            <h6>{{ $t('core.personal.mission-3') }}</h6>
+          </div>
+        </div>
+      </section>
+      <section class="story__stop">
+        <div class="story__content" :class="section === 'section-3' ? 'story__content--centered' : null">
+          <div class="story__content--order-1">
             <h1>{{ $t('core.productDesign.title') }}</h1>
           </div>
           <div class="story__content--order-2">
@@ -118,7 +137,7 @@
         </div>
       </section>
       <section class="story__stop">
-        <div class="story__content" :class="section === 'section-3' ? 'story__content--centered' : null">
+        <div class="story__content" :class="section === 'section-4' ? 'story__content--centered' : null">
           <div class="story__content--order-1">
             <h1>{{ $t('core.creativeTechnology.title') }}</h1>
           </div>
@@ -137,7 +156,7 @@
         </div>
       </section>
       <section class="story__stop">
-        <div class="story__content" :class="section === 'section-4' ? 'story__content--centered' : null">
+        <div class="story__content" :class="section === 'section-5' ? 'story__content--centered' : null">
           <div class="story__content--order-1">
             <h1>{{ $t('core.facilitation.title') }}</h1>
           </div>
@@ -156,7 +175,7 @@
         </div>
       </section>
       <section class="story__stop">
-        <div class="story__content" :class="section === 'section-5' ? 'story__content--centered' : null">
+        <div class="story__content" :class="section === 'section-6' ? 'story__content--centered' : null">
           <div class="story__content--order-1">
             <h1>{{ $t('core.communication.title') }}</h1>
           </div>
@@ -175,7 +194,7 @@
         </div>
       </section>
       <section class="story__stop">
-        <div class="story__content" :class="section === 'section-6' ? 'story__content--centered' : null">
+        <div class="story__content" :class="section === 'section-7' ? 'story__content--centered' : null">
           <div class="story__content--order-1">
             <h1>{{ $t('core.human.title') }}</h1>
           </div>
@@ -194,7 +213,7 @@
         </div>
       </section>
       <section class="story__stop">
-        <div class="story__content" :class="section === 'section-7' ? 'story__content--centered' : null">
+        <div class="story__content" :class="section === 'section-8' ? 'story__content--centered' : null">
           <div class="story__content--order-1">
             <h1>{{ $t('core.extra.title') }}</h1>
           </div>
@@ -213,7 +232,7 @@
         </div>
       </section>
       <section class="story__outro">
-        <div class="story__content" :class="section === 'section-8' ? 'story__content--centered' : null">
+        <div class="story__content" :class="section === 'section-9' ? 'story__content--centered' : null">
           <div class="story__content--outro">
             <h1>{{ $t('core.outro.title') }}</h1>
             <Button
