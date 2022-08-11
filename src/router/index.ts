@@ -7,6 +7,7 @@ import Universe from '../views/Universe.vue'
 import Work from '../views/Work.vue'
 import Project from '../views/Project.vue'
 import Lab from '../views/Lab.vue'
+import Contact from '../views/Contact.vue'
 import Attribution from '../views/Attribution.vue'
 import Empty from '../views/Empty.vue'
 import JBRAnimation from '@/assets/images/_work/_jean_bobby_radio/animation.json'
@@ -208,9 +209,14 @@ const router = createRouter({
     {
       path: '/_contact',
       name: '_CONTACT',
-      component: Home,
+      component: Contact,
       meta: {
-        view: 'contact'
+        title: i18n.global.t('contact.title'),
+        view: 'CONTACT',
+        theme: 'DEFAULT',
+        filter: filters.grayscale,
+        pov: 'RESET',
+        quality: 'HIGH'
       }
     },
     {

@@ -7,7 +7,7 @@
     "work": "_Selected_work",
     "lab": "_Shots_lab",
     "id": "_Id_card",
-    "contact": "_Contact_me",
+    "contact": "_Tell_me_hello",
     "attribution": "_Attribution",
     "archive": "_Ancient_work"
   },
@@ -185,8 +185,8 @@
       "description": "Doing differently is a real leitmotiv. Experimentation doesn’t scare me because I always look for a personal vision for the future."
     },
     "contact": {
-      "title": "_Contact_me",
-      "description": "Send a word or a feedback"
+      "title": "@:glossary.contact",
+      "description": "Product designer + Teacher － Send me a feedback or a request."
     },
     "archive": {
       "title": "@:glossary.archive",
@@ -496,7 +496,10 @@
     "title": "@:glossary.lab@:global.separator@:global.author"
   },
   "contact": {
-    "title": "@:glossary.contact@:global.separator@:global.author"
+    "title": "@:glossary.contact@:global.separator@:global.author",
+    "friendlyName": "@:glossary.contact",
+    "description": "Currently working in a company as a Lead Product Designer, I feel free to share my knowledge by teaching young designers/students design + code. Available on demand to give a talk or facilitate a workshop.",
+    "email": "Send me an email"
   },
   "attribution": {
     "title": "@:glossary.attribution@:global.separator@:global.author",
