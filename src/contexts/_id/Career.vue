@@ -32,7 +32,7 @@
         <Button
           type="secondary"
           :label="$t('id.career.resume')"
-          path="/_resume"
+          path="https://linkedin.com/in/augrimaud"
           layout="ICON-LEFT"
           extensible
           :theme="theme"
@@ -46,7 +46,7 @@
         <Button
           type="secondary"
           :label="$t('id.career.linkedIn')"
-          path="/_linkedin"
+          path="https://linkedin.com/in/augrimaud"
           layout="ICON-LEFT"
           extensible
           :theme="theme"
@@ -60,13 +60,15 @@
     <OneColumn>
       <template #plain>
         <div>
-          <h5>
-            <span>{{ $t("id.career.ecv.start") }}</span>
-            <span>{{ $t("global.separator") }}</span>
-            <span>{{ $t("id.career.ecv.end") }}</span>
-          </h5>
-          <h4>{{ $t("id.career.ecv.title") }}</h4>
-          <p>{{ $t("id.career.ecv.label") }}</p>
+          <div>
+            <h5>
+              <span>{{ $t("id.career.ecv.start") }}</span>
+              <span>{{ $t("global.separator") }}</span>
+              <span>{{ $t("id.career.ecv.end") }}</span>
+            </h5>
+            <h4>{{ $t("id.career.ecv.title") }}</h4>
+            <p>{{ $t("id.career.ecv.label") }}</p>
+          </div>
         </div>
         <div>
           <div>
@@ -108,6 +110,11 @@
 </template>
 
 <style scoped lang="sass">
-  .col-1__content > div > div + div
-    margin: var(--layout-column-gap) 0 0
+  .col-1__content > div
+    display: flex
+    flex-flow: column nowrap
+    gap: var(--layout-row-gap) 0
+
+  .col-1__content h5
+    margin: 0 0 var(--layout-label-gap)
 </style>
