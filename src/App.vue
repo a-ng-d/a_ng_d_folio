@@ -5,6 +5,7 @@
   import MainMenu from '@/contexts/MainMenu.vue'
   import Glitchscape from '@/components/graphics/Glitchscape.vue'
   import Particles from '@/components/graphics/Particles.vue'
+  import { doMap, scrollVelocity } from '@/utilities/operations'
 
   export default {
     name: 'App',
@@ -30,7 +31,8 @@
         isExpanded: false,
         isHardTransited: false,
         activeProjectPosition: 0,
-        numberOfProjects: NaN
+        numberOfProjects: NaN,
+        multiplier: 1
       }
     },
     watch: {
@@ -113,6 +115,7 @@
         this.pageHeight = e.target.scrollHeight
         this.scrollProgress = e.target.scrollTop
         this.viewHeight = document.body.clientHeight
+        this.multiplier = doMap(scrollVelocity(e.target, this.pageHeight - this.viewHeight, 'y'), 1, 1.5, 1, 4)
       },
       resetDelay(e) {
         e.style.transitionDelay = '0'
