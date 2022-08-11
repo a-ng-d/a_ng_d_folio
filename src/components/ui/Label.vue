@@ -33,6 +33,7 @@ export default {
 
     span
       z-index: 1
+      transition: var(--slow-transition)
 
     &[data-underlined="true"]
       &:after
