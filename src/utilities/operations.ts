@@ -21,21 +21,17 @@ let timer,
     velocity = 0,
     currentPosition = 0,
     snapPosition = 0
-export const scrollVelocity = (target, child) => {
-  const paddingLeft = parseFloat(window.getComputedStyle(target, null).getPropertyValue('padding-left')),
-        paddingRight = parseFloat(window.getComputedStyle(target, null).getPropertyValue('padding-right')),
-        maxScroll = Math.floor(child.clientWidth - target.clientWidth + paddingLeft + paddingRight)
-
+export const scrollVelocity = (target, scrollLimit, orientation) => {
   velocity = 1
   delta = 0
-  currentPosition = target.scrollLeft
+  currentPosition =  orientation === 'y' ? target.scrollTop : target.scrollLeft
   clearTimeout(timer)
   timer = setInterval(() => {
-    snapPosition = target.scrollLeft
+    snapPosition = orientation === 'y' ? target.scrollTop : target.scrollLeft
   }, 10)
   delta = Math.abs(currentPosition - snapPosition)
   currentPosition == 0 ? velocity = 1 :
-                         currentPosition > maxScroll - 1 ? velocity = 1 :
+                         currentPosition > scrollLimit - 1 ? velocity = 1 :
                          velocity = doMap(delta, 1, 400, 1, 1.5)
 
   return velocity

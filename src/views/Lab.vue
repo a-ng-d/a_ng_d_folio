@@ -79,7 +79,7 @@
     },
     methods: {
       smoothScroll(e) {
-        this.scrollParams.velocity = scrollVelocity(e.target, e.target.children[0])
+        this.scrollParams.velocity = scrollVelocity(e.target, e.target.scrollWidth - document.body.clientWidth, 'x')
         this.scrollParams.gap = doMap(this.scrollParams.velocity, 1, 1.5, 1, 4)
       }
     }
