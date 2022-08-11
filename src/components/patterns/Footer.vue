@@ -69,10 +69,11 @@
       padding: calc(var(--footer-tag-height-size) / 4) calc(var(--footer-tag-height-size) / 2)
       color: var(--text-color)
       background-color: var(--background-color)
+      transition: var(--slow-transition)
 
       &__content, &__link, .label
         @include text.caption
-        transition: var(--simple-transition)
+        transition: var(--slow-transition)
 
       .label
         &:after
