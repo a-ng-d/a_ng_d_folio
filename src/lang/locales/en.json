@@ -1,5 +1,16 @@
 {
   "title": "@:global.author@:global.separator{'Senior Product Designer & Creative Technologist'}",
+  "glossary": {
+    "home": "",
+    "universe": "_Universe",
+    "core": "_Core_values",
+    "work": "_Selected_work",
+    "lab": "_Shots_lab",
+    "id": "_Id_card",
+    "contact": "_Contact_me",
+    "attribution": "_Attribution",
+    "archive": "_Ancient_work"
+  },
   "home": {
     "author": "aurél/en_gr/maud_",
     "baseline": "Fresh blend of  Creative technology, Product design  & Rogue-like love",
@@ -37,7 +48,7 @@
     "takeaways" : "Takeaways!"
   },
   "id": {
-    "title": "_ID_card@:global.separator@:global.author",
+    "title": "@:glossary.id@:global.separator@:global.author",
     "about": {
       "title": "你好 nǐ hǎo!",
       "experience": "I’m Aurélien all over the world or 立安 lì ān in China. Currently Product designer at <span class='label' data-highlighted='true'>iObeya</span> for {year} years and an UI + </code> enthousiast.",
@@ -160,17 +171,17 @@
     }
   },
   "universe": {
-    "title": "_Universe@:global.separator@:global.author",
+    "title": "@:glossary.universe@:global.separator@:global.author",
     "core": {
-      "title": "_Core_values",
+      "title": "@:glossary.core",
       "description": "My adventure as a Product Designer at iObeya teach me what I really love to do and what I really want to keep doing during my career."
     },
     "work": {
-      "title": "_Selected_work",
+      "title": "_@:glossary.work",
       "description": "As a night owl, and afterwork, I dedicated my time into developing side-projects to change people mindset by using product design."
     },
     "lab": {
-      "title": "_Shots_Lab",
+      "title": "@:glossary.lab",
       "description": "Doing differently is a real leitmotiv. Experimentation doesn’t scare me because I always look for a personal vision for the future."
     },
     "contact": {
@@ -178,13 +189,13 @@
       "description": "Send a word or a feedback"
     },
     "archive": {
-      "title": "_Archive",
+      "title": "@:glossary.archive",
       "description": "Watch my creative work before iObeya"
     }
   },
   "core": {
-    "title": "@:universe.core.title@:global.separator@:global.author",
-    "friendlyName": "@:universe.core.title",
+    "title": "@:glossary.core@:global.separator@:global.author",
+    "friendlyName": "@:glossary.core",
     "intro": {
       "title": "nG_for_aurélien_grimaud_",
       "subtitle": "{'You may find an echo 😉'}@:global.separator{'Watch my story by scrolling down'}@:global.separator{'Also for \"ENGINEER\", \"N-GIN\" (Crash Bandicoot on PS1), \"ENERGY\"'}@:global.separator"
@@ -238,8 +249,8 @@
     }
   },
   "work": {
-    "title": "@:universe.work.title@:global.separator@:global.author",
-    "friendlyName": "@:universe.work.title",
+    "title": "@:glossary.work@:global.separator@:global.author",
+    "friendlyName": "@:glossary.work",
     "_ui_color_palette": {
       "title": "@:work._ui_color_palette.shortTitle@:global.separator@:global.author",
       "shortTitle": "_ui_color_palette",
@@ -482,11 +493,13 @@
     }
   },
   "lab": {
-    "title": "@:universe.lab.title@:global.separator@:global.author"
+    "title": "@:glossary.lab@:global.separator@:global.author"
+  },
+  "contact": {
+    "title": "@:glossary.contact@:global.separator@:global.author"
   },
   "attribution": {
-    "title": "Attribution@:global.separator@:global.author",
-    "back": "",
+    "title": "@:glossary.attribution@:global.separator@:global.author",
     "ui": {
       "title": "User Interface assets",
       "link-1": {
