@@ -599,7 +599,7 @@
               widthRange: [sk.width * .25, sk.width],
               heightRange: [-sk.height * .05, -sk.height * .1],
               x: random(-limitX, limitX),
-              y: random(-sk.height * .2, -sk.height * .8),
+              y: random(-sk.height * .5, -sk.height * 1.5),
               zRange: [-limitZ, 0],
               rows: sk.int(random(3, 5)),
               foreground: HSLColors.clay,
