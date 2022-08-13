@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import Button from '@/components/ui/Button.vue'
   import ScrollingText from '@/components/ui/ScrollingText.vue'
   import Footer from '@/components/patterns/Footer.vue'
@@ -6,7 +7,7 @@
   import { doMap } from '@/utilities/operations'
   import { easeInOutExpo, easeInOutCubic } from '@/utilities/easings'
 
-  export default {
+  export default defineComponent({
     name: 'Core',
     components: {
       Button,
@@ -24,7 +25,7 @@
     },
     data: function() {
       return {
-        triggers: [],
+        triggers: [] as Array<any>,
         section: 'section-1',
         perspective: 300,
         translation: 0,
@@ -48,8 +49,8 @@
     },
     methods: {
       backToForeground() {
-        let animateScroll
-        if (this.progress === 0) this.remainingScroll = this.scrollLimit - (this.scrollLimit - this.$el.scrollTop)
+        let animateScroll: any
+        if (this.progress === 0) this.remainingScroll = (this.scrollLimit as number) - ((this.scrollLimit as number) - this.$el.scrollTop)
         this.progress += 0.01
         this.$el.scrollTop = easeInOutCubic(this.progress, this.remainingScroll, -this.remainingScroll - 10, 5)
         if (this.progress <= 5 || this.$el.scrollTop > 1) animateScroll = requestAnimationFrame(this.backToForeground)
@@ -60,18 +61,17 @@
       }
     },
     mounted: function() {
-      const triggers = this.$el.children[0].children
-      triggers.forEach(trigger => {
-        this.triggers.push({
-          element: trigger,
-          top: trigger.offsetTop,
-          bottom: trigger.offsetTop + trigger.offsetHeight,
-          middle: trigger.offsetTop + trigger.offsetHeight * .5,
-          height: trigger.offsetHeight
-        })
+      this.triggers = this.$el.children[0].children.map((child: any) => {
+        return {
+          element: child,
+          top: child.offsetTop,
+          bottom: child.offsetTop + child.offsetHeight,
+          middle: child.offsetTop + child.offsetHeight * .5,
+          height: child.offsetHeight
+        }
       })
     }
-  }
+  })
 </script>
 
 <template>

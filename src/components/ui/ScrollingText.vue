@@ -1,5 +1,7 @@
 <script lang="ts">
-  export default {
+  import { defineComponent } from 'vue'
+
+  export default defineComponent({
     name: 'ScrollingText',
     props: {
       label: {
@@ -19,7 +21,7 @@
         default: 'DEFAULT'
       }
     }
-  }
+  })
 </script>
 
 <template>

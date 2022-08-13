@@ -1,8 +1,9 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
 
-  export default {
+  export default defineComponent({
     name: 'Talks',
     components: {
       OneColumn,
@@ -19,7 +20,7 @@
         links: ['link-1', 'link-2']
       }
     }
-  }
+  })
 </script>
 
 <template>

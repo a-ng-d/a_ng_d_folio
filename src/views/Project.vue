@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import ScrollingText from '@/components/ui/ScrollingText.vue'
@@ -11,7 +12,7 @@
   import _awesome_ipsums from '@/contexts/_work/_awesome_ipsums.vue'
   import _iobeya_whiteboard from '@/contexts/_work/_iobeya_whiteboard.vue'
 
-  export default {
+  export default defineComponent({
     name: 'Project',
     components: {
       Footer,
@@ -27,7 +28,10 @@
       _iobeya_whiteboard
     },
     props: {
-      project: Object,
+      project: {
+        type: Object,
+        required: true
+      },
       scrollProgress: Number,
       scrollLimit: Number,
       theme: {
@@ -35,7 +39,7 @@
         default: 'DEFAULT'
       }
     }
-  }
+  })
 </script>
 
 <template>

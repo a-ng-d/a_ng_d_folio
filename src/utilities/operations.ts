@@ -1,27 +1,27 @@
-export const doMap = (value, oldMin, oldMax, newMin, newMax) => {
+export const doMap = (value: number, oldMin: number, oldMax: number, newMin: number, newMax: number) => {
   const oldRange = oldMax - oldMin,
         newRange = newMax - newMin
 
   return ((value - oldMin) * newRange / oldRange) + newMin
 }
 
-export const random = (min, max) => Math.floor(Math.random() * (max - min)) + min
+export const random = (min: number, max: number) => Math.floor(Math.random() * (max - min)) + min
 
-export const twoRangesRandom = (rangeLeftMin, rangeLeftMax, rangeRightMin, rangeRightMax) => {
-  const randomLeft = random(rangeLeftMin, rangeLeftMax),
-        randomRight = random(rangeRightMin, rangeRightMax),
-        dice = Math.random()
+export const twoRangesRandom = (rangeLeftMin: number, rangeLeftMax: number, rangeRightMin: number, rangeRightMax: number) => {
+  const randomLeft: number = random(rangeLeftMin, rangeLeftMax),
+        randomRight: number = random(rangeRightMin, rangeRightMax),
+        dice: number = Math.random()
 
-  const dicer = dice < .5 ? randomLeft : randomRight
+  const dicer: number = dice < .5 ? randomLeft : randomRight
   return dicer
 }
 
-let timer,
-    delta = 0,
-    velocity = 0,
-    currentPosition = 0,
-    snapPosition = 0
-export const scrollVelocity = (target, scrollLimit, orientation) => {
+let timer: any,
+    delta: number = 0,
+    velocity: number = 0,
+    currentPosition: number = 0,
+    snapPosition: number = 0
+export const scrollVelocity = (target: any, scrollLimit: number, orientation: string) => {
   velocity = 1
   delta = 0
   currentPosition =  orientation === 'y' ? target.scrollTop : target.scrollLeft

@@ -1,9 +1,10 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import RichExternalLink from '@/components/ui/RichExternalLink.vue'
   import { Twitter, Dribbble, BookOpen, Codepen, Github } from 'lucide-vue-next'
 
-  export default {
+  export default defineComponent({
     name: 'Networks',
     components: {
       WrapColumn,
@@ -51,7 +52,7 @@
         ]
       }
     }
-  }
+  })
 </script>
 
 <template>

@@ -1,10 +1,11 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import ScrollingText from '@/components/ui/ScrollingText.vue'
   import { Mail } from 'lucide-vue-next'
 
-  export default {
+  export default defineComponent({
     name: 'Contact',
     components: {
       Footer,
@@ -18,7 +19,7 @@
         default: 'DEFAULT'
       }
     }
-  }
+  })
 </script>
 
 <template>

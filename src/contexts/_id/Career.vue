@@ -1,10 +1,11 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import TwoColumns from '@/components/layouts/TwoColumns.vue'
   import Button from '@/components/ui/Button.vue'
   import { Linkedin, Download } from 'lucide-vue-next'
 
-  export default {
+  export default defineComponent({
     name: 'Career',
     components: {
       OneColumn,
@@ -19,7 +20,7 @@
         default: 'DEFAULT'
       }
     }
-  }
+  })
 </script>
 
 <template>

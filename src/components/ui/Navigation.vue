@@ -1,8 +1,9 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import Button from '@/components/ui/Button.vue'
   import { ArrowUp, ArrowRight, ArrowLeft } from 'lucide-vue-next'
 
-  export default {
+  export default defineComponent({
     name: 'Navigation',
     components: {
       Button,
@@ -15,7 +16,7 @@
       rootPage: String,
       nextPage: String
     }
-  }
+  })
 </script>
 
 <template>

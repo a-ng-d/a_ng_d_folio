@@ -14,7 +14,7 @@ import JBRAnimation from '@/assets/images/_work/_jean_bobby_radio/animation.json
 import UCPAnimation from '@/assets/images/_work/_ui_color_palette/animation.json'
 import AIAnimation from '@/assets/images/_work/_awesome_ipsums/animation.json'
 import IWAnimation from '@/assets/images/_work/_iobeya_whiteboard/animation.json'
-import { filters } from '@/utilities/colors.ts'
+import { filters } from '@/utilities/colors'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -217,16 +217,6 @@ const router = createRouter({
         filter: filters.grayscale,
         pov: 'RESET',
         quality: 'HIGH'
-      }
-    },
-    {
-      path: '/_archive',
-      name: '_ARCHIVE',
-      beforeEnter() {
-        window.open('https://school.involt.io', '_blank')
-      },
-      meta: {
-        view: 'n/a'
       }
     },
     {

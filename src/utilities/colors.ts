@@ -1,4 +1,6 @@
-export const HSLColors = {
+import type { Colors, Filters} from '@/utilities/types'
+
+export const HSLColors: Colors = {
   deepBlack: {
     hue: 240,
     saturation: 100,
@@ -61,7 +63,7 @@ export const HSLColors = {
   }
 }
 
-export const filters = {
+export const filters: Filters = {
   creamySun: {
     hue: '0deg',
     brightness: '1',

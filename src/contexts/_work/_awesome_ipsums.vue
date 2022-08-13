@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import TwoColumns from '@/components/layouts/TwoColumns.vue'
   import FullWidthFigure from '@/components/layouts/FullWidthFigure.vue'
@@ -7,7 +8,7 @@
   import { Download, Github } from 'lucide-vue-next'
   import { doMap } from '@/utilities/operations'
 
-  export default {
+  export default defineComponent({
     name: '_jean_bobby_radio',
     components: {
       OneColumn,
@@ -19,19 +20,25 @@
       Github
     },
     props: {
-      scrollProgress: Number,
-      scrollLimit: Number,
+      scrollProgress: {
+        type: Number,
+        required: true
+      },
+      scrollLimit: {
+        type: Number,
+        required: true
+      },
       theme: {
         type: String,
         default: 'DEFAULT'
       }
     },
     methods: {
-      parallax(start, end) {
+      parallax(start: number, end: number) {
         return `${doMap(this.scrollProgress, 0, this.scrollLimit, start, end)}%`
       }
     }
-  }
+  })
 </script>
 
 <template>

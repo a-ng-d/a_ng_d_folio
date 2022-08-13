@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import ThreeColumns from '@/components/layouts/ThreeColumns.vue'
@@ -7,7 +8,7 @@
   import Figure from '@/components/patterns/Figure.vue'
   import { Heart, MessageCircle, Download, Figma, Github } from 'lucide-vue-next'
 
-  export default {
+  export default defineComponent({
     name: '_ui_color_palette',
     components: {
       OneColumn,
@@ -23,14 +24,20 @@
       Github
     },
     props: {
-      scrollProgress: Number,
-      scrollLimit: Number,
+      scrollProgress: {
+        type: Number,
+        required: true
+      },
+      scrollLimit: {
+        type: Number,
+        required: true
+      },
       theme: {
         type: String,
         default: 'DEFAULT'
       }
     }
-  }
+  })
 </script>
 
 <template>

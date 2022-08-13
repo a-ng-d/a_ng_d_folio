@@ -1,15 +1,19 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import { ExternalLink } from 'lucide-vue-next'
   import Label from '@/components/ui/Label.vue'
 
-  export default {
+  export default defineComponent({
     name: 'SimpleExternalLink',
     components: {
       ExternalLink,
       Label
     },
     props: {
-      label: String,
+      label: {
+        type: String,
+        required: true
+      },
       href: String,
       alt: String,
       theme: {
@@ -17,7 +21,7 @@
         default: 'DEFAULT'
       }
     }
-  }
+  })
 </script>
 
 <template>

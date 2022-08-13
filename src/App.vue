@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import { RouterLink, RouterView } from 'vue-router'
   import Filter from '@/components/graphics/Filter.vue'
   import Logotype from '@/components/graphics/Logotype.vue'
@@ -7,7 +8,7 @@
   import Particles from '@/components/graphics/Particles.vue'
   import { doMap, scrollVelocity } from '@/utilities/operations'
 
-  export default {
+  export default defineComponent({
     name: 'App',
     components: {
       Filter,
@@ -18,7 +19,7 @@
     },
     data: function() {
       return {
-        filter: '',
+        filter: {},
         pov: '',
         quality: '',
         view: '',
@@ -47,7 +48,7 @@
                                      to.meta.view === 'PROJECT' ? to.meta.position :
                                      0
 
-        const AB = {
+        const AB: any = {
           'HOME > CORE': () => {
             this.transition = 'go-left'
             this.isHardTransited = true
@@ -90,16 +91,24 @@
           }
         }
 
-        const A = {
+        const A: any = {
           'UNIVERSE': () => {
             this.transition = 'go-down'
+            this.isHardTransited = true
+          },
+          'ATTRIBUTION': () => {
+            this.transition = 'go-up'
             this.isHardTransited = true
           }
         }
 
-        const B = {
+        const B: any = {
           'UNIVERSE': () => {
             this.transition = 'go-up'
+            this.isHardTransited = true
+          },
+          'ATTRIBUTION': () => {
+            this.transition = 'go-down'
             this.isHardTransited = true
           }
         }
@@ -111,13 +120,13 @@
       }
     },
     methods: {
-      getScrollParams(e) {
+      getScrollParams(e: any) {
         this.pageHeight = e.target.scrollHeight
         this.scrollProgress = e.target.scrollTop
         this.viewHeight = document.body.clientHeight
-        this.multiplier = doMap(scrollVelocity(e.target, this.pageHeight - this.viewHeight, 'y'), 1, 1.5, 1, 4)
+        //this.multiplier = doMap(scrollVelocity(e.target, this.pageHeight - this.viewHeight, 'y'), 1, 1.5, 1, 4)
       },
-      resetDelay(e) {
+      resetDelay(e: any) {
         e.style.transitionDelay = '0'
       },
       expandParticles() {
@@ -126,9 +135,9 @@
       collapseParticles() {
         setTimeout(() => this.isExpanded = false, 200)
       },
-      getProjects(src) {
-        let projects = src.map(a => a)
-        projects = projects.filter(project => project.meta.view === 'PROJECT').sort((a, b) => a.meta.position - b.meta.position)
+      getProjects(src: Array<any>) {
+        let projects: Array<any> = src.map((a: any) => a)
+        projects = projects.filter((project: any) => project.meta.view === 'PROJECT').sort((a: any, b: any) => a.meta.position - b.meta.position)
         this.numberOfProjects = projects.length
         return projects
       }
@@ -137,7 +146,7 @@
       window.innerWidth < 461 ? this.device = 'MOBILE' : this.device
       window.onresize = () => window.innerWidth < 461 ? this.device = 'MOBILE' : this.device = 'DESKTOP'
     }
-  }
+  })
 </script>
 
 <template>
@@ -206,6 +215,9 @@
 
   // Structure
   .page
+    //--multiplier: v-bind("multiplier")
+    //--shift: calc(16 * var(--multiplier) * -1rem)
+
     display: grid
     grid-template-columns: var(--layout-margin) repeat(var(--layout-columns), 1fr) var(--layout-margin)
     grid-template-rows: var(--header-height-size) 1fr min-content

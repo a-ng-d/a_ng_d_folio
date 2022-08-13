@@ -1,9 +1,10 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import Footer from '@/components/patterns/Footer.vue'
   import DevTools from '@/contexts/_attribution/DevTools.vue'
   import UIAssets from '@/contexts/_attribution/UIAssets.vue'
 
-  export default {
+  export default defineComponent({
     name: 'Attribution',
     components: {
       Footer,
@@ -16,7 +17,7 @@
         default: 'DEFAULT'
       }
     }
-  }
+  })
 </script>
 
 <template>

@@ -1,10 +1,11 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import AssetContainer from '@/components/ui/AssetContainer.vue'
   import { doMap, scrollVelocity } from '@/utilities/operations'
 
-  export default {
+  export default defineComponent({
     name: 'Lab',
     components: {
       Footer,
@@ -78,12 +79,12 @@
       }
     },
     methods: {
-      smoothScroll(e) {
+      smoothScroll(e: any) {
         this.scrollParams.velocity = scrollVelocity(e.target, e.target.scrollWidth - document.body.clientWidth, 'x')
         this.scrollParams.gap = doMap(this.scrollParams.velocity, 1, 1.5, 1, 4)
       }
     }
-  }
+  })
 </script>
 
 <template>

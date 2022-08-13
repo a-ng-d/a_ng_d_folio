@@ -1,7 +1,8 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import OneColumn from '@/components/layouts/OneColumn.vue'
 
-  export default {
+  export default defineComponent({
     name: 'About',
     components: {
       OneColumn
@@ -12,7 +13,7 @@
         default: 'DEFAULT'
       }
     }
-  }
+  })
 </script>
 
 <template>

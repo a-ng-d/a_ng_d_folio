@@ -1,11 +1,13 @@
 <script lang="ts">
-  export default {
+  import { defineComponent } from 'vue'
+
+  export default defineComponent({
     name: 'Container',
     props: {
       title: String,
       description: String
     }
-  }
+  })
 </script>
 
 <template>

@@ -1,19 +1,18 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
+  import type { MountainProps, CloudProps, StarProps, PovProps, Position, Center, Progress, Rotation, Size, Row } from '@/utilities/types'
   import P5 from 'p5'
-  import { HSLColors } from '@/utilities/colors'
+  import { HSLColors, filters } from '@/utilities/colors'
   import { doMap, random, twoRangesRandom } from '@/utilities/operations'
 
-  export default {
+  let glitchscape: any = null
+
+  export default defineComponent({
     name: 'Glitchscape',
     props: {
       filter: {
-        type: [Object, String],
-        default: {
-          hue: '0deg',
-          brightness: '1',
-          invert: '0',
-          saturation: '.5'
-        }
+        type: Object,
+        default: filters.grayscale
       },
       pov: {
         type: String,
@@ -38,71 +37,85 @@
       },
       view: String
     },
-    data: function() {
-      return {
-        glitchscape: null
-      }
-    },
     watch: {
       pov(to, from) {
-        const actions = {
-          RESET: () => this.glitchscape.povReset(),
-          MIRROR_1: () => this.glitchscape.povMirror(1),
-          MIRROR_2: () => this.glitchscape.povMirror(2),
-          MIRROR_3: () => this.glitchscape.povMirror(3),
-          MIRROR_4: () => this.glitchscape.povMirror(4),
-          MIRROR_5: () => this.glitchscape.povMirror(5),
-          DONTLOOKUP: () => this.glitchscape.povDontLookUp(),
-          SIDE: () => this.glitchscape.povSide(),
-          GLOBAL: () => this.glitchscape.povGlobal(),
+        const actions: any = {
+          RESET: () => glitchscape.povReset(),
+          MIRROR_1: () => glitchscape.povMirror(1),
+          MIRROR_2: () => glitchscape.povMirror(2),
+          MIRROR_3: () => glitchscape.povMirror(3),
+          MIRROR_4: () => glitchscape.povMirror(4),
+          MIRROR_5: () => glitchscape.povMirror(5),
+          DONTLOOKUP: () => glitchscape.povDontLookUp(),
+          SIDE: () => glitchscape.povSide(),
+          GLOBAL: () => glitchscape.povGlobal(),
         }
         return actions[to]?.() ?? 'No POV matches'
       },
       quality(to, from) {
-        const actions = {
-          LOW: () => this.glitchscape.lowQuality(),
-          HIGH: () => this.glitchscape.highQuality()
+        const actions: any = {
+          LOW: () => glitchscape.lowQuality(),
+          HIGH: () => glitchscape.highQuality()
         }
         return actions[to]?.() ?? 'No quality matches'
       },
       isGlitched(to, from) {
-        if (to)
-          this.glitchscape.glitch()
-        else
-          this.glitchscape.unglitch()
+        to ? glitchscape.glitch() : glitchscape.unglitch()
       },
       scrollProgress(to, from) {
-        return this.glitchscape.povZoom(this.scrollProgress, this.scrollLimit)
+        return glitchscape.povZoom(this.scrollProgress, this.scrollLimit)
       }
     },
     mounted: function() {
-      this.glitchscape = new P5((sk) => {
+      glitchscape = new P5((sk: any) => {
 
         const
-          mNumber = 40,
-          cNumber = mNumber / 2,
-          sNumber = mNumber * 8,
-          quality = 50,
-          colors = HSLColors,
-          scrWidth = window.innerWidth,
-          scrHeight = window.innerHeight,
-          limitX = scrWidth * 2,
-          limitY = scrHeight * 10,
-          limitZ = scrHeight * 40
+          mNumber: number = 40,
+          cNumber: number = mNumber / 2,
+          sNumber: number = mNumber * 8,
+          quality: number = 50,
+          scrWidth: number = window.innerWidth,
+          scrHeight: number = window.innerHeight,
+          limitX: number = scrWidth * 2,
+          limitY: number = scrHeight * 10,
+          limitZ: number = scrHeight * 40
 
         let
-          fps = 60,
-          speed = 2,
-          alpha = 1,
-          camera,
-          mountains = [],
-          clouds = [],
-          stars = []
+          fps: number = 60,
+          speed: number = 2,
+          alpha: number = 1,
+          camera: any,
+          mountains: Array<any> = [],
+          clouds: Array<any> = [],
+          stars: Array<any> = []
 
         // Elements
         class Mountain {
 
-          constructor(props) {
+          props: MountainProps
+          size: Size
+          position: Position
+          params: {
+            radius: number,
+            radians: number,
+            speed: number,
+            order: number,
+            gap: number,
+            isGlitched: boolean,
+            isStrokedOnly: boolean,
+            alpha: number
+          }
+          backup: {
+            size: {
+              width: number,
+              height: number,
+            },
+            params: {
+              radius: number
+            }
+          }
+
+          constructor(props: MountainProps) {
             this.props = props
             this.size = {
               width: sk.int(random(this.props.widthRange[0], this.props.widthRange[1])),
@@ -123,7 +136,15 @@
               isStrokedOnly: false,
               alpha: 1
             }
-            this.backup = {}
+            this.backup = {
+              size: {
+                width: this.size.width,
+                height: this.size.height,
+              },
+              params: {
+                radius: this.params.radius
+              }
+            }
           }
 
           deepHue = () => doMap(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.hue, this.props.foreground.hue)
@@ -199,7 +220,7 @@
           }
 
           draw = () => {
-            const randomColor = Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
+            const randomColor: { [key: string]: number } = (Object as any).values(HSLColors)[random(0, (Object as any).values(HSLColors).length)]
 
             sk.push()
               sk.translate(this.position.x < 0 ? this.position.x - this.size.width : this.position.x, this.position.y, this.position.z)
@@ -218,7 +239,24 @@
 
         class Cloud {
 
-          constructor(props) {
+          props: CloudProps
+          size: Size
+          position: Position
+          params: {
+            rows: Array<Row>,
+            speed: number,
+            order: number,
+            gap: number,
+            start: number,
+            isGlitched: boolean,
+            isStrokedOnly: boolean,
+            alpha: number
+          }
+          backup: {
+            rows: Array<Row>
+          }
+
+          constructor(props: CloudProps) {
             this.props = props
             this.size = {
               width: sk.int(random(this.props.widthRange[0], this.props.widthRange[1])),
@@ -245,7 +283,9 @@
                 height: sk.int(this.size.height * random(.5, 1)),
                 x: sk.int(random(-this.size.width / 4, this.size.width / 4))
               })
-            this.backup = {}
+            this.backup = {
+              rows: []
+            }
           }
 
           deepHue = () => doMap(this.position.z, this.props.zRange[0], this.props.zRange[1], this.props.background.hue, this.props.foreground.hue)
@@ -304,7 +344,7 @@
             this.draw()
           }
 
-          drow = (x, y, width, height) => {
+          drow = (x: number, y: number, width: number, height: number) => {
             sk.push()
               sk.translate(x, y, 0)
               sk.rectMode(sk.CORNER)
@@ -317,7 +357,7 @@
 
           draw = () => {
             let offsetY = 0
-            const randomColor = Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
+            const randomColor: { [key: string]: number } = (Object as any).values(HSLColors)[random(0, (Object as any).values(HSLColors).length)]
 
             sk.push()
               sk.translate(this.position.x, this.params.start, this.position.z)
@@ -336,7 +376,23 @@
 
         class Star {
 
-          constructor(props) {
+          props: StarProps
+          size: number
+          position: Position
+          params: {
+            speed: number,
+            isGlitched: boolean,
+            isStrokedOnly: boolean,
+            alpha: number
+          }
+          backup: {
+            position: {
+              x: number,
+              z: number
+            }
+          }
+
+          constructor(props: StarProps) {
             this.props = props
             this.size = sk.int(random(this.props.sizeRange[0], this.props.sizeRange[1]))
             this.position = {
@@ -350,7 +406,12 @@
               isStrokedOnly: false,
               alpha: 1
             }
-            this.backup = {}
+            this.backup = {
+              position: {
+                x: this.position.x,
+                z: this.position.z
+              }
+            }
           }
 
           deepHue = () => doMap(this.position.y, this.props.yRange[0], this.props.yRange[1], this.props.background.hue, this.props.foreground.hue)
@@ -394,7 +455,7 @@
           }
 
           draw = () => {
-            const randomColor = Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
+            const randomColor: { [key: string]: number } = (Object as any).values(HSLColors)[random(0, (Object as any).values(HSLColors).length)]
 
             sk.push()
               sk.translate(this.position.x, this.position.y, this.position.z)
@@ -410,7 +471,22 @@
 
         class Pov {
 
-          constructor(props) {
+          props: PovProps
+          position: Position
+          center: Center
+          rotation: Rotation
+          params: {
+            target: {
+              position: Position,
+              center: Center,
+              rotation: Rotation
+            },
+            progress: Progress,
+            speed: number,
+            isPushed: boolean
+          }
+
+          constructor(props: PovProps) {
             this.props = props
             this.position = {
               x: this.props.x,
@@ -453,7 +529,7 @@
             }
           }
 
-          animate = (speed, position, center, rotation) => {
+          animate = (speed: number, position: Array<number>, center: Array<number>, rotation: Array<number>) => {
             this.params.speed = speed
             this.params.target.position.x = position[0]
             this.params.target.position.y = position[1]
@@ -483,7 +559,7 @@
 
           push = () => this.params.isPushed = true
 
-          zoom = (scrollPosition, scrollLimit) => this.params.progress.z = doMap(scrollPosition, 0, scrollLimit, 0, this.params.target.center.z)
+          zoom = (scrollPosition: number, scrollLimit: number) => this.params.progress.z = doMap(scrollPosition, 0, scrollLimit, 0, this.params.target.center.z)
 
         }
 
@@ -515,8 +591,8 @@
               x: twoRangesRandom(-limitX, -sk.width *.75, sk.width *.75, limitX),
               y: sk.height * .5,
               zRange: [-limitZ, 0],
-              foreground: colors.cream,
-              background: colors.creamySun
+              foreground: HSLColors.cream,
+              background: HSLColors.creamySun
             }))
           for (let i = 0 ; i < cNumber ; i++)
             clouds.push(new Cloud({
@@ -526,8 +602,8 @@
               y: random(-sk.height * .2, -sk.height * .8),
               zRange: [-limitZ, 0],
               rows: sk.int(random(3, 5)),
-              foreground: colors.clay,
-              background: colors.creamySun
+              foreground: HSLColors.clay,
+              background: HSLColors.creamySun
             }))
           for (let i = 0 ; i < sNumber ; i++)
             stars.push(new Star({
@@ -535,14 +611,14 @@
               x: random(-limitX * 3, limitX * 3),
               yRange: [-limitY * 0.5, -limitY],
               z: random(-limitZ * 3, limitZ * 3),
-              foreground: colors.soil,
-              background: colors.clay
+              foreground: HSLColors.soil,
+              background: HSLColors.clay
             }))
 
-          mountains.sort((a, b) => a.position.z - b.position.z)
-          mountains.forEach((mountain, index) => { mountain.params.order = index })
-          clouds.sort((a, b) => a.position.z - b.position.z)
-          clouds.forEach((cloud, index) => { cloud.params.order = index })
+          mountains.sort((a: any, b: any) => a.position.z - b.position.z)
+          mountains.forEach((mountain: any, index: any) => { mountain.params.order = index })
+          clouds.sort((a: any, b: any) => a.position.z - b.position.z)
+          clouds.forEach((cloud: any, index: any) => { cloud.params.order = index })
 
         }
 
@@ -552,7 +628,7 @@
 
           sk.clear()
 
-          sk.background(colors.creamySun.hue, colors.creamySun.saturation, colors.creamySun.lightness)
+          sk.background(HSLColors.creamySun.hue, HSLColors.creamySun.saturation, HSLColors.creamySun.lightness)
 
           // camera
           pov.move()
@@ -583,7 +659,7 @@
           // floor
           sk.push()
             sk.noStroke()
-            sk.fill(colors.creamySun.hue, colors.creamySun.saturation, colors.creamySun.lightness, alpha)
+            sk.fill(HSLColors.creamySun.hue, HSLColors.creamySun.saturation, HSLColors.creamySun.lightness, alpha)
             sk.box(limitX * 10, 5, limitZ * 10)
           sk.pop()
 
@@ -608,7 +684,7 @@
           ]
         ), 100)
 
-        sk.povMirror = (increment) => setTimeout(() => pov.animate(
+        sk.povMirror = (increment: number) => setTimeout(() => pov.animate(
           .05,
           [
             doMap(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
@@ -680,7 +756,7 @@
           ]
         ), 100)
 
-        sk.povZoom = (scrollProgress, scrollLimit) => pov.zoom(scrollProgress, scrollLimit + 200)
+        sk.povZoom = (scrollProgress: number, scrollLimit: number) => pov.zoom(scrollProgress, scrollLimit + 200)
 
         sk.lowQuality = () => {
           setTimeout(() => {
@@ -718,7 +794,7 @@
         sk.windowResized = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
       })
     }
-  }
+  })
 </script>
 
 <template>

@@ -1,11 +1,12 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import { i18n } from '@/lang'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import Container from '@/components/ui/Container.vue'
   import { Heart, Briefcase, FlaskConical, Mail, Archive } from 'lucide-vue-next'
 
-  export default {
+  export default defineComponent({
     name: 'Universe',
     components: {
       Footer,
@@ -26,8 +27,11 @@
     data: function() {
       return {
         tooltip: {
-          isActive: false
-        },
+          isActive: false as boolean,
+          name: '' as string,
+          title: '' as string,
+          description: '' as string
+        } as any ,
         universe: [
           {
             name: 'core',
@@ -48,38 +52,38 @@
             icon: 'Mail'
           },{
             name: 'archive',
-            path: '/_archive',
+            path: 'https://school.involt.io',
             icon: 'Archive'
           },
-        ]
+        ] as any
       }
     },
     methods: {
-      expandTooltip(e) {
+      expandTooltip(e: any) {
         this.tooltip.isActive = true
         this.tooltip.name = e.target.id
         this.tooltip.title = i18n.global.t(`universe.${e.target.id}.title`)
         this.tooltip.description = i18n.global.t(`universe.${e.target.id}.description`)
       },
-      collapseTooltip(e) {
+      collapseTooltip(e: any) {
         this.tooltip = {
           isActive: false
         }
       }
     }
-  }
+  })
 </script>
 
 <template>
   <main class="page">
     <section class="menu">
       <ul class="menu__items">
-        <li v-for="(universe, index) in universe" :key="universe.name">
+        <li v-for="(world, index) in universe" :key="universe.name">
           <Transition name="slide-up" appear :style="`--delay: calc(var(--delay-turtoise) + ${index * 100}ms)`">
             <Button
-              :id="universe.name"
+              :id="world.name"
               type="primary"
-              :path="universe.path"
+              :path="world.path"
               layout="ICON-ONLY"
               position="random"
               @mouseover="expandTooltip"
@@ -89,7 +93,7 @@
               :theme="theme"
             >
               <template #icon>
-                <Component :is="universe.icon" :size="24" />
+                <Component :is="world.icon" :size="24" />
               </template>
             </Button>
           </Transition>

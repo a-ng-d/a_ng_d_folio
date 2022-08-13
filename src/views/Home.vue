@@ -1,10 +1,11 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import ScrollingText from '@/components/ui/ScrollingText.vue'
   import { ArrowLeft, ArrowDown, ArrowRight } from 'lucide-vue-next'
 
-  export default {
+  export default defineComponent({
     name: 'Home',
     components: {
       Footer,
@@ -20,7 +21,7 @@
         default: 'DEFAULT'
       }
     }
-  }
+  })
 </script>
 
 <template>

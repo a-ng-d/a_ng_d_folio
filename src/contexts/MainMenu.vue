@@ -1,11 +1,12 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import Header from '@/components/patterns/Header.vue'
   import Button from '@/components/ui/Button.vue'
   import Pagination from '@/components/ui/Pagination.vue'
   import Navigation from '@/components/ui/Navigation.vue'
   import { ArrowRight, ArrowDown, ArrowLeft, Rocket, Home, User } from 'lucide-vue-next'
 
-  export default {
+  export default defineComponent({
     name: 'MainMenu',
     components: {
       Header,
@@ -33,44 +34,46 @@
         default: 0
       },
       projects: {
-        type: [Array, Object],
-        default: []
+        type: Array,
+        required: true
       },
-      activeProjectPosition: Number
+      activeProjectPosition: {
+        type: Number,
+        required: true
+      }
     },
     methods: {
-      changeLogotypeColor(view) {
-        const actions = {
+      changeLogotypeColor(view: string) {
+        const actions: any = {
           ID: 'var(--color-soil)',
-          WORK: this.projects[this.activeProjectPosition].meta.theme == 'DEFAULT' ? 'var(--color-soil)' : 'var(--color-cream)',
+          WORK: (this.projects[(this.activeProjectPosition as number)] as any).meta.theme == 'DEFAULT' ? 'var(--color-soil)' : 'var(--color-cream)',
           PROJECT: 'var(--color-sandstone)',
           UNIVERSE: 'var(--color-cream)'
         }
         return actions[view] ?? 'var(--color-soil)'
       },
-      opaqueBackground(view) {
-        const actions = {
+      opaqueBackground(view: string) {
+        const actions: any = {
           ID: 'var(--color-soft-wind)',
           CORE: 'var(--color-candy-floss)',
           PROJECT: 'var(--color-cream)'
         }
         return actions[view] ?? 'transparent'
       },
-      changeUniverseButtonTheme(view) {
-
-        const actions = {
-          WORK: this.projects[this.activeProjectPosition].meta.theme,
+      changeUniverseButtonTheme(view: string) {
+        const actions: any = {
+          WORK: (this.projects[(this.activeProjectPosition as number)] as any).meta.theme,
         }
         return actions[view] ?? 'DEFAULT'
       },
       previousProject() {
-        return this.projects[this.activeProjectPosition - 1 >= 0 ? this.activeProjectPosition - 1 : this.projects.length - 1].path
+        return (this.projects[(this.activeProjectPosition as number) - 1 >= 0 ? (this.activeProjectPosition as unknown as number) - 1 : this.projects.length - 1] as any).path
       },
       nextProject() {
-        return this.projects[this.activeProjectPosition + 1 < this.projects.length ? this.activeProjectPosition + 1 : 0].path
+        return (this.projects[(this.activeProjectPosition as number) + 1 < this.projects.length ? (this.activeProjectPosition as unknown as number) + 1 : 0] as any).path
       }
     }
-  }
+  })
 </script>
 
 <template>
@@ -124,7 +127,7 @@
           v-else-if="view === 'WORK'"
           :pages="projects"
           :activePage="activeProjectPosition"
-          :theme="projects[activeProjectPosition].meta.theme"
+          :theme="(projects[activeProjectPosition as number] as any).meta.theme"
         />
         <Navigation
           v-else-if="view === 'PROJECT'"

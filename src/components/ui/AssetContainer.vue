@@ -1,8 +1,9 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import Button from '@/components/ui/Button.vue'
   import { Dribbble, Codepen } from 'lucide-vue-next'
 
-  export default {
+  export default defineComponent({
     name: 'AssetContainer',
     components: {
       Button,
@@ -25,11 +26,11 @@
     data: function() {
       return {
         isMagnified: false,
-        assetWidth: 0
+        assetWidth: 0 as unknown
       }
     },
     methods: {
-      magnifier(e) {
+      magnifier(e: any) {
         const width = e.target.children[0].children[0].children[0].offsetWidth
 
         this.isMagnified = !this.isMagnified
@@ -41,7 +42,7 @@
         to == true ? this.isMagnified = false : this.isMagnified
       }
     }
-  }
+  })
 </script>
 
 <template>

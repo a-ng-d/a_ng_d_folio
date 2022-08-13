@@ -1,5 +1,7 @@
 <script lang="ts">
-  export default {
+  import { defineComponent } from 'vue'
+
+  export default defineComponent({
     name: 'Header',
     props: {
       logotypeColor: {
@@ -25,7 +27,7 @@
         this.scrollProgress > 0 ? this.isStuck = true : this.isStuck = false
       }
     }
-  }
+  })
 </script>
 
 <template>

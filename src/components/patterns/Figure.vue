@@ -1,5 +1,7 @@
 <script lang="ts">
-  export default {
+  import { defineComponent } from 'vue'
+
+  export default defineComponent({
     name: 'Figure',
     props: {
       type: {
@@ -19,7 +21,7 @@
       }
     },
     methods: {
-      magnifier(e) {
+      magnifier(e: any) {
         const x = e.target.getBoundingClientRect().x,
               y = e.target.getBoundingClientRect().y,
               w = e.target.getBoundingClientRect().width,
@@ -36,7 +38,7 @@
         this.pathY = (refY - y - (h / 2)) / refScale
       }
     }
-  }
+  })
 </script>
 
 <template>

@@ -1,5 +1,7 @@
 <script lang="ts">
-export default {
+  import { defineComponent } from 'vue'
+
+  export default defineComponent({
     name: 'Label',
     props: {
       label: {
@@ -15,7 +17,7 @@ export default {
         default: 'DEFAULT'
       }
     }
-  }
+  })
 </script>
 
 <template>

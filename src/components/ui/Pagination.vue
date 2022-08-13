@@ -1,5 +1,7 @@
 <script lang="ts">
-  export default {
+  import { defineComponent } from 'vue'
+
+  export default defineComponent({
     name: 'Pagination',
     props: {
       label: String,
@@ -7,13 +9,16 @@
         type: [Array, Object],
         required: true
       },
-      activePage: Number,
+      activePage: {
+        type: Number,
+        required: true
+      },
       theme: {
         type: String,
         default: 'DEFAULT'
       }
     }
-  }
+  })
 </script>
 
 <template>

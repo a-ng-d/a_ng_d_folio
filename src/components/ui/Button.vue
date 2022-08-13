@@ -1,8 +1,9 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import Particles from '@/components/graphics/Particles.vue'
   import { random } from '@/utilities/operations'
 
-  export default {
+  export default defineComponent({
     name: 'Button',
     components: {
       Particles
@@ -47,7 +48,7 @@
       this.path.indexOf('http') == 0 ? this.isExternal = true : this.isExternal
       this.path.indexOf('mailto') == 0 ? this.isExternal = true : this.isExternal
     }
-  }
+  })
 </script>
 
 <template>

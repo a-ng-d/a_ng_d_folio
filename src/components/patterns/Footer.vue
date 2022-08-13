@@ -1,6 +1,8 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import Label from '@/components/ui/Label.vue'
-  export default {
+
+  export default defineComponent({
     name: 'Footer',
     components: {
       Label
@@ -27,7 +29,7 @@
               'flex-start'
       }
     }
-  }
+  })
 </script>
 
 <template>

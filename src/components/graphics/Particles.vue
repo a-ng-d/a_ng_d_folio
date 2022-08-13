@@ -1,10 +1,12 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
+  import type { ParticleProps, Path, HuSaLiTy, Position, Size } from '@/utilities/types'
   import P5 from 'p5'
   import { v4 as uuidv4 } from 'uuid'
   import { HSLColors } from '@/utilities/colors'
   import { random } from '@/utilities/operations'
 
-  export default {
+  export default defineComponent({
     name: 'Particles',
     props: {
       isExpanded: Boolean,
@@ -23,7 +25,7 @@
     data: function() {
       return {
         uuid: uuidv4(),
-        particles: null
+        particles: null as any
       }
     },
     watch: {
@@ -31,7 +33,7 @@
         to ? this.particles.expand() : this.particles.collapse()
       },
       movement(to, from) {
-        const actions = {
+        const actions: any = {
           'go-up': () => this.particles.goUp(to),
           'go-right': () => this.particles.goRight(to),
           'go-down': () => this.particles.goDown(to),
@@ -41,21 +43,36 @@
       }
     },
     mounted: function() {
-        this.particles = new P5((sk) => {
+        this.particles = new P5((sk: any) => {
 
         const
-          colors = Object.values(HSLColors).filter(entry => entry.type === 'primary'),
-          weight = this.weight
+          colors: Array<HuSaLiTy> = (Object as any).values(HSLColors).filter((entry: any) => entry.type === 'primary'),
+          weight: number = this.weight
 
         let
-          fps = 30,
-          units = [],
-          time = 0
+          fps: number = 30,
+          units: Array<any> = [],
+          time: number = 0
 
         // Elements
         class Unit {
 
-          constructor(props) {
+          props: ParticleProps
+          position: Path
+          size: Size
+          params: {
+            color: HuSaLiTy,
+            weight: number,
+            move: number,
+            speed: number,
+            order: number,
+            gap: number,
+            isExpanded: boolean,
+            resetTime: boolean,
+            movement: string
+          }
+
+          constructor(props: ParticleProps) {
             this.props = props
             this.position = {
               x1: this.props.x1,
@@ -64,7 +81,8 @@
               y2: this.props.y2
             }
             this.size = {
-              width: (this.position.x2 - this.position.x1) > 0 ? (this.position.x2 - this.position.x1) : (this.position.y2 - this.position.y1)
+              width: (this.position.x2 - this.position.x1) > 0 ? (this.position.x2 - this.position.x1) : (this.position.y2 - this.position.y1),
+              height: 0
             }
             this.params = {
               color: colors[random(0, colors.length)],
@@ -79,7 +97,7 @@
             }
           }
 
-          expand = (units) => {
+          expand = (units: number) => {
             this.params.order == 0 ? this.params.order = sk.int(random(0, units)) : this.params.order == this.params.order
             if (!this.params.resetTime) {
               time = sk.millis()
@@ -97,7 +115,7 @@
             this.params.isExpanded = false
           }
 
-          changeMovement = (movement) => this.params.movement = movement
+          changeMovement = (movement: string) => (this.params.movement as string) = movement
 
           move = () => {
             if (this.params.isExpanded && sk.millis() - time > this.params.gap * this.params.order)
@@ -119,7 +137,7 @@
 
         }
 
-        sk.makeUnits = (direction) => {
+        sk.makeUnits = (direction: string) => {
           units = []
 
           if (direction === 'vertical')
@@ -179,22 +197,22 @@
 
         sk.collapse = () => units.forEach(unit => unit.collapse())
 
-        sk.goUp = (movement) => {
+        sk.goUp = (movement: string) => {
           sk.makeUnits('vertical')
           units.forEach(unit => unit.changeMovement(movement))
         }
 
-        sk.goRight = (movement) => {
+        sk.goRight = (movement: string) => {
           sk.makeUnits('horizontal')
           units.forEach(unit => unit.changeMovement(movement))
         }
 
-        sk.goDown = (movement) => {
+        sk.goDown = (movement: string) => {
           sk.makeUnits('vertical')
           units.forEach(unit => unit.changeMovement(movement))
         }
 
-        sk.goLeft = (movement) => {
+        sk.goLeft = (movement: string) => {
           sk.makeUnits('horizontal')
           units.forEach(unit => unit.changeMovement(movement))
         }
@@ -206,7 +224,7 @@
 
       })
     }
-  }
+  })
 </script>
 
 <template>

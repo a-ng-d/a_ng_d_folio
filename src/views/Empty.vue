@@ -1,8 +1,9 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import Button from '@/components/ui/Button.vue'
   import { filters } from '@/utilities/colors'
 
-  export default {
+  export default defineComponent ({
     name: 'Empty',
     components: {
       Button
@@ -19,12 +20,12 @@
       }
     },
     methods: {
-      changeParam(event, message) {
+      changeParam(event: any, message: any) {
         this.$emit(event, message)
         setTimeout(() => this.$el.scrollTop = 0, 2000)
       }
     }
-  }
+  })
 </script>
 
 <template>

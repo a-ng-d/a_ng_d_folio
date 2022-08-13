@@ -1,7 +1,8 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import Button from '@/components/ui/Button.vue'
 
-  export default {
+  export default defineComponent({
     name: 'LinkContainer',
     components: {
       Button
@@ -11,7 +12,7 @@
       cta: String,
       href: String
     }
-  }
+  })
 </script>
 
 <template>

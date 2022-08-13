@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { defineComponent } from 'vue'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import ScrollingText from '@/components/ui/ScrollingText.vue'
@@ -9,7 +10,7 @@
   import Talks from '@/contexts/_id/Talks.vue'
   import Workshops from '@/contexts/_id/Workshops.vue'
 
-  export default {
+  export default defineComponent({
     name: 'Id',
     components: {
       Footer,
@@ -28,7 +29,7 @@
         default: 'DEFAULT'
       }
     }
-  }
+  })
 </script>
 
 <template>
