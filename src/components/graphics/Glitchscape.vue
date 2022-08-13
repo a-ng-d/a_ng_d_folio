@@ -133,8 +133,8 @@
               order: 0,
               gap: 20,
               isGlitched: false,
-              isStrokedOnly: false,
-              alpha: 1
+              isStrokedOnly: true,
+              alpha: 0
             }
             this.backup = {
               size: {
@@ -192,9 +192,9 @@
             }
 
             if (this.params.isStrokedOnly)
-              this.params.alpha = sk.lerp(this.params.alpha, 0, this.params.speed)
+              this.params.alpha = sk.lerp(this.params.alpha, 0, this.params.speed * .33)
             else
-              this.params.alpha = sk.lerp(this.params.alpha, 1, this.params.speed)
+              this.params.alpha = sk.lerp(this.params.alpha, 1, this.params.speed * .33)
 
             this.draw()
           }
@@ -274,8 +274,8 @@
               gap: 40,
               start: sk.height,
               isGlitched: false,
-              isStrokedOnly: false,
-              alpha: 1
+              isStrokedOnly: true,
+              alpha: 0
             }
             for (let i = 1 ; i < this.props.rows ; i++)
               this.params.rows.push({
@@ -337,9 +337,9 @@
             }
 
             if (this.params.isStrokedOnly)
-              this.params.alpha = sk.lerp(this.params.alpha, 0, this.params.speed)
+              this.params.alpha = sk.lerp(this.params.alpha, 0, this.params.speed * .33)
             else
-              this.params.alpha = sk.lerp(this.params.alpha, 1, this.params.speed)
+              this.params.alpha = sk.lerp(this.params.alpha, 1, this.params.speed * .33)
 
             this.draw()
           }
@@ -682,7 +682,7 @@
             0,
             0
           ]
-        ), 200)
+        ), 100)
 
         sk.povMirror = (increment: number) => setTimeout(() => pov.animate(
           .05,
