@@ -124,7 +124,7 @@
   // Structure
   .menu
     grid-area: main
-    padding: var(--spacing-xl-600) var(--layout-center)
+    padding: 0 var(--layout-center)
     display: flex
     flex-flow: column nowrap
     gap: var(--layout-row-gap) 0

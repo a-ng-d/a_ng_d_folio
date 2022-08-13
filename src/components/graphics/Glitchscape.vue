@@ -682,7 +682,7 @@
             0,
             0
           ]
-        ), 100)
+        ), 200)
 
         sk.povMirror = (increment: number) => setTimeout(() => pov.animate(
           .05,
@@ -700,7 +700,7 @@
             0,
             0
           ]
-        ), 100)
+        ), 200)
 
         sk.povDontLookUp = () => setTimeout(() => pov.animate(
           .05,
@@ -718,7 +718,7 @@
             0,
             0
           ]
-        ), 100)
+        ), 200)
 
         sk.povSide = () => setTimeout(() => pov.animate(
           .05,
@@ -736,7 +736,7 @@
             Math.PI / 2,
             0
           ]
-        ), 100)
+        ), 200)
 
         sk.povGlobal = () => setTimeout(() => pov.animate(
           .05,
@@ -754,7 +754,7 @@
             0,
             0
           ]
-        ), 100)
+        ), 200)
 
         sk.povZoom = (scrollProgress: number, scrollLimit: number) => pov.zoom(scrollProgress, scrollLimit + 200)
 
@@ -763,7 +763,7 @@
             mountains.forEach(mountain => mountain.wireframe())
             clouds.forEach(cloud => cloud.wireframe())
             stars.forEach(star => star.wireframe())
-          }, 100)
+          }, 200)
 
         }
 
@@ -772,7 +772,7 @@
             mountains.forEach(mountain => mountain.unwireframe())
             clouds.forEach(cloud => cloud.unwireframe())
             stars.forEach(star => star.unwireframe())
-          }, 100)
+          }, 200)
         }
 
         sk.glitch = () => {

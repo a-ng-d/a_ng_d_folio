@@ -127,7 +127,8 @@
     grid-area: main
     display: flex
     flex-flow: column nowrap
-    padding: var(--spacing-xl-600) var(--layout-center)
+    justify-content: center
+    padding: 0 var(--layout-center)
     overflow: auto
 
     &__container
@@ -136,7 +137,7 @@
 
       display: flex
       width: max-content
-      height: 100%
+      height: 75%
       flex-flow: row nowrap
       gap: 0 calc(var(--layout-column-gap) * var(--multiplier))
       align-items: stretch

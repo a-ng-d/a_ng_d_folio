@@ -216,7 +216,8 @@
     grid-area: main
     display: flex
     flex-flow: row nowrap
-    padding: var(--spacing-xl-600) var(--layout-center)
+    justify-content: center
+    padding: 0 var(--layout-center)
     gap: 0 var(--layout-column-gap)
 
     &__background
@@ -238,7 +239,7 @@
       flex: 0 1 480rem
       display: flex
       flex-flow: column nowrap
-      justify-content: space-between
+      justify-content: space-evenly
       gap: var(--layout-row-gap) 0
 
       &__description

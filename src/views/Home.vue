@@ -101,15 +101,14 @@
     grid-area: main
     display: flex
     flex-flow: column nowrap
-    justify-content: space-between
-    padding: var(--spacing-xl-600) var(--layout-center)
+    justify-content: space-evenly
+    padding: 0 var(--layout-center)
 
     &[data-theme="DARK"]
       --text-color: var(--color-cream)
 
     &__content
       display: flex
-      flex: 1
       flex-flow: column nowrap
       align-items: center
       gap: var(--layout-row-gap) 0
