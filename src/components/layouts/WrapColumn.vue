@@ -59,6 +59,7 @@
         overflow: auto
         margin: 0 calc(var(--layout-margin) * -1)
         padding: var(--spacing-xs-000) var(--layout-margin)
+        scrollbar-width: none
 
         &::-webkit-scrollbar
           display: none
@@ -73,6 +74,7 @@
         overflow: auto
         margin: 0 calc(var(--layout-margin) * -1)
         padding: var(--spacing-xs-000) var(--layout-margin)
+        scrollbar-width: none
 
         &::-webkit-scrollbar
           display: none

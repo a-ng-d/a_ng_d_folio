@@ -130,6 +130,11 @@
     justify-content: center
     padding: 0 var(--layout-center)
     overflow: auto
+    scrollbar-width: none
+    user-select: none
+
+    &::-webkit-scrollbar
+      display: none
 
     &__container
       --scale-y: v-bind("1 / scrollParams.velocity")
@@ -143,7 +148,4 @@
       align-items: stretch
       transition: all 200ms linear
       transform: scaleY(var(--scale-y))
-
-      &::-webkit-scrollbar
-        display: none
 </style>
