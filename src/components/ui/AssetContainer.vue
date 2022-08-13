@@ -34,7 +34,7 @@
         const width = e.target.children[0].children[0].children[0].offsetWidth
 
         this.isMagnified = !this.isMagnified
-        this.assetWidth = width + 100 + 'rem'
+        this.assetWidth = width + 16 + 'rem'
       }
     },
     watch: {
@@ -82,8 +82,10 @@
 
   // Structure
   .asset-container
+    --container-padding: var(--spacing-s-100)
+
     width: v-bind("isMagnified ? assetWidth : '40vh'")
-    padding: var(--spacing-l-200)
+    padding: var(--container-padding)
     border-radius: var(--regular-border-radius)
     transition: var(--simple-transition)
     cursor: pointer
@@ -91,7 +93,7 @@
     &__content
       display: flex
       flex-flow: column nowrap
-      gap: var(--layout-row-gap) 0
+      gap: var(--container-padding) 0
       height: 100%
       pointer-events: none
 
@@ -101,7 +103,7 @@
       justify-content: center
       overflow: hidden
       box-shadow: var(--inner-border)
-      border-radius: var(--small-border-radius)
+      border-radius: calc(var(--regular-border-radius) - var(--container-padding))
       transition: var(--simple-transition)
       filter: v-bind("isMagnified ? 'brightness(1)' : 'brightness(.5)'")
 
@@ -110,9 +112,10 @@
 
     &__description
       display: flex
-      flex: 0 0 var(--sizing-xl-000)
+      flex: 0 0 var(--sizing-xl-300)
       flex-flow: row nowrap
       align-items: center
+      padding: 0 var(--spacing-m-000)
 
       & > h5
         flex: 1
