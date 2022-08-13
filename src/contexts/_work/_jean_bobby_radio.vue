@@ -88,7 +88,7 @@
       :caption="$t('work._jean_bobby_radio.part-2.caption-1')"
     >
       <template #asset>
-        <img src="/src/assets/images/_work/_jean_bobby_radio/article-asset-1.png" />
+        <img src="/images/_work/_jean_bobby_radio/article-asset-1.png" />
       </template>
     </FullWidthFigure>
   </section>
@@ -108,7 +108,7 @@
       background="#190038"
     >
       <template #asset>
-        <img src="/src/assets/images/_work/_jean_bobby_radio/article-asset-2.png" :style="`transform: translateY(${parallax(100, -50)})`" />
+        <img src="/images/_work/_jean_bobby_radio/article-asset-2.png" :style="`transform: translateY(${parallax(100, -50)})`" />
       </template>
     </FullWidthFigure>
     <OneColumn
@@ -160,5 +160,5 @@
 
   section.ending
     height: 100vh
-    background: url(/src/assets/images/_work/_jean_bobby_radio/ending-asset-2.svg) 50% v-bind('parallax(0, 50)') no-repeat, url(/src/assets/images/_work/_jean_bobby_radio/ending-asset-1.png) 0 v-bind('parallax(-50, 50)') no-repeat, #190038
+    background: url(/images/_work/_jean_bobby_radio/ending-asset-2.svg) 50% v-bind('parallax(0, 50)') no-repeat, url(/images/_work/_jean_bobby_radio/ending-asset-1.png) 0 v-bind('parallax(-50, 50)') no-repeat, #190038
 </style>

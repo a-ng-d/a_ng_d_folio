@@ -96,8 +96,8 @@
         <Transition v-for="(shot, index) in shots" name="slide-up" :style="`--delay: calc(var(--delay-turtoise) + (var(--duration-step) * ${(index * .5) - .5}))`" appear>
           <AssetContainer
             :title="shot.name"
-            :thumbnail="`/src/assets/images/_lab/sd/asset-${shots.length - index}.png`"
-            :hdnail="`/src/assets/images/_lab/hd/asset-${shots.length - index}.${shot.sourceFormat}`"
+            :thumbnail="`/images/_lab/sd/asset-${shots.length - index}.png`"
+            :hdnail="`/images/_lab/hd/asset-${shots.length - index}.${shot.sourceFormat}`"
             :type="shot.sourceType"
             :sourceName="shot.sourceName"
             :sourceLink="shot.sourceLink"

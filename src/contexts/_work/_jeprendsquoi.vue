@@ -69,7 +69,7 @@
         :caption="$t('work._jeprendsquoi.part-1.caption-1')"
       >
         <template #asset>
-          <img src="/src/assets/images/_work/_jeprendsquoi/article-asset-1.png" />
+          <img src="/images/_work/_jeprendsquoi/article-asset-1.png" />
         </template>
       </FullWidthFigure>
       <OneColumn
@@ -83,7 +83,7 @@
         :caption="$t('work._jeprendsquoi.part-1.caption-2')"
       >
         <template #asset>
-          <img src="/src/assets/images/_work/_jeprendsquoi/article-asset-2.png" />
+          <img src="/images/_work/_jeprendsquoi/article-asset-2.png" />
         </template>
       </FullWidthFigure>
       <OneColumn
@@ -110,22 +110,22 @@
         <template #plain>
           <Figure
             type="image"
-            src="/src/assets/images/_work/_jeprendsquoi/article-asset-3.jpeg"
+            src="/images/_work/_jeprendsquoi/article-asset-3.jpeg"
             :caption="$t('work._jeprendsquoi.part-2.caption-1')"
           />
           <Figure
             type="image"
-            src="/src/assets/images/_work/_jeprendsquoi/article-asset-4.jpeg"
+            src="/images/_work/_jeprendsquoi/article-asset-4.jpeg"
             :caption="$t('work._jeprendsquoi.part-2.caption-2')"
           />
           <Figure
             type="image"
-            src="/src/assets/images/_work/_jeprendsquoi/article-asset-5.jpeg"
+            src="/images/_work/_jeprendsquoi/article-asset-5.jpeg"
             :caption="$t('work._jeprendsquoi.part-2.caption-3')"
           />
           <Figure
             type="image"
-            src="/src/assets/images/_work/_jeprendsquoi/article-asset-6.jpeg"
+            src="/images/_work/_jeprendsquoi/article-asset-6.jpeg"
             :caption="$t('work._jeprendsquoi.part-2.caption-4')"
           />
         </template>
@@ -165,12 +165,12 @@
         <template #plain>
           <Figure
             type="image"
-            src="/src/assets/images/_work/_jeprendsquoi/article-asset-7.gif"
+            src="/images/_work/_jeprendsquoi/article-asset-7.gif"
             :caption="$t('work._jeprendsquoi.part-2.caption-7')"
           />
           <Figure
             type="image"
-            src="/src/assets/images/_work/_jeprendsquoi/article-asset-8.gif"
+            src="/images/_work/_jeprendsquoi/article-asset-8.gif"
             :caption="$t('work._jeprendsquoi.part-2.caption-8')"
           />
         </template>
@@ -218,5 +218,5 @@
 
   section.ending
     height: 100vh
-    background: url(/src/assets/images/_work/_jeprendsquoi/ending-asset-2.png) 50% v-bind('parallax(400, 100)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-1.png) 35% v-bind('parallax(200, 100)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-3.png) 65% v-bind('parallax(300, 100)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-logotype.svg) 50% v-bind('parallax(200, 20)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-broccoli.png) 100% v-bind('parallax(100, -5)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-eggplant.png) 70% v-bind('parallax(100, 10)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-pumpkin.png) 35% v-bind('parallax(100, 10)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-leek.png) 15% v-bind('parallax(200, 30)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-tomato.png) -5% v-bind('parallax(100, 50)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-pear.png) 10% v-bind('parallax(200, 90)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-cherry.png) 95% v-bind('parallax(200, 90)') no-repeat, url(/src/assets/images/_work/_jeprendsquoi/ending-asset-lemon.png) 85% v-bind('parallax(200, 50)') no-repeat, var(--color-titanium-white)
+    background: url(/images/_work/_jeprendsquoi/ending-asset-2.png) 50% v-bind('parallax(400, 100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-1.png) 35% v-bind('parallax(200, 100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-3.png) 65% v-bind('parallax(300, 100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-logotype.svg) 50% v-bind('parallax(200, 20)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-broccoli.png) 100% v-bind('parallax(100, -5)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-eggplant.png) 70% v-bind('parallax(100, 10)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-pumpkin.png) 35% v-bind('parallax(100, 10)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-leek.png) 15% v-bind('parallax(200, 30)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-tomato.png) -5% v-bind('parallax(100, 50)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-pear.png) 10% v-bind('parallax(200, 90)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-cherry.png) 95% v-bind('parallax(200, 90)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-lemon.png) 85% v-bind('parallax(200, 50)') no-repeat, var(--color-titanium-white)
 </style>

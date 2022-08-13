@@ -10,10 +10,10 @@ import Lab from '../views/Lab.vue'
 import Contact from '../views/Contact.vue'
 import Attribution from '../views/Attribution.vue'
 import Empty from '../views/Empty.vue'
-import JBRAnimation from '@/assets/images/_work/_jean_bobby_radio/animation.json'
-import UCPAnimation from '@/assets/images/_work/_ui_color_palette/animation.json'
-import AIAnimation from '@/assets/images/_work/_awesome_ipsums/animation.json'
-import IWAnimation from '@/assets/images/_work/_iobeya_whiteboard/animation.json'
+import JBRAnimation from '@/assets/animations/_work/_jean_bobby_radio/animation.json'
+import UCPAnimation from '@/assets/animations/_work/_ui_color_palette/animation.json'
+import AIAnimation from '@/assets/animations/_work/_awesome_ipsums/animation.json'
+import IWAnimation from '@/assets/animations/_work/_iobeya_whiteboard/animation.json'
 import { filters } from '@/utilities/colors'
 
 const router = createRouter({
@@ -119,7 +119,7 @@ const router = createRouter({
         roles: i18n.global.t('work._jeprendsquoi.misc.roles').split(', '),
         position: 1,
         view: 'PROJECT',
-        illustration: '/src/assets/images/_work/_jeprendsquoi/illustration.png',
+        illustration: '/images/_work/_jeprendsquoi/illustration.png',
         background: filters._jeprendsquoi,
         theme: 'DEFAULT',
         filter: filters.grayscale,

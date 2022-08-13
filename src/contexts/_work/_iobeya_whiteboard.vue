@@ -73,7 +73,7 @@
         :caption="$t('work._iobeya_whiteboard.part-1.caption-1')"
       >
         <template #asset>
-          <img src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-1.png" />
+          <img src="/images/_work/_iobeya_whiteboard/article-asset-1.png" />
         </template>
       </FullWidthFigure>
       <OneColumn
@@ -89,13 +89,13 @@
         <template #left>
           <Figure
             type="image"
-            src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-2.png"
+            src="/images/_work/_iobeya_whiteboard/article-asset-2.png"
           />
         </template>
         <template #right>
           <Figure
             type="image"
-            src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-3.png"
+            src="/images/_work/_iobeya_whiteboard/article-asset-3.png"
           />
         </template>
       </TwoColumns>
@@ -103,7 +103,7 @@
         :caption="$t('work._iobeya_whiteboard.part-1.caption-2')"
       >
         <template #asset>
-          <img src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-4.png" />
+          <img src="/images/_work/_iobeya_whiteboard/article-asset-4.png" />
         </template>
       </FullWidthFigure>
       <OneColumn
@@ -119,7 +119,7 @@
         <template #plain>
           <Figure
             type="image"
-            src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-5.png"
+            src="/images/_work/_iobeya_whiteboard/article-asset-5.png"
           />
         </template>
       </OneColumn>
@@ -139,14 +139,14 @@
         <template #left>
           <Figure
             type="image"
-            src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-6.png"
+            src="/images/_work/_iobeya_whiteboard/article-asset-6.png"
             :caption="$t('work._iobeya_whiteboard.part-2.caption-1')"
           />
         </template>
         <template #right>
           <Figure
             type="image"
-            src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-7.png"
+            src="/images/_work/_iobeya_whiteboard/article-asset-7.png"
             :caption="$t('work._iobeya_whiteboard.part-2.caption-2')"
           />
         </template>
@@ -162,7 +162,7 @@
         :caption="$t('work._iobeya_whiteboard.part-2.caption-3')"
       >
         <template #asset>
-          <img src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-8.png" />
+          <img src="/images/_work/_iobeya_whiteboard/article-asset-8.png" />
         </template>
       </FullWidthFigure>
       <OneColumn
@@ -221,14 +221,14 @@
         <template #left>
           <Figure
             type="image"
-            src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-9.svg"
+            src="/images/_work/_iobeya_whiteboard/article-asset-9.svg"
             :caption="$t('work._iobeya_whiteboard.part-3.caption-1')"
           />
         </template>
         <template #right>
           <Figure
             type="image"
-            src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-10.svg"
+            src="/images/_work/_iobeya_whiteboard/article-asset-10.svg"
             :caption="$t('work._iobeya_whiteboard.part-3.caption-2')"
           />
         </template>
@@ -240,7 +240,7 @@
       >
         <template #asset>
           <video autoplay loop muted>
-            <source src="/src/assets/videos/_work/_iobeya_whiteboard/article-asset-1.mp4" type="video/mp4" />
+            <source src="/videos/_work/_iobeya_whiteboard/article-asset-1.mp4" type="video/mp4" />
           </video>
         </template>
       </FullWidthFigure>
@@ -255,7 +255,7 @@
         :caption="$t('work._iobeya_whiteboard.part-3.caption-4')"
       >
         <template #asset>
-          <img src="/src/assets/images/_work/_iobeya_whiteboard/article-asset-11.png" />
+          <img src="/images/_work/_iobeya_whiteboard/article-asset-11.png" />
         </template>
       </FullWidthFigure>
     </section>

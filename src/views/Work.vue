@@ -80,10 +80,10 @@
     <div class="background">
       <Transition name="scale-up" :duration="duration" mode="out-in" class="background__item" appear>
         <div v-if="activeProjectCodeName === ((projects[0] as any) as any).meta.codeName"></div>
-        <div v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName" style="background: url(/src/assets/images/_work/_jeprendsquoi/background.svg) 50% / cover no-repeat"></div>
+        <div v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName" style="background: url(/images/_work/_jeprendsquoi/background.svg) 50% / cover no-repeat"></div>
         <div v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName"></div>
         <div v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName"></div>
-        <div v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName" style="background: url(/src/assets/images/_work/_iobeya_whiteboard/background.png) 0% 0% no-repeat"></div>
+        <div v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName" style="background: url(/images/_work/_iobeya_whiteboard/background.png) 0% 0% no-repeat"></div>
       </Transition>
     </div>
     <section class="work">

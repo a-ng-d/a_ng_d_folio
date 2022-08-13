@@ -57,7 +57,7 @@
         <template #right>
           <Figure
             type="image"
-            src="/src/assets/images/_work/_awesome_ipsums/article-asset-1.png"
+            src="/images/_work/_awesome_ipsums/article-asset-1.png"
             :caption="$t('work._awesome_ipsums.part-1.caption-1')"
           />
         </template>
@@ -77,7 +77,7 @@
         background="linear-gradient(90deg, #FAF7D4 -61.9%, #B4F3D5 176.19%)"
       >
         <template #asset>
-          <img src="/src/assets/images/_work/_awesome_ipsums/article-asset-2.png" />
+          <img src="/images/_work/_awesome_ipsums/article-asset-2.png" />
         </template>
       </FullWidthFigure>
       <OneColumn
@@ -92,7 +92,7 @@
         background="linear-gradient(90deg, #FAF7D4 -61.9%, #B4F3D5 176.19%)"
       >
         <template #asset>
-          <img src="/src/assets/images/_work/_awesome_ipsums/article-asset-3.png" />
+          <img src="/images/_work/_awesome_ipsums/article-asset-3.png" />
         </template>
       </FullWidthFigure>
       <OneColumn
@@ -107,7 +107,7 @@
         background="linear-gradient(90deg, #FAF7D4 -61.9%, #B4F3D5 176.19%)"
       >
         <template #asset>
-          <img src="/src/assets/images/_work/_awesome_ipsums/article-asset-4.png" />
+          <img src="/images/_work/_awesome_ipsums/article-asset-4.png" />
         </template>
       </FullWidthFigure>
     </section>
@@ -153,5 +153,5 @@
 
   section.ending
     height: 100vh
-    background: url(/src/assets/images/_work/_awesome_ipsums/ending-asset-3.svg) 100% 0 no-repeat , url(/src/assets/images/_work/_awesome_ipsums/ending-asset-2.svg) 55% v-bind('parallax(50, 55)') no-repeat, url(/src/assets/images/_work/_awesome_ipsums/ending-asset-1.svg) 50% v-bind('parallax(-50, 50)') no-repeat, #23A566
+    background: url(/images/_work/_awesome_ipsums/ending-asset-3.svg) 100% 0 no-repeat , url(/images/_work/_awesome_ipsums/ending-asset-2.svg) 55% v-bind('parallax(50, 55)') no-repeat, url(/images/_work/_awesome_ipsums/ending-asset-1.svg) 50% v-bind('parallax(-50, 50)') no-repeat, #23A566
 </style>
