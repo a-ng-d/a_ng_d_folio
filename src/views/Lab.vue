@@ -73,7 +73,8 @@
         ],
         scrollParams: {
           velocity: 1,
-          gap: 1
+          scale: 1,
+          gap: 1,
         },
         active: ''
       }
@@ -81,6 +82,7 @@
     methods: {
       smoothScroll(e: any) {
         this.scrollParams.velocity = scrollVelocity(e.target, e.target.scrollWidth - document.body.clientWidth, 'x')
+        this.scrollParams.scale = doMap(this.scrollParams.velocity, 1, 1.5, 1, 2)
         this.scrollParams.gap = doMap(this.scrollParams.velocity, 1, 1.5, 1, 4)
       }
     }
@@ -137,7 +139,7 @@
       display: none
 
     &__container
-      --scale-y: v-bind("1 / scrollParams.velocity")
+      --scale-y: v-bind("1 / scrollParams.scale")
       --multiplier: v-bind("scrollParams.gap")
 
       display: flex
