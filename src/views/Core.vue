@@ -61,14 +61,15 @@
       }
     },
     mounted: function() {
-      this.triggers = this.$el.children[0].children.map((child: any) => {
-        return {
-          element: child,
-          top: child.offsetTop,
-          bottom: child.offsetTop + child.offsetHeight,
-          middle: child.offsetTop + child.offsetHeight * .5,
-          height: child.offsetHeight
-        }
+      const triggers: any = this.$el.children[0].children
+      triggers.forEach((trigger: any) => {
+        this.triggers.push({
+          element: trigger,
+          top: trigger.offsetTop,
+          bottom: trigger.offsetTop + trigger.offsetHeight,
+          middle: trigger.offsetTop + trigger.offsetHeight * .5,
+          height: trigger.offsetHeight
+        })
       })
     }
   })
