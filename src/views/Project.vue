@@ -122,9 +122,6 @@
 <style scoped lang="sass">
   @use '@/assets/stylesheets/base.sass' as device
 
-  .page
-    scroll-snap-type: y proximity
-
   // Structure
   .project
     grid-area: main
@@ -132,9 +129,6 @@
 
     &[data-theme="DARK"]
       --text-color: var(--color-cream)
-
-  :deep(section)
-    scroll-snap-align: center
 
   .title, .description
     height: 100vh
