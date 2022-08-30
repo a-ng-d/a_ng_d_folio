@@ -46,6 +46,8 @@
           :theme="theme === 'DEFAULT' ? 'DARK' : 'DEFAULT'"
         />
       </RouterLink>
+      <span class="footer__tag__content">{{ $t("global.separator") }}</span>
+      <span class="footer__tag__content">{{ $t("global.version") }}</span>
     </div>
   </footer>
 </template>
