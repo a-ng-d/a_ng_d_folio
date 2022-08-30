@@ -72,6 +72,9 @@
             {{ label }}
           </span>
         </div>
+        <div v-if="layout === 'ICON-BOTH'" class="button__icon">
+          <slot name="additional-icon"></slot>
+        </div>
       </div>
       <div class="button__background">
         <Particles :isExpanded="isExpanded" />
