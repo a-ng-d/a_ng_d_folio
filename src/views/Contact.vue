@@ -81,7 +81,6 @@
 
     &__content
       display: flex
-      flex: 1
       flex-flow: column nowrap
       align-items: center
       gap: var(--layout-row-gap) 0
