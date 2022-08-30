@@ -35,9 +35,9 @@
 <template>
   <footer class="footer" :data-theme="theme">
     <div class="footer__tag">
-      <span class="footer__tag__content">{{ $t("footer.author") }}</span>
+      <span class="footer__tag__content">{{ $t("global.author") }}</span>
       <span class="footer__tag__content">{{ $t("global.separator") }}</span>
-      <span class="footer__tag__content">{{ $t("footer.license", { year: new Date().getFullYear() }) }}</span>
+      <span class="footer__tag__content">{{ $t("global.license", { year: new Date().getFullYear() }) }}</span>
       <span class="footer__tag__content">{{ $t("global.separator") }}</span>
       <RouterLink class="footer__tag__link" to="/_attribution">
         <Label

@@ -12,9 +12,10 @@
     "archive": "_Ancient_work"
   },
   "global": {
-    "author": "nG⚡️ aka. Aurélien Grimaud",
+    "author": "Aurélien Grimaud aka. ANGD⚡️",
     "separator": "・",
     "version": "v1.0",
+    "license": "CC-BY {year}",
     "back": {
       "root": "Back to root",
       "home": "Back to Home"
@@ -45,8 +46,6 @@
     "core": "Story"
   },
   "footer": {
-    "author": "Aurélien Grimaud aka nG⚡",
-    "license": "CC-BY {year}",
     "attribution": "Attribution"
   },
   "id": {
