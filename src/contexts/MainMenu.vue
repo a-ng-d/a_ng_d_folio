@@ -135,17 +135,6 @@
           rootPage="/_work"
           :nextPage="nextProject()"
         />
-        <Button
-          v-else-if="view === 'HOME'"
-          type="secondary"
-          :label="$t('home.id')"
-          path="/_id"
-          :layout="device != 'MOBILE' ? 'ICON-RIGHT' : 'ICON-ONLY'"
-        >
-          <template #icon>
-            <User :size="24" />
-          </template>
-        </Button>
       </Transition>
     </template>
   </Header>

@@ -82,11 +82,19 @@
             return diff < 0 ? this.transition = 'push-right' : this.transition = 'push-left'
           },
           'HOME > ID': () => {
-            this.transition = 'go-up'
+            this.transition = 'go-right'
             this.isHardTransited = true
           },
           'ID > HOME': () => {
-            this.transition = 'go-down'
+            this.transition = 'go-left'
+            this.isHardTransited = true
+          },
+          'HOME > CONTACT': () => {
+            this.transition = 'go-left'
+            this.isHardTransited = true
+          },
+          'CONTACT > HOME': () => {
+            this.transition = 'go-right'
             this.isHardTransited = true
           }
         }
