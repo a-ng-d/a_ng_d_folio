@@ -112,19 +112,8 @@
     </template>
     <template #right-part>
       <Transition name="switch" mode="out-in">
-        <Button
-          v-if="view === 'ID'"
-          type="primary"
-          :label="$t('global.back.home')"
-          path="/"
-          :layout="device != 'MOBILE' ? 'ICON-RIGHT' : 'ICON-ONLY'"
-        >
-          <template #icon>
-            <ArrowDown :size="24" />
-          </template>
-        </Button>
         <Pagination
-          v-else-if="view === 'WORK'"
+          v-if="view === 'WORK'"
           :pages="projects"
           :activePage="activeProjectPosition"
           :theme="(projects[activeProjectPosition as number] as any).meta.theme"
