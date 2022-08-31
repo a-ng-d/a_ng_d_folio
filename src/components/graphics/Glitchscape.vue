@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { defineComponent, onUpdated } from 'vue'
+  import { defineComponent } from 'vue'
   import type { MountainProps, CloudProps, StarProps, PovProps, Position, Center, Progress, Rotation, Size, Row } from '@/utilities/types'
   import P5 from 'p5'
   import { HSLColors, filters } from '@/utilities/colors'
@@ -71,14 +71,6 @@
         return glitchscape.povZoom(this.scrollProgress, this.scrollLimit)
       }
     },
-    setup: function(props) {
-      onUpdated(() => {
-        setTimeout(() => {
-          povs[props.pov]?.()
-          qualities[props.quality]?.()
-        }, 200)
-      })
-    },
     mounted: function() {
       glitchscape = new P5((sk: any) => {
 
@@ -101,6 +93,22 @@
           mountains: Array<any> = [],
           clouds: Array<any> = [],
           stars: Array<any> = []
+
+        const povs: any = {
+          RESET: () => sk.povReset(),
+          MIRROR_1: () => sk.povMirror(1),
+          MIRROR_2: () => sk.povMirror(2),
+          MIRROR_3: () => sk.povMirror(3),
+          MIRROR_4: () => sk.povMirror(4),
+          MIRROR_5: () => sk.povMirror(5),
+          DONTLOOKUP: () => sk.povDontLookUp(),
+          SIDE: () => sk.povSide(),
+          GLOBAL: () => sk.povGlobal(),
+        },
+        qualities: any = {
+          LOW: () => sk.lowQuality(),
+          HIGH: () => sk.highQuality()
+        }
 
         // Elements
         class Mountain {
@@ -647,6 +655,10 @@
           clouds.sort((a: any, b: any) => a.position.z - b.position.z)
           clouds.forEach((cloud: any, index: any) => { cloud.params.order = index })
 
+          // default pov and quality
+          povs[this.pov]?.() ?? 'No POV matches'
+          qualities[this.quality]?.() ?? 'No QUALITY matches'
+
         }
 
         sk.draw = () => {
@@ -815,7 +827,6 @@
 
         sk.windowResized = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
       })
-      this.isRendered = true
     }
   })
 </script>
