@@ -1,11 +1,26 @@
 <script lang="ts">
-  import { defineComponent } from 'vue'
+  import { defineComponent, onUpdated } from 'vue'
   import type { MountainProps, CloudProps, StarProps, PovProps, Position, Center, Progress, Rotation, Size, Row } from '@/utilities/types'
   import P5 from 'p5'
   import { HSLColors, filters } from '@/utilities/colors'
   import { doMap, random, twoRangesRandom } from '@/utilities/operations'
 
   let glitchscape: any = null
+  const povs: any = {
+    RESET: () => glitchscape.povReset(),
+    MIRROR_1: () => glitchscape.povMirror(1),
+    MIRROR_2: () => glitchscape.povMirror(2),
+    MIRROR_3: () => glitchscape.povMirror(3),
+    MIRROR_4: () => glitchscape.povMirror(4),
+    MIRROR_5: () => glitchscape.povMirror(5),
+    DONTLOOKUP: () => glitchscape.povDontLookUp(),
+    SIDE: () => glitchscape.povSide(),
+    GLOBAL: () => glitchscape.povGlobal(),
+  },
+  qualities: any = {
+    LOW: () => glitchscape.lowQuality(),
+    HIGH: () => glitchscape.highQuality()
+  }
 
   export default defineComponent({
     name: 'Glitchscape',
@@ -37,27 +52,17 @@
       },
       view: String
     },
+    data: function() {
+      return {
+        isRendered: false
+      }
+    },
     watch: {
       pov(to, from) {
-        const actions: any = {
-          RESET: () => glitchscape.povReset(),
-          MIRROR_1: () => glitchscape.povMirror(1),
-          MIRROR_2: () => glitchscape.povMirror(2),
-          MIRROR_3: () => glitchscape.povMirror(3),
-          MIRROR_4: () => glitchscape.povMirror(4),
-          MIRROR_5: () => glitchscape.povMirror(5),
-          DONTLOOKUP: () => glitchscape.povDontLookUp(),
-          SIDE: () => glitchscape.povSide(),
-          GLOBAL: () => glitchscape.povGlobal(),
-        }
-        return actions[to]?.() ?? 'No POV matches'
+        return povs[to]?.() ?? 'No POV matches'
       },
       quality(to, from) {
-        const actions: any = {
-          LOW: () => glitchscape.lowQuality(),
-          HIGH: () => glitchscape.highQuality()
-        }
-        return actions[to]?.() ?? 'No quality matches'
+        return qualities[to]?.() ?? 'No QUALITY matches'
       },
       isGlitched(to, from) {
         to ? glitchscape.glitch() : glitchscape.unglitch()
@@ -65,6 +70,14 @@
       scrollProgress(to, from) {
         return glitchscape.povZoom(this.scrollProgress, this.scrollLimit)
       }
+    },
+    setup: function(props) {
+      onUpdated(() => {
+        setTimeout(() => {
+          povs[props.pov]?.()
+          qualities[props.quality]?.()
+        }, 200)
+      })
     },
     mounted: function() {
       glitchscape = new P5((sk: any) => {
@@ -680,7 +693,7 @@
         }
 
         // Events
-        sk.povReset = () => setTimeout(() => pov.animate(
+        sk.povReset = () => pov.animate(
           .05,
           [
             0,
@@ -696,9 +709,9 @@
             0,
             0
           ]
-        ), 100)
+        )
 
-        sk.povMirror = (increment: number) => setTimeout(() => pov.animate(
+        sk.povMirror = (increment: number) => pov.animate(
           .05,
           [
             doMap(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),
@@ -714,9 +727,9 @@
             0,
             0
           ]
-        ), 200)
+        )
 
-        sk.povDontLookUp = () => setTimeout(() => pov.animate(
+        sk.povDontLookUp = () => pov.animate(
           .05,
           [
             0,
@@ -732,9 +745,9 @@
             0,
             0
           ]
-        ), 200)
+        )
 
-        sk.povSide = () => setTimeout(() => pov.animate(
+        sk.povSide = () => pov.animate(
           .05,
           [
             limitX * 4,
@@ -750,9 +763,9 @@
             Math.PI / 2,
             0
           ]
-        ), 200)
+        )
 
-        sk.povGlobal = () => setTimeout(() => pov.animate(
+        sk.povGlobal = () => pov.animate(
           .05,
           [
             0,
@@ -768,25 +781,20 @@
             0,
             0
           ]
-        ), 200)
+        )
 
         sk.povZoom = (scrollProgress: number, scrollLimit: number) => pov.zoom(scrollProgress, scrollLimit + 200)
 
         sk.lowQuality = () => {
-          setTimeout(() => {
-            mountains.forEach(mountain => mountain.wireframe())
-            clouds.forEach(cloud => cloud.wireframe())
-            stars.forEach(star => star.wireframe())
-          }, 200)
-
+          mountains.forEach(mountain => mountain.wireframe())
+          clouds.forEach(cloud => cloud.wireframe())
+          stars.forEach(star => star.wireframe())
         }
 
         sk.highQuality = () => {
-          setTimeout(() => {
-            mountains.forEach(mountain => mountain.unwireframe())
-            clouds.forEach(cloud => cloud.unwireframe())
-            stars.forEach(star => star.unwireframe())
-          }, 200)
+          mountains.forEach(mountain => mountain.unwireframe())
+          clouds.forEach(cloud => cloud.unwireframe())
+          stars.forEach(star => star.unwireframe())
         }
 
         sk.glitch = () => {
@@ -807,6 +815,7 @@
 
         sk.windowResized = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
       })
+      this.isRendered = true
     }
   })
 </script>
