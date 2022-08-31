@@ -483,7 +483,10 @@
             },
             progress: Progress,
             speed: number,
-            isPushed: boolean
+            scrollPosition: number,
+            scrollLimit: number,
+            isPushed: boolean,
+            isScrolling: boolean
           }
 
           constructor(props: PovProps) {
@@ -525,7 +528,10 @@
                 z: 0
               },
               speed: 0.1,
-              isPushed: false
+              scrollPosition: 0,
+              scrollLimit: 0,
+              isPushed: false,
+              isScrolling: false
             }
           }
 
@@ -555,11 +561,19 @@
               this.position.x = sk.lerp(this.position.x, this.params.target.position.x + doMap(sk.mouseX, 0, sk.width, sk.width * .2, -sk.width * .2), .1)
               this.position.y = sk.lerp(this.position.y, this.params.target.position.y + doMap(sk.mouseY, 0, sk.height, sk.height * .2, -sk.height * .2), .1)
             }
+
+            if (this.params.isScrolling) {
+              this.params.progress.z = sk.lerp(this.params.progress.z, doMap(this.params.scrollPosition, 0, this.params.scrollLimit, 0, this.params.target.center.z), this.params.speed)
+            }
           }
 
           push = () => this.params.isPushed = true
 
-          zoom = (scrollPosition: number, scrollLimit: number) => this.params.progress.z = doMap(scrollPosition, 0, scrollLimit, 0, this.params.target.center.z)
+          zoom = (scrollPosition: number, scrollLimit: number) => {
+            this.params.isScrolling = true
+            this.params.scrollPosition = scrollPosition
+            this.params.scrollLimit = scrollLimit
+          }
 
         }
 
