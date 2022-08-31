@@ -85,6 +85,7 @@
 
   @include device.mobile
     .footer
+      flex-wrap: wrap
       justify-content: center
 
   // Aspect
