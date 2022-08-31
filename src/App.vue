@@ -26,13 +26,13 @@
         device: 'DESKTOP',
         transition: 'scale-down',
         scrollProgress: 0,
-        pageHeight: NaN,
-        viewHeight: NaN,
+        pageHeight: 0,
+        viewHeight: 0,
         isGlitched: false,
         isExpanded: false,
         isHardTransited: false,
         activeProjectPosition: 0,
-        numberOfProjects: NaN,
+        numberOfProjects: 0,
         multiplier: 1
       }
     },
