@@ -205,9 +205,9 @@
             }
 
             if (this.params.isStrokedOnly)
-              this.params.alpha = sk.lerp(this.params.alpha, 0, this.params.speed * .33)
+              this.params.alpha = sk.lerp(this.params.alpha, 0, this.params.speed * .5)
             else
-              this.params.alpha = sk.lerp(this.params.alpha, 1, this.params.speed * .33)
+              this.params.alpha = sk.lerp(this.params.alpha, 1, this.params.speed * .5)
 
             this.draw()
           }
@@ -350,9 +350,9 @@
             }
 
             if (this.params.isStrokedOnly)
-              this.params.alpha = sk.lerp(this.params.alpha, 0, this.params.speed * .33)
+              this.params.alpha = sk.lerp(this.params.alpha, 0, this.params.speed * .5)
             else
-              this.params.alpha = sk.lerp(this.params.alpha, 1, this.params.speed * .33)
+              this.params.alpha = sk.lerp(this.params.alpha, 1, this.params.speed * .5)
 
             this.draw()
           }
