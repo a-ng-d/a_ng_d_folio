@@ -9,11 +9,11 @@ loader: HTMLElement = document.getElementById('loader')!
 
 window.onload = () => {
   setTimeout(() => loader.classList.replace('loader--enter', 'loader--leave'), 3000)
-  setTimeout(() => loader.innerHTML = '', 3400)
+  setTimeout(() => loader.innerHTML = '', 4600)
   setTimeout(() => app
     .use(router)
     .use(i18n)
     .use(Vue3Lottie)
     .mount('#app')
-  , 3400)
+  , 4600)
 }
