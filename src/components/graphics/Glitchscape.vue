@@ -507,7 +507,10 @@
             speed: number,
             scrollPosition: number,
             scrollLimit: number,
+            alpha: number,
+            beta: number,
             isPushed: boolean,
+            isOriented: boolean,
             isScrolling: boolean
           }
 
@@ -552,7 +555,10 @@
               speed: 0.1,
               scrollPosition: 0,
               scrollLimit: 0,
+              alpha: 0,
+              beta: 75,
               isPushed: false,
+              isOriented: false,
               isScrolling: false
             }
           }
@@ -584,12 +590,23 @@
               this.position.y = sk.lerp(this.position.y, this.params.target.position.y + doMap(sk.mouseY, 0, sk.height, sk.height * .2, -sk.height * .2), .1)
             }
 
+            if (this.params.isOriented) {
+              this.position.x = sk.lerp(this.position.x, this.params.target.position.x + doMap(this.params.alpha, -90, 90, sk.width * .2, -sk.width * .2), .1)
+              this.position.y = sk.lerp(this.position.y, this.params.target.position.y + doMap(this.params.beta, 0, 180, sk.height * .2, -sk.height * .2), .1)
+            }
+
             if (this.params.isScrolling) {
               this.params.progress.z = sk.lerp(this.params.progress.z, doMap(this.params.scrollPosition, 0, this.params.scrollLimit, 0, this.params.target.center.z), this.params.speed)
             }
           }
 
           push = () => this.params.isPushed = true
+
+          orient = (alpha: number, beta: number) => {
+            this.params.isOriented = true
+            this.params.alpha = alpha
+            this.params.beta = beta
+          }
 
           zoom = (scrollPosition: number, scrollLimit: number) => {
             this.params.isScrolling = true
@@ -618,6 +635,9 @@
           sk.rectMode(sk.CENTER)
           sk.frameRate(fps)
           camera = sk.createCamera()
+
+          if (window.DeviceOrientationEvent)
+            window.addEventListener('deviceorientation', sk.deviceMoved)
 
           // particles setting
           for (let i = 0 ; i < mNumber ; i++)
@@ -825,6 +845,8 @@
         sk.mouseMoved = () => pov.push()
 
         sk.touchMoved = () => pov.push()
+
+        sk.deviceMoved = (e: any) => pov.orient(e.alpha, e.beta)
 
         sk.windowResized = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
       })
