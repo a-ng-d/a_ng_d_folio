@@ -85,7 +85,6 @@
 
   @include device.mobile
     .footer
-      flex-wrap: wrap
       justify-content: center
 
   // Aspect
@@ -94,6 +93,8 @@
       --text-color: var(--color-cream)
       --background-color: var(--color-soil)
       --border-color: var(--color-cream)
+
+      flex-wrap: wrap
 
   [data-theme="DARK"]
     .footer__tag

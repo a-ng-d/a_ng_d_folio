@@ -151,7 +151,7 @@
       }
     },
     mounted: function() {
-      window.innerWidth < 461 ? this.device = 'MOBILE' : this.device
+      window.innerWidth < 1024 ? this.device = 'MOBILE' : this.device
       window.onresize = () => window.innerWidth < 461 ? this.device = 'MOBILE' : this.device = 'DESKTOP'
     }
   })
@@ -192,6 +192,7 @@
         :activeProjectPosition="activeProjectPosition"
         :scrollProgress="scrollProgress"
         :scrollLimit="pageHeight - viewHeight"
+        :device="device"
         :theme="view === 'PROJECT' ? 'DEFAULT' : route.meta.theme"
         @activeProjectPosition="activeProjectPosition = $event"
         @activeProjectBackground="filter = $event"

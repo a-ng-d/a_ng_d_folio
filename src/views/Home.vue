@@ -25,6 +25,10 @@
       theme: {
         type: String,
         default: 'DEFAULT'
+      },
+      device: {
+        type: String,
+        default: 'DESKTOP'
       }
     }
   })
@@ -39,15 +43,16 @@
             type="secondary"
             :label="$t('home.contact')"
             path="/_contact"
-            layout="ICON-BOTH"
+            :layout="device != 'MOBILE' ? 'ICON-BOTH' : 'ICON-ONLY'"
             :theme="theme"
+            isInverted
             tabindex="4"
           >
             <template #icon>
-              <ArrowLeft :size="24" />
+              <Mail :size="24" />
             </template>
             <template #additional-icon>
-              <Mail :size="24" />
+              <ArrowLeft :size="24" />
             </template>
           </Button>
         </Transition>
@@ -56,7 +61,7 @@
             type="secondary"
             :label="$t('home.id')"
             path="/_id"
-            layout="ICON-BOTH"
+            :layout="device != 'MOBILE' ? 'ICON-BOTH' : 'ICON-ONLY'"
             :theme="theme"
             tabindex="5"
           >
@@ -86,15 +91,16 @@
             type="secondary"
             :label="$t('home.core')"
             path="/_core"
-            layout="ICON-BOTH"
+            :layout="device != 'MOBILE' ? 'ICON-BOTH' : 'ICON-ONLY'"
             :theme="theme"
+            isInverted
             tabindex="2"
           >
             <template #icon>
-              <ArrowLeft :size="24" />
+              <Heart :size="24" />
             </template>
             <template #additional-icon>
-              <Heart :size="24" />
+              <ArrowLeft :size="24" />
             </template>
           </Button>
         </Transition>
@@ -103,7 +109,7 @@
             type="primary"
             :label="$t('home.work')"
             path="/_work"
-            layout="ICON-BOTH"
+            :layout="device != 'MOBILE' ? 'ICON-BOTH' : 'SIMPLE'"
             :theme="theme"
             tabindex="1"
           >
@@ -120,7 +126,7 @@
             type="secondary"
             :label="$t('home.lab')"
             path="/_lab"
-            layout="ICON-BOTH"
+            :layout="device != 'MOBILE' ? 'ICON-BOTH' : 'ICON-ONLY'"
             :theme="theme"
             tabindex="3"
           >
@@ -186,9 +192,5 @@
       padding: var(--layout-paragraph-gap) var(--layout-center)
 
       &__actions
-        flex-flow: column nowrap
         gap: var(--spacing-l-000)
-
-        & > a
-          width: 100%
 </style>

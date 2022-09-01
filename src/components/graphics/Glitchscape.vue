@@ -83,7 +83,8 @@
           scrHeight: number = window.innerHeight,
           limitX: number = scrWidth * 2,
           limitY: number = scrHeight * 10,
-          limitZ: number = scrHeight * 40
+          limitZ: number = scrHeight * 40,
+          multiplier: number = scrWidth < 461 ? 1.5 : scrWidth < 1281 ? 1.25 : 1
 
         let
           fps: number = 60,
@@ -244,7 +245,7 @@
             const randomColor: { [key: string]: number } = (Object as any).values(HSLColors)[random(0, (Object as any).values(HSLColors).length)]
 
             sk.push()
-              sk.translate(this.position.x < 0 ? this.position.x - this.size.width : this.position.x, this.position.y, this.position.z)
+              sk.translate(this.position.x < 0 ? this.position.x - (this.size.width * multiplier) : this.position.x, this.position.y, this.position.z)
               sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness(), this.params.alpha)
               sk.stroke(this.deepHue(), this.deepSaturation(), this.deepLightness())
               sk.strokeWeight(1)
@@ -623,7 +624,7 @@
             mountains.push(new Mountain({
               widthRange: [sk.width * 4, sk.width * 6],
               heightRange: [-sk.height * 3, -sk.height * 5],
-              x: twoRangesRandom(-limitX, -sk.width *.75, sk.width *.75, limitX),
+              x: twoRangesRandom(-limitX, -sk.width, sk.width, limitX),
               y: sk.height * .5,
               zRange: [-limitZ, 0],
               foreground: HSLColors.cream,
