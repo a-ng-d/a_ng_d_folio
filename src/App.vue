@@ -239,7 +239,7 @@
 
   @include device.tablet
     :root
-      --font-size-ref: 0.85px
+      --font-size-ref: 0.875px
       --layout-margin: var(--spacing-xl-000)
       --layout-center: var(--spacing-xl-000)
       --layout-columns: 6
@@ -247,7 +247,7 @@
 
   @include device.mobile-landscape
     :root
-      --font-size-ref: 0.75px
+      --font-size-ref: 0.625px
       --font-size-relative: 8vw
       --header-height-size: var(--sizing-xl-700)
 
