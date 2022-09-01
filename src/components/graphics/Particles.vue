@@ -63,6 +63,7 @@
           params: {
             color: HuSaLiTy,
             weight: number,
+            weightRef: number,
             move: number,
             speed: number,
             order: number,
@@ -86,7 +87,8 @@
             }
             this.params = {
               color: colors[random(0, colors.length)],
-              weight: this.props.weight,
+              weight: 0,
+              weightRef: this.props.weight,
               move: this.size.width,
               speed: 0.1,
               order: 0,
@@ -118,10 +120,14 @@
           changeMovement = (movement: string) => (this.params.movement as string) = movement
 
           move = () => {
-            if (this.params.isExpanded && sk.millis() - time > this.params.gap * this.params.order)
+            if (this.params.isExpanded && sk.millis() - time > this.params.gap * this.params.order) {
               this.params.move = sk.lerp(this.params.move, 0, this.params.speed * 2)
-            else if (!this.params.isExpanded && sk.millis() - time > this.params.gap * this.params.order)
+              this.params.weight = sk.lerp(this.params.weight, this.params.weightRef, this.params.speed * 4)
+            }
+            else if (!this.params.isExpanded && sk.millis() - time > this.params.gap * this.params.order) {
               this.params.move = sk.lerp(this.params.move, -(this.size.width + 1), this.params.speed * 4)
+              this.params.weight = sk.lerp(this.params.weight, 0, this.params.speed * 2)
+            }
 
             this.draw()
           }
