@@ -46,6 +46,7 @@
       --gap: v-bind("direction === 'LEFT' ? '-100%' : '100%'")
 
       display: block
+      position: absolute
       animation: across 16000ms infinite forwards linear
       white-space: nowrap
 
