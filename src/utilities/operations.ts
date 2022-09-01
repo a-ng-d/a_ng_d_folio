@@ -25,14 +25,15 @@ export const scrollVelocity = (target: any, scrollLimit: number, orientation: st
   velocity = 1
   delta = 0
   currentPosition =  orientation === 'y' ? target.scrollTop : target.scrollLeft
-  clearTimeout(timer)
-  timer = setInterval(() => {
+  window.cancelAnimationFrame(timer)
+  timer = () => {
     snapPosition = orientation === 'y' ? target.scrollTop : target.scrollLeft
-  }, 10)
+  }
+  window.requestAnimationFrame(timer)
   delta = Math.abs(currentPosition - snapPosition)
   currentPosition == 0 ? velocity = 1 :
                          currentPosition > scrollLimit - 1 ? velocity = 1 :
-                         velocity = doMap(delta, 1, 400, 1, 1.5)
+                         velocity = doMap(delta, 1, 800, 1, 1.5)
 
   return velocity
 }
