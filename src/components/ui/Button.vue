@@ -31,6 +31,10 @@
         default: ['normal', '0']
       },
       position: String,
+      isInverted: {
+        type: Boolean,
+        default: false
+      },
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -142,6 +146,7 @@
 
     &__content
       display: flex
+      flex-direction: v-bind("isInverted ? 'row-reverse' : 'row'")
       flex: 1
       z-index: 1
       pointer-events: none
