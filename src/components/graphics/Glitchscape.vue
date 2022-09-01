@@ -849,7 +849,7 @@
     width: 100vw
     height: 100vh
     position: fixed
-    z-index: 0
+    z-index: 1
     top: 0
     background-image: var(--gradient-biscarosse-sunset)
     mix-blend-mode: color
@@ -860,5 +860,5 @@
     position: fixed
     top: 0
     transition: var(--grandma-transition)
-    z-index: -1
+    z-index: 0
 </style>

@@ -164,7 +164,7 @@
     :weight="160"
     :isExpanded="isExpanded"
     :movement="transition"
-    :style="`position: absolute ; visibility: ${isHardTransited ? 'visible' : 'hidden'} ; z-index: 2`"
+    :style="`position: absolute ; visibility: ${isHardTransited ? 'visible' : 'hidden'} ; z-index: 3`"
   />
   <Transition name="pull-down" style="--delay: var(--duration-turtoise)" @after-leave="resetDelay" appear>
     <MainMenu
@@ -233,7 +233,7 @@
     grid-template-areas: var(--layout-areas)
     width: 100vw
     height: 100vh
-    z-index: 1
+    z-index: 2
     overflow-x: hidden
     overflow-y: scroll
 

@@ -54,7 +54,7 @@
     position: fixed
     width: 100vw
     height: var(--header-height-size)
-    z-index: 2
+    z-index: 4
     display: flex
     padding: 0 var(--layout-center)
     gap: var(--layout-section-gap)
