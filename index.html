@@ -10,7 +10,8 @@
         width: 100vw;
         height: 100vh;
         margin: 0;
-        background-color: #F5D546
+        background-color: #F5D546;
+        font-size: 1px
       }
       #app, #loader {
         width: 100%;
@@ -24,7 +25,9 @@
         justify-content: center;
         align-items: center;
         z-index: 6;
-        background: linear-gradient(180deg, #C7E3FE 0%, #E0D1F3 75%, #F5D546 100%);
+        background-image: linear-gradient(180deg, #C7E3FE 0%, #E0D1F3 75%, #F5D546 100%);
+        background-position: 50% 100%;
+        background-size: 100% 100%;
         pointer-events: none
       }
       #loader.loader--enter {
@@ -34,32 +37,37 @@
         animation: go-forwards--leave 1600ms cubic-bezier(.86, .12, .12, .86) forwards
       }
       #animation {
-        width: 30vw
+        width: 400rem;
+        max-width: calc(100vw - 48rem);
+        max-height: calc(100vh - 48rem)
+      }
+      #animation svg {
+        height: 100%
       }
       @keyframes go-forwards--enter {
         0% {
           opacity: 0;
-          transform: scale(1.25)
+          background-size: 100% 1000%
         }
-        25% {
+        20% {
           opacity: 0
         }
         100% {
           opacity: 1;
-          transform: scale(1)
+          background-size: 100% 100%
         }
       }
       @keyframes go-forwards--leave {
         0% {
           opacity: 1;
-          transform: scale(1)
+          background-size: 100% 100%
         }
-        25% {
-          opacity: 1
+        80% {
+          opacity: 0
         }
         100% {
           opacity: 0;
-          transform: scale(1.25)
+          background-size: 100% 1000%
         }
       }
     </style>
