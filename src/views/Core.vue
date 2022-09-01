@@ -102,133 +102,133 @@
       <section class="story__stop">
         <div class="story__content" :class="section === 'section-2' ? 'story__content--centered' : null">
           <div class="story__content--order-1">
-            <h1>{{ $t('core.personal.title') }}</h1>
+            <h1 data-highlighted="true">{{ $t('core.personal.title') }}</h1>
           </div>
           <div class="story__content--order-2">
-            <h3>{{ $t('core.personal.summary') }}</h3>
+            <h3 data-highlighted="true">{{ $t('core.personal.summary') }}</h3>
           </div>
           <div class="story__content--order-3">
-            <h6>{{ $t('core.personal.mission-1') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.personal.mission-1') }}</h6>
           </div>
           <div class="story__content--order-4">
-            <h6>{{ $t('core.personal.mission-2') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.personal.mission-2') }}</h6>
           </div>
           <div class="story__content--order-5">
-            <h6>{{ $t('core.personal.mission-3') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.personal.mission-3') }}</h6>
           </div>
         </div>
       </section>
       <section class="story__stop">
         <div class="story__content" :class="section === 'section-3' ? 'story__content--centered' : null">
           <div class="story__content--order-1">
-            <h1>{{ $t('core.productDesign.title') }}</h1>
+            <h1 data-highlighted="true">{{ $t('core.productDesign.title') }}</h1>
           </div>
           <div class="story__content--order-2">
-            <h3>{{ $t('core.productDesign.summary') }}</h3>
+            <h3 data-highlighted="true">{{ $t('core.productDesign.summary') }}</h3>
           </div>
           <div class="story__content--order-3">
-            <h6>{{ $t('core.productDesign.mission-1') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.productDesign.mission-1') }}</h6>
           </div>
           <div class="story__content--order-4">
-            <h6>{{ $t('core.productDesign.mission-2') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.productDesign.mission-2') }}</h6>
           </div>
           <div class="story__content--order-5">
-            <h6>{{ $t('core.productDesign.mission-3') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.productDesign.mission-3') }}</h6>
           </div>
         </div>
       </section>
       <section class="story__stop">
         <div class="story__content" :class="section === 'section-4' ? 'story__content--centered' : null">
           <div class="story__content--order-1">
-            <h1>{{ $t('core.creativeTechnology.title') }}</h1>
+            <h1 data-highlighted="true">{{ $t('core.creativeTechnology.title') }}</h1>
           </div>
           <div class="story__content--order-2">
-            <h3>{{ $t('core.creativeTechnology.summary') }}</h3>
+            <h3 data-highlighted="true">{{ $t('core.creativeTechnology.summary') }}</h3>
           </div>
           <div class="story__content--order-3">
-            <h6>{{ $t('core.creativeTechnology.mission-1') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.creativeTechnology.mission-1') }}</h6>
           </div>
           <div class="story__content--order-4">
-            <h6>{{ $t('core.creativeTechnology.mission-2') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.creativeTechnology.mission-2') }}</h6>
           </div>
           <div class="story__content--order-5">
-            <h6>{{ $t('core.creativeTechnology.mission-3') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.creativeTechnology.mission-3') }}</h6>
           </div>
         </div>
       </section>
       <section class="story__stop">
         <div class="story__content" :class="section === 'section-5' ? 'story__content--centered' : null">
           <div class="story__content--order-1">
-            <h1>{{ $t('core.facilitation.title') }}</h1>
+            <h1 data-highlighted="true">{{ $t('core.facilitation.title') }}</h1>
           </div>
           <div class="story__content--order-2">
-            <h3>{{ $t('core.facilitation.summary') }}</h3>
+            <h3 data-highlighted="true">{{ $t('core.facilitation.summary') }}</h3>
           </div>
           <div class="story__content--order-3">
-            <h6>{{ $t('core.facilitation.mission-1') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.facilitation.mission-1') }}</h6>
           </div>
           <div class="story__content--order-4">
-            <h6>{{ $t('core.facilitation.mission-2') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.facilitation.mission-2') }}</h6>
           </div>
           <div class="story__content--order-5">
-            <h6>{{ $t('core.facilitation.mission-3') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.facilitation.mission-3') }}</h6>
           </div>
         </div>
       </section>
       <section class="story__stop">
         <div class="story__content" :class="section === 'section-6' ? 'story__content--centered' : null">
           <div class="story__content--order-1">
-            <h1>{{ $t('core.communication.title') }}</h1>
+            <h1 data-highlighted="true">{{ $t('core.communication.title') }}</h1>
           </div>
           <div class="story__content--order-2">
-            <h3>{{ $t('core.communication.summary') }}</h3>
+            <h3 data-highlighted="true">{{ $t('core.communication.summary') }}</h3>
           </div>
           <div class="story__content--order-3">
-            <h6>{{ $t('core.communication.mission-1') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.communication.mission-1') }}</h6>
           </div>
           <div class="story__content--order-4">
-            <h6>{{ $t('core.communication.mission-2') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.communication.mission-2') }}</h6>
           </div>
           <div class="story__content--order-5">
-            <h6>{{ $t('core.communication.mission-3') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.communication.mission-3') }}</h6>
           </div>
         </div>
       </section>
       <section class="story__stop">
         <div class="story__content" :class="section === 'section-7' ? 'story__content--centered' : null">
           <div class="story__content--order-1">
-            <h1>{{ $t('core.human.title') }}</h1>
+            <h1 data-highlighted="true">{{ $t('core.human.title') }}</h1>
           </div>
           <div class="story__content--order-2">
-            <h3>{{ $t('core.human.summary') }}</h3>
+            <h3 data-highlighted="true">{{ $t('core.human.summary') }}</h3>
           </div>
           <div class="story__content--order-3">
-            <h6>{{ $t('core.human.mission-1') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.human.mission-1') }}</h6>
           </div>
           <div class="story__content--order-4">
-            <h6>{{ $t('core.human.mission-2') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.human.mission-2') }}</h6>
           </div>
           <div class="story__content--order-5">
-            <h6>{{ $t('core.human.mission-3') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.human.mission-3') }}</h6>
           </div>
         </div>
       </section>
       <section class="story__stop">
         <div class="story__content" :class="section === 'section-8' ? 'story__content--centered' : null">
           <div class="story__content--order-1">
-            <h1>{{ $t('core.extra.title') }}</h1>
+            <h1 data-highlighted="true">{{ $t('core.extra.title') }}</h1>
           </div>
           <div class="story__content--order-2">
-            <h3>{{ $t('core.extra.summary') }}</h3>
+            <h3 data-highlighted="true">{{ $t('core.extra.summary') }}</h3>
           </div>
           <div class="story__content--order-3">
-            <h6>{{ $t('core.extra.mission-1') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.extra.mission-1') }}</h6>
           </div>
           <div class="story__content--order-4">
-            <h6>{{ $t('core.extra.mission-2') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.extra.mission-2') }}</h6>
           </div>
           <div class="story__content--order-5">
-            <h6>{{ $t('core.extra.mission-3') }}</h6>
+            <h6 data-highlighted="true">{{ $t('core.extra.mission-3') }}</h6>
           </div>
         </div>
       </section>
@@ -266,9 +266,6 @@
     grid-area: main
     margin-top: calc(var(--header-height-size) * -1)
 
-    &[data-theme="DARK"]
-      --text-color: var(--color-cream)
-
     &__intro
       height: 100vh
 
@@ -283,6 +280,18 @@
 
       h1, h3, h6
         white-space: nowrap
+
+      [data-highlighted="true"]
+        &:after
+          content: ''
+          width: 100%
+          height: 50%
+          position: absolute
+          left: calc(var(--border-size) * 4)
+          bottom: calc(var(--border-size) * -1)
+          border-radius: var(--full-border-radius)
+          background: var(--border-color)
+          z-index: -1
 
       a
         pointer-events: visible
@@ -309,33 +318,52 @@
       &--intro
         transform: perspective(v-bind("perspective + 'vh'")) translate3d(0, 0, v-bind("translation + 'vh'"))
         opacity: 1
+        z-index: 6
 
       &--outro
         transform: perspective(v-bind("perspective + 'vh'")) translate3d(0, 0, v-bind("translation < 0 ? translation + 'vh' : 0"))
         opacity: v-bind("opacity")
+        z-index: 6
 
       &--order-1
         transform: perspective(v-bind("perspective * .1 + 'vh'")) translate3d(0, 0, v-bind("translation + 'vh'"))
         opacity: v-bind("opacity")
+        z-index: 5
         order: 2
 
       &--order-2
         transform: perspective(v-bind("perspective *.2 + 'vh'")) translate3d(0, 0, v-bind("translation + 'vh'"))
         opacity: v-bind("opacity")
+        z-index: 4
         order: 3
 
       &--order-3
         transform: perspective(v-bind("perspective * .8 + 'vh'")) translate3d(0, 0, v-bind("translation + 'vh'"))
         opacity: v-bind("opacity")
+        z-index: 3
         order: 1
 
       &--order-4
         transform: perspective(v-bind("perspective * .9 + 'vh'")) translate3d(0, 100%, v-bind("translation + 'vh'"))
         opacity: v-bind("opacity")
+        z-index: 2
         order: 1
 
       &--order-5
         transform: perspective(v-bind("perspective + 'vh'")) translate3d(0, 200%, v-bind("translation + 'vh'"))
         opacity: v-bind("opacity")
+        z-index: 1
         order: 1
+
+  // Aspect
+  [data-theme="DARK"]
+    --text-color: var(--color-cream)
+    --border-color: var(--color-clay)
+
+  [data-highlighted="true"]
+    --border-color: var(--color-titanium-white)
+
+  h1[data-highlighted="true"],
+  h3[data-highlighted="true"]
+    --border-color: var(--color-creamy-sun)
 </style>
