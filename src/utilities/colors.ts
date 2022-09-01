@@ -68,7 +68,7 @@ export const filters: Filters = {
     hue: '0deg',
     brightness: '1',
     invert: '0',
-    saturation: '.5',
+    saturation: '.9',
     grayscale: '0%'
   },
   nightly: {
@@ -79,17 +79,17 @@ export const filters: Filters = {
     grayscale: '0%'
   },
   candyFloss: {
-    hue: '190deg',
-    brightness: '1',
+    hue: '200deg',
+    brightness: '1.1',
     invert: '0',
-    saturation: '.5',
+    saturation: '.8',
     grayscale: '0%'
   },
   softWind: {
-    hue: '120deg',
-    brightness: '1',
+    hue: '170deg',
+    brightness: '1.1',
     invert: '0',
-    saturation: '.3',
+    saturation: '.8',
     grayscale: '0%'
   },
   grayscale: {
