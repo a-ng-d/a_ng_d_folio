@@ -7,8 +7,9 @@ import Vue3Lottie from 'vue3-lottie'
 const app = createApp(App)
 
 window.onload = () => {
-  setTimeout(() => document.getElementById('loader').classList.replace('loader--enter', 'loader--leave'), 3000)
-  setTimeout(() => document.getElementById('loader').innerHTML = '', 3400)
+  const loader: HTMLElement = document.getElementById('loader')!
+  setTimeout(() => loader.classList.replace('loader--enter', 'loader--leave'), 3000)
+  setTimeout(() => loader.innerHTML = '', 3400)
   setTimeout(() => app
     .use(router)
     .use(i18n)
