@@ -33,6 +33,9 @@
       #loader.loader--leave {
         animation: go-forwards--leave 400ms cubic-bezier(.86, .12, .12, .86) forwards
       }
+      #animation {
+        width: 30vw
+      }
       @keyframes go-forwards--enter {
         0% {
           opacity: 0;
@@ -60,13 +63,22 @@
         }
       }
     </style>
-    <script type="text/javascript" src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
   </head>
   <body>
     <div id="loader" class="loader--enter">
-      <lottie-player src="https://lottie.host/596359c8-4ed1-423f-a8a3-e5be5520cfb2/9U1zYchN9n.json" background="transparent" speed="1" style="width: 30vw" loop autoplay></lottie-player>
+      <div id="animation"></div>
     </div>
     <div id="app" v-cloak></div>
     <script type="module" src="/src/main.ts"></script>
+    <script type="text/javascript">
+      lottie.loadAnimation({
+        container: document.getElementById('animation'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/animations/_loader/data.json'
+      });
+    </script>
   </body>
 </html>
