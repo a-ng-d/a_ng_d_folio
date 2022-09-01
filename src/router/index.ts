@@ -203,7 +203,7 @@ const router = createRouter({
         theme: 'DEFAULT',
         filter: filters.softWind,
         pov: 'SIDE',
-        quality: 'HIGH'
+        quality: 'LOW'
       }
     },
     {
