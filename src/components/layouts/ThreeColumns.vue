@@ -44,7 +44,7 @@
 
     &__columns
       display: flex
-      gap: 0 var(--layout-column-gap)
+      gap: var(--layout-row-gap) var(--layout-column-gap)
 
     &__column
       display: flex
