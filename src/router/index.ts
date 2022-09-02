@@ -41,7 +41,7 @@ const router = createRouter({
         view: 'ID',
         theme: 'DEFAULT',
         filter: filters.grayscale,
-        pov: 'RESET',
+        pov: 'INVERT',
         quality: 'HIGH'
       }
     },
