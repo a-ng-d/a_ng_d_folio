@@ -22,15 +22,17 @@
 </script>
 
 <template>
-  <div class="col-1" :data-theme="theme">
+  <div class="col-w" :data-theme="theme">
     <template v-if="title != undefined && !isSubSection">
       <h3>{{ title }}</h3>
     </template>
     <template v-else-if="title != undefined && isSubSection">
       <h4>{{ title }}</h4>
     </template>
-    <div class="col-1__content">
-      <slot name="plain"></slot>
+    <div class="col-w__scroll">
+      <div class="col-w__content">
+        <slot name="plain"></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -39,7 +41,7 @@
   @use '@/assets/stylesheets/base.sass' as device
 
   // Structure
-  .col-1
+  .col-w
     display: flex
     flex-flow: column nowrap
     padding: 0 var(--layout-center)
@@ -54,30 +56,36 @@
         flex: 1 1 v-bind("columns == 3 ? 'calc(33% - var(--layout-column-gap))' : columns == 4 ? 'calc(25% - var(--layout-column-gap))' : 'calc(50% - var(--layout-column-gap))'")
 
     @include device.tablet
-      &__content
-        flex-flow: row nowrap
+      &__scroll
         overflow: auto
         margin: 0 calc(var(--layout-margin) * -1)
-        padding: var(--spacing-xs-000) var(--layout-margin)
         scrollbar-width: none
 
         &::-webkit-scrollbar
           display: none
+
+      &__content
+        flex-flow: row nowrap
+        width: fit-content
+        padding: var(--spacing-xs-000) var(--layout-margin)
 
         & > :deep(*)
           flex: none
           width: 50vw
 
     @include device.mobile
-      &__content
-        flex-flow: row nowrap
+      &__scroll
         overflow: auto
         margin: 0 calc(var(--layout-margin) * -1)
-        padding: var(--spacing-xs-000) var(--layout-margin)
         scrollbar-width: none
 
         &::-webkit-scrollbar
           display: none
+
+      &__content
+        flex-flow: row nowrap
+        width: fit-content
+        padding: var(--spacing-xs-000) var(--layout-margin)
 
         & > :deep(*)
           flex: none
