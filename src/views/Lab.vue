@@ -4,13 +4,17 @@
   import Button from '@/components/ui/Button.vue'
   import AssetContainer from '@/components/ui/AssetContainer.vue'
   import { doMap, scrollVelocity } from '@/utilities/operations'
+  import { easeInOutQuart } from '@/utilities/easings'
+  import { ArrowLeft, ArrowRight } from 'lucide-vue-next'
 
   export default defineComponent({
     name: 'Lab',
     components: {
       Footer,
       Button,
-      AssetContainer
+      AssetContainer,
+      ArrowLeft,
+      ArrowRight
     },
     props: {
       theme: {
@@ -71,43 +75,131 @@
             sourceFormat: 'mp4'
           }
         ],
-        scrollParams: {
+        slider: {
           velocity: 1,
           scale: 1,
           gap: 1,
+          time: 0,
+          slides: null,
+          slide: 1,
+          start: 0,
+          distance: 0,
+          hasPrevButton: false,
+          hasNextButton: true
         },
-        active: ''
+        active: '',
+        isAppeared: false
       }
     },
     methods: {
       smoothScroll(e: any) {
-        this.scrollParams.velocity = scrollVelocity(e.target, e.target.scrollWidth - document.body.clientWidth, 'x')
-        this.scrollParams.scale = doMap(this.scrollParams.velocity, 1, 1.5, 1, 2)
-        this.scrollParams.gap = doMap(this.scrollParams.velocity, 1, 1.5, 1, 4)
+        this.slider.velocity = scrollVelocity(e.target, e.target.scrollWidth - document.body.clientWidth, 'x')
+        this.slider.scale = doMap(this.slider.velocity, 1, 1.5, 1, 2)
+        this.slider.gap = doMap(this.slider.velocity, 1, 1.5, 1, 4)
+
+        if (e.target.scrollLeft >= e.target.scrollWidth - document.body.clientWidth)
+          this.slider.hasNextButton = false
+        else if (e.target.scrollLeft <= 0)
+          this.slider.hasPrevButton = false
+        else
+          this.slider.hasPrevButton = this.slider.hasNextButton = true
+
+        for (let i = 1; i <= this.slider.slides; i++)
+          if (e.target.scrollLeft >= document.body.clientWidth * (i - 1) && e.target.scrollLeft < document.body.clientWidth * i) this.slider.slide = i
+      },
+      slideRight() {
+        const scrollBox: HTMLElement = document.getElementsByClassName('shots__scroll')[0]
+        let animationScroll: any, progress: number
+
+        this.slider.time == 0 ? this.slider.start = scrollBox.scrollLeft : null
+        this.slider.time == 0 ? this.slider.distance = (document.body.clientWidth * this.slider.slide) - scrollBox.scrollLeft : null
+
+        this.slider.time += 10
+        progress = doMap(this.slider.time, 0, (1.6 * 600), 0, 1)
+        scrollBox.scrollLeft = this.slider.start + (this.slider.distance * easeInOutQuart(progress))
+
+        animationScroll = requestAnimationFrame(this.slideRight)
+        if (progress >= 1 || scrollBox.scrollLeft >= scrollBox.scrollWidth - document.body.clientWidth) {
+          cancelAnimationFrame(animationScroll)
+          this.slider.time = this.slider.progress = 0
+        }
+      },
+      slideLeft() {
+        const scrollBox: HTMLElement = document.getElementsByClassName('shots__scroll')[0]
+        let animationScroll: any, progress: number, diff: number
+
+        !this.slider.hasNextButton ? diff = this.slider.slide - 1 : diff = this.slider.slide - 2
+
+        this.slider.time == 0 ? this.slider.start = scrollBox.scrollLeft : null
+        this.slider.time == 0 ? this.slider.distance =  scrollBox.scrollLeft - (document.body.clientWidth * diff) : null
+
+        this.slider.time += 10
+        progress = doMap(this.slider.time, 0, (1.6 * 600), 0, 1)
+        scrollBox.scrollLeft = this.slider.start - (this.slider.distance * easeInOutQuart(progress))
+
+        animationScroll = requestAnimationFrame(this.slideLeft)
+        if (progress >= 1 || scrollBox.scrollLeft <= 0) {
+          cancelAnimationFrame(animationScroll)
+          this.slider.time = this.slider.progress = 0
+        }
       }
+    },
+    mounted: function() {
+      const scrollBox: HTMLElement = document.getElementsByClassName('shots__scroll')[0]
+      this.slider.slides = Math.ceil(scrollBox.scrollWidth / document.body.clientWidth)
     }
   })
 </script>
 
 <template>
   <main class="page">
-    <section class="shots" @scroll="smoothScroll">
-      <div class="shots__container">
-        <Transition v-for="(shot, index) in shots" name="slide-up" :style="`--delay: calc(var(--delay-turtoise) + (var(--duration-step) * ${(index * .5) - .5}))`" appear>
-          <AssetContainer
-            :title="shot.name"
-            :thumbnail="`/images/_lab/sd/asset-${shots.length - index}.png`"
-            :hdnail="`/images/_lab/hd/asset-${shots.length - index}.${shot.sourceFormat}`"
-            :type="shot.sourceType"
-            :sourceName="shot.sourceName"
-            :sourceLink="shot.sourceLink"
-            :key="`shot-${index + 1}`"
-            @click.passive="active = `shot-${index + 1}`"
-            @keyup.enter="active = `shot-${index + 1}`"
-            :unmagnify="active === `shot-${index + 1}` ? false : true"
-          />
-        </Transition>
+    <section class="shots" >
+      <Transition name="switch" appear>
+        <Button
+          v-if="slider.hasPrevButton"
+          type="secondary"
+          layout="ICON-ONLY"
+          :theme="theme"
+          @click="slideLeft"
+          class="navigation-button navigation-button--left"
+        >
+          <template #icon>
+            <ArrowLeft :size="24" />
+          </template>
+        </Button>
+      </Transition>
+      <div class="shots__scroll" @scroll="smoothScroll">
+        <div class="shots__container">
+          <Transition v-for="(shot, index) in shots" name="slide-up" :style="`--delay: calc(var(--delay-turtoise) + (var(--duration-step) * ${(index * .5) - .5}))`" appear>
+            <AssetContainer
+              :title="shot.name"
+              :thumbnail="`/images/_lab/sd/asset-${shots.length - index}.png`"
+              :hdnail="`/images/_lab/hd/asset-${shots.length - index}.${shot.sourceFormat}`"
+              :type="shot.sourceType"
+              :sourceName="shot.sourceName"
+              :sourceLink="shot.sourceLink"
+              :key="`shot-${index + 1}`"
+              @click.passive="active = `shot-${index + 1}`"
+              @keyup.enter="active = `shot-${index + 1}`"
+              :unmagnify="active === `shot-${index + 1}` ? false : true"
+            />
+          </Transition>
+        </div>
       </div>
+      <Transition name="switch" :style="`--delay: ${isAppeared ? '0ms' : 'var(--delay-turtoise)'}`" appear @after-enter="isAppeared = true">
+        <Button
+          v-if="slider.hasNextButton"
+          type="secondary"
+          layout="ICON-ONLY"
+          :theme="theme"
+          @click="slideRight"
+          class="navigation-button navigation-button--right"
+        >
+          <template #icon>
+            <ArrowRight :size="24" />
+          </template>
+        </Button>
+      </Transition>
     </section>
     <Transition name="pull-up" style="--delay: var(--delay-turtoise)" appear>
       <Footer
@@ -127,25 +219,37 @@
 
   .shots
     grid-area: main
+    padding: 0
     display: flex
     flex-flow: column nowrap
     justify-content: center
-    overflow: auto
-    padding: 0
-    scrollbar-width: none
-    user-select: none
 
-    &::-webkit-scrollbar
-      display: none
+    .navigation-button
+      position: absolute
+      z-index: 2
+
+      &--right
+        right: calc(var(--layout-center) - (var(--button-height-size) / 2))
+
+      &--left
+        left: calc(var(--layout-center) - (var(--button-height-size) / 2))
+
+    &__scroll
+      overflow: auto
+      scrollbar-width: none
+      user-select: none
+      height: 75%
+
+      &::-webkit-scrollbar
+        display: none
 
     &__container
-      --scale-y: v-bind("1 / scrollParams.scale")
-      --multiplier: v-bind("scrollParams.gap")
+      --scale-y: v-bind("1 / slider.scale")
+      --multiplier: v-bind("slider.gap")
 
       display: flex
       width: max-content
       padding: 0 var(--layout-center)
-      height: 75%
       flex-flow: row nowrap
       gap: 0 calc(var(--layout-column-gap) * var(--multiplier))
       align-items: stretch
