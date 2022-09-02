@@ -232,6 +232,11 @@
           sk.makeUnits('horizontal')
         }
 
+        sk.deviceTurned = () => {
+          sk.resizeCanvas(this.$el.clientWidth, this.$el.clientHeight)
+          sk.makeUnits('horizontal')
+        }
+
       })
     }
   })
