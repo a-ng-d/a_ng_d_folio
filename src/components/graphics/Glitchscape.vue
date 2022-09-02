@@ -511,7 +511,7 @@
             scrollLimit: number,
             alpha: number,
             beta: number,
-            distance: number
+            distance: number,
             isPushed: boolean,
             isOriented: boolean,
             isScrolling: boolean
@@ -560,11 +560,6 @@
                   z: 0
                 }
               },
-              progress: {
-                x: 0,
-                y: 0,
-                z: 0
-              },
               speed: 0.1,
               scrollPosition: 0,
               scrollLimit: 0,
@@ -601,7 +596,6 @@
             this.center.z = sk.lerp(this.center.z, this.params.target.center.z, this.params.speed)
             this.rotation.v = sk.lerp(this.rotation.v, this.params.target.rotation.v, this.params.speed)
             this.rotation.h = sk.lerp(this.rotation.h, this.params.target.rotation.h, this.params.speed)
-            this.params.progress.z = sk.lerp(this.params.progress.z, this.params.target.progress.z, this.params.speed * 2)
 
             if (this.params.isPushed) {
               this.position.x = sk.lerp(this.position.x, this.params.target.position.x + doMap(sk.mouseX, 0, sk.width, sk.width * .2, -sk.width * .2), .1)
@@ -614,7 +608,9 @@
             }
 
             if (this.params.isScrolling) {
-              this.params.progress.z = sk.lerp(this.params.progress.z, doMap(this.params.scrollPosition, 0, this.params.scrollLimit, 0, this.params.distance < 0 ? this.params.distance * 2 : -this.params.distance * 2), this.params.speed)
+              this.progress.z = sk.lerp(this.progress.z, doMap(this.params.scrollPosition, 0, this.params.scrollLimit, 0, this.params.distance < 0 ? this.params.distance : -this.params.distance), this.params.speed)
+            } else {
+              this.progress.z = sk.lerp(this.progress.z, this.params.target.progress.z, this.params.speed * 2)
             }
           }
 
@@ -723,7 +719,7 @@
           camera.perspective(Math.PI / 3, sk.width / sk.height, 100, limitZ * 2)
           camera.pan(pov.rotation.v)
           camera.tilt(pov.rotation.h)
-          camera.move(0, 0, pov.params.progress.z)
+          camera.move(0, 0, pov.progress.z)
 
           // mountains
           mountains.forEach(mountain => mountain.move())
