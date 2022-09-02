@@ -664,7 +664,7 @@
           for (let i = 0 ; i < sNumber ; i++)
             stars.push(new Star({
               sizeRange: [-sk.height * .01, -sk.height * .02],
-              x: random(-limitX * 3, limitX * 3),
+              x: random(-limitX * 4, limitX * 4),
               yRange: [-limitY * 0.5, -limitY],
               z: random(-limitZ * 3, limitZ * 3),
               foreground: HSLColors.soil,
@@ -876,6 +876,7 @@
     top: 0
     background-image: var(--gradient-biscarosse-sunset)
     mix-blend-mode: color
+    opacity: .75
 
   .background
     width: 100vw
