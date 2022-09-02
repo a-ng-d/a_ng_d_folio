@@ -8,6 +8,7 @@
   let glitchscape: any = null
   const povs: any = {
     RESET: () => glitchscape.povReset(),
+    INVERT: () => glitchscape.povInvert(),
     MIRROR_1: () => glitchscape.povMirror(1),
     MIRROR_2: () => glitchscape.povMirror(2),
     MIRROR_3: () => glitchscape.povMirror(3),
@@ -497,18 +498,20 @@
           position: Position
           center: Center
           rotation: Rotation
+          progress: Progress
           params: {
             target: {
               position: Position,
               center: Center,
-              rotation: Rotation
+              rotation: Rotation,
+              progress: Progress
             },
-            progress: Progress,
             speed: number,
             scrollPosition: number,
             scrollLimit: number,
             alpha: number,
             beta: number,
+            distance: number
             isPushed: boolean,
             isOriented: boolean,
             isScrolling: boolean
@@ -530,6 +533,11 @@
               v: this.props.rV,
               h: this.props.rH
             }
+            this.progress = {
+              x: 0,
+              y: 0,
+              z: 0
+            }
             this.params = {
               target: {
                 position: {
@@ -545,6 +553,11 @@
                 rotation: {
                   v: 0,
                   h: 0
+                },
+                progress: {
+                  x: 0,
+                  y: 0,
+                  z: 0
                 }
               },
               progress: {
@@ -557,6 +570,7 @@
               scrollLimit: 0,
               alpha: 0,
               beta: 75,
+              distance: 0,
               isPushed: false,
               isOriented: false,
               isScrolling: false
@@ -573,6 +587,9 @@
             this.params.target.center.z = center[2]
             this.params.target.rotation.v = rotation[0]
             this.params.target.rotation.h = rotation[1]
+            this.params.target.progress.z = 0
+            this.params.distance = this.params.target.position.z - this.params.target.center.z
+            this.params.isScrolling = false
           }
 
           move = () => {
@@ -584,6 +601,7 @@
             this.center.z = sk.lerp(this.center.z, this.params.target.center.z, this.params.speed)
             this.rotation.v = sk.lerp(this.rotation.v, this.params.target.rotation.v, this.params.speed)
             this.rotation.h = sk.lerp(this.rotation.h, this.params.target.rotation.h, this.params.speed)
+            this.params.progress.z = sk.lerp(this.params.progress.z, this.params.target.progress.z, this.params.speed * 2)
 
             if (this.params.isPushed) {
               this.position.x = sk.lerp(this.position.x, this.params.target.position.x + doMap(sk.mouseX, 0, sk.width, sk.width * .2, -sk.width * .2), .1)
@@ -596,7 +614,7 @@
             }
 
             if (this.params.isScrolling) {
-              this.params.progress.z = sk.lerp(this.params.progress.z, doMap(this.params.scrollPosition, 0, this.params.scrollLimit, 0, this.params.target.center.z), this.params.speed)
+              this.params.progress.z = sk.lerp(this.params.progress.z, doMap(this.params.scrollPosition, 0, this.params.scrollLimit, 0, this.params.distance < 0 ? this.params.distance * 2 : -this.params.distance * 2), this.params.speed)
             }
           }
 
@@ -737,6 +755,24 @@
             0,
             -sk.height * .75,
             -limitZ
+          ],
+          [
+            0,
+            0
+          ]
+        )
+
+        sk.povInvert = () => pov.animate(
+          .05,
+          [
+            0,
+            -sk.height * .75,
+            -limitZ
+          ],
+          [
+            0,
+            -sk.height * .75,
+            -sk.height * .1
           ],
           [
             0,

@@ -16,11 +16,16 @@
     },
     data: function() {
       return {
-        filters : filters
+        filters : filters,
+        pov: 'RESET',
+        quality: 'HIGH',
+        filter: 'CREAMY_SUN',
+        glitch: false
       }
     },
     methods: {
       changeParam(event: any, message: any) {
+        this[event] = typeof message != 'object' ? message : message.name
         this.$emit(event, message)
         setTimeout(() => this.$el.scrollTop = 0, 2000)
       }
@@ -31,14 +36,26 @@
 <template>
   <main class="page">
     <section class="empty">
+      <div class="empty__console">
+        <p>{{ `Current pov: ${pov}` }}</p>
+        <p>{{ `Current quality: ${quality}` }}</p>
+        <p>{{ `Current filter: ${filter}` }}</p>
+        <p>{{ `isGlitched: ${glitch}` }}</p>
+      </div>
       <div class="empty__actions">
         <div class="empty__actions__row">
-          <p>Camera</p>
+          <p>Pov</p>
           <Button
             type="secondary"
             label="Reset"
             :theme="theme"
             @click="changeParam('pov', 'RESET')"
+          />
+          <Button
+            type="secondary"
+            label="Invert"
+            :theme="theme"
+            @click="changeParam('pov', 'INVERT')"
           />
           <Button
             type="secondary"
@@ -166,6 +183,12 @@
 
     &[data-theme="DARK"]
       --text-color: var(--color-cream)
+
+    &__console
+      position: fixed
+      left: 0
+      top: 200rem
+      padding: var(--spacing-l-000)
 
     &__actions
       display: flex
