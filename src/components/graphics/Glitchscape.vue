@@ -88,7 +88,7 @@
 
         let
           fps: number = 60,
-          speed: number = 2,
+          speed: number = 4,
           alpha: number = 1,
           camera: any,
           mountains: Array<any> = [],
