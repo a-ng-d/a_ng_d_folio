@@ -81,7 +81,7 @@
         </div>
       </div>
       <div class="button__background">
-        <Particles :isExpanded="isExpanded" />
+        <Particles :isExpanded="isExpanded" borderRadius="calc(var(--button-height-size) / 2)" />
       </div>
     </RouterLink>
   </template>

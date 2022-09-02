@@ -20,6 +20,10 @@
       },
       movement: {
         type: String
+      },
+      borderRadius: {
+        type: String,
+        default: '0'
       }
     },
     data: function() {
@@ -148,7 +152,7 @@
 
           if (direction === 'vertical')
             for (let limitX = 0 ; limitX <= sk.width + weight ;) {
-              for (let limitY = 0 ; limitY <= sk.height ;) {
+              for (let limitY = 0 ; limitY <= sk.height + weight ;) {
                 let rY = sk.int(random(weight, weight * 6))
                 units.push(new Unit({
                   x1: limitX,
@@ -163,7 +167,7 @@
             }
             else if (direction === 'horizontal')
               for (let limitY = 0 ; limitY <= sk.height + weight ;) {
-                for (let limitX = 0 ; limitX <= sk.width ;) {
+                for (let limitX = 0 ; limitX <= sk.width + weight ;) {
                   let rX = sk.int(random(weight, weight * 6))
                   units.push(new Unit({
                     x1: limitX,
@@ -243,7 +247,6 @@
     height: 100%
     pointer-events: none
 
-    & > canvas
-      width: 100%
-      height: 100%
+    :deep(canvas)
+      border-radius: v-bind("borderRadius")
 </style>
