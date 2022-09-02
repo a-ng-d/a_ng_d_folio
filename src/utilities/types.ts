@@ -28,7 +28,8 @@ export interface HuSaLiTy {
   hue: number,
   saturation: number,
   lightness: number,
-  type: string
+  type: string,
+  name: string
 }
 
 export interface HuBrInSaGr {
@@ -36,7 +37,8 @@ export interface HuBrInSaGr {
   brightness: string,
   invert: string,
   saturation: string,
-  grayscale: string
+  grayscale: string,
+  name: string
 }
 
 export interface MountainProps {

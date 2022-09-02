@@ -1,4 +1,4 @@
-import type { Colors, Filters} from '@/utilities/types'
+import type { Colors, Filters } from '@/utilities/types'
 
 export const HSLColors: Colors = {
   deepBlack: {
