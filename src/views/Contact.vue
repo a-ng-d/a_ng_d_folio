@@ -33,7 +33,7 @@
           />
         </Transition>
         <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * .5))" appear>
-          <p class=" enhanced jumbotron__baseline">{{ $t("contact.description") }}</p>
+          <p class="jumbotron__baseline">{{ $t("contact.description") }}</p>
         </Transition>
       </div>
       <div class="jumbotron__actions">
@@ -95,7 +95,6 @@
     .jumbotron
       padding: var(--layout-paragraph-gap) var(--layout-center)
       gap: var(--layout-paragraph-gap)
-      justify-content: center
 
       &__baseline
         display: none
@@ -105,9 +104,6 @@
       padding: var(--layout-paragraph-gap) var(--layout-center)
 
       &__actions
-        flex-flow: column nowrap
         gap: var(--spacing-l-000)
 
-        & > a
-          width: 100%
 </style>
