@@ -122,6 +122,10 @@
   @use '@/assets/stylesheets/base.sass' as device
 
   // Structure
+  .page
+    height: 100vh
+    overflow: hidden
+
   .menu
     grid-area: main
     padding: 0 var(--layout-center)
