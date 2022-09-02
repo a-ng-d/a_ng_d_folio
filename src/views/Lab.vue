@@ -219,6 +219,7 @@
 
   .shots
     grid-area: main
+    min-height: var(--sizing-xxl-000)
     padding: 0
     display: flex
     flex-flow: column nowrap
@@ -238,7 +239,9 @@
       overflow: auto
       scrollbar-width: none
       user-select: none
-      height: 75%
+      height: 100%
+      display: flex
+      align-items: center
 
       &::-webkit-scrollbar
         display: none
@@ -249,6 +252,7 @@
 
       display: flex
       width: max-content
+      height: 75%
       padding: 0 var(--layout-center)
       flex-flow: row nowrap
       gap: 0 calc(var(--layout-column-gap) * var(--multiplier))
