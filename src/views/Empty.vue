@@ -27,7 +27,7 @@
       changeParam(event: any, message: any) {
         this[event] = typeof message != 'object' ? message : message.name
         this.$emit(event, message)
-        setTimeout(() => this.$el.scrollTop = 0, 2000)
+        this.$el.scrollTop = 0
       }
     }
   })
