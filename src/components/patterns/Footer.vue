@@ -23,6 +23,7 @@
     },
     data: function() {
       return {
+        version: __APP_VERSION__,
         flex: this.alignment === 'LEFT' ? 'flex-start' :
               this.alignment === 'CENTER' ? 'center' :
               this.alignment === 'RIGHT' ? 'flex-end' :
@@ -47,7 +48,7 @@
         />
       </RouterLink>
       <span class="footer__tag__content">{{ $t("global.separator") }}</span>
-      <span class="footer__tag__content">{{ $t("global.version") }}</span>
+      <span class="footer__tag__content">{{ `${$t("global.version")} ${version}` }}</span>
     </div>
   </footer>
 </template>
