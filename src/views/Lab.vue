@@ -130,8 +130,8 @@
     display: flex
     flex-flow: column nowrap
     justify-content: center
-    padding: 0 var(--layout-center)
     overflow: auto
+    padding: 0
     scrollbar-width: none
     user-select: none
 
@@ -144,6 +144,7 @@
 
       display: flex
       width: max-content
+      padding: 0 var(--layout-center)
       height: 75%
       flex-flow: row nowrap
       gap: 0 calc(var(--layout-column-gap) * var(--multiplier))

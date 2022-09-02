@@ -33,8 +33,10 @@
       magnifier(e: any) {
         const width = e.target.children[0].children[0].children[0].offsetWidth
 
+        console.log(width)
+
         this.isMagnified = !this.isMagnified
-        this.assetWidth = width + 16 + 'rem'
+        this.assetWidth = width + 16 + 'px'
       }
     },
     watch: {
@@ -84,7 +86,7 @@
   .asset-container
     --container-padding: var(--spacing-s-100)
 
-    width: v-bind("isMagnified ? assetWidth : '40vh'")
+    width: v-bind("isMagnified ? assetWidth : '30vh'")
     padding: var(--container-padding)
     border-radius: var(--regular-border-radius)
     transition: var(--simple-transition)
