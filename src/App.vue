@@ -152,7 +152,7 @@
     },
     mounted: function() {
       window.innerWidth < 1024 ? this.device = 'MOBILE' : this.device
-      window.onresize = () => window.innerWidth < 461 ? this.device = 'MOBILE' : this.device = 'DESKTOP'
+      window.onresize = () => window.innerWidth < 1024 ? this.device = 'MOBILE' : this.device = 'DESKTOP'
     }
   })
 </script>
