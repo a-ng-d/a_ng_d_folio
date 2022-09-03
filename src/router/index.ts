@@ -9,8 +9,8 @@ import Project from '../views/Project.vue'
 import Lab from '../views/Lab.vue'
 import Contact from '../views/Contact.vue'
 import Attribution from '../views/Attribution.vue'
-import Empty from '../views/Empty.vue'
 import Unknown from '../views/Unknown.vue'
+import Controler from '../views/Controler.vue'
 import JBRAnimation from '@/assets/animations/_work/_jean_bobby_radio/animation.json'
 import UCPAnimation from '@/assets/animations/_work/_ui_color_palette/animation.json'
 import AIAnimation from '@/assets/animations/_work/_awesome_ipsums/animation.json'
@@ -236,7 +236,7 @@ const router = createRouter({
     {
       path: '/_glitchscape',
       name: '_GLITCHSCAPE',
-      component: Empty,
+      component: Controler,
       meta: {
         title: 'Glitchscape controler',
         view: 'EMPTY',
