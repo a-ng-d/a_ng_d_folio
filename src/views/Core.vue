@@ -5,7 +5,7 @@
   import Footer from '@/components/patterns/Footer.vue'
   import { SkipBack } from 'lucide-vue-next'
   import { doMap } from '@/utilities/operations'
-  import { easeInOutCubic } from '@/utilities/easings'
+  import { easeInOutQuart } from '@/utilities/easings'
 
   export default defineComponent({
     name: 'Core',
@@ -55,7 +55,7 @@
 
         this.time += 10
         progress = doMap(this.time, 0, (5 * 600), 1, 0)
-        this.$el.scrollTop = this.remainingScroll * easeInOutCubic(progress)
+        this.$el.scrollTop = this.remainingScroll * easeInOutQuart(progress)
 
         console.log(progress, this.$el.scrollTop)
 

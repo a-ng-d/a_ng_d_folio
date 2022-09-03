@@ -80,7 +80,7 @@
           scale: 1,
           gap: 1,
           time: 0,
-          slides: null,
+          slides: 0,
           slide: 1,
           start: 0,
           distance: 0,
@@ -104,11 +104,11 @@
         else
           this.slider.hasPrevButton = this.slider.hasNextButton = true
 
-        for (let i = 1; i <= this.slider.slides; i++)
+        for (let i = 1; i <= this.slider.slides!; i++)
           if (e.target.scrollLeft >= document.body.clientWidth * (i - 1) && e.target.scrollLeft < document.body.clientWidth * i) this.slider.slide = i
       },
       slideRight() {
-        const scrollBox: HTMLElement = document.getElementsByClassName('shots__scroll')[0]
+        const scrollBox: HTMLElement = Array.from(document.getElementsByClassName('shots__scroll') as HTMLCollectionOf<HTMLElement>)[0]
         let animationScroll: any, progress: number
 
         this.slider.time == 0 ? this.slider.start = scrollBox.scrollLeft : null
@@ -120,11 +120,11 @@
 
         if (progress >= 1 || scrollBox.scrollLeft >= scrollBox.scrollWidth - document.body.clientWidth) {
           cancelAnimationFrame(animationScroll)
-          this.slider.time = this.slider.progress = 0
+          this.slider.time = progress = 0
         } else animationScroll = requestAnimationFrame(this.slideRight)
       },
       slideLeft() {
-        const scrollBox: HTMLElement = document.getElementsByClassName('shots__scroll')[0]
+        const scrollBox: HTMLElement = Array.from(document.getElementsByClassName('shots__scroll') as HTMLCollectionOf<HTMLElement>)[0]
         let animationScroll: any, progress: number, diff: number
 
         !this.slider.hasNextButton ? diff = this.slider.slide - 1 : diff = this.slider.slide - 2
@@ -138,11 +138,11 @@
 
         if (progress >= 1 || scrollBox.scrollLeft <= 0) {
           cancelAnimationFrame(animationScroll)
-          this.slider.time = this.slider.progress = 0
+          this.slider.time = progress = 0
         } else animationScroll = requestAnimationFrame(this.slideLeft)
       },
       makeSlides() {
-        const scrollBox: HTMLElement = document.getElementsByClassName('shots__scroll')[0]
+        const scrollBox: HTMLElement = Array.from(document.getElementsByClassName('shots__scroll') as HTMLCollectionOf<HTMLElement>)[0]
         this.slider.slides = Math.ceil(scrollBox.scrollWidth / document.body.clientWidth) ?? 4
       }
     },
