@@ -21,9 +21,6 @@
         type: String,
         default: 'DEFAULT'
       }
-    },
-    update: function() {
-      console.log(isFullScreen)
     }
   })
 </script>
