@@ -1,12 +1,12 @@
 // nG⚡️ Design System﹒Flash﹒Text styles
 
-@use '@fontsource/rubik'
-@use '@fontsource/sora/variable.css'
+@use '@fontsource/rubik/variable.css' as title
+@use '@fontsource/sora/variable.css' as text
 
 @mixin model($family, $style, $weight, $size, $line-height, $letter-spacing, $text-transform, $text-decoration)
   font-family: $family
   font-style: $style
-  font-weight: $weight
+  font-variation-settings: $weight
   font-size: $size
   line-height: $line-height
   letter-spacing: $letter-spacing
