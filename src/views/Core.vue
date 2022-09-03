@@ -5,7 +5,7 @@
   import Footer from '@/components/patterns/Footer.vue'
   import { SkipBack } from 'lucide-vue-next'
   import { doMap } from '@/utilities/operations'
-  import { easeInOutExpo, easeInOutCubic } from '@/utilities/easings'
+  import { easeInOutCubic } from '@/utilities/easings'
 
   export default defineComponent({
     name: 'Core',
@@ -30,7 +30,7 @@
         perspective: 300,
         translation: 0,
         opacity: 1,
-        progress: 0,
+        time: 0,
         remainingScroll: 0
       }
     },
@@ -49,15 +49,20 @@
     },
     methods: {
       backToForeground() {
-        let animateScroll: any
-        if (this.progress === 0) this.remainingScroll = (this.scrollLimit as number) - ((this.scrollLimit as number) - this.$el.scrollTop)
-        this.progress += 0.01
-        this.$el.scrollTop = easeInOutCubic(this.progress, this.remainingScroll, -this.remainingScroll - 10, 5)
-        if (this.progress <= 5 || this.$el.scrollTop > 1) animateScroll = requestAnimationFrame(this.backToForeground)
-        else {
+        let animateScroll: any, progress: any
+
+        this.time == 0 ? this.remainingScroll = (this.scrollLimit as number) - ((this.scrollLimit as number) - this.$el.scrollTop) : null
+
+        this.time += 10
+        progress = doMap(this.time, 0, (5 * 600), 1, 0)
+        this.$el.scrollTop = this.remainingScroll * easeInOutCubic(progress)
+
+        console.log(progress, this.$el.scrollTop)
+
+        if (progress <= 0 || this.$el.scrollTop < 1) {
           cancelAnimationFrame(animateScroll)
-          this.progress = this.remainingScroll = 0
-        }
+          this.time = progress = this.remainingScroll = 0
+        } else animateScroll = requestAnimationFrame(this.backToForeground)
       }
     },
     mounted: function() {

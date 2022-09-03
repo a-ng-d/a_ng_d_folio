@@ -118,11 +118,10 @@
         progress = doMap(this.slider.time, 0, (1.6 * 600), 0, 1)
         scrollBox.scrollLeft = this.slider.start + (this.slider.distance * easeInOutQuart(progress))
 
-        animationScroll = requestAnimationFrame(this.slideRight)
         if (progress >= 1 || scrollBox.scrollLeft >= scrollBox.scrollWidth - document.body.clientWidth) {
           cancelAnimationFrame(animationScroll)
           this.slider.time = this.slider.progress = 0
-        }
+        } else animationScroll = requestAnimationFrame(this.slideRight)
       },
       slideLeft() {
         const scrollBox: HTMLElement = document.getElementsByClassName('shots__scroll')[0]
@@ -137,16 +136,21 @@
         progress = doMap(this.slider.time, 0, (1.6 * 600), 0, 1)
         scrollBox.scrollLeft = this.slider.start - (this.slider.distance * easeInOutQuart(progress))
 
-        animationScroll = requestAnimationFrame(this.slideLeft)
         if (progress >= 1 || scrollBox.scrollLeft <= 0) {
           cancelAnimationFrame(animationScroll)
           this.slider.time = this.slider.progress = 0
-        }
+        } else animationScroll = requestAnimationFrame(this.slideLeft)
+      },
+      makeSlides() {
+        const scrollBox: HTMLElement = document.getElementsByClassName('shots__scroll')[0]
+        this.slider.slides = Math.ceil(scrollBox.scrollWidth / document.body.clientWidth) ?? 4
       }
     },
+    created: function() {
+      window.addEventListener("resize",  this.makeSlides)
+    },
     mounted: function() {
-      const scrollBox: HTMLElement = document.getElementsByClassName('shots__scroll')[0]
-      this.slider.slides = Math.ceil(scrollBox.scrollWidth / document.body.clientWidth)
+      this.makeSlides()
     }
   })
 </script>
@@ -211,6 +215,7 @@
 </template>
 
 <style scoped lang="sass">
+  @use '@/assets/stylesheets/base.sass' as device
 
   // Structure
   .page
@@ -259,4 +264,12 @@
       align-items: stretch
       transition: all 200ms linear
       transform: scaleY(var(--scale-y))
+
+  @include device.mobile-landscape
+    .navigation-button
+      display: none
+
+  @include device.mobile
+    .navigation-button
+      display: none
 </style>
