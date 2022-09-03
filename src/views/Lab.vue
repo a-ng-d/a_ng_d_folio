@@ -168,7 +168,7 @@
           </template>
         </Button>
       </Transition>
-      <div class="shots__scroll" @scroll="smoothScroll">
+      <div class="shots__scroll" @scroll.passive="smoothScroll">
         <div class="shots__container">
           <Transition v-for="(shot, index) in shots" name="slide-up" :style="`--delay: calc(var(--delay-turtoise) + (var(--duration-step) * ${(index * .5) - .5}))`" appear>
             <AssetContainer
