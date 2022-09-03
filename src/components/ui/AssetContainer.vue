@@ -33,8 +33,6 @@
       magnifier(e: any) {
         const width = e.target.children[0].children[0].children[0].offsetWidth
 
-        console.log(width)
-
         this.isMagnified = !this.isMagnified
         this.assetWidth = width + 16 + 'px'
       }
