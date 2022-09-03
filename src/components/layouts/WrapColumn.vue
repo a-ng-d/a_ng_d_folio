@@ -13,10 +13,17 @@
         type: Number,
         default: 2
       },
+      isFullScreen: {
+        type: Boolean,
+        default: false
+      },
       theme: {
         type: String,
         default: 'DEFAULT'
       }
+    },
+    update: function() {
+      console.log(isFullScreen)
     }
   })
 </script>
@@ -58,8 +65,10 @@
     @include device.tablet
       &__scroll
         overflow: auto
-        margin: 0 calc(var(--layout-margin) * -1)
+        padding: v-bind("isFullScreen ? '100vh' : '0'") 0
+        margin: v-bind("isFullScreen ? '-100vh' : '0'") calc(var(--layout-margin) * -1)
         scrollbar-width: none
+        transition: var(--simple-transition)
 
         &::-webkit-scrollbar
           display: none
@@ -76,7 +85,8 @@
     @include device.mobile
       &__scroll
         overflow: auto
-        margin: 0 calc(var(--layout-margin) * -1)
+        padding: v-bind("isFullScreen ? '100vh' : '0'") 0
+        margin: v-bind("isFullScreen ? '-100vh' : '0'") calc(var(--layout-margin) * -1)
         scrollbar-width: none
 
         &::-webkit-scrollbar

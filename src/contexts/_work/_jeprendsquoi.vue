@@ -34,6 +34,11 @@
         default: 'DEFAULT'
       }
     },
+    data: function() {
+      return {
+        isFullScreen: false
+      }
+    },
     methods: {
       parallax(start: number, end: number) {
         return `${doMap(this.scrollProgress, 0, this.scrollLimit, start, end)}%`
@@ -105,6 +110,7 @@
       </OneColumn>
       <WrapColumn
         :columns="4"
+        :isFullScreen="isFullScreen"
         :theme="theme"
       >
         <template #plain>
@@ -112,21 +118,25 @@
             type="image"
             src="/images/_work/_jeprendsquoi/article-asset-3.jpeg"
             :caption="$t('work._jeprendsquoi.part-2.caption-1')"
+            @isMagnified="isFullScreen = $event"
           />
           <Figure
             type="image"
             src="/images/_work/_jeprendsquoi/article-asset-4.jpeg"
             :caption="$t('work._jeprendsquoi.part-2.caption-2')"
+            @isMagnified="isFullScreen = $event"
           />
           <Figure
             type="image"
             src="/images/_work/_jeprendsquoi/article-asset-5.jpeg"
             :caption="$t('work._jeprendsquoi.part-2.caption-3')"
+            @isMagnified="isFullScreen = $event"
           />
           <Figure
             type="image"
             src="/images/_work/_jeprendsquoi/article-asset-6.jpeg"
             :caption="$t('work._jeprendsquoi.part-2.caption-4')"
+            @isMagnified="isFullScreen = $event"
           />
         </template>
       </WrapColumn>
@@ -160,6 +170,7 @@
         </template>
       </OneColumn>
       <WrapColumn
+        :isFullScreen="isFullScreen"
         :theme="theme"
       >
         <template #plain>
@@ -167,11 +178,13 @@
             type="image"
             src="/images/_work/_jeprendsquoi/article-asset-7.gif"
             :caption="$t('work._jeprendsquoi.part-2.caption-7')"
+            @isMagnified="isFullScreen = $event"
           />
           <Figure
             type="image"
             src="/images/_work/_jeprendsquoi/article-asset-8.gif"
             :caption="$t('work._jeprendsquoi.part-2.caption-8')"
+            @isMagnified="isFullScreen = $event"
           />
         </template>
       </WrapColumn>

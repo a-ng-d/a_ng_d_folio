@@ -36,6 +36,11 @@
         type: String,
         default: 'DEFAULT'
       }
+    },
+    data: function() {
+      return {
+        isFullScreen: false
+      }
     }
   })
 </script>
@@ -57,6 +62,7 @@
       <WrapColumn
         :title="$t('work._ui_color_palette.part-1.title')"
         :columns="3"
+        :isFullScreen="isFullScreen"
         :theme="theme"
       >
         <template #plain>
@@ -64,16 +70,19 @@
             type="video"
             src="/videos/_work/_ui_color_palette/article-asset-1.mp4"
             :caption="$t('work._ui_color_palette.part-1.caption-1')"
+            @isMagnified="isFullScreen = $event"
           />
           <Figure
             type="video"
             src="/videos/_work/_ui_color_palette/article-asset-2.mp4"
             :caption="$t('work._ui_color_palette.part-1.caption-2')"
+            @isMagnified="isFullScreen = $event"
           />
           <Figure
             type="video"
             src="/videos/_work/_ui_color_palette/article-asset-3.mp4"
             :caption="$t('work._ui_color_palette.part-1.caption-3')"
+            @isMagnified="isFullScreen = $event"
           />
         </template>
       </WrapColumn>

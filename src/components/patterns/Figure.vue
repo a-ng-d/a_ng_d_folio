@@ -37,6 +37,9 @@
         this.pathX = (refX - x - (w / 2)) / refScale
         this.pathY = (refY - y - (h / 2)) / refScale
       }
+    },
+    updated: function() {
+      this.isMagnified ? this.$emit('isMagnified', true) : this.$emit('isMagnified', false)
     }
   })
 </script>
