@@ -107,6 +107,10 @@
           'ATTRIBUTION': () => {
             this.transition = 'go-up'
             this.isHardTransited = true
+          },
+          'UNKNOWN': () => {
+            this.transition = 'go-up'
+            this.isHardTransited = true
           }
         }
 
@@ -116,6 +120,10 @@
             this.isHardTransited = true
           },
           'ATTRIBUTION': () => {
+            this.transition = 'go-down'
+            this.isHardTransited = true
+          },
+          'UNKNOWN': () => {
             this.transition = 'go-down'
             this.isHardTransited = true
           }

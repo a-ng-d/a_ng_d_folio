@@ -9,7 +9,8 @@
     "id": "_Id_card",
     "contact": "_Tell_me_hello",
     "attribution": "_Attribution",
-    "archive": "_Ancient_work"
+    "archive": "_Ancient_work",
+    "unknown": "_Unknown_universe"
   },
   "global": {
     "author": "Aurélien Grimaud aka. A_NG_D⚡️",
@@ -543,6 +544,13 @@
         "href": "https://vitejs.dev",
         "alt": "External link to the Vite.js website"
       }
+    }
+  },
+  "unknown": {
+    "title": "@:glossary.unknown@:global.separator@:global.author",
+    "intro": {
+      "title": "Are you lost? (yes, this is a 404)",
+      "subtitle": "Now you are here, you can have fun by handling a bit that generative landscape backward."
     }
   }
 }

@@ -10,6 +10,7 @@ import Lab from '../views/Lab.vue'
 import Contact from '../views/Contact.vue'
 import Attribution from '../views/Attribution.vue'
 import Empty from '../views/Empty.vue'
+import Unknown from '../views/Unknown.vue'
 import JBRAnimation from '@/assets/animations/_work/_jean_bobby_radio/animation.json'
 import UCPAnimation from '@/assets/animations/_work/_ui_color_palette/animation.json'
 import AIAnimation from '@/assets/animations/_work/_awesome_ipsums/animation.json'
@@ -239,6 +240,19 @@ const router = createRouter({
       meta: {
         title: 'Glitchscape controler',
         view: 'EMPTY',
+        theme: 'DEFAULT',
+        filter: filters.creamySun,
+        pov: 'RESET',
+        quality: 'HIGH'
+      }
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: '_UNKNOWN',
+      component: Unknown,
+      meta: {
+        title: i18n.global.t('unknown.title'),
+        view: 'UNKNOWN',
         theme: 'DEFAULT',
         filter: filters.creamySun,
         pov: 'RESET',
