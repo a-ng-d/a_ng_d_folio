@@ -49,7 +49,7 @@
 
     &__content
       display: flex
-      gap: 0 var(--layout-column-gap)
+      gap: var(--layout-row-gap) var(--layout-column-gap)
 
     &__icon
       padding: var(--spacing-xs-000) 0
@@ -59,8 +59,14 @@
       display: flex
       align-items: center
 
+  @include device.tablet-portrait
+    .link-container
+      &__content
+        flex-flow: column nowrap
+        align-items: center
+
   @include device.mobile
-    .container
+    .link-container
       &__content
         flex-flow: column nowrap
         align-items: center
