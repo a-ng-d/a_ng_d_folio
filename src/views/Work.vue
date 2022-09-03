@@ -199,6 +199,10 @@
   @use '@/assets/stylesheets/base.sass' as device
 
   //Structure
+  .page
+    height: 100vh
+    overflow: hidden
+
   .background
     width: 100vw
     height: 100vh
@@ -274,41 +278,69 @@
 
   @include device.tablet
     .work
-      flex-flow: column nowrap
-
       &__illustration
+        flex: 2
+
         &__item
           height: 125%
+          width: 100%
+          object-fit: contain
 
       &__summary
-        flex: 1
+        flex: 1.5
 
         &__actions
           justify-content: center
+
+  @include device.tablet-portrait
+    .work
+      flex-flow: column nowrap
+
+      &__summary
+        flex: 1
+        justify-content: space-between
+
+        &__actions
+          a:nth-child(2)
+            flex: none
 
   @include device.mobile-landscape
     .work
       padding: 0 var(--layout-center)
+      flex-flow: row nowrap
 
       &__illustration
-        display: none
+        flex: 2
+
+        &__item
+          height: 125%
+          width: 100%
+          object-fit: contain
 
       &__summary
-        &__description
-          gap: var(--layout-label-gap)
+        justify-content: space-between
 
         &__actions
           justify-content: center
+
+          a:nth-child(2)
+            flex: none
 
   @include device.mobile
     .work
       flex-flow: column nowrap
 
       &__illustration
-        display: none
+        flex: 1
+
+        &__item
+          height: 125%
+          width: 100%
+          object-fit: contain
 
       &__summary
         flex: 1
+        justify-content: space-between
 
         &__actions
           justify-content: center
