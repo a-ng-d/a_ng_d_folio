@@ -148,11 +148,16 @@
         projects = projects.filter((project: any) => project.meta.view === 'PROJECT').sort((a: any, b: any) => a.meta.position - b.meta.position)
         this.numberOfProjects = projects.length
         return projects
+      },
+      getScreenContext() {
+        window.innerWidth < 1024 ? this.device = 'MOBILE' : this.device = 'DESKTOP'
       }
+    },
+    created: function() {
+      window.addEventListener("resize",  this.getScreenContext)
     },
     mounted: function() {
       window.innerWidth < 1024 ? this.device = 'MOBILE' : this.device
-      window.onresize = () => window.innerWidth < 1024 ? this.device = 'MOBILE' : this.device = 'DESKTOP'
     }
   })
 </script>
