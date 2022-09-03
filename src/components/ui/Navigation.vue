@@ -52,8 +52,17 @@
 </template>
 
 <style scoped lang="sass">
+  @use '@/assets/stylesheets/base.sass' as device
   // Structure
   .navigation
     display: flex
     gap: 0 var(--layout-column-gap)
+
+  // Structure
+  @include device.mobile
+    .navigation
+      gap: 0 var(--layout-paragraph-gap)
+
+      a:nth-child(2)
+        display: none
 </style>

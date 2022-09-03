@@ -34,9 +34,6 @@
 </template>
 
 <style scoped lang="sass">
-  .page
-    height: fit-content
-
   // Structure
   .article
     grid-area: main
