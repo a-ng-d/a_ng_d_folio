@@ -58,10 +58,11 @@
         if (mouseX > buttonHalfWidth && mouseX <= buttonWidth + 10) this.movement = 'go-right'
         else this.movement = 'go-left'
 
-        console.log(this.movement, mouseX, buttonHalfWidth, buttonWidth)
-
         setTimeout(() => this.isExpanded = true, 50)
-      }
+      },
+      collapseParticles(e: any) {
+        setTimeout(() => this.isExpanded = false, 50)
+      },
     },
     created: function() {
       this.path.indexOf('http') == 0 ? this.isExternal = true : this.isExternal
@@ -81,7 +82,7 @@
       class="button"
       :class="`button--${type}`"
       @mouseover="expandParticles"
-      @mouseout="isExpanded = false"
+      @mouseout="collapseParticles"
       :style="position === 'random' ? randomPosition : ''"
       :data-theme="theme"
     >
@@ -114,7 +115,7 @@
       class="button"
       :class="`button--${type}`"
       @mouseover="expandParticles"
-      @mouseout="isExpanded = false"
+      @mouseout="collapseParticles"
       :data-theme="theme"
       :style="position === 'random' ? randomPosition : ''"
       target="_blank"
