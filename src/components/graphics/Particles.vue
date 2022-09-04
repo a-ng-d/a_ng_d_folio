@@ -19,7 +19,8 @@
         default: 'horizontal'
       },
       movement: {
-        type: String
+        type: String,
+        default: 'go-right'
       },
       borderRadius: {
         type: String,

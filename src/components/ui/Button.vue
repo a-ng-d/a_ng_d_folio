@@ -45,12 +45,30 @@
         isExtensible: this.extensible ? '100%' : 'fit-content',
         randomPosition: `position: absolute ; top: ${random(0, 80)}% ; left: ${random(0, 80)}%`,
         isExpanded: false,
-        isExternal: false
+        isExternal: false,
+        movement: ''
+      }
+    },
+    methods: {
+      expandParticles(e: any) {
+        const mouseX: number = e.layerX,
+              buttonWidth: number = this.$el.clientWidth,
+              buttonHalfWidth: number = buttonWidth / 2
+
+        if (mouseX > buttonHalfWidth && mouseX <= buttonWidth + 10) this.movement = 'go-right'
+        else this.movement = 'go-left'
+
+        console.log(this.movement, mouseX, buttonHalfWidth, buttonWidth)
+
+        setTimeout(() => this.isExpanded = true, 50)
       }
     },
     created: function() {
       this.path.indexOf('http') == 0 ? this.isExternal = true : this.isExternal
       this.path.indexOf('mailto') == 0 ? this.isExternal = true : this.isExternal
+    },
+    updated: function() {
+      console.log(this.isExpanded, this.movement)
     }
   })
 </script>
@@ -62,8 +80,8 @@
       :to="path"
       class="button"
       :class="`button--${type}`"
-      @mouseover="isExpanded = !isExpanded"
-      @mouseout="isExpanded = !isExpanded"
+      @mouseover="expandParticles"
+      @mouseout="isExpanded = false"
       :style="position === 'random' ? randomPosition : ''"
       :data-theme="theme"
     >
@@ -81,7 +99,11 @@
         </div>
       </div>
       <div class="button__background">
-        <Particles :isExpanded="isExpanded" borderRadius="calc(var(--button-height-size) / 2)" />
+        <Particles
+          :isExpanded="isExpanded"
+          :movement="movement"
+          borderRadius="calc(var(--button-height-size) / 2)"
+        />
       </div>
     </RouterLink>
   </template>
@@ -91,8 +113,8 @@
       :href="path"
       class="button"
       :class="`button--${type}`"
-      @mouseover="isExpanded = !isExpanded"
-      @mouseout="isExpanded = !isExpanded"
+      @mouseover="expandParticles"
+      @mouseout="isExpanded = false"
       :data-theme="theme"
       :style="position === 'random' ? randomPosition : ''"
       target="_blank"
@@ -108,7 +130,11 @@
         </div>
       </div>
       <div class="button__background">
-        <Particles :isExpanded="isExpanded" />
+        <Particles
+          :isExpanded="isExpanded"
+          :movement="movement"
+          borderRadius="calc(var(--button-height-size) / 2)"
+        />
       </div>
     </a>
   </template>
