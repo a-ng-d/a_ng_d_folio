@@ -67,9 +67,6 @@
     created: function() {
       this.path.indexOf('http') == 0 ? this.isExternal = true : this.isExternal
       this.path.indexOf('mailto') == 0 ? this.isExternal = true : this.isExternal
-    },
-    updated: function() {
-      console.log(this.isExpanded, this.movement)
     }
   })
 </script>
