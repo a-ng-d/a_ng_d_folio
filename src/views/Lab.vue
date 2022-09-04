@@ -2,7 +2,7 @@
   import { defineComponent } from 'vue'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
-  import AssetContainer from '@/components/ui/AssetContainer.vue'
+  import AssetContainer from '@/components/patterns/AssetContainer.vue'
   import { doMap, scrollVelocity } from '@/utilities/operations'
   import { easeInOutQuart } from '@/utilities/easings'
   import { ArrowLeft, ArrowRight } from 'lucide-vue-next'

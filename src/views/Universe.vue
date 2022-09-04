@@ -3,7 +3,7 @@
   import { i18n } from '@/lang'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
-  import Container from '@/components/ui/Container.vue'
+  import ContentContainer from '@/components/patterns/ContentContainer.vue'
   import { Heart, Briefcase, FlaskConical, Mail, Archive } from 'lucide-vue-next'
 
   export default defineComponent({
@@ -11,7 +11,7 @@
     components: {
       Footer,
       Button,
-      Container,
+      ContentContainer,
       Heart,
       Briefcase,
       FlaskConical,
@@ -101,7 +101,7 @@
       </ul>
       <div class="menu__info">
         <Transition name="switch">
-          <Container
+          <ContentContainer
             v-if="tooltip.isActive"
             :title="tooltip.title"
             :description="tooltip.description"

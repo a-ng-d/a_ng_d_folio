@@ -5,7 +5,7 @@
   import ScrollingText from '@/components/ui/ScrollingText.vue'
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
-  import Container from '@/components/ui/Container.vue'
+  import ContentContainer from '@/components/patterns/ContentContainer.vue'
   import _ui_color_palette from '@/contexts/_work/_ui_color_palette.vue'
   import _jeprendsquoi from '@/contexts/_work/_jeprendsquoi.vue'
   import _jean_bobby_radio from '@/contexts/_work/_jean_bobby_radio.vue'
@@ -20,7 +20,7 @@
       ScrollingText,
       OneColumn,
       WrapColumn,
-      Container,
+      ContentContainer,
       _ui_color_palette,
       _jeprendsquoi,
       _jean_bobby_radio,
@@ -82,7 +82,7 @@
           :theme="theme"
         >
           <template #plain>
-            <Container :description="project.date" />
+            <ContentContainer :description="project.date" />
           </template>
         </WrapColumn>
         <WrapColumn
@@ -91,7 +91,7 @@
           :theme="theme"
         >
           <template #plain>
-            <Container v-for="(objective, index) in project.objectives" :title="`#${index + 1}`" :description="objective" />
+            <ContentContainer v-for="(objective, index) in project.objectives" :title="`#${index + 1}`" :description="objective" />
           </template>
         </WrapColumn>
         <WrapColumn
@@ -100,7 +100,7 @@
           :theme="theme"
         >
           <template #plain>
-            <Container v-for="(role, index) in project.roles" :title="`#${index + 1}`" :description="role" />
+            <ContentContainer v-for="(role, index) in project.roles" :title="`#${index + 1}`" :description="role" />
           </template>
         </WrapColumn>
       </section>

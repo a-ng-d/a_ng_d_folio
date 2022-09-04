@@ -3,7 +3,7 @@
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import TwoColumns from '@/components/layouts/TwoColumns.vue'
   import FullWidthFigure from '@/components/layouts/FullWidthFigure.vue'
-  import LinkContainer from '@/components/ui/LinkContainer.vue'
+  import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
   import { Download, Github } from 'lucide-vue-next'
   import { doMap } from '@/utilities/operations'

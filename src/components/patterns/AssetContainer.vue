@@ -1,12 +1,14 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import Button from '@/components/ui/Button.vue'
+  import Container from '@/components/ui/Container.vue'
   import { Dribbble, Codepen } from 'lucide-vue-next'
 
   export default defineComponent({
     name: 'AssetContainer',
     components: {
       Button,
+      Container,
       Dribbble,
       Codepen
     },
@@ -46,7 +48,14 @@
 </script>
 
 <template>
-  <div class="asset-container" @click="magnifier" @keyup.enter="magnifier" tabindex="0">
+  <Container
+    @click="magnifier"
+    @keyup.enter="magnifier"
+    tabindex="0"
+    :style="`width: ${isMagnified ? assetWidth : '30vh'}`"
+    padding="var(--spacing-s-100)"
+    isInteractive
+  >
     <div class="asset-container__content">
       <div class="asset-container__asset">
         <Transition name="fade" mode="in-out" :style="`--delay: ${isMagnified ? '0ms' : 'var(--delay-jogging)'}`">
@@ -74,7 +83,7 @@
         </Transition>
       </div>
     </div>
-  </div>
+  </Container>
 </template>
 
 <style scoped lang="sass">
@@ -82,15 +91,9 @@
 
   // Structure
   .asset-container
-    --container-padding: var(--spacing-s-100)
-
-    width: v-bind("isMagnified ? assetWidth : '30vh'")
-    padding: var(--container-padding)
-    border-radius: var(--regular-border-radius)
-    transition: var(--simple-transition)
-    cursor: pointer
-
     &__content
+      --container-padding: var(--spacing-s-100)
+
       display: flex
       flex-flow: column nowrap
       gap: var(--container-padding) 0
@@ -98,6 +101,8 @@
       pointer-events: none
 
     &__asset
+      --container-padding: var(--spacing-s-100)
+      
       flex: 1
       display: flex
       justify-content: center
@@ -126,19 +131,4 @@
 
       & > a.button
         pointer-events: auto
-
-  // Aspect
-  .asset-container
-    background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
-    border: var(--border-size) solid transparent
-    box-shadow: 0 0 0 var(--button-border-size) var(--outline-color)
-
-  // Event
-  .asset-container
-    &:focus
-      --outline-color: var(--border-focus-color)
-      transform: var(--focus-scale)
-      outline: none
-      z-index: 1
-
 </style>

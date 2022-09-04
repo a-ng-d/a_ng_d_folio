@@ -1,11 +1,13 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import Button from '@/components/ui/Button.vue'
+  import Container from '@/components/ui/Container.vue'
 
   export default defineComponent({
     name: 'LinkContainer',
     components: {
-      Button
+      Button,
+      Container
     },
     props: {
       description: String,
@@ -16,7 +18,7 @@
 </script>
 
 <template>
-  <div class="link-container">
+  <Container>
     <div class="link-container__content">
       <div class="link-container__icon">
         <slot name="icon"></slot>
@@ -34,7 +36,7 @@
         />
       </div>
     </div>
-  </div>
+  </Container>
 </template>
 
 <style scoped lang="sass">
@@ -42,11 +44,6 @@
 
   // Structure
   .link-container
-    padding: var(--spacing-l-200)
-    border-radius: var(--regular-border-radius)
-    transition: var(--simple-transition)
-    transform-origin: center center
-
     &__content
       display: flex
       gap: var(--layout-row-gap) var(--layout-column-gap)
@@ -70,10 +67,4 @@
       &__content
         flex-flow: column nowrap
         align-items: center
-
-  // Aspect
-  .link-container
-    background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
-    border: var(--border-size) solid transparent
-    box-shadow: 0 0 0 var(--button-border-size) var(--outline-color)
 </style>

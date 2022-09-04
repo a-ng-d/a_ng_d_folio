@@ -4,8 +4,8 @@
   import TwoColumns from '@/components/layouts/TwoColumns.vue'
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import FullWidthFigure from '@/components/layouts/FullWidthFigure.vue'
-  import Container from '@/components/ui/Container.vue'
-  import LinkContainer from '@/components/ui/LinkContainer.vue'
+  import ContentContainer from '@/components/patterns/ContentContainer.vue'
+  import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
   import { User, PlayCircle } from 'lucide-vue-next'
   import { doMap } from '@/utilities/operations'
@@ -17,7 +17,7 @@
       TwoColumns,
       WrapColumn,
       FullWidthFigure,
-      Container,
+      ContentContainer,
       LinkContainer,
       Figure,
       User,
@@ -266,10 +266,10 @@
         :theme="theme"
       >
         <template #plain>
-          <Container :title="$t('work._iobeya_whiteboard.credit.contributor-1.name')" :description="$t('work._iobeya_whiteboard.credit.contributor-1.role')" />
-          <Container :title="$t('work._iobeya_whiteboard.credit.contributor-2.name')" :description="$t('work._iobeya_whiteboard.credit.contributor-2.role')" />
-          <Container :title="$t('work._iobeya_whiteboard.credit.contributor-3.name')" :description="$t('work._iobeya_whiteboard.credit.contributor-3.role')" />
-          <Container :title="$t('work._iobeya_whiteboard.credit.contributor-4.name')" :description="$t('work._iobeya_whiteboard.credit.contributor-4.role')" />
+          <ContentContainer :title="$t('work._iobeya_whiteboard.credit.contributor-1.name')" :description="$t('work._iobeya_whiteboard.credit.contributor-1.role')" />
+          <ContentContainer :title="$t('work._iobeya_whiteboard.credit.contributor-2.name')" :description="$t('work._iobeya_whiteboard.credit.contributor-2.role')" />
+          <ContentContainer :title="$t('work._iobeya_whiteboard.credit.contributor-3.name')" :description="$t('work._iobeya_whiteboard.credit.contributor-3.role')" />
+          <ContentContainer :title="$t('work._iobeya_whiteboard.credit.contributor-4.name')" :description="$t('work._iobeya_whiteboard.credit.contributor-4.role')" />
         </template>
       </WrapColumn>
     </section>

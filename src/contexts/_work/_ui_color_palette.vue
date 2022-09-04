@@ -3,8 +3,8 @@
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import ThreeColumns from '@/components/layouts/ThreeColumns.vue'
-  import Container from '@/components/ui/Container.vue'
-  import LinkContainer from '@/components/ui/LinkContainer.vue'
+  import ContentContainer from '@/components/patterns/ContentContainer.vue'
+  import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
   import { Heart, MessageCircle, Download, Figma, Github } from 'lucide-vue-next'
 
@@ -14,7 +14,7 @@
       OneColumn,
       WrapColumn,
       ThreeColumns,
-      Container,
+      ContentContainer,
       LinkContainer,
       Figure,
       Heart,
@@ -93,25 +93,25 @@
         :theme="theme"
       >
         <template #left>
-          <Container title="4" :description="$t('global.comments')">
+          <ContentContainer title="4" :description="$t('global.comments')">
             <template #icon>
               <MessageCircle :size="48" />
             </template>
-          </Container>
+          </ContentContainer>
         </template>
         <template #middle>
-          <Container title="9.1K" :description="$t('global.installations')">
+          <ContentContainer title="9.1K" :description="$t('global.installations')">
             <template #icon>
               <Download :size="48" />
             </template>
-          </Container>
+          </ContentContainer>
         </template>
         <template #right>
-          <Container title="73" :description="$t('global.like')">
+          <ContentContainer title="73" :description="$t('global.like')">
             <template #icon>
               <Heart :size="48" />
             </template>
-          </Container>
+          </ContentContainer>
         </template>
       </ThreeColumns>
     </section>
