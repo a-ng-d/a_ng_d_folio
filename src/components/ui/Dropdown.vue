@@ -3,6 +3,7 @@
   import Button from '@/components/ui/Button.vue'
   import Container from '@/components/ui/Container.vue'
   import Label from '@/components/ui/Label.vue'
+  import { doMap } from '@/utilities/operations'
   import { ChevronUp, ChevronDown, Check } from 'lucide-vue-next'
 
   export default defineComponent({
@@ -43,10 +44,13 @@
       },
       openOptions() {
         this.isExpanded = true
-        window.addEventListener("click",  this.closeOptions)
+        setTimeout(() => window.addEventListener("click",  this.closeOptions), 100)
       },
       closeOptions(e: any) {
-        e.target.closest('.dropdown') == null ? this.isExpanded = false : this.isExpanded = true
+        if (e.target.closest('.dropdown__list') == null) this.isExpanded = false
+      },
+      map(current: number) {
+        return doMap(current, 0, this.allOptions.length - 1, this.allOptions.length - 1, 0)
       }
     },
     created: function() {
@@ -62,7 +66,7 @@
 </script>
 
 <template>
-  <div class="dropdown">
+  <div class="dropdown" :class="isExpanded ? 'dropdown--expanded' : 'dropdown--collapsed'">
     <h6 v-if="label != undefined">{{ label }}</h6>
     <Button
       type="secondary"
@@ -70,6 +74,7 @@
       layout="ICON-RIGHT"
       :theme="theme"
       @click="openOptions"
+      extensible
     >
       <template #icon>
         <Transition name="switch" mode="out-in">
@@ -80,7 +85,7 @@
     </Button>
     <Transition name="switch" mode="out-in">
       <Container class="dropdown__list" v-if="isExpanded">
-        <ul class="dropdown__options">
+        <ul class="dropdown__options" @keyup.escape="isExpanded = false">
           <li
             v-for="(option, index) in allOptions"
             :key="option.name"
@@ -113,11 +118,12 @@
 
     &__list
       padding: var(--spacing-m-200)
+      min-width: 100%
       min-height: 100%
       position: absolute
-      top: 50%
+      bottom: calc((var(--spacing-m-200) + var(--sizing-xs-000)) * -1)
       z-index: 2
-      transform: translateY(-50%)
+      transform: translateY(calc(v-bind("map(activeOption)") * var(--button-height-size)))
 
     &__options
       padding: 0
