@@ -2,17 +2,7 @@
   import { defineComponent } from 'vue'
 
   export default defineComponent({
-    name: 'Container',
-    props: {
-      padding: {
-        type: String,
-        default: 'var(--spacing-l-200)'
-      },
-      isInteractive: {
-        type: Boolean,
-        default: false
-      }
-    }
+    name: 'Container'
   })
 </script>
 
@@ -25,11 +15,9 @@
 <style scoped lang="sass">
   // Structure
   .container
-    padding: v-bind("padding")
     border-radius: var(--regular-border-radius)
     transition: var(--simple-transition)
     transform-origin: center center
-    cursor: v-bind("isInteractive ? 'pointer' : 'default'")
 
   // Aspect
   .container

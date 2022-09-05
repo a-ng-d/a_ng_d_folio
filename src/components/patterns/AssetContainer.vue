@@ -52,8 +52,7 @@
     @click="magnifier"
     @keyup.enter="magnifier"
     tabindex="0"
-    :style="`width: ${isMagnified ? assetWidth : '30vh'}`"
-    padding="var(--spacing-s-100)"
+    class="container"
     isInteractive
   >
     <div class="asset-container__content">
@@ -90,6 +89,11 @@
   @use '@/assets/stylesheets/base.sass' as device
 
   // Structure
+  .container
+    width: v-bind("isMagnified ? assetWidth : '30vh'")
+    padding: var(--spacing-s-100)
+    cursor: pointer
+
   .asset-container
     &__content
       --container-padding: var(--spacing-s-100)
@@ -102,7 +106,7 @@
 
     &__asset
       --container-padding: var(--spacing-s-100)
-      
+
       flex: 1
       display: flex
       justify-content: center
