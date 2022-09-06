@@ -1,13 +1,24 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import Button from '@/components/ui/Button.vue'
+  import Dropdown from '@/components/ui/Dropdown.vue'
+  import Container from '@/components/ui/Container.vue'
+  import Label from '@/components/ui/Label.vue'
+  import Switch from '@/components/ui/Switch.vue'
+  import Footer from '@/components/patterns/Footer.vue'
   import { Home } from 'lucide-vue-next'
   import { filters } from '@/utilities/colors'
+  import { i18n } from '@/lang'
 
   export default defineComponent ({
     name: 'Unknown',
     components: {
       Button,
+      Dropdown,
+      Container,
+      Label,
+      Switch,
+      Footer,
       Home
     },
     props: {
@@ -18,18 +29,65 @@
     },
     data: function() {
       return {
-        filters : filters,
-        pov: 'RESET',
-        quality: 'HIGH',
-        filter: 'CREAMY_SUN',
-        glitch: false
-      }
-    },
-    methods: {
-      changeParam(event: any, message: any) {
-        this[event] = typeof message != 'object' ? message : message.name
-        this.$emit(event, message)
-        this.$el.scrollTop = 0
+        povs: [
+          {
+            name: i18n.global.t('unknown.pov.reset'),
+            action: () => this.$emit('pov', 'RESET'),
+            isActive: true
+          },
+          {
+            name: i18n.global.t('unknown.pov.invert'),
+            action: () => this.$emit('pov', 'INVERT'),
+            isActive: false
+          },
+          {
+            name: i18n.global.t('unknown.pov.dontLookUp'),
+            action: () => this.$emit('pov', 'DONTLOOKUP'),
+            isActive: false
+          },
+          {
+            name: i18n.global.t('unknown.pov.mirror'),
+            action: () => this.$emit('pov', 'MIRROR_3'),
+            isActive: false
+          },
+          {
+            name: i18n.global.t('unknown.pov.side'),
+            action: () => this.$emit('pov', 'SIDE'),
+            isActive: false
+          },
+          {
+            name: i18n.global.t('unknown.pov.global'),
+            action: () => this.$emit('pov', 'GLOBAL'),
+            isActive: false
+          }
+        ],
+        filters: [
+          {
+            name: i18n.global.t('unknown.filter.creamySun'),
+            action: () => this.$emit('filter', filters.creamySun),
+            isActive: true
+          },
+          {
+            name: i18n.global.t('unknown.filter.softWind'),
+            action: () => this.$emit('filter', filters.softWind),
+            isActive: false
+          },
+          {
+            name: i18n.global.t('unknown.filter.candyFloss'),
+            action: () => this.$emit('filter', filters.candyFloss),
+            isActive: false
+          },
+          {
+            name: i18n.global.t('unknown.filter.grayscale'),
+            action: () => this.$emit('filter', filters.grayscale),
+            isActive: false
+          },
+          {
+            name: i18n.global.t('unknown.filter.nightly'),
+            action: () => this.$emit('filter', filters.nightly),
+            isActive: false
+          }
+        ]
       }
     }
   })
@@ -38,146 +96,56 @@
 <template>
   <main class="page">
     <section class="unknown">
-      <div class="unknown__content">
-        <h3>{{ $t('unknown.intro.title') }}</h3>
-        <p>{{ $t('unknown.intro.subtitle') }}</p>
-        <Button
-          type="primary"
-          layout="ICON-LEFT"
-          :label="$t('global.back.home')"
-          path="/"
-          :theme="theme"
-        >
-          <template #icon>
-            <Home :size="24" />
-          </template>
-        </Button>
-      </div>
-      <div class="unknown__actions">
-        <div class="unknown__actions__row">
-          <p>Pov</p>
+      <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + (var(--duration-step) * 1))" appear>
+        <div class="unknown__content unknown__content--left">
+          <h3>{{ $t('unknown.intro.title') }}</h3>
+          <p>{{ $t('unknown.intro.subtitle') }}</p>
           <Button
-            type="secondary"
-            label="Reset"
+            type="primary"
+            layout="ICON-LEFT"
+            :label="$t('global.back.home')"
+            path="/"
             :theme="theme"
-            @click="changeParam('pov', 'RESET')"
-          />
-          <Button
-            type="secondary"
-            label="Invert"
-            :theme="theme"
-            @click="changeParam('pov', 'INVERT')"
-          />
-          <Button
-            type="secondary"
-            label="Don't look up"
-            :theme="theme"
-            @click="changeParam('pov', 'DONTLOOKUP')"
-          />
-          <Button
-            type="secondary"
-            label="Mirror 1"
-            :theme="theme"
-            @click="$emit('pov', 'MIRROR_1')"
-          />
-          <Button
-            type="secondary"
-            label="Mirror 2"
-            :theme="theme"
-            @click="changeParam('pov', 'MIRROR_2')"
-          />
-          <Button
-            type="secondary"
-            label="Mirror 3"
-            :theme="theme"
-            @click="changeParam('pov', 'MIRROR_3')"
-          />
-          <Button
-            type="secondary"
-            label="Mirror 4"
-            :theme="theme"
-            @click="changeParam('pov', 'MIRROR_4')"
-          />
-          <Button
-            type="secondary"
-            label="Mirror 5"
-            :theme="theme"
-            @click="changeParam('pov', 'MIRROR_5')"
-          />
-          <Button
-            type="secondary"
-            label="Side"
-            :theme="theme"
-            @click="changeParam('pov', 'SIDE')"
-          />
-          <Button
-            type="secondary"
-            label="Global"
-            :theme="theme"
-            @click="changeParam('pov', 'GLOBAL')"
-          />
+            extensible
+          >
+            <template #icon>
+              <Home :size="24" />
+            </template>
+          </Button>
         </div>
-        <div class="unknown__actions__row">
-          <p>Quality</p>
-          <Button
-            type="secondary"
-            label="High quality"
+      </Transition>
+      <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + (var(--duration-step) * 2))" appear>
+        <div class="unknown__content unknown__content--right">
+          <Dropdown
+            :label="$t('unknown.pov.title')"
+            :options="povs"
             :theme="theme"
-            @click="changeParam('quality', 'HIGH')"
           />
-          <Button
-            type="secondary"
-            label="Low quality"
+          <Dropdown
+            :label="$t('unknown.filter.title')"
+            :options="filters"
             :theme="theme"
-            @click="changeParam('quality', 'LOW')"
           />
-          <Button
-            type="secondary"
-            label="Glitch"
-            :theme="theme"
-            @click="changeParam('glitch', true)"
-          />
-          <Button
-            type="secondary"
-            label="Unglitch"
-            :theme="theme"
-            @click="changeParam('glitch', false)"
-          />
+          <Container>
+            <div class="switch-container">
+              <Switch
+                :label="$t('unknown.glitch.title')"
+                :on="() => $emit('glitch', true)"
+                :off="() => $emit('glitch', false)"
+              />
+            </div>
+          </Container>
+          <Container>
+            <div class="switch-container">
+              <Switch
+                :label="$t('unknown.quality.title')"
+                :on="() => $emit('quality', 'LOW')"
+                :off="() => $emit('quality', 'HIGH')"
+              />
+            </div>
+          </Container>
         </div>
-        <div class="unknown__actions__row">
-          <p>Filter</p>
-          <Button
-            type="secondary"
-            label="Creamy sun"
-            :theme="theme"
-            @click="changeParam('filter', filters.creamySun)"
-          />
-          <Button
-            type="secondary"
-            label="Soft wind"
-            :theme="theme"
-            @click="changeParam('filter', filters.softWind)"
-          />
-          <Button
-            type="secondary"
-            label="Candy floss"
-            :theme="theme"
-            @click="changeParam('filter', filters.candyFloss)"
-          />
-          <Button
-            type="secondary"
-            label="Grayscale"
-            :theme="theme"
-            @click="changeParam('filter', filters.grayscale)"
-          />
-          <Button
-            type="secondary"
-            label="Nightly"
-            :theme="theme"
-            @click="changeParam('filter', filters.nightly)"
-          />
-        </div>
-      </div>
+      </Transition>
     </section>
     <Transition name="pull-up" style="--delay: var(--delay-turtoise)" appear>
       <Footer
@@ -198,34 +166,22 @@
     padding: var(--spacing-xl-600) var(--layout-center)
     height: 10000rem
 
+    &__content
+      display: flex
+      flex-flow: column nowrap
+      position: fixed
+      width: 400rem
+      top: var(--header-height-size)
+      gap: var(--layout-row-gap) 0
+
+      &--right
+        right: var(--layout-center)
+
+      &--left
+        left: var(--layout-center)
+
+  // Aspect
+  .unknown
     &[data-theme="DARK"]
       --text-color: var(--color-cream)
-
-    &__console
-      position: fixed
-      left: 0
-      top: 200rem
-      padding: var(--spacing-l-000)
-
-    &__actions
-      display: flex
-      flex-flow: column
-      width: 100%
-      position: fixed
-      left: 0
-      bottom: 0
-      padding: var(--spacing-l-000)
-      gap: var(--spacing-l-000)
-
-      &__row
-        display: flex
-        flex-flow: row nowrap
-        gap: var(--spacing-m-000)
-        align-items: center
-
-        & > p
-          flex: 0 1 100rem
-
-        & > a
-          flex: 1
 </style>

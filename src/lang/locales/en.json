@@ -549,8 +549,31 @@
   "unknown": {
     "title": "@:glossary.unknown@:global.separator@:global.author",
     "intro": {
-      "title": "Are you lost? (yes, this is a 404)",
-      "subtitle": "Now you are here, you can have fun by handling a bit that generative landscape backward."
+      "title": "Are you lost? (404)",
+      "subtitle": "Now you are here, have fun by handling that generative landscape backward."
+    },
+    "pov": {
+      "title": "Point of vue",
+      "reset": "Reset",
+      "invert": "Invert",
+      "dontLookUp": "Don't look up",
+      "mirror": "Mirror",
+      "side": "Side",
+      "global": "Global"
+    },
+    "filter": {
+      "title": "Ambient",
+      "creamySun": "Creamy sun",
+      "softWind": "Soft wind",
+      "candyFloss": "Candy floss",
+      "grayscale": "Grayscale",
+      "nightly": "Nightly"
+    },
+    "glitch": {
+      "title": "Glitch"
+    },
+    "quality": {
+      "title": "Wireframe"
     }
   }
 }
