@@ -22,7 +22,7 @@
 
 <template>
   <main class="page">
-    <Transition name="slide-up" appear style="--delay: calc(var(--duration-turtoise) + 0ms) ; --gap: 128rem">
+    <Transition name="slide-up" appear style="--delay: var(--duration-turtoise)">
       <article class="article">
         <DevTools :theme="theme" />
         <UIAssets :theme="theme" />
