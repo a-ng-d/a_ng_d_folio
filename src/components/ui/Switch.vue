@@ -66,6 +66,13 @@
     display: flex
     gap: 0 var(--layout-column-gap)
 
+    &__label
+      flex: 1
+
+    &__indicator
+      display: flex
+      align-items: center
+
     &__slide
       --slide-padding: var(--spacing-xs-000)
 
