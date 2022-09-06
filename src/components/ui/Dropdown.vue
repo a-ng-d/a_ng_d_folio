@@ -67,7 +67,10 @@
 
 <template>
   <div class="dropdown" :class="isExpanded ? 'dropdown--expanded' : 'dropdown--collapsed'">
-    <h6 v-if="label != undefined">{{ label }}</h6>
+    <Label
+      v-if="label != undefined"
+      :label="label"
+    />
     <Button
       type="secondary"
       :label="allOptions[activeOption].name"
@@ -122,7 +125,7 @@
       min-height: 100%
       position: absolute
       bottom: calc((var(--spacing-m-200) + var(--sizing-xs-000)) * -1)
-      z-index: 2
+      z-index: 5
       transform: translateY(calc(v-bind("map(activeOption)") * var(--button-height-size)))
 
     &__options
