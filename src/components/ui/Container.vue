@@ -18,6 +18,7 @@
     border-radius: var(--regular-border-radius)
     transition: var(--simple-transition)
     transform-origin: center center
+    padding: var(--spacing-l-200)
 
   // Aspect
   .container
