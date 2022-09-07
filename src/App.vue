@@ -206,6 +206,7 @@
         :scrollProgress="scrollProgress"
         :scrollLimit="pageHeight - viewHeight"
         :device="device"
+        :filter="filter"
         :theme="view === 'PROJECT' ? 'DEFAULT' : route.meta.theme"
         @activeProjectPosition="activeProjectPosition = $event"
         @activeProjectBackground="filter = $event"
