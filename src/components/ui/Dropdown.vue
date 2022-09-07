@@ -37,6 +37,7 @@
     watch: {
       isExpanded(to, from) {
         if (to == false) window.removeEventListener("click",  this.closeOptions)
+        else setTimeout(() => this.$refs.option[0].focus(), 200)
       }
     },
     methods: {
@@ -102,6 +103,7 @@
             @click="setOption(option.action, option.name, index)"
             @keyup.space="setOption(option.action, option.name, index)"
             tabindex="0"
+            ref="option"
           >
             <Transition name="switch">
               <i v-if="option.isActive" class="dropdown__option__icon"><Check :size="24" /></i>
