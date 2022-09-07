@@ -1,7 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import Particles from '@/components/graphics/Particles.vue'
-  import { random } from '@/utilities/operations'
 
   export default defineComponent({
     name: 'Button',
@@ -30,7 +29,6 @@
         type: Array,
         default: ['normal', '0']
       },
-      position: String,
       isInverted: {
         type: Boolean,
         default: false
@@ -43,7 +41,6 @@
     data: function() {
       return {
         isExtensible: this.extensible ? '100%' : 'fit-content',
-        randomPosition: `position: absolute ; top: ${random(0, 80)}% ; left: ${random(0, 80)}%`,
         isExpanded: false,
         isExternal: false,
         movement: ''
@@ -62,7 +59,7 @@
       },
       collapseParticles(e: any) {
         setTimeout(() => this.isExpanded = false, 50)
-      },
+      }
     },
     created: function() {
       this.path.indexOf('http') == 0 ? this.isExternal = true : this.isExternal
@@ -81,7 +78,6 @@
       @mouseout="collapseParticles"
       @touchstart.passive="expandParticles"
       @touchend.passive="collapseParticles"
-      :style="position === 'random' ? randomPosition : ''"
       :data-theme="theme"
     >
       <div class="button__content">
@@ -116,7 +112,6 @@
       @mouseout="collapseParticles"
       @touchstart.passive="expandParticles"
       @touchend.passive="collapseParticles"
-      :style="position === 'random' ? randomPosition : ''"
       :data-theme="theme"
     >
       <div class="button__content">
@@ -152,7 +147,6 @@
       @touchstart.passive="expandParticles"
       @touchend.passive="collapseParticles"
       :data-theme="theme"
-      :style="position === 'random' ? randomPosition : ''"
       target="_blank"
     >
       <div class="button__content">
@@ -189,6 +183,8 @@
     width: v-bind(isExtensible)
     height: var(--button-height-size)
     padding: 0
+    top: var(--top)
+    right: var(--right)
     background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
     border-radius: calc(var(--button-height-size) / 2)
     border: var(--button-border-size) solid transparent

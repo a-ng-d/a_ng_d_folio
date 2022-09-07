@@ -5,6 +5,7 @@
   import Button from '@/components/ui/Button.vue'
   import ContentContainer from '@/components/patterns/ContentContainer.vue'
   import { Heart, Briefcase, FlaskConical, Mail, Archive } from 'lucide-vue-next'
+  import { random } from '@/utilities/operations'
 
   export default defineComponent({
     name: 'Universe',
@@ -69,6 +70,9 @@
         this.tooltip = {
           isActive: false
         }
+      },
+      random(min: number, max: number) {
+        return random(min, max)
       }
     }
   })
@@ -80,22 +84,23 @@
       <ul class="menu__items">
         <li v-for="(world, index) in universe" :key="universe.name">
           <Transition name="slide-up" appear :style="`--delay: calc(var(--delay-turtoise) + ${index * 100}ms)`">
-            <Button
-              :id="world.name"
-              type="primary"
-              :path="world.path"
-              layout="ICON-ONLY"
-              position="random"
-              @mouseover="expandTooltip"
-              @mouseout="collapseTooltip"
-              @focusin="expandTooltip"
-              @focusout="collapseTooltip"
-              :theme="theme"
-            >
-              <template #icon>
-                <Component :is="world.icon" :size="24" />
-              </template>
-            </Button>
+            <div :style="`position: absolute ; top: ${random(0, 80)}% ; right: ${random(0, 80)}%`">
+              <Button
+                :id="world.name"
+                type="primary"
+                :path="world.path"
+                layout="ICON-ONLY"
+                @mouseover="expandTooltip"
+                @mouseout="collapseTooltip"
+                @focusin="expandTooltip"
+                @focusout="collapseTooltip"
+                :theme="theme"
+              >
+                <template #icon>
+                  <Component :is="world.icon" :size="24" />
+                </template>
+              </Button>
+            </div>
           </Transition>
         </li>
       </ul>

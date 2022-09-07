@@ -73,6 +73,6 @@
 
     &[data-highlighted="true"]
       &:after
-        --border-color: var(--color-sandstone)
+        --border-color: var(--color-creamy-sun)
         mix-blend-mode: darken
 </style>
