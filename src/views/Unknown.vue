@@ -22,9 +22,15 @@
       Home
     },
     props: {
-      theme: {
+      device: {
         type: String,
-        default: 'DEFAULT'
+        default: 'DESKTOP'
+      },
+      filter: Object
+    },
+    watch: {
+      filter(to, from) {
+        to['name'] === 'NIGHTLY' ? this.theme = 'DARK' : this.theme = 'DEFAULT'
       }
     },
     data: function() {
@@ -87,7 +93,8 @@
             action: () => this.$emit('filter', filters.nightly),
             isActive: false
           }
-        ]
+        ],
+        theme: 'DEFAULT'
       }
     }
   })
@@ -95,58 +102,68 @@
 
 <template>
   <main class="page">
-    <section class="unknown">
-      <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + (var(--duration-step) * 1))" appear>
-        <div class="unknown__content unknown__content--left">
-          <h3>{{ $t('unknown.intro.title') }}</h3>
-          <p>{{ $t('unknown.intro.subtitle') }}</p>
-          <Button
-            type="primary"
-            layout="ICON-LEFT"
-            :label="$t('global.back.home')"
-            path="/"
-            :theme="theme"
-            extensible
-          >
-            <template #icon>
-              <Home :size="24" />
-            </template>
-          </Button>
-        </div>
-      </Transition>
-      <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + (var(--duration-step) * 2))" appear>
-        <div class="unknown__content unknown__content--right">
-          <Dropdown
-            :label="$t('unknown.pov.title')"
-            :options="povs"
-            :theme="theme"
-          />
-          <Dropdown
-            :label="$t('unknown.filter.title')"
-            :options="filters"
-            :theme="theme"
-          />
-          <Container>
-            <div class="switch-container">
-              <Switch
-                :label="$t('unknown.glitch.title')"
-                :on="() => $emit('glitch', true)"
-                :off="() => $emit('glitch', false)"
-              />
-            </div>
-          </Container>
-          <Container>
-            <div class="switch-container">
-              <Switch
-                :label="$t('unknown.quality.title')"
-                :on="() => $emit('quality', 'LOW')"
-                :off="() => $emit('quality', 'HIGH')"
-              />
-            </div>
-          </Container>
-        </div>
-      </Transition>
-    </section>
+    <article class="unknown">
+      <section class="controler">
+        <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + (var(--duration-step) * 1))" appear>
+          <div class="controler__content controler__content">
+            <h3>{{ $t('unknown.intro.title') }}</h3>
+            <p>{{ $t('unknown.intro.subtitle') }}</p>
+            <Button
+              type="primary"
+              layout="ICON-LEFT"
+              :label="$t('global.back.home')"
+              path="/"
+              :theme="theme"
+              extensible
+            >
+              <template #icon>
+                <Home :size="24" />
+              </template>
+            </Button>
+          </div>
+        </Transition>
+        <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + (var(--duration-step) * 3))" appear>
+          <div class="controler__scroll">
+            <Label
+              :label="$t('global.scrollDown')"
+              :theme="theme"
+            />
+          </div>
+        </Transition>
+        <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + (var(--duration-step) * 2))" appear>
+          <div v-if="device != 'MOBILE'" class="controler__content controler__content">
+            <Dropdown
+              :label="$t('unknown.pov.title')"
+              :options="povs"
+              :theme="theme"
+            />
+            <Dropdown
+              :label="$t('unknown.filter.title')"
+              :options="filters"
+              :theme="theme"
+            />
+            <Container>
+              <div class="switch-container">
+                <Switch
+                  :label="$t('unknown.glitch.title')"
+                  :on="() => $emit('glitch', true)"
+                  :off="() => $emit('glitch', false)"
+                />
+              </div>
+            </Container>
+            <Container>
+              <div class="switch-container">
+                <Switch
+                  :label="$t('unknown.quality.title')"
+                  :on="() => $emit('quality', 'LOW')"
+                  :off="() => $emit('quality', 'HIGH')"
+                />
+              </div>
+            </Container>
+          </div>
+        </Transition>
+      </section>
+    </article>
     <Transition name="pull-up" style="--delay: var(--delay-turtoise)" appear>
       <Footer
         alignment="L"
@@ -157,28 +174,42 @@
 </template>
 
 <style scoped lang="sass">
+  @use '@/assets/stylesheets/base.sass' as device
+
   // Structure
   .unknown
     grid-area: main
-    display: flex
-    flex-flow: column nowrap
-    justify-content: space-between
-    padding: var(--spacing-xl-600) var(--layout-center)
     height: 10000rem
+
+  .controler
+    display: flex
+    flex-flow: row nowrap
+    justify-content: space-between
+    align-items: flex-end
+    padding: var(--header-height-size) var(--layout-center) var(--layout-center) var(--layout-center)
+    gap: 0 var(--layout-column-gap)
+    width: 100vw
+    height: 100vh
+    position: fixed
+    top: 0
+    pointer-events: none
 
     &__content
       display: flex
       flex-flow: column nowrap
-      position: fixed
-      width: 400rem
-      top: var(--header-height-size)
+      flex: 0 1 340rem
       gap: var(--layout-row-gap) 0
+      pointer-events: all
 
-      &--right
-        right: var(--layout-center)
+  @include device.tablet
+    .controler
+      padding: var(--header-height-size) var(--layout-center) var(--spacing-xl-200) var(--layout-center)
 
-      &--left
-        left: var(--layout-center)
+  @include device.mobile
+    .controler
+      flex-flow: column nowrap
+      padding: var(--header-height-size) var(--layout-center) var(--spacing-xl-500) var(--layout-center)
+      align-items: center
 
   // Aspect
   .unknown
