@@ -4,7 +4,7 @@
   import Container from '@/components/ui/Container.vue'
   import Label from '@/components/ui/Label.vue'
   import { doMap } from '@/utilities/operations'
-  import { ChevronUp, ChevronDown, Check } from 'lucide-vue-next'
+  import { ChevronDown, Check } from 'lucide-vue-next'
 
   export default defineComponent({
     name: 'Dropdown',
@@ -12,12 +12,12 @@
       Button,
       Container,
       Label,
-      ChevronUp,
       ChevronDown,
       Check
     },
     props: {
       label: String,
+
       options: {
         type: Array,
         default: []
@@ -34,17 +34,22 @@
         allOptions: this.options as Array<{name: string, action: any, isActive: boolean}>
       }
     },
+    watch: {
+      isExpanded(to, from) {
+        if (to == false) window.removeEventListener("click",  this.closeOptions)
+      }
+    },
     methods: {
       setOption(callback: any, name: string, order: number) {
         (this.allOptions[(this.activeOption) as number] as any).isActive = false;
-        (this.activeOption as number) = order;
+        setTimeout(() =>(this.activeOption as number) = order, 900);
         (this.allOptions[order] as any).isActive = true;
         this.isExpanded = false;
         callback?.()
       },
-      openOptions() {
+      openOptions(e: any) {
         this.isExpanded = true
-        setTimeout(() => window.addEventListener("click",  this.closeOptions), 100)
+        setTimeout(() => window.addEventListener("click",  this.closeOptions), 200)
       },
       closeOptions(e: any) {
         if (e.target.closest('.dropdown__list') == null) this.isExpanded = false
@@ -58,15 +63,12 @@
         if (option.isActive == true)
           return true
       })
-    },
-    updated: function() {
-      if (this.isExpanded == false) window.removeEventListener("click",  this.closeOptions)
     }
   })
 </script>
 
 <template>
-  <div class="dropdown" :class="isExpanded ? 'dropdown--expanded' : 'dropdown--collapsed'">
+  <div class="dropdown" @keydown.esc="isExpanded = false" :data-theme="theme">
     <Label
       v-if="label != undefined"
       :label="label"
@@ -77,28 +79,29 @@
       layout="ICON-RIGHT"
       :theme="theme"
       @click="openOptions"
+      @keyup.space="openOptions"
       extensible
     >
       <template #icon>
-        <Transition name="switch" mode="out-in">
-          <ChevronUp v-if="isExpanded" :size="24" />
-          <ChevronDown v-else :size="24" />
-        </Transition>
+        <ChevronDown :size="24" />
       </template>
     </Button>
-    <Transition name="switch" mode="out-in">
-      <Container class="dropdown__list" v-if="isExpanded">
-        <ul class="dropdown__options" @keyup.escape="isExpanded = false">
+    <Transition name="switch" style="--delay: 0ms">
+      <Container
+        class="dropdown__list"
+        v-if="isExpanded"
+      >
+        <ul class="dropdown__options">
           <li
             v-for="(option, index) in allOptions"
             :key="option.name"
             class="dropdown__option"
             :class="option.isActive ? 'dropdown__option--active' : ''"
             @click="setOption(option.action, option.name, index)"
-            @keyup.enter="setOption(option.action, option.name, index)"
-            :tabindex="option.isActive ? '-1' : '0'"
+            @keyup.space="setOption(option.action, option.name, index)"
+            tabindex="0"
           >
-            <Transition name="switch" mode="out-in">
+            <Transition name="switch">
               <i v-if="option.isActive" class="dropdown__option__icon"><Check :size="24" /></i>
             </Transition>
             <Label
@@ -124,9 +127,8 @@
       min-width: 100%
       min-height: 100%
       position: absolute
-      bottom: calc((var(--spacing-m-200) + var(--sizing-xs-000)) * -1)
+      bottom: calc((var(--spacing-m-200) + var(--sizing-xs-000) + (v-bind("map(activeOption)") * var(--button-height-size))) * -1)
       z-index: 5
-      transform: translateY(calc(v-bind("map(activeOption)") * var(--button-height-size)))
 
     &__options
       padding: 0
@@ -168,12 +170,14 @@
 
       animation: excited var(--duration-running) var(--ease-peps)
 
-  .dropdown
-      &__option:focus
-        --item-background: var(--color-soft-wind)
-        --item-border: var(--color-clear-water)
+    &__option:focus
+      --item-background: var(--color-soft-wind)
+      --item-border: var(--color-clear-water)
 
-        transform: var(--focus-scale)
-        outline: none
-        z-index: 2
+      transform: var(--focus-scale)
+      outline: none
+      z-index: 2
+
+    &__option:active
+      transform: var(--active-scale)
 </style>
