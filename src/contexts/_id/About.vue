@@ -23,7 +23,7 @@
       :theme="theme"
     >
       <template #plain>
-        <div data-theme="theme">
+        <div>
           <p v-html="$t('id.about.experience', { year: new Date().getFullYear() - 2015 })"></p>
           <p>{{ $t("id.about.mission") }}</p>
           <p v-html="$t('id.about.activities')"></p>
@@ -35,6 +35,5 @@
 </template>
 
 <style scoped lang="sass">
-  [data-theme="DARK"]
-    --text-color: var(--color-cream)
+
 </style>

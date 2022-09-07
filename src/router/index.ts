@@ -73,6 +73,19 @@ const router = createRouter({
       }
     },
     {
+      path: '/_lab',
+      name: '_LAB',
+      component: Lab,
+      meta: {
+        title: i18n.global.t('lab.title'),
+        view: 'LAB',
+        theme: 'DEFAULT',
+        filter: filters.softWind,
+        pov: 'SIDE',
+        quality: 'LOW'
+      }
+    },
+    {
       path: '/_work',
       name: '_WORK',
       component: Work,
@@ -191,19 +204,6 @@ const router = createRouter({
         theme: 'DARK',
         filter: filters.grayscale,
         pov: 'MIRROR_5',
-        quality: 'LOW'
-      }
-    },
-    {
-      path: '/_lab',
-      name: '_LAB',
-      component: Lab,
-      meta: {
-        title: i18n.global.t('lab.title'),
-        view: 'LAB',
-        theme: 'DEFAULT',
-        filter: filters.softWind,
-        pov: 'SIDE',
         quality: 'LOW'
       }
     },

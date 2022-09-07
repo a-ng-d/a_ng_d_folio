@@ -72,6 +72,7 @@
       </OneColumn>
       <FullWidthFigure
         :caption="$t('work._jeprendsquoi.part-1.caption-1')"
+        :theme="theme"
       >
         <template #asset>
           <img src="/images/_work/_jeprendsquoi/article-asset-1.png" />
@@ -86,6 +87,7 @@
       </OneColumn>
       <FullWidthFigure
         :caption="$t('work._jeprendsquoi.part-1.caption-2')"
+        :theme="theme"
       >
         <template #asset>
           <img src="/images/_work/_jeprendsquoi/article-asset-2.png" />
@@ -149,6 +151,7 @@
       </OneColumn>
       <FullWidthFigure
         :caption="$t('work._jeprendsquoi.part-2.caption-5')"
+        :theme="theme"
       >
         <template #asset>
           <iframe height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FWsXRtKjylmyOv97KBM7KFy%2Fjeprendsquoi%3Fnode-id%3D9%253A0" allowfullscreen></iframe>
@@ -162,6 +165,7 @@
             :description="$t('work._jeprendsquoi.part-2.info.description')"
             :cta="$t('work._jeprendsquoi.part-2.info.linkLabel')"
             href="https://yuka.io"
+            :theme="theme"
           >
             <template #icon>
               <Info :size="48" />
@@ -201,6 +205,7 @@
             :description="$t('work._jeprendsquoi.takeaways.takeaway-1.description')"
             :cta="$t('work._jeprendsquoi.takeaways.takeaway-1.linkLabel')"
             href="https://testflight.apple.com/join/AmEZ2igV"
+            :theme="theme"
           >
             <template #icon>
               <Bot :size="48" />
@@ -210,6 +215,7 @@
             :description="$t('work._jeprendsquoi.takeaways.takeaway-2.description')"
             :cta="$t('work._jeprendsquoi.takeaways.takeaway-2.linkLabel')"
             href="https://testflight.apple.com/join/AmEZ2igV"
+            :theme="theme"
           >
             <template #icon>
               <Ghost :size="48" />
@@ -222,14 +228,8 @@
 </template>
 
 <style scoped lang="sass">
-  // Structure
-  section:nth-child(2n)
-    background-color: transparent
-
-  section:nth-child(2n + 1)
-    background-color: var(--color-titanium-white)
-
   section.ending
     height: 100vh
-    background: url(/images/_work/_jeprendsquoi/ending-asset-2.png) 50% v-bind('parallax(400, 100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-1.png) 35% v-bind('parallax(200, 100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-3.png) 65% v-bind('parallax(300, 100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-logotype.svg) 50% v-bind('parallax(200, 20)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-broccoli.png) 100% v-bind('parallax(100, -5)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-eggplant.png) 70% v-bind('parallax(100, 10)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-pumpkin.png) 35% v-bind('parallax(100, 10)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-leek.png) 15% v-bind('parallax(200, 30)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-tomato.png) -5% v-bind('parallax(100, 50)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-pear.png) 10% v-bind('parallax(200, 90)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-cherry.png) 95% v-bind('parallax(200, 90)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-lemon.png) 85% v-bind('parallax(200, 50)') no-repeat, var(--color-titanium-white)
+    background: url(/images/_work/_jeprendsquoi/ending-asset-2.png) 50% v-bind('parallax(400, 100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-1.png) 35% v-bind('parallax(200, 100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-3.png) 65% v-bind('parallax(300, 100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-logotype.svg) 50% v-bind('parallax(200, 20)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-broccoli.png) 100% v-bind('parallax(100, -5)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-eggplant.png) 70% v-bind('parallax(100, 10)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-pumpkin.png) 35% v-bind('parallax(100, 10)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-leek.png) 15% v-bind('parallax(200, 30)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-tomato.png) -5% v-bind('parallax(100, 50)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-pear.png) 10% v-bind('parallax(200, 90)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-cherry.png) 95% v-bind('parallax(200, 90)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-lemon.png) 85% v-bind('parallax(200, 50)') no-repeat
+    background-color: var(--color-titanium-white) !important
 </style>

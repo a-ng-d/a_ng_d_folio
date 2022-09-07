@@ -57,7 +57,8 @@
       &__columns
         flex-flow: column nowrap
 
-  // Aspect`
-  [data-theme="DARK"]
-    --text-color: var(--color-cream)
+  // Aspect
+  .col-3
+    &[data-theme="DARK"]
+      --text-color: var(--color-cream)
 </style>

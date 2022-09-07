@@ -31,9 +31,11 @@
         isGlitched: false,
         isExpanded: false,
         isHardTransited: false,
+        projects: this.getProjects(this.$router.options.routes),
         activeProjectPosition: 0,
-        numberOfProjects: 0,
-        multiplier: 1
+        numberOfProjects: this.getProjects(this.$router.options.routes).length,
+        multiplier: 1,
+        theme: 'DEFAULT'
       }
     },
     watch: {
@@ -47,6 +49,10 @@
         this.activeProjectPosition = to.meta.view === 'WORK' ? this.activeProjectPosition :
                                      to.meta.view === 'PROJECT' ? to.meta.position :
                                      0
+
+        this.theme = this.view === 'PROJECT' ? 'DEFAULT' :
+                     this.view === 'WORK' ? this.projects[this.activeProjectPosition].meta.theme :
+                     to.meta.theme
 
         const AB: any = {
           'HOME > CORE': () => {
@@ -154,7 +160,6 @@
       getProjects(src: Array<any>) {
         let projects: Array<any> = src.map((a: any) => a)
         projects = projects.filter((project: any) => project.meta.view === 'PROJECT').sort((a: any, b: any) => a.meta.position - b.meta.position)
-        this.numberOfProjects = projects.length
         return projects
       },
       getScreenContext() {
@@ -184,8 +189,9 @@
       :scrollProgress="scrollProgress"
       :view="view"
       :device="device"
-      :projects="getProjects($router.options.routes)"
+      :projects="projects"
       :activeProjectPosition="activeProjectPosition"
+      :theme="theme"
     />
   </Transition>
   <RouterView @scroll.passive="getScrollParams" v-slot="{ Component, route }">
@@ -200,14 +206,14 @@
         :is="Component"
         :key="route.path"
         :view="view"
-        :projects="getProjects($router.options.routes)"
+        :projects="projects"
         :project="route.meta"
         :activeProjectPosition="activeProjectPosition"
         :scrollProgress="scrollProgress"
         :scrollLimit="pageHeight - viewHeight"
         :device="device"
         :filter="filter"
-        :theme="view === 'PROJECT' ? 'DEFAULT' : route.meta.theme"
+        :theme="theme"
         @activeProjectPosition="activeProjectPosition = $event"
         @activeProjectBackground="filter = $event"
         @activeProjectPov="pov = $event"
@@ -215,6 +221,7 @@
         @quality="quality = $event"
         @glitch="isGlitched = $event"
         @filter="filter = $event"
+        @theme="theme = $event"
       />
     </Transition>
   </RouterView>

@@ -4,10 +4,6 @@
   export default defineComponent({
     name: 'Header',
     props: {
-      logotypeColor: {
-        type: String,
-        default: 'var(--color-deep-black)'
-      },
       background: {
         type: String,
         default: 'var(--color-deep-black)'
@@ -15,6 +11,10 @@
       scrollProgress: {
         type: Number,
         default: 0
+      },
+      theme: {
+        type: String,
+        default: 'DEFAULT'
       }
     },
     data: function() {
@@ -31,7 +31,7 @@
 </script>
 
 <template>
-  <header class="main-menu" :class="isStuck ? 'main-menu--stuck' : null">
+  <header class="main-menu" :class="isStuck ? 'main-menu--stuck' : null" :data-theme="theme">
     <div class="main-menu__left-part">
       <slot name="left-part"></slot>
     </div>
@@ -51,6 +51,8 @@
 
   // Structure
   .main-menu
+    --offset: calc(var(--header-height-size) * -1)
+
     position: fixed
     width: 100vw
     height: var(--header-height-size)
@@ -61,6 +63,7 @@
     align-items: center
     justify-content: space-between
     transition: var(--slow-transition)
+    box-shadow: 0 var(--header-height-size) 64rem var(--offset) v-bind(background) inset
 
     &__right-part,
     &__left-part
@@ -80,12 +83,19 @@
 
       svg
         transition: var(--grandma-transition)
-        fill: v-bind(logotypeColor)
+        fill: var(--logotype-color)
 
     &--stuck
-      box-shadow: 0 var(--header-height-size) 64rem -88rem v-bind(background) inset
+      --offset: -96rem
 
   @include device.mobile
     .main-menu
       gap: 0 var(--layout-column-gap)
+
+  // Aspect
+  .main-menu
+    --logotype-color: var(--color-soil)
+
+    &[data-theme="DARK"]
+      --logotype-color: var(--color-cream)
 </style>

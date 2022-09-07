@@ -55,6 +55,6 @@
     &__instance
       color: var(--text-color)
 
-  .scrolling-text[data-theme="DARK"]
-    --text-color: var(--color-cream)
+    &[data-theme="DARK"]
+      --text-color: var(--color-cream)
 </style>

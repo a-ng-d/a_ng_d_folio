@@ -93,21 +93,33 @@
         :theme="theme"
       >
         <template #left>
-          <ContentContainer title="4" :description="$t('global.comments')">
+          <ContentContainer
+            title="4"
+            :description="$t('global.comments')"
+            :theme="theme"
+          >
             <template #icon>
               <MessageCircle :size="48" />
             </template>
           </ContentContainer>
         </template>
         <template #middle>
-          <ContentContainer title="9.1K" :description="$t('global.installations')">
+          <ContentContainer
+            title="9.1K"
+            :description="$t('global.installations')"
+            :theme="theme"
+          >
             <template #icon>
               <Download :size="48" />
             </template>
           </ContentContainer>
         </template>
         <template #right>
-          <ContentContainer title="73" :description="$t('global.like')">
+          <ContentContainer
+            title="73"
+            :description="$t('global.like')"
+            :theme="theme"
+          >
             <template #icon>
               <Heart :size="48" />
             </template>
@@ -125,6 +137,7 @@
             :description="$t('work._ui_color_palette.takeaways.takeaway-1.description')"
             :cta="$t('work._ui_color_palette.takeaways.takeaway-1.linkLabel')"
             href="https://www.figma.com/community/plugin/1063959496693642315/UI-Color-Palette"
+            :theme="theme"
           >
             <template #icon>
               <Figma :size="48" />
@@ -134,6 +147,7 @@
             :description="$t('work._ui_color_palette.takeaways.takeaway-2.description')"
             :cta="$t('work._ui_color_palette.takeaways.takeaway-2.linkLabel')"
             href="https://github.com/inVoltag/figma-ui-color-palette"
+            :theme="theme"
           >
             <template #icon>
               <Github :size="48" />
@@ -146,10 +160,5 @@
 </template>
 
 <style scoped lang="sass">
-  // Structure
-  section:nth-child(2n)
-    background-color: transparent
 
-  section:nth-child(2n + 1)
-    background-color: var(--color-cream)
 </style>

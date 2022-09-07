@@ -75,6 +75,7 @@
       <FullWidthFigure
         isCentered
         background="linear-gradient(90deg, #FAF7D4 -61.9%, #B4F3D5 176.19%)"
+        :theme="theme"
       >
         <template #asset>
           <img src="/images/_work/_awesome_ipsums/article-asset-2.png" />
@@ -90,6 +91,7 @@
       <FullWidthFigure
         isCentered
         background="linear-gradient(90deg, #FAF7D4 -61.9%, #B4F3D5 176.19%)"
+        :theme="theme"
       >
         <template #asset>
           <img src="/images/_work/_awesome_ipsums/article-asset-3.png" />
@@ -105,6 +107,7 @@
       <FullWidthFigure
         isCentered
         background="linear-gradient(90deg, #FAF7D4 -61.9%, #B4F3D5 176.19%)"
+        :theme="theme"
       >
         <template #asset>
           <img src="/images/_work/_awesome_ipsums/article-asset-4.png" />
@@ -123,6 +126,7 @@
             :description="$t('work._awesome_ipsums.takeaways.takeaway-1.description')"
             :cta="$t('work._awesome_ipsums.takeaways.takeaway-1.linkLabel')"
             href="https://github.com/inVoltag/sketch-awesome-ipsums/releases/latest/download/awesome-ipsums.sketchplugin.zip"
+            :theme="theme"
           >
             <template #icon>
               <Download :size="48" />
@@ -132,6 +136,7 @@
             :description="$t('work._awesome_ipsums.takeaways.takeaway-2.description')"
             :cta="$t('work._awesome_ipsums.takeaways.takeaway-2.linkLabel')"
             href="https://github.com/inVoltag/sketch-awesome-ipsums"
+            :theme="theme"
           >
             <template #icon>
               <Github :size="48" />
@@ -144,14 +149,8 @@
 </template>
 
 <style scoped lang="sass">
-  // Structure
-  section:nth-child(2n)
-    background-color: transparent
-
-  section:nth-child(2n + 1)
-    background-color: var(--color-titanium-white)
-
   section.ending
     height: 100vh
-    background: url(/images/_work/_awesome_ipsums/ending-asset-3.svg) 100% 0 no-repeat , url(/images/_work/_awesome_ipsums/ending-asset-2.svg) 55% v-bind('parallax(50, 55)') no-repeat, url(/images/_work/_awesome_ipsums/ending-asset-1.svg) 50% v-bind('parallax(-50, 50)') no-repeat, #23A566
+    background: url(/images/_work/_awesome_ipsums/ending-asset-3.svg) 100% 0 no-repeat , url(/images/_work/_awesome_ipsums/ending-asset-2.svg) 55% v-bind('parallax(50, 55)') no-repeat, url(/images/_work/_awesome_ipsums/ending-asset-1.svg) 50% v-bind('parallax(-50, 50)') no-repeat
+    background-color: #23A566 !important
 </style>

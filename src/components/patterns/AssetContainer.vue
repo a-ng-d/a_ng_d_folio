@@ -23,6 +23,10 @@
       unmagnify: {
         type: Boolean,
         default: false
+      },
+      theme: {
+        type: String,
+        default: 'DEFAULT'
       }
     },
     data: function() {
@@ -55,7 +59,7 @@
     class="container"
     isInteractive
   >
-    <div class="asset-container__content">
+    <div class="asset-container__content" :data-theme="theme">
       <div class="asset-container__asset">
         <Transition name="fade" mode="in-out" :style="`--delay: ${isMagnified ? '0ms' : 'var(--delay-jogging)'}`">
           <img v-if="!isMagnified" :src="thumbnail" :alt="alt" />
@@ -135,4 +139,9 @@
 
       & > a.button
         pointer-events: auto
+
+  // Aspect
+  .asset-container__content
+    &[data-theme="DARK"]
+      --text-color: var(--color-soil)
 </style>

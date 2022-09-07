@@ -22,6 +22,10 @@
       activeProjectPosition: {
         type: Number,
         required: true
+      },
+      theme: {
+        type: String,
+        default: 'DEFAULT'
       }
     },
     data: function() {
@@ -29,8 +33,7 @@
         activeProjectCodeName: (this.projects[(this.activeProjectPosition as number)] as any).meta.codeName,
         position: this.activeProjectPosition as number,
         duration: 2000,
-        direction: 'right',
-        theme: (this.projects[(this.activeProjectPosition as number)] as any).meta.theme
+        direction: 'right'
       }
     },
     methods: {
@@ -46,7 +49,7 @@
       },
       switchProject() {
         this.activeProjectCodeName = (this.projects[this.position] as any).meta.codeName
-        this.theme = (this.projects[this.position] as any).meta.theme
+        this.$emit('theme', (this.projects[this.position] as any).meta.theme)
         this.$emit('activeProjectPosition', this.position)
         this.$emit('activeProjectBackground', (this.projects[this.position] as any).meta.background)
         setTimeout(() => this.$emit('activeProjectPov', (this.projects[this.position] as any).meta.pov), 1500)
@@ -86,7 +89,7 @@
         <div v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName" style="background: url(/images/_work/_iobeya_whiteboard/background.png) 0% 0% no-repeat"></div>
       </Transition>
     </div>
-    <section class="work">
+    <section class="work" :data-theme="theme">
       <div class="work__illustration" :style="direction === 'right' ? '--offset: -100vw' : '--offset: 100vw'">
         <Transition name="across" :duration="duration" mode="out-in" class="work__illustration__item" appear>
           <Vue3Lottie v-if="activeProjectCodeName === ((projects[0] as any) as any).meta.codeName" :animationData="((projects[0] as any) as any).meta.illustration" />
@@ -98,7 +101,7 @@
       </div>
       <aside class="work__summary">
         <div class="work__summary__description">
-          <div class="work__title" :data-theme="theme">
+          <div class="work__title">
             <Transition name="wheel" mode="out-in" :duration="duration" @before-leave="splitLetters" @before-enter="splitLetters" appear>
               <h2 v-if="activeProjectCodeName === ((projects[0] as any) as any).meta.codeName">{{ ((projects[0] as any) as any).meta.codeName }}</h2>
               <h2 v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName">{{ (projects[1] as any).meta.codeName }}</h2>
@@ -124,7 +127,7 @@
               </div>
             </Transition>
           </div>
-          <ul class="work__data" :data-theme="theme">
+          <ul class="work__data">
             <Transition class="work__data__item" name="slide-right" :duration="duration * 1.5" mode="out-in" appear>
               <li v-if="activeProjectCodeName === ((projects[0] as any) as any).meta.codeName">
                 <h6>{{ $t("global.date") }}</h6>
@@ -154,7 +157,7 @@
             <Button
               type="secondary"
               layout="ICON-ONLY"
-              :theme="(projects[activeProjectPosition as number] as any).meta.theme"
+              :theme="theme"
               @click="previousProject"
             >
               <template #icon>
@@ -166,7 +169,7 @@
               :label="$t('global.go')"
               :path="`/_work/${activeProjectCodeName}`"
               layout="ICON-LEFT"
-              :theme="(projects[activeProjectPosition as number] as any).meta.theme"
+              :theme="theme"
             >
               <template #icon>
                 <ArrowDown :size="24" />
@@ -175,7 +178,7 @@
             <Button
               type="secondary"
               layout="ICON-ONLY"
-              :theme="(projects[activeProjectPosition as number] as any).meta.theme"
+              :theme="theme"
               @click="nextProject"
             >
               <template #icon>
@@ -346,8 +349,9 @@
           justify-content: center
 
   // Aspect
-  [data-theme="DARK"]
-    --text-color: var(--color-cream)
+  .work
+    &[data-theme="DARK"]
+      --text-color: var(--color-cream)
 
   // Animation
   :deep(.wheel-leave-active) .shard,

@@ -44,7 +44,7 @@
 
 <template>
   <main class="page">
-    <article class="project">
+    <article class="project" :data-theme="theme">
       <section class="title">
         <Transition name="slide-up" style="--delay: var(--delay-turtoise)" appear>
           <ScrollingText
@@ -82,7 +82,10 @@
           :theme="theme"
         >
           <template #plain>
-            <ContentContainer :description="project.date" />
+            <ContentContainer
+              :description="project.date"
+              :theme="theme"
+            />
           </template>
         </WrapColumn>
         <WrapColumn
@@ -91,7 +94,12 @@
           :theme="theme"
         >
           <template #plain>
-            <ContentContainer v-for="(objective, index) in project.objectives" :title="`#${index + 1}`" :description="objective" />
+            <ContentContainer
+              v-for="(objective, index) in project.objectives"
+              :title="`#${index + 1}`"
+              :description="objective"
+              :theme="theme"
+            />
           </template>
         </WrapColumn>
         <WrapColumn
@@ -100,7 +108,11 @@
           :theme="theme"
         >
           <template #plain>
-            <ContentContainer v-for="(role, index) in project.roles" :title="`#${index + 1}`" :description="role" />
+            <ContentContainer
+              v-for="(role, index) in project.roles"
+              :title="`#${index + 1}`" :description="role"
+              :theme="theme"
+            />
           </template>
         </WrapColumn>
       </section>
@@ -127,9 +139,6 @@
     grid-area: main
     margin-top: calc(var(--header-height-size) * -1)
 
-    &[data-theme="DARK"]
-      --text-color: var(--color-cream)
-
   .title, .description
     height: 100vh
     justify-content: center
@@ -139,10 +148,19 @@
       height: fit-content
 
   // Aspect
-  .description
+  :deep(section:nth-child(2n + 1))
     background-color: var(--color-titanium-white)
 
-  .overview
+  :deep(section:nth-child(2n))
+    background-color: transparent
+
+  section.title
+    background-color: transparent
+
+  section.description
+    background-color: var(--color-titanium-white)
+
+  section.overview
     background-color: var(--color-soft-wind)
 
   :deep(section.challenge)
@@ -157,4 +175,31 @@
   :deep(section.takeaways)
     background: var(--gradient-biscarosse-sunset)
 
+  .project
+    &[data-theme="DARK"]
+      --text-color: var(--color-cream)
+
+      :deep(section:nth-child(2n + 1))
+        background-color: var(--color-soil)
+
+      section.title
+        background-color: transparent
+
+      section.description
+        background-color: var(--color-soil)
+
+      section.overview
+        background-color: var(--color-clear-water)
+
+      :deep(section.challenge)
+        background-color: var(--color-sandstone)
+
+      :deep(section.success), :deep(section.credit)
+        background-color: var(--color-soft-wind)
+
+      :deep(section.credit)
+        background-color: var(--color-soil)
+
+      :deep(section.takeaways)
+        background: var(--gradient-chill-night)
 </style>

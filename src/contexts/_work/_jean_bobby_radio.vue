@@ -60,6 +60,7 @@
           :description="$t('work._jean_bobby_radio.part-1.info.description')"
           :cta="$t('work._jean_bobby_radio.part-1.info.linkLabel')"
           href="https://involtag.notion.site/Monter-une-webradio-d-entreprise-avec-peu-de-moyens-8f64fad1b661454999baa1f65ea27c11"
+          :theme="theme"
         >
           <template #icon>
             <Info :size="48" />
@@ -69,6 +70,7 @@
     </OneColumn>
     <FullWidthFigure
       :caption="$t('work._jean_bobby_radio.part-1.caption-1')"
+      :theme="theme"
     >
       <template #asset>
         <iframe height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FTzJMVGhT6hcx7zIyEnjd7U%2FArchitecture-overview%3Fnode-id%3D0%253A1" allowfullscreen></iframe>
@@ -86,6 +88,7 @@
     </OneColumn>
     <FullWidthFigure
       :caption="$t('work._jean_bobby_radio.part-2.caption-1')"
+      :theme="theme"
     >
       <template #asset>
         <img src="/images/_work/_jean_bobby_radio/article-asset-1.png" />
@@ -106,6 +109,7 @@
       :height="640"
       isCentered
       background="#190038"
+      :theme="theme"
     >
       <template #asset>
         <img src="/images/_work/_jean_bobby_radio/article-asset-2.png" :style="`transform: translateY(${parallax(100, -50)})`" />
@@ -131,6 +135,7 @@
           :description="$t('work._jean_bobby_radio.takeaways.takeaway-1.description')"
           :cta="$t('work._jean_bobby_radio.takeaways.takeaway-1.linkLabel')"
           href="https://jean-bobby.radio.fm"
+          :theme="theme"
         >
           <template #icon>
             <Radio :size="48" />
@@ -140,6 +145,7 @@
           :description="$t('work._jean_bobby_radio.takeaways.takeaway-2.description')"
           :cta="$t('work._jean_bobby_radio.takeaways.takeaway-2.linkLabel')"
           href="https://github.com/inVoltag/jean-bobby-radio"
+          :theme="theme"
         >
           <template #icon>
             <Github :size="48" />
@@ -151,14 +157,8 @@
 </template>
 
 <style scoped lang="sass">
-  // Structure
-  section:nth-child(2n)
-    background-color: transparent
-
-  section:nth-child(2n + 1)
-    background-color: var(--color-titanium-white)
-
   section.ending
     height: 100vh
-    background: url(/images/_work/_jean_bobby_radio/ending-asset-2.svg) 50% v-bind('parallax(0, 50)') no-repeat, url(/images/_work/_jean_bobby_radio/ending-asset-1.png) 0 v-bind('parallax(-50, 50)') no-repeat, #190038
+    background: url(/images/_work/_jean_bobby_radio/ending-asset-2.svg) 50% v-bind('parallax(0, 50)') no-repeat, url(/images/_work/_jean_bobby_radio/ending-asset-1.png) 0 v-bind('parallax(-50, 50)') no-repeat
+    background-color: #190038 !important
 </style>

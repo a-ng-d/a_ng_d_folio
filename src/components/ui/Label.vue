@@ -32,6 +32,7 @@
   // Structure
   .label
     @include text.current
+    display: inline-block
 
     span
       z-index: 1
@@ -59,12 +60,12 @@
         border-radius: var(--full-border-radius)
 
   // Aspect
-  [data-theme="DARK"]
-    --text-color: var(--color-cream)
-    --border-color: var(--color-cream)
-
   .label
     color: var(--text-color)
+
+    &[data-theme="DARK"]
+      --text-color: var(--color-cream)
+      --border-color: var(--color-cream)
 
     &[data-underlined="true"], &[data-highlighted="true"]
       &:after
@@ -72,6 +73,6 @@
 
     &[data-highlighted="true"]
       &:after
-        --border-color: var(--color-titanium-white)
+        --border-color: var(--color-sandstone)
         mix-blend-mode: darken
 </style>

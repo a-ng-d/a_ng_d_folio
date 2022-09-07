@@ -71,6 +71,7 @@
       </OneColumn>
       <FullWidthFigure
         :caption="$t('work._iobeya_whiteboard.part-1.caption-1')"
+        :theme="theme"
       >
         <template #asset>
           <img src="/images/_work/_iobeya_whiteboard/article-asset-1.png" />
@@ -101,6 +102,7 @@
       </TwoColumns>
       <FullWidthFigure
         :caption="$t('work._iobeya_whiteboard.part-1.caption-2')"
+        :theme="theme"
       >
         <template #asset>
           <img src="/images/_work/_iobeya_whiteboard/article-asset-4.png" />
@@ -160,6 +162,7 @@
       </OneColumn>
       <FullWidthFigure
         :caption="$t('work._iobeya_whiteboard.part-2.caption-3')"
+        :theme="theme"
       >
         <template #asset>
           <img src="/images/_work/_iobeya_whiteboard/article-asset-8.png" />
@@ -180,6 +183,7 @@
             :description="$t('work._iobeya_whiteboard.part-2.info-1.description')"
             :cta="$t('work._iobeya_whiteboard.part-2.info-1.linkLabel')"
             href="https://www.sketch.com/s/b9ca2e39-f0a3-40b1-9f85-80da81775840/a/rG3Pa7/play"
+            :theme="theme"
           >
             <template #icon>
               <User :size="48" />
@@ -189,6 +193,7 @@
             :description="$t('work._iobeya_whiteboard.part-2.info-2.description')"
             :cta="$t('work._iobeya_whiteboard.part-2.info-2.linkLabel')"
             href="https://www.sketch.com/s/b9ca2e39-f0a3-40b1-9f85-80da81775840/a/mEQxdP/play"
+            :theme="theme"
           >
             <template #icon>
               <User :size="48" />
@@ -198,6 +203,7 @@
             :description="$t('work._iobeya_whiteboard.part-2.info-3.description')"
             :cta="$t('work._iobeya_whiteboard.part-2.info-3.linkLabel')"
             href="https://www.sketch.com/s/b9ca2e39-f0a3-40b1-9f85-80da81775840/a/ep3x9z/play"
+            :theme="theme"
           >
             <template #icon>
               <User :size="48" />
@@ -237,6 +243,7 @@
         :caption="$t('work._iobeya_whiteboard.part-3.caption-3')"
         isCentered
         background="#262626"
+        :theme="theme"
       >
         <template #asset>
           <video autoplay loop muted>
@@ -253,6 +260,7 @@
       </OneColumn>
       <FullWidthFigure
         :caption="$t('work._iobeya_whiteboard.part-3.caption-4')"
+        :theme="theme"
       >
         <template #asset>
           <img src="/images/_work/_iobeya_whiteboard/article-asset-11.png" />
@@ -266,10 +274,26 @@
         :theme="theme"
       >
         <template #plain>
-          <ContentContainer :title="$t('work._iobeya_whiteboard.credit.contributor-1.name')" :description="$t('work._iobeya_whiteboard.credit.contributor-1.role')" />
-          <ContentContainer :title="$t('work._iobeya_whiteboard.credit.contributor-2.name')" :description="$t('work._iobeya_whiteboard.credit.contributor-2.role')" />
-          <ContentContainer :title="$t('work._iobeya_whiteboard.credit.contributor-3.name')" :description="$t('work._iobeya_whiteboard.credit.contributor-3.role')" />
-          <ContentContainer :title="$t('work._iobeya_whiteboard.credit.contributor-4.name')" :description="$t('work._iobeya_whiteboard.credit.contributor-4.role')" />
+          <ContentContainer
+            :title="$t('work._iobeya_whiteboard.credit.contributor-1.name')"
+            :description="$t('work._iobeya_whiteboard.credit.contributor-1.role')"
+            :theme="theme"
+          />
+          <ContentContainer
+            :title="$t('work._iobeya_whiteboard.credit.contributor-2.name')"
+            :description="$t('work._iobeya_whiteboard.credit.contributor-2.role')"
+            :theme="theme"
+          />
+          <ContentContainer
+            :title="$t('work._iobeya_whiteboard.credit.contributor-3.name')"
+            :description="$t('work._iobeya_whiteboard.credit.contributor-3.role')"
+            :theme="theme"
+          />
+          <ContentContainer
+            :title="$t('work._iobeya_whiteboard.credit.contributor-4.name')"
+            :description="$t('work._iobeya_whiteboard.credit.contributor-4.role')"
+            :theme="theme"
+          />
         </template>
       </WrapColumn>
     </section>
@@ -283,6 +307,7 @@
             :description="$t('work._iobeya_whiteboard.takeaways.takeaway-1.description')"
             :cta="$t('work._iobeya_whiteboard.takeaways.takeaway-1.linkLabel')"
             href="https://www.sketch.com/s/b9ca2e39-f0a3-40b1-9f85-80da81775840/a/Zdpol7/play"
+            :theme="theme"
           >
             <template #icon>
               <PlayCircle :size="48" />
@@ -295,10 +320,5 @@
 </template>
 
 <style scoped lang="sass">
-  // Structure
-  section:nth-child(2n)
-    background-color: transparent
 
-  section:nth-child(2n + 1)
-    background-color: var(--color-titanium-white)
 </style>

@@ -40,31 +40,20 @@
       activeProjectPosition: {
         type: Number,
         required: true
+      },
+      theme: {
+        type: String,
+        default: 'DEFAULT'
       }
     },
     methods: {
-      changeLogotypeColor(view: string) {
-        const actions: any = {
-          ID: 'var(--color-soil)',
-          WORK: (this.projects[(this.activeProjectPosition as number)] as any).meta.theme == 'DEFAULT' ? 'var(--color-soil)' : 'var(--color-cream)',
-          PROJECT: 'var(--color-sandstone)',
-          UNIVERSE: 'var(--color-cream)'
-        }
-        return actions[view] ?? 'var(--color-soil)'
-      },
       opaqueBackground(view: string) {
         const actions: any = {
           ID: 'var(--color-soft-wind)',
           CORE: 'var(--color-candy-floss)',
-          PROJECT: 'var(--color-cream)'
+          PROJECT: this.theme === 'DEFAULT' ? 'var(--color-cream)' : 'var(--color-soil)'
         }
         return actions[view] ?? 'transparent'
-      },
-      changeUniverseButtonTheme(view: string) {
-        const actions: any = {
-          WORK: (this.projects[(this.activeProjectPosition as number)] as any).meta.theme,
-        }
-        return actions[view] ?? 'DEFAULT'
       },
       previousProject() {
         return (this.projects[(this.activeProjectPosition as number) - 1 >= 0 ? (this.activeProjectPosition as unknown as number) - 1 : this.projects.length - 1] as any).path
@@ -78,31 +67,31 @@
 
 <template>
   <Header
-    :logotypeColor="changeLogotypeColor(view)"
     :background="opaqueBackground(view)"
     :scrollProgress="scrollProgress"
+    :theme="theme"
   >
     <template #left-part>
-      <Transition name="switch" mode="out-in">
+      <Transition name="switch" mode="out-in" appear>
         <Button
           v-if="view === 'UNIVERSE'"
           type="primary"
           :label="$t('global.back.home')"
           path="/"
           :layout="device != 'MOBILE' ? 'ICON-LEFT' : 'ICON-ONLY'"
-          theme="DARK"
+          :theme="theme"
         >
           <template #icon>
             <Home :size="24" />
           </template>
         </Button>
         <Button
-          v-else-if="view != 'UNIVERSE' && view != 'HOME'"
+          v-else-if="view != 'HOME'"
           type="secondary"
           :label="$t('global.menu')"
           path="/_universe"
           :layout="device != 'MOBILE' ? 'ICON-LEFT' : 'ICON-ONLY'"
-          :theme="changeUniverseButtonTheme(view)"
+          :theme="theme"
         >
           <template #icon>
             <Rocket :size="24" />
@@ -116,13 +105,14 @@
           v-if="view === 'WORK'"
           :pages="projects"
           :activePage="activeProjectPosition"
-          :theme="(projects[activeProjectPosition as number] as any).meta.theme"
+          :theme="theme"
         />
         <Navigation
           v-else-if="view === 'PROJECT'"
           :previousPage="previousProject()"
           rootPage="/_work"
           :nextPage="nextProject()"
+          :theme="theme"
         />
       </Transition>
     </template>

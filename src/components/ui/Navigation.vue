@@ -14,7 +14,11 @@
     props: {
       previousPage: String,
       rootPage: String,
-      nextPage: String
+      nextPage: String,
+      theme: {
+        type: String,
+        default: 'DEFAULT'
+      }
     }
   })
 </script>
@@ -25,6 +29,7 @@
       type="secondary"
       :path="previousPage"
       layout="ICON-ONLY"
+      :theme="theme"
     >
       <template #icon>
         <ArrowLeft :size="24" />
@@ -34,6 +39,7 @@
       type="primary"
       :path="rootPage"
       layout="ICON-ONLY"
+      :theme="theme"
     >
       <template #icon>
         <ArrowUp :size="24" />
@@ -43,6 +49,7 @@
       type="secondary"
       :path="nextPage"
       layout="ICON-ONLY"
+      :theme="theme"
     >
       <template #icon>
         <ArrowRight :size="24" />

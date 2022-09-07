@@ -82,7 +82,7 @@
 
 <template>
   <main class="page">
-    <article class="story">
+    <article class="story" :data-theme="theme">
       <section class="story__intro">
         <div class="story__content" :class="section === 'section-1' ? 'story__content--centered' : null">
           <div class="story__content--intro">
@@ -361,14 +361,18 @@
         order: 1
 
   // Aspect
-  [data-theme="DARK"]
-    --text-color: var(--color-cream)
-    --border-color: var(--color-clay)
+  .story
+    &[data-theme="DARK"]
+      --text-color: var(--color-cream)
+      --border-color: var(--color-clay)
 
-  [data-highlighted="true"]
-    --border-color: var(--color-titanium-white)
+      [data-highlighted="true"]
+        --border-color: var(--color-sandstone)
 
-  h1[data-highlighted="true"],
-  h3[data-highlighted="true"]
-    --border-color: var(--color-creamy-sun)
+    [data-highlighted="true"]
+      --border-color: var(--color-titanium-white)
+
+    h1[data-highlighted="true"],
+    h3[data-highlighted="true"]
+      --border-color: var(--color-creamy-sun)
 </style>

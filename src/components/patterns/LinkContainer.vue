@@ -12,14 +12,18 @@
     props: {
       description: String,
       cta: String,
-      href: String
+      href: String,
+      theme: {
+        type: String,
+        default: 'DEFAULT'
+      }
     }
   })
 </script>
 
 <template>
   <Container>
-    <div class="link-container__content">
+    <div class="link-container__content" :data-theme="theme">
       <div class="link-container__icon">
         <slot name="icon"></slot>
       </div>
@@ -67,4 +71,9 @@
       &__content
         flex-flow: column nowrap
         align-items: center
+
+  // Aspect
+  .link-container__content
+    &[data-theme="DARK"]
+      --text-color: var(--color-soil)
 </style>

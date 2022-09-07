@@ -53,6 +53,7 @@
       align-items: center
       border-radius: calc(var(--rich-external-link-size) / 2)
       border: var(--border-large-size) solid var(--border-color)
+      transition: var(--simple-transition)
 
       &:deep(svg)
         width: var(--icon-size-large)
@@ -62,6 +63,10 @@
       display: flex
       flex-flow: column nowrap
       justify-content: center
+      gap: var(--layout-label-gap) 0
+
+      h5, p
+        transition: var(--simple-transition)
 
       p
         display: -webkit-box
@@ -70,11 +75,6 @@
         overflow: hidden
 
   // Aspect
-  [data-theme="DARK"]
-    --icon-color: var(--color-soil)
-    --text-color: var(--color-cream)
-    --outline-color: var(--color-cream)
-
   .rich-external-link
     --container-color: transparent
     --outline-color: transparent
@@ -82,8 +82,13 @@
     color: var(--text-color)
     background: var(--container-color)
 
-    &:deep(svg)
+    &__icon :deep(svg)
       stroke: var(--icon-color)
+
+    &[data-theme="DARK"]
+      --icon-color: var(--color-soil)
+      --text-color: var(--color-cream)
+      --border-color: var(--color-cream)
 
   // Events
   .rich-external-link
@@ -95,14 +100,20 @@
       animation: excited var(--duration-running) var(--ease-peps)
 
     &:focus
+      transform: var(--focus-scale)
+
+    &:active
+      transform: var(--active-scale)
+
+    &:focus, &:active
       --container-color: inherit
       --outline-color: var(--border-focus-color)
 
-      transform: var(--focus-scale)
       z-index: 2
 
-  .rich-external-link[data-theme="DARK"]
-    &:hover, &:focus
-      --text-color: var(--color-soil)
-      --border-color: var(--color-soil)
+    &[data-theme="DARK"]
+      &:hover, &:focus
+        --text-color: var(--color-soil)
+        --border-color: var(--color-soil)
+        --outline-color: var(--color-cream)
 </style>

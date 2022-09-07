@@ -38,6 +38,8 @@
 <style scoped lang="sass">
   // Structure
   .full
+    --caption-color: var(--color-sandstone)
+
     width: 100%
 
   .figure
@@ -59,13 +61,14 @@
 
     &__caption
       padding: 0 var(--layout-center)
-      color: var(--color-sandstone)
+      color: var(--caption-color)
 
-    // Aspect
-    .figure
-      &__asset
-        background: v-bind('background')
+  // Aspect
+  .figure
+    &__asset
+      background: v-bind('background')
 
-    [data-theme="DARK"]
-      --text-color: var(--color-cream)
+  .full
+    &[data-theme="DARK"]
+      --caption-color: var(--color-clay)
 </style>

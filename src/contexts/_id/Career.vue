@@ -58,7 +58,9 @@
         </Button>
       </template>
     </TwoColumns>
-    <OneColumn>
+    <OneColumn
+      :theme="theme"
+    >
       <template #plain>
         <div>
           <div>

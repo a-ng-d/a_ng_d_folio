@@ -97,11 +97,11 @@
 
       flex-wrap: wrap
 
-  [data-theme="DARK"]
-    .footer__tag
-      --text-color: var(--color-soil)
-      --background-color: var(--color-cream)
-      --border-color: var(--color-soil)
+    &[data-theme="DARK"]
+      .footer__tag
+        --text-color: var(--color-soil)
+        --background-color: var(--color-cream)
+        --border-color: var(--color-soil)
 
   // Events
   .footer
@@ -123,6 +123,12 @@
     &__tag__link:focus
       transform: var(--focus-scale)
       padding: 0 var(--spacing-m-000)
+
+    &__tag__link:active
+      transform: var(--active-scale)
+      padding: 0
+
+    &__tag__link:focus, &__tag__link:active
       background-color: var(--background-color)
       border-radius: var(--full-border-radius)
 

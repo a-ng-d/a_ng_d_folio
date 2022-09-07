@@ -37,7 +37,8 @@
       flex-flow: column nowrap
       gap: var(--layout-row-gap) 0
 
-    // Aspect
-    [data-theme="DARK"]
+  // Aspect
+  .col-1
+    &[data-theme="DARK"]
       --text-color: var(--color-cream)
 </style>

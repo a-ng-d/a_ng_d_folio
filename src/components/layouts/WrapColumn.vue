@@ -98,7 +98,8 @@
           flex: none
           width: 75vw
 
-    // Aspect
-    [data-theme="DARK"]
+  // Aspect
+  .col-w
+    &[data-theme="DARK"]
       --text-color: var(--color-cream)
 </style>

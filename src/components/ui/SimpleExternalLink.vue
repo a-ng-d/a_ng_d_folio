@@ -53,11 +53,11 @@
       padding: var(--spacing-s-000) 0 0
 
   // Aspect
-  [data-theme="DARK"]
-    --icon-color: var(--color-cream)
-    --border-active-color: var(--color-clay)
-
   .external-link
+    &[data-theme="DARK"]
+      --icon-color: var(--color-cream)
+      --border-active-color: var(--color-clay)
+
     &__icon svg
       stroke: var(--icon-color)
 
@@ -75,9 +75,13 @@
           height: 50%
           left: calc(var(--border-size) * 4)
 
-
     &:focus
       transform: var(--focus-scale)
+
+    &:active
+      transform: var(--active-scale)
+
+    &:focus, &:active
       z-index: 2
 
       .label

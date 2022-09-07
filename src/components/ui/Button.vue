@@ -342,18 +342,21 @@
         --icon-color: var(--color-soil)
 
   // Events
-  .button:hover
-    --amplitude: var(--spacing-s-000)
+  .button
+    &:hover
+      --amplitude: var(--spacing-s-000)
 
-    animation: excited var(--duration-running) var(--ease-peps)
+      animation: excited var(--duration-running) var(--ease-peps)
 
-  .button:focus
-    --outline-color: var(--color-clear-water)
+    &:focus
+      transform: var(--focus-scale)
 
-    transform: var(--focus-scale)
-    outline: none
-    z-index: 2
+    &:active
+      transform: var(--active-scale)
 
-  .button:active
-    transform: var(--active-scale)
+    &:focus, &:active
+      --outline-color: var(--color-clear-water)
+
+      outline: none
+      z-index: 2
 </style>

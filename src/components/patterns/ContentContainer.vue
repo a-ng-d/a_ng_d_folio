@@ -9,14 +9,18 @@
     },
     props: {
       title: String,
-      description: String
+      description: String,
+      theme: {
+        type: String,
+        default: 'DEFAULT'
+      }
     }
   })
 </script>
 
 <template>
   <Container>
-    <div class="content-container__content">
+    <div class="content-container__content" :data-theme="theme">
       <slot name="icon"></slot>
       <template v-if="title != undefined">
         <h5>{{ title }}</h5>
@@ -44,4 +48,9 @@
       &__content
         flex-flow: column nowrap
         align-items: center
+
+  // Aspect
+  .content-container__content
+    &[data-theme="DARK"]
+      --text-color: var(--color-soil)
 </style>

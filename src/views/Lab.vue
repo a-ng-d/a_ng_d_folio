@@ -186,6 +186,7 @@
               @click.passive="active = `shot-${index + 1}`"
               @keyup.enter="active = `shot-${index + 1}`"
               :unmagnify="active === `shot-${index + 1}` ? false : true"
+              :theme="theme"
             />
           </Transition>
         </div>
