@@ -42,32 +42,50 @@
         povs: [
           {
             name: i18n.global.t('unknown.pov.reset'),
-            action: () => this.$emit('pov', 'RESET'),
+            action: () => {
+              this.$emit('pov', 'RESET')
+              this.$el.scrollTop = 0
+            },
             isActive: true
           },
           {
             name: i18n.global.t('unknown.pov.invert'),
-            action: () => this.$emit('pov', 'INVERT'),
+            action: () => {
+              this.$emit('pov', 'INVERT')
+              this.$el.scrollTop = 0
+            },
             isActive: false
           },
           {
             name: i18n.global.t('unknown.pov.dontLookUp'),
-            action: () => this.$emit('pov', 'DONTLOOKUP'),
+            action: () => {
+              this.$emit('pov', 'DONTLOOKUP')
+              this.$el.scrollTop = 0
+            },
             isActive: false
           },
           {
             name: i18n.global.t('unknown.pov.mirror'),
-            action: () => this.$emit('pov', 'MIRROR_3'),
+            action: () => {
+              this.$emit('pov', 'MIRROR_3')
+              this.$el.scrollTop = 0
+            },
             isActive: false
           },
           {
             name: i18n.global.t('unknown.pov.side'),
-            action: () => this.$emit('pov', 'SIDE'),
+            action: () => {
+              this.$emit('pov', 'SIDE')
+              this.$el.scrollTop = 0
+            },
             isActive: false
           },
           {
             name: i18n.global.t('unknown.pov.global'),
-            action: () => this.$emit('pov', 'GLOBAL'),
+            action: () => {
+              this.$emit('pov', 'GLOBAL')
+              this.$el.scrollTop = 0
+            },
             isActive: false
           }
         ],
