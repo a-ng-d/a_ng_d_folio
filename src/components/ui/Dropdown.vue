@@ -72,6 +72,7 @@
     <Label
       v-if="label != undefined"
       :label="label"
+      :theme="theme"
     />
     <Button
       type="secondary"
@@ -149,18 +150,24 @@
 
       &--active
         padding: 0 var(--spacing-l-000) 0 0
-        pointer-events: none
 
       &__icon
         display: flex
         flex: 0 0 var(--button-height-size)
         justify-content: center
 
+        :deep(svg)
+          stroke: var(--text-color)
+
   // Aspect
   .dropdown
     &__option
       --item-border: transparent
       --item-background: transparent
+
+  .dropdown
+    &[data-theme="DARK"]
+      --text-color: var(--color-soil)
 
   // Event
   .dropdown

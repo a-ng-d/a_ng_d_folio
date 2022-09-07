@@ -26,11 +26,15 @@
         type: String,
         default: 'DESKTOP'
       },
-      filter: Object
+      filter: Object,
+      theme: {
+        type: String,
+        default: 'DEFAULT'
+      }
     },
     watch: {
       filter(to, from) {
-        to['name'] === 'NIGHTLY' ? this.theme = 'DARK' : this.theme = 'DEFAULT'
+        to['name'] === 'NIGHTLY' ? this.$emit('theme', 'DARK') : this.$emit('theme', 'DEFAULT')
       }
     },
     data: function() {
@@ -93,8 +97,7 @@
             action: () => this.$emit('filter', filters.nightly),
             isActive: false
           }
-        ],
-        theme: 'DEFAULT'
+        ]
       }
     }
   })
@@ -102,7 +105,7 @@
 
 <template>
   <main class="page">
-    <article class="unknown">
+    <article class="unknown" :data-theme="theme">
       <section class="controler">
         <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + (var(--duration-step) * 1))" appear>
           <div class="controler__content controler__content">
@@ -148,6 +151,7 @@
                   :label="$t('unknown.glitch.title')"
                   :on="() => $emit('glitch', true)"
                   :off="() => $emit('glitch', false)"
+                  :theme="theme"
                 />
               </div>
             </Container>
@@ -157,6 +161,7 @@
                   :label="$t('unknown.quality.title')"
                   :on="() => $emit('quality', 'LOW')"
                   :off="() => $emit('quality', 'HIGH')"
+                  :theme="theme"
                 />
               </div>
             </Container>

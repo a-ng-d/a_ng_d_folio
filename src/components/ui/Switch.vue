@@ -118,6 +118,10 @@
     --slide-border: var(--color-soil)
     --knob-background: var(--color-clay)
 
+  .switch
+    &[data-theme="DARK"]
+      --text-color: var(--color-soil)
+
   // Event
   .switch
     input:checked ~ &__item &__indicator
