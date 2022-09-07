@@ -73,13 +73,49 @@
 
 <template>
 
-  <template v-if="!isExternal">
+  <template v-if="path === ''">
+    <button
+      class="button"
+      :class="`button--${type}`"
+      @mouseover="expandParticles"
+      @mouseout="collapseParticles"
+      @touchstart.passive="expandParticles"
+      @touchend.passive="collapseParticles"
+      :style="position === 'random' ? randomPosition : ''"
+      :data-theme="theme"
+    >
+      <div class="button__content">
+        <div v-if="layout != 'SIMPLE'" class="button__icon" :class="layout === 'ICON-ONLY' ? 'button__icon--transparent' : null">
+          <slot name="icon"></slot>
+        </div>
+        <div v-if="layout != 'ICON-ONLY'" class="button__label">
+          <span>
+            {{ label }}
+          </span>
+        </div>
+        <div v-if="layout === 'ICON-BOTH'" class="button__icon">
+          <slot name="additional-icon"></slot>
+        </div>
+      </div>
+      <div class="button__background">
+        <Particles
+          :isExpanded="isExpanded"
+          :movement="movement"
+          borderRadius="calc(var(--button-height-size) / 2)"
+        />
+      </div>
+    </button>
+  </template>
+
+  <template v-else-if="!isExternal">
     <RouterLink
       :to="path"
       class="button"
       :class="`button--${type}`"
       @mouseover="expandParticles"
       @mouseout="collapseParticles"
+      @touchstart.passive="expandParticles"
+      @touchend.passive="collapseParticles"
       :style="position === 'random' ? randomPosition : ''"
       :data-theme="theme"
     >
@@ -113,6 +149,8 @@
       :class="`button--${type}`"
       @mouseover="expandParticles"
       @mouseout="collapseParticles"
+      @touchstart.passive="expandParticles"
+      @touchend.passive="collapseParticles"
       :data-theme="theme"
       :style="position === 'random' ? randomPosition : ''"
       target="_blank"
@@ -158,6 +196,7 @@
     box-shadow: 0 0 0 var(--border-size) var(--outline-color)
     overflow: hidden
     transition: var(--simple-transition)
+    cursor: pointer
 
     &:before
       content: ''
@@ -312,5 +351,9 @@
     --outline-color: var(--color-clear-water)
 
     transform: var(--focus-scale)
+    outline: none
     z-index: 2
+
+  .button:active
+    transform: var(--active-scale)
 </style>
