@@ -82,6 +82,7 @@
       @click="openOptions"
       @keyup.space="openOptions"
       extensible
+      :tabindex="isExpanded ? '-1' : '0'"
     >
       <template #icon>
         <ChevronDown :size="24" />
