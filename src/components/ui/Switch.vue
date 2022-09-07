@@ -42,18 +42,20 @@
 </script>
 
 <template>
-  <div class="switch">
-    <label v-if="label != undefined" class="switch__label" for="swt"><p>{{ label }}</p></label>
-    <input type="checkbox" name="swt" @click="moveSwitch" />
-    <div class="switch__indicator">
-      <div class="switch__slide">
-        <div class="switch__knob"></div>
-        <div class="switch__background">
-          <Particles
-            :weight="16"
-            :isExpanded="isActive"
-            borderRadius="calc(var(--button-height-size) / 4)"
-          />
+  <div class="switch" :data-theme="theme">
+    <input type="checkbox" name="swt" @click="moveSwitch" @key.space="moveSwitch" />
+    <div class="switch__item">
+      <label v-if="label != undefined" class="switch__label" for="swt"><p>{{ label }}</p></label>
+      <div class="switch__indicator">
+        <div class="switch__slide">
+          <div class="switch__knob"></div>
+          <div class="switch__background">
+            <Particles
+              :weight="16"
+              :isExpanded="isActive"
+              borderRadius="calc(var(--button-height-size) / 4)"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -63,8 +65,9 @@
 <style scoped lang="sass">
   // Structure
   .switch
-    display: flex
-    gap: 0 var(--layout-column-gap)
+    &__item
+      display: flex
+      gap: 0 var(--layout-column-gap)
 
     &__label
       flex: 1
@@ -82,6 +85,7 @@
       background-color: var(--color-cream)
       padding: var(--slide-padding)
       box-shadow: 0 0 0 var(--sizing-xs-000) var(--slide-border)
+      transition: var(--simple-transition)
 
     &__knob
       width: var(--spacing-l-000)
@@ -102,7 +106,7 @@
       position: absolute
       width: 100%
       height: 100%
-      z-index: 2
+      z-index: 3
       appearance: unset
       top: 0
       left: 0
@@ -110,18 +114,34 @@
 
   // Aspect
   .switch
-    &__indicator
-      --slide-background: transparent
-      --slide-border: var(--color-soil)
-      --knob-background: var(--color-clay)
+    --slide-background: transparent
+    --slide-border: var(--color-soil)
+    --knob-background: var(--color-clay)
 
   // Event
   .switch
-    input:checked ~ &__indicator
+    input:checked ~ &__item &__indicator
       --knob-background: var(--color-soil)
 
-    input:checked ~ &__indicator &__knob
+    input:checked ~ &__item &__knob
       animation: smooth-slide-on var(--duration-running) var(--ease-vroom) forwards
+
+    input:focus
+      outline: none
+
+    input:focus ~ &__item &__slide
+      --slide-border: var(--color-clear-water)
+      transform: var(--focus-scale)
+      z-index: 2
+
+    input:active ~ &__item &__slide
+      transform: var(--active-scale)
+
+    &:hover
+      --amplitude: var(--spacing-s-000)
+      --item-background: var(--color-soft-wind)
+
+      animation: excited var(--duration-running) var(--ease-peps)
 
   @keyframes smooth-slide-on
     0%
