@@ -37,7 +37,7 @@
     watch: {
       isExpanded(to, from) {
         if (to == false) window.removeEventListener("click",  this.closeOptions)
-        else setTimeout(() => this.$refs.option[0].focus(), 200)
+        else setTimeout(() => (this.$refs.option as any)[0].focus(), 200)
       }
     },
     methods: {
@@ -57,6 +57,10 @@
       },
       map(current: number) {
         return doMap(current, 0, this.allOptions.length - 1, this.allOptions.length - 1, 0)
+      },
+      browseOptions(e: any) {
+        if (e.relatedTarget != null)
+          e.relatedTarget.closest('.dropdown__option') == null ? this.isExpanded = false : null
       }
     },
     created: function() {
@@ -69,7 +73,7 @@
 </script>
 
 <template>
-  <div class="dropdown" @keydown.esc="isExpanded = false" :data-theme="theme">
+  <div class="dropdown" @keydown.esc="isExpanded = false" @focusout="browseOptions" :data-theme="theme">
     <Label
       v-if="label != undefined"
       :label="label"
