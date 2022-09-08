@@ -54,7 +54,7 @@
     --offset: calc(var(--header-height-size) * -1)
 
     position: fixed
-    width: 100vw
+    width: 100%
     height: var(--header-height-size)
     z-index: 4
     display: flex

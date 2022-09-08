@@ -154,7 +154,7 @@
 
   // Structure
   .page
-    height: 100vh
+    height: 100%
     overflow: hidden
 
   .jumbotron

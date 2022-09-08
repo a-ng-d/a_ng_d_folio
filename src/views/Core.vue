@@ -370,7 +370,7 @@
         --border-color: var(--color-sandstone)
 
     [data-highlighted="true"]
-      --border-color: var(--color-titanium-cream)
+      --border-color: var(--color-cream)
 
     h1[data-highlighted="true"],
     h3[data-highlighted="true"]

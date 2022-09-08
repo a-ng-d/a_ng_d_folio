@@ -253,8 +253,8 @@
     grid-template-rows: var(--header-height-size) 1fr min-content
     column-gap: var(--layout-column-gap)
     grid-template-areas: var(--layout-areas)
-    width: 100vw
-    height: 100vh
+    width: 100%
+    height: 100%
     z-index: 2
     overflow-x: hidden
     overflow-y: scroll

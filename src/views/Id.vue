@@ -55,11 +55,4 @@
   // Structure
   .article
     grid-area: main
-
-  .scrolling-text
-    width: auto
-    height: 100vh
-    position: fixed
-    top: 0
-    left: 0
 </style>

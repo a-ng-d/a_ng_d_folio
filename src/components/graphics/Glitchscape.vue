@@ -903,8 +903,8 @@
 
 <style lang="sass">
   .gradient
-    width: 100vw
-    height: 100vh
+    width: 100%
+    height: 100%
     position: fixed
     z-index: 1
     top: 0
@@ -913,8 +913,8 @@
     opacity: .75
 
   .background
-    width: 100vw
-    height: 100vh
+    width: 100%
+    height: 100%
     position: fixed
     top: 0
     transition: var(--grandma-transition)

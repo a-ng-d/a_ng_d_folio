@@ -211,8 +211,8 @@
     align-items: flex-end
     padding: var(--header-height-size) var(--layout-center) var(--layout-center) var(--layout-center)
     gap: 0 var(--layout-column-gap)
-    width: 100vw
-    height: 100vh
+    width: 100%
+    height: 100%
     position: fixed
     top: 0
     pointer-events: none
