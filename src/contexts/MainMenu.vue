@@ -114,11 +114,23 @@
           :nextPage="nextProject()"
           :theme="theme"
         />
+        <div class="universe-title" v-else>
+          <Transition name="switch" mode="out-in">
+            <div v-if="view === 'ID'"><h6>{{ $t("glossary.id") }}</h6></div>
+            <div v-else-if="view === 'CORE'"><h6>{{ $t("glossary.core") }}</h6></div>
+            <div v-else-if="view === 'LAB'"><h6>{{ $t("glossary.lab") }}</h6></div>
+            <div v-else-if="view === 'UNIVERSE'"><h6>{{ $t("glossary.universe") }}</h6></div>
+            <div v-else-if="view === 'CONTACT'"><h6>{{ $t("glossary.contact") }}</h6></div>
+            <div v-else-if="view === 'ATTRIBUTION'"><h6>{{ $t("glossary.attribution") }}</h6></div>
+          </Transition>
+        </div>
       </Transition>
     </template>
   </Header>
 </template>
 
 <style scoped lang="sass">
-
+  .main-menu
+    &[data-theme="DARK"]
+      --text-color: var(--color-cream)
 </style>
