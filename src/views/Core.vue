@@ -59,7 +59,7 @@
 
         console.log(progress, this.$el.scrollTop)
 
-        if (progress <= 0 || this.$el.scrollTop < 1) {
+        if (progress <= 0 || this.$el.scrollTop < 0) {
           cancelAnimationFrame(animateScroll)
           this.time = progress = this.remainingScroll = 0
         } else animateScroll = requestAnimationFrame(this.backToForeground)
