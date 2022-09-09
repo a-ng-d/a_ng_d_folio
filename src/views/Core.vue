@@ -298,7 +298,7 @@
           background: var(--border-color)
           z-index: -1
 
-      a
+      .button
         pointer-events: visible
 
       &--centered
