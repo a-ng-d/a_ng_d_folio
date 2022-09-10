@@ -153,14 +153,19 @@
 
   section.ending
     height: 100vh
-    background: url(/images/_work/_awesome_ipsums/ending-asset-3.svg) 100% 0 no-repeat , url(/images/_work/_awesome_ipsums/ending-asset-2.svg) 55% v-bind('parallax(50, 55)') no-repeat, url(/images/_work/_awesome_ipsums/ending-asset-1.svg) 50% v-bind('parallax(-50, 50)') no-repeat
+    background: url(/images/_work/_awesome_ipsums/ending-asset-3.svg) 100% 0 no-repeat , url(/images/_work/_awesome_ipsums/ending-asset-2.svg) 55% v-bind('parallax(100, 55)') no-repeat, url(/images/_work/_awesome_ipsums/ending-asset-1.svg) 50% v-bind('parallax(0, 50)') no-repeat
     background-color: #23A566 !important
+    transition: all 200ms linear
 
   @include device.tablet
     section.ending
-      background: url(/images/_work/_awesome_ipsums/ending-asset-3.svg) 100% 0 no-repeat , url(/images/_work/_awesome_ipsums/ending-asset-2.svg) 60% v-bind('parallax(50, 55)') no-repeat, url(/images/_work/_awesome_ipsums/ending-asset-1.svg) 50% v-bind('parallax(-50, 50)') no-repeat
+      background: url(/images/_work/_awesome_ipsums/ending-asset-3.svg) 100% 0 no-repeat , url(/images/_work/_awesome_ipsums/ending-asset-2.svg) 60% v-bind('parallax(100, 55)') no-repeat, url(/images/_work/_awesome_ipsums/ending-asset-1.svg) 50% v-bind('parallax(0, 50)') no-repeat
+
+  @include device.mobile-landscape
+    section.ending
+      background: url(/images/_work/_awesome_ipsums/ending-asset-3.svg) 100% 0 no-repeat , url(/images/_work/_awesome_ipsums/ending-asset-2.svg) 65% v-bind('parallax(100, 80)') no-repeat, url(/images/_work/_awesome_ipsums/ending-asset-1.svg) 50% v-bind('parallax(0, 50)') no-repeat
 
   @include device.mobile
     section.ending
-      background: url(/images/_work/_awesome_ipsums/ending-asset-3.svg) 100% 0 no-repeat , url(/images/_work/_awesome_ipsums/ending-asset-2.svg) 90% v-bind('parallax(50, 55)') no-repeat, url(/images/_work/_awesome_ipsums/ending-asset-1.svg) 50% v-bind('parallax(-50, 50)') no-repeat
+      background: url(/images/_work/_awesome_ipsums/ending-asset-3.svg) 100% 0 no-repeat , url(/images/_work/_awesome_ipsums/ending-asset-2.svg) 80% v-bind('parallax(100, 55)') no-repeat, url(/images/_work/_awesome_ipsums/ending-asset-1.svg) 50% v-bind('parallax(0, 50)') no-repeat
 </style>
