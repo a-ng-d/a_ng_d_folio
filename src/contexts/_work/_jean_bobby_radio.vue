@@ -112,7 +112,7 @@
       :theme="theme"
     >
       <template #asset>
-        <img src="/images/_work/_jean_bobby_radio/article-asset-2.png" :style="`transform: translateY(${parallax(100, -50)})`" />
+        <img src="/images/_work/_jean_bobby_radio/article-asset-2.png" :style="`transform: translateY(${parallax(150, -50)}) ; transition: all 200ms linear`" />
       </template>
     </FullWidthFigure>
     <OneColumn
@@ -157,8 +157,12 @@
 </template>
 
 <style scoped lang="sass">
+  @use '@/assets/stylesheets/base.sass' as device
+
   section.ending
     height: 100vh
-    background: url(/images/_work/_jean_bobby_radio/ending-asset-2.svg) 50% v-bind('parallax(0, 50)') no-repeat, url(/images/_work/_jean_bobby_radio/ending-asset-1.png) 0 v-bind('parallax(-50, 50)') no-repeat
+    background: url(/images/_work/_jean_bobby_radio/ending-asset-2.svg) 50% v-bind('parallax(0, 50)') no-repeat, url(/images/_work/_jean_bobby_radio/ending-asset-1.png) 50% v-bind('parallax(-50, 50)') no-repeat
     background-color: #190038 !important
+    background-size: auto, cover
+    transition: all 200ms linear
 </style>
