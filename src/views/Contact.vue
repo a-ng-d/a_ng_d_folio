@@ -41,7 +41,7 @@
           <Button
             type="primary"
             :label="$t('contact.email')"
-            path="mailto:a.grimaud@involt.io"
+            path="mailto:a.grimaud@an.gd"
             layout="ICON-LEFT"
             :theme="theme"
           >
