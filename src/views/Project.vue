@@ -34,6 +34,10 @@
       },
       scrollProgress: Number,
       scrollLimit: Number,
+      device: {
+        type: String,
+        default: 'DEFAULT'
+      },
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -120,6 +124,7 @@
         :is="project.codeName"
         :scrollProgress="scrollProgress"
         :scrollLimit="scrollLimit"
+        :device="device"
         :theme="theme"
       />
     </article>

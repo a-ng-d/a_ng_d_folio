@@ -29,6 +29,10 @@
         type: Number,
         required: true
       },
+      device: {
+        type: String,
+        default: 'DEFAULT'
+      },
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -106,7 +110,7 @@
     </OneColumn>
     <FullWidthFigure
       :caption="$t('work._jean_bobby_radio.part-3.caption-1')"
-      :height="640"
+      :height="device === 'DEFAULT' ? 640 : 340"
       isCentered
       background="#190038"
       :theme="theme"
