@@ -85,6 +85,7 @@
         padding: v-bind("isFullScreen ? '100vh' : '0'") 0
         margin: v-bind("isFullScreen ? '-100vh' : '0'") calc(var(--layout-margin) * -1)
         scrollbar-width: none
+        transition: var(--simple-transition)
 
         &::-webkit-scrollbar
           display: none
