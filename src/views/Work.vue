@@ -241,6 +241,8 @@
       &__item
         position: absolute
         height: 90vh
+        width: 100%
+        object-fit: contain
 
     &__summary
       flex: 0 1 480rem
@@ -286,8 +288,6 @@
 
         &__item
           height: 125%
-          width: 100%
-          object-fit: contain
 
       &__summary
         flex: 1.5
@@ -317,8 +317,6 @@
 
         &__item
           height: 125%
-          width: 100%
-          object-fit: contain
 
       &__summary
         justify-content: space-between
@@ -338,8 +336,6 @@
 
         &__item
           height: 125%
-          width: 100%
-          object-fit: contain
 
       &__summary
         flex: 1
