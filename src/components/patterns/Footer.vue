@@ -78,9 +78,16 @@
 
       &__content, &__link, .label
         @include text.caption
+
+      &__content
         transition: var(--slow-transition)
 
+      &__link
+        transition: var(--simple-transition)
+
       .label
+        transition: var(--slow-transition)
+
         &:after
           --border-size: 2rem
 
