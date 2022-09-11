@@ -87,6 +87,7 @@
       img, video
         width: 100%
         transition: var(--simple-transition)
+        border-radius: var(--small-border-radius)
 
       &--magnified
         box-shadow: none
