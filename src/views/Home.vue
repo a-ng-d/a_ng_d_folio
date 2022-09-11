@@ -162,7 +162,7 @@
     display: flex
     flex-flow: column nowrap
     justify-content: space-evenly
-    padding: 0 var(--layout-center)
+    padding: 0
 
     &[data-theme="DARK"]
       --text-color: var(--color-cream)
@@ -174,14 +174,17 @@
       gap: var(--layout-row-gap) 0
       justify-content: center
 
+    &__baseline
+      padding: 0 var(--layout-center)
+
     &__actions
       display: flex
       justify-content: space-around
       gap: var(--spacing-xl-000)
+      padding: 0 var(--layout-center)
 
   @include device.mobile-landscape
     .jumbotron
-      padding: var(--layout-paragraph-gap) var(--layout-center)
       gap: var(--layout-paragraph-gap)
 
       &__baseline
@@ -189,8 +192,6 @@
 
   @include device.mobile
     .jumbotron
-      padding: var(--layout-paragraph-gap) var(--layout-center)
-
       &__actions
         gap: var(--spacing-l-000)
 </style>
