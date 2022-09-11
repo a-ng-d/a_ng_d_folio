@@ -110,7 +110,7 @@
     </OneColumn>
     <FullWidthFigure
       :caption="$t('work._jean_bobby_radio.part-3.caption-1')"
-      :height="device === 'DEFAULT' ? 640 : 340"
+      :height="device === 'DESKTOP' ? 640 : 340"
       isCentered
       background="#190038"
       :theme="theme"
