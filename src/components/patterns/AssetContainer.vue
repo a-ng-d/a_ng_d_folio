@@ -115,7 +115,6 @@
       display: flex
       justify-content: center
       overflow: hidden
-      box-shadow: var(--inner-border)
       border-radius: calc(var(--regular-border-radius) - var(--container-padding))
       transition: var(--simple-transition)
       filter: v-bind("isMagnified ? 'brightness(1)' : 'brightness(.5)'")
