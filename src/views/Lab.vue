@@ -159,18 +159,18 @@
   <main class="page">
     <section class="shots" >
       <Transition name="switch" appear>
-        <Button
-          v-if="slider.hasPrevButton"
-          type="secondary"
-          layout="ICON-ONLY"
-          :theme="theme"
-          @click="slideLeft"
-          class="navigation-button navigation-button--left"
-        >
-          <template #icon>
-            <ArrowLeft :size="24" />
-          </template>
-        </Button>
+        <div v-if="slider.hasPrevButton" class="navigation-button navigation-button--left">
+          <Button
+            type="secondary"
+            layout="ICON-ONLY"
+            :theme="theme"
+            @click="slideLeft"
+          >
+            <template #icon>
+              <ArrowLeft :size="24" />
+            </template>
+          </Button>
+        </div>
       </Transition>
       <div class="shots__scroll" @scroll.passive="smoothScroll">
         <div class="shots__container">
@@ -192,18 +192,18 @@
         </div>
       </div>
       <Transition name="switch" :style="`--delay: ${isAppeared ? '0ms' : 'var(--delay-turtoise)'}`" appear @after-enter="isAppeared = true">
-        <Button
-          v-if="slider.hasNextButton"
-          type="secondary"
-          layout="ICON-ONLY"
-          :theme="theme"
-          @click="slideRight"
-          class="navigation-button navigation-button--right"
-        >
-          <template #icon>
-            <ArrowRight :size="24" />
-          </template>
-        </Button>
+        <div v-if="slider.hasNextButton" class="navigation-button navigation-button--right">
+          <Button
+            type="secondary"
+            layout="ICON-ONLY"
+            :theme="theme"
+            @click="slideRight"
+          >
+            <template #icon>
+              <ArrowRight :size="24" />
+            </template>
+          </Button>
+        </div>
       </Transition>
     </section>
     <Transition name="pull-up" style="--delay: var(--delay-turtoise)" appear>
