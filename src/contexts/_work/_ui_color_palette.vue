@@ -105,7 +105,7 @@
         </template>
         <template #middle>
           <ContentContainer
-            title="9.1K"
+            title="12K"
             :description="$t('global.installations')"
             :theme="theme"
           >
@@ -116,7 +116,7 @@
         </template>
         <template #right>
           <ContentContainer
-            title="73"
+            title="103"
             :description="$t('global.like')"
             :theme="theme"
           >

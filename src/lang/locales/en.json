@@ -9,7 +9,7 @@
     "id": "_Id_card",
     "contact": "_Tell_me_hello",
     "attribution": "_Attribution",
-    "archive": "_Ancient_work",
+    "archive": "_Previous_work",
     "unknown": "_Unknown_universe"
   },
   "global": {
@@ -40,7 +40,7 @@
   },
   "home": {
     "author": "aurélien_grimaud_",
-    "baseline": "Fresh blend of Product design, Creative technology, and Rogue-like love",
+    "baseline": "Fresh blend of Product Design, Creative Technology, and Rogue-like Love",
     "id": "Id card",
     "contact": "Contact",
     "work": "Selected work",
@@ -55,9 +55,9 @@
     "friendlyName": "@:glossary.id",
     "about": {
       "title": "你好 nǐ hǎo!",
-      "experience": "I’m Aurélien all over the world or 立安 lì ān in China. Currently Product designer at <div class='label' data-highlighted='true'><span>iObeya</span></div> for {year} years and an UI + </code> enthousiast.",
-      "mission": "Filling the gap between designers and developpers universe is my leitmotiv, by learning code and teaching design (at the design schools).",
-      "activities": "I also write about <div class='label' data-highlighted='true'><span>team collaboration</span></div>, <div class='label' data-highlighted='true'><span>design thinking</span></div> and <div class='label' data-highlighted='true'><span>design system</span></div>, animate meetup, participate in a french design system community (Design System France).",
+      "experience": "I’m Aurélien or 立安 (lì ān) in China. Currently Product Designer at <div class='label' data-highlighted='true'><span>iObeya</span></div> for {year} years and an UI + code enthousiast.",
+      "mission": "Filling the gap between businessn, designers and developpers universe is my leitmotiv, by learning code and teaching design.",
+      "activities": "I also write about <div class='label' data-highlighted='true'><span>team collaboration</span></div>, <div class='label' data-highlighted='true'><span>design thinking</span></div> and <div class='label' data-highlighted='true'><span>design system</span></div>, animate meetups, participate in a french design system community (Design System France).",
       "side": "Otherwise, I customize furnitures and explore procedural animation."
     },
     "network": {
@@ -94,7 +94,7 @@
       }
     },
     "career": {
-      "title": "Career ({year} years of digital product)",
+      "title": "Career ({year} years of digital products)",
       "resume": "Download my resume",
       "linkedIn": "Connect on my LinkedIn",
       "ecv": {
@@ -110,17 +110,17 @@
         "uxDesign": {
           "start": "2015",
           "end": "2018",
-          "title": "UI/UX designer"
+          "title": "UI/UX Designer"
         },
         "productDesign": {
           "start": "2018",
           "end": "2021",
-          "title": "Product designer"
+          "title": "Product Designer"
         },
         "creativeTechnologist": {
           "start": "2021",
           "end": "Today",
-          "title": "Product designer + Creative technologist"
+          "title": "Product Designer + Creative Technologist"
         }
       }
     },
@@ -145,6 +145,11 @@
         "label": "{'From Design to Agile Thinking, Converging to the right problem (the first diamond)'}@:global.separator{'Team collaboration'}@:global.separator{'EN'}@:global.separator{'Article'}",
         "href": "https://www.linkedin.com/pulse/from-design-agile-thinkingconverging-right-problem-first-grimaud",
         "alt": "External link to the \"From Design to Agile Thinking, Converging to the right problem (the first diamond)\" article on LinkedIn"
+      },
+      "link-5": {
+        "label": "{'From Design to Agile Thinking﹒Converging to the right solution (the second diamond)'}@:global.separator{'Team collaboration'}@:global.separator{'EN'}@:global.separator{'Article'}",
+        "href": "https://www.linkedin.com/pulse/from-design-agile-thinkingconverge-right-solution-second-grimaud",
+        "alt": "External link to the \"From Design to Agile Thinking﹒Converging to the right solution (the second diamond)\" article on LinkedIn"
       }
     },
     "talks": {
@@ -182,19 +187,19 @@
     },
     "work": {
       "title": "@:glossary.work",
-      "description": "As a night owl, and afterwork, I dedicated my time into developing side-projects to change people mindset by using product design."
+      "description": "A selection of professional projects I have really appreciated to own and side-projects where I have learnt something new."
     },
     "lab": {
       "title": "@:glossary.lab",
-      "description": "Doing differently is a real leitmotiv. Experimentation doesn’t scare me because I always look for a personal vision for the future."
+      "description": "Doing differently is a real leitmotiv. Experimentation doesn’t scare me because I'm trying to reach a goal by following a personal vision of a desired future."
     },
     "contact": {
       "title": "@:glossary.contact",
-      "description": "Product designer + Teacher － Send me a feedback or a request."
+      "description": "Product Designer + Teacher － Send me a feedback or a request."
     },
     "archive": {
       "title": "@:glossary.archive",
-      "description": "Watch my creative work before iObeya (during my studies)"
+      "description": "Watch my creative work before iObeya (during my studies)."
     }
   },
   "core": {
@@ -202,14 +207,14 @@
     "friendlyName": "@:glossary.core",
     "intro": {
       "title": "@:glossary.core",
-      "subtitle": "{'You may find an echo 😉'}@:global.separator{'Watch my story by scrolling down'}@:global.separator{'Also for \"ENGINEER\", \"N-GIN\" (Crash Bandicoot on PS1), \"ENERGY\"'}@:global.separator"
+      "subtitle": "{'You may find an echo 😉'}@:global.separator{'Watch my story and core values by scrolling down'}@:global.separator{'D for DESIGNER'}@:global.separator{'NG for ENGINEER'}@:global.separator{'A for ALTERNATIVE'}@:global.separator{'A_NG_D for AurélienN GrimauD'}@:global.separator"
     },
     "personal": {
-      "title": "_ng_for_aurélien_grimaud",
-      "summary": "My core values",
-      "mission-1": "Product and technology enthousiast",
-      "mission-2": "Energy Transition supporter",
-      "mission-3": "People potential enabler"
+      "title": "_manifesto",
+      "summary": "What I believe",
+      "mission-1": "Product and technology must help people",
+      "mission-2": "Energy Transition is the main challenge of today",
+      "mission-3": "Enable people may increase their self-confidence"
     },
     "productDesign": {
       "title": "_product_design",
@@ -222,7 +227,7 @@
       "title": "_creative_technology",
       "summary": "What I extend to achieve my mission",
       "mission-1": "Create very high-fidelity prototype",
-      "mission-2": "Unleash personality through UI",
+      "mission-2": "Bring depth to UI",
       "mission-3": "Industrialize design through an organization"
     },
     "facilitation": {
@@ -236,12 +241,12 @@
       "title": "_communication",
       "summary": "How I share knowledge",
       "mission-1": "Make a good handoff for good specs",
-      "mission-2": "Write work experiences with articles",
-      "mission-3": "Teach people the next challenges"
+      "mission-2": "Write work experiences in the form of articles",
+      "mission-3": "Show people the next challenges"
     },
     "human": {
-      "title": "_human_first",
-      "summary": "What is important for me",
+      "title": "_next_challenges",
+      "summary": "Where I would love to contribute",
       "mission-1": "Care people with Healthtech",
       "mission-2": "Make education more accessible with Edutech",
       "mission-3": "Connect people with Collaborative economy"
@@ -251,7 +256,7 @@
       "summary": "Some extra(power)",
       "mission-1": "Build side projects from scratch",
       "mission-2": "Give a second life to furnitures and objects",
-      "mission-3": "Spend time to sustain old bikes"
+      "mission-3": "Spend time to sustain my old bike"
     },
     "outro": {
       "title": "_that's_all!",
@@ -266,11 +271,11 @@
       "title": "@:work._ui_color_palette.shortTitle@:global.separator@:global.author",
       "shortTitle": "_ui_color_palette",
       "shortDescription": "Accessible color palettes with consistant lightness with Figma",
-      "description": "Figma is an UX tool, using diagrams to build user experiences, interfaces, prototypes, and illustrations… The tool can be extended with a plugin system. Figma tends to be the leader of UX tools market because of its inclusive and powerful business model. So, Figma is still <a href='https://uxtools.co/survey-2021' class='link external-link' target='_blank'>the most exciting tool</a>. By reading this article (<a href='https://wildbit.com/blog/accessible-palette-stop-using-hsl-for-color-systems' class='link external-link' target='_blank'>Accessible Palette: stop using HSL for color systems</a>), I noticed there is not any plugin on Figma to help to build accessible color systems for UI. The opportunity is to develop a tool to create, edit and deploy color palettes.",
+      "description": "Figma is an UX tool, using diagrams to build user experiences, interfaces, prototypes, and illustrations… The tool can be extended with a plugin system. Figma tends to be the leader of UX tools market because of its inclusive and powerful business model. So, Figma is still <a href='https://uxtools.co/survey-2021' class='link external-link' target='_blank'>the most exciting ux tool</a>. By reading this article (<a href='https://wildbit.com/blog/accessible-palette-stop-using-hsl-for-color-systems' class='link external-link' target='_blank'>Accessible Palette: stop using HSL for color systems</a>), I noticed there is not any plugin on Figma to help build accessible color systems for UI. The opportunity is to develop a tool to create, edit and deploy color palettes.",
       "misc": {
         "date": "{'2022'}@:global.separator{'Monthly release'}",
-        "objectives": "Creating UI color palettes with consistant lightness and contrast, Updating and deploy colors with ease to the team library",
-        "roles": "Developing the scripts to create/edit color palette (React)"
+        "objectives": "Creating UI color palettes with consistant lightness and contrast, Updating and deploying colors with ease to the team library",
+        "roles": "Developing the scripts to create/edit/deploy color palette (React)"
       },
       "challenge": {
         "title": "Make UI color palettes with the LCH color model",
@@ -298,10 +303,10 @@
       "title": "@:work._jeprendsquoi.shortTitle@:global.separator@:global.author",
       "shortTitle": "_jeprendsquoi",
       "shortDescription": "Fruits and vegetables seasonality companion",
-      "description": "I often go at the market, to buy some fresh and local food. For decades, my parents taught me consume local food is the best way to feed, because the local economy is stimulated and the carbon footprint is lower. So, avoiding supermarket and co. is a leitmotiv. However, the local market reveals its own limits because of some absurdities: find some cherries in winter (17€ a kilogram), some tomatoes or melons on november. The bitter conclusion is simple: strict seasonality is not yet a standard.",
+      "description": "I often go at the market, to buy some fresh and local food. For decades, my parents taught me consume local food is the best way to feed, because the local economy is stimulated and the carbon footprint is lower. So, avoiding supermarket and co. is a leitmotiv. However, the local market reveals its own limits because of some absurdities: find some cherries in winter (17€ a kilogram), some tomatoes or melons on november… The bitter conclusion is simple: strict seasonality is not in the minds of people.",
       "misc": {
         "date": "{'2021'}@:global.separator{'Beta released'}",
-        "objectives": "Checking a product's seasonality (fruits and vegetable), Encouraging people to contribute to the product's seasonality database",
+        "objectives": "Checking a product's seasonality (fruits and vegetable), Encouraging people to contribute to the products' seasonality database",
         "roles": "Building and maintaining the database, Creating a brand: jeprendsquoi (the daily helper), Designing a mobile companion to find the right information insitu (supermarket & market), Developing a mobile app with a no-code solution"
       },
       "challenge": {
@@ -341,7 +346,7 @@
           "linkLabel": "Download the APK"
         },
         "takeaway-2": {
-          "description": "The iOS app is available on TestFlight. It is an ongoing test beta version: ",
+          "description": "The iOS app is available on TestFlight. It is an ongoing test beta version.",
           "linkLabel": "Install the app"
         }
       }
@@ -350,7 +355,7 @@
       "title": "@:work._jean_bobby_radio.shortTitle@:global.separator@:global.author",
       "shortTitle": "_jean_bobby_radio",
       "shortDescription": "iObeya internal and participatory web radio",
-      "description": "Before the COVID-19 pandemic, with my teammate in the UX team, we were used to listen to our Spotify collaborative playlist. A batch of various masterpieces from different personalities. There are some 90's hits: Trip Hop, Alternative rock, House… Some 80's hits: Goth, New Wave… Around 500 tracks we listened to everyday. And yet, a virus has co me, and the remote work was the new order. We were distributed. The problem is we cannot use Spotify as a web radio, in order to listen together to our music and react on it. Make our own web radio allows us to retrieve this office atmosphere: Jean-Bobby Radio.",
+      "description": "Before the COVID-19 pandemic, with my teammate in the UX team, we were used to listen to our Spotify collaborative playlist. A batch of various masterpieces from different personalities. There are some 90's hits: Trip Hop, Alternative rock, House… Some 80's hits: Goth, New Wave… Around 500 tracks we listened to everyday. And yet, a virus has come, and the remote work was the new order. We were distributed. The problem is we cannot use Spotify as a web radio, in order to listen together to our music and react on it. Make our own web radio allows us to retrieve this office atmosphere: Jean-Bobby Radio.",
       "misc": {
         "date": "{'2020'}@:global.separator{'On-air'}",
         "objectives": "Listening together to our Spotify collaborative playlist, Retrieving the office atmosphere",
@@ -358,10 +363,10 @@
       },
       "part-1": {
         "title": "Let's start the broadcasting system",
-        "paragraph-1": "TBuild a web radio from scratch is not as easy as expected. The challenge was interesting because a web radio is a complex system where each component is connected to broadcast audio to whom wants to listen to. To explain a bit, the audio is played from a classic computer, then it is encoded and sent to a broadcasting server, and finally, the audio can be played from a player.",
+        "paragraph-1": "Build a web radio from scratch is not as easy as expected. The challenge was interesting because a web radio is a complex system where each component is connected to broadcast audio to whom wants to listen to. To explain a bit, the audio is played from a classic computer, then it is encoded and sent to a broadcasting server, and finally, the audio can be played from a player.",
         "caption-1": "The web radio system has been designed thanks to a couple of open-source and free solutions as <a href='https://icecast.org' class='link external-link' target='_blank'>Icecast</a> or <a href='https://www.rocketbroadcaster.com' class='link external-link' target='_blank'>Rocket Broadcaster</a>",
         "info": {
-          "description": "This article explains the detailed flow for the most curious",
+          "description": "This article explains the detailed flow for the most curious (in french)",
           "linkLabel": "Read the article"
         }
       },
@@ -391,9 +396,9 @@
       "title": "@:work._awesome_ipsums.shortTitle@:global.separator@:global.author",
       "shortTitle": "_awesome_ipsums",
       "shortDescription": "Design team’s own Lorem Ipsums from a simple Google Spreadsheet",
-      "description": "Sketch is an UX tool, using diagrams to build user experiences, interfaces, prototypes, and illustrations… The tool can be extended with a plugin system. The purpose is to add features, or script actions. The idea of making a more fun Lorem Ipsum tool was a great opportunity to make a Sketch Plugin and understand how it works.",
+      "description": "Sketch is an UX tool, using diagrams to build user experiences, interfaces, prototypes, and illustrations… The tool can be extended with a plugin system where the purpose is to add additional features, or script actions. The idea of making a more fun Lorem Ipsum tool was a great opportunity to make a Sketch Plugin and understand how it works.",
       "misc": {
-        "date": "{'2019'}@:global.separator{'Running'}",
+        "date": "{'2019'}@:global.separator{'Released'}",
         "objectives": "Allowing the design team to use custom lorem ipsums as fake content, Making the fake content collaborative",
         "roles": "Developing the scripts to create/update/sync. the custom lorem ipsums"
       },
@@ -429,28 +434,28 @@
       "description": "The Whiteboarding session is a lite version of  iObeya. Its purpose is to ease the deployment through a company by providing  a simple meeting framework, reinforcing the collaboration and introducing the solution. This feature was an opportunity to revamp the UI, follow a design philosophy, involve the team, and make user tests.",
       "misc": {
         "date": "{'2018'}@:global.separator{'Released'}",
-        "objectives": "Easing the solution deployment, Go-to-SaaS, Reinforcing the position of iObeya on Innovation & Creativity sessions",
+        "objectives": "Easing the solution deployment, Go-to-SaaS, Reinforcing the position of iObeya on Innovation & Creativity",
         "roles": "Facilitating workshops by using the design thinking philosophy, Designing the vision, Revamping the UI, Writing the user stories"
       },
       "challenge": {
         "title": "What is the problem?",
         "paragraph-1": "iObeya is a structured and strict software. The model is a room = a declared team = a project. This model has some limitations:",
-        "paragraph-2": "<ul><li>Hard to be deployed through a large company</li><li>Heavy workflow between the requester and the IT service</li></ul>",
+        "paragraph-2": "<ul><li>Hard to be deployed through a large company (> 50.000 employees)</li><li>Heavy workflow between the requester and the IT service</li></ul>",
         "paragraph-3": "The platform is fully customizable but the users must be declared and allocated by hand. Besides, the license limits the number of users in a room.",
-        "paragraph-4": "The strict and heavy users management is a big pain, and we wonder how can we open the app to any user."
+        "paragraph-4": "The strict and heavy users management is a big pain, so open the platform to any user is our main assumption."
       },
       "part-1": {
         "title": "Defining several low-fi flows to make stakeholders aligned",
         "paragraph-1": "We needed to validate our assumptions by drafting a first version. First, making stakeholders aligned was a requirement. We started with some business and user outcomes. The main challenge was to open a little bit more the application to external users (a step towards a SaaS solution).",
-        "paragraph-2": "We planned 3 stories on the same session: the facilitator, the declared and external participants. First, we did a storymap to draw the three detailed userflows and prioritize their features. This activity involved the PM, UX, and DEV part.",
-        "paragraph-3": "The team involvement was a rewarding experience because some of their ideas have unlocked some uncomfortable situation. As a designer, we must facilitate creative meeting and unlock people capability.",
+        "paragraph-2": "We planned 3 stories on the same session: the facilitator, the declared and the external participants. First, we did a storymap to draw the three detailed userflows and prioritize their features. This activity involved the PM, UX, and DEV part.",
+        "paragraph-3": "The team involvement was a rewarding experience because some of their ideas have unlocked some uncomfortable situation. As a designer, we must facilitate creative meetings and enable people's capabilities.",
         "caption-1": "The Lean UX is a canvas that gathers business/user outcomes, and the solution to respond to the opportunity.",
-        "caption-2": "The userflow is full of comments because every person in the team is involved and encouraged to give feedback. A strong solution is built by a succession of reviews."
+        "caption-2": "The userflow is full of comments because every person in the team was involved and encouraged to give feedback. A strong solution is built by a succession of reviews."
       },
       "part-2": {
         "title": "An opportunity to think different",
-        "paragraph-1": "Make a SaaS solution was a business opportunity to catch more users and let the app viral through a large organization. We planned to revamp the UI because making a clear separation between a classic board and an whiteboard may be necessary (for example: Figma and Figjam).",
-        "paragraph-2": "The classic board presents a heavy and dark header, a lot of tools and utilities. A whiteboard has a lighter aspect, to introduce a lite version of the application. The result of this UI revamping is an entire whiteboarding session, animated by 3 users, Pierre (the facilitator), Paul (participant) and Jacqueline (external participant). This concept was a nice opportunity of using the emotional design philosophy.",
+        "paragraph-1": "Make a SaaS solution was a business opportunity to catch more users and get the app more viral. We planned to revamp the UI because making a clear separation between a classic board and a whiteboard may be necessary (e.g. Figma and Figjam).",
+        "paragraph-2": "The classic board presents a heavy and dark header, a lot of tools and utilities. A whiteboard has a lighter aspect, to introduce a lite version of the application. The result of this UI revamping is an entire whiteboarding session, animated by 3 users, Pierre (the facilitator), Paul (the participant) and Jacqueline (the external participant). This concept was a nice opportunity of using the emotional design philosophy.",
         "paragraph-3": "Several prototypes have been created to get the stakeholders' approval. Conclusion, our assumptions have been validated after showing the entire session. The stakeholders thought their problem should be resolved with the whiteboarding session.",
         "caption-1": "A whiteboard",
         "caption-2": "A classic board",
@@ -470,7 +475,7 @@
       },
       "part-3": {
         "title": "Technical feasibility enters the field",
-        "paragraph-1": "The green light is turned on, so we could go deeper in the detailed specs. First, a technical exploration was required because the UI revamping implied front-end changes. Indeed, the application is built with modules and the whiteboarding session is one of them. Nevertheless, a lot of discussions brought us to roll over. In order to deliver quickly the feature, we made some concessions: the lite version of the interface was postponed. Nevertheless, we got to add some soft touches of illustration and animation, to introduce the emotional design.",
+        "paragraph-1": "The green light is turned on, so we could go deeper in the detailed specs. First, a technical exploration was required because the UI revamping implied front-end changes. Indeed, the application is built with modules and the whiteboarding session is one of them. Nevertheless, a lot of discussions brought us to roll over… In order to deliver quickly the feature, we made some concessions: the lite version of the interface was postponed. Nevertheless, we got to add some soft touches of illustration and animation, to introduce the emotional design.",
         "paragraph-2": "Despite the roll back, the solution responded to the companies' problem: do an activity with any users and outside a room.",
         "caption-1": "The speedy board is the whiteboarding session metaphor",
         "caption-2": "A purged whiteboarding session brings the user to a sad wrinkled paper 404 page",
