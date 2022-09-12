@@ -33,7 +33,7 @@
         <Button
           type="secondary"
           :label="$t('id.career.resume')"
-          path="https://linkedin.com/in/augrimaud"
+          path="https://drive.google.com/file/d/1cYw57q13EwNIi1EshzMVYFouqhXrA6ji/view?usp=sharing"
           layout="ICON-LEFT"
           extensible
           :theme="theme"
