@@ -84,7 +84,6 @@
           slide: 1,
           start: 0,
           distance: 0,
-          box: 0,
           hasPrevButton: false,
           hasNextButton: true
         },
@@ -98,7 +97,7 @@
         this.slider.scale = doMap(this.slider.velocity, 1, 1.5, 1, 2)
         this.slider.gap = doMap(this.slider.velocity, 1, 1.5, 1, 4)
 
-        if (e.target.scrollLeft >= this.slider.box) {
+        if (e.target.scrollLeft >= e.target.scrollWidth - document.body.clientWidth - 10) {
           this.slider.hasPrevButton = true
           this.slider.hasNextButton = false
         }
@@ -123,7 +122,7 @@
         progress = doMap(this.slider.time, 0, (1.6 * 600), 0, 1)
         scrollBox.scrollLeft = this.slider.start + (this.slider.distance * easeInOutQuart(progress))
 
-        if (progress >= 1 || scrollBox.scrollLeft >= scrollBox.scrollWidth - document.body.clientWidth) {
+        if (progress >= 1) {
           cancelAnimationFrame(animationScroll)
           this.slider.time = progress = 0
         } else animationScroll = requestAnimationFrame(this.slideRight)
@@ -149,7 +148,6 @@
       makeSlides() {
         const scrollBox: HTMLElement = Array.from(document.getElementsByClassName('shots__scroll') as HTMLCollectionOf<HTMLElement>)[0]
         this.slider.slides = Math.ceil(scrollBox.scrollWidth / document.body.clientWidth) ?? 4
-        this.slider.box = scrollBox.scrollWidth - document.body.clientWidth
       }
     },
     created: function() {
@@ -163,7 +161,7 @@
 
 <template>
   <main class="page">
-    <section class="shots" >
+    <section class="shots">
       <Transition name="switch" appear>
         <div v-if="slider.hasPrevButton" class="navigation-button navigation-button--left">
           <Button
@@ -178,7 +176,7 @@
           </Button>
         </div>
       </Transition>
-      <div class="shots__scroll" @scroll.passive="smoothScroll">
+      <div class="shots__scroll" tabindex="-1" @scroll.passive="smoothScroll">
         <div class="shots__container">
           <Transition v-for="(shot, index) in shots" name="slide-up" :style="`--delay: calc(var(--delay-turtoise) + (var(--duration-step) * ${(index * .5) - .5}))`" appear>
             <AssetContainer
@@ -189,6 +187,7 @@
               :sourceName="shot.sourceName"
               :sourceLink="shot.sourceLink"
               :key="`shot-${index + 1}`"
+              tabindex="0"
               @click.passive="active = `shot-${index + 1}`"
               @keyup.enter="active = `shot-${index + 1}`"
               :unmagnify="active === `shot-${index + 1}` ? false : true"
@@ -269,7 +268,7 @@
       flex-flow: row nowrap
       gap: 0 calc(var(--layout-column-gap) * var(--multiplier))
       align-items: stretch
-      transition: all 200ms linear
+      transition: var(--animated-scroll-transition)
       transform: scaleY(var(--scale-y))
 
   @include device.mobile-landscape

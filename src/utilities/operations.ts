@@ -23,7 +23,7 @@ let timer: any,
     snapPosition: number = 0
 export const scrollVelocity = (target: any, scrollLimit: number, orientation: string) => {
   velocity = 1
-  delta = 0
+  delta = 1
   currentPosition =  orientation === 'y' ? target.scrollTop : target.scrollLeft
   window.cancelAnimationFrame(timer)
   timer = () => {
@@ -31,10 +31,11 @@ export const scrollVelocity = (target: any, scrollLimit: number, orientation: st
   }
   window.requestAnimationFrame(timer)
   delta = Math.abs(currentPosition - snapPosition)
-  delta > 800 ? delta = 1 : null
+  delta > 200 ? delta = 1 : delta = delta
+  console.log(delta)
   currentPosition == 0 ? velocity = 1 :
                          currentPosition > scrollLimit - 1 ? velocity = 1 :
-                         velocity = doMap(delta, 1, 800, 1, 1.5)
+                         velocity = doMap(delta, 1, 200, 1, 1.5)
 
   return velocity
 }
