@@ -98,10 +98,14 @@
         this.slider.scale = doMap(this.slider.velocity, 1, 1.5, 1, 2)
         this.slider.gap = doMap(this.slider.velocity, 1, 1.5, 1, 4)
 
-        if (e.target.scrollLeft >= this.slider.box)
+        if (e.target.scrollLeft >= this.slider.box) {
+          this.slider.hasPrevButton = true
           this.slider.hasNextButton = false
-        else if (e.target.scrollLeft <= 0)
+        }
+        else if (e.target.scrollLeft <= 0) {
           this.slider.hasPrevButton = false
+          this.slider.hasNextButton = true
+        }
         else
           this.slider.hasPrevButton = this.slider.hasNextButton = true
 
