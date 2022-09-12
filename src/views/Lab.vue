@@ -84,6 +84,7 @@
           slide: 1,
           start: 0,
           distance: 0,
+          box: 0,
           hasPrevButton: false,
           hasNextButton: true
         },
@@ -97,7 +98,7 @@
         this.slider.scale = doMap(this.slider.velocity, 1, 1.5, 1, 2)
         this.slider.gap = doMap(this.slider.velocity, 1, 1.5, 1, 4)
 
-        if (e.target.scrollLeft >= e.target.scrollWidth - document.body.clientWidth)
+        if (e.target.scrollLeft >= this.slider.box)
           this.slider.hasNextButton = false
         else if (e.target.scrollLeft <= 0)
           this.slider.hasPrevButton = false
@@ -144,6 +145,7 @@
       makeSlides() {
         const scrollBox: HTMLElement = Array.from(document.getElementsByClassName('shots__scroll') as HTMLCollectionOf<HTMLElement>)[0]
         this.slider.slides = Math.ceil(scrollBox.scrollWidth / document.body.clientWidth) ?? 4
+        this.slider.box = scrollBox.scrollWidth - document.body.clientWidth
       }
     },
     created: function() {
