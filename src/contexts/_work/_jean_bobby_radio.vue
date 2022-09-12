@@ -1,5 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { Vue3Lottie } from 'vue3-lottie'
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import FullWidthFigure from '@/components/layouts/FullWidthFigure.vue'
@@ -7,6 +8,7 @@
   import Figure from '@/components/patterns/Figure.vue'
   import { Info, Github, Radio } from 'lucide-vue-next'
   import { doMap } from '@/utilities/operations'
+  import JBRAnimation from '@/assets/animations/_work/_jean_bobby_radio/animation.json'
 
   export default defineComponent({
     name: '_jean_bobby_radio',
@@ -18,7 +20,8 @@
       Figure,
       Info,
       Github,
-      Radio
+      Radio,
+      Vue3Lottie
     },
     props: {
       scrollProgress: {
@@ -36,6 +39,11 @@
       theme: {
         type: String,
         default: 'DEFAULT'
+      }
+    },
+    data: function() {
+      return {
+        JBRAnimation
       }
     },
     methods: {
@@ -109,14 +117,13 @@
       </template>
     </OneColumn>
     <FullWidthFigure
-      :caption="$t('work._jean_bobby_radio.part-3.caption-1')"
       :height="device === 'DESKTOP' ? 640 : 340"
       isCentered
       background="#190038"
       :theme="theme"
     >
       <template #asset>
-        <img src="/images/_work/_jean_bobby_radio/article-asset-2.png" :style="`transform: translateY(${parallax(150, -50)}) ; transition: all 200ms linear`" />
+        <img src="/images/_work/_jean_bobby_radio/article-asset-2.png" :style="`transform: translateY(${parallax(50, -50)}) ; transition: all 200ms linear`" />
       </template>
     </FullWidthFigure>
     <OneColumn
@@ -126,6 +133,16 @@
         <p>{{ $t('work._jean_bobby_radio.part-3.paragraph-2') }}</p>
       </template>
     </OneColumn>
+    <FullWidthFigure
+      :caption="$t('work._jean_bobby_radio.part-3.caption-1')"
+      isCentered
+      background="#190038"
+      :theme="theme"
+    >
+      <template #asset>
+        <Vue3Lottie :animationData="JBRAnimation" />
+      </template>
+    </FullWidthFigure>
   </section>
   <section class="ending">
   </section>
