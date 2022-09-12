@@ -55,7 +55,6 @@
   <Container
     @click="magnifier"
     @keyup.enter="magnifier"
-    tabindex="0"
     class="container"
     isInteractive
   >
