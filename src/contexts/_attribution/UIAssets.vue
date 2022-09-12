@@ -17,7 +17,7 @@
     },
     data: function() {
       return {
-        links: ['link-1', 'link-2', 'link-3']
+        links: ['link-3', 'link-2', 'link-1']
       }
     }
   })
