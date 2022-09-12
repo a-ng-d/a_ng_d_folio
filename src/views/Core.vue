@@ -57,8 +57,6 @@
         progress = doMap(this.time, 0, (5 * 600), 1, 0)
         this.$el.scrollTop = this.remainingScroll * easeInOutQuart(progress)
 
-        console.log(progress, this.$el.scrollTop)
-
         if (progress <= 0 || this.$el.scrollTop < 0) {
           cancelAnimationFrame(animateScroll)
           this.time = progress = this.remainingScroll = 0
