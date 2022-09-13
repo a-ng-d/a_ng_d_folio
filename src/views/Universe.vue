@@ -53,7 +53,7 @@
             icon: 'Mail'
           },{
             name: 'archive',
-            path: 'https://school.involt.io',
+            path: 'https://involt.io',
             icon: 'Archive'
           },
         ] as any
