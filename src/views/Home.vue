@@ -60,7 +60,7 @@
           <Button
             type="secondary"
             :label="$t('home.id')"
-            path="/_id"
+            path="/_short"
             :layout="device != 'MOBILE' ? 'ICON-BOTH' : 'ICON-ONLY'"
             :theme="theme"
             tabindex="5"

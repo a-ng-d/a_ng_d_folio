@@ -49,7 +49,7 @@
     methods: {
       opaqueBackground(view: string) {
         const actions: any = {
-          ID: 'var(--color-soft-wind)',
+          SHORT: 'var(--color-soft-wind)',
           CORE: 'var(--color-candy-floss)',
           PROJECT: this.theme === 'DEFAULT' ? 'var(--color-cream)' : 'var(--color-soil)'
         }
@@ -116,7 +116,7 @@
         />
         <div class="universe-title" v-else>
           <Transition name="switch" mode="out-in">
-            <div v-if="view === 'ID'"><h6>{{ $t("glossary.id") }}</h6></div>
+            <div v-if="view === 'SHORT'"><h6>{{ $t("glossary.id") }}</h6></div>
             <div v-else-if="view === 'CORE'"><h6>{{ $t("glossary.core") }}</h6></div>
             <div v-else-if="view === 'LAB'"><h6>{{ $t("glossary.lab") }}</h6></div>
             <div v-else-if="view === 'UNIVERSE'"><h6>{{ $t("glossary.universe") }}</h6></div>

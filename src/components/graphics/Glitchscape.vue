@@ -890,7 +890,7 @@
 
 <template>
   <Transition name="fade" appear>
-    <div v-if="view === 'ID'" class="gradient"></div>
+    <div v-if="view === 'SHORT'" class="gradient"></div>
   </Transition>
   <div class="background" id="sketch" :style="`
     filter: hue-rotate(${filter.hue})

@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { i18n } from '@/lang'
 import Home from '../views/Home.vue'
-import Id from '../views/Id.vue'
+import Short from '../views/Short.vue'
 import Core from '../views/Core.vue'
 import Universe from '../views/Universe.vue'
 import Work from '../views/Work.vue'
@@ -34,12 +34,12 @@ const router = createRouter({
       }
     },
     {
-      path: '/_id',
-      name: '_ID',
-      component: Id,
+      path: '/_short',
+      name: '_SHORT',
+      component: Short,
       meta: {
         title: i18n.global.t('id.title'),
-        view: 'ID',
+        view: 'SHORT',
         theme: 'DEFAULT',
         filter: filters.grayscale,
         pov: 'INVERT',

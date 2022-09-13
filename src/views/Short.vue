@@ -11,7 +11,7 @@
   import Workshops from '@/contexts/_id/Workshops.vue'
 
   export default defineComponent({
-    name: 'Id',
+    name: 'Short',
     components: {
       Footer,
       Button,

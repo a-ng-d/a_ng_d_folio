@@ -6,7 +6,7 @@
     "core": "_Core_story",
     "work": "_Selected_work",
     "lab": "_Shots_lab",
-    "id": "_Id_card",
+    "id": "_Business_card",
     "contact": "_Tell_me_hello",
     "attribution": "_Attribution",
     "archive": "_Previous_work",
@@ -41,7 +41,7 @@
   "home": {
     "author": "aurélien_grimaud_",
     "baseline": "Fresh blend of Product Design, Creative Technology, and Rogue-like Love",
-    "id": "Id card",
+    "id": "Business card",
     "contact": "Contact",
     "work": "Selected work",
     "lab": "Shots lab",
