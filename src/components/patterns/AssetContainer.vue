@@ -62,7 +62,7 @@
       <div class="asset-container__asset">
         <Transition name="fade" mode="in-out" :style="`--delay: ${isMagnified ? '0ms' : 'var(--delay-jogging)'}`">
           <img v-if="!isMagnified" :src="thumbnail" :alt="alt" />
-          <video v-else-if="isMagnified && type === 'video'" autoplay mute loop>
+          <video v-else-if="isMagnified && type === 'video'" autoplay muted loop>
             <source :src="hdnail" type="video/mp4" />
           </video>
           <img v-else-if="isMagnified && type === 'image'" :src="hdnail" :alt="alt" />
