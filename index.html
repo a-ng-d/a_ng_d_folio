@@ -23,6 +23,7 @@
         top: 0;
         left: 0;
         display: flex;
+        flex-flow: column nowrap;
         justify-content: center;
         align-items: center;
         z-index: 6;
@@ -31,16 +32,22 @@
         background-size: 100% 100%;
         pointer-events: none
       }
+      #loader h6 {
+        opacity: 0
+      }
       #loader.loader--enter {
-        animation: go-forwards--enter 1600ms cubic-bezier(.86, .12, .12, .86) forwards
+        animation: go-forwards--enter 3200ms cubic-bezier(.86, .12, .12, .86) forwards
       }
       #loader.loader--leave {
         animation: go-forwards--leave 1600ms cubic-bezier(.86, .12, .12, .86) forwards
       }
+      #loader.loader--loaded h6 {
+        opacity: 1
+      }
       #animation {
-        width: 400rem;
-        max-width: calc(100% - 48rem);
-        max-height: calc(100% - 48rem)
+        width: 400px;
+        max-width: calc(100% - 48px);
+        max-height: calc(100% - 48px)
       }
       #animation svg {
         height: 100%
@@ -72,22 +79,14 @@
         }
       }
     </style>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
   </head>
   <body>
     <div id="loader" class="loader--enter">
       <div id="animation"></div>
+      <h6>Press any key or tap the screen to enter</h6>
     </div>
     <div id="app" v-cloak></div>
     <script type="module" src="/src/main.ts"></script>
-    <script type="text/javascript">
-      lottie.loadAnimation({
-        container: document.getElementById('animation'),
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: '/animations/_loader/data.json'
-      });
-    </script>
+    <script type="text/typescript" src="/src/utilities/animation.ts"></script>
   </body>
 </html>
