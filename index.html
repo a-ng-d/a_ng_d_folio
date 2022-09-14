@@ -33,7 +33,9 @@
         pointer-events: none
       }
       #loader h6 {
-        opacity: 0
+        opacity: 0;
+        padding: 0 var(--layout-center);
+        transform: translateY(var(--spacing-l-000));
       }
       #loader.loader--enter {
         animation: go-forwards--enter 3200ms cubic-bezier(.86, .12, .12, .86) forwards
@@ -42,7 +44,8 @@
         animation: go-forwards--leave 1600ms cubic-bezier(.86, .12, .12, .86) forwards
       }
       #loader.loader--loaded h6 {
-        opacity: 1
+        opacity: 1;
+        transform: translateY(0);
       }
       #animation {
         width: 400px;
