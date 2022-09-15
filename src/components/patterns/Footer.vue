@@ -1,11 +1,13 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import Label from '@/components/ui/Label.vue'
+  import Audio from '@/components/ui/Audio.vue'
 
   export default defineComponent({
     name: 'Footer',
     components: {
-      Label
+      Label,
+      Audio
     },
     props: {
       alignment: {
@@ -24,6 +26,7 @@
     data: function() {
       return {
         version: __APP_VERSION__,
+        state: '',
         flex: this.alignment === 'LEFT' ? 'flex-start' :
               this.alignment === 'CENTER' ? 'center' :
               this.alignment === 'RIGHT' ? 'flex-end' :
@@ -40,7 +43,16 @@
       <span class="footer__tag__content">{{ $t("global.separator") }}</span>
       <span class="footer__tag__content">{{ $t("global.license", { year: new Date().getFullYear() }) }}</span>
       <span class="footer__tag__content">{{ $t("global.separator") }}</span>
-      <RouterLink class="footer__tag__link" to="/_attribution">
+      <RouterLink
+        class="footer__tag__link"
+        to="/_attribution"
+        @mouseover="state = 'OVER'"
+        @mouseout="state = 'NORMAL'"
+        @touchstart.passive="state = 'OVER'"
+        @touchend.passive="state = 'NORMAL'"
+        @focus="state = 'FOCUS'"
+        @blur="state = 'NORMAL'"
+      >
         <Label
           :label="$t('footer.attribution')"
           underlined
@@ -50,6 +62,18 @@
       <span class="footer__tag__content">{{ $t("global.separator") }}</span>
       <span class="footer__tag__content">{{ `${$t("global.version")} ${version}` }}</span>
     </div>
+    <Audio
+      v-if="state === 'OVER'"
+      src="/sounds/interaction-over.mp3"
+      autoplay
+      :volume=".5"
+    />
+    <Audio
+      v-else-if="state === 'FOCUS'"
+      src="/sounds/interaction-focus.mp3"
+      autoplay
+      :volume=".5"
+    />
   </footer>
 </template>
 

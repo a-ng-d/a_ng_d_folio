@@ -1,16 +1,18 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import Particles from '@/components/graphics/Particles.vue'
+  import Audio from '@/components/ui/Audio.vue'
   import { doMap } from '@/utilities/operations'
 
   export default defineComponent({
     name: 'Switch',
     components: {
-      Particles
+      Particles,
+      Audio
     },
     props: {
       label: String,
-      state: {
+      active: {
         type: Boolean,
         default: false
       },
@@ -29,7 +31,8 @@
     },
     data: function() {
       return {
-        isActive: this.state
+        isActive: this.active,
+        state: ''
       }
     },
     methods: {
@@ -42,8 +45,21 @@
 </script>
 
 <template>
-  <div class="switch" :data-theme="theme">
-    <input type="checkbox" name="swt" @click="moveSwitch" @key.space="moveSwitch" />
+  <div class="switch"
+    @mouseover="state = 'OVER'"
+    @mouseout="state = 'NORMAL'"
+    @touchstart.passive="state = 'OVER'"
+    @touchend.passive="state = 'NORMAL'"
+    :data-theme="theme"
+  >
+    <input
+      type="checkbox"
+      name="swt"
+      @click="moveSwitch"
+      @key.space="moveSwitch"
+      @focus="state = 'FOCUS'"
+      @blur="state = 'NORMAL'"
+    />
     <div class="switch__item">
       <label v-if="label != undefined" class="switch__label" for="swt"><p>{{ label }}</p></label>
       <div class="switch__indicator">
@@ -59,6 +75,18 @@
         </div>
       </div>
     </div>
+    <Audio
+      v-if="state === 'OVER'"
+      src="/sounds/interaction-over.mp3"
+      autoplay
+      :volume=".5"
+    />
+    <Audio
+      v-else-if="state === 'FOCUS'"
+      src="/sounds/interaction-focus.mp3"
+      autoplay
+      :volume=".5"
+    />
   </div>
 </template>
 
