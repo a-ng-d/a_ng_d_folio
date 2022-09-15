@@ -58,11 +58,11 @@
         if (mouseX > buttonHalfWidth && mouseX <= buttonWidth + 10) this.movement = 'go-right'
         else this.movement = 'go-left'
 
-        this.state = 'over'
+        this.state = 'OVER'
         setTimeout(() => this.isExpanded = true, 50)
       },
       collapseParticles(e: any) {
-        this.state = 'normal'
+        this.state = 'NORMAL'
         setTimeout(() => this.isExpanded = false, 50)
       }
     },
@@ -83,8 +83,8 @@
       @mouseout="collapseParticles"
       @touchstart.passive="expandParticles"
       @touchend.passive="collapseParticles"
-      @focus="state = 'in'"
-      @blur="state = 'normal'"
+      @focus="state = 'FOCUS'"
+      @blur="state = 'NORMAL'"
       :data-theme="theme"
     >
       <div class="button__content">
@@ -108,13 +108,13 @@
         />
       </div>
       <Audio
-        v-if="state === 'over'"
+        v-if="state === 'OVER'"
         src="/sounds/interaction-over.mp3"
         autoplay
         :volume=".5"
       />
       <Audio
-        v-else-if="state === 'focus'"
+        v-else-if="state === 'FOCUS'"
         src="/sounds/interaction-focus.mp3"
         autoplay
         :volume=".5"
@@ -131,8 +131,8 @@
       @mouseout="collapseParticles"
       @touchstart.passive="expandParticles"
       @touchend.passive="collapseParticles"
-      @focus="state = 'focus'"
-      @blur="state = 'normal'"
+      @focus="state = 'FOCUS'"
+      @blur="state = 'NORMAL'"
       :data-theme="theme"
     >
       <div class="button__content">
@@ -156,13 +156,13 @@
         />
       </div>
       <Audio
-        v-if="state === 'over'"
+        v-if="state === 'OVER'"
         src="/sounds/interaction-over.mp3"
         autoplay
         :volume=".5"
       />
       <Audio
-        v-else-if="state === 'focus'"
+        v-else-if="state === 'FOCUS'"
         src="/sounds/interaction-focus.mp3"
         autoplay
         :volume=".5"
@@ -179,8 +179,8 @@
       @mouseout="collapseParticles"
       @touchstart.passive="expandParticles"
       @touchend.passive="collapseParticles"
-      @focus="state = 'in'"
-      @blur="state = 'normal'"
+      @focus="state = 'FOCUS'"
+      @blur="state = 'NORMAL'"
       :data-theme="theme"
       target="_blank"
     >
@@ -202,13 +202,13 @@
         />
       </div>
       <Audio
-        v-if="state === 'over'"
+        v-if="state === 'OVER'"
         src="/sounds/interaction-over.mp3"
         autoplay
         :volume=".5"
       />
       <Audio
-        v-else-if="state === 'focus'"
+        v-else-if="state === 'FOCUS'"
         src="/sounds/interaction-focus.mp3"
         autoplay
         :volume=".5"
