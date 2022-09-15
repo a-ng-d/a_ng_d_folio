@@ -2,12 +2,14 @@
   import { defineComponent } from 'vue'
   import { ExternalLink } from 'lucide-vue-next'
   import Label from '@/components/ui/Label.vue'
+  import Audio from '@/components/ui/Audio.vue'
 
   export default defineComponent({
     name: 'SimpleExternalLink',
     components: {
       ExternalLink,
-      Label
+      Label,
+      Audio
     },
     props: {
       label: {
@@ -20,12 +22,29 @@
         type: String,
         default: 'DEFAULT'
       }
+    },
+    data: function() {
+      return {
+        state: ''
+      }
     }
   })
 </script>
 
 <template>
-  <a class="external-link" :href="href" target="_blank" :alt="alt" :data-theme="theme">
+  <a
+    class="external-link"
+    :href="href"
+    target="_blank"
+    :alt="alt"
+    @mouseover="state = 'OVER'"
+    @mouseout="state = 'NORMAL'"
+    @touchstart.passive="state = 'OVER'"
+    @touchend.passive="state = 'NORMAL'"
+    @focus="state = 'FOCUS'"
+    @blur="state = 'NORMAL'"
+    :data-theme="theme"
+  >
     <div class="external-link__icon">
       <ExternalLink
         :size="24"
@@ -38,6 +57,18 @@
         :theme="theme"
       />
     </div>
+    <Audio
+      v-if="state === 'OVER'"
+      src="/sounds/interaction-over.mp3"
+      autoplay
+      :volume=".5"
+    />
+    <Audio
+      v-else-if="state === 'FOCUS'"
+      src="/sounds/interaction-focus.mp3"
+      autoplay
+      :volume=".5"
+    />
   </a>
 </template>
 
