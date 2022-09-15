@@ -178,14 +178,19 @@
 </script>
 
 <template>
+  <!--Resources-->
   <Filter />
   <Logotype />
+
+  <!--Transition-->
   <Particles
     :weight="160"
     :isExpanded="isExpanded"
     :movement="transition"
     :style="`position: absolute ; visibility: ${isHardTransited ? 'visible' : 'hidden'} ; z-index: 3`"
   />
+
+  <!--Menu-->
   <Transition name="pull-down" style="--delay: var(--duration-turtoise)" @after-leave="resetDelay" appear>
     <MainMenu
       :scrollProgress="scrollProgress"
@@ -196,6 +201,8 @@
       :theme="theme"
     />
   </Transition>
+
+  <!--View-->
   <RouterView @scroll.passive="getScrollParams" v-slot="{ Component, route }">
     <Transition
       :name="transition"
@@ -227,6 +234,8 @@
       />
     </Transition>
   </RouterView>
+
+  <!--Background-->
   <Glitchscape
     :filter="filter"
     :pov="pov"
@@ -237,6 +246,8 @@
     :numberOfProjects="numberOfProjects"
     :view="view"
   />
+
+  <!--Audio-->
   <Audio
     src="/sounds/ambient.mp3"
     autoplay
