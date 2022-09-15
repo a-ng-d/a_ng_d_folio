@@ -4,7 +4,7 @@
   import Button from '@/components/ui/Button.vue'
   import Pagination from '@/components/ui/Pagination.vue'
   import Navigation from '@/components/ui/Navigation.vue'
-  import { ArrowRight, ArrowDown, ArrowLeft, Rocket, Home, User } from 'lucide-vue-next'
+  import { ArrowRight, ArrowDown, ArrowLeft, Rocket, Home, X } from 'lucide-vue-next'
 
   export default defineComponent({
     name: 'MainMenu',
@@ -18,7 +18,7 @@
       ArrowLeft,
       Rocket,
       Home,
-      User
+      X
     },
     props: {
       device: {
@@ -40,6 +40,14 @@
       activeProjectPosition: {
         type: Number,
         required: true
+      },
+      goback: {
+        type: Boolean,
+        default: false
+      },
+      previousPath: {
+        type: String,
+        default: '/'
       },
       theme: {
         type: String,
@@ -75,7 +83,7 @@
       <Transition name="switch" mode="out-in" appear>
         <Button
           v-if="view === 'UNIVERSE'"
-          type="primary"
+          type="secondary"
           :label="$t('global.back.home')"
           path="/"
           :layout="device != 'MOBILE' ? 'ICON-LEFT' : 'ICON-ONLY'"
@@ -114,6 +122,17 @@
           :nextPage="nextProject()"
           :theme="theme"
         />
+        <Button
+          v-else-if="view === 'UNIVERSE' && goback"
+          type="primary"
+          layout="ICON-ONLY"
+          :path="previousPath"
+          :theme="theme"
+        >
+          <template #icon>
+            <X :size="24" />
+          </template>
+        </Button>
         <div class="universe-title" v-else>
           <Transition name="switch" mode="out-in">
             <div v-if="view === 'SHORT'"><h6>{{ $t("glossary.id") }}</h6></div>

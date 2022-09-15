@@ -36,6 +36,8 @@
         projects: this.getProjects(this.$router.options.routes),
         activeProjectPosition: 0,
         numberOfProjects: this.getProjects(this.$router.options.routes).length,
+        isQuickMenu: true,
+        previousPath: '',
         theme: 'DEFAULT'
       }
     },
@@ -109,36 +111,43 @@
         const A: any = {
           'UNIVERSE': () => {
             this.transition = 'go-down'
-            this.isHardTransited = true
+            this.isHardTransited = this.isSameContext(to.path)
+            this.isQuickMenu = false
           },
           'ATTRIBUTION': () => {
             this.transition = 'go-up'
-            this.isHardTransited = true
+            this.isHardTransited = this.isSameContext(to.path)
           },
           'UNKNOWN': () => {
             this.transition = 'go-up'
-            this.isHardTransited = true
+            this.isHardTransited = this.isSameContext(to.path)
           }
         }
 
         const B: any = {
           'UNIVERSE': () => {
             this.transition = 'go-up'
-            this.isHardTransited = true
+            this.isQuickMenu = true
+            this.isHardTransited = false
+            this.previousPath = from.path
           },
           'ATTRIBUTION': () => {
             this.transition = 'go-down'
-            this.isHardTransited = true
+            this.isHardTransited = this.isSameContext(to.path)
           },
           'UNKNOWN': () => {
             this.transition = 'go-down'
-            this.isHardTransited = true
+            this.isHardTransited = this.isSameContext(to.path)
           }
         }
 
         A[from.meta.view]?.()
+
         if (from.name != undefined)
           B[to.meta.view]?.()
+        else
+          A[to.meta.view]?.()
+
         AB[`${from.meta.view} > ${to.meta.view}`]?.()
       }
     },
@@ -164,6 +173,10 @@
       },
       getScreenContext() {
         window.innerWidth < 1024 ? this.device = 'MOBILE' : this.device = 'DESKTOP'
+      },
+      isSameContext(to: string) {
+        if(this.previousPath === to) return false
+        else return true
       }
     },
     created: function() {
@@ -196,6 +209,8 @@
       :device="device"
       :projects="projects"
       :activeProjectPosition="activeProjectPosition"
+      :goback="isQuickMenu"
+      :previousPath="previousPath"
       :theme="theme"
     />
   </Transition>
