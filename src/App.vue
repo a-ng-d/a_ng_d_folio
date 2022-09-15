@@ -252,7 +252,12 @@
     src="/sounds/ambient.mp3"
     autoplay
     loop
-    :volume=".25"
+    :volume=".15"
+  />
+  <Audio
+    src="/sounds/entrance.mp3"
+    autoplay
+    :volume=".5"
   />
 </template>
 
