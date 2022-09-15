@@ -36,7 +36,6 @@
         projects: this.getProjects(this.$router.options.routes),
         activeProjectPosition: 0,
         numberOfProjects: this.getProjects(this.$router.options.routes).length,
-        multiplier: 1,
         theme: 'DEFAULT'
       }
     },
@@ -148,7 +147,6 @@
         this.pageHeight = e.target.scrollHeight
         this.scrollProgress = e.target.scrollTop
         this.viewHeight = document.body.clientHeight
-        //this.multiplier = doMap(scrollVelocity(e.target, this.pageHeight - this.viewHeight, 'y'), 1, 1.5, 1, 4)
       },
       resetDelay(e: any) {
         e.style.transitionDelay = '0'
@@ -269,9 +267,6 @@
 
   // Structure
   .page
-    //--multiplier: v-bind("multiplier")
-    //--shift: calc(16 * var(--multiplier) * -1rem)
-
     display: grid
     grid-template-columns: var(--layout-margin) repeat(var(--layout-columns), 1fr) var(--layout-margin)
     grid-template-rows: var(--header-height-size) 1fr min-content
