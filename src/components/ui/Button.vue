@@ -1,11 +1,13 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import Particles from '@/components/graphics/Particles.vue'
+  import Audio from '@/components/ui/Audio.vue'
 
   export default defineComponent({
     name: 'Button',
     components: {
-      Particles
+      Particles,
+      Audio
     },
     props: {
       type: {
@@ -43,7 +45,8 @@
         isExtensible: this.extensible ? '100%' : 'fit-content',
         isExpanded: false,
         isExternal: false,
-        movement: ''
+        movement: '',
+        state: ''
       }
     },
     methods: {
@@ -55,9 +58,11 @@
         if (mouseX > buttonHalfWidth && mouseX <= buttonWidth + 10) this.movement = 'go-right'
         else this.movement = 'go-left'
 
+        this.state = 'over'
         setTimeout(() => this.isExpanded = true, 50)
       },
       collapseParticles(e: any) {
+        this.state = 'normal'
         setTimeout(() => this.isExpanded = false, 50)
       }
     },
@@ -78,6 +83,8 @@
       @mouseout="collapseParticles"
       @touchstart.passive="expandParticles"
       @touchend.passive="collapseParticles"
+      @focus="state = 'in'"
+      @blur="state = 'normal'"
       :data-theme="theme"
     >
       <div class="button__content">
@@ -100,6 +107,18 @@
           borderRadius="calc(var(--button-height-size) / 2)"
         />
       </div>
+      <Audio
+        v-if="state === 'over'"
+        src="/sounds/interaction-over.mp3"
+        autoplay
+        :volume=".5"
+      />
+      <Audio
+        v-else-if="state === 'focus'"
+        src="/sounds/interaction-focus.mp3"
+        autoplay
+        :volume=".5"
+      />
     </button>
   </template>
 
@@ -112,6 +131,8 @@
       @mouseout="collapseParticles"
       @touchstart.passive="expandParticles"
       @touchend.passive="collapseParticles"
+      @focus="state = 'focus'"
+      @blur="state = 'normal'"
       :data-theme="theme"
     >
       <div class="button__content">
@@ -134,6 +155,18 @@
           borderRadius="calc(var(--button-height-size) / 2)"
         />
       </div>
+      <Audio
+        v-if="state === 'over'"
+        src="/sounds/interaction-over.mp3"
+        autoplay
+        :volume=".5"
+      />
+      <Audio
+        v-else-if="state === 'focus'"
+        src="/sounds/interaction-focus.mp3"
+        autoplay
+        :volume=".5"
+      />
     </RouterLink>
   </template>
 
@@ -146,6 +179,8 @@
       @mouseout="collapseParticles"
       @touchstart.passive="expandParticles"
       @touchend.passive="collapseParticles"
+      @focus="state = 'in'"
+      @blur="state = 'normal'"
       :data-theme="theme"
       target="_blank"
     >
@@ -166,6 +201,18 @@
           borderRadius="calc(var(--button-height-size) / 2)"
         />
       </div>
+      <Audio
+        v-if="state === 'over'"
+        src="/sounds/interaction-over.mp3"
+        autoplay
+        :volume=".5"
+      />
+      <Audio
+        v-else-if="state === 'focus'"
+        src="/sounds/interaction-focus.mp3"
+        autoplay
+        :volume=".5"
+      />
     </a>
   </template>
 
