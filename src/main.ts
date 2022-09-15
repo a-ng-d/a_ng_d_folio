@@ -29,6 +29,8 @@ const entrance: any = () => {
   loop.setSpeed(1.8)
   loop.playSegments([[200, 420]], false)
   loop.play()
+  document.onkeyup = null
+  document.body.ontouchstart = null
 
   loader.classList.remove('loader--loaded')
 
@@ -36,8 +38,6 @@ const entrance: any = () => {
   setTimeout(() => {
     loop.destroy()
     loader.innerHTML = ''
-    document.onkeyup = null
-    document.body.ontouchstart = null
     app
       .use(router)
       .use(i18n)
