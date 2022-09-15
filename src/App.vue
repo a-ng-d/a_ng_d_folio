@@ -6,6 +6,7 @@
   import MainMenu from '@/contexts/MainMenu.vue'
   import Glitchscape from '@/components/graphics/Glitchscape.vue'
   import Particles from '@/components/graphics/Particles.vue'
+  import Audio from '@/components/ui/Audio.vue'
   import { doMap, scrollVelocity } from '@/utilities/operations'
 
   export default defineComponent({
@@ -15,7 +16,8 @@
       Logotype,
       MainMenu,
       Glitchscape,
-      Particles
+      Particles,
+      Audio
     },
     data: function() {
       return {
@@ -234,6 +236,12 @@
     :scrollLimit="pageHeight - viewHeight"
     :numberOfProjects="numberOfProjects"
     :view="view"
+  />
+  <Audio
+    src="/sounds/ambient.mp3"
+    autoplay
+    loop
+    :volume=".25"
   />
 </template>
 
