@@ -2,14 +2,12 @@
   import { defineComponent } from 'vue'
   import { store } from '@/utilities/store'
   import Label from '@/components/ui/Label.vue'
-  import Audio from '@/components/ui/Audio.vue'
   import { Volume, Volume2 } from 'lucide-vue-next'
 
   export default defineComponent({
     name: 'Footer',
     components: {
       Label,
-      Audio,
       Volume,
       Volume2
     },
@@ -31,7 +29,6 @@
       return {
         store,
         version: __APP_VERSION__,
-        state: '',
         flex: this.alignment === 'LEFT' ? 'flex-start' :
               this.alignment === 'CENTER' ? 'center' :
               this.alignment === 'RIGHT' ? 'flex-end' :
@@ -51,12 +48,12 @@
       <RouterLink
         class="footer__tag__link"
         to="/_attribution"
-        @mouseover="state = 'OVER'"
-        @mouseout="state = 'NORMAL'"
-        @touchstart.passive="state = 'OVER'"
-        @touchend.passive="state = 'NORMAL'"
-        @focus="state = 'FOCUS'"
-        @blur="state = 'NORMAL'"
+        @mouseover="store.isOver = true"
+        @mouseout="store.isOver = false"
+        @touchstart.passive="store.isOver = true"
+        @touchend.passive="store.isOver = false"
+        @focus="store.isFocus = true"
+        @blur="store.isFocus = false"
       >
         <Label
           :label="$t('footer.attribution')"
@@ -71,18 +68,6 @@
       <Volume2 v-if="store.isSoundOn" :size="16" />
       <Volume v-else :size="16" />
     </div>
-    <Audio
-      v-if="state === 'OVER'"
-      src="/sounds/interaction-over.mp3"
-      autoplay
-      :volume=".5"
-    />
-    <Audio
-      v-else-if="state === 'FOCUS'"
-      src="/sounds/interaction-focus.mp3"
-      autoplay
-      :volume=".5"
-    />
   </footer>
 </template>
 

@@ -1,12 +1,9 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
-  import Audio from '@/components/ui/Audio.vue'
+  import { store } from '@/utilities/store'
 
   export default defineComponent({
     name: 'RichExternalLink',
-    components: {
-      Audio
-    },
     props: {
       title: String,
       description: String,
@@ -23,7 +20,7 @@
     },
     data: function() {
       return {
-        state: ''
+        store
       }
     }
   })
@@ -35,12 +32,12 @@
     :href="href"
     target="_blank"
     :alt="alt"
-    @mouseover="state = 'OVER'"
-    @mouseout="state = 'NORMAL'"
-    @touchstart.passive="state = 'OVER'"
-    @touchend.passive="state = 'NORMAL'"
-    @focus="state = 'FOCUS'"
-    @blur="state = 'NORMAL'"
+    @mouseover="store.isOver = true"
+    @mouseout="store.isOver = false"
+    @touchstart.passive="store.isOver = true"
+    @touchend.passive="store.isOver = false"
+    @focus="store.isFocus = true"
+    @blur="store.isFocus = false"
     :data-theme="theme"
   >
     <div class="rich-external-link__icon" :style="`background-color: ${color}`">
@@ -50,18 +47,6 @@
       <h5>{{ title }}</h5>
       <p>{{ description }}</p>
     </div>
-    <Audio
-      v-if="state === 'OVER'"
-      src="/sounds/interaction-over.mp3"
-      autoplay
-      :volume=".5"
-    />
-    <Audio
-      v-else-if="state === 'FOCUS'"
-      src="/sounds/interaction-focus.mp3"
-      autoplay
-      :volume=".5"
-    />
   </a>
 </template>
 

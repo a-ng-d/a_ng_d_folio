@@ -1,8 +1,8 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { store } from '@/utilities/store'
   import Button from '@/components/ui/Button.vue'
   import Container from '@/components/ui/Container.vue'
-  import Audio from '@/components/ui/Audio.vue'
   import { Dribbble, Codepen } from 'lucide-vue-next'
 
   export default defineComponent({
@@ -10,7 +10,6 @@
     components: {
       Button,
       Container,
-      Audio,
       Dribbble,
       Codepen
     },
@@ -33,9 +32,9 @@
     },
     data: function() {
       return {
+        store,
         isMagnified: false,
-        assetWidth: 0 as unknown,
-        state: ''
+        assetWidth: 0 as unknown
       }
     },
     methods: {
@@ -58,8 +57,8 @@
   <Container
     @click="magnifier"
     @keyup.enter="magnifier"
-    @focus="state = 'FOCUS'"
-    @blur="state = 'NORMAL'"
+    @focus="store.isFocus = true"
+    @blur="store.isFocus = false"
     class="container"
     isInteractive
   >
@@ -90,12 +89,6 @@
         </Transition>
       </div>
     </div>
-    <Audio
-      v-if="state === 'FOCUS'"
-      src="/sounds/interaction-focus.mp3"
-      autoplay
-      :volume=".5"
-    />
   </Container>
 </template>
 
