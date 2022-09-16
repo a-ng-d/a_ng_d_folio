@@ -1,5 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { store } from '@/utilities/store'
   import Button from '@/components/ui/Button.vue'
   import Dropdown from '@/components/ui/Dropdown.vue'
   import Container from '@/components/ui/Container.vue'
@@ -22,10 +23,6 @@
       Home
     },
     props: {
-      device: {
-        type: String,
-        default: 'DESKTOP'
-      },
       filter: Object,
       theme: {
         type: String,
@@ -39,6 +36,7 @@
     },
     data: function() {
       return {
+        store,
         povs: [
           {
             name: i18n.global.t('unknown.pov.reset'),
@@ -152,7 +150,7 @@
           </div>
         </Transition>
         <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + (var(--duration-step) * 2))" appear>
-          <div v-if="device != 'MOBILE'" class="controler__content controler__content">
+          <div v-if="store.device != 'MOBILE'" class="controler__content controler__content">
             <Dropdown
               :label="$t('unknown.pov.title')"
               :options="povs"

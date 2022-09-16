@@ -1,5 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { store } from '@/utilities/store'
   import { Vue3Lottie } from 'vue3-lottie'
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
@@ -32,10 +33,6 @@
         type: Number,
         required: true
       },
-      device: {
-        type: String,
-        default: 'DEFAULT'
-      },
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -43,6 +40,7 @@
     },
     data: function() {
       return {
+        store,
         JBRAnimation
       }
     },
@@ -117,7 +115,7 @@
       </template>
     </OneColumn>
     <FullWidthFigure
-      :height="device === 'DESKTOP' ? 640 : 340"
+      :height="store.device === 'DESKTOP' ? 640 : 340"
       isCentered
       background="#190038"
       :theme="theme"

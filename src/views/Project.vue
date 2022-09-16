@@ -1,5 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { store } from '@/utilities/store'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import ScrollingText from '@/components/ui/ScrollingText.vue'
@@ -34,14 +35,13 @@
       },
       scrollProgress: Number,
       scrollLimit: Number,
-      device: {
-        type: String,
-        default: 'DEFAULT'
-      },
       theme: {
         type: String,
         default: 'DEFAULT'
       }
+    },
+    data: function() {
+      store
     }
   })
 </script>
@@ -124,7 +124,6 @@
         :is="project.codeName"
         :scrollProgress="scrollProgress"
         :scrollLimit="scrollLimit"
-        :device="device"
         :theme="theme"
       />
     </article>

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { store } from '@/utilities/store'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import ScrollingText from '@/components/ui/ScrollingText.vue'
@@ -25,11 +26,10 @@
       theme: {
         type: String,
         default: 'DEFAULT'
-      },
-      device: {
-        type: String,
-        default: 'DESKTOP'
       }
+    },
+    data: function() {
+      store
     }
   })
 </script>
@@ -43,7 +43,7 @@
             type="secondary"
             :label="$t('home.contact')"
             path="/_contact"
-            :layout="device != 'MOBILE' ? 'ICON-BOTH' : 'ICON-ONLY'"
+            :layout="store.device != 'MOBILE' ? 'ICON-BOTH' : 'ICON-ONLY'"
             :theme="theme"
             isInverted
             tabindex="4"
@@ -61,7 +61,7 @@
             type="secondary"
             :label="$t('home.id')"
             path="/_short"
-            :layout="device != 'MOBILE' ? 'ICON-BOTH' : 'ICON-ONLY'"
+            :layout="store.device != 'MOBILE' ? 'ICON-BOTH' : 'ICON-ONLY'"
             :theme="theme"
             tabindex="5"
           >
@@ -91,7 +91,7 @@
             type="secondary"
             :label="$t('home.core')"
             path="/_core"
-            :layout="device != 'MOBILE' ? 'ICON-BOTH' : 'ICON-ONLY'"
+            :layout="store.device != 'MOBILE' ? 'ICON-BOTH' : 'ICON-ONLY'"
             :theme="theme"
             isInverted
             tabindex="2"
@@ -109,7 +109,7 @@
             type="primary"
             :label="$t('home.work')"
             path="/_work"
-            :layout="device != 'MOBILE' ? 'ICON-BOTH' : 'SIMPLE'"
+            :layout="store.device != 'MOBILE' ? 'ICON-BOTH' : 'SIMPLE'"
             :theme="theme"
             tabindex="1"
           >
@@ -126,7 +126,7 @@
             type="secondary"
             :label="$t('home.lab')"
             path="/_lab"
-            :layout="device != 'MOBILE' ? 'ICON-BOTH' : 'ICON-ONLY'"
+            :layout="store.device != 'MOBILE' ? 'ICON-BOTH' : 'ICON-ONLY'"
             :theme="theme"
             tabindex="3"
           >

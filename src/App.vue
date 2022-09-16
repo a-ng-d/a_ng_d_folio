@@ -27,7 +27,6 @@
         pov: '',
         quality: '',
         view: '',
-        device: 'DESKTOP',
         transition: 'scale-down',
         scrollProgress: 0,
         pageHeight: 0,
@@ -174,7 +173,7 @@
         return projects
       },
       getScreenContext() {
-        window.innerWidth < 1024 ? this.device = 'MOBILE' : this.device = 'DESKTOP'
+        window.innerWidth < 1024 ? this.store.device = 'MOBILE' : this.store.device = 'DESKTOP'
       },
       isSameContext(to: string) {
         if(this.previousPath === to) return false
@@ -185,7 +184,7 @@
       window.addEventListener("resize",  this.getScreenContext)
     },
     mounted: function() {
-      window.innerWidth < 1024 ? this.device = 'MOBILE' : this.device
+      this.getScreenContext()
     }
   })
 </script>
@@ -208,7 +207,6 @@
     <MainMenu
       :scrollProgress="scrollProgress"
       :view="view"
-      :device="device"
       :projects="projects"
       :activeProjectPosition="activeProjectPosition"
       :goback="isQuickMenu"
@@ -235,7 +233,6 @@
         :activeProjectPosition="activeProjectPosition"
         :scrollProgress="scrollProgress"
         :scrollLimit="pageHeight - viewHeight"
-        :device="device"
         :filter="filter"
         :theme="theme"
         @activeProjectPosition="activeProjectPosition = $event"

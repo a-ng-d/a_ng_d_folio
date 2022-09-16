@@ -1,5 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { store } from '@/utilities/store'
   import Header from '@/components/patterns/Header.vue'
   import Button from '@/components/ui/Button.vue'
   import Pagination from '@/components/ui/Pagination.vue'
@@ -21,10 +22,6 @@
       X
     },
     props: {
-      device: {
-        type: String,
-        default: 'DESKTOP'
-      },
       view: {
         type: String,
         required: true
@@ -52,6 +49,11 @@
       theme: {
         type: String,
         default: 'DEFAULT'
+      }
+    },
+    data: function() {
+      return {
+        store
       }
     },
     methods: {
@@ -86,7 +88,7 @@
           type="secondary"
           :label="$t('global.back.home')"
           path="/"
-          :layout="device != 'MOBILE' ? 'ICON-LEFT' : 'ICON-ONLY'"
+          :layout="store.device != 'MOBILE' ? 'ICON-LEFT' : 'ICON-ONLY'"
           :theme="theme"
         >
           <template #icon>
@@ -98,7 +100,7 @@
           type="secondary"
           :label="$t('global.menu')"
           path="/_universe"
-          :layout="device != 'MOBILE' ? 'ICON-LEFT' : 'ICON-ONLY'"
+          :layout="store.device != 'MOBILE' ? 'ICON-LEFT' : 'ICON-ONLY'"
           :theme="theme"
         >
           <template #icon>
