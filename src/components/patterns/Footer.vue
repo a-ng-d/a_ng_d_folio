@@ -1,13 +1,17 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { store } from '@/utilities/store'
   import Label from '@/components/ui/Label.vue'
   import Audio from '@/components/ui/Audio.vue'
+  import { Volume, Volume2 } from 'lucide-vue-next'
 
   export default defineComponent({
     name: 'Footer',
     components: {
       Label,
-      Audio
+      Audio,
+      Volume,
+      Volume2
     },
     props: {
       alignment: {
@@ -25,6 +29,7 @@
     },
     data: function() {
       return {
+        store,
         version: __APP_VERSION__,
         state: '',
         flex: this.alignment === 'LEFT' ? 'flex-start' :
@@ -62,6 +67,10 @@
       <span class="footer__tag__content">{{ $t("global.separator") }}</span>
       <span class="footer__tag__content">{{ `${$t("global.version")} ${version}` }}</span>
     </div>
+    <div class="footer__tag footer__sound" @click="store.isSoundOn = !store.isSoundOn">
+      <Volume2 v-if="store.isSoundOn" :size="16" />
+      <Volume v-else :size="16" />
+    </div>
     <Audio
       v-if="state === 'OVER'"
       src="/sounds/interaction-over.mp3"
@@ -88,6 +97,7 @@
     justify-content: v-bind(flex)
     align-self: center
     padding: var(--layout-column-gap)
+    gap: 0 var(--layout-paragraph-gap)
 
     &__tag
       display: flex
@@ -115,6 +125,9 @@
         &:after
           --border-size: 2rem
 
+    &__sound
+      cursor: pointer
+
   @include device.mobile
     .footer
       justify-content: center
@@ -136,7 +149,7 @@
 
   // Events
   .footer
-    &__tag__link:hover
+    &__tag__link:hover, &__sound:hover
       --amplitude: var(--spacing-s-000)
 
       animation: excited var(--duration-running) var(--ease-peps)

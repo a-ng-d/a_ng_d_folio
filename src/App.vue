@@ -1,5 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { store } from '@/utilities/store'
   import { RouterLink, RouterView } from 'vue-router'
   import Filter from '@/components/graphics/Filter.vue'
   import Logotype from '@/components/graphics/Logotype.vue'
@@ -21,6 +22,7 @@
     },
     data: function() {
       return {
+        store,
         filter: {},
         pov: '',
         quality: '',
@@ -265,11 +267,25 @@
     src="/sounds/ambient.mp3"
     autoplay
     loop
+    :muted="!store.isSoundOn"
     :volume=".15"
   />
   <Audio
     src="/sounds/entrance.mp3"
     autoplay
+    :muted="!store.isSoundOn"
+    :volume=".5"
+  />
+  <Audio
+    src="/sounds/interaction-over.mp3"
+    :muted="!store.isSoundOn"
+    :play="store.isOver"
+    :volume=".5"
+  />
+  <Audio
+    src="/sounds/interaction-focus.mp3"
+    :muted="!store.isSoundOn"
+    :play="store.isFocus"
     :volume=".5"
   />
 </template>

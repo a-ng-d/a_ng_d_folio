@@ -20,6 +20,10 @@
         type: Boolean,
         default: false
       },
+      play: {
+        type: Boolean,
+        default: false
+      },
       volume: {
         type: Number,
         default: 1
@@ -28,6 +32,13 @@
     watch: {
       volume(to, from) {
         this.$el.volume = to
+      },
+      play(to, from) {
+        if (to) this.$el.play()
+        else {
+          this.$el.pause()
+          this.$el.currentTime = 0
+        }
       }
     },
     mounted: function() {
