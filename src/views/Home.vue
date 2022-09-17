@@ -29,7 +29,9 @@
       }
     },
     data: function() {
-      store
+      return {
+        store
+      }
     }
   })
 </script>

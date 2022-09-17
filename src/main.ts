@@ -6,13 +6,13 @@ import Vue3Lottie from 'vue3-lottie'
 import { loop } from './utilities/animation'
 
 const app = createApp(App),
-loader: HTMLElement = document.getElementById('loader')!
+loader: HTMLElement = document.getElementById('loader')!,
+feedback:  HTMLElement = document.getElementById('feedback')!
 
 window.onload = () => {
   let isFrozen = false
 
   loop.playSegments([[0, 200]], false)
-  loop.setSpeed(.8)
 
   loop.onLoopComplete = () => {
     isFrozen = !isFrozen
@@ -26,9 +26,11 @@ window.onload = () => {
 }
 
 const entrance: any = () => {
-  loop.setSpeed(1.8)
+  loop.setSpeed(2)
   loop.playSegments([[200, 420]], false)
   loop.play()
+  feedback.volume = .25
+  feedback.play()
   document.onkeyup = null
   document.body.ontouchstart = null
 

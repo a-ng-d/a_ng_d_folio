@@ -174,6 +174,7 @@
       },
       getScreenContext() {
         window.innerWidth < 1024 ? this.store.device = 'MOBILE' : this.store.device = 'DESKTOP'
+        this.store.device === 'MOBILE' ? this.store.isSoundOn = false : this.store.isSoundOn = true
       },
       isSameContext(to: string) {
         if(this.previousPath === to) return false
@@ -265,25 +266,37 @@
     autoplay
     loop
     :muted="!store.isSoundOn"
-    :volume=".15"
+    :volume=".1"
   />
   <Audio
     src="/sounds/entrance.mp3"
     autoplay
     :muted="!store.isSoundOn"
-    :volume=".5"
+    :volume=".3"
+  />
+  <Audio
+    src="/sounds/transition-in.mp3"
+    :muted="!store.isSoundOn"
+    :play="isExpanded"
+    :volume=".4"
+  />
+  <Audio
+    src="/sounds/transition-out.mp3"
+    :muted="!store.isSoundOn"
+    :play="!isExpanded"
+    :volume=".4"
   />
   <Audio
     src="/sounds/interaction-over.mp3"
     :muted="!store.isSoundOn"
     :play="store.isOver"
-    :volume=".5"
+    :volume=".4"
   />
   <Audio
     src="/sounds/interaction-focus.mp3"
     :muted="!store.isSoundOn"
     :play="store.isFocus"
-    :volume=".5"
+    :volume=".4"
   />
 </template>
 
