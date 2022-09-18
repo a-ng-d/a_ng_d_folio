@@ -155,6 +155,10 @@ p.enhanced
   @include text.enhanced
 
 // Responsive
+@mixin portable
+  @media (max-width: 80rem)
+    @content
+
 @mixin tablet-portrait
   @media (min-width: 28.0625rem) and (max-width: 80rem) and (orientation: portrait)
     @content
