@@ -37,7 +37,7 @@
         projects: this.getProjects(this.$router.options.routes),
         activeProjectPosition: 0,
         numberOfProjects: this.getProjects(this.$router.options.routes).length,
-        isQuickMenu: true,
+        isQuickMenu: false,
         previousPath: '',
         theme: 'DEFAULT'
       }
@@ -113,7 +113,6 @@
           'UNIVERSE': () => {
             this.transition = 'go-down'
             this.isHardTransited = this.isSameContext(to.path)
-            this.isQuickMenu = false
           },
           'ATTRIBUTION': () => {
             this.transition = 'go-up'
@@ -146,8 +145,6 @@
 
         if (from.name != undefined)
           B[to.meta.view]?.()
-        else
-          A[to.meta.view]?.()
 
         AB[`${from.meta.view} > ${to.meta.view}`]?.()
       }
