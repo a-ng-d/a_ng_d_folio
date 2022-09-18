@@ -76,7 +76,6 @@
       }
     },
     mounted: function() {
-      console.log(this.store.device)
       glitchscape = new P5((sk: any) => {
 
         const
