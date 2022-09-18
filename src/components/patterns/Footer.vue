@@ -75,8 +75,8 @@
       :theme="theme"
     >
       <template #icon>
-        <Volume2 v-if="store.isSoundOn" :size="12" />
-        <Volume v-else :size="12" />
+        <Volume2 v-if="store.isSoundOn" :size="16" />
+        <Volume v-else :size="16" />
       </template>
     </Button>
   </footer>
@@ -88,6 +88,7 @@
 
   // Structure
   .footer
+    --icon-size-regular: var(--sizing-m-000)
     grid-area: footer
     display: flex
     justify-content: v-bind(flex)
