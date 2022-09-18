@@ -1,5 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { store } from '@/utilities/store'
   import type { MountainProps, CloudProps, StarProps, PovProps, Position, Center, Progress, Rotation, Size, Row } from '@/utilities/types'
   import P5 from 'p5'
   import { HSLColors, filters } from '@/utilities/colors'
@@ -55,6 +56,8 @@
     },
     data: function() {
       return {
+        store,
+        numberOfParticles: store.device === 'DESKTOP' ? 30 : 10 as number,
         isRendered: false as boolean
       }
     },
@@ -73,12 +76,13 @@
       }
     },
     mounted: function() {
+      console.log(this.store.device)
       glitchscape = new P5((sk: any) => {
 
         const
-          mNumber = 5,
+          mNumber = this.numberOfParticles as number,
           cNumber: number = mNumber / 2,
-          sNumber: number = mNumber * 8,
+          sNumber: number = mNumber * 4,
           quality = 50,
           scrWidth: number = window.innerWidth,
           scrHeight: number = window.innerHeight,
@@ -88,7 +92,7 @@
           multiplier: number = scrWidth < 461 ? 1.5 : scrWidth < 1281 ? 1.25 : 1
 
         let
-          fps = 25,
+          fps = 60,
           speed = 4,
           alpha = 1,
           camera: any,

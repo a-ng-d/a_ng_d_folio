@@ -177,8 +177,6 @@
     },
     created: function() {
       window.addEventListener("resize",  this.getScreenContext)
-    },
-    mounted: function() {
       this.getScreenContext()
     }
   })
