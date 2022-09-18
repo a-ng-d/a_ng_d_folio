@@ -7,7 +7,7 @@ import { loop } from './utilities/animation'
 
 const app = createApp(App),
 loader: HTMLElement = document.getElementById('loader')!,
-feedback:  HTMLElement = document.getElementById('feedback')!
+feedback: any = document.getElementById('feedback')!
 
 window.onload = () => {
   let isFrozen = false
