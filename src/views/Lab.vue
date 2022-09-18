@@ -95,7 +95,7 @@
       smoothScroll(e: Event) {
         const target = e.target as HTMLElement
         this.slider.velocity = scrollVelocity(target, target.scrollWidth - document.body.clientWidth, 'x')
-        this.slider.scale = doMap(this.slider.velocity, 1, 1.5, 1, 2)
+        this.slider.scale = doMap(this.slider.velocity, 1, 1.5, 1, 1.25)
         this.slider.gap = doMap(this.slider.velocity, 1, 1.5, 1, 4)
 
         if (target.scrollLeft >= target.scrollWidth - document.body.clientWidth - 10) {
@@ -273,7 +273,7 @@
       height: 75%
       padding: 0 var(--layout-center)
       flex-flow: row nowrap
-      gap: 0 calc(var(--layout-column-gap) * var(--multiplier))
+      gap: 0 var(--layout-column-gap)
       align-items: stretch
       transition: var(--animated-scroll-transition)
       transform: scaleY(var(--scale-y))
