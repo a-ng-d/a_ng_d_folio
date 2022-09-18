@@ -52,6 +52,7 @@
   // Structure
   .main-menu
     --offset: calc(var(--header-height-size) * -1)
+    --delay: var(--delay-jogging) !important
 
     position: fixed
     width: 100%
