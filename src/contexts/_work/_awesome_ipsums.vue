@@ -155,7 +155,6 @@
     height: 100vh
     background: url(/images/_work/_awesome_ipsums/ending-asset-3.svg) 100% 0 no-repeat , url(/images/_work/_awesome_ipsums/ending-asset-2.svg) 55% v-bind('parallax(100, 55)') no-repeat, url(/images/_work/_awesome_ipsums/ending-asset-1.svg) 50% v-bind('parallax(0, 50)') no-repeat
     background-color: #23A566 !important
-    transition: var(--animated-scroll-transition)
 
   @include device.tablet
     section.ending
