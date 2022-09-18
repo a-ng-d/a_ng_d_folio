@@ -150,6 +150,10 @@
 
 <style scoped lang="sass">
   .main-menu
+    h6
+      text-align: right
+      line-height: 1.4
+      
     &[data-theme="DARK"]
       --text-color: var(--color-cream)
 </style>
