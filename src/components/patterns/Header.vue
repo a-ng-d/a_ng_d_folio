@@ -52,7 +52,6 @@
   // Structure
   .main-menu
     --offset: calc(var(--header-height-size) * -1)
-    --delay: var(--delay-jogging) !important
 
     position: fixed
     width: 100%
@@ -73,9 +72,13 @@
       gap: 0 var(--layout-column-gap)
 
     &__right-part
+      --delay: var(--delay-running)
+
       justify-content: flex-end
 
     &__left-part
+      --delay: var(--delay-hare)
+
       justify-content: flex-start
 
     &__logotype
