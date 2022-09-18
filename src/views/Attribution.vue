@@ -3,6 +3,7 @@
   import Footer from '@/components/patterns/Footer.vue'
   import DevTools from '@/contexts/_attribution/DevTools.vue'
   import UIAssets from '@/contexts/_attribution/UIAssets.vue'
+  import SoundsMusics from '@/contexts/_attribution/SoundsMusics.vue'
 
   export default defineComponent({
     name: 'Attribution',
@@ -10,6 +11,7 @@
       Footer,
       DevTools,
       UIAssets,
+      SoundsMusics
     },
     props: {
       theme: {
@@ -26,6 +28,7 @@
       <article class="article">
         <DevTools :theme="theme" />
         <UIAssets :theme="theme" />
+        <SoundsMusics :theme="theme" />
       </article>
     </Transition>
     <Footer

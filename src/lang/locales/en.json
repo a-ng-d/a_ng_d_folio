@@ -550,6 +550,34 @@
         "href": "https://vitejs.dev",
         "alt": "External link to the Vite.js website"
       }
+    },
+    "soundsmusics": {
+      "title": "Sounds effects & Musics",
+      "link-1": {
+        "label": "{'Press sound'}@:global.separator{'ButtonPress'}@:global.separator{'BigDino1995'}@:global.separator{'Edited'}",
+        "href": "https://pixabay.com/fr/sound-effects/buttonpress-94482/",
+        "alt": "External link to the ambient sound page: ButtonPress by BigDino1995"
+      },
+      "link-2": {
+        "label": "{'Particles sound'}@:global.separator{'DoorScan'}@:global.separator{'theshuggie'}@:global.separator{'Edited'}",
+        "href": "https://pixabay.com/fr/sound-effects/doorscan-102283/",
+        "alt": "External link to the ambient sound page: DoorScan by theshuggie"
+      },
+      "link-3": {
+        "label": "{'Entrance sound'}@:global.separator{'Blip (SFX)'}@:global.separator{'Beetlemuse'}",
+        "href": "https://pixabay.com/fr/sound-effects/blip-sfx-36568/",
+        "alt": "External link to the ambient sound page: Blip (SFX) by Beetlemuse"
+      },
+      "link-4": {
+        "label": "{'Start sound'}@:global.separator{'Sonar Ping'}@:global.separator{'SamsterBirdies'}",
+        "href": "https://pixabay.com/fr/sound-effects/sonar-ping-95840/",
+        "alt": "External link to the ambient sound page: Sonar Ping by SamsterBirdies"
+      },
+      "link-5": {
+        "label": "{'Ambient music'}@:global.separator{'Celestial Planets - Ambient 432hz'}@:global.separator{'Dream-Protocol'}@:global.separator{'Edited'}",
+        "href": "https://pixabay.com/fr/music/ambiant-celestial-planets-ambient-432hz-114366/",
+        "alt": "External link to the ambient music page: Celestial Planets - Ambient 432hz by Dream-Protocol"
+      }
     }
   },
   "unknown": {
