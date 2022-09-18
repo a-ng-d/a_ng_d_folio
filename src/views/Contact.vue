@@ -95,14 +95,14 @@
       gap: var(--spacing-xl-000)
       padding: 0 var(--layout-center)
 
-  @include device.mobile-landscape
+  @include device.smartphone-landscape
     .jumbotron
       gap: var(--layout-paragraph-gap)
 
       &__baseline
         display: none
 
-  @include device.mobile
+  @include device.smartphone
     .jumbotron
       &__actions
         gap: var(--spacing-l-000)

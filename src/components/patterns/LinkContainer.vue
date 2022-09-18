@@ -66,7 +66,7 @@
         flex-flow: column nowrap
         align-items: center
 
-  @include device.mobile
+  @include device.smartphone
     .link-container
       &__content
         flex-flow: column nowrap

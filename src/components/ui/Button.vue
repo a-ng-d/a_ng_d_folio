@@ -361,7 +361,7 @@
       outline: none
       z-index: 2
 
-  @include device.portable
+  @include device.mobile
     .button
       &:hover
         --amplitude: 0

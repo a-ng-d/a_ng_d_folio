@@ -227,7 +227,7 @@
     .controler
       padding: var(--header-height-size) var(--layout-center) var(--spacing-xl-200) var(--layout-center)
 
-  @include device.mobile
+  @include device.smartphone
     .controler
       flex-flow: column nowrap
       padding: var(--header-height-size) var(--layout-center) var(--spacing-xl-500) var(--layout-center)

@@ -323,7 +323,7 @@
           a:nth-child(2)
             flex: none
 
-  @include device.mobile-landscape
+  @include device.smartphone-landscape
     .work
       padding: 0 var(--layout-center)
       flex-flow: row nowrap
@@ -343,7 +343,7 @@
           a:nth-child(2)
             flex: none
 
-  @include device.mobile
+  @include device.smartphone
     .work
       flex-flow: column nowrap
 

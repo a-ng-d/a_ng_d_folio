@@ -319,14 +319,14 @@
       --layout-columns: 6
       --layout-areas: "header header header header header header header header" "main main main main main main main main" "footer footer footer footer footer footer footer footer"
 
-  @include device.mobile-landscape
+  @include device.smartphone-landscape
     :root
       --font-size-ref: 0.5px
       --font-size-relative: 8vw
       --header-height-size: var(--sizing-xl-700)
       --logotype-size: var(--sizing-xl-500)
 
-  @include device.mobile
+  @include device.smartphone
     :root
       --font-size-ref: 0.75px
       --layout-margin: var(--spacing-l-000)

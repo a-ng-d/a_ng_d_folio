@@ -155,7 +155,7 @@ p.enhanced
   @include text.enhanced
 
 // Responsive
-@mixin portable
+@mixin mobile
   @media (max-width: 80rem)
     @content
 
@@ -167,10 +167,10 @@ p.enhanced
   @media (min-width: 28.0625rem) and (max-width: 80rem)
     @content
 
-@mixin mobile-landscape
+@mixin smartphone-landscape
   @media (max-width: 56rem) and (orientation: landscape)
     @content
 
-@mixin mobile
+@mixin smartphone
   @media (max-width: 28rem)
     @content

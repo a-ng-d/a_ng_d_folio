@@ -66,7 +66,7 @@
     gap: 0 var(--layout-column-gap)
 
   // Structure
-  @include device.mobile
+  @include device.smartphone
     .navigation
       gap: 0 var(--layout-paragraph-gap)
 

@@ -278,11 +278,11 @@
       transition: var(--animated-scroll-transition)
       transform: scaleY(var(--scale-y))
 
-  @include device.mobile-landscape
+  @include device.smartphone-landscape
     .navigation-button
       display: none
 
-  @include device.mobile
+  @include device.smartphone
     .navigation-button
       display: none
 </style>

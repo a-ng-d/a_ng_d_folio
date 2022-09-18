@@ -149,7 +149,7 @@
     height: 100vh
     justify-content: center
 
-  @include device.mobile
+  @include device.smartphone
     .description
       height: fit-content
 

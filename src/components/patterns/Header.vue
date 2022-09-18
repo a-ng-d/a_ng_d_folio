@@ -92,7 +92,7 @@
     &--stuck
       --offset: -96rem
 
-  @include device.mobile
+  @include device.smartphone
     .main-menu
       gap: 0 var(--layout-column-gap)
 

@@ -118,7 +118,7 @@
         &:after
           --border-size: 2rem
 
-  @include device.mobile
+  @include device.smartphone
     .footer
       justify-content: center
 

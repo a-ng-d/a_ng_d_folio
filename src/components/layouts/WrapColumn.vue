@@ -79,7 +79,7 @@
           flex: none
           width: 50vw
 
-    @include device.mobile
+    @include device.smartphone
       &__scroll
         overflow: auto
         padding: v-bind("isFullScreen ? '100vh' : '0'") 0

@@ -52,7 +52,7 @@
       flex: 1
       gap: var(--layout-row-gap) 0
 
-  @include device.mobile
+  @include device.smartphone
     .col-3
       &__columns
         flex-flow: column nowrap

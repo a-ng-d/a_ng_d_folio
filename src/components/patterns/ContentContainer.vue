@@ -43,7 +43,7 @@
       :deep(svg)
         margin: 0 0 var(--layout-column-gap) 0
 
-  @include device.mobile
+  @include device.smartphone
     .content-container
       &__content
         flex-flow: column nowrap
