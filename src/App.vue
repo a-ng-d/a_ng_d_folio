@@ -266,13 +266,13 @@
     autoplay
     loop
     :muted="!store.isSoundOn"
-    :volume=".1"
+    :volume=".15"
   />
   <Audio
     src="/sounds/entrance.mp3"
     autoplay
     :muted="!store.isSoundOn"
-    :volume=".3"
+    :volume=".2"
   />
   <Audio
     src="/sounds/transition-in.mp3"
@@ -296,7 +296,7 @@
     src="/sounds/interaction-focus.mp3"
     :muted="!store.isSoundOn"
     :play="store.isFocus"
-    :volume=".4"
+    :volume=".3"
   />
 </template>
 

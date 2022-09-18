@@ -29,7 +29,7 @@ const entrance: any = () => {
   loop.setSpeed(2)
   loop.playSegments([[200, 420]], false)
   loop.play()
-  feedback.volume = .25
+  feedback.volume = .2
   feedback.play()
   document.onkeyup = null
   document.body.ontouchstart = null
