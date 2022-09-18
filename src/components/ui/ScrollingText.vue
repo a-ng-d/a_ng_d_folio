@@ -47,7 +47,7 @@
 
       display: block
       position: absolute
-      animation: across 16000ms infinite forwards linear
+      animation: across 32000ms infinite forwards linear
       white-space: nowrap
 
   // Aspect
