@@ -321,6 +321,7 @@
       --font-size-ref: 0.875px
       --layout-margin: var(--spacing-xl-000)
       --layout-center: var(--spacing-xl-000)
+      --logotype-size: var(--sizing-xl-500)
       --layout-columns: 6
       --layout-areas: "header header header header header header header header" "main main main main main main main main" "footer footer footer footer footer footer footer footer"
 
@@ -329,12 +330,15 @@
       --font-size-ref: 0.5px
       --font-size-relative: 8vw
       --header-height-size: var(--sizing-xl-700)
+      --logotype-size: var(--sizing-xl-500)
 
   @include device.mobile
     :root
       --font-size-ref: 0.75px
       --layout-margin: var(--spacing-l-000)
       --layout-center: var(--spacing-l-000)
+      --header-height-size: var(--sizing-xxl-100)
+      --logotype-size: var(--sizing-xl-300)
       --layout-columns: 3
       --layout-areas: "header header header header header" "main main main main main" "footer footer footer footer footer"
 </style>
