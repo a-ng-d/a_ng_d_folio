@@ -56,17 +56,18 @@
       },
       splitLetters(el: any) {
         const
-          label: string = el.innerText,
+          title: HTMLElement = el.children[0],
+          label: string = title.innerText,
           split: Array<string> = label.split('')
 
-        el.innerHTML = ''
+        title.innerHTML = ''
 
         split.forEach((chr, index) => {
           const shard: any = document.createElement('span')
           shard.innerHTML = chr
           shard.classList.add('shard')
           shard.style = `--order: ${index}`
-          el.appendChild(shard)
+          title.appendChild(shard)
         })
       }
     },
@@ -81,7 +82,7 @@
 <template>
   <main class="page">
     <div class="background">
-      <Transition name="scale-up" :duration="duration" mode="out-in" class="background__item" appear>
+      <Transition name="scale-up" :duration="duration" mode="out-in" class="background__item">
         <div v-if="activeProjectCodeName === ((projects[0] as any) as any).meta.codeName"></div>
         <div v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName" style="background: url(/images/_work/_jeprendsquoi/background.svg) 50% / cover no-repeat"></div>
         <div v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName"></div>
@@ -89,106 +90,118 @@
         <div v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName" style="background: url(/images/_work/_iobeya_whiteboard/background.png) 0% 0% no-repeat"></div>
       </Transition>
     </div>
-    <section class="work" :data-theme="theme">
-      <div class="work__illustration" :style="direction === 'right' ? '--offset: -100vw' : '--offset: 100vw'">
-        <Transition name="across" :duration="duration" mode="out-in" class="work__illustration__item" appear>
-          <Vue3Lottie v-if="activeProjectCodeName === ((projects[0] as any) as any).meta.codeName" :animationData="((projects[0] as any) as any).meta.illustration" />
-          <img v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName" :src="(projects[1] as any).meta.illustration" />
-          <Vue3Lottie v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName" :animationData="(projects[2] as any).meta.illustration" />
-          <Vue3Lottie v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName" :animationData="(projects[3] as any).meta.illustration" />
-          <Vue3Lottie v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName" :animationData="(projects[4] as any).meta.illustration" />
-        </Transition>
-      </div>
-      <aside class="work__summary">
-        <div class="work__summary__description">
-          <div class="work__title">
-            <Transition name="wheel" mode="out-in" :duration="duration" @before-leave="splitLetters" @before-enter="splitLetters" appear>
-              <h2 v-if="activeProjectCodeName === ((projects[0] as any) as any).meta.codeName">{{ ((projects[0] as any) as any).meta.codeName }}</h2>
-              <h2 v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName">{{ (projects[1] as any).meta.codeName }}</h2>
-              <h2 v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName">{{ (projects[2] as any).meta.codeName }}</h2>
-              <h2 v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName">{{ (projects[3] as any).meta.codeName }}</h2>
-              <h2 v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName">{{ (projects[4] as any).meta.codeName }}</h2>
-            </Transition>
-            <Transition name="slide-right" :duration="duration * 1.5" mode="out-in" appear>
-              <div v-if="activeProjectCodeName === (projects[0] as any).meta.codeName">
-                <p>{{ (projects[0] as any).meta.summary }}</p>
-              </div>
-              <div v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName">
-                <p>{{ (projects[1] as any).meta.summary }}</p>
-              </div>
-              <div v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName">
-                <p>{{ (projects[2] as any).meta.summary }}</p>
-              </div>
-              <div v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName">
-                <p>{{ (projects[3] as any).meta.summary }}</p>
-              </div>
-              <div v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName">
-                <p>{{ (projects[4] as any).meta.summary }}</p>
-              </div>
-            </Transition>
-          </div>
-          <ul class="work__data">
-            <Transition class="work__data__item" name="slide-right" :duration="duration * 1.5" mode="out-in" appear>
-              <li v-if="activeProjectCodeName === ((projects[0] as any) as any).meta.codeName">
-                <h6>{{ $t("global.date") }}</h6>
-                <p>{{ ((projects[0] as any) as any).meta.date }}</p>
-              </li>
-              <li v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName">
-                <h6>{{ $t("global.date") }}</h6>
-                <p>{{ (projects[1] as any).meta.date }}</p>
-              </li>
-              <li v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName">
-                <h6>{{ $t("global.date") }}</h6>
-                <p>{{ (projects[2] as any).meta.date }}</p>
-              </li>
-              <li v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName">
-                <h6>{{ $t("global.date") }}</h6>
-                <p>{{ (projects[3] as any).meta.date }}</p>
-              </li>
-              <li v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName">
-                <h6>{{ $t("global.date") }}</h6>
-                <p>{{ (projects[4] as any).meta.date }}</p>
-              </li>
-            </Transition>
-          </ul>
+    <Transition name="slide-up" appear style="--delay: var(--duration-turtoise)">
+      <article class="work" :data-theme="theme">
+        <div class="work__illustration" :style="direction === 'right' ? '--offset: -100vw' : '--offset: 100vw'">
+          <Transition name="across" :duration="duration" mode="out-in" class="work__illustration__item">
+            <Vue3Lottie v-if="activeProjectCodeName === ((projects[0] as any) as any).meta.codeName" :animationData="((projects[0] as any) as any).meta.illustration" />
+            <img v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName" :src="(projects[1] as any).meta.illustration" />
+            <Vue3Lottie v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName" :animationData="(projects[2] as any).meta.illustration" />
+            <Vue3Lottie v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName" :animationData="(projects[3] as any).meta.illustration" />
+            <Vue3Lottie v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName" :animationData="(projects[4] as any).meta.illustration" />
+          </Transition>
         </div>
-        <Transition name="slide-right" :duration="duration * 2" mode="out-in" appear>
-          <div class="work__summary__actions">
-            <Button
-              type="secondary"
-              layout="ICON-ONLY"
-              :theme="theme"
-              @click="previousProject"
-            >
-              <template #icon>
-                <ArrowLeft :size="24" />
-              </template>
-            </Button>
-            <Button
-              type="primary"
-              :label="$t('global.go')"
-              :path="`/_work/${activeProjectCodeName}`"
-              layout="ICON-LEFT"
-              :theme="theme"
-            >
-              <template #icon>
-                <ArrowDown :size="24" />
-              </template>
-            </Button>
-            <Button
-              type="secondary"
-              layout="ICON-ONLY"
-              :theme="theme"
-              @click="nextProject"
-            >
-              <template #icon>
-                <ArrowRight :size="24" />
-              </template>
-            </Button>
+        <aside class="work__summary">
+          <div class="work__summary__description">
+            <div class="work__title">
+              <Transition name="wheel" mode="out-in" :duration="duration" @before-leave="splitLetters" @before-enter="splitLetters" appear>
+                <div v-if="activeProjectCodeName === ((projects[0] as any) as any).meta.codeName">
+                  <h2>{{ ((projects[0] as any) as any).meta.codeName }}</h2>
+                </div>
+                <div v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName">
+                  <h2>{{ (projects[1] as any).meta.codeName }}</h2>
+                </div>
+                <div v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName">
+                  <h2>{{ (projects[2] as any).meta.codeName }}</h2>
+                </div>
+                <div v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName">
+                  <h2>{{ (projects[3] as any).meta.codeName }}</h2>
+                </div>
+                <div v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName">
+                  <h2>{{ (projects[4] as any).meta.codeName }}</h2>
+                </div>
+              </Transition>
+              <Transition name="slide-right" :duration="duration * 1.5" mode="out-in">
+                <div v-if="activeProjectCodeName === (projects[0] as any).meta.codeName">
+                  <p>{{ (projects[0] as any).meta.summary }}</p>
+                </div>
+                <div v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName">
+                  <p>{{ (projects[1] as any).meta.summary }}</p>
+                </div>
+                <div v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName">
+                  <p>{{ (projects[2] as any).meta.summary }}</p>
+                </div>
+                <div v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName">
+                  <p>{{ (projects[3] as any).meta.summary }}</p>
+                </div>
+                <div v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName">
+                  <p>{{ (projects[4] as any).meta.summary }}</p>
+                </div>
+              </Transition>
+            </div>
+            <ul class="work__data">
+              <Transition class="work__data__item" name="slide-right" :duration="duration * 1.5" mode="out-in">
+                <li v-if="activeProjectCodeName === ((projects[0] as any) as any).meta.codeName">
+                  <h6>{{ $t("global.date") }}</h6>
+                  <p>{{ ((projects[0] as any) as any).meta.date }}</p>
+                </li>
+                <li v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName">
+                  <h6>{{ $t("global.date") }}</h6>
+                  <p>{{ (projects[1] as any).meta.date }}</p>
+                </li>
+                <li v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName">
+                  <h6>{{ $t("global.date") }}</h6>
+                  <p>{{ (projects[2] as any).meta.date }}</p>
+                </li>
+                <li v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName">
+                  <h6>{{ $t("global.date") }}</h6>
+                  <p>{{ (projects[3] as any).meta.date }}</p>
+                </li>
+                <li v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName">
+                  <h6>{{ $t("global.date") }}</h6>
+                  <p>{{ (projects[4] as any).meta.date }}</p>
+                </li>
+              </Transition>
+            </ul>
           </div>
-        </Transition>
-      </aside>
-    </section>
+          <Transition name="slide-right" :duration="duration * 2" mode="out-in" appear>
+            <div class="work__summary__actions">
+              <Button
+                type="secondary"
+                layout="ICON-ONLY"
+                :theme="theme"
+                @click="previousProject"
+              >
+                <template #icon>
+                  <ArrowLeft :size="24" />
+                </template>
+              </Button>
+              <Button
+                type="primary"
+                :label="$t('global.go')"
+                :path="`/_work/${activeProjectCodeName}`"
+                layout="ICON-LEFT"
+                :theme="theme"
+              >
+                <template #icon>
+                  <ArrowDown :size="24" />
+                </template>
+              </Button>
+              <Button
+                type="secondary"
+                layout="ICON-ONLY"
+                :theme="theme"
+                @click="nextProject"
+              >
+                <template #icon>
+                  <ArrowRight :size="24" />
+                </template>
+              </Button>
+            </div>
+          </Transition>
+        </aside>
+      </article>
+    </Transition>
     <Transition name="pull-up" style="--delay: var(--delay-turtoise)" appear>
       <Footer
         alignment="left"
@@ -245,6 +258,8 @@
         object-fit: contain
 
     &__summary
+      --delay: 0ms
+
       flex: 0 1 480rem
       display: flex
       flex-flow: column nowrap
