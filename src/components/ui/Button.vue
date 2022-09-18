@@ -101,9 +101,9 @@
       </div>
       <div class="button__background">
         <Particles
+          v-if="store.device === 'DESKTOP'"
           :isExpanded="isExpanded"
           :movement="movement"
-          borderRadius="calc(var(--button-height-size) / 2)"
         />
       </div>
     </button>
@@ -137,9 +137,9 @@
       </div>
       <div class="button__background">
         <Particles
+          v-if="store.device === 'DESKTOP'"
           :isExpanded="isExpanded"
           :movement="movement"
-          borderRadius="calc(var(--button-height-size) / 2)"
         />
       </div>
     </RouterLink>
@@ -171,9 +171,9 @@
       </div>
       <div class="button__background">
         <Particles
+          v-if="store.device === 'DESKTOP'"
           :isExpanded="isExpanded"
           :movement="movement"
-          borderRadius="calc(var(--button-height-size) / 2)"
         />
       </div>
     </a>
@@ -183,6 +183,7 @@
 
 <style scoped lang="sass">
   @use '@/assets/stylesheets/text-styles.sass' as text
+  @use '@/assets/stylesheets/base.sass' as device
 
   // Structure
   .button
@@ -276,6 +277,13 @@
       border-radius: calc(var(--button-height-size) / 2)
       overflow: hidden
       pointer-events: none
+      -webkit-mask-image: -webkit-radial-gradient(white, black)
+
+      :deep(.canvas-container)
+        width: calc(100% + (var(--border-size) * 2))
+        height: calc(100% + (var(--border-size) * 2))
+        top: calc(var(--border-size) * -1)
+        left: calc(var(--border-size) * -1)
 
   // Variants
   //// Primary
@@ -325,9 +333,6 @@
     .button__label
       color: var(--text-color)
 
-    &:hover
-      --text-color: var(--color-soil)
-
   .button--secondary[data-theme="DARK"]
     --icon-color: var(--color-cream)
     --text-color: var(--color-cream)
@@ -365,4 +370,33 @@
 
       outline: none
       z-index: 2
+
+  @include device.portable
+    .button
+      &:hover
+        --amplitude: 0
+
+    .button--primary
+      &:hover
+        --text-color: var(--color-cream)
+        & .button__icon--transparent
+          --icon-color: var(--color-cream)
+
+    .button--primary[data-theme="DARK"]
+      &:hover
+        --text-color: var(--color-soil)
+        & .button__icon--transparent
+          --icon-color: var(--color-soil)
+
+    .button--secondary
+      &:hover
+        --text-color: var(--color-soil)
+        & .button__icon--transparent
+          --icon-color: var(--color-soil)
+
+    .button--secondary[data-theme="DARK"]
+      &:hover
+        --text-color: var(--color-cream)
+        & .button__icon--transparent
+          --icon-color: var(--color-cream)
 </style>
