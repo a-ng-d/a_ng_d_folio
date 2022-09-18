@@ -5,7 +5,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "target": "es2018",
+    "lib": ["es2018", "dom", "esnext"]
   },
 
   "references": [

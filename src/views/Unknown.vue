@@ -1,6 +1,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import { store } from '@/utilities/store'
+  import type { Option } from '@/utilities/types'
   import Button from '@/components/ui/Button.vue'
   import Dropdown from '@/components/ui/Dropdown.vue'
   import Container from '@/components/ui/Container.vue'
@@ -86,7 +87,7 @@
             },
             isActive: false
           }
-        ],
+        ] as Array<Option>,
         filters: [
           {
             name: i18n.global.t('unknown.filter.creamySun'),
@@ -113,7 +114,7 @@
             action: () => this.$emit('filter', filters.nightly),
             isActive: false
           }
-        ]
+        ] as Array<Option>
       }
     }
   })

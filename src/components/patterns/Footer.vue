@@ -26,11 +26,11 @@
     data: function() {
       return {
         store,
-        version: __APP_VERSION__,
+        version: __APP_VERSION__ as string,
         flex: this.alignment === 'LEFT' ? 'flex-start' :
               this.alignment === 'CENTER' ? 'center' :
               this.alignment === 'RIGHT' ? 'flex-end' :
-              'flex-start'
+              'flex-start' as string
       }
     }
   })

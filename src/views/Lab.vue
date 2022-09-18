@@ -74,21 +74,21 @@
             sourceType: 'video',
             sourceFormat: 'mp4'
           }
-        ],
+        ] as Array<{ name: string, sourceName: string, sourceLink: string, sourceType: string, sourceFormat: string }>,
         slider: {
-          velocity: 1,
-          scale: 1,
-          gap: 1,
-          time: 0,
-          slides: 0,
-          slide: 1,
-          start: 0,
-          distance: 0,
-          hasPrevButton: false,
-          hasNextButton: true
+          velocity: 1 as number,
+          scale: 1 as number,
+          gap: 1 as number,
+          time: 0 as number,
+          slides: 0 as number,
+          slide: 1 as number,
+          start: 0 as number,
+          distance: 0 as number,
+          hasPrevButton: false as boolean,
+          hasNextButton: true as boolean
         },
-        active: '',
-        isAppeared: false
+        active: '' as string,
+        isAppeared: false as boolean
       }
     },
     methods: {
@@ -109,8 +109,9 @@
         else
           this.slider.hasPrevButton = this.slider.hasNextButton = true
 
-        for (let i = 1; i <= this.slider.slides!; i++)
-          if (target.scrollLeft >= document.body.clientWidth * (i - 1) && target.scrollLeft < document.body.clientWidth * i) this.slider.slide = i
+        if (this.slider.slides != undefined)
+          for (let i = 1; i <= this.slider.slides; i++)
+            if (target.scrollLeft >= document.body.clientWidth * (i - 1) && target.scrollLeft < document.body.clientWidth * i) this.slider.slide = i
       },
       slideRight() {
         const scrollBox: HTMLElement = Array.from(document.getElementsByClassName('shots__scroll') as HTMLCollectionOf<HTMLElement>)[0]
@@ -132,7 +133,7 @@
         const scrollBox: HTMLElement = Array.from(document.getElementsByClassName('shots__scroll') as HTMLCollectionOf<HTMLElement>)[0]
         let animationScroll: any, progress: number, diff: number
 
-        !this.slider.hasNextButton ? diff = this.slider.slide - 1 : diff = this.slider.slide - 2
+        this.slider.hasNextButton ? diff = this.slider.slide - 1 : diff = this.slider.slide - 2
 
         this.slider.time == 0 ? this.slider.start = scrollBox.scrollLeft : null
         this.slider.time == 0 ? this.slider.distance =  scrollBox.scrollLeft - (document.body.clientWidth * diff) : null

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
-  import type { ParticleProps, Path, HuSaLiTy, Position, Size } from '@/utilities/types'
+  import type { ParticleProps, Path, HuSaLiTy, Size } from '@/utilities/types'
   import P5 from 'p5'
   import { v4 as uuidv4 } from 'uuid'
   import { HSLColors } from '@/utilities/colors'
@@ -25,34 +25,34 @@
     },
     data: function() {
       return {
-        uuid: uuidv4(),
+        uuid: uuidv4() as string,
         particles: null as any
       }
     },
     watch: {
-      isExpanded(to, from) {
+      isExpanded(to) {
         to ? this.particles.expand() : this.particles.collapse()
       },
-      movement(to, from) {
-        const actions: any = {
+      movement(to) {
+        const actions: { [key: string]: () => void } = {
           'go-up': () => this.particles.goUp(to),
           'go-right': () => this.particles.goRight(to),
           'go-down': () => this.particles.goDown(to),
           'go-left': () => this.particles.goLeft(to)
         }
-        return actions[to]?.() ?? 'No pov change'
+        return actions[to]?.()
       }
     },
     mounted: function() {
         this.particles = new P5((sk: any) => {
 
         const
-          colors: Array<HuSaLiTy> = (Object as any).values(HSLColors).filter((entry: any) => entry.type === 'primary'),
+          colors: Array<HuSaLiTy> = Object.values(HSLColors).filter((entry: HuSaLiTy) => entry.type === 'primary'),
           weight: number = this.weight
 
         let
-          fps = 30,
-          units: Array<any> = [],
+          fps = 24,
+          units: Array<Unit> = [],
           time = 0
 
         // Elements

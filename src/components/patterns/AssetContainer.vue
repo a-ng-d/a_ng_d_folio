@@ -33,7 +33,7 @@
     data: function() {
       return {
         store,
-        isMagnified: false,
+        isMagnified: false as boolean,
         assetWidth: 0 as unknown
       }
     },

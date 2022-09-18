@@ -1,5 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import type { Option } from '@/utilities/types'
   import Button from '@/components/ui/Button.vue'
   import Container from '@/components/ui/Container.vue'
   import Label from '@/components/ui/Label.vue'
@@ -19,8 +20,7 @@
       label: String,
 
       options: {
-        type: Array,
-        default: []
+        type: Array
       },
       theme: {
         type: String,
@@ -29,38 +29,39 @@
     },
     data: function() {
       return {
-        isExpanded: false,
+        isExpanded: false as boolean,
         activeOption: 0 as number,
-        allOptions: this.options as Array<{name: string, action: any, isActive: boolean}>
+        allOptions: this.options as Array<Option>
       }
     },
     watch: {
-      isExpanded(to, from) {
-        if (to == false) window.removeEventListener("click",  this.closeOptions)
-        else setTimeout(() => (this.$refs.option as any)[0].focus(), 200)
+      isExpanded(to) {
+        if (to == false) window.removeEventListener('click',  this.closeOptions)
+        else setTimeout(() => (this.$refs.option as Array<HTMLElement>)[0].focus(), 200)
       }
     },
     methods: {
-      setOption(callback: any, name: string, order: number) {
-        (this.allOptions[(this.activeOption) as number] as any).isActive = false;
-        setTimeout(() =>(this.activeOption as number) = order, 900);
-        (this.allOptions[order] as any).isActive = true;
+      setOption(callback: () => void, name: string, order: number) {
+        this.allOptions[this.activeOption].isActive = false;
+        setTimeout(() => (this.activeOption) = order, 900);
+        this.allOptions[order].isActive = true;
         this.isExpanded = false;
         callback?.()
       },
-      openOptions(e: any) {
+      openOptions() {
         this.isExpanded = true
-        setTimeout(() => window.addEventListener("click",  this.closeOptions), 200)
+        setTimeout(() => window.addEventListener('click',  this.closeOptions), 200)
       },
-      closeOptions(e: any) {
-        if (e.target.closest('.dropdown__list') == null) this.isExpanded = false
+      closeOptions(e: Event) {
+        if ((e.target as HTMLElement).closest('.dropdown__list') == null) this.isExpanded = false
       },
       map(current: number) {
         return doMap(current, 0, this.allOptions.length - 1, this.allOptions.length - 1, 0)
       },
       browseOptions(e: any) {
-        if (e.relatedTarget != null)
-          e.relatedTarget.closest('.dropdown__option') == null ? this.isExpanded = false : null
+        const relatedTarget: HTMLElement | null = e.relatedTarget
+        if (relatedTarget != null)
+          relatedTarget.closest('.dropdown__option') == null ? this.isExpanded = false : null
       }
     },
     created: function() {

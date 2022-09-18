@@ -30,7 +30,7 @@
     data: function() {
       return {
         store,
-        isActive: this.active
+        isActive: this.active as boolean
       }
     },
     methods: {

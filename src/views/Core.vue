@@ -26,12 +26,12 @@
     data: function() {
       return {
         triggers: [] as Array<{ element: HTMLElement, top: number, bottom: number, middle: number, height: number }>,
-        section: 'section-1',
-        perspective: 300,
-        translation: 0,
-        opacity: 1,
-        time: 0,
-        remainingScroll: 0
+        section: 'section-1' as string,
+        perspective: 300 as number,
+        translation: 0 as number,
+        opacity: 1 as number,
+        time: 0 as number,
+        remainingScroll: 0 as number
       }
     },
     watch: {

@@ -14,23 +14,24 @@
     },
     data: function() {
       return {
-        isMagnified: false,
-        maxScale: 1,
-        pathX: 0,
-        pathY: 0
+        isMagnified: false as boolean,
+        maxScale: 1 as number,
+        pathX: 0 as number,
+        pathY: 0 as number
       }
     },
     methods: {
       magnifier(e: any) {
-        const x = e.target.getBoundingClientRect().x,
-              y = e.target.getBoundingClientRect().y,
-              w = e.target.getBoundingClientRect().width,
-              h = e.target.getBoundingClientRect().height,
-              refX = document.body.clientWidth / 2,
-              refY = document.body.clientHeight / 2,
-              scaleX = (document.body.clientWidth - (document.body.clientWidth * .08)) / w,
-              scaleY = (document.body.clientHeight - (document.body.clientWidth * .16)) / h,
-              refScale = Math.min(scaleX, scaleY)
+        const target: HTMLElement = e.currentTarget!,
+              x: number = target.getBoundingClientRect().x,
+              y: number = target.getBoundingClientRect().y,
+              w: number = target.getBoundingClientRect().width,
+              h: number = target.getBoundingClientRect().height,
+              refX: number = document.body.clientWidth / 2,
+              refY: number = document.body.clientHeight / 2,
+              scaleX: number = (document.body.clientWidth - (document.body.clientWidth * .08)) / w,
+              scaleY: number = (document.body.clientHeight - (document.body.clientWidth * .16)) / h,
+              refScale: number = Math.min(scaleX, scaleY)
 
         this.isMagnified = !this.isMagnified
         this.maxScale = refScale
@@ -46,7 +47,12 @@
 
 <template>
   <figure class="figure">
-    <div class="figure__asset" :class="isMagnified ? 'figure__asset--magnified' : null" @click="magnifier" @wheel.passive="isMagnified = false" @touchmove.passive="isMagnified = false">
+    <div class="figure__asset"
+      :class="isMagnified ? 'figure__asset--magnified' : null"
+      @click="magnifier"
+      @wheel.passive="isMagnified = false"
+      @touchmove.passive="isMagnified = false"
+    >
       <img v-if="type === 'image'" :src="src" :alt="alt" />
       <video v-else-if="type === 'video'" controls>
         <source :src="src" type="video/mp4" />

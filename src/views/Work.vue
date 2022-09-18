@@ -30,10 +30,10 @@
     },
     data: function() {
       return {
-        activeProjectCodeName: (this.projects[(this.activeProjectPosition as number)] as Route).meta.codeName,
+        activeProjectCodeName: (this.projects[(this.activeProjectPosition as number)] as Route).meta.codeName as string,
         position: this.activeProjectPosition as number,
-        duration: 2000,
-        direction: 'right'
+        duration: 2000 as number,
+        direction: 'right' as string
       }
     },
     methods: {

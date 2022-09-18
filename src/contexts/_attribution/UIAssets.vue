@@ -17,7 +17,7 @@
     },
     data: function() {
       return {
-        links: ['link-3', 'link-2', 'link-1']
+        links: ['link-3', 'link-2', 'link-1'] as Array<string>
       }
     }
   })

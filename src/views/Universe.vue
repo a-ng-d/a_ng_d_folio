@@ -28,10 +28,10 @@
     data: function() {
       return {
         tooltip: {
-          isActive: false,
-          name: '',
-          title: '',
-          description: ''
+          isActive: false as boolean,
+          name: '' as string,
+          title: '' as string,
+          description: '' as string
         } as any,
         universe: [
           {
@@ -56,7 +56,7 @@
             path: 'https://involt.io',
             icon: 'Archive'
           },
-        ] as any
+        ] as Array<{ name: string, path: string, icon: string }>
       }
     },
     methods: {

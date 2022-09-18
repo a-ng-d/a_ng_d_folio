@@ -6,7 +6,7 @@
   import { doMap, random, twoRangesRandom } from '@/utilities/operations'
 
   let glitchscape: any = null
-  const povs: any = {
+  const povs: { [key: string]: () => void } = {
     RESET: () => glitchscape.povReset(),
     INVERT: () => glitchscape.povInvert(),
     MIRROR_1: () => glitchscape.povMirror(1),
@@ -18,7 +18,7 @@
     SIDE: () => glitchscape.povSide(),
     GLOBAL: () => glitchscape.povGlobal(),
   },
-  qualities: any = {
+  qualities: { [key: string]: () => void } = {
     LOW: () => glitchscape.lowQuality(),
     HIGH: () => glitchscape.highQuality()
   }
@@ -55,20 +55,20 @@
     },
     data: function() {
       return {
-        isRendered: false
+        isRendered: false as boolean
       }
     },
     watch: {
-      pov(to, from) {
-        return povs[to]?.() ?? 'No POV matches'
+      pov(to) {
+        return povs[to]?.()
       },
-      quality(to, from) {
-        return qualities[to]?.() ?? 'No QUALITY matches'
+      quality(to) {
+        return qualities[to]?.()
       },
-      isGlitched(to, from) {
+      isGlitched(to) {
         to ? glitchscape.glitch() : glitchscape.unglitch()
       },
-      scrollProgress(to, from) {
+      scrollProgress() {
         return glitchscape.povZoom(this.scrollProgress, this.scrollLimit)
       }
     },
@@ -76,7 +76,7 @@
       glitchscape = new P5((sk: any) => {
 
         const
-          mNumber = 40,
+          mNumber = 5,
           cNumber: number = mNumber / 2,
           sNumber: number = mNumber * 8,
           quality = 50,
@@ -88,15 +88,15 @@
           multiplier: number = scrWidth < 461 ? 1.5 : scrWidth < 1281 ? 1.25 : 1
 
         let
-          fps = 60,
+          fps = 25,
           speed = 4,
           alpha = 1,
           camera: any,
-          mountains: Array<any> = [],
-          clouds: Array<any> = [],
-          stars: Array<any> = []
+          mountains: Array<Mountain> = [],
+          clouds: Array<Cloud> = [],
+          stars: Array<Star> = []
 
-        const povs: any = {
+        const povs: { [key: string]: () => void } = {
           RESET: () => sk.povReset(),
           MIRROR_1: () => sk.povMirror(1),
           MIRROR_2: () => sk.povMirror(2),
@@ -107,7 +107,7 @@
           SIDE: () => sk.povSide(),
           GLOBAL: () => sk.povGlobal(),
         },
-        qualities: any = {
+        qualities: { [key: string]: () => void } = {
           LOW: () => sk.lowQuality(),
           HIGH: () => sk.highQuality()
         }
@@ -243,7 +243,7 @@
           }
 
           draw = () => {
-            const randomColor: { [key: string]: number } = (Object as any).values(HSLColors)[random(0, (Object as any).values(HSLColors).length)]
+            const randomColor: { [key: string]: number } = Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
 
             sk.push()
               sk.translate(this.position.x < 0 ? this.position.x - (this.size.width * multiplier) : this.position.x, this.position.y, this.position.z)
@@ -380,7 +380,7 @@
 
           draw = () => {
             let offsetY = 0
-            const randomColor: { [key: string]: number } = (Object as any).values(HSLColors)[random(0, (Object as any).values(HSLColors).length)]
+            const randomColor: { [key: string]: number } = Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
 
             sk.push()
               sk.translate(this.position.x, this.params.start, this.position.z)
@@ -478,7 +478,7 @@
           }
 
           draw = () => {
-            const randomColor: { [key: string]: number } = (Object as any).values(HSLColors)[random(0, (Object as any).values(HSLColors).length)]
+            const randomColor: { [key: string]: number } = Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
 
             sk.push()
               sk.translate(this.position.x, this.position.y, this.position.z)
@@ -685,14 +685,14 @@
               background: HSLColors.clay
             }))
 
-          mountains.sort((a: any, b: any) => a.position.z - b.position.z)
-          mountains.forEach((mountain: any, index: any) => { mountain.params.order = index })
-          clouds.sort((a: any, b: any) => a.position.z - b.position.z)
-          clouds.forEach((cloud: any, index: any) => { cloud.params.order = index })
+          mountains.sort((a: Mountain, b: Mountain) => a.position.z - b.position.z)
+          mountains.forEach((mountain: Mountain, index: number) => { mountain.params.order = index })
+          clouds.sort((a: Cloud, b: Cloud) => a.position.z - b.position.z)
+          clouds.forEach((cloud: Cloud, index: number) => { cloud.params.order = index })
 
           // default pov and quality
-          povs[this.pov]?.() ?? 'No POV matches'
-          qualities[this.quality]?.() ?? 'No QUALITY matches'
+          povs[this.pov]?.()
+          qualities[this.quality]?.()
 
         }
 

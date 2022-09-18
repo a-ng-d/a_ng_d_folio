@@ -149,6 +149,12 @@ export interface Meta {
   quality: string
 }
 
+export interface Option {
+  name: string,
+  action: () => void,
+  isActive: boolean
+}
+
 type JSONValue =
     | string
     | number

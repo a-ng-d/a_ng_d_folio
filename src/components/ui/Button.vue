@@ -26,10 +26,6 @@
         type: Boolean,
         default: false
       },
-      animation: {
-        type: Array,
-        default: ['normal', '0']
-      },
       isInverted: {
         type: Boolean,
         default: false
@@ -42,15 +38,15 @@
     data: function() {
       return {
         store,
-        isExtensible: this.extensible ? '100%' : 'fit-content',
-        isExpanded: false,
-        isExternal: false,
-        movement: ''
+        isExtensible: this.extensible ? '100%' : 'fit-content' as string,
+        isExpanded: false as boolean,
+        isExternal: false as boolean,
+        movement: '' as string
       }
     },
     methods: {
-      expandParticles(e: any) {
-        const mouseX: number = e.layerX,
+      expandParticles(e: MouseEvent) {
+        const mouseX: number = e.offsetX,
               buttonWidth: number = this.$el.clientWidth,
               buttonHalfWidth: number = buttonWidth / 2
 
@@ -60,7 +56,7 @@
         this.store.isOver = true
         setTimeout(() => this.isExpanded = true, 50)
       },
-      collapseParticles(e: any) {
+      collapseParticles() {
         this.store.isOver = false
         setTimeout(() => this.isExpanded = false, 50)
       }
@@ -80,8 +76,6 @@
       :class="`button--${type}`"
       @mouseover="expandParticles"
       @mouseout="collapseParticles"
-      @touchstart.passive="expandParticles"
-      @touchend.passive="collapseParticles"
       @focus="store.isFocus = true"
       @blur="store.isFocus = false"
       :data-theme="theme"
@@ -116,8 +110,6 @@
       :class="`button--${type}`"
       @mouseover="expandParticles"
       @mouseout="collapseParticles"
-      @touchstart.passive="expandParticles"
-      @touchend.passive="collapseParticles"
       @focus="store.isFocus = true"
       @blur="store.isFocus = false"
       :data-theme="theme"
@@ -152,8 +144,6 @@
       :class="`button--${type}`"
       @mouseover="expandParticles"
       @mouseout="collapseParticles"
-      @touchstart.passive="expandParticles"
-      @touchend.passive="collapseParticles"
       @focus="store.isFocus = true"
       @blur="store.isFocus = false"
       :data-theme="theme"

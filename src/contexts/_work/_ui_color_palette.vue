@@ -39,7 +39,7 @@
     },
     data: function() {
       return {
-        isFullScreen: false
+        isFullScreen: false as boolean
       }
     }
   })

@@ -19,7 +19,7 @@
     },
     data: function() {
       return {
-        isStuck: false
+        isStuck: false as boolean
       }
     },
     watch: {
