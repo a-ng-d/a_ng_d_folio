@@ -170,7 +170,7 @@
         return projects
       },
       getScreenContext() {
-        window.innerWidth < 1024 ? this.store.device = 'MOBILE' : this.store.device = 'DESKTOP'
+        window.innerWidth < 1280 ? this.store.device = 'MOBILE' : this.store.device = 'DESKTOP'
         this.store.device === 'MOBILE' ? this.store.isSoundOn = false : this.store.isSoundOn = true
       },
       isSameContext(to: string) {
