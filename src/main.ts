@@ -25,7 +25,7 @@ window.onload = () => {
   }
 }
 
-const entrance: any = () => {
+const entrance = (): void => {
   loop.setSpeed(2)
   loop.playSegments([[200, 420]], false)
   loop.play()

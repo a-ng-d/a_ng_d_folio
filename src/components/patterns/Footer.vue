@@ -18,10 +18,6 @@
         type: String,
         default: 'LEFT'
       },
-      animation: {
-        type: Array,
-        default: ['normal', '0']
-      },
       theme: {
         type: String,
         default: 'DEFAULT'

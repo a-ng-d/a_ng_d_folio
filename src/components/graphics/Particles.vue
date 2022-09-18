@@ -51,9 +51,9 @@
           weight: number = this.weight
 
         let
-          fps: number = 30,
+          fps = 30,
           units: Array<any> = [],
-          time: number = 0
+          time = 0
 
         // Elements
         class Unit {

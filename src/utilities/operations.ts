@@ -17,11 +17,11 @@ export const twoRangesRandom = (rangeLeftMin: number, rangeLeftMax: number, rang
 }
 
 let timer: any,
-    delta: number = 0,
-    velocity: number = 0,
-    currentPosition: number = 0,
-    snapPosition: number = 0
-export const scrollVelocity = (target: any, scrollLimit: number, orientation: string) => {
+    delta = 0,
+    velocity = 0,
+    currentPosition = 0,
+    snapPosition = 0
+export const scrollVelocity = (target: HTMLElement, scrollLimit: number, orientation: string) => {
   velocity = 1
   delta = 1
   currentPosition =  orientation === 'y' ? target.scrollTop : target.scrollLeft
@@ -31,7 +31,7 @@ export const scrollVelocity = (target: any, scrollLimit: number, orientation: st
   }
   window.requestAnimationFrame(timer)
   delta = Math.abs(currentPosition - snapPosition)
-  delta > 200 ? delta = 1 : delta = delta
+  delta > 200 ? delta = 1 : null
   currentPosition == 0 ? velocity = 1 :
                          currentPosition > scrollLimit - 1 ? velocity = 1 :
                          velocity = doMap(delta, 1, 200, 1, 1.5)

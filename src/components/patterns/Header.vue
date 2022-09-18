@@ -23,7 +23,7 @@
       }
     },
     watch: {
-      scrollProgress(to, from) {
+      scrollProgress() {
         this.scrollProgress > 0 ? this.isStuck = true : this.isStuck = false
       }
     }

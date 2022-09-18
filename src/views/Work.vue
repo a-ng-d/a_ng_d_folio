@@ -1,8 +1,8 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import type { Route } from '@/utilities/types'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
-  import { Vue3Lottie } from 'vue3-lottie'
   import { ArrowLeft, ArrowRight, ArrowDown } from 'lucide-vue-next'
 
   export default defineComponent({
@@ -30,7 +30,7 @@
     },
     data: function() {
       return {
-        activeProjectCodeName: (this.projects[(this.activeProjectPosition as number)] as any).meta.codeName,
+        activeProjectCodeName: (this.projects[(this.activeProjectPosition as number)] as Route).meta.codeName,
         position: this.activeProjectPosition as number,
         duration: 2000,
         direction: 'right'
@@ -48,15 +48,15 @@
         this.switchProject()
       },
       switchProject() {
-        this.activeProjectCodeName = (this.projects[this.position] as any).meta.codeName
-        this.$emit('theme', (this.projects[this.position] as any).meta.theme)
+        this.activeProjectCodeName = (this.projects[this.position] as Route).meta.codeName
+        this.$emit('theme', (this.projects[this.position] as Route).meta.theme)
         this.$emit('activeProjectPosition', this.position)
-        this.$emit('activeProjectBackground', (this.projects[this.position] as any).meta.background)
-        setTimeout(() => this.$emit('activeProjectPov', (this.projects[this.position] as any).meta.pov), 1500)
+        this.$emit('activeProjectBackground', (this.projects[this.position] as Route).meta.background)
+        setTimeout(() => this.$emit('activeProjectPov', (this.projects[this.position] as Route).meta.pov), 1500)
       },
-      splitLetters(el: any) {
+      splitLetters(el: HTMLElement) {
         const
-          title: HTMLElement = el.children[0],
+          title: any = el.children[0],
           label: string = title.innerText,
           split: Array<string> = label.split('')
 
@@ -73,8 +73,8 @@
     },
     created: function() {
       this.$emit('activeProjectPosition', this.position)
-      this.$emit('activeProjectBackground', (this.projects[this.position] as any).meta.background)
-      this.$emit('activeProjectPov', (this.projects[this.position] as any).meta.pov)
+      this.$emit('activeProjectBackground', (this.projects[this.position] as Route).meta.background)
+      this.$emit('activeProjectPov', (this.projects[this.position] as Route).meta.pov)
     }
   })
 </script>
@@ -83,7 +83,7 @@
   <main class="page">
     <div class="background">
       <Transition name="scale-up" :duration="duration" mode="out-in" class="background__item">
-        <div v-if="activeProjectCodeName === ((projects[0] as any) as any).meta.codeName"></div>
+        <div v-if="activeProjectCodeName === (projects[0] as any).meta.codeName"></div>
         <div v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName" style="background: url(/images/_work/_jeprendsquoi/background.svg) 50% / cover no-repeat"></div>
         <div v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName"></div>
         <div v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName"></div>
@@ -94,7 +94,7 @@
       <article class="work" :data-theme="theme">
         <div class="work__illustration" :style="direction === 'right' ? '--offset: -100vw' : '--offset: 100vw'">
           <Transition name="across" :duration="duration" mode="out-in" class="work__illustration__item">
-            <Vue3Lottie v-if="activeProjectCodeName === ((projects[0] as any) as any).meta.codeName" :animationData="((projects[0] as any) as any).meta.illustration" />
+            <Vue3Lottie v-if="activeProjectCodeName === (projects[0] as any).meta.codeName" :animationData="((projects[0] as any) as any).meta.illustration" />
             <img v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName" :src="(projects[1] as any).meta.illustration" />
             <Vue3Lottie v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName" :animationData="(projects[2] as any).meta.illustration" />
             <Vue3Lottie v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName" :animationData="(projects[3] as any).meta.illustration" />
@@ -105,8 +105,8 @@
           <div class="work__summary__description">
             <div class="work__title">
               <Transition name="wheel" mode="out-in" :duration="duration" @before-leave="splitLetters" @before-enter="splitLetters" appear>
-                <div v-if="activeProjectCodeName === ((projects[0] as any) as any).meta.codeName">
-                  <h2>{{ ((projects[0] as any) as any).meta.codeName }}</h2>
+                <div v-if="activeProjectCodeName === (projects[0] as any).meta.codeName">
+                  <h2>{{ (projects[0] as any).meta.codeName }}</h2>
                 </div>
                 <div v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName">
                   <h2>{{ (projects[1] as any).meta.codeName }}</h2>
@@ -141,9 +141,9 @@
             </div>
             <ul class="work__data">
               <Transition class="work__data__item" name="slide-right" :duration="duration * 1.5" mode="out-in">
-                <li v-if="activeProjectCodeName === ((projects[0] as any) as any).meta.codeName">
+                <li v-if="activeProjectCodeName === (projects[0] as any).meta.codeName">
                   <h6>{{ $t("global.date") }}</h6>
-                  <p>{{ ((projects[0] as any) as any).meta.date }}</p>
+                  <p>{{ (projects[0] as any).meta.date }}</p>
                 </li>
                 <li v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName">
                   <h6>{{ $t("global.date") }}</h6>

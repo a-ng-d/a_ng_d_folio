@@ -1,8 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import Footer from '@/components/patterns/Footer.vue'
-  import Button from '@/components/ui/Button.vue'
-  import ScrollingText from '@/components/ui/ScrollingText.vue'
   import About from '@/contexts/_id/About.vue'
   import Networks from '@/contexts/_id/Networks.vue'
   import Career from '@/contexts/_id/Career.vue'
@@ -14,8 +12,6 @@
     name: 'Short',
     components: {
       Footer,
-      Button,
-      ScrollingText,
       About,
       Networks,
       Career,

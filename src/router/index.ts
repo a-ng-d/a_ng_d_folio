@@ -10,7 +10,6 @@ import Lab from '../views/Lab.vue'
 import Contact from '../views/Contact.vue'
 import Attribution from '../views/Attribution.vue'
 import Unknown from '../views/Unknown.vue'
-import Controler from '../views/Controler.vue'
 import JBRAnimation from '@/assets/animations/_work/_jean_bobby_radio/animation.json'
 import UCPAnimation from '@/assets/animations/_work/_ui_color_palette/animation.json'
 import AIAnimation from '@/assets/animations/_work/_awesome_ipsums/animation.json'
@@ -229,19 +228,6 @@ const router = createRouter({
         view: 'ATTRIBUTION',
         theme: 'DEFAULT',
         filter: filters.grayscale,
-        pov: 'RESET',
-        quality: 'HIGH'
-      }
-    },
-    {
-      path: '/_glitchscape',
-      name: '_GLITCHSCAPE',
-      component: Controler,
-      meta: {
-        title: 'Glitchscape controler',
-        view: 'EMPTY',
-        theme: 'DEFAULT',
-        filter: filters.creamySun,
         pov: 'RESET',
         quality: 'HIGH'
       }

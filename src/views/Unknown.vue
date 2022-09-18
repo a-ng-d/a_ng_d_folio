@@ -30,7 +30,7 @@
       }
     },
     watch: {
-      filter(to, from) {
+      filter(to) {
         to['name'] === 'NIGHTLY' ? this.$emit('theme', 'DARK') : this.$emit('theme', 'DEFAULT')
       }
     },

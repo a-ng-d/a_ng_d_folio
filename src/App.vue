@@ -1,19 +1,16 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import { store } from '@/utilities/store'
-  import { RouterLink, RouterView } from 'vue-router'
-  import Filter from '@/components/graphics/Filter.vue'
+  import type { Route } from '@/utilities/types'
   import Logotype from '@/components/graphics/Logotype.vue'
   import MainMenu from '@/contexts/MainMenu.vue'
   import Glitchscape from '@/components/graphics/Glitchscape.vue'
   import Particles from '@/components/graphics/Particles.vue'
   import Audio from '@/components/ui/Audio.vue'
-  import { doMap, scrollVelocity } from '@/utilities/operations'
 
   export default defineComponent({
     name: 'App',
     components: {
-      Filter,
       Logotype,
       MainMenu,
       Glitchscape,
@@ -58,7 +55,7 @@
                      this.view === 'WORK' ? this.projects[this.activeProjectPosition].meta.theme :
                      to.meta.theme
 
-        const AB: any = {
+        const AB: { [key: string]: () => void } = {
           'HOME > CORE': () => {
             this.transition = 'go-left'
             this.isHardTransited = true
@@ -109,7 +106,7 @@
           }
         }
 
-        const A: any = {
+        const A: { [key: string]: () => void } = {
           'UNIVERSE': () => {
             this.transition = 'go-down'
             this.isHardTransited = this.isSameContext(to.path)
@@ -124,7 +121,7 @@
           }
         }
 
-        const B: any = {
+        const B: { [key: string]: () => void } = {
           'UNIVERSE': () => {
             this.transition = 'go-up'
             this.isQuickMenu = true
@@ -150,12 +147,12 @@
       }
     },
     methods: {
-      getScrollParams(e: any) {
-        this.pageHeight = e.target.scrollHeight
-        this.scrollProgress = e.target.scrollTop
+      getScrollParams(e: Event) {
+        this.pageHeight = (e.target as HTMLElement).scrollHeight
+        this.scrollProgress = (e.target as HTMLElement).scrollTop
         this.viewHeight = document.body.clientHeight
       },
-      resetDelay(e: any) {
+      resetDelay(e: HTMLElement) {
         e.style.transitionDelay = '0'
       },
       expandParticles() {
@@ -164,9 +161,9 @@
       collapseParticles() {
         setTimeout(() => this.isExpanded = false, 200)
       },
-      getProjects(src: Array<any>) {
-        let projects: Array<any> = src.map((a: any) => a)
-        projects = projects.filter((project: any) => project.meta.view === 'PROJECT').sort((a: any, b: any) => a.meta.position - b.meta.position)
+      getProjects(src: Array<Route>) {
+        let projects: Array<Route> = src.map((a: Route) => a)
+        projects = projects.filter((project: Route) => project.meta.view === 'PROJECT').sort((a: Route, b: Route) => a.meta.position - b.meta.position)
         return projects
       },
       getScreenContext() {
@@ -189,7 +186,6 @@
 
 <template>
   <!--Resources-->
-  <Filter />
   <Logotype />
 
   <!--Transition-->

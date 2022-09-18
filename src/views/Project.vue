@@ -102,6 +102,7 @@
               v-for="(objective, index) in project.objectives"
               :title="`#${index + 1}`"
               :description="objective"
+              :key="`#${index + 1}`"
               :theme="theme"
             />
           </template>
@@ -115,6 +116,7 @@
             <ContentContainer
               v-for="(role, index) in project.roles"
               :title="`#${index + 1}`" :description="role"
+              :key="`#${index + 1}`"
               :theme="theme"
             />
           </template>

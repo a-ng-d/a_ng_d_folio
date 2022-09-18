@@ -1,11 +1,12 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import { store } from '@/utilities/store'
+  import type { Route } from '@/utilities/types'
   import Header from '@/components/patterns/Header.vue'
   import Button from '@/components/ui/Button.vue'
   import Pagination from '@/components/ui/Pagination.vue'
   import Navigation from '@/components/ui/Navigation.vue'
-  import { ArrowRight, ArrowDown, ArrowLeft, Rocket, Home, X } from 'lucide-vue-next'
+  import { Rocket, Home, X } from 'lucide-vue-next'
 
   export default defineComponent({
     name: 'MainMenu',
@@ -14,9 +15,6 @@
       Button,
       Pagination,
       Navigation,
-      ArrowRight,
-      ArrowDown,
-      ArrowLeft,
       Rocket,
       Home,
       X
@@ -58,7 +56,7 @@
     },
     methods: {
       opaqueBackground(view: string) {
-        const actions: any = {
+        const actions: { [key: string]: string } = {
           SHORT: 'var(--color-soft-wind)',
           CORE: 'var(--color-candy-floss)',
           PROJECT: this.theme === 'DEFAULT' ? 'var(--color-cream)' : 'var(--color-soil)'
@@ -66,10 +64,10 @@
         return actions[view] ?? 'transparent'
       },
       previousProject() {
-        return (this.projects[(this.activeProjectPosition as number) - 1 >= 0 ? (this.activeProjectPosition as unknown as number) - 1 : this.projects.length - 1] as any).path
+        return (this.projects[(this.activeProjectPosition as number) - 1 >= 0 ? (this.activeProjectPosition as unknown as number) - 1 : this.projects.length - 1] as Route).path
       },
       nextProject() {
-        return (this.projects[(this.activeProjectPosition as number) + 1 < this.projects.length ? (this.activeProjectPosition as unknown as number) + 1 : 0] as any).path
+        return (this.projects[(this.activeProjectPosition as number) + 1 < this.projects.length ? (this.activeProjectPosition as unknown as number) + 1 : 0] as Route).path
       }
     }
   })

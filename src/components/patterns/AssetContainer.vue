@@ -46,7 +46,7 @@
       }
     },
     watch: {
-      unmagnify(to, from) {
+      unmagnify(to) {
         to == true ? this.isMagnified = false : this.isMagnified
       }
     }

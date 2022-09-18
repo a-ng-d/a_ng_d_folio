@@ -76,10 +76,10 @@
       glitchscape = new P5((sk: any) => {
 
         const
-          mNumber: number = 40,
+          mNumber = 40,
           cNumber: number = mNumber / 2,
           sNumber: number = mNumber * 8,
-          quality: number = 50,
+          quality = 50,
           scrWidth: number = window.innerWidth,
           scrHeight: number = window.innerHeight,
           limitX: number = scrWidth * 2,
@@ -88,9 +88,9 @@
           multiplier: number = scrWidth < 461 ? 1.5 : scrWidth < 1281 ? 1.25 : 1
 
         let
-          fps: number = 60,
-          speed: number = 4,
-          alpha: number = 1,
+          fps = 60,
+          speed = 4,
+          alpha = 1,
           camera: any,
           mountains: Array<any> = [],
           clouds: Array<any> = [],

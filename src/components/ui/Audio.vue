@@ -30,10 +30,10 @@
       }
     },
     watch: {
-      volume(to, from) {
+      volume(to) {
         this.$el.volume = to
       },
-      play(to, from) {
+      play(to) {
         if (to) this.$el.play()
         else {
           this.$el.pause()

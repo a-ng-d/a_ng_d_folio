@@ -92,16 +92,17 @@
       }
     },
     methods: {
-      smoothScroll(e: any) {
-        this.slider.velocity = scrollVelocity(e.target, e.target.scrollWidth - document.body.clientWidth, 'x')
+      smoothScroll(e: Event) {
+        const target = e.target as HTMLElement
+        this.slider.velocity = scrollVelocity(target, target.scrollWidth - document.body.clientWidth, 'x')
         this.slider.scale = doMap(this.slider.velocity, 1, 1.5, 1, 2)
         this.slider.gap = doMap(this.slider.velocity, 1, 1.5, 1, 4)
 
-        if (e.target.scrollLeft >= e.target.scrollWidth - document.body.clientWidth - 10) {
+        if (target.scrollLeft >= target.scrollWidth - document.body.clientWidth - 10) {
           this.slider.hasPrevButton = true
           this.slider.hasNextButton = false
         }
-        else if (e.target.scrollLeft <= 0) {
+        else if (target.scrollLeft <= 0) {
           this.slider.hasPrevButton = false
           this.slider.hasNextButton = true
         }
@@ -109,7 +110,7 @@
           this.slider.hasPrevButton = this.slider.hasNextButton = true
 
         for (let i = 1; i <= this.slider.slides!; i++)
-          if (e.target.scrollLeft >= document.body.clientWidth * (i - 1) && e.target.scrollLeft < document.body.clientWidth * i) this.slider.slide = i
+          if (target.scrollLeft >= document.body.clientWidth * (i - 1) && target.scrollLeft < document.body.clientWidth * i) this.slider.slide = i
       },
       slideRight() {
         const scrollBox: HTMLElement = Array.from(document.getElementsByClassName('shots__scroll') as HTMLCollectionOf<HTMLElement>)[0]
@@ -178,7 +179,13 @@
       </Transition>
       <div class="shots__scroll" tabindex="-1" @scroll.passive="smoothScroll">
         <div class="shots__container">
-          <Transition v-for="(shot, index) in shots" name="slide-up" :style="`--delay: calc(var(--delay-turtoise) + (var(--duration-step) * ${(index * .5) - .5}))`" appear>
+          <Transition
+            v-for="(shot, index) in shots"
+            name="slide-up"
+            :style="`--delay: calc(var(--delay-turtoise) + (var(--duration-step) * ${(index * .5) - .5}))`"
+            :key="`shot-${index + 1}`"
+            appear
+          >
             <AssetContainer
               :title="shot.name"
               :thumbnail="`/images/_lab/sd/asset-${shots.length - index}.png`"
@@ -186,7 +193,6 @@
               :type="shot.sourceType"
               :sourceName="shot.sourceName"
               :sourceLink="shot.sourceLink"
-              :key="`shot-${index + 1}`"
               tabindex="0"
               @click.passive="active = `shot-${index + 1}`"
               @keyup.enter="active = `shot-${index + 1}`"

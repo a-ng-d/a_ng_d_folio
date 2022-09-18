@@ -28,11 +28,11 @@
     data: function() {
       return {
         tooltip: {
-          isActive: false as boolean,
-          name: '' as string,
-          title: '' as string,
-          description: '' as string
-        } as any ,
+          isActive: false,
+          name: '',
+          title: '',
+          description: ''
+        } as any,
         universe: [
           {
             name: 'core',
@@ -60,13 +60,13 @@
       }
     },
     methods: {
-      expandTooltip(e: any) {
+      expandTooltip(e: Event) {
         this.tooltip.isActive = true
-        this.tooltip.name = e.target.id
-        this.tooltip.title = i18n.global.t(`universe.${e.target.id}.title`)
-        this.tooltip.description = i18n.global.t(`universe.${e.target.id}.description`)
+        this.tooltip.name = (e.target as HTMLElement).id
+        this.tooltip.title = i18n.global.t(`universe.${(e.target as HTMLElement).id}.title`)
+        this.tooltip.description = i18n.global.t(`universe.${(e.target as HTMLElement).id}.description`)
       },
-      collapseTooltip(e: any) {
+      collapseTooltip() {
         this.tooltip = {
           isActive: false
         }
@@ -82,7 +82,7 @@
   <main class="page">
     <section class="menu">
       <ul class="menu__items">
-        <li v-for="(world, index) in universe" :key="universe.name">
+        <li v-for="(world, index) in universe" :key="world.name">
           <Transition name="slide-up" appear :style="`--delay: calc(var(--delay-turtoise) + ${index * 100}ms)`">
             <div :style="`position: absolute ; top: ${random(0, 80)}% ; right: ${random(0, 80)}%`">
               <Button

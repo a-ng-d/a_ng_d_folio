@@ -25,7 +25,7 @@
     },
     data: function() {
       return {
-        triggers: [] as Array<any>,
+        triggers: [] as Array<{ element: HTMLElement, top: number, bottom: number, middle: number, height: number }>,
         section: 'section-1',
         perspective: 300,
         translation: 0,
@@ -35,7 +35,7 @@
       }
     },
     watch: {
-      scrollProgress(to, from) {
+      scrollProgress(to) {
         this.triggers.forEach((trigger, index) => {
           if (to >= trigger.top && to < trigger.bottom) {
             const startScaling = index == 0 ? 0 : -this.perspective,
@@ -49,7 +49,7 @@
     },
     methods: {
       backToForeground() {
-        let animateScroll: any, progress: any
+        let animateScroll: any, progress: number
 
         this.time == 0 ? this.remainingScroll = (this.scrollLimit as number) - ((this.scrollLimit as number) - this.$el.scrollTop) : null
 
@@ -64,8 +64,8 @@
       }
     },
     mounted: function() {
-      const triggers: any = this.$el.children[0].children
-      triggers.forEach((trigger: any) => {
+      const triggers: Array<HTMLElement> = this.$el.children[0].children
+      triggers.forEach((trigger: HTMLElement) => {
         this.triggers.push({
           element: trigger,
           top: trigger.offsetTop,

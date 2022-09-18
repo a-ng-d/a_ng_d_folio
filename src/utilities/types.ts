@@ -123,3 +123,41 @@ export interface Row {
   height: number,
   x: number
 }
+
+export interface Route {
+  path: string,
+  name: string,
+  component: any,
+  meta: Meta
+}
+
+export interface Meta {
+  title: string,
+  codeName: string,
+  description: string,
+  summary: string,
+  date: string,
+  objectives: Array<string>,
+  roles: Array<string>,
+  position: number,
+  view: string,
+  illustration: JSONObject,
+  background: HuBrInSaGr,
+  theme: string,
+  filter: HuBrInSaGr,
+  pov: string,
+  quality: string
+}
+
+type JSONValue =
+    | string
+    | number
+    | boolean
+    | JSONObject
+    | JSONArray
+
+interface JSONObject {
+    [x: string]: JSONValue
+}
+
+type JSONArray = Array<JSONValue>

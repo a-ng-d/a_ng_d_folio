@@ -4,7 +4,7 @@
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import ScrollingText from '@/components/ui/ScrollingText.vue'
-  import { ArrowUp, ArrowLeft, ArrowDown, ArrowRight, Heart, Briefcase, FlaskConical, Mail, User } from 'lucide-vue-next'
+  import { ArrowLeft, ArrowDown, ArrowRight, Heart, Briefcase, FlaskConical, Mail, User } from 'lucide-vue-next'
 
   export default defineComponent({
     name: 'Home',
@@ -12,7 +12,6 @@
       Footer,
       Button,
       ScrollingText,
-      ArrowUp,
       ArrowLeft,
       ArrowDown,
       ArrowRight,

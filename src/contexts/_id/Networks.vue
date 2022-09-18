@@ -69,6 +69,7 @@
           :color="network.color"
           :href="$t(`id.network.${network.name}.href`)"
           :alt="$t(`id.network.${network.name}.alt`)"
+          :key="network.name"
           :theme="theme"
         >
           <template #icon>

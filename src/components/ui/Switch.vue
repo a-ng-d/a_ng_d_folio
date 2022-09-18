@@ -2,7 +2,6 @@
   import { defineComponent } from 'vue'
   import { store } from '@/utilities/store'
   import Particles from '@/components/graphics/Particles.vue'
-  import { doMap } from '@/utilities/operations'
 
   export default defineComponent({
     name: 'Switch',
