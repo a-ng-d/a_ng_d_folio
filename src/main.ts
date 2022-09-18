@@ -30,7 +30,7 @@ const entrance = (): void => {
   loop.playSegments([[200, 420]], false)
   loop.play()
   feedback.volume = .2
-  feedback.play()
+  document.body.clientWidth > 1280 ? feedback.play() : null
   document.onkeyup = null
   document.body.ontouchstart = null
 
