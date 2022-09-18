@@ -1,5 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import lottie from 'lottie-web'
   import type { Route } from '@/utilities/types'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
@@ -94,11 +95,11 @@
       <article class="work" :data-theme="theme">
         <div class="work__illustration" :style="direction === 'right' ? '--offset: -100vw' : '--offset: 100vw'">
           <Transition name="across" :duration="duration" mode="out-in" class="work__illustration__item">
-            <Vue3Lottie v-if="activeProjectCodeName === (projects[0] as any).meta.codeName" :animationData="((projects[0] as any) as any).meta.illustration" />
+            <Vue3Lottie v-if="activeProjectCodeName === (projects[0] as any).meta.codeName" :animationData="((projects[0] as any) as any).meta.illustration" :rendererSettings="{ progressiveLoad: true }" />
             <img v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName" :src="(projects[1] as any).meta.illustration" />
-            <Vue3Lottie v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName" :animationData="(projects[2] as any).meta.illustration" />
-            <Vue3Lottie v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName" :animationData="(projects[3] as any).meta.illustration" />
-            <Vue3Lottie v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName" :animationData="(projects[4] as any).meta.illustration" />
+            <Vue3Lottie v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName" :animationData="(projects[2] as any).meta.illustration" :rendererSettings="{ progressiveLoad: true }" />
+            <Vue3Lottie v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName" :animationData="(projects[3] as any).meta.illustration" :rendererSettings="{ progressiveLoad: true }" />
+            <Vue3Lottie v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName" :animationData="(projects[4] as any).meta.illustration" :rendererSettings="{ progressiveLoad: true }" />
           </Transition>
         </div>
         <aside class="work__summary">
