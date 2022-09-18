@@ -21,10 +21,6 @@
       movement: {
         type: String,
         default: 'go-right'
-      },
-      borderRadius: {
-        type: String,
-        default: '0'
       }
     },
     data: function() {
@@ -252,7 +248,4 @@
     width: 100%
     height: 100%
     pointer-events: none
-
-    :deep(canvas)
-      border-radius: v-bind("borderRadius")
 </style>
