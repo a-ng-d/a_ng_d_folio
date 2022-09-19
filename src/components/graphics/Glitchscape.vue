@@ -57,7 +57,6 @@
     data: function() {
       return {
         store,
-        numberOfParticles: store.device === 'DESKTOP' ? 30 : 10 as number,
         isRendered: false as boolean
       }
     },
@@ -75,11 +74,18 @@
         return glitchscape.povZoom(this.scrollProgress, this.scrollLimit)
       }
     },
+    methods: {
+      getParticlesNumber(): number {
+        const device: string = this.store.device
+        if (device === 'MOBILE') return 10
+        else return 30
+      }
+    },
     mounted: function() {
-      glitchscape = new P5((sk: any) => {
 
+      glitchscape = new P5((sk: any) => {
         const
-          mNumber = this.numberOfParticles as number,
+          mNumber:number = this.getParticlesNumber(),
           cNumber: number = mNumber / 2,
           sNumber: number = mNumber * 4,
           quality = 50,
