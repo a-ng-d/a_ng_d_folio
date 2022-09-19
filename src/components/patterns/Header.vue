@@ -42,6 +42,7 @@
     <div class="main-menu__logotype">
       <RouterLink
         to="/"
+        tabindex="-1"
       >
         <Logotype :theme="theme" />
       </RouterLink>
@@ -90,6 +91,7 @@
     &__logotype
       width: var(--logotype-size)
       height: var(--logotype-size)
+      transition: var(--simple-transition)
 
     &--stuck
       --offset: -96rem
@@ -97,4 +99,10 @@
   @include device.smartphone
     .main-menu
       gap: 0 var(--layout-column-gap)
+
+  // Event
+  .main-menu
+    &__logotype:active
+      transform: var(--active-scale)
+
 </style>
