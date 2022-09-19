@@ -108,8 +108,12 @@
       position: absolute
       width: 100%
       height: 100%
+      border-radius: calc(var(--button-height-size) / 2)
+      overflow: hidden
+      pointer-events: none
       top: 0
       left: 0
+      -webkit-mask-image: -webkit-radial-gradient(white, black)
 
     input
       position: absolute
