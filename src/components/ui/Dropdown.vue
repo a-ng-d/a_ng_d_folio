@@ -1,6 +1,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import type { Option } from '@/utilities/types'
+  import { store } from '@/utilities/store'
   import Button from '@/components/ui/Button.vue'
   import Container from '@/components/ui/Container.vue'
   import Label from '@/components/ui/Label.vue'
@@ -29,6 +30,7 @@
     },
     data: function() {
       return {
+        store,
         isExpanded: false as boolean,
         activeOption: 0 as number,
         allOptions: this.options as Array<Option>
@@ -107,6 +109,8 @@
             :class="option.isActive ? 'dropdown__option--active' : ''"
             @click="setOption(option.action, option.name, index)"
             @keyup.space="setOption(option.action, option.name, index)"
+            @focus="store.isFocus = true"
+            @blur="store.isFocus = false"
             tabindex="0"
             ref="option"
           >

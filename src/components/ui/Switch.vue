@@ -44,10 +44,6 @@
 
 <template>
   <div class="switch"
-    @mouseover="store.isOver = true"
-    @mouseout="store.isOver = false"
-    @touchstart.passive="store.isOver = true"
-    @touchend.passive="store.isOver = false"
     :data-theme="theme"
   >
     <input
