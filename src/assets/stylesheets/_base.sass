@@ -56,6 +56,15 @@ h1, h2, h3, h4, h5, h6, p
   color: var(--text-color)
   transition: var(--grandma-transition)
 
+p, figcaption
+  @include text.current
+
+p.enhanced
+  @include text.enhanced
+
+p.discrete
+  @include text.caption
+
 section
   display: flex
   flex-flow: column
@@ -145,9 +154,3 @@ a
         &:before
           transform: translateX(0)
           opacity: 1
-
-p, figcaption
-  @include text.current
-
-p.enhanced
-  @include text.enhanced

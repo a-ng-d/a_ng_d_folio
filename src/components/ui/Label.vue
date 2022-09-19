@@ -12,6 +12,10 @@
         type: Boolean,
         default: false
       },
+      small: {
+        type: Boolean,
+        default: false
+      },
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -22,19 +26,16 @@
 
 <template>
   <div class="label" :data-theme="theme" :data-underlined="underlined">
-    <span>{{ label }}</span>
+    <p :class="small ? 'discrete' : ''">{{ label }}</p>
   </div>
 </template>
 
 <style lang="sass">
-  @use '@/assets/stylesheets/text-styles.sass' as text
-
   // Structure
   .label
-    @include text.current
     display: inline-block
 
-    span
+    p
       z-index: 1
       transition: var(--slow-transition)
 

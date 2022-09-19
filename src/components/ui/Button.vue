@@ -85,9 +85,9 @@
           <slot name="icon"></slot>
         </div>
         <div v-if="layout != 'ICON-ONLY'" class="button__label">
-          <span>
+          <p>
             {{ label }}
-          </span>
+          </p>
         </div>
         <div v-if="layout === 'ICON-BOTH'" class="button__icon">
           <slot name="additional-icon"></slot>
@@ -119,9 +119,9 @@
           <slot name="icon"></slot>
         </div>
         <div v-if="layout != 'ICON-ONLY'" class="button__label">
-          <span>
+          <p>
             {{ label }}
-          </span>
+          </p>
         </div>
         <div v-if="layout === 'ICON-BOTH'" class="button__icon">
           <slot name="additional-icon"></slot>
@@ -154,9 +154,9 @@
           <slot name="icon"></slot>
         </div>
         <div v-if="layout != 'ICON-ONLY'" class="button__label">
-          <span>
+          <p>
             {{ label }}
-          </span>
+          </p>
         </div>
       </div>
       <div class="button__background">
@@ -172,7 +172,6 @@
 </template>
 
 <style scoped lang="sass">
-  @use '@/assets/stylesheets/text-styles.sass' as text
   @use '@/assets/stylesheets/mixins' as device
 
   // Structure
@@ -250,15 +249,15 @@
       justify-content: center
       padding: 0 calc(var(--button-height-size) / 2)
       text-align: center
-      @include text.label
-      transition: var(--slow-transition)
 
-      span
+      p
         display: -webkit-box
         -webkit-line-clamp: 2
         -webkit-box-orient: vertical
         overflow: hidden
         padding: var(--spacing-xs-000) 0
+        transition: var(--slow-transition)
+        line-height: 1
 
     &__background
       position: absolute

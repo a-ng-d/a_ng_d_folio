@@ -52,6 +52,7 @@
         <Label
           :label="$t('footer.attribution')"
           underlined
+          small
           :theme="theme === 'DEFAULT' ? 'DARK' : 'DEFAULT'"
         />
       </RouterLink>
@@ -75,7 +76,7 @@
 </template>
 
 <style scoped lang="sass">
-  @use '@/assets/stylesheets/text-styles.sass' as text
+  @use '@/assets/stylesheets/text-styles' as text
   @use '@/assets/stylesheets/mixins' as device
 
   // Structure
@@ -99,7 +100,7 @@
       background-color: var(--background-color)
       transition: var(--slow-transition)
 
-      &__content, &__link, .label
+      &__content, &__link
         @include text.caption
 
       &__content
