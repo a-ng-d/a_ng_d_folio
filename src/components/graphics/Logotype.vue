@@ -42,7 +42,7 @@
     & > line
       --stroke-width: v-bind("weight")
       stroke-dasharray: var(--dash)
-      animation: raining var(--duration-turtoise) var(--animation-delay) infinite ease-out
+      animation: raining var(--duration-jogging) var(--animation-delay) infinite ease-out
       animation-play-state: paused
       stroke-dashoffset: 0
 
