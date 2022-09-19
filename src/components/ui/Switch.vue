@@ -63,7 +63,6 @@
             <Particles
               :weight="16"
               :isExpanded="isActive"
-              borderRadius="calc(var(--button-height-size) / 4)"
             />
           </div>
         </div>
