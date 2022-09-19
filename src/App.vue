@@ -289,10 +289,10 @@
 </template>
 
 <style lang="sass">
-  @use '@/assets/stylesheets/tokens.sass'
-  @use '@/assets/stylesheets/base.sass'
-  @use '@/assets/stylesheets/animations.sass'
-  @use '@/assets/stylesheets/base.sass' as device
+  @use '@/assets/stylesheets/tokens'
+  @use '@/assets/stylesheets/base'
+  @use '@/assets/stylesheets/animations'
+  @use '@/assets/stylesheets/mixins' as device
 
   // Structure
   .page

@@ -138,7 +138,7 @@
 </template>
 
 <style scoped lang="sass">
-  @use '@/assets/stylesheets/base.sass' as device
+  @use '@/assets/stylesheets/mixins' as device
 
   // Structure
   .project

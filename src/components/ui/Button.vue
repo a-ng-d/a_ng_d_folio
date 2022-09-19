@@ -173,7 +173,7 @@
 
 <style scoped lang="sass">
   @use '@/assets/stylesheets/text-styles.sass' as text
-  @use '@/assets/stylesheets/base.sass' as device
+  @use '@/assets/stylesheets/mixins' as device
 
   // Structure
   .button
