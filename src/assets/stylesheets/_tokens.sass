@@ -289,12 +289,12 @@
   --rich-external-link-size: var(--sizing-xxl-000)
 
   //// Animation
-  --simple-transition: var(--duration-running) all var(--ease-peps)
-  --intermediate-transition: var(--duration-jogging) all var(--ease-vroom)
-  --slow-transition: var(--duration-turtoise) all ease
-  --grandma-transition: var(--duration-grandma) all var(--ease-vroom)
-  --snail-transition: var(--duration-snail) all var(--ease-vroom)
-  --animated-scroll-transition: all 100ms linear
+  --simple-transition: var(--duration-running) var(--delay, 0ms) all var(--ease-peps)
+  --intermediate-transition: var(--duration-jogging) var(--delay, 0ms) all var(--ease-vroom)
+  --slow-transition: var(--duration-turtoise) var(--delay, 0ms) all ease
+  --grandma-transition: var(--duration-grandma) var(--delay, 0ms) all var(--ease-vroom)
+  --snail-transition: var(--duration-snail) var(--delay, 0ms) all var(--ease-vroom)
+  --animated-scroll-transition: 100ms all linear
 
   --start-position: 20vh
 
