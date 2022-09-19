@@ -1,8 +1,12 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import Logotype from '@/components/graphics/Logotype.vue'
 
   export default defineComponent({
     name: 'Header',
+    components: {
+      Logotype
+    },
     props: {
       background: {
         type: String,
@@ -36,9 +40,11 @@
       <slot name="left-part"></slot>
     </div>
     <div class="main-menu__logotype">
-      <svg viewBox="0 0 500 500">
-        <use href="#logotype" />
-      </svg>
+      <RouterLink
+        to="/"
+      >
+        <Logotype :theme="theme" />
+      </RouterLink>
     </div>
     <div class="main-menu__right-part">
       <slot name="right-part"></slot>
@@ -85,21 +91,10 @@
       width: var(--logotype-size)
       height: var(--logotype-size)
 
-      svg
-        transition: var(--grandma-transition)
-        fill: var(--logotype-color)
-
     &--stuck
       --offset: -96rem
 
   @include device.smartphone
     .main-menu
       gap: 0 var(--layout-column-gap)
-
-  // Aspect
-  .main-menu
-    --logotype-color: var(--color-soil)
-
-    &[data-theme="DARK"]
-      --logotype-color: var(--color-cream)
 </style>

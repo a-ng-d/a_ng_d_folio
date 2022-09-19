@@ -183,9 +183,6 @@
 </script>
 
 <template>
-  <!--Resources-->
-  <Logotype />
-
   <!--Transition-->
   <Particles
     :weight="160"

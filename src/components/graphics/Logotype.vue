@@ -2,14 +2,48 @@
   import { defineComponent } from 'vue'
 
   export default defineComponent({
-    name: 'Logotype'
+    name: 'Logotype',
+    props: {
+      theme: {
+        type: String,
+        default: 'DEFAULT'
+      }
+    },
+    data: function() {
+      return {
+        weight: 50 as number,
+        dash: 150 as number,
+      }
+    }
   })
 </script>
 
 <template>
-  <svg width="0" height="0" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="position:absolute">
-    <defs>
-      <path id="logotype" fill-rule="evenodd" clip-rule="evenodd" d="M105.801 138.651C112.705 126.693 108.608 111.404 96.6507 104.5C84.6933 97.5964 69.4036 101.693 62.5 113.651L50 135.301C43.0965 147.259 47.1933 162.548 59.1507 169.452C71.108 176.355 86.3977 172.259 93.3013 160.301L105.801 138.651ZM268.651 104.5C280.608 111.404 284.705 126.693 277.801 138.651L215.301 246.904C208.398 258.861 193.108 262.958 181.151 256.054C169.193 249.151 165.096 233.861 172 221.904L234.5 113.651C241.404 101.693 256.693 97.5964 268.651 104.5ZM182.151 105.5C194.108 112.404 198.205 127.693 191.301 139.651L128.801 247.904C121.898 259.861 106.608 263.958 94.6507 257.054C82.6934 250.151 78.5965 234.861 85.5 222.904L148 114.651C154.904 102.693 170.193 98.5964 182.151 105.5ZM363.801 138.651C370.705 126.693 366.608 111.404 354.651 104.5C342.693 97.5964 327.404 101.693 320.5 113.651L258 221.904C251.096 233.861 255.193 249.151 267.151 256.054C279.108 262.958 294.398 258.861 301.301 246.904L363.801 138.651ZM440.651 104.5C452.608 111.404 456.705 126.693 449.801 138.651L437.301 160.301C430.398 172.259 415.108 176.355 403.151 169.452C391.193 162.548 387.096 147.259 394 135.301L406.5 113.651C413.404 101.693 428.693 97.5964 440.651 104.5ZM391.651 189.5C403.608 196.404 407.705 211.693 400.801 223.651L361.502 291.719C354.599 303.676 339.309 307.773 327.351 300.869C315.394 293.966 311.297 278.676 318.201 266.719L357.5 198.651C364.404 186.693 379.693 182.596 391.651 189.5ZM255.151 276.5C267.108 283.404 271.205 298.693 264.301 310.651L257.087 323.147C261.356 323.132 265.687 324.211 269.651 326.5C281.608 333.404 285.705 348.693 278.801 360.651L261.301 390.962C254.398 402.919 239.108 407.016 227.151 400.112C215.193 393.209 211.096 377.919 218 365.962L225.215 353.466C220.945 353.48 216.615 352.401 212.651 350.112C200.693 343.209 196.596 327.919 203.5 315.962L221 285.651C227.904 273.693 243.193 269.596 255.151 276.5Z"/>
-   </defs>
+  <svg class="logotype" width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" :data-theme="theme">
+    <line x1="379.151" y1="211.151" x2="339.851" y2="279.219" :stroke-width="weight" stroke-linecap="round" />
+    <line x1="428.151" y1="126.151" x2="415.651" y2="147.801" :stroke-width="weight" stroke-linecap="round" />
+    <line x1="342.151" y1="126.151" x2="279.651" y2="234.404" :stroke-width="weight" stroke-linecap="round" />
+    <line x1="256.151" y1="126.151" x2="193.651" y2="234.404" :stroke-width="weight" stroke-linecap="round" />
+    <line x1="169.651" y1="127.151" x2="107.151" y2="235.404" :stroke-width="weight" stroke-linecap="round" />
+    <line x1="84.1506" y1="126.151" x2="71.6506" y2="147.801" :stroke-width="weight" stroke-linecap="round" />
+    <line x1="257.151" y1="348.151" x2="239.651" y2="378.462" :stroke-width="weight" stroke-linecap="round" />
+    <line x1="243.151" y1="298.151" x2="225.651" y2="328.462" :stroke-width="weight" stroke-linecap="round" />
   </svg>
 </template>
+
+
+<style scoped lang="sass">
+  // Structure
+  .logotype
+    width: var(--logotype-size)
+    height: var(--logotype-size)
+    stroke: var(--logotype-color)
+    transition: var(--slow-transition)
+
+  // Aspect
+  .logotype
+    --logotype-color: var(--color-soil)
+
+    &[data-theme="DARK"]
+      --logotype-color: var(--color-cream)
+</style>
