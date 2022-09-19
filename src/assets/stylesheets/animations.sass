@@ -42,6 +42,17 @@
     transform: rotate(var(--gap)) scale(0)
     opacity: 0
 
+@keyframes raining
+  0%, 100%
+    stroke-dashoffset: 0
+    stroke-width: var(--stroke-width)
+  50%
+    stroke-dashoffset: var(--limit-max)
+    stroke-width: 0
+  75%
+    stroke-dashoffset: var(--limit-min)
+    stroke-width: 0
+
 // View transitions
 .go-up-enter-active,
 .go-up-leave-active,
