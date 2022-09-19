@@ -46,10 +46,6 @@
       <RouterLink
         class="footer__tag__link"
         to="/_attribution"
-        @mouseover="store.isOver = true"
-        @mouseout="store.isOver = false"
-        @touchstart.passive="store.isOver = true"
-        @touchend.passive="store.isOver = false"
         @focus="store.isFocus = true"
         @blur="store.isFocus = false"
       >
