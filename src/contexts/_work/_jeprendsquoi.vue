@@ -149,14 +149,6 @@
           <p v-html="$t('work._jeprendsquoi.part-2.paragraph-2')"></p>
         </template>
       </OneColumn>
-      <FullWidthFigure
-        :caption="$t('work._jeprendsquoi.part-2.caption-5')"
-        :theme="theme"
-      >
-        <template #asset>
-          <iframe height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FWsXRtKjylmyOv97KBM7KFy%2Fjeprendsquoi%3Fnode-id%3D9%253A0" allowfullscreen></iframe>
-        </template>
-      </FullWidthFigure>
       <OneColumn
         :theme="theme"
       >
@@ -242,6 +234,6 @@
 
   @include device.smartphone
     section.ending
-      background: url(/images/_work/_jeprendsquoi/ending-asset-2.png) 50% v-bind('parallax(400, 100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-1.png) -155% v-bind('parallax(200, 100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-3.png) 300% v-bind('parallax(300, 100)') no-repeat
+      background: url(/images/_work/_jeprendsquoi/ending-asset-2.png) 50% v-bind('parallax(400, 100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-1.png) -155% v-bind('parallax(200, -100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-3.png) 300% v-bind('parallax(400, 100)') no-repeat
 
 </style>

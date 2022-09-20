@@ -74,14 +74,6 @@
         </LinkContainer>
       </template>
     </OneColumn>
-    <FullWidthFigure
-      :caption="$t('work._jean_bobby_radio.part-1.caption-1')"
-      :theme="theme"
-    >
-      <template #asset>
-        <iframe height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FTzJMVGhT6hcx7zIyEnjd7U%2FArchitecture-overview%3Fnode-id%3D0%253A1" allowfullscreen></iframe>
-      </template>
-    </FullWidthFigure>
   </section>
   <section>
     <OneColumn
