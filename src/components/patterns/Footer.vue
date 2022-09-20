@@ -98,22 +98,16 @@
       padding: calc(var(--footer-tag-height-size) / 4) calc(var(--footer-tag-height-size) / 2)
       color: var(--text-color)
       background-color: var(--background-color)
-      transition: var(--slow-transition)
+      transition: var(--grandma-transition)
 
       &__content, &__link
         @include text.caption
 
-      &__content
-        transition: var(--slow-transition)
-
       &__link
         transition: var(--simple-transition)
 
-      .label
-        transition: var(--slow-transition)
-
-        &:after
-          --border-size: 2rem
+        :deep(.label p)
+          transition: var(--grandma-transition)
 
   @include device.smartphone
     .footer

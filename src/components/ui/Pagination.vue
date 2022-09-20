@@ -53,7 +53,7 @@
     &__dot
       flex: 1
       border-radius: calc(var(--sizing-s-000) / 2)
-      transition: all var(--duration-grandma) var(--ease-vroom)
+      transition: var(--grandma-transition)
 
       &--active
         flex: 4

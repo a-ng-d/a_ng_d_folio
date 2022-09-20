@@ -201,7 +201,7 @@
       height: 100%
       position: absolute
       top: 0
-      transition: var(--slow-transition)
+      transition: var(--grandma-transition)
 
     &__content
       display: flex
@@ -235,7 +235,7 @@
         height: 100%
         position: absolute
         top: 0
-        transition: var(--slow-transition)
+        transition: var(--grandma-transition)
 
       &:deep(svg)
         width: var(--icon-size-regular)
