@@ -44,62 +44,54 @@
     & > line
       --stroke-width: v-bind("weight")
       stroke-dasharray: var(--dash)
-      animation: raining var(--duration-jogging) var(--animation-delay) infinite ease-out
-      animation-play-state: paused
-      stroke-dashoffset: 0
+      -webit-transition: var(--slow-transition)
+      //animation: raining var(--duration-jogging) var(--delay) infinite ease-out
+      //animation-play-state: paused
 
     & > line:nth-child(1)
-      --animation-delay: calc(var(--duration-step) * 2.5)
-      --transition-delay: calc(var(--duration-step) * 2.5)
+      --delay: calc(var(--duration-step) * 2.5)
       --dash: 100
       --limit-min: 100
       --limit-max: -100
 
     & > line:nth-child(2)
-      --animation-delay: calc(var(--duration-step) * 2)
-      --transition-delay: calc(var(--duration-step) * 2)
+      --delay: calc(var(--duration-step) * 2)
       --dash: 30
       --limit-min: 30
       --limit-max: -30
 
     & > line:nth-child(3)
-      --animation-delay: calc(var(--duration-step) * 1.5)
-      --transition-delay: calc(var(--duration-step) * 1.5)
+      --delay: calc(var(--duration-step) * 1.5)
       --dash: 130
       --limit-min: 130
       --limit-max: -130
 
     & > line:nth-child(4)
-      --animation-delay: calc(var(--duration-step) * 1)
-      --transition-delay: calc(var(--duration-step) * 1)
+      --delay: calc(var(--duration-step) * 1)
       --dash: 130
       --limit-min: 130
       --limit-max: -130
 
     & > line:nth-child(5)
-      --animation-delay: calc(var(--duration-step) * .5)
-      --transition-delay: calc(var(--duration-step) * .5)
+      --delay: calc(var(--duration-step) * .5)
       --dash: 130
       --limit-min: 130
       --limit-max: -130
 
     & > line:nth-child(6)
-      --animation-delay: calc(var(--duration-step) * 0)
-      --transition-delay: calc(var(--duration-step) * 0)
+      --delay: calc(var(--duration-step) * 0)
       --dash: 30
       --limit-min: 30
       --limit-max: -30
 
     & > line:nth-child(7)
-      --animation-delay: calc(var(--duration-step) * 3)
-      --transition-delay: calc(var(--duration-step) * 3)
+      --delay: calc(var(--duration-step) * 3)
       --dash: 40
       --limit-min: 40
       --limit-max: -40
 
     & > line:nth-child(8)
-      --animation-delay: calc(var(--duration-step) * 3.5)
-      --transition-delay: calc(var(--duration-step) * 3.5)
+      --delay: calc(var(--duration-step) * 3.5)
       --dash: 40
       --limit-min: 40
       --limit-max: -40
@@ -110,16 +102,4 @@
 
     &[data-theme="DARK"]
       --logotype-color: var(--color-cream)
-
-  // Event
-  .logotype
-    &:hover
-      & > line
-        animation-play-state: paused
-
-  @include device.mobile
-    .logotype
-      &:hover
-        & > line
-          animation-play-state: paused
 </style>
