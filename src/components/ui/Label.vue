@@ -43,7 +43,7 @@
       &:after
         content: ''
         width: 100%
-        height: var(--border-size)
+        height: v-bind("small ? '2rem' : 'var(--border-size)'")
         position: absolute
         left: 0
         bottom: calc(var(--border-size) * -1)
