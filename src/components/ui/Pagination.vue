@@ -4,7 +4,6 @@
   export default defineComponent({
     name: 'Pagination',
     props: {
-      label: String,
       pages: {
         type: [Array, Object],
         required: true
@@ -30,9 +29,6 @@
         :class="n == activePage + 1 ? 'pagination__dot--active' : ''"
         :key="`dots-${n}`">
       </div>
-    </div>
-    <div v-if="label !=''" class="pagination__label">
-      <h6>{{ label }}</h6>
     </div>
   </div>
 </template>
