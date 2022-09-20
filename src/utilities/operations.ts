@@ -31,7 +31,7 @@ export const scrollVelocity = (target: HTMLElement, scrollLimit: number, orienta
   }
   window.requestAnimationFrame(timer)
   delta = Math.abs(currentPosition - snapPosition)
-  delta > 200 ? delta = 1 : null
+  if (delta < 1 || delta > 200) delta = 1
   currentPosition == 0 ? velocity = 1 :
                          currentPosition > scrollLimit - 1 ? velocity = 1 :
                          velocity = doMap(delta, 1, 200, 1, 1.5)

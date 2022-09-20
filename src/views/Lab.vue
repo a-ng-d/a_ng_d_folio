@@ -94,8 +94,8 @@
     methods: {
       smoothScroll(e: Event) {
         const target = e.target as HTMLElement
-        this.slider.velocity = scrollVelocity(target, target.scrollWidth - document.body.clientWidth, 'x')
-        this.slider.scale = doMap(this.slider.velocity, 1, 1.5, 1, 1.25)
+        setTimeout(() => this.slider.velocity = scrollVelocity(target, target.scrollWidth - document.body.clientWidth, 'x'), 10)
+        this.slider.scale = doMap(this.slider.velocity, 1, 1.5, 1, .75)
         this.slider.gap = doMap(this.slider.velocity, 1, 1.5, 1, 4)
 
         if (target.scrollLeft >= target.scrollWidth - document.body.clientWidth - 10) {
@@ -265,9 +265,6 @@
         display: none
 
     &__container
-      --scale-y: v-bind("1 / slider.scale")
-      --multiplier: v-bind("slider.gap")
-
       display: flex
       width: max-content
       height: 75%
@@ -276,7 +273,7 @@
       gap: 0 var(--layout-column-gap)
       align-items: stretch
       transition: var(--animated-scroll-transition)
-      transform: scaleY(var(--scale-y))
+      transform: scaleY(v-bind("slider.scale"))
 
   @include device.smartphone-landscape
     .navigation-button
