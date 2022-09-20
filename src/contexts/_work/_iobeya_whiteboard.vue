@@ -246,7 +246,7 @@
         :theme="theme"
       >
         <template #asset>
-          <video class="full-width-video" preload autoplay muted loop playsinline poster="">
+          <video class="full-width-video" preload="true" autoplay muted loop playsinline poster="">
             <source src="/videos/_work/_iobeya_whiteboard/article-asset-1.mp4" type="video/mp4" />
           </video>
         </template>
