@@ -21,14 +21,23 @@
   90%
     left: calc(var(--amplitude) * -.2)
 
-@keyframes across
+@keyframes across-left
   0%, 100%
     position: relative
     z-index: 1
   0%
     transform: translateX(0)
   100%
-    transform: translateX(var(--gap, -100%))
+    transform: translateX(-100%)
+
+@keyframes across-right
+  0%, 100%
+    position: relative
+    z-index: 1
+  0%
+    transform: translateX(0)
+  100%
+    transform: translateX(100%)
 
 @keyframes wheel
   0%

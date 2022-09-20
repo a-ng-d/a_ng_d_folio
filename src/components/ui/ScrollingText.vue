@@ -43,11 +43,9 @@
     width: 100vw
 
     &__instance
-      --gap: v-bind("direction === 'LEFT' ? '-100%' : '100%'")
-
       display: block
       position: absolute
-      animation: across 32000ms infinite forwards linear
+      animation: v-bind("direction === 'LEFT' ? 'across-left' : 'across-right'") 32000ms infinite forwards linear
       white-space: nowrap
 
   // Aspect
