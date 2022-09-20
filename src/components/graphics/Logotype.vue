@@ -32,6 +32,8 @@
 
 
 <style scoped lang="sass">
+  @use '@/assets/stylesheets/mixins' as device
+
   // Structure
   .logotype
     width: var(--logotype-size)
@@ -113,5 +115,11 @@
   .logotype
     &:hover
       & > line
-        animation-play-state: running
+        animation-play-state: paused
+
+  @include device.mobile
+    .logotype
+      &:hover
+        & > line
+          animation-play-state: paused
 </style>
