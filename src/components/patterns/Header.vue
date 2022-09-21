@@ -44,8 +44,8 @@
         to="/"
         tabindex="-1"
       >
-        <Logotype :theme="theme" />
       </RouterLink>
+      <Logotype :theme="theme" />
     </div>
     <div class="main-menu__right-part">
       <slot name="right-part"></slot>
@@ -92,6 +92,15 @@
       width: var(--logotype-size)
       height: var(--logotype-size)
       transition: var(--simple-transition)
+
+      a
+        width: 100%
+        height: 100%
+        display: block
+        position: absolute
+        top: 0
+        left: 0
+        z-index: 2
 
     &--stuck
       --offset: -96rem
