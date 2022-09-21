@@ -30,6 +30,11 @@
       scrollProgress() {
         this.scrollProgress > 0 ? this.isStuck = true : this.isStuck = false
       }
+    },
+    methods: {
+      backHome() {
+        (document.querySelector('#back-home') as HTMLElement).click()
+      }
     }
   })
 </script>
@@ -39,10 +44,11 @@
     <div class="main-menu__left-part">
       <slot name="left-part"></slot>
     </div>
-    <div class="main-menu__logotype">
+    <div class="main-menu__logotype" @click="backHome">
       <RouterLink
         to="/"
         tabindex="-1"
+        id="back-home"
       >
       </RouterLink>
       <Logotype :theme="theme" />
@@ -92,6 +98,10 @@
       width: var(--logotype-size)
       height: var(--logotype-size)
       transition: var(--simple-transition)
+      cursor: pointer
+
+      svg
+        z-index: 2
 
       a
         width: 100%
@@ -100,7 +110,7 @@
         position: absolute
         top: 0
         left: 0
-        z-index: 2
+        z-index: 1
 
     &--stuck
       --offset: -96rem

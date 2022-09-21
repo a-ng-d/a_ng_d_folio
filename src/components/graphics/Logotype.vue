@@ -21,7 +21,16 @@
 </script>
 
 <template>
-  <svg class="logotype" id="logotype" width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" :data-theme="theme">
+  <svg
+    class="logotype"
+    id="logotype"
+    width="500"
+    height="500"
+    viewBox="0 0 500 500"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    :data-theme="theme"
+  >
     <line
       x1="379.151"
       y1="211.151"
