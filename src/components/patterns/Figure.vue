@@ -1,5 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { random } from '@/utilities/operations'
 
   export default defineComponent({
     name: 'Figure',
@@ -11,6 +12,11 @@
       src: String,
       alt: String,
       caption: String
+    },
+    watch: {
+      isMagnified(to) {
+        to ? this.$emit('isMagnified', true) : this.$emit('isMagnified', false)
+      }
     },
     data: function() {
       return {
@@ -38,9 +44,6 @@
         this.pathX = (refX - x - (w / 2)) / refScale
         this.pathY = (refY - y - (h / 2)) / refScale
       }
-    },
-    updated: function() {
-      this.isMagnified ? this.$emit('isMagnified', true) : this.$emit('isMagnified', false)
     }
   })
 </script>
@@ -53,7 +56,7 @@
       @wheel.passive="isMagnified = false"
       @touchmove.passive="isMagnified = false"
     >
-      <img v-if="type === 'image'" :src="src" :alt="alt" />
+      <img v-if="type === 'image'" v-lazy="src" :alt="alt" />
       <video v-else-if="type === 'video'" controls>
         <source :src="src" type="video/mp4" />
       </video>
@@ -72,17 +75,16 @@
     &__asset
       display: flex
       width: 100%
-      border-radius: var(--small-border-radius)
-      box-shadow: var(--image-border)
+      border-radius: var(--asset-radius)
+      box-shadow: var(--asset-border)
       justify-content: center
       align-items: center
       overflow: hidden
       transition: var(--simple-transition)
       cursor: zoom-in
+      animation: loading var(--duration-turtoise) infinite linear
 
       &:before
-        --alpha: 0
-
         content: ''
         width: 200vw
         height: 200vh
@@ -93,19 +95,35 @@
       img, video
         width: 100%
         transition: var(--simple-transition)
-        border-radius: var(--small-border-radius)
+        border-radius: var(--asset-radius)
+
+      img[lazy=loading]
+        transform: translateX(-100%)
+
+      img[lazy=loaded]
+        transform: translateX(0)
 
       &--magnified
-        box-shadow: none
         transform: scale(v-bind("maxScale")) translate(v-bind("`${pathX}px`"), v-bind("`${pathY}px`"))
         z-index: 5
         cursor: zoom-out
-        border-radius: 0
         overflow: visible
-
-        &:before
-          --alpha: .9
 
     &__caption
       color: var(--color-sandstone)
+
+  // Aspect
+  .figure
+    &__asset
+      --color-1: var(--color-creamy-sun)
+      --color-2: var(--color-soft-wind)
+      --color-3: var(--color-candy-floss)
+      --asset-border: var(--image-border)
+      --asset-radius: var(--small-border-radius)
+      --alpha: 0
+
+      &--magnified
+        --asset-border: none
+        --asset-radius: 0
+        --alpha: .9
 </style>

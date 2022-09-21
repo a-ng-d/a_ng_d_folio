@@ -14,7 +14,7 @@
       },
       background: {
         type: String,
-        default: 'transparent'
+        default: 'var(--color-creamy-sun)'
       },
       theme: {
         type: String,
@@ -38,8 +38,6 @@
 <style scoped lang="sass">
   // Structure
   .full
-    --caption-color: var(--color-sandstone)
-
     width: 100%
 
   .figure
@@ -51,24 +49,37 @@
       width: 100%
       display: v-bind("height == undefined ? 'flex' : 'block'")
       height: v-bind("height == undefined ? 'fit-content' : height + 'rem'")
-      box-shadow: var(--image-border)
+      box-shadow: var(--asset-border)
       overflow: hidden
       padding: v-bind("isCentered ? '0 var(--layout-center)' : '0'")
       justify-content: v-bind("isCentered ? 'center' : 'flex-start'")
+      background: var(--asset-background)
 
-      :deep(img), :deep(iframe)
+      :deep(img)
+        --property: opacity
         width: 100%
+        transition: var(--slow-transition)
+
+      :deep(img[lazy=loading])
+        opacity: 0
+
+      :deep(img[lazy=loaded])
+        opacity: 1
 
     &__caption
       padding: 0 var(--layout-center)
       color: var(--caption-color)
 
+
   // Aspect
   .figure
     &__asset
-      background: v-bind('background')
+      --asset-background: v-bind('background')
+      --asset-border: var(--image-border)
 
   .full
+    --caption-color: var(--color-sandstone)
+
     &[data-theme="DARK"]
       --caption-color: var(--color-clay)
 </style>
