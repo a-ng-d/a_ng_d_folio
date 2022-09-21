@@ -74,7 +74,7 @@
         :theme="theme"
       >
         <template #asset>
-          <img src="/images/_work/_iobeya_whiteboard/article-asset-1.png" />
+          <img v-lazy="'/images/_work/_iobeya_whiteboard/article-asset-1.png'" />
         </template>
       </FullWidthFigure>
       <OneColumn
@@ -105,7 +105,7 @@
         :theme="theme"
       >
         <template #asset>
-          <img src="/images/_work/_iobeya_whiteboard/article-asset-4.png" />
+          <img v-lazy="'/images/_work/_iobeya_whiteboard/article-asset-4.png'" />
         </template>
       </FullWidthFigure>
       <OneColumn
@@ -165,7 +165,7 @@
         :theme="theme"
       >
         <template #asset>
-          <img src="/images/_work/_iobeya_whiteboard/article-asset-8.png" />
+          <img v-lazy="'/images/_work/_iobeya_whiteboard/article-asset-8.png'" />
         </template>
       </FullWidthFigure>
       <OneColumn
@@ -263,7 +263,7 @@
         :theme="theme"
       >
         <template #asset>
-          <img src="/images/_work/_iobeya_whiteboard/article-asset-11.png" />
+          <img v-lazy="'/images/_work/_iobeya_whiteboard/article-asset-11.png'" />
         </template>
       </FullWidthFigure>
     </section>

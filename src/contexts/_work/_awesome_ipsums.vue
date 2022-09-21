@@ -78,7 +78,7 @@
         :theme="theme"
       >
         <template #asset>
-          <img src="/images/_work/_awesome_ipsums/article-asset-2.png" />
+          <img v-lazy="'/images/_work/_awesome_ipsums/article-asset-2.png'" />
         </template>
       </FullWidthFigure>
       <OneColumn
@@ -94,7 +94,7 @@
         :theme="theme"
       >
         <template #asset>
-          <img src="/images/_work/_awesome_ipsums/article-asset-3.png" />
+          <img v-lazy="'/images/_work/_awesome_ipsums/article-asset-3.png'" />
         </template>
       </FullWidthFigure>
       <OneColumn
@@ -110,7 +110,7 @@
         :theme="theme"
       >
         <template #asset>
-          <img src="/images/_work/_awesome_ipsums/article-asset-4.png" />
+          <img v-lazy="'/images/_work/_awesome_ipsums/article-asset-4.png'" />
         </template>
       </FullWidthFigure>
     </section>

@@ -89,7 +89,7 @@
       :theme="theme"
     >
       <template #asset>
-        <img src="/images/_work/_jean_bobby_radio/article-asset-1.png" />
+        <img v-lazy="'/images/_work/_jean_bobby_radio/article-asset-1.png'" />
       </template>
     </FullWidthFigure>
   </section>
@@ -109,7 +109,7 @@
       :theme="theme"
     >
       <template #asset>
-        <img src="/images/_work/_jean_bobby_radio/article-asset-2.png" :style="`transform: translateY(${parallax(50, -50)})`" />
+        <img v-lazy="'/images/_work/_jean_bobby_radio/article-asset-2.png'" :style="`transform: translateY(${parallax(50, -50)})`" />
       </template>
     </FullWidthFigure>
     <OneColumn
