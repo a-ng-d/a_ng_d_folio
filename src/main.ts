@@ -3,7 +3,6 @@ import App from './App.vue'
 import router from './router'
 import { i18n } from './lang'
 import Vue3Lottie from 'vue3-lottie'
-import { loop } from './utilities/animation'
 
 const app = createApp(App),
 loader: HTMLElement = document.getElementById('loader')!,

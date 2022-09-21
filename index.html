@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Virtualization in progress…</title>
     <link href="/src/assets/stylesheets/loader.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
   </head>
   <body>
     <div id="loader" class="loader--enter">
@@ -17,6 +18,14 @@
       <source src="/sounds/start.mp3" type="audio/mpeg">
     </audio>
     <script type="module" src="/src/main.ts"></script>
-    <script type="text/typescript" src="/src/utilities/animation.ts"></script>
+    <script type="text/javascript">
+      const loop = lottie.loadAnimation({
+        container: document.getElementById('animation'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/animations/_loader/data.json'
+      })
+    </script>
   </body>
 </html>
