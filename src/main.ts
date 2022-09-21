@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import { i18n } from './lang'
 import Vue3Lottie from 'vue3-lottie'
+import VueLazyLoad from 'vue3-lazyload'
 
 const app = createApp(App),
 loader: HTMLElement = document.getElementById('loader')!,
@@ -43,6 +44,7 @@ const entrance = (): void => {
       .use(router)
       .use(i18n)
       .use(Vue3Lottie)
+      .use(VueLazyLoad)
       .mount('#app')
 
   }, 3600)
