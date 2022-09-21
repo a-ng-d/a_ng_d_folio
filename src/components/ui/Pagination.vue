@@ -54,10 +54,6 @@
       &--active
         flex: 4
 
-    &__label
-      --text-label-space: 0
-      transition: var(--grandma-transition)
-
   // Aspect
   .pagination
     &__dot
