@@ -5,6 +5,7 @@
     name: 'OneColumn',
     props: {
       title: String,
+      center: Boolean,
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -36,6 +37,7 @@
       display: flex
       flex-flow: column nowrap
       gap: var(--layout-row-gap) 0
+      justify-content: v-bind("center ? 'center' : 'flex-start'")
 
   // Aspect
   .col-1

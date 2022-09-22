@@ -5,6 +5,7 @@
     name: 'ThreeColumns',
     props: {
       title: String,
+      center: Boolean,
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -51,6 +52,7 @@
       flex-flow: column nowrap
       flex: 1
       gap: var(--layout-row-gap) 0
+      justify-content: v-bind("center ? 'center' : 'flex-start'")
 
   @include device.smartphone
     .col-3
