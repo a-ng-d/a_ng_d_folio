@@ -56,7 +56,6 @@
       background: var(--asset-background)
 
       :deep(img)
-        width: 100%
         height: fit-content
         transition: var(--duration-turtoise) opacity ease
 
