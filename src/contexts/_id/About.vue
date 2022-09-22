@@ -1,11 +1,13 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import OneColumn from '@/components/layouts/OneColumn.vue'
+  import Label from '@/components/ui/Label.vue'
 
   export default defineComponent({
     name: 'About',
     components: {
-      OneColumn
+      OneColumn,
+      Label
     },
     props: {
       theme: {
@@ -24,9 +26,42 @@
     >
       <template #plain>
         <div>
-          <p v-html="$t('id.about.experience', { year: new Date().getFullYear() - 2015 })"></p>
+          <i18n-t keypath="id.about.experience" tag="p">
+            <template v-slot:iobeya>
+              <Label
+                :label="$t('global.iobeya')"
+                highlighted
+                :theme="theme"
+              />
+            </template>
+            <template v-slot:year>
+              {{ new Date().getFullYear() - 2015 }}
+            </template>
+          </i18n-t>
           <p>{{ $t("id.about.mission") }}</p>
-          <p v-html="$t('id.about.activities')"></p>
+          <i18n-t keypath="id.about.activities" tag="p">
+            <template v-slot:team>
+              <Label
+                :label="$t('global.team')"
+                highlighted
+                :theme="theme"
+              />
+            </template>
+            <template v-slot:thinking>
+              <Label
+                :label="$t('global.thinking')"
+                highlighted
+                :theme="theme"
+              />
+            </template>
+            <template v-slot:system>
+              <Label
+                :label="$t('global.system')"
+                highlighted
+                :theme="theme"
+              />
+            </template>
+          </i18n-t>
           <p>{{ $t("id.about.side") }}</p>
         </div>
       </template>
