@@ -56,6 +56,13 @@
       &__columns
         flex-flow: column nowrap
 
+      &--invert
+        .col-2__column:nth-child(1)
+          order: 2
+
+        .col-2__column:nth-child(2)
+          order: 1
+
   // Aspect`
   .col-2
     &[data-theme="DARK"]
