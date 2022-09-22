@@ -48,175 +48,173 @@
 </script>
 
 <template>
-  <article>
-    <section class="challenge">
-      <OneColumn
-        :title="$t('work._jeprendsquoi.challenge.title')"
-        :theme="theme"
-      >
-        <template #plain>
-          <p>{{ $t('work._jeprendsquoi.challenge.paragraph-1') }}</p>
-          <p v-html="$t('work._jeprendsquoi.challenge.paragraph-2')"></P>
-          <p>{{ $t('work._jeprendsquoi.challenge.paragraph-3') }}</p>
-        </template>
-      </OneColumn>
-    </section>
-    <section>
-      <OneColumn
-        :title="$t('work._jeprendsquoi.part-1.title')"
-        :theme="theme"
-      >
-        <template #plain>
-          <p>{{ $t('work._jeprendsquoi.part-1.paragraph-1') }}</p>
-        </template>
-      </OneColumn>
-      <FullWidthFigure
-        :caption="$t('work._jeprendsquoi.part-1.caption-1')"
-        :theme="theme"
-      >
-        <template #asset>
-          <img v-lazy="'/images/_work/_jeprendsquoi/article-asset-1.png'" />
-        </template>
-      </FullWidthFigure>
-      <OneColumn
-        :theme="theme"
-      >
-        <template #plain>
-          <p>{{ $t('work._jeprendsquoi.part-1.paragraph-2') }}</p>
-        </template>
-      </OneColumn>
-      <FullWidthFigure
-        :caption="$t('work._jeprendsquoi.part-1.caption-2')"
-        :theme="theme"
-      >
-        <template #asset>
-          <img v-lazy="'/images/_work/_jeprendsquoi/article-asset-2.png'" />
-        </template>
-      </FullWidthFigure>
-      <OneColumn
-        :theme="theme"
-      >
-        <template #plain>
-          <p>{{ $t('work._jeprendsquoi.part-1.paragraph-3') }}</p>
-        </template>
-      </OneColumn>
-    </section>
-    <section>
-      <OneColumn
-        :title="$t('work._jeprendsquoi.part-2.title')"
-        :theme="theme"
-      >
-        <template #plain>
-          <p v-html="$t('work._jeprendsquoi.part-2.paragraph-1')"></p>
-        </template>
-      </OneColumn>
-      <WrapColumn
-        :columns="4"
-        :isFullScreen="isFullScreen"
-        :theme="theme"
-      >
-        <template #plain>
-          <Figure
-            type="image"
-            src="/images/_work/_jeprendsquoi/article-asset-3.jpeg"
-            :caption="$t('work._jeprendsquoi.part-2.caption-1')"
-            @isMagnified="isFullScreen = $event"
-          />
-          <Figure
-            type="image"
-            src="/images/_work/_jeprendsquoi/article-asset-4.jpeg"
-            :caption="$t('work._jeprendsquoi.part-2.caption-2')"
-            @isMagnified="isFullScreen = $event"
-          />
-          <Figure
-            type="image"
-            src="/images/_work/_jeprendsquoi/article-asset-5.jpeg"
-            :caption="$t('work._jeprendsquoi.part-2.caption-3')"
-            @isMagnified="isFullScreen = $event"
-          />
-          <Figure
-            type="image"
-            src="/images/_work/_jeprendsquoi/article-asset-6.jpeg"
-            :caption="$t('work._jeprendsquoi.part-2.caption-4')"
-            @isMagnified="isFullScreen = $event"
-          />
-        </template>
-      </WrapColumn>
-      <OneColumn
-        :theme="theme"
-      >
-        <template #plain>
-          <p v-html="$t('work._jeprendsquoi.part-2.paragraph-2')"></p>
-        </template>
-      </OneColumn>
-      <OneColumn
-        :theme="theme"
-      >
-        <template #plain>
-          <LinkContainer
-            :description="$t('work._jeprendsquoi.part-2.info.description')"
-            :cta="$t('work._jeprendsquoi.part-2.info.linkLabel')"
-            href="https://yuka.io"
-            :theme="theme"
-          >
-            <template #icon>
-              <Info :size="48" />
-            </template>
-          </LinkContainer>
-        </template>
-      </OneColumn>
-      <WrapColumn
-        :isFullScreen="isFullScreen"
-        :theme="theme"
-      >
-        <template #plain>
-          <Figure
-            type="image"
-            src="/images/_work/_jeprendsquoi/article-asset-7.gif"
-            :caption="$t('work._jeprendsquoi.part-2.caption-7')"
-            @isMagnified="isFullScreen = $event"
-          />
-          <Figure
-            type="image"
-            src="/images/_work/_jeprendsquoi/article-asset-8.gif"
-            :caption="$t('work._jeprendsquoi.part-2.caption-8')"
-            @isMagnified="isFullScreen = $event"
-          />
-        </template>
-      </WrapColumn>
-    </section>
-    <section class="ending">
-    </section>
-    <section class="takeaways">
-      <OneColumn
-        :title="$t('global.takeaways')"
-        :theme="theme"
-      >
-        <template #plain>
-          <LinkContainer
-            :description="$t('work._jeprendsquoi.takeaways.takeaway-1.description')"
-            :cta="$t('work._jeprendsquoi.takeaways.takeaway-1.linkLabel')"
-            href="https://testflight.apple.com/join/AmEZ2igV"
-            :theme="theme"
-          >
-            <template #icon>
-              <Bot :size="48" />
-            </template>
-          </LinkContainer>
-          <LinkContainer
-            :description="$t('work._jeprendsquoi.takeaways.takeaway-2.description')"
-            :cta="$t('work._jeprendsquoi.takeaways.takeaway-2.linkLabel')"
-            href="https://testflight.apple.com/join/AmEZ2igV"
-            :theme="theme"
-          >
-            <template #icon>
-              <Ghost :size="48" />
-            </template>
-          </LinkContainer>
-        </template>
-      </OneColumn>
-    </section>
-  </article>
+  <section class="challenge">
+    <OneColumn
+      :title="$t('work._jeprendsquoi.challenge.title')"
+      :theme="theme"
+    >
+      <template #plain>
+        <p>{{ $t('work._jeprendsquoi.challenge.paragraph-1') }}</p>
+        <p v-html="$t('work._jeprendsquoi.challenge.paragraph-2')"></P>
+        <p>{{ $t('work._jeprendsquoi.challenge.paragraph-3') }}</p>
+      </template>
+    </OneColumn>
+  </section>
+  <section>
+    <OneColumn
+      :title="$t('work._jeprendsquoi.part-1.title')"
+      :theme="theme"
+    >
+      <template #plain>
+        <p>{{ $t('work._jeprendsquoi.part-1.paragraph-1') }}</p>
+      </template>
+    </OneColumn>
+    <FullWidthFigure
+      :caption="$t('work._jeprendsquoi.part-1.caption-1')"
+      :theme="theme"
+    >
+      <template #asset>
+        <img v-lazy="'/images/_work/_jeprendsquoi/article-asset-1.png'" />
+      </template>
+    </FullWidthFigure>
+    <OneColumn
+      :theme="theme"
+    >
+      <template #plain>
+        <p>{{ $t('work._jeprendsquoi.part-1.paragraph-2') }}</p>
+      </template>
+    </OneColumn>
+    <FullWidthFigure
+      :caption="$t('work._jeprendsquoi.part-1.caption-2')"
+      :theme="theme"
+    >
+      <template #asset>
+        <img v-lazy="'/images/_work/_jeprendsquoi/article-asset-2.png'" />
+      </template>
+    </FullWidthFigure>
+    <OneColumn
+      :theme="theme"
+    >
+      <template #plain>
+        <p>{{ $t('work._jeprendsquoi.part-1.paragraph-3') }}</p>
+      </template>
+    </OneColumn>
+  </section>
+  <section>
+    <OneColumn
+      :title="$t('work._jeprendsquoi.part-2.title')"
+      :theme="theme"
+    >
+      <template #plain>
+        <p v-html="$t('work._jeprendsquoi.part-2.paragraph-1')"></p>
+      </template>
+    </OneColumn>
+    <WrapColumn
+      :columns="4"
+      :isFullScreen="isFullScreen"
+      :theme="theme"
+    >
+      <template #plain>
+        <Figure
+          type="image"
+          src="/images/_work/_jeprendsquoi/article-asset-3.jpeg"
+          :caption="$t('work._jeprendsquoi.part-2.caption-1')"
+          @isMagnified="isFullScreen = $event"
+        />
+        <Figure
+          type="image"
+          src="/images/_work/_jeprendsquoi/article-asset-4.jpeg"
+          :caption="$t('work._jeprendsquoi.part-2.caption-2')"
+          @isMagnified="isFullScreen = $event"
+        />
+        <Figure
+          type="image"
+          src="/images/_work/_jeprendsquoi/article-asset-5.jpeg"
+          :caption="$t('work._jeprendsquoi.part-2.caption-3')"
+          @isMagnified="isFullScreen = $event"
+        />
+        <Figure
+          type="image"
+          src="/images/_work/_jeprendsquoi/article-asset-6.jpeg"
+          :caption="$t('work._jeprendsquoi.part-2.caption-4')"
+          @isMagnified="isFullScreen = $event"
+        />
+      </template>
+    </WrapColumn>
+    <OneColumn
+      :theme="theme"
+    >
+      <template #plain>
+        <p v-html="$t('work._jeprendsquoi.part-2.paragraph-2')"></p>
+      </template>
+    </OneColumn>
+    <OneColumn
+      :theme="theme"
+    >
+      <template #plain>
+        <LinkContainer
+          :description="$t('work._jeprendsquoi.part-2.info.description')"
+          :cta="$t('work._jeprendsquoi.part-2.info.linkLabel')"
+          href="https://yuka.io"
+          :theme="theme"
+        >
+          <template #icon>
+            <Info :size="48" />
+          </template>
+        </LinkContainer>
+      </template>
+    </OneColumn>
+    <WrapColumn
+      :isFullScreen="isFullScreen"
+      :theme="theme"
+    >
+      <template #plain>
+        <Figure
+          type="image"
+          src="/images/_work/_jeprendsquoi/article-asset-7.gif"
+          :caption="$t('work._jeprendsquoi.part-2.caption-7')"
+          @isMagnified="isFullScreen = $event"
+        />
+        <Figure
+          type="image"
+          src="/images/_work/_jeprendsquoi/article-asset-8.gif"
+          :caption="$t('work._jeprendsquoi.part-2.caption-8')"
+          @isMagnified="isFullScreen = $event"
+        />
+      </template>
+    </WrapColumn>
+  </section>
+  <section class="ending">
+  </section>
+  <section class="takeaways">
+    <OneColumn
+      :title="$t('global.takeaways')"
+      :theme="theme"
+    >
+      <template #plain>
+        <LinkContainer
+          :description="$t('work._jeprendsquoi.takeaways.takeaway-1.description')"
+          :cta="$t('work._jeprendsquoi.takeaways.takeaway-1.linkLabel')"
+          href="https://testflight.apple.com/join/AmEZ2igV"
+          :theme="theme"
+        >
+          <template #icon>
+            <Bot :size="48" />
+          </template>
+        </LinkContainer>
+        <LinkContainer
+          :description="$t('work._jeprendsquoi.takeaways.takeaway-2.description')"
+          :cta="$t('work._jeprendsquoi.takeaways.takeaway-2.linkLabel')"
+          href="https://testflight.apple.com/join/AmEZ2igV"
+          :theme="theme"
+        >
+          <template #icon>
+            <Ghost :size="48" />
+          </template>
+        </LinkContainer>
+      </template>
+    </OneColumn>
+  </section>
 </template>
 
 <style scoped lang="sass">
