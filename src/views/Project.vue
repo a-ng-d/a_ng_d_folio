@@ -70,14 +70,6 @@
         >
           <template #plain>
             <i18n-t :keypath="`work.${project.codeName}.description`" tag="p" class="enhanced">
-              <template v-slot:link-1>
-                <SimpleExternalLink
-                  :label="$t(`work.${project.codeName}.externalLinks.link-1`)"
-                  href="/"
-                  alt=""
-                  :theme="theme"
-                />
-              </template>
             </i18n-t>
           </template>
         </OneColumn>
