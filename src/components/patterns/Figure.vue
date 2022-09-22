@@ -1,6 +1,5 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
-  import { random } from '@/utilities/operations'
 
   export default defineComponent({
     name: 'Figure',

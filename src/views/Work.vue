@@ -1,6 +1,5 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
-  import lottie from 'lottie-web'
   import type { Route } from '@/utilities/types'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
