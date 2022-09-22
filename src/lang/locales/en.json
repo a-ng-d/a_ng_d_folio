@@ -383,7 +383,7 @@
         "title": "Our mascot, All Around the World",
         "paragraph-1": "Jean-Bobby is our company's mascot. We are used to get him during our trips or events. He has become a running gag because a lot a people liked to take him on holidays. Jean-Bobby has seen the beauty of our world while being the heart of iObeya (ex-KAP IT).",
         "paragraph-2": "This animated loop is a tribute to this period. The best pictures have been a great inspiration and have been compiled into one short animation.",
-        "caption-1": "This animation has been a great opportunity at using <a href='https://airbnb.design/lottie/' class='link external-link' target='_blank'>Lottie</a> to generate a web-compliant animation. From an Adobe After Effects composition to an animated SVG."
+        "caption-1": "This animation has been a great opportunity at using {link-1} to generate a web-compliant animation. From an Adobe After Effects composition to an animated SVG."
       },
       "takeaways": {
         "takeaway-1": {
@@ -393,6 +393,13 @@
         "takeaway-2": {
           "description": "Jean-Bobby Radio is an open-source project. You can take a glance at the source code on Github.",
           "linkLabel": "Watch the repository"
+        }
+      },
+      "externalLinks": {
+        "link-1": {
+          "label": "Lottie",
+          "href": "https://airbnb.design/lottie/",
+          "alt": "External link to the Lottie page"
         }
       }
     },
