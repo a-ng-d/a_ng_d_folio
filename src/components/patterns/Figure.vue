@@ -56,7 +56,7 @@
       @touchmove.passive="isMagnified = false"
     >
       <img v-if="type === 'image'" v-lazy="src" :alt="alt" />
-      <video v-else-if="type === 'video'" controls>
+      <video v-else-if="type === 'video'" preload="none" controls>
         <source :src="src" type="video/mp4" />
       </video>
     </div>
