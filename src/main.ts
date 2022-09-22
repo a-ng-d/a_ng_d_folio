@@ -5,6 +5,8 @@ import { i18n } from './lang'
 import Vue3Lottie from 'vue3-lottie'
 import VueLazyLoad from 'vue3-lazyload'
 
+declare const loop: any;
+
 const app = createApp(App),
 loader: HTMLElement = document.getElementById('loader')!,
 feedback: any = document.getElementById('feedback')!
