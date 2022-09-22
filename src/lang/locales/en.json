@@ -303,8 +303,16 @@
         }
       },
       "externalLinks": {
-        "link-1": "the most exciting ux tool",
-        "link-2": "Accessible Palette: stop using HSL for color systems"
+        "link-1": {
+          "label": "the most exciting ux tool",
+          "href": "https://school.involt.io/src/ebook/page_fnlv.zip",
+          "alt": "External link to the 2021 UX tools survey"
+        },
+        "link-2": {
+          "label": "Accessible Palette: stop using HSL for color systems",
+          "href": "https://school.involt.io/src/ebook/page_fnlv.zip",
+          "alt": "External link to the \"Accessible Palette: stop using HSL for color systems\" article"
+        }
       }
     },
     "_jeprendsquoi": {
