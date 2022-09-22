@@ -30,7 +30,7 @@
       <div class="figure__asset">
         <slot name="asset"></slot>
       </div>
-      <figcaption class="figure__caption" v-html="caption"></figcaption>
+      <figcaption v-if="caption != ''" class="figure__caption"><p class="discrete" v-html="caption"></p></figcaption>
     </figure>
   </div>
 </template>
@@ -66,18 +66,15 @@
       :deep(img[lazy=loaded])
         opacity: 1
 
-    &__caption
+    &__caption p
       padding: 0 var(--layout-center)
       color: var(--caption-color)
 
 
   // Aspect
   .figure
-    &__asset
-      --asset-background: v-bind('background')
-      --asset-border: var(--image-border)
-
-  .full
+    --asset-background: v-bind('background')
+    --asset-border: var(--image-border)
     --caption-color: var(--color-sandstone)
 
     &[data-theme="DARK"]

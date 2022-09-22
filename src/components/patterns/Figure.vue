@@ -61,7 +61,7 @@
         <source :src="src" type="video/mp4" />
       </video>
     </div>
-    <figcaption v-if="caption === ''" class="figure__caption" v-html="caption"></figcaption>
+    <figcaption v-if="caption != ''" class="figure__caption"><p class="discrete" v-html="caption"></p></figcaption>
   </figure>
 </template>
 
@@ -109,21 +109,24 @@
         cursor: zoom-out
         overflow: visible
 
-    &__caption
-      color: var(--color-sandstone)
+    &__caption p
+      color: var(--caption-color)
 
   // Aspect
   .figure
-    &__asset
-      --color-1: var(--color-creamy-sun)
-      --color-2: var(--color-soft-wind)
-      --color-3: var(--color-candy-floss)
-      --asset-border: var(--image-border)
-      --asset-radius: var(--small-border-radius)
-      --alpha: 0
+    --color-1: var(--color-creamy-sun)
+    --color-2: var(--color-soft-wind)
+    --color-3: var(--color-candy-floss)
+    --asset-border: var(--image-border)
+    --asset-radius: var(--small-border-radius)
+    --alpha: 0
+    --caption-color: var(--color-sandstone)
 
-      &--magnified
-        --asset-border: none
-        --asset-radius: 0
-        --alpha: .9
+    &__asset--magnified
+      --asset-border: none
+      --asset-radius: 0
+      --alpha: .9
+
+    &[data-theme="DARK"]
+      --caption-color: var(--color-clay)
 </style>

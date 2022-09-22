@@ -2,7 +2,6 @@
   import { defineComponent } from 'vue'
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import TwoColumns from '@/components/layouts/TwoColumns.vue'
-  import FullWidthFigure from '@/components/layouts/FullWidthFigure.vue'
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
   import { Download, Github } from 'lucide-vue-next'
@@ -13,7 +12,6 @@
     components: {
       OneColumn,
       TwoColumns,
-      FullWidthFigure,
       LinkContainer,
       Figure,
       Download,
@@ -63,55 +61,50 @@
     </TwoColumns>
   </section>
   <section>
-    <OneColumn
+    <TwoColumns
       :title="$t('work._awesome_ipsums.part-2.title')"
+      center
       :theme="theme"
     >
-      <template #plain>
+      <template #left>
         <p>{{ $t('work._awesome_ipsums.part-2.paragraph-1') }}</p>
       </template>
-    </OneColumn>
-    <FullWidthFigure
-      isCentered
-      background="linear-gradient(90deg, #FAF7D4 -61.9%, #B4F3D5 176.19%)"
-      :theme="theme"
-    >
-      <template #asset>
-        <img v-lazy="'/images/_work/_awesome_ipsums/article-asset-2.png'" />
+      <template #right>
+        <Figure
+          type="image"
+          src="/images/_work/_awesome_ipsums/article-asset-2.png"
+        />
       </template>
-    </FullWidthFigure>
-    <OneColumn
+    </TwoColumns>
+    <TwoColumns
+      class="col-2--invert"
+      center
       :theme="theme"
     >
-      <template #plain>
+      <template #left>
+        <Figure
+          type="image"
+          src="/images/_work/_awesome_ipsums/article-asset-3.png"
+        />
+      </template>
+      <template #right>
         <p>{{ $t('work._awesome_ipsums.part-2.paragraph-2') }}</p>
       </template>
-    </OneColumn>
-    <FullWidthFigure
-      isCentered
-      background="linear-gradient(90deg, #FAF7D4 -61.9%, #B4F3D5 176.19%)"
+    </TwoColumns>
+    <TwoColumns
+      center
       :theme="theme"
     >
-      <template #asset>
-        <img v-lazy="'/images/_work/_awesome_ipsums/article-asset-3.png'" />
-      </template>
-    </FullWidthFigure>
-    <OneColumn
-      :theme="theme"
-    >
-      <template #plain>
+      <template #left>
         <p>{{ $t('work._awesome_ipsums.part-2.paragraph-3') }}</p>
       </template>
-    </OneColumn>
-    <FullWidthFigure
-      isCentered
-      background="linear-gradient(90deg, #FAF7D4 -61.9%, #B4F3D5 176.19%)"
-      :theme="theme"
-    >
-      <template #asset>
-        <img v-lazy="'/images/_work/_awesome_ipsums/article-asset-4.png'" />
+      <template #right>
+        <Figure
+          type="image"
+          src="/images/_work/_awesome_ipsums/article-asset-4.png"
+        />
       </template>
-    </FullWidthFigure>
+    </TwoColumns>
   </section>
   <section class="ending">
   </section>

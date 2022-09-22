@@ -2,7 +2,6 @@
   import { defineComponent } from 'vue'
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
-  import FullWidthFigure from '@/components/layouts/FullWidthFigure.vue'
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
   import { Info, Bot, Ghost } from 'lucide-vue-next'
@@ -13,7 +12,6 @@
     components: {
       OneColumn,
       WrapColumn,
-      FullWidthFigure,
       LinkContainer,
       Figure,
       Info,
@@ -69,14 +67,17 @@
         <p>{{ $t('work._jeprendsquoi.part-1.paragraph-1') }}</p>
       </template>
     </OneColumn>
-    <FullWidthFigure
-      :caption="$t('work._jeprendsquoi.part-1.caption-1')"
+    <OneColumn
       :theme="theme"
     >
-      <template #asset>
-        <img v-lazy="'/images/_work/_jeprendsquoi/article-asset-1.png'" />
+      <template #plain>
+        <Figure
+          type="image"
+          src="/images/_work/_jeprendsquoi/article-asset-1.png"
+          :caption="$t('work._jeprendsquoi.part-1.caption-1')"
+        />
       </template>
-    </FullWidthFigure>
+    </OneColumn>
     <OneColumn
       :theme="theme"
     >
@@ -84,14 +85,17 @@
         <p>{{ $t('work._jeprendsquoi.part-1.paragraph-2') }}</p>
       </template>
     </OneColumn>
-    <FullWidthFigure
-      :caption="$t('work._jeprendsquoi.part-1.caption-2')"
+    <OneColumn
       :theme="theme"
     >
-      <template #asset>
-        <img v-lazy="'/images/_work/_jeprendsquoi/article-asset-2.png'" />
+      <template #plain>
+        <Figure
+          type="image"
+          src="/images/_work/_jeprendsquoi/article-asset-2.png"
+          :caption="$t('work._jeprendsquoi.part-1.caption-2')"
+        />
       </template>
-    </FullWidthFigure>
+    </OneColumn>
     <OneColumn
       :theme="theme"
     >

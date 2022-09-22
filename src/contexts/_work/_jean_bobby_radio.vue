@@ -3,6 +3,7 @@
   import { store } from '@/utilities/store'
   import { Vue3Lottie } from 'vue3-lottie'
   import OneColumn from '@/components/layouts/OneColumn.vue'
+  import Figure from '@/components/patterns/Figure.vue'
   import FullWidthFigure from '@/components/layouts/FullWidthFigure.vue'
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import { Info, Github, Radio } from 'lucide-vue-next'
@@ -13,6 +14,7 @@
     name: '_jean_bobby_radio',
     components: {
       OneColumn,
+      Figure,
       FullWidthFigure,
       LinkContainer,
       Info,
@@ -84,14 +86,17 @@
         <p>{{ $t('work._jean_bobby_radio.part-2.paragraph-1') }}</p>
       </template>
     </OneColumn>
-    <FullWidthFigure
-      :caption="$t('work._jean_bobby_radio.part-2.caption-1')"
+    <OneColumn
       :theme="theme"
     >
-      <template #asset>
-        <img v-lazy="'/images/_work/_jean_bobby_radio/article-asset-1.png'" />
+      <template #plain>
+        <Figure
+          type="image"
+          src="/images/_work/_jean_bobby_radio/article-asset-1.png"
+          :caption="$t('work._jean_bobby_radio.part-2.caption-1')"
+        />
       </template>
-    </FullWidthFigure>
+    </OneColumn>
   </section>
   <section>
     <OneColumn
@@ -103,8 +108,7 @@
       </template>
     </OneColumn>
     <FullWidthFigure
-      :height="store.device === 'DESKTOP' ? 640 : 340"
-      isCentered
+      center
       background="#190038"
       :theme="theme"
     >
@@ -121,7 +125,7 @@
     </OneColumn>
     <FullWidthFigure
       :caption="$t('work._jean_bobby_radio.part-3.caption-1')"
-      isCentered
+      center
       background="#190038"
       :theme="theme"
     >
