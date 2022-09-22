@@ -48,7 +48,7 @@
     &__asset
       width: 100%
       display: v-bind("height == undefined ? 'flex' : 'block'")
-      height: v-bind("height == undefined ? 'fit-content' : height + 'rem'")
+      height: 640rem
       box-shadow: var(--asset-border)
       overflow: hidden
       padding: v-bind("isCentered ? '0 var(--layout-center)' : '0'")
