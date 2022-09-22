@@ -62,14 +62,17 @@
         <p>{{ $t('work._iobeya_whiteboard.part-1.paragraph-1') }}</p>
       </template>
     </OneColumn>
-    <FullWidthFigure
-      :caption="$t('work._iobeya_whiteboard.part-1.caption-1')"
+    <OneColumn
       :theme="theme"
     >
-      <template #asset>
-        <img v-lazy="'/images/_work/_iobeya_whiteboard/article-asset-1.png'" />
+      <template #plain>
+        <Figure
+          type="image"
+          src="/images/_work/_iobeya_whiteboard/article-asset-1.png"
+          :caption="$t('work._iobeya_whiteboard.part-1.caption-1')"
+        />
       </template>
-    </FullWidthFigure>
+    </OneColumn>
     <OneColumn
       :theme="theme"
     >
@@ -93,14 +96,17 @@
         />
       </template>
     </TwoColumns>
-    <FullWidthFigure
-      :caption="$t('work._iobeya_whiteboard.part-1.caption-2')"
+    <OneColumn
       :theme="theme"
     >
-      <template #asset>
-        <img v-lazy="'/images/_work/_iobeya_whiteboard/article-asset-4.png'" />
+      <template #plain>
+        <Figure
+          type="image"
+          src="/images/_work/_iobeya_whiteboard/article-asset-4.png"
+          :caption="$t('work._iobeya_whiteboard.part-1.caption-2')"
+        />
       </template>
-    </FullWidthFigure>
+    </OneColumn>
     <OneColumn
       :theme="theme"
     >
@@ -153,14 +159,17 @@
         <p>{{ $t('work._iobeya_whiteboard.part-2.paragraph-2') }}</p>
       </template>
     </OneColumn>
-    <FullWidthFigure
-      :caption="$t('work._iobeya_whiteboard.part-2.caption-3')"
+    <OneColumn
       :theme="theme"
     >
-      <template #asset>
-        <img v-lazy="'/images/_work/_iobeya_whiteboard/article-asset-8.png'" />
+      <template #plain>
+        <Figure
+          type="image"
+          src="/images/_work/_iobeya_whiteboard/article-asset-8.png"
+          :caption="$t('work._iobeya_whiteboard.part-2.caption-3')"
+        />
       </template>
-    </FullWidthFigure>
+    </OneColumn>
     <OneColumn
       :theme="theme"
     >
@@ -251,14 +260,17 @@
         <p>{{ $t('work._iobeya_whiteboard.part-3.paragraph-2') }}</p>
       </template>
     </OneColumn>
-    <FullWidthFigure
-      :caption="$t('work._iobeya_whiteboard.part-3.caption-4')"
+    <OneColumn
       :theme="theme"
     >
-      <template #asset>
-        <img v-lazy="'/images/_work/_iobeya_whiteboard/article-asset-11.png'" />
+      <template #plain>
+        <Figure
+          type="image"
+          src="/images/_work/_iobeya_whiteboard/article-asset-11.png"
+          :caption="$t('work._iobeya_whiteboard.part-3.caption-4')"
+        />
       </template>
-    </FullWidthFigure>
+    </OneColumn>
   </section>
   <section class="credit">
     <WrapColumn
