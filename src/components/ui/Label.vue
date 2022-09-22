@@ -12,6 +12,10 @@
         type: Boolean,
         default: false
       },
+      highlighted: {
+        type: Boolean,
+        default: false
+      },
       small: {
         type: Boolean,
         default: false
@@ -25,28 +29,37 @@
 </script>
 
 <template>
-  <div class="label" :data-theme="theme" :data-underlined="underlined">
-    <p :class="small ? 'discrete' : ''">{{ label }}</p>
+  <div
+    class="label"
+    :data-theme="theme"
+    :data-underlined="underlined"
+    :data-highlighted="highlighted"
+  >
+    <span :class="small ? 'small-label' : 'label'">{{ label }}</span>
   </div>
 </template>
 
 <style lang="sass">
   // Structure
   .label
+    --line-width: v-bind("small ? '2rem' : 'var(--border-size)'")
     display: inline-block
 
-    p
-      z-index: 1
+    span
+      z-index: 2
       transition: var(--slow-transition)
+
+    &:after
+      z-index: 1
 
     &[data-underlined="true"]
       &:after
         content: ''
         width: 100%
-        height: v-bind("small ? '2rem' : 'var(--border-size)'")
+        height: var(--line-width)
         position: absolute
         left: 0
-        bottom: calc(var(--border-size) * -1)
+        bottom: calc(var(--line-width) * -2)
         border-radius: var(--full-border-radius)
         transition: var(--simple-transition)
 

@@ -64,7 +64,7 @@
     transform-origin: center center
 
     &__icon
-      padding: var(--spacing-s-000) 0 0
+      padding: var(--spacing-xs-000) 0 0
 
   // Aspect
   .external-link

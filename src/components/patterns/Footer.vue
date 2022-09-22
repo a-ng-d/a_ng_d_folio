@@ -40,9 +40,10 @@
   <footer class="footer" :data-theme="theme">
     <div class="footer__tag">
       <span class="footer__tag__content">{{ $t("global.author") }}</span>
-      <span class="footer__tag__content">{{ $t("global.separator") }}</span>
-      <span class="footer__tag__content">{{ $t("global.license", { year: new Date().getFullYear() }) }}</span>
-      <span class="footer__tag__content">{{ $t("global.separator") }}</span>
+      <span class="footer__tag__content small-label">{{ $t("global.author") }}</span>
+      <span class="footer__tag__content small-label">{{ $t("global.separator") }}</span>
+      <span class="footer__tag__content small-label">{{ $t("global.license", { year: new Date().getFullYear() }) }}</span>
+      <span class="footer__tag__content small-label">{{ $t("global.separator") }}</span>
       <RouterLink
         class="footer__tag__link"
         to="/_attribution"
@@ -56,8 +57,8 @@
           :theme="theme === 'DEFAULT' ? 'DARK' : 'DEFAULT'"
         />
       </RouterLink>
-      <span class="footer__tag__content">{{ $t("global.separator") }}</span>
-      <span class="footer__tag__content">{{ `${$t("global.version")} ${version}` }}</span>
+      <span class="footer__tag__content small-label">{{ $t("global.separator") }}</span>
+      <span class="footer__tag__content small-label">{{ `${$t("global.version")} ${version}` }}</span>
     </div>
     <Button
       v-if="store.device === 'DESKTOP'"
@@ -76,7 +77,6 @@
 </template>
 
 <style scoped lang="sass">
-  @use '@/assets/stylesheets/text-styles' as text
   @use '@/assets/stylesheets/mixins' as device
 
   // Structure
@@ -99,9 +99,6 @@
       color: var(--text-color)
       background-color: var(--background-color)
       transition: var(--grandma-transition)
-
-      &__content, &__link
-        @include text.caption
 
       &__link
         transition: var(--simple-transition)
