@@ -12,7 +12,7 @@
     data: function() {
       return {
         width: 50 as number,
-        duration: 800 as string,
+        duration: 800 as number,
         easing: '.86 .12 .12 .86' as string,
         delay: 100 as number
       }
