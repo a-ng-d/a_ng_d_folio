@@ -6,6 +6,7 @@
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import ContentContainer from '@/components/patterns/ContentContainer.vue'
+  import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
   import _ui_color_palette from '@/contexts/_work/_ui_color_palette.vue'
   import _jeprendsquoi from '@/contexts/_work/_jeprendsquoi.vue'
   import _jean_bobby_radio from '@/contexts/_work/_jean_bobby_radio.vue'
@@ -21,6 +22,7 @@
       OneColumn,
       WrapColumn,
       ContentContainer,
+      SimpleExternalLink,
       _ui_color_palette,
       _jeprendsquoi,
       _jean_bobby_radio,
@@ -67,7 +69,11 @@
           :theme="theme"
         >
           <template #plain>
-            <p class="enhanced" v-html="project.description"></p>
+            <i18n-t :keypath="`work.${project.codeName}.description`" tag="p" class="enhanced">
+              <template v-slot:link-1>
+                
+              </template>
+            </i18n-t>
           </template>
         </OneColumn>
       </section>
