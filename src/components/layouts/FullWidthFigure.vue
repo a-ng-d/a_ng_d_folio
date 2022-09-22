@@ -8,7 +8,7 @@
       height: {
         type: Number,
       },
-      isCentered: {
+      center: {
         type: Boolean,
         default: false
       },
@@ -51,12 +51,13 @@
       height: 640rem
       box-shadow: var(--asset-border)
       overflow: hidden
-      padding: v-bind("isCentered ? '0 var(--layout-center)' : '0'")
-      justify-content: v-bind("isCentered ? 'center' : 'flex-start'")
+      padding: v-bind("center ? '0 var(--layout-center)' : '0'")
+      justify-content: v-bind("center ? 'center' : 'flex-start'")
       background: var(--asset-background)
 
       :deep(img)
         width: 100%
+        height: fit-content
         transition: var(--duration-turtoise) opacity ease
 
       :deep(img[lazy=loading])
