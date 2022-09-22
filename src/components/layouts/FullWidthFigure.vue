@@ -56,9 +56,8 @@
       background: var(--asset-background)
 
       :deep(img)
-        --property: opacity
         width: 100%
-        transition: var(--slow-transition)
+        transition: var(--duration-turtoise) opacity ease
 
       :deep(img[lazy=loading])
         opacity: 0
