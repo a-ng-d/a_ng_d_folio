@@ -17,6 +17,10 @@
       },
       href: String,
       alt: String,
+      small: {
+        type: Boolean,
+        default: false
+      },
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -42,13 +46,14 @@
   >
     <div class="external-link__icon">
       <ExternalLink
-        :size="24"
+        :size="small ? 16 : 24"
       />
     </div>
     <div class="external-link__label">
       <Label
         :label="label"
         underlined
+        :small="small ? true : false"
         :theme="theme"
       />
     </div>
@@ -58,13 +63,11 @@
 <style scoped lang="sass">
   // Structure
   .external-link
-    display: flex
-    gap: var(--rich-external-link-gap)
+    display: inline-flex
+    gap: v-bind("small ? 'calc(var(--rich-external-link-gap) / 2)' : 'var(--rich-external-link-gap)'")
     transition: var(--simple-transition)
+    align-items: baseline
     transform-origin: center center
-
-    &__icon
-      padding: var(--spacing-xs-000) 0 0
 
   // Aspect
   .external-link
@@ -91,6 +94,7 @@
 
     &:focus
       transform: var(--focus-scale)
+      padding: 0 var(--spacing-m-000)
 
     &:active
       transform: var(--active-scale)
