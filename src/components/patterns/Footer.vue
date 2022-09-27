@@ -1,7 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import { store } from '@/utilities/store'
-  import Label from '@/components/ui/Label.vue'
   import SimpleLink from '@/components/ui/SimpleLink.vue'
   import Button from '@/components/ui/Button.vue'
   import { Volume, Volume2 } from 'lucide-vue-next'
@@ -9,7 +8,6 @@
   export default defineComponent({
     name: 'Footer',
     components: {
-      Label,
       Button,
       SimpleLink,
       Volume,
