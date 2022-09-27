@@ -197,6 +197,10 @@
       "title": "@:glossary.lab",
       "description": "Doing differently is a real leitmotiv. Experimentation doesn’t scare me because I'm trying to reach a goal by following a personal vision of a desired future."
     },
+    "short": {
+      "title": "@:glossary.id",
+      "description": "Find a short summary of my profesional experience, included my profile and contributions in the last few years."
+    },
     "contact": {
       "title": "@:glossary.contact",
       "description": "Product Designer + Teacher － Send me a feedback or a request."
