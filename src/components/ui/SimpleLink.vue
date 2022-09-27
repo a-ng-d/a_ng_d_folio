@@ -86,7 +86,7 @@
           --underline-color: var(--border-active-color)
 
           height: 75%
-          left: calc(var(--border-size) * 4)
+          left: calc(var(--border-size) * 2)
 
     &:focus
       transform: var(--focus-scale)
@@ -103,5 +103,5 @@
           --underline-color: var(--border-focus-color)
 
           height: 75%
-          left: calc(var(--border-size) * 4)
+          left: calc(var(--border-size) * 2)
 </style>

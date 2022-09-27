@@ -46,7 +46,8 @@
 <style lang="sass">
   // Structure
   .label
-    --line-width: v-bind("small ? 'calc(var(--border-size) * .75)' : large ? 'calc(var(--border-size) * 1.5)' : 'var(--border-size)'")
+    --line-width: v-bind("small ? 'calc(var(--border-size) * .5)' : large ? 'calc(var(--border-size) * 1.5)' : 'var(--border-size)'")
+
     display: inline-flex
 
     span
@@ -74,7 +75,7 @@
         width: 100%
         height: 75%
         position: absolute
-        left: calc(var(--border-size) * 4)
+        left: calc(var(--border-size) * 2)
         bottom: calc(var(--border-size) * -1)
         border-radius: var(--full-border-radius)
         background: var(--highlight-color)
