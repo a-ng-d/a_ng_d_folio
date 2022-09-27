@@ -47,7 +47,7 @@
   // Structure
   .label
     --line-width: v-bind("small ? 'calc(var(--border-size) * .75)' : large ? 'calc(var(--border-size) * 1.5)' : 'var(--border-size)'")
-    display: inline-block
+    display: inline-flex
 
     span
       z-index: 2
@@ -63,7 +63,7 @@
         height: var(--line-width)
         position: absolute
         left: 0
-        bottom: calc(var(--line-width) * -1)
+        bottom: calc(var(--line-width) * -2)
         border-radius: var(--full-border-radius)
         transition: var(--simple-transition)
 
@@ -71,7 +71,7 @@
       &:after
         content: ''
         width: 100%
-        height: 50%
+        height: 75%
         position: absolute
         left: calc(var(--border-size) * 4)
         bottom: calc(var(--border-size) * -1)
