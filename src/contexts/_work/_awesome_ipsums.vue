@@ -47,16 +47,25 @@
     >
       <template #left>
         <p>{{ $t('work._awesome_ipsums.part-1.paragraph-1') }}</p>
-        <p v-html="$t('work._awesome_ipsums.part-1.paragraph-2')"></p>
+        <p>
+          <ul>
+            <li>{{ $t('work._awesome_ipsums.part-1.point-1') }}</li>
+            <li>{{ $t('work._awesome_ipsums.part-1.point-2') }}</li>
+          </ul>
+        </p>
+        <p>{{ $t('work._awesome_ipsums.part-1.paragraph-2') }}</p>
         <p>{{ $t('work._awesome_ipsums.part-1.paragraph-3') }}</p>
-        <p>{{ $t('work._awesome_ipsums.part-1.paragraph-4') }}</p>
       </template>
       <template #right>
         <Figure
           type="image"
           src="/images/_work/_awesome_ipsums/article-asset-1.png"
-          :caption="$t('work._awesome_ipsums.part-1.caption-1')"
-        />
+          caption
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._awesome_ipsums.part-1.caption-1') }}</p>
+          </template>
+        </Figure>
       </template>
     </TwoColumns>
   </section>
