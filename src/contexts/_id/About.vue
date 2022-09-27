@@ -40,21 +40,21 @@
           </i18n-t>
           <p>{{ $t("id.about.mission") }}</p>
           <i18n-t keypath="id.about.activities" tag="p">
-            <template v-slot:team>
+            <template #team>
               <Label
                 :label="$t('global.team')"
                 highlighted
                 :theme="theme"
               />
             </template>
-            <template v-slot:thinking>
+            <template #thinking>
               <Label
                 :label="$t('global.thinking')"
                 highlighted
                 :theme="theme"
               />
             </template>
-            <template v-slot:system>
+            <template #system>
               <Label
                 :label="$t('global.system')"
                 highlighted

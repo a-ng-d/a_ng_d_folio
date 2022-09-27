@@ -4,6 +4,7 @@
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
+  import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
   import { Info, Bot, Ghost } from 'lucide-vue-next'
   import { doMap } from '@/utilities/operations'
 
@@ -14,6 +15,7 @@
       WrapColumn,
       LinkContainer,
       Figure,
+      SimpleExternalLink,
       Info,
       Bot,
       Ghost
@@ -53,8 +55,13 @@
     >
       <template #plain>
         <p>{{ $t('work._jeprendsquoi.challenge.paragraph-1') }}</p>
-        <p v-html="$t('work._jeprendsquoi.challenge.paragraph-2')"></P>
-        <p>{{ $t('work._jeprendsquoi.challenge.paragraph-3') }}</p>
+        <p>
+          <ul>
+            <li>{{ $t('work._jeprendsquoi.challenge.point-1') }}</li>
+            <li>{{ $t('work._jeprendsquoi.challenge.point-2') }}</li>
+          </ul>
+        </p>
+        <p>{{ $t('work._jeprendsquoi.challenge.paragraph-2') }}</p>
       </template>
     </OneColumn>
   </section>
@@ -74,8 +81,32 @@
         <Figure
           type="image"
           src="/images/_work/_jeprendsquoi/article-asset-1.png"
-          :caption="$t('work._jeprendsquoi.part-1.caption-1')"
-        />
+          caption
+          :theme="theme"
+        >
+          <template #caption>
+            <i18n-t keypath="work._jeprendsquoi.part-1.caption-1" tag="p" class="discrete" scope="global">
+              <template #linkOne>
+                <SimpleExternalLink
+                  :label="$t('work._jeprendsquoi.externalLinks.linkOne.label')"
+                  :href="$t('work._jeprendsquoi.externalLinks.linkOne.href')"
+                  :alt="$t('work._jeprendsquoi.externalLinks.linkOne.alt')"
+                  small
+                  :theme="theme"
+                />
+              </template>
+              <template #linkTwo>
+                <SimpleExternalLink
+                  :label="$t('work._jeprendsquoi.externalLinks.linkTwo.label')"
+                  :href="$t('work._jeprendsquoi.externalLinks.linkTwo.href')"
+                  :alt="$t('work._jeprendsquoi.externalLinks.linkTwo.alt')"
+                  small
+                  :theme="theme"
+                />
+              </template>
+            </i18n-t>
+          </template>
+        </Figure>
       </template>
     </OneColumn>
     <OneColumn
@@ -92,8 +123,22 @@
         <Figure
           type="image"
           src="/images/_work/_jeprendsquoi/article-asset-2.png"
-          :caption="$t('work._jeprendsquoi.part-1.caption-2')"
-        />
+          caption
+        >
+          <template #caption>
+            <i18n-t keypath="work._jeprendsquoi.part-1.caption-2" tag="p" class="discrete" scope="global">
+              <template #linkThree>
+                <SimpleExternalLink
+                  :label="$t('work._jeprendsquoi.externalLinks.linkThree.label')"
+                  :href="$t('work._jeprendsquoi.externalLinks.linkThree.href')"
+                  :alt="$t('work._jeprendsquoi.externalLinks.linkThree.alt')"
+                  small
+                  :theme="theme"
+                />
+              </template>
+            </i18n-t>
+          </template>
+        </Figure>
       </template>
     </OneColumn>
     <OneColumn
@@ -110,7 +155,16 @@
       :theme="theme"
     >
       <template #plain>
-        <p v-html="$t('work._jeprendsquoi.part-2.paragraph-1')"></p>
+        <i18n-t keypath="work._jeprendsquoi.part-2.paragraph-1" tag="p" scope="global">
+          <template #linkFour>
+            <SimpleExternalLink
+              :label="$t('work._jeprendsquoi.externalLinks.linkFour.label')"
+              :href="$t('work._jeprendsquoi.externalLinks.linkFour.href')"
+              :alt="$t('work._jeprendsquoi.externalLinks.linkFour.alt')"
+              :theme="theme"
+            />
+          </template>
+        </i18n-t>
       </template>
     </OneColumn>
     <WrapColumn
@@ -122,34 +176,50 @@
         <Figure
           type="image"
           src="/images/_work/_jeprendsquoi/article-asset-3.jpeg"
-          :caption="$t('work._jeprendsquoi.part-2.caption-1')"
+          caption
           @isMagnified="isFullScreen = $event"
-        />
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._jeprendsquoi.part-2.caption-1') }}</p>
+          </template>
+        </Figure>
         <Figure
           type="image"
           src="/images/_work/_jeprendsquoi/article-asset-4.jpeg"
-          :caption="$t('work._jeprendsquoi.part-2.caption-2')"
+          caption
           @isMagnified="isFullScreen = $event"
-        />
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._jeprendsquoi.part-2.caption-2') }}</p>
+          </template>
+        </Figure>
         <Figure
           type="image"
           src="/images/_work/_jeprendsquoi/article-asset-5.jpeg"
-          :caption="$t('work._jeprendsquoi.part-2.caption-3')"
+          caption
           @isMagnified="isFullScreen = $event"
-        />
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._jeprendsquoi.part-2.caption-3') }}</p>
+          </template>
+        </Figure>
         <Figure
           type="image"
           src="/images/_work/_jeprendsquoi/article-asset-6.jpeg"
-          :caption="$t('work._jeprendsquoi.part-2.caption-4')"
+          caption
           @isMagnified="isFullScreen = $event"
-        />
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._jeprendsquoi.part-2.caption-4') }}</p>
+          </template>
+        </Figure>
       </template>
     </WrapColumn>
     <OneColumn
       :theme="theme"
     >
       <template #plain>
-        <p v-html="$t('work._jeprendsquoi.part-2.paragraph-2')"></p>
+        <p>{{ $t('work._jeprendsquoi.part-2.paragraph-2') }}</p>
       </template>
     </OneColumn>
     <OneColumn
@@ -176,15 +246,23 @@
         <Figure
           type="image"
           src="/images/_work/_jeprendsquoi/article-asset-7.gif"
-          :caption="$t('work._jeprendsquoi.part-2.caption-7')"
+          caption
           @isMagnified="isFullScreen = $event"
-        />
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._jeprendsquoi.part-2.caption-7') }}</p>
+          </template>
+        </Figure>
         <Figure
           type="image"
           src="/images/_work/_jeprendsquoi/article-asset-8.gif"
-          :caption="$t('work._jeprendsquoi.part-2.caption-8')"
+          caption
           @isMagnified="isFullScreen = $event"
-        />
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._jeprendsquoi.part-2.caption-8') }}</p>
+          </template>
+        </Figure>
       </template>
     </WrapColumn>
   </section>
@@ -237,5 +315,4 @@
   @include device.smartphone
     section.ending
       background: url(/images/_work/_jeprendsquoi/ending-asset-2.png) 50% v-bind('parallax(400, 100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-1.png) -155% v-bind('parallax(200, -100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-3.png) 300% v-bind('parallax(400, 100)') no-repeat
-
 </style>

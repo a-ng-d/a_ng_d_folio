@@ -131,27 +131,27 @@
     "stories": {
       "title": "Stories",
       "link-1": {
-        "label": "{'Facilitons-nous la vie ! (ou pas)'}@:global.separator{'Technology'}@:global.separator{'FR'}@:global.separator{'Ebook'}",
+        "label": "{'Facilitons-nous la vie ! (ou pas)'}@:global.separator{'Technology'}",
         "href": "https://school.involt.io/src/ebook/page_fnlv.zip",
         "alt": "External link to the \"Facilitons-nous la vie ! (ou pas)\" ebook"
       },
       "link-2": {
-        "label": "{'La voix de l’équipe'}@:global.separator{'Team collaboration'}@:global.separator{'FR'}@:global.separator{'Article'}",
+        "label": "{'La voix de l’équipe'}@:global.separator{'Team collaboration'}",
         "href": "https://medium.com/{'@'}inVoltag/la-voix-de-léquipe-ef80e16f19e5",
         "alt": "External link to the \"La voix de l’équipe\" article on Medium"
       },
       "link-3": {
-        "label": "{'Une rétrospective à distance ? 😨'}@:global.separator{'Team collaboration'}@:global.separator{'FR'}@:global.separator{'Article'}",
+        "label": "{'Une rétrospective à distance ? 😨'}@:global.separator{'Team collaboration'",
         "href": "https://medium.com/{'@'}inVoltag/une-rétrospective-à-distance-88bdab442d93",
         "alt": "External link to the \"Une rétrospective à distance ? 😨\" article on Medium"
       },
       "link-4": {
-        "label": "{'From Design to Agile Thinking, Converging to the right problem (the first diamond)'}@:global.separator{'Team collaboration'}@:global.separator{'EN'}@:global.separator{'Article'}",
+        "label": "{'From Design to Agile Thinking, Converging to the right problem (the first diamond)'}@:global.separator{'Team collaboration'}",
         "href": "https://www.linkedin.com/pulse/from-design-agile-thinkingconverging-right-problem-first-grimaud",
         "alt": "External link to the \"From Design to Agile Thinking, Converging to the right problem (the first diamond)\" article on LinkedIn"
       },
       "link-5": {
-        "label": "{'From Design to Agile Thinking﹒Converging to the right solution (the second diamond)'}@:global.separator{'Team collaboration'}@:global.separator{'EN'}@:global.separator{'Article'}",
+        "label": "{'From Design to Agile Thinking﹒Converging to the right solution (the second diamond)'}@:global.separator{'Team collaboration'}",
         "href": "https://www.linkedin.com/pulse/from-design-agile-thinkingconverge-right-solution-second-grimaud",
         "alt": "External link to the \"From Design to Agile Thinking﹒Converging to the right solution (the second diamond)\" article on LinkedIn"
       }
@@ -159,12 +159,12 @@
     "talks": {
       "title": "Talks",
       "link-1": {
-        "label": "{'Design Thinking'}@:global.separator{'Digital Catalyst'}@:global.separator{'FR'}@:global.separator{'Video'}",
+        "label": "{'Design Thinking'}@:global.separator{'Digital Catalyst'}",
         "href": "https://youtu.be/DDl4Pe0rJDc?t=3727",
         "alt": "External link to the \"Design Thinking@:global.separatorDigital Catalyst\" video on Youtube"
       },
       "link-2": {
-        "label": "{'\"A design system is like a residential complex\"'}@:global.separator{'iObeya'}@:global.separator{'FR'}@:global.separator{'Slides'}",
+        "label": "{'A design system is like a residential complex'}@:global.separator{'iObeya'}",
         "href": "https://www.figma.com/proto/PQUAoyNxomDEyDjf5Tr9cy/Tech-Talks-%231?page-id=0%3A1&node-id=19%3A3389&viewport=45%2C495%2C0.02&scaling=contain",
         "alt": "External link to the \"A design system is like a residential complex\" slides on Figma"
       }
@@ -172,7 +172,7 @@
     "workshops": {
       "title": "Workshops",
       "link-1": {
-        "label": "{'\"C’est mieux quand ça va plus vite en caisse\"'}@:global.separator{'Lisaa'}@:global.separator{'Paris'}@:global.separator{'Septembre 2021'} ",
+        "label": "{'C’est mieux quand ça va plus vite en caisse'}@:global.separator{'LISAA'}@:global.separator{'Paris'}@:global.separator{'Septembre 2021'}",
         "href": "https://www.figma.com/proto/gAF1xkoLqufMyRjvJxQVuW/Support-de-pr%C3%A9sentation?page-id=0%3A1&node-id=0%3A3&viewport=91%2C166%2C0.05&scaling=contain&starting-point-node-id=0%3A3",
         "alt": "External link to the \"C’est mieux quand ça va plus vite en caisse\" slides on Figma"
       },
@@ -275,7 +275,7 @@
       "title": "@:work._ui_color_palette.shortTitle@:global.separator@:global.author",
       "shortTitle": "_ui_color_palette",
       "shortDescription": "Accessible color palettes with consistant lightness with Figma",
-      "description": "Figma is an UX tool, using diagrams to build user experiences, interfaces, prototypes, and illustrations… The tool can be extended with a plugin system. Figma tends to be the leader of UX tools market because of its inclusive and powerful business model. So, Figma is still <a href='https://uxtools.co/survey-2021' class='link external-link' target='_blank'>the most exciting ux tool</a>. By reading this article (<a href='https://wildbit.com/blog/accessible-palette-stop-using-hsl-for-color-systems' class='link external-link' target='_blank'>Accessible Palette: stop using HSL for color systems</a>), I noticed there is not any plugin on Figma to help build accessible color systems for UI. The opportunity is to develop a tool to create, edit and deploy color palettes.",
+      "description": "Figma is an UX tool, using diagrams to build user experiences, interfaces, prototypes, and illustrations… The tool can be extended with a plugin system. Figma tends to be the leader of UX tools market because of its inclusive and powerful business model. So, Figma is still the most exciting ux tool. By reading this article (Accessible Palette: stop using HSL for color systems), I noticed there is not any plugin on Figma to help build accessible color systems for UI. The opportunity is to develop a tool to create, edit and deploy color palettes.",
       "misc": {
         "date": "{'2022'}@:global.separator{'Monthly release'}",
         "objectives": "Creating UI color palettes with consistant lightness and contrast, Updating and deploying colors with ease to the team library",
@@ -316,20 +316,21 @@
       "challenge": {
         "title": "The problem of non-seasonal food",
         "paragraph-1": "A non-seasonal fruit or vegetable comes from:",
-        "paragraph-2": "<ul><li>Abroad, in a country where the cultivation is seasonal or locally unavailable</li><li>Cultivated in a greenhouse</li></ul>",
-        "paragraph-3": "Abroad, the carbon footprint is high because of the transportation: by boat or plane. And yet, cultivate inside a greenhouse has a more expensive carbon footprint. Indeed, a greenhouse keeps a non-stop heat to simulate the season temperature, and make the cultivation grow. That is why we can see some tomatoes on november, they grow in a greenhouse in Brittany."
+        "paragraph-2": "Abroad, the carbon footprint is high because of the transportation: by boat or plane. And yet, cultivate inside a greenhouse has a more expensive carbon footprint. Indeed, a greenhouse keeps a non-stop heat to simulate the season temperature, and make the cultivation grow. That is why we can see some tomatoes on november, they grow in a greenhouse in Brittany.",
+        "point-1": "Abroad, in a country where the cultivation is seasonal or locally unavailable",
+        "point-2": "Cultivated in a greenhouse"
       },
       "part-1": {
         "title": "A first prototype to solve the problem",
         "paragraph-1": "There are a couple of tools to make some quick database. No-code is an interesting philosophy to build and test quickly something. Airtable has been chosen because its databases can use different visual representations. The grid was the most relevant view to retrieve a vegetable or a fruit and consult its data.",
         "paragraph-2": "The limitation of this representation is the device context. Indeed, the main use case takes place outside, at the market or the supermarket. People are not used to bring their laptop to the supermarket. So, this solution is not viable for a real usage on the ground.",
         "paragraph-3": "Nevertheless, people might take their smartphone! And Notion can be consulted with the native app or via a shared URL. The access point is a bit risky because people might loose the shared URL or their Notion account. So, make a mobile app should be safer.",
-        "caption-1": "The grid representation is clear enough to help user to retrieve the product he is looking for. Besides, Airtable provides a discrete search feature to help a bit more. The fruits and vegetables grid views have been divided into two databases in the first instance. Consult the <a href='https://airtable.com/shrjuPamh7D8dN0mD' class='link external-link' target='_blank'>fruits</a> and <a href='https://airtable.com/shr7bwEb4cuhWyREm' class='link external-link' target='_blank'>vegetables</a> databases.",
-        "caption-2": "Notion has merged the two Airtable databases into one. Notion operates in the same way and the reason of this migration is simple: Notion is my all-in-one digital workplace. <a href='https://www.notion.so/0a62c28a5f444ff482e676483f44d0d5' class='link external-link' target='_blank'>Consult the Fruits and Vegetables database</a>."
+        "caption-1": "The grid representation is clear enough to help user to retrieve the product he is looking for. Besides, Airtable provides a discrete search feature to help a bit more. The fruits and vegetables grid views have been divided into two databases in the first instance. Consult the {linkOne} and {linkTwo} databases.",
+        "caption-2": "Notion has merged the two Airtable databases into one. Notion operates in the same way and the reason of this migration is simple: Notion is my all-in-one digital workplace. {linkThree}."
       },
       "part-2": {
         "title": "Make the data alive and retrievable",
-        "paragraph-1": "The data are ready on Notion and can be represented on a mobile app as an interactive list with some additional features: filter, search, expand, share, and contribute. The app has been built with <a href='https://www.bravostudio.app/' class='link external-link' target='_blank'>Bravo Studio</a>, a no-code mobile app builder, that gathers API calls and Figma templates.",
+        "paragraph-1": "The data are ready on Notion and can be represented on a mobile app as an interactive list with some additional features: filter, search, expand, share, and contribute. The app has been built with {linkFour}, a no-code mobile app builder, that gathers API calls and Figma templates.",
         "paragraph-2": "The brand has been created and developed around a simple question: What do I take? A question we ask at the supermarket. The purpose is to help people make environmentally friendly choices.",
         "caption-1": "The list of fruits and vegetables is displayed as the main section. The list can be filtered by season.",
         "caption-2": "The search feature allows user to find a specific product",
@@ -353,6 +354,28 @@
           "description": "The iOS app is available on TestFlight. It is an ongoing test beta version.",
           "linkLabel": "Install the app"
         }
+      },
+      "externalLinks": {
+        "linkOne": {
+          "label": "fruits",
+          "href": "https://airtable.com/shrjuPamh7D8dN0mD",
+          "alt": "External link to the fruits database on airtable"
+        },
+        "linkTwo": {
+          "label": "vegetables",
+          "href": "https://airtable.com/shr7bwEb4cuhWyREm",
+          "alt": "External link to the vegetables database on airtable"
+        },
+        "linkThree": {
+          "label": "Consult the Fruits and Vegetables database",
+          "href": "https://www.notion.so/0a62c28a5f444ff482e676483f44d0d5",
+          "alt": "External link to the fruits and vegetables database on Notion"
+        },
+        "linkFour": {
+          "label": "Bravo Studio",
+          "href": "https://www.bravostudio.app/",
+          "alt": "External link to the Bravo Studio app page"
+        }
       }
     },
     "_jean_bobby_radio": {
@@ -368,7 +391,7 @@
       "part-1": {
         "title": "Let's start the broadcasting system",
         "paragraph-1": "Build a web radio from scratch is not as easy as expected. The challenge was interesting because a web radio is a complex system where each component is connected to broadcast audio to whom wants to listen to. To explain a bit, the audio is played from a classic computer, then it is encoded and sent to a broadcasting server, and finally, the audio can be played from a player.",
-        "caption-1": "The web radio system has been designed thanks to a couple of open-source and free solutions as <a href='https://icecast.org' class='link external-link' target='_blank'>Icecast</a> or <a href='https://www.rocketbroadcaster.com' class='link external-link' target='_blank'>Rocket Broadcaster</a>",
+        "caption-1": "The web radio system has been designed thanks to a couple of open-source and free solutions as {linkTwo} or {linkThree}",
         "info": {
           "description": "This article explains the detailed flow for the most curious (in french)",
           "linkLabel": "Read the article"
@@ -383,7 +406,7 @@
         "title": "Our mascot, All Around the World",
         "paragraph-1": "Jean-Bobby is our company's mascot. We are used to get him during our trips or events. He has become a running gag because a lot a people liked to take him on holidays. Jean-Bobby has seen the beauty of our world while being the heart of iObeya (ex-KAP IT).",
         "paragraph-2": "This animated loop is a tribute to this period. The best pictures have been a great inspiration and have been compiled into one short animation.",
-        "caption-1": "This animation has been a great opportunity at using <a href='https://airbnb.design/lottie/' class='link external-link' target='_blank'>Lottie</a> to generate a web-compliant animation. From an Adobe After Effects composition to an animated SVG."
+        "caption-1": "This animation has been a great opportunity at using {linkOne} to generate a web-compliant animation. From an Adobe After Effects composition to an animated SVG."
       },
       "takeaways": {
         "takeaway-1": {
@@ -393,6 +416,23 @@
         "takeaway-2": {
           "description": "Jean-Bobby Radio is an open-source project. You can take a glance at the source code on Github.",
           "linkLabel": "Watch the repository"
+        }
+      },
+      "externalLinks": {
+        "linkOne": {
+          "label": "Lottie",
+          "href": "https://airbnb.design/lottie",
+          "alt": "External link to the Lottie page"
+        },
+        "linkTwo": {
+          "label": "Icecast",
+          "href": "https://icecast.org",
+          "alt": "External link to the Icecast page"
+        },
+        "linkThree": {
+          "label": "Rocket Broadcaster",
+          "href": "https://www.rocketbroadcaster.com",
+          "alt": "External link to the Rocket Broadcaster page"
         }
       }
     },
@@ -409,16 +449,17 @@
       "part-1": {
         "title": "Welcome to the world of collaborative content",
         "paragraph-1": "Lorem ipsum is often used to simulate content into a designed web page. Nevertheless, there may be some issues:",
-        "paragraph-2": "<ul><li>It does not make any sense</li><li>It is quite boring and repetitive</li></ul>",
-        "paragraph-3": "Lorem ipsum could be fun, relevant, and fully personalized. A design team can create, collect and reuse his own fake content. How to get this team involved in collecting content? An online spreadsheet, because it is easy to maintain and always up-to-date.",
-        "paragraph-4": "Google Spreadsheet is simple to use and collaborative. It can act as a micro-database for micro-projects.",
+        "paragraph-2": "Lorem ipsum could be fun, relevant, and fully personalized. A design team can create, collect and reuse his own fake content. How to get this team involved in collecting content? An online spreadsheet, because it is easy to maintain and always up-to-date.",
+        "paragraph-3": "Google Spreadsheet is simple to use and collaborative. It can act as a micro-database for micro-projects.",
+        "point-1": "It does not make any sense",
+        "point-2": "It is quite boring and repetitive",
         "caption-1": "It is possible to create a new text or update one by filling it with a random value from the spreadsheet"
       },
       "part-2": {
         "title": "How does it work?",
         "paragraph-1": "The workflow is quite simple: Synchronizing the spreadsheet model to Sketch.",
         "paragraph-2": "Then, creating a text from a random content of the spreadsheet. The text is displayed at the center of the current view.",
-        "paragraph-3": "Then, creating a text from a random content of the spreadsheet. The text is displayed at the center of the current view."
+        "paragraph-3": "Lastly, a text content can be updated with another random content."
       },
       "takeaways": {
         "takeaway-1": {
@@ -444,9 +485,10 @@
       "challenge": {
         "title": "What is the problem?",
         "paragraph-1": "iObeya is a structured and strict software. The model is a room = a declared team = a project. This model has some limitations:",
-        "paragraph-2": "<ul><li>Hard to be deployed through a large company (> 50.000 employees)</li><li>Heavy workflow between the requester and the IT service</li></ul>",
-        "paragraph-3": "The platform is fully customizable but the users must be declared and allocated by hand. Besides, the license limits the number of users in a room.",
-        "paragraph-4": "The strict and heavy users management is a big pain, so open the platform to any user is our main assumption."
+        "paragraph-2": "The platform is fully customizable but the users must be declared and allocated by hand. Besides, the license limits the number of users in a room.",
+        "paragraph-3": "The strict and heavy users management is a big pain, so open the platform to any user is our main assumption.",
+        "point-1": "Hard to be deployed through a large company (> 50.000 employees)",
+        "point-2": "Heavy workflow between the requester and the IT service"
       },
       "part-1": {
         "title": "Defining several low-fi flows to make stakeholders aligned",

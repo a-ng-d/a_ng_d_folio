@@ -10,7 +10,14 @@
       },
       src: String,
       alt: String,
-      caption: String
+      caption: {
+        type: Boolean,
+        default: false
+      },
+      theme: {
+        type: String,
+        default: 'DEFAULT'
+      }
     },
     watch: {
       isMagnified(to) {
@@ -48,7 +55,7 @@
 </script>
 
 <template>
-  <figure class="figure">
+  <figure class="figure" :data-theme="theme">
     <div class="figure__asset"
       :class="isMagnified ? 'figure__asset--magnified' : null"
       @click="magnifier"
@@ -60,7 +67,9 @@
         <source :src="src" type="video/mp4" />
       </video>
     </div>
-    <figcaption v-if="caption != ''" class="figure__caption"><p class="discrete" v-html="caption"></p></figcaption>
+    <figcaption v-if="caption" class="figure__caption">
+      <slot name="caption"></slot>
+    </figcaption>
   </figure>
 </template>
 
@@ -108,7 +117,7 @@
         cursor: zoom-out
         overflow: visible
 
-    &__caption p
+    &__caption :deep(p)
       color: var(--caption-color)
 
   // Aspect

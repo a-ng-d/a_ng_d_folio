@@ -47,9 +47,14 @@
     >
       <template #plain>
         <p>{{ $t('work._iobeya_whiteboard.challenge.paragraph-1') }}</p>
-        <p v-html="$t('work._iobeya_whiteboard.challenge.paragraph-2')"></p>
+        <p>
+          <ul>
+            <li>{{ $t('work._iobeya_whiteboard.challenge.point-1') }}</li>
+            <li>{{ $t('work._iobeya_whiteboard.challenge.point-2') }}</li>
+          </ul>
+        </p>
+        <p>{{ $t('work._iobeya_whiteboard.challenge.paragraph-2') }}</p>
         <p>{{ $t('work._iobeya_whiteboard.challenge.paragraph-3') }}</p>
-        <p>{{ $t('work._iobeya_whiteboard.challenge.paragraph-4') }}</p>
       </template>
     </OneColumn>
   </section>
@@ -69,8 +74,12 @@
         <Figure
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-1.png"
-          :caption="$t('work._iobeya_whiteboard.part-1.caption-1')"
-        />
+          caption
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._iobeya_whiteboard.part-1.caption-1') }}</p>
+          </template>
+        </Figure>
       </template>
     </OneColumn>
     <OneColumn
@@ -103,8 +112,12 @@
         <Figure
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-4.png"
-          :caption="$t('work._iobeya_whiteboard.part-1.caption-2')"
-        />
+          caption
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._iobeya_whiteboard.part-1.caption-2') }}</p>
+          </template>
+        </Figure>
       </template>
     </OneColumn>
     <OneColumn
@@ -141,15 +154,23 @@
         <Figure
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-6.png"
-          :caption="$t('work._iobeya_whiteboard.part-2.caption-1')"
-        />
+          caption
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._iobeya_whiteboard.part-2.caption-1') }}</p>
+          </template>
+        </Figure>
       </template>
       <template #right>
         <Figure
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-7.png"
-          :caption="$t('work._iobeya_whiteboard.part-2.caption-2')"
-        />
+          caption
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._iobeya_whiteboard.part-2.caption-2') }}</p>
+          </template>
+        </Figure>
       </template>
     </TwoColumns>
     <OneColumn
@@ -166,8 +187,12 @@
         <Figure
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-8.png"
-          :caption="$t('work._iobeya_whiteboard.part-2.caption-3')"
-        />
+          caption
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._iobeya_whiteboard.part-2.caption-3') }}</p>
+          </template>
+        </Figure>
       </template>
     </OneColumn>
     <OneColumn
@@ -230,27 +255,38 @@
         <Figure
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-9.svg"
-          :caption="$t('work._iobeya_whiteboard.part-3.caption-1')"
-        />
+          caption
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._iobeya_whiteboard.part-3.caption-1') }}</p>
+          </template>
+        </Figure>
       </template>
       <template #right>
         <Figure
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-10.svg"
-          :caption="$t('work._iobeya_whiteboard.part-3.caption-2')"
-        />
+          caption
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._iobeya_whiteboard.part-3.caption-2') }}</p>
+          </template>
+        </Figure>
       </template>
     </TwoColumns>
     <FullWidthFigure
-      :caption="$t('work._iobeya_whiteboard.part-3.caption-3')"
-      isCentered
+      center
       background="#262626"
+      caption
       :theme="theme"
     >
       <template #asset>
         <video class="full-width-video" preload="true" autoplay muted loop playsinline poster="">
           <source src="/videos/_work/_iobeya_whiteboard/article-asset-1.mp4" type="video/mp4" />
         </video>
+      </template>
+      <template #caption>
+        <p class="discrete">{{ $t('work._iobeya_whiteboard.part-3.caption-3') }}</p>
       </template>
     </FullWidthFigure>
     <OneColumn
@@ -267,8 +303,12 @@
         <Figure
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-11.png"
-          :caption="$t('work._iobeya_whiteboard.part-3.caption-4')"
-        />
+          caption
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._iobeya_whiteboard.part-3.caption-4') }}</p>
+          </template>
+        </Figure>
       </template>
     </OneColumn>
   </section>

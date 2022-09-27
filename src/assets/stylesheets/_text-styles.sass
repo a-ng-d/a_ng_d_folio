@@ -38,17 +38,17 @@
 @mixin enhanced
   @include model(var(--font-family-rubik), var(--font-style-normal), var(--font-weight-regular), var(--font-size-l-000), var(--sharing-full-two-thirds), var(--letter-spacing-medium), none, none)
 
+@mixin enhanced-label
+  @include model(var(--font-family-rubik), var(--font-style-normal), var(--font-weight-regular), var(--font-size-l-000), var(--sharing-full), var(--letter-spacing-medium), none, none)
+
 @mixin current
   @include model(var(--font-family-rubik), var(--font-style-normal), var(--font-weight-regular), var(--font-size-m-200), var(--sharing-full-two-thirds), var(--letter-spacing-medium), none, none)
 
 @mixin label
   @include model(var(--font-family-rubik), var(--font-style-normal), var(--font-weight-regular), var(--font-size-m-200), var(--sharing-full), var(--letter-spacing-medium), none, none)
 
-@mixin highlighted-label
-  @include model(var(--font-family-rubik), var(--font-style-normal), var(--font-weight-regular), var(--font-size-m-200), var(--sharing-full), var(--letter-spacing-medium), none, underline)
-
 @mixin caption
-  @include model(var(--font-family-rubik), var(--font-style-normal), var(--font-weight-regular), var(--font-size-m-000), var(--sharing-full-two-thirds), var(--letter-spacing-medium), none, none)
+  @include model(var(--font-family-rubik), var(--font-style-normal), var(--font-weight-regular), var(--font-size-m-000), var(--sharing-full-two-thirds), var(--letter-spacing-small), none, none)
 
 @mixin caption-label
-  @include model(var(--font-family-rubik), var(--font-style-normal), var(--font-weight-regular), var(--font-size-m-000), var(--sharing-full), normal, none, none)
+  @include model(var(--font-family-rubik), var(--font-style-normal), var(--font-weight-regular), var(--font-size-m-000), var(--sharing-full), var(--letter-spacing-small), none, none)

@@ -1,15 +1,15 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import { store } from '@/utilities/store'
-  import Label from '@/components/ui/Label.vue'
+  import SimpleLink from '@/components/ui/SimpleLink.vue'
   import Button from '@/components/ui/Button.vue'
   import { Volume, Volume2 } from 'lucide-vue-next'
 
   export default defineComponent({
     name: 'Footer',
     components: {
-      Label,
       Button,
+      SimpleLink,
       Volume,
       Volume2
     },
@@ -43,19 +43,12 @@
       <span class="footer__tag__content small-label">{{ $t("global.separator") }}</span>
       <span class="footer__tag__content small-label">{{ $t("global.license", { year: new Date().getFullYear() }) }}</span>
       <span class="footer__tag__content small-label">{{ $t("global.separator") }}</span>
-      <RouterLink
-        class="footer__tag__link"
-        to="/_attribution"
-        @focus="store.isFocus = true"
-        @blur="store.isFocus = false"
-      >
-        <Label
-          :label="$t('footer.attribution')"
-          underlined
-          small
-          :theme="theme === 'DEFAULT' ? 'DARK' : 'DEFAULT'"
-        />
-      </RouterLink>
+      <SimpleLink
+        :label="$t('footer.attribution')"
+        path="/_attribution"
+        small
+        :theme="theme === 'DEFAULT' ? 'DARK' : 'DEFAULT'"
+      />
       <span class="footer__tag__content small-label">{{ $t("global.separator") }}</span>
       <span class="footer__tag__content small-label">{{ `${$t("global.version")} ${version}` }}</span>
     </div>
@@ -84,7 +77,7 @@
     grid-area: footer
     display: flex
     justify-content: v-bind(flex)
-    align-self: center
+    align-items: center
     padding: var(--layout-column-gap)
     gap: 0 var(--layout-paragraph-gap)
 
@@ -123,40 +116,4 @@
         --text-color: var(--color-soil)
         --background-color: var(--color-cream)
         --border-color: var(--color-soil)
-
-  // Events
-  .footer
-    &__tag__link:hover
-      --amplitude: var(--spacing-s-000)
-
-      animation: excited var(--duration-running) var(--ease-peps)
-
-      .label
-        &:after
-          --border-color: var(--color-creamy-sun)
-
-          height: 50%
-          left: calc(var(--border-size) * 4)
-
-        &[data-theme="DARK"]:after
-          --border-color: var(--color-sandstone)
-
-    &__tag__link:focus
-      transform: var(--focus-scale)
-      padding: 0 var(--spacing-m-000)
-
-    &__tag__link:active
-      transform: var(--active-scale)
-      padding: 0
-
-    &__tag__link:focus, &__tag__link:active
-      background-color: var(--background-color)
-      border-radius: var(--full-border-radius)
-
-      .label
-        &:after
-          --border-color: var(--color-clear-water)
-
-          height: 50%
-          left: calc(var(--border-size) * 4)
 </style>

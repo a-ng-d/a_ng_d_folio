@@ -4,10 +4,6 @@
   export default defineComponent({
     name: 'FullWidthFigure',
     props: {
-      caption: String,
-      height: {
-        type: Number,
-      },
       center: {
         type: Boolean,
         default: false
@@ -15,6 +11,10 @@
       background: {
         type: String,
         default: 'var(--color-creamy-sun)'
+      },
+      caption: {
+        type: Boolean,
+        default: false
       },
       theme: {
         type: String,
@@ -30,7 +30,9 @@
       <div class="figure__asset">
         <slot name="asset"></slot>
       </div>
-      <figcaption v-if="caption != ''" class="figure__caption"><p class="discrete" v-html="caption"></p></figcaption>
+      <figcaption v-if="caption" class="figure__caption">
+        <slot name="caption"></slot>
+      </figcaption>
     </figure>
   </div>
 </template>
@@ -47,7 +49,7 @@
 
     &__asset
       width: 100%
-      display: v-bind("height == undefined ? 'flex' : 'block'")
+      display: flex
       height: 640rem
       box-shadow: var(--asset-border)
       overflow: hidden
@@ -65,7 +67,7 @@
       :deep(img[lazy=loaded])
         opacity: 1
 
-    &__caption p
+    &__caption :deep(p)
       padding: 0 var(--layout-center)
       color: var(--caption-color)
 

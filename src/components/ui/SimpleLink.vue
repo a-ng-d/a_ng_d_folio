@@ -1,13 +1,11 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import { store } from '@/utilities/store'
-  import { ExternalLink } from 'lucide-vue-next'
   import Label from '@/components/ui/Label.vue'
 
   export default defineComponent({
-    name: 'SimpleExternalLink',
+    name: 'SimpleLink',
     components: {
-      ExternalLink,
       Label
     },
     props: {
@@ -15,7 +13,7 @@
         type: String,
         required: true
       },
-      href: {
+      path: {
         type: String,
         required: true
       },
@@ -42,21 +40,15 @@
 </script>
 
 <template>
-  <a
-    class="external-link"
-    :href="href"
-    target="_blank"
+  <RouterLink
+    class="internal-link"
+    :to="path"
     :alt="alt"
     @focus="store.isFocus = true"
     @blur="store.isFocus = false"
     :data-theme="theme"
   >
-    <div class="external-link__icon">
-      <ExternalLink
-        :size="small ? 16 : large ? 32 : 24"
-      />
-    </div>
-    <div class="external-link__label">
+    <div class="internal-link__label">
       <Label
         :label="label"
         underlined
@@ -65,36 +57,25 @@
         :theme="theme"
       />
     </div>
-  </a>
+  </RouterLink>
 </template>
 
 <style scoped lang="sass">
   // Structure
-  .external-link
-    --icon-size: v-bind("small ? 'calc(var(--icon-size-regular) * .5)' : large ? 'calc(var(--icon-size-regular) * 2)' : 'var(--icon-size-regular)'")
-
+  .internal-link
     display: inline-flex
-    gap: v-bind("small ? 'calc(var(--rich-external-link-gap) * .5)' : large ? 'calc(var(--rich-external-link-gap) * 2)' : 'var(--rich-external-link-gap)'")
     transition: var(--simple-transition)
     align-items: baseline
     transform-origin: center center
 
-    &__icon
-      :deep(svg)
-        width: var(--icon-size)
-        height: var(--icon-size)
-
   // Aspect
-  .external-link
+  .internal-link
     &[data-theme="DARK"]
       --icon-color: var(--color-cream)
       --border-active-color: var(--color-sandstone)
 
-    &__icon svg
-      stroke: var(--icon-color)
-
   // Events
-  .external-link
+  .internal-link
     &:hover
       --amplitude: var(--spacing-s-000)
 
