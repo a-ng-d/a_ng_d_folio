@@ -41,14 +41,14 @@
 
 <template>
   <RouterLink
-    class="link"
+    class="internal-link"
     :to="path"
     :alt="alt"
     @focus="store.isFocus = true"
     @blur="store.isFocus = false"
     :data-theme="theme"
   >
-    <div class="link__label">
+    <div class="internal-link__label">
       <Label
         :label="label"
         underlined
@@ -62,7 +62,7 @@
 
 <style scoped lang="sass">
   // Structure
-  .link
+  .internal-link
     display: inline-flex
     gap: v-bind("small ? 'calc(var(--rich-external-link-gap) * .75)' : large ? 'calc(var(--rich-external-link-gap) * 1.5)' : 'var(--rich-external-link-gap)'")
     transition: var(--simple-transition)
@@ -70,13 +70,13 @@
     transform-origin: center center
 
   // Aspect
-  .link
+  .internal-link
     &[data-theme="DARK"]
       --icon-color: var(--color-cream)
       --border-active-color: var(--color-clay)
 
   // Events
-  .link
+  .internal-link
     &:hover
       --amplitude: var(--spacing-s-000)
 
