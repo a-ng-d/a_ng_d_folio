@@ -6,6 +6,7 @@
   import Figure from '@/components/patterns/Figure.vue'
   import FullWidthFigure from '@/components/layouts/FullWidthFigure.vue'
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
+  import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
   import { Info, Github, Radio } from 'lucide-vue-next'
   import { doMap } from '@/utilities/operations'
   import JBRAnimation from '@/assets/animations/_work/_jean_bobby_radio/animation.json'
@@ -17,6 +18,7 @@
       Figure,
       FullWidthFigure,
       LinkContainer,
+      SimpleExternalLink,
       Info,
       Github,
       Radio,
@@ -93,8 +95,12 @@
         <Figure
           type="image"
           src="/images/_work/_jean_bobby_radio/article-asset-1.png"
-          :caption="$t('work._jean_bobby_radio.part-2.caption-1')"
-        />
+          caption
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._jean_bobby_radio.part-2.caption-1') }}</p>
+          </template>
+        </Figure>
       </template>
     </OneColumn>
   </section>
@@ -124,13 +130,26 @@
       </template>
     </OneColumn>
     <FullWidthFigure
-      :caption="$t('work._jean_bobby_radio.part-3.caption-1')"
       center
       background="#190038"
+      caption
       :theme="theme"
     >
       <template #asset>
         <Vue3Lottie :animationData="JBRAnimation" />
+      </template>
+      <template #caption>
+        <i18n-t keypath="work._jean_bobby_radio.part-3.caption-1" tag="p" class="discrete" scope="global">
+          <template #linkOne>
+            <SimpleExternalLink
+              :label="$t('work._jeprendsquoi.externalLinks.linkOne.label')"
+              :href="$t('work._jeprendsquoi.externalLinks.linkOne.href')"
+              :alt="$t('work._jeprendsquoi.externalLinks.linkOne.alt')"
+              small
+              :theme="theme"
+            />
+          </template>
+        </i18n-t>
       </template>
     </FullWidthFigure>
   </section>
