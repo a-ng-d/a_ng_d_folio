@@ -64,7 +64,6 @@
   // Structure
   .internal-link
     display: inline-flex
-    gap: v-bind("small ? 'calc(var(--rich-external-link-gap) * .75)' : large ? 'calc(var(--rich-external-link-gap) * 1.5)' : 'var(--rich-external-link-gap)'")
     transition: var(--simple-transition)
     align-items: baseline
     transform-origin: center center

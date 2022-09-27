@@ -71,11 +71,18 @@
 <style scoped lang="sass">
   // Structure
   .external-link
+    --icon-size: v-bind("small ? 'calc(var(--icon-size-regular) * .5)' : large ? 'calc(var(--icon-size-regular) * 2)' : 'var(--icon-size-regular)'")
+
     display: inline-flex
-    gap: v-bind("small ? 'calc(var(--rich-external-link-gap) * .75)' : large ? 'calc(var(--rich-external-link-gap) * 1.5)' : 'var(--rich-external-link-gap)'")
+    gap: v-bind("small ? 'calc(var(--rich-external-link-gap) * .5)' : large ? 'calc(var(--rich-external-link-gap) * 2)' : 'var(--rich-external-link-gap)'")
     transition: var(--simple-transition)
     align-items: baseline
     transform-origin: center center
+
+    &__icon
+      :deep(svg)
+        width: var(--icon-size)
+        height: var(--icon-size)
 
   // Aspect
   .external-link
