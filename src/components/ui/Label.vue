@@ -66,6 +66,7 @@
         bottom: calc(var(--line-width) * -1.5)
         border-radius: var(--full-border-radius)
         transition: var(--simple-transition)
+        background: var(--underline-color)
 
     &[data-highlighted="true"]
       &:after
@@ -76,21 +77,17 @@
         left: calc(var(--border-size) * 4)
         bottom: calc(var(--border-size) * -1)
         border-radius: var(--full-border-radius)
+        background: var(--highlight-color)
 
   // Aspect
   .label
+    --underline-color: var(--border-color)
+    --highlight-color: var(--color-creamy-sun)
+
     color: var(--text-color)
 
     &[data-theme="DARK"]
       --text-color: var(--color-cream)
-      --border-color: var(--color-cream)
-
-    &[data-underlined="true"], &[data-highlighted="true"]
-      &:after
-        background: var(--border-color)
-
-    &[data-highlighted="true"]
-      &:after
-        --border-color: var(--color-creamy-sun)
-        mix-blend-mode: darken
+      --underline-color: var(--color-cream)
+      --highlight-color: var(--color-sandstone)
 </style>

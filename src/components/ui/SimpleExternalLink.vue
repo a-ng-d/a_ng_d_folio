@@ -88,7 +88,7 @@
   .external-link
     &[data-theme="DARK"]
       --icon-color: var(--color-cream)
-      --border-active-color: var(--color-clay)
+      --border-active-color: var(--color-sandstone)
 
     &__icon svg
       stroke: var(--icon-color)
@@ -102,7 +102,7 @@
 
       .label
         &:after
-          --border-color: var(--border-active-color)
+          --underline-color: var(--border-active-color)
 
           height: 75%
           left: calc(var(--border-size) * 4)
@@ -119,7 +119,7 @@
 
       .label
         &:after
-          --border-color: var(--border-focus-color)
+          --underline-color: var(--border-focus-color)
 
           height: 75%
           left: calc(var(--border-size) * 4)
