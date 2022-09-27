@@ -21,6 +21,10 @@
         type: Boolean,
         default: false
       },
+      large: {
+        type: Boolean,
+        default: false
+      },
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -46,7 +50,7 @@
   >
     <div class="external-link__icon">
       <ExternalLink
-        :size="small ? 16 : 24"
+        :size="small ? 16 : large ? 32 : 24"
       />
     </div>
     <div class="external-link__label">
@@ -54,6 +58,7 @@
         :label="label"
         underlined
         :small="small ? true : false"
+        :large="large ? true : false"
         :theme="theme"
       />
     </div>
@@ -64,7 +69,7 @@
   // Structure
   .external-link
     display: inline-flex
-    gap: v-bind("small ? 'calc(var(--rich-external-link-gap) / 2)' : 'var(--rich-external-link-gap)'")
+    gap: v-bind("small ? 'calc(var(--rich-external-link-gap) * .75)' : large ? 'calc(var(--rich-external-link-gap) * 1.5)' : 'var(--rich-external-link-gap)'")
     transition: var(--simple-transition)
     align-items: baseline
     transform-origin: center center

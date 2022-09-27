@@ -20,6 +20,10 @@
         type: Boolean,
         default: false
       },
+      large: {
+        type: Boolean,
+        default: false
+      },
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -35,14 +39,14 @@
     :data-underlined="underlined"
     :data-highlighted="highlighted"
   >
-    <span :class="small ? 'small-label' : 'label'">{{ label }}</span>
+    <span :class="small ? 'small-label' : large ? 'enhanced-label' : 'label'">{{ label }}</span>
   </div>
 </template>
 
 <style lang="sass">
   // Structure
   .label
-    --line-width: v-bind("small ? '2rem' : 'var(--border-size)'")
+    --line-width: v-bind("small ? 'calc(var(--border-size) * .75)' : large ? 'calc(var(--border-size) * 1.5)' : 'var(--border-size)'")
     display: inline-block
 
     span
@@ -59,7 +63,7 @@
         height: var(--line-width)
         position: absolute
         left: 0
-        bottom: calc(var(--line-width) * -2)
+        bottom: calc(var(--line-width) * -1)
         border-radius: var(--full-border-radius)
         transition: var(--simple-transition)
 
