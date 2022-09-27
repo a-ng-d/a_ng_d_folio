@@ -61,6 +61,8 @@
 </template>
 
 <style scoped lang="sass">
+  @use '@/assets/stylesheets/mixins' as device
+
   // Structure
   .internal-link
     display: inline-flex
@@ -84,9 +86,11 @@
       .label
         &:after
           --underline-color: var(--border-active-color)
+          --interaction-line-height: 75%
+          --interaction-line-shift: calc(var(--border-size) * v-bind("small ? 1 : large ? 3 : 2"))
 
-          height: 75%
-          left: calc(var(--border-size) * 2)
+          height: var(--interaction-line-height)
+          left: var(--interaction-line-shift)
 
     &:focus
       transform: var(--focus-scale)
@@ -101,7 +105,28 @@
       .label
         &:after
           --underline-color: var(--border-focus-color)
+          --interaction-line-height: 75%
+          --interaction-line-shift: calc(var(--border-size) * v-bind("small ? 1 : large ? 3 : 2"))
 
-          height: 75%
-          left: calc(var(--border-size) * 2)
+          height: var(--interaction-line-height)
+          left: var(--interaction-line-shift)
+
+  @include device.mobile
+    .internal-link
+      --underline-color: var(--text-color)
+
+      &:hover
+        --amplitude: 0
+
+        .label
+          &:after
+            --underline-color: var(--text-color)
+            --interaction-line-height: var(--line-width)
+            --interaction-line-shift: 0
+
+      &:focus, &:active
+        .label
+          &:after
+            --interaction-line-height: var(--line-width)
+            --interaction-line-shift: 0
 </style>

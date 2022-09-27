@@ -47,6 +47,8 @@
 </template>
 
 <style scoped lang="sass">
+  @use '@/assets/stylesheets/mixins' as device
+
   // Structure
   .rich-external-link
     display: flex
@@ -130,4 +132,11 @@
         --text-color: var(--color-soil)
         --border-color: var(--color-soil)
         --outline-color: var(--color-cream)
+
+  @include device.mobile
+    .rich-external-link
+      &:hover
+        --amplitude: 0
+        --container-color: transparent
+        --outline-color: transparent
 </style>
