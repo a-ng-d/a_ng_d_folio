@@ -55,6 +55,10 @@
     &__icon
       padding: var(--spacing-xs-000) 0
 
+      :deep(svg)
+        width: var(--icon-size-large)
+        height: var(--icon-size-large)
+
     &__description
       flex: 1
       display: flex
