@@ -14,8 +14,8 @@
         type: Boolean,
         default: false
       },
-      width: String,
-      height: String,
+      width: Number,
+      height: Number,
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -58,7 +58,7 @@
       },
       setRatio(parentWidth: number) {
         if (this.width != undefined || this.height != undefined)
-          this.ratio = (parentWidth * this.height) / this.width
+          this.ratio = (parentWidth * this.height!) / this.width!
         else this.ratio = 640
       }
     },

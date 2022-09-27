@@ -69,8 +69,8 @@
           type="video"
           src="/videos/_work/_ui_color_palette/article-asset-1.mp4"
           caption
-          width="1920"
-          height="1200"
+          :width="1920"
+          :height="1200"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
@@ -81,8 +81,8 @@
           type="video"
           src="/videos/_work/_ui_color_palette/article-asset-2.mp4"
           caption
-          width="1920"
-          height="1200"
+          :width="1920"
+          :height="1200"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
@@ -93,8 +93,8 @@
           type="video"
           src="/videos/_work/_ui_color_palette/article-asset-3.mp4"
           caption
-          width="1920"
-          height="1200"
+          :width="1920"
+          :height="1200"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>

@@ -61,8 +61,8 @@
           type="image"
           src="/images/_work/_awesome_ipsums/article-asset-1.png"
           caption
-          width="1440"
-          height="1100"
+          :width="1440"
+          :height="1100"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._awesome_ipsums.part-1.caption-1') }}</p>
@@ -84,8 +84,8 @@
         <Figure
           type="image"
           src="/images/_work/_awesome_ipsums/article-asset-2.png"
-          width="1200"
-          height="1000"
+          :width="1200"
+          :height="1000"
         />
       </template>
     </TwoColumns>
@@ -98,8 +98,8 @@
         <Figure
           type="image"
           src="/images/_work/_awesome_ipsums/article-asset-3.png"
-          width="1200"
-          height="1000"
+          :width="1200"
+          :height="1000"
         />
       </template>
       <template #right>
@@ -117,8 +117,8 @@
         <Figure
           type="image"
           src="/images/_work/_awesome_ipsums/article-asset-4.png"
-          width="1200"
-          height="1000"
+          :width="1200"
+          :height="1000"
         />
       </template>
     </TwoColumns>

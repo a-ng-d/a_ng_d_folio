@@ -96,8 +96,8 @@
           type="image"
           src="/images/_work/_jean_bobby_radio/article-asset-1.png"
           caption
-          width="1922"
-          height="1202"
+          :width="1922"
+          :height="1202"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._jean_bobby_radio.part-2.caption-1') }}</p>
