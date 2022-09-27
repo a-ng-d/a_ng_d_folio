@@ -94,7 +94,7 @@
         &:after
           --border-color: var(--border-active-color)
 
-          height: 50%
+          height: 75%
           left: calc(var(--border-size) * 4)
 
     &:focus
@@ -111,6 +111,6 @@
         &:after
           --border-color: var(--border-focus-color)
 
-          height: 50%
+          height: 75%
           left: calc(var(--border-size) * 4)
 </style>
