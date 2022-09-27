@@ -13,7 +13,10 @@
         type: String,
         required: true
       },
-      path: String,
+      path: {
+        type: String,
+        required: true
+      },
       alt: String,
       small: {
         type: Boolean,

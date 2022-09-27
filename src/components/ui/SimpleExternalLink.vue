@@ -15,7 +15,10 @@
         type: String,
         required: true
       },
-      href: String,
+      href: {
+        type: String,
+        required: true
+      },
       alt: String,
       small: {
         type: Boolean,
