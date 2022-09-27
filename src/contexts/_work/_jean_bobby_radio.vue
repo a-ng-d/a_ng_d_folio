@@ -142,9 +142,9 @@
         <i18n-t keypath="work._jean_bobby_radio.part-3.caption-1" tag="p" class="discrete" scope="global">
           <template #linkOne>
             <SimpleExternalLink
-              :label="$t('work._jeprendsquoi.externalLinks.linkOne.label')"
-              :href="$t('work._jeprendsquoi.externalLinks.linkOne.href')"
-              :alt="$t('work._jeprendsquoi.externalLinks.linkOne.alt')"
+              :label="$t('work._jean_bobby_radio.externalLinks.linkOne.label')"
+              :href="$t('work._jean_bobby_radio.externalLinks.linkOne.href')"
+              :alt="$t('work._jean_bobby_radio.externalLinks.linkOne.alt')"
               small
               :theme="theme"
             />
