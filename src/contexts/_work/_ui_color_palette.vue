@@ -68,21 +68,33 @@
         <Figure
           type="video"
           src="/videos/_work/_ui_color_palette/article-asset-1.mp4"
-          :caption="$t('work._ui_color_palette.part-1.caption-1')"
+          caption
           @isMagnified="isFullScreen = $event"
-        />
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._ui_color_palette.part-1.caption-1') }}</p>
+          </template>
+        </Figure>
         <Figure
           type="video"
           src="/videos/_work/_ui_color_palette/article-asset-2.mp4"
-          :caption="$t('work._ui_color_palette.part-1.caption-2')"
+          caption
           @isMagnified="isFullScreen = $event"
-        />
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._ui_color_palette.part-1.caption-2') }}</p>
+          </template>
+        </Figure>
         <Figure
           type="video"
           src="/videos/_work/_ui_color_palette/article-asset-3.mp4"
-          :caption="$t('work._ui_color_palette.part-1.caption-3')"
+          caption
           @isMagnified="isFullScreen = $event"
-        />
+        >
+          <template #caption>
+            <p class="discrete">{{ $t('work._ui_color_palette.part-1.caption-3') }}</p>
+          </template>
+        </Figure>
       </template>
     </WrapColumn>
   </section>
