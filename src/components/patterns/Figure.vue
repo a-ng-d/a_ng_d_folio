@@ -38,6 +38,7 @@
     methods: {
       magnifier(e: any) {
         const target: HTMLElement = e.currentTarget!,
+              status: string = target.children[0].getAttribute('lazy')!,
               x: number = target.getBoundingClientRect().x,
               y: number = target.getBoundingClientRect().y,
               w: number = target.getBoundingClientRect().width,
@@ -48,10 +49,17 @@
               scaleY: number = (document.body.clientHeight - (document.body.clientWidth * .16)) / h,
               refScale: number = Math.min(scaleX, scaleY)
 
-        this.isMagnified = !this.isMagnified
-        this.maxScale = refScale
-        this.pathX = (refX - x - (w / 2)) / refScale
-        this.pathY = (refY - y - (h / 2)) / refScale
+        if (status != 'loading') {
+          this.isMagnified = !this.isMagnified
+          this.maxScale = refScale
+          this.pathX = (refX - x - (w / 2)) / refScale
+          this.pathY = (refY - y - (h / 2)) / refScale
+        }
+      },
+      setRatio(parentWidth: number) {
+        if (this.width != undefined || this.height != undefined)
+          this.ratio = (parentWidth * this.height) / this.width
+        else this.ratio = 640
       }
     },
     created: function() {
@@ -98,8 +106,8 @@
       align-items: center
       overflow: hidden
       transition: var(--simple-transition)
-      cursor: zoom-in
       animation: loading var(--duration-turtoise) infinite linear
+      z-index: 2
 
       &:before
         content: ''
@@ -120,6 +128,7 @@
 
       img[lazy=loaded]
         transform: translateX(0)
+        cursor: zoom-in
 
       &--magnified
         transform: scale(v-bind("maxScale")) translate(v-bind("`${pathX}px`"), v-bind("`${pathY}px`"))
@@ -127,8 +136,14 @@
         cursor: zoom-out
         overflow: visible
 
-    &__caption :deep(p)
-      color: var(--caption-color)
+        img[lazy=loaded]
+          cursor: zoom-out
+
+    &__caption
+      z-index: 1
+
+      :deep(p)
+        color: var(--caption-color)
 
   // Aspect
   .figure
