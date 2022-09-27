@@ -1,6 +1,6 @@
 {
   "name": "a_ng_d-folio",
-  "version": "0.9.10",
+  "version": "0.9.11",
   "scripts": {
     "dev": "vite",
     "expose": "vite --host",
