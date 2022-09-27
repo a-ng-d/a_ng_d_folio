@@ -4,7 +4,7 @@
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import ContentContainer from '@/components/patterns/ContentContainer.vue'
-  import { Heart, Briefcase, FlaskConical, Mail, Archive } from 'lucide-vue-next'
+  import { Heart, Briefcase, FlaskConical, User, Mail, Archive } from 'lucide-vue-next'
   import { random } from '@/utilities/operations'
 
   export default defineComponent({
@@ -16,6 +16,7 @@
       Heart,
       Briefcase,
       FlaskConical,
+      User,
       Mail,
       Archive
     },
@@ -47,6 +48,10 @@
             name: 'lab',
             path: '/_lab',
             icon: 'FlaskConical'
+          },{
+            name: 'short',
+            path: '/_short',
+            icon: 'User'
           },{
             name: 'contact',
             path: '/_contact',
