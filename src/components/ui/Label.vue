@@ -63,7 +63,7 @@
         height: var(--line-width)
         position: absolute
         left: 0
-        bottom: calc(var(--line-width) * -2)
+        bottom: calc(var(--line-width) * -1.5)
         border-radius: var(--full-border-radius)
         transition: var(--simple-transition)
 

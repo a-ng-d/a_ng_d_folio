@@ -79,7 +79,7 @@
     grid-area: footer
     display: flex
     justify-content: v-bind(flex)
-    align-self: center
+    align-items: center
     padding: var(--layout-column-gap)
     gap: 0 var(--layout-paragraph-gap)
 
