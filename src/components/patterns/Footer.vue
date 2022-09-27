@@ -2,6 +2,7 @@
   import { defineComponent } from 'vue'
   import { store } from '@/utilities/store'
   import Label from '@/components/ui/Label.vue'
+  import SimpleLink from '@/components/ui/SimpleLink.vue'
   import Button from '@/components/ui/Button.vue'
   import { Volume, Volume2 } from 'lucide-vue-next'
 
@@ -10,6 +11,7 @@
     components: {
       Label,
       Button,
+      SimpleLink,
       Volume,
       Volume2
     },
@@ -44,19 +46,12 @@
       <span class="footer__tag__content small-label">{{ $t("global.separator") }}</span>
       <span class="footer__tag__content small-label">{{ $t("global.license", { year: new Date().getFullYear() }) }}</span>
       <span class="footer__tag__content small-label">{{ $t("global.separator") }}</span>
-      <RouterLink
-        class="footer__tag__link"
-        to="/_attribution"
-        @focus="store.isFocus = true"
-        @blur="store.isFocus = false"
-      >
-        <Label
-          :label="$t('footer.attribution')"
-          underlined
-          small
-          :theme="theme === 'DEFAULT' ? 'DARK' : 'DEFAULT'"
-        />
-      </RouterLink>
+      <SimpleLink
+        :label="$t('footer.attribution')"
+        path="/_attribution"
+        small
+        :theme="theme === 'DEFAULT' ? 'DARK' : 'DEFAULT'"
+      />
       <span class="footer__tag__content small-label">{{ $t("global.separator") }}</span>
       <span class="footer__tag__content small-label">{{ `${$t("global.version")} ${version}` }}</span>
     </div>
