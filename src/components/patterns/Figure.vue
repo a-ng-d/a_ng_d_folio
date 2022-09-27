@@ -31,7 +31,8 @@
         isMagnified: false as boolean,
         maxScale: 1 as number,
         pathX: 0 as number,
-        pathY: 0 as number
+        pathY: 0 as number,
+        ratio: 0 as number
       }
     },
     methods: {
@@ -52,6 +53,12 @@
         this.pathX = (refX - x - (w / 2)) / refScale
         this.pathY = (refY - y - (h / 2)) / refScale
       }
+    },
+    created: function() {
+      window.addEventListener("resize", () => this.setRatio(this.$el.children[0].offsetWidth))
+    },
+    mounted: function() {
+      this.setRatio(this.$el.children[0].offsetWidth)
     }
   })
 </script>
@@ -109,6 +116,7 @@
 
       img[lazy=loading]
         transform: translateX(-100%)
+        height: v-bind("ratio + 'px'")
 
       img[lazy=loaded]
         transform: translateX(0)
