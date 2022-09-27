@@ -117,7 +117,7 @@
         cursor: zoom-out
         overflow: visible
 
-    &__caption p
+    &__caption :deep(p)
       color: var(--caption-color)
 
   // Aspect
