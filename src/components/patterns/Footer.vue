@@ -41,7 +41,6 @@
 <template>
   <footer class="footer" :data-theme="theme">
     <div class="footer__tag">
-      <span class="footer__tag__content">{{ $t("global.author") }}</span>
       <span class="footer__tag__content small-label">{{ $t("global.author") }}</span>
       <span class="footer__tag__content small-label">{{ $t("global.separator") }}</span>
       <span class="footer__tag__content small-label">{{ $t("global.license", { year: new Date().getFullYear() }) }}</span>
