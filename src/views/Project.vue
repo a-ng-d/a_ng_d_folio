@@ -69,26 +69,7 @@
           :theme="theme"
         >
           <template #plain>
-            <i18n-t :keypath="`work.${project.codeName}.description`" tag="p" class="enhanced" scope="global">
-              <template #linkOne>
-                <SimpleExternalLink
-                  :label="$t(`work.${project.codeName}.externalLinks.linkOne.label`)"
-                  :href="$t(`work.${project.codeName}.externalLinks.linkOne.href`)"
-                  :alt="$t(`work.${project.codeName}.externalLinks.linkOne.alt`)"
-                  large
-                  :theme="theme"
-                />
-              </template>
-              <template #linkTwo>
-                <SimpleExternalLink
-                  :label="$t(`work.${project.codeName}.externalLinks.linkTwo.label`)"
-                  :href="$t(`work.${project.codeName}.externalLinks.linkTwo.href`)"
-                  :alt="$t(`work.${project.codeName}.externalLinks.linkTwo.alt`)"
-                  large
-                  :theme="theme"
-                />
-              </template>
-            </i18n-t>
+            <p class="enhanced">{{ $t(`work.${project.codeName}.description`) }}</p>
           </template>
         </OneColumn>
       </section>
