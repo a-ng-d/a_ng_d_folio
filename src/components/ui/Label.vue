@@ -78,6 +78,7 @@
         bottom: calc(var(--border-size) * -1)
         border-radius: var(--full-border-radius)
         background: var(--highlight-color)
+        mix-blend-mode: darken
 
   // Aspect
   .label
