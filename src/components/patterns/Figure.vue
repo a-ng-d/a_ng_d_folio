@@ -14,6 +14,8 @@
         type: Boolean,
         default: false
       },
+      width: String,
+      height: String,
       theme: {
         type: String,
         default: 'DEFAULT'

@@ -82,6 +82,8 @@
           type="image"
           src="/images/_work/_jeprendsquoi/article-asset-1.png"
           caption
+          width="1440"
+          height="900"
           :theme="theme"
         >
           <template #caption>
@@ -124,6 +126,8 @@
           type="image"
           src="/images/_work/_jeprendsquoi/article-asset-2.png"
           caption
+          width="1440"
+          height="900"
         >
           <template #caption>
             <i18n-t keypath="work._jeprendsquoi.part-1.caption-2" tag="p" class="discrete" scope="global">
@@ -177,6 +181,8 @@
           type="image"
           src="/images/_work/_jeprendsquoi/article-asset-3.jpeg"
           caption
+          width="750"
+          height="1334"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
@@ -187,6 +193,8 @@
           type="image"
           src="/images/_work/_jeprendsquoi/article-asset-4.jpeg"
           caption
+          width="750"
+          height="1334"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
@@ -197,6 +205,8 @@
           type="image"
           src="/images/_work/_jeprendsquoi/article-asset-5.jpeg"
           caption
+          width="750"
+          height="1334"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
@@ -207,6 +217,8 @@
           type="image"
           src="/images/_work/_jeprendsquoi/article-asset-6.jpeg"
           caption
+          width="750"
+          height="1334"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
@@ -247,6 +259,8 @@
           type="image"
           src="/images/_work/_jeprendsquoi/article-asset-7.gif"
           caption
+          width="640"
+          height="640"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
@@ -257,6 +271,8 @@
           type="image"
           src="/images/_work/_jeprendsquoi/article-asset-8.gif"
           caption
+          width="640"
+          height="640"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>

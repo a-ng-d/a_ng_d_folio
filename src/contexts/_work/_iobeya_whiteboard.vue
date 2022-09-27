@@ -75,6 +75,8 @@
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-1.png"
           caption
+          width="1920"
+          height="912"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_whiteboard.part-1.caption-1') }}</p>
@@ -96,12 +98,16 @@
         <Figure
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-2.png"
+          width="1920"
+          height="912"
         />
       </template>
       <template #right>
         <Figure
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-3.png"
+          width="1920"
+          height="912"
         />
       </template>
     </TwoColumns>
@@ -113,6 +119,8 @@
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-4.png"
           caption
+          width="1920"
+          height="680"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_whiteboard.part-1.caption-2') }}</p>
@@ -134,6 +142,8 @@
         <Figure
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-5.png"
+          width="1920"
+          height="912"
         />
       </template>
     </OneColumn>
@@ -155,6 +165,8 @@
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-6.png"
           caption
+          width="1024"
+          height="770"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_whiteboard.part-2.caption-1') }}</p>
@@ -166,6 +178,8 @@
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-7.png"
           caption
+          width="1024"
+          height="770"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_whiteboard.part-2.caption-2') }}</p>
@@ -188,6 +202,8 @@
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-8.png"
           caption
+          width="1920"
+          height="680"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_whiteboard.part-2.caption-3') }}</p>
@@ -256,6 +272,8 @@
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-9.svg"
           caption
+          width="480"
+          height="480"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_whiteboard.part-3.caption-1') }}</p>
@@ -267,6 +285,8 @@
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-10.svg"
           caption
+          width="480"
+          height="480"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_whiteboard.part-3.caption-2') }}</p>
@@ -304,6 +324,8 @@
           type="image"
           src="/images/_work/_iobeya_whiteboard/article-asset-11.png"
           caption
+          width="1920"
+          height="680"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_whiteboard.part-3.caption-4') }}</p>
