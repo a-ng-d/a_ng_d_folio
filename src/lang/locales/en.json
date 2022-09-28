@@ -560,28 +560,28 @@
     "_iobeya_mobile_ds": {
       "title": "@:work._iobeya_mobile_ds.shortTitle@:global.separator@:global.author",
       "shortTitle": "_iobeya_mobile_ds",
-      "shortDescription": "iObeya Mobile Application cross-libs Design System",
-      "description": "The iObeya Mobile Application extends productivity and operational excellence through a project management system at the fingertips. It was a new opportunity of bootstraping a new design system model from scratch, enhancing design and tech dependencies. iObeya Web Application is a monolith, and we were going to dig it with micro-frontends and an API-driven development.",
+      "shortDescription": "iObeya mobile application cross-libs design dystem",
+      "description": "The iObeya mobile application extends productivity and operational excellence through a project management system at the fingertips. It was a new opportunity of bootstrapping a new design system model from scratch, enhancing design and tech dependencies. iObeya web application is a monolith, and we were going to divide it into micro-frontends and API-driven developments.",
       "misc": {
         "date": "{'2019'}@:global.separator{'Released'}",
         "objectives": "Standardizing iObeya mobile app components and patterns",
-        "roles": "Bootstraping and building interconnected UI blocks, Deploying components/patterns/templates through the design and development team"
+        "roles": "Bootstrapping and building interconnected UI blocks, Sharing components/patterns/templates with the design and development team"
       },
       "challenge": {
         "title": "What is the challenge?",
-        "paragraph-1": "In 2019, we thought about how to deploy design at scale. The iObeya mobile application was a great opportunity to start a design system from scratch. Indeed, we have just only turned a little part of the Web Application GUI system monolith into a design system.",
-        "paragraph-2": "The choice of making native apps involved us at reading {linkOne} and {linkTwo}. I was in charge of designing reusable UI components, fully compliant with iOS and Android paradigms. We made this decision to keep a same look and feel and to reduce the learning curve when using the application daily."
+        "paragraph-1": "In 2019, we thought about how to deploy design at scale. The iObeya mobile application was a great opportunity to start a design system from scratch. Indeed, we have just only turned a little part of the web application monolithic GUI into a design system.",
+        "paragraph-2": "The choice of making native apps brought us at reading the {linkOne} and the {linkTwo}. I was in charge of designing reusable UI components, fully compliant with iOS and Android paradigms. We made this decision to keep a same look & feel and to reduce the learning curve when using the application daily."
       },
       "part-1": {
         "title": "Why should we make an application?",
-        "paragraph-1": "iObeya is a solution for project management, by featuring a specific object named Card. The Card aggregates datas like a title, a date, an owner… The mobility was a business opportunity to extend the usage of Cards. The application is a companion to support project and performance management outside rituals and routines. You can learn more about the birth of the project by reading {linkThree} on his portfolio because he led the initiative."
+        "paragraph-1": "iObeya is a solution for project management via a specific object named Card. The Card aggregates data like a title, a date, an owner… The mobility was a business opportunity to extend the usage of the Cards. The application is a companion to support project and performance management outside rituals and routines. You can learn more about the birth of the project by reading the {linkThree} on his portfolio because he led the initiative."
       },
       "part-2": {
         "title": "Atomic design as a philosophy",
         "paragraph-1": "A system consists of interconnecting components each others, in order to design a hierarchy. Atomic design is directly based on organic life: atoms make molecules, molecules make organisms…",
         "paragraph-2": "The atoms have been defined with the brand team because they own the iObeya Graphical Guidelines. It gathers brand and UI colors, typography, spacing, shadows… These elements are used as parameters to override iOS and Android native components.",
         "paragraph-3": "Sketch is our diagraming software and one feature was really relevant to build an atomic design system: the external components library.",
-        "paragraph-4": "Each part of the UI is a reusable components. Building the UI is like playing lego: small parts are stuck together to make bigger parts, and they are stuck each other to make views. In this way, we keep consistance and make a change is easier.",
+        "paragraph-4": "Each part of the UI is a reusable component. Building the UI is like playing lego: small parts are stuck together to make bigger parts, and they are stuck each other to make views. In this way, we keep consistency and make a change is easier.",
         "paragraph-5": "Every part was classified and structured in order to deploy them on our versionning system. So, the file is synchronized and can be linked with Sketch to be used as an external library.",
         "caption-1": "Colors adapted for an UI usage and provided by the brand team",
         "caption-2": "Text styles adapted for an UI usage and provided by the brand team",
@@ -626,11 +626,11 @@
         },
         "takeaway-2": {
           "description": "The application can be downloaded on the App Store",
-          "linkLabel": "Download the iOS app"
+          "linkLabel": "Install the app"
         },
         "takeaway-3": {
           "description": "The application can be downloaded on the Google Play",
-          "linkLabel": "Download the Android app"
+          "linkLabel": "Install the app"
         }
       },
       "externalLinks": {
