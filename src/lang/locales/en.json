@@ -480,7 +480,7 @@
       "title": "@:work._iobeya_whiteboard.shortTitle@:global.separator@:global.author",
       "shortTitle": "_iobeya_whiteboard",
       "shortDescription": "Go-to-SaaS solution to enhance iObeya virality and deployment",
-      "description": "The Whiteboarding session is a lite version of  iObeya. Its purpose is to ease the deployment through a company by providing  a simple meeting framework, reinforcing the collaboration and introducing the solution. This feature was an opportunity to revamp the UI, follow a design philosophy, involve the team, and make user tests.",
+      "description": "The Whiteboarding session is a lite version of iObeya. Its purpose is to ease the deployment through a company by providing a simple meeting framework, reinforcing the collaboration and introducing the solution. This feature was an opportunity to revamp the UI, follow a design philosophy, involve the team, and make user tests.",
       "misc": {
         "date": "{'2018'}@:global.separator{'Released'}",
         "objectives": "Easing the solution deployment, Go-to-SaaS, Reinforcing the position of iObeya on Innovation & Creativity",
@@ -554,6 +554,104 @@
         "takeaway-1": {
           "description": "Extract of the final user flow",
           "linkLabel": "Launch a whiteboard session"
+        }
+      }
+    },
+    "_iobeya_design_system": {
+      "title": "@:work._iobeya_design_system.shortTitle@:global.separator@:global.author",
+      "shortTitle": "_iobeya_design_system",
+      "shortDescription": "iObeya Mobile Application cross-libs Design System",
+      "description": "The iObeya Mobile Application extends productivity and operational excellence through a project management system at the fingertips. It was a new opportunity of bootstraping a new design system model from scratch, enhancing design and tech dependencies. iObeya Web Application is a monolith, and we were going to dig it with micro-frontends and an API-driven development.",
+      "misc": {
+        "date": "{'2019'}@:global.separator{'Released'}",
+        "objectives": "Standardizing iObeya mobile app components and patterns",
+        "roles": "Bootstraping and building interconnected UI blocks, Deploying components/patterns/templates through the design and development team"
+      },
+      "challenge": {
+        "title": "What is the challenge?",
+        "paragraph-1": "In 2019, we thought about how to deploy design at scale. The iObeya mobile application was a great opportunity to start a design system from scratch. Indeed, we have just only turned a little part of the Web Application GUI system monolith into a design system.",
+        "paragraph-2": "The choice of making native apps involved us at reading {linkOne} and {linkTwo}. I was in charge of designing reusable UI components, fully compliant with iOS and Android paradigms. We made this decision to keep a same look and feel and to reduce the learning curve when using the application daily."
+      },
+      "part-1": {
+        "title": "Why should we make an application?",
+        "paragraph-1": "iObeya is a solution for project management, by featuring a specific object named Card. The Card aggregates datas like a title, a date, an owner… The mobility was a business opportunity to extend the usage of Cards. The application is a companion to support project and performance management outside rituals and routines. You can learn more about the birth of the project by reading {linkThree} on his portfolio because he led the initiative."
+      },
+      "part-2": {
+        "title": "Atomic design as a philosophy",
+        "paragraph-1": "A system consists of interconnecting components each others, in order to design a hierarchy. Atomic design is directly based on organic life: atoms make molecules, molecules make organisms…",
+        "paragraph-2": "The atoms have been defined with the brand team because they own the iObeya Graphical Guidelines. It gathers brand and UI colors, typography, spacing, shadows… These elements are used as parameters to override iOS and Android native components.",
+        "paragraph-3": "Sketch is our diagraming software and one feature was really relevant to build an atomic design system: the external components library.",
+        "paragraph-4": "Each part of the UI is a reusable components. Building the UI is like playing lego: small parts are stuck together to make bigger parts, and they are stuck each other to make views. In this way, we keep consistance and make a change is easier.",
+        "paragraph-5": "Every part was classified and structured in order to deploy them on our versionning system. So, the file is synchronized and can be linked with Sketch to be used as an external library.",
+        "caption-1": "Colors adapted for an UI usage and provided by the brand team",
+        "caption-2": "Text styles adapted for an UI usage and provided by the brand team",
+        "caption-3": "The iOS and Android patterns come from external libraries embed in Sketch. The Master Design System is internally managed by the design team.",
+        "caption-4": "Exploded view of the cards list view. It is composed of the overrided iOS navigation bar and a cards list container. Those patterns are subdivided into components which inherit parameters from the iObeya Master Design System.",
+        "caption-5": "Big pictures of every component, pattern and template, ready for making every view with ease."
+      },
+      "part-3": {
+        "title": "Atomic design as a philosophy",
+        "paragraph-1": "By merging data with the templates (provided by the design system), the views emerge with meaning. The time we spent to build a design system was compensated by the quick specs we wrote.",
+        "paragraph-2": "The atoms have been defined with the brand team because they own the iObeya Graphical Guidelines. It gathers brand and UI colors, typography, spacing, shadows… These elements are used as parameters to override iOS and Android native components.",
+        "paragraph-3": "Sketch is our diagraming software and one feature was really relevant to build an atomic design system: the external components library.",
+        "paragraph-4": "Each part of the UI is a reusable components. Building the UI is like playing lego: small parts are stuck together to make bigger parts, and they are stuck each other to make views. In this way, we keep consistance and make a change is easier.",
+        "paragraph-5": "Every part was classified and structured in order to deploy them on our versionning system. So, the file is synchronized and can be linked with Sketch to be used as an external library.",
+        "caption-1": "List of Cards where I am assigned",
+        "caption-2": "List of notifications (assignment and reminder) to follow my activity",
+        "caption-3": "Card edit－Title, location, status, date, assignment can be changed.",
+        "caption-4": "List of Rooms I can access, to change the Card location"
+      },
+      "credit": {
+        "contributor-1": {
+          "name": "Yoann Lheude",
+          "role": "Senior Product Manager"
+        },
+        "contributor-2": {
+          "name": "Pierrick Dugast",
+          "role": "Engineering Manager"
+        },
+        "contributor-3": {
+          "name": "Alexandre Lanard",
+          "role": "Front-end Developer"
+        },
+        "contributor-4": {
+          "name": "Saber Chaabani",
+          "role": "iOS Developer"
+        },
+        "contributor-5": {
+          "name": "Yosra Kobtane",
+          "role": "QA Engineer"
+        }
+      },
+      "takeaways": {
+        "takeaway-1": {
+          "description": "The iObeya Design System Global Strategy can be consulted to understand how to scale design through iObeya’s services and products (the presentation is fully interactive)",
+          "linkLabel": "Consult the strategy"
+        },
+        "takeaway-2": {
+          "description": "The application can be downloaded on the App Store",
+          "linkLabel": "Download the iOS app"
+        },
+        "takeaway-3": {
+          "description": "The application can be downloaded on the Google Play",
+          "linkLabel": "Download the Android app"
+        }
+      },
+      "externalLinks": {
+        "linkOne": {
+          "label": "Apple Human Interface",
+          "href": "https://developer.apple.com/design/human-interface-guidelines/",
+          "alt": "External link to the Apple Human Interface documentation"
+        },
+        "linkTwo": {
+          "label": "Material Design Guidelines",
+          "href": "https://material.io/design",
+          "alt": "External link to the Material Design documentation"
+        },
+        "linkThree": {
+          "label": "Amane Saïd’s article",
+          "href": "https://www.notion.so/iObeya-mobile-app-design-85fc3f856ff4469fa705249dbcdf4b92",
+          "alt": "External link to the Amane Saïd's article"
         }
       }
     }
