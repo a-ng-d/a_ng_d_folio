@@ -138,6 +138,14 @@ export const filters: Filters = {
     grayscale: '0%',
     name: '_JEAN_BOBBY_RADIO'
   },
+  _iobeya_mobile_ds: {
+    hue: '343deg',
+    brightness: '1.5',
+    invert: '1',
+    saturation: '.7',
+    grayscale: '0%',
+    name: '_IOBEYA_MOBILE_DS'
+  },
   _awesome_ipsums: {
     hue: '82deg',
     brightness: '.7',

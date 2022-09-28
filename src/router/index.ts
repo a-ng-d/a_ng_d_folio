@@ -12,6 +12,7 @@ import Attribution from '../views/Attribution.vue'
 import Unknown from '../views/Unknown.vue'
 import JBRAnimation from '@/assets/animations/_work/_jean_bobby_radio/animation.json'
 import UCPAnimation from '@/assets/animations/_work/_ui_color_palette/animation.json'
+import IMDSAnimation from '@/assets/animations/_work/_iobeya_mobile_ds/animation.json'
 import AIAnimation from '@/assets/animations/_work/_awesome_ipsums/animation.json'
 import IWAnimation from '@/assets/animations/_work/_iobeya_whiteboard/animation.json'
 import { filters } from '@/utilities/colors'
@@ -180,8 +181,8 @@ const router = createRouter({
         type: i18n.global.t('work._iobeya_mobile_ds.misc.type'),
         position: 3,
         view: 'PROJECT',
-        illustration: IWAnimation,
-        background: filters._iobeya_whiteboard,
+        illustration: IMDSAnimation,
+        background: filters._iobeya_mobile_ds,
         theme: 'DARK',
         filter: filters.grayscale,
         pov: 'MIRROR_4',
