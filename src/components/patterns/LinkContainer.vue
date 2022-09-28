@@ -53,7 +53,7 @@
       gap: var(--layout-row-gap) var(--layout-column-gap)
 
     &__icon
-      padding: var(--spacing-xs-000) 0
+      padding: var(--spacing-s-000) 0
 
       :deep(svg)
         width: var(--icon-size-large)
