@@ -33,7 +33,8 @@
         activeProjectCodeName: (this.projects[(this.activeProjectPosition as number)] as Route).meta.codeName as string,
         position: this.activeProjectPosition as number,
         duration: 2000 as number,
-        direction: 'right' as string
+        direction: 'right' as string,
+        touchStart: 0 as number
       }
     },
     methods: {
@@ -69,6 +70,14 @@
           shard.style = `--order: ${index}`
           title.appendChild(shard)
         })
+      },
+      lockTouchStart(e: any) {
+        this.touchStart = e.changedTouches[0].clientX
+      },
+      shoudSwipeProject(e: any) {
+        const delta: number = this.touchStart - e.changedTouches[0].clientX
+        if (delta < -200) return this.previousProject()
+        else if (delta > 200) return this.nextProject()
       }
     },
     created: function() {
@@ -80,7 +89,7 @@
 </script>
 
 <template>
-  <main class="page">
+  <main class="page" @touchstart.passive="lockTouchStart" @touchend.passive="shoudSwipeProject">
     <div class="background">
       <Transition name="scale-up" :duration="duration" mode="out-in" class="background__item">
         <div v-if="activeProjectCodeName === (projects[0] as any).meta.codeName"></div>
