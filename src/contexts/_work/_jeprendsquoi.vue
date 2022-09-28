@@ -5,7 +5,7 @@
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
   import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
-  import { Info, Bot, Ghost } from 'lucide-vue-next'
+  import { Info, Bot, Apple } from 'lucide-vue-next'
   import { doMap } from '@/utilities/operations'
 
   export default defineComponent({
@@ -18,7 +18,7 @@
       SimpleExternalLink,
       Info,
       Bot,
-      Ghost
+      Apple
     },
     props: {
       scrollProgress: {
@@ -307,7 +307,7 @@
           :theme="theme"
         >
           <template #icon>
-            <Ghost :size="48" />
+            <Apple :size="48" />
           </template>
         </LinkContainer>
       </template>
