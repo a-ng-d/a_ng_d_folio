@@ -81,13 +81,18 @@
           :theme="theme"
         />
         <WrapColumn
-          :title="$t('global.date')"
           isSubSection
           :theme="theme"
         >
           <template #plain>
             <ContentContainer
+              :title="$t('global.date')"
               :description="project.date"
+              :theme="theme"
+            />
+            <ContentContainer
+              :title="$t('global.type.label')"
+              :description="project.type"
               :theme="theme"
             />
           </template>

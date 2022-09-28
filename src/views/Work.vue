@@ -174,6 +174,32 @@
                   <p>{{ (projects[5] as any).meta.date }}</p>
                 </li>
               </Transition>
+              <Transition class="work__data__item" name="slide-right" :duration="duration * 1.6" mode="out-in">
+                <li v-if="activeProjectCodeName === (projects[0] as any).meta.codeName">
+                  <h6>{{ $t("global.type.label") }}</h6>
+                  <p>{{ (projects[0] as any).meta.type }}</p>
+                </li>
+                <li v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName">
+                  <h6>{{ $t("global.type.label") }}</h6>
+                  <p>{{ (projects[1] as any).meta.type }}</p>
+                </li>
+                <li v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName">
+                  <h6>{{ $t("global.type.label") }}</h6>
+                  <p>{{ (projects[2] as any).meta.type }}</p>
+                </li>
+                <li v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName">
+                  <h6>{{ $t("global.type.label") }}</h6>
+                  <p>{{ (projects[3] as any).meta.type }}</p>
+                </li>
+                <li v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName">
+                  <h6>{{ $t("global.type.label") }}</h6>
+                  <p>{{ (projects[4] as any).meta.type }}</p>
+                </li>
+                <li v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName">
+                  <h6>{{ $t("global.type.label") }}</h6>
+                  <p>{{ (projects[5] as any).meta.type }}</p>
+                </li>
+              </Transition>
             </ul>
           </div>
           <Transition name="slide-right" :duration="duration * 2" mode="out-in" appear>
