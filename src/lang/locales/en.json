@@ -590,12 +590,8 @@
         "caption-5": "Big pictures of every component, pattern and template, ready for making every view with ease."
       },
       "part-3": {
-        "title": "Atomic design as a philosophy",
+        "title": "Build the views, to draw the flows",
         "paragraph-1": "By merging data with the templates (provided by the design system), the views emerge with meaning. The time we spent to build a design system was compensated by the quick specs we wrote.",
-        "paragraph-2": "The atoms have been defined with the brand team because they own the iObeya Graphical Guidelines. It gathers brand and UI colors, typography, spacing, shadows… These elements are used as parameters to override iOS and Android native components.",
-        "paragraph-3": "Sketch is our diagraming software and one feature was really relevant to build an atomic design system: the external components library.",
-        "paragraph-4": "Each part of the UI is a reusable components. Building the UI is like playing lego: small parts are stuck together to make bigger parts, and they are stuck each other to make views. In this way, we keep consistance and make a change is easier.",
-        "paragraph-5": "Every part was classified and structured in order to deploy them on our versionning system. So, the file is synchronized and can be linked with Sketch to be used as an external library.",
         "caption-1": "List of Cards where I am assigned",
         "caption-2": "List of notifications (assignment and reminder) to follow my activity",
         "caption-3": "Card edit－Title, location, status, date, assignment can be changed.",

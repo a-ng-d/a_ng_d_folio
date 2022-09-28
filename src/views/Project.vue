@@ -12,7 +12,7 @@
   import _jean_bobby_radio from '@/contexts/_work/_jean_bobby_radio.vue'
   import _awesome_ipsums from '@/contexts/_work/_awesome_ipsums.vue'
   import _iobeya_whiteboard from '@/contexts/_work/_iobeya_whiteboard.vue'
-  import _iobeya_design_system from '@/contexts/_work/_iobeya_design_system.vue'
+  import _iobeya_mobile_ds from '@/contexts/_work/_iobeya_mobile_ds.vue'
 
   export default defineComponent({
     name: 'Project',
@@ -29,7 +29,7 @@
       _jean_bobby_radio,
       _awesome_ipsums,
       _iobeya_whiteboard,
-      _iobeya_design_system
+      _iobeya_mobile_ds
     },
     props: {
       project: {
