@@ -86,8 +86,9 @@
         <div v-if="activeProjectCodeName === (projects[0] as any).meta.codeName"></div>
         <div v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName" style="background: url(/images/_work/_jeprendsquoi/background.svg) 50% / cover no-repeat"></div>
         <div v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName"></div>
-        <div v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName"></div>
-        <div v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName" style="background: url(/images/_work/_iobeya_whiteboard/background.png) 0% 0% no-repeat"></div>
+        <div v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName" style="background: url(/images/_work/_iobeya_whiteboard/background.png) 0% 0% no-repeat"></div>
+        <div v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName"></div>
+        <div v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName" style="background: url(/images/_work/_iobeya_whiteboard/background.png) 0% 0% no-repeat"></div>
       </Transition>
     </div>
     <Transition name="slide-up" appear style="--delay: var(--duration-turtoise)">
@@ -99,6 +100,7 @@
             <Vue3Lottie v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName" :animationData="(projects[2] as any).meta.illustration" :rendererSettings="{ progressiveLoad: true }" />
             <Vue3Lottie v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName" :animationData="(projects[3] as any).meta.illustration" :rendererSettings="{ progressiveLoad: true }" />
             <Vue3Lottie v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName" :animationData="(projects[4] as any).meta.illustration" :rendererSettings="{ progressiveLoad: true }" />
+            <Vue3Lottie v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName" :animationData="(projects[5] as any).meta.illustration" :rendererSettings="{ progressiveLoad: true }" />
           </Transition>
         </div>
         <aside class="work__summary">
@@ -120,6 +122,9 @@
                 <div v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName">
                   <h2>{{ (projects[4] as any).meta.codeName }}</h2>
                 </div>
+                <div v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName">
+                  <h2>{{ (projects[5] as any).meta.codeName }}</h2>
+                </div>
               </Transition>
               <Transition name="slide-right" :duration="duration * 1.5" mode="out-in">
                 <div v-if="activeProjectCodeName === (projects[0] as any).meta.codeName">
@@ -136,6 +141,9 @@
                 </div>
                 <div v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName">
                   <p>{{ (projects[4] as any).meta.summary }}</p>
+                </div>
+                <div v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName">
+                  <p>{{ (projects[5] as any).meta.summary }}</p>
                 </div>
               </Transition>
             </div>
@@ -160,6 +168,10 @@
                 <li v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName">
                   <h6>{{ $t("global.date") }}</h6>
                   <p>{{ (projects[4] as any).meta.date }}</p>
+                </li>
+                <li v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName">
+                  <h6>{{ $t("global.date") }}</h6>
+                  <p>{{ (projects[5] as any).meta.date }}</p>
                 </li>
               </Transition>
             </ul>

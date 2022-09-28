@@ -557,9 +557,9 @@
         }
       }
     },
-    "_iobeya_design_system": {
-      "title": "@:work._iobeya_design_system.shortTitle@:global.separator@:global.author",
-      "shortTitle": "_iobeya_design_system",
+    "_iobeya_mobile_ds": {
+      "title": "@:work._iobeya_mobile_ds.shortTitle@:global.separator@:global.author",
+      "shortTitle": "_iobeya_mobile_ds",
       "shortDescription": "iObeya Mobile Application cross-libs Design System",
       "description": "The iObeya Mobile Application extends productivity and operational excellence through a project management system at the fingertips. It was a new opportunity of bootstraping a new design system model from scratch, enhancing design and tech dependencies. iObeya Web Application is a monolith, and we were going to dig it with micro-frontends and an API-driven development.",
       "misc": {

@@ -163,6 +163,28 @@ const router = createRouter({
       }
     },
     {
+      path: '/_work/_iobeya_mobile_ds',
+      name: '_IOBEYA_MOBILE_DS',
+      component: Project,
+      meta: {
+        title: i18n.global.t('work._iobeya_mobile_ds.title'),
+        codeName: i18n.global.t('work._iobeya_mobile_ds.shortTitle'),
+        description: i18n.global.t('work._iobeya_mobile_ds.description'),
+        summary: i18n.global.t('work._iobeya_mobile_ds.shortDescription'),
+        date: i18n.global.t('work._iobeya_mobile_ds.misc.date'),
+        objectives: i18n.global.t('work._iobeya_mobile_ds.misc.objectives').split(', '),
+        roles: i18n.global.t('work._iobeya_mobile_ds.misc.roles').split(', '),
+        position: 3,
+        view: 'PROJECT',
+        illustration: IWAnimation,
+        background: filters._iobeya_whiteboard,
+        theme: 'DARK',
+        filter: filters.grayscale,
+        pov: 'MIRROR_4',
+        quality: 'LOW'
+      }
+    },
+    {
       path: '/_work/_awesome_ipsums',
       name: '_AWESOME_IPSUMS',
       component: Project,
@@ -174,13 +196,13 @@ const router = createRouter({
         date: i18n.global.t('work._awesome_ipsums.misc.date'),
         objectives: i18n.global.t('work._awesome_ipsums.misc.objectives').split(', '),
         roles: i18n.global.t('work._awesome_ipsums.misc.roles').split(', '),
-        position: 3,
+        position: 4,
         view: 'PROJECT',
         illustration: AIAnimation,
         background: filters._awesome_ipsums,
         theme: 'DARK',
         filter: filters.grayscale,
-        pov: 'MIRROR_4',
+        pov: 'MIRROR_5',
         quality: 'LOW'
       }
     },
@@ -196,13 +218,13 @@ const router = createRouter({
         date: i18n.global.t('work._iobeya_whiteboard.misc.date'),
         objectives: i18n.global.t('work._iobeya_whiteboard.misc.objectives').split(', '),
         roles: i18n.global.t('work._iobeya_whiteboard.misc.roles').split(', '),
-        position: 4,
+        position: 5,
         view: 'PROJECT',
         illustration: IWAnimation,
         background: filters._iobeya_whiteboard,
         theme: 'DARK',
         filter: filters.grayscale,
-        pov: 'MIRROR_5',
+        pov: 'MIRROR_6',
         quality: 'LOW'
       }
     },
