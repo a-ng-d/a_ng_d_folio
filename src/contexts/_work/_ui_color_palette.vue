@@ -69,7 +69,7 @@
       <template #right>
         <Figure
           type="video"
-          src="/videos/_work/_ui_color_palette/article-asset-1.mp4"
+          src="/videos/_work/_ui_color_palette/article-asset-1.mp4#t=0.5"
           :width="1920"
           :height="1200"
         >
@@ -84,7 +84,7 @@
       <template #left>
         <Figure
           type="video"
-          src="/videos/_work/_ui_color_palette/article-asset-1.mp4"
+          src="/videos/_work/_ui_color_palette/article-asset-1.mp4#t=0.5"
           :width="1920"
           :height="1200"
         >
@@ -104,7 +104,7 @@
       <template #right>
         <Figure
           type="video"
-          src="/videos/_work/_ui_color_palette/article-asset-3.mp4"
+          src="/videos/_work/_ui_color_palette/article-asset-3.mp4#t=0.5"
           :width="1920"
           :height="1200"
         >
