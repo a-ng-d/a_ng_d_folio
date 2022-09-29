@@ -363,7 +363,7 @@
         },
         "takeaway-2": {
           "description": "The iOS app is available on TestFlight. It is an ongoing test beta version.",
-          "linkLabel": "Install the app"
+          "linkLabel": "Install the app on iOS"
         }
       },
       "externalLinks": {
@@ -518,11 +518,11 @@
         },
         "takeaway-2": {
           "description": "The application can be downloaded on the App Store",
-          "linkLabel": "Install the app"
+          "linkLabel": "Install the app on iOS"
         },
         "takeaway-3": {
           "description": "The application can be downloaded on the Google Play",
-          "linkLabel": "Install the app"
+          "linkLabel": "Install the app on Android"
         }
       },
       "externalLinks": {
