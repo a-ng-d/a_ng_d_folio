@@ -42,7 +42,7 @@
     methods: {
       magnifier(e: any) {
         const target: HTMLElement = e.currentTarget!,
-              status: string = target.children[0].classList[1]!,
+              classes: Array<string> = target.children[0].classList.value.split(' ')!,
               x: number = target.getBoundingClientRect().x,
               y: number = target.getBoundingClientRect().y,
               w: number = target.getBoundingClientRect().width,
@@ -53,7 +53,7 @@
               scaleY: number = (document.body.clientHeight - (document.body.clientWidth * .16)) / h,
               refScale: number = Math.min(scaleX, scaleY)
 
-        if (status === 'v-lazy-image-loaded') {
+        if (classes.includes('v-lazy-image-loaded') || classes.includes('v-lazy-video')) {
           this.isMagnified = !this.isMagnified
           this.maxScale = refScale
           this.pathX = (refX - x - (w / 2)) / refScale
@@ -84,7 +84,7 @@
       @touchmove.passive="isMagnified = false"
     >
       <v-lazy-image v-if="type === 'image'" :src="src" :alt="alt" />
-      <video v-else-if="type === 'video'" preload="metadata" controls>
+      <video v-else-if="type === 'video'" class="v-lazy-video" preload="metadata" controls>
         <source :src="src" type="video/mp4" />
       </video>
     </div>
