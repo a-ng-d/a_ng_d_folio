@@ -1,6 +1,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import { store } from '@/utilities/store'
+  import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
   import SimpleLink from '@/components/ui/SimpleLink.vue'
   import Button from '@/components/ui/Button.vue'
   import { Volume, Volume2 } from 'lucide-vue-next'
@@ -9,6 +10,7 @@
     name: 'Footer',
     components: {
       Button,
+      SimpleExternalLink,
       SimpleLink,
       Volume,
       Volume2
@@ -42,6 +44,13 @@
       <span class="footer__tag__content small-label">{{ $t("global.author") }}</span>
       <span class="footer__tag__content small-label">{{ $t("global.separator") }}</span>
       <span class="footer__tag__content small-label">{{ $t("global.license", { year: new Date().getFullYear() }) }}</span>
+      <span class="footer__tag__content small-label">{{ $t("global.separator") }}</span>
+      <SimpleExternalLink
+        :label="$t('footer.repository')"
+        href="https://github.com/inVoltag/a_ng_d-folio"
+        small
+        :theme="theme === 'DEFAULT' ? 'DARK' : 'DEFAULT'"
+      />
       <span class="footer__tag__content small-label">{{ $t("global.separator") }}</span>
       <SimpleLink
         :label="$t('footer.attribution')"

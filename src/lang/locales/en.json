@@ -57,7 +57,8 @@
     "core": "Story"
   },
   "footer": {
-    "attribution": "Attribution"
+    "attribution": "Attribution",
+    "repository": "Watch the repository"
   },
   "id": {
     "title": "@:glossary.id@:global.separator@:global.author",
