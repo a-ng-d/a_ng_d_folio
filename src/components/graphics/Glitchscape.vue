@@ -10,12 +10,12 @@
   const povs: { [key: string]: () => void } = {
     RESET: () => glitchscape.povReset(),
     INVERT: () => glitchscape.povInvert(),
-    MIRROR_1: () => glitchscape.povMirror(1),
-    MIRROR_2: () => glitchscape.povMirror(2),
-    MIRROR_3: () => glitchscape.povMirror(3),
-    MIRROR_4: () => glitchscape.povMirror(4),
-    MIRROR_5: () => glitchscape.povMirror(5),
-    MIRROR_6: () => glitchscape.povMirror(6),
+    DIVE_1: () => glitchscape.povDIVE(1),
+    DIVE_2: () => glitchscape.povDIVE(2),
+    DIVE_3: () => glitchscape.povDIVE(3),
+    DIVE_4: () => glitchscape.povDIVE(4),
+    DIVE_5: () => glitchscape.povDIVE(5),
+    DIVE_6: () => glitchscape.povDIVE(6),
     DONTLOOKUP: () => glitchscape.povDontLookUp(),
     SIDE: () => glitchscape.povSide(),
     GLOBAL: () => glitchscape.povGlobal(),
@@ -108,12 +108,12 @@
 
         const povs: { [key: string]: () => void } = {
           RESET: () => sk.povReset(),
-          MIRROR_1: () => sk.povMirror(1),
-          MIRROR_2: () => sk.povMirror(2),
-          MIRROR_3: () => sk.povMirror(3),
-          MIRROR_4: () => sk.povMirror(4),
-          MIRROR_5: () => sk.povMirror(5),
-          MIRROR_6: () => glitchscape.povMirror(6),
+          DIVE_1: () => sk.povDIVE(1),
+          DIVE_2: () => sk.povDIVE(2),
+          DIVE_3: () => sk.povDIVE(3),
+          DIVE_4: () => sk.povDIVE(4),
+          DIVE_5: () => sk.povDIVE(5),
+          DIVE_6: () => glitchscape.povDIVE(6),
           DONTLOOKUP: () => sk.povDontLookUp(),
           SIDE: () => sk.povSide(),
           GLOBAL: () => sk.povGlobal(),
@@ -787,7 +787,7 @@
           ]
         )
 
-        sk.povMirror = (increment: number) => pov.animate(
+        sk.povDIVE = (increment: number) => pov.animate(
           .05,
           [
             doMap(increment, 1, this.numberOfProjects, -limitX *.75, limitX *.75),

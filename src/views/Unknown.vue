@@ -64,9 +64,9 @@
             isActive: false
           },
           {
-            name: i18n.global.t('unknown.pov.mirror'),
+            name: i18n.global.t('unknown.pov.dive'),
             action: () => {
-              this.$emit('pov', 'MIRROR_3')
+              this.$emit('pov', 'DIVE_3')
               this.$el.scrollTop = 0
             },
             isActive: false
