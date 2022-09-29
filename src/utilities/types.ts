@@ -22,6 +22,7 @@ export interface Filters {
   _jean_bobby_radio: HuBrInSaGr
   _awesome_ipsums: HuBrInSaGr
   _iobeya_whiteboard: HuBrInSaGr
+  _iobeya_mobile_ds: HuBrInSaGr
 }
 
 export interface HuSaLiTy {
