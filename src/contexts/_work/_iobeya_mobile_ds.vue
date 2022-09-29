@@ -142,8 +142,8 @@
           type="image"
           src="/images/_work/_iobeya_mobile_ds/article-asset-3.png"
           caption
-          :width="1200"
-          :height="1500"
+          :width="1920"
+          :height="1070"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_mobile_ds.part-2.caption-3') }}</p>
@@ -155,7 +155,7 @@
           src="/images/_work/_iobeya_mobile_ds/article-asset-4.png"
           caption
           :width="1920"
-          :height="1070"
+          :height="1650"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_mobile_ds.part-2.caption-4') }}</p>
