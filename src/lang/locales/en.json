@@ -284,7 +284,7 @@
       "title": "@:work._ui_color_palette.shortTitle@:global.separator@:global.author",
       "shortTitle": "_ui_color_palette",
       "shortDescription": "Accessible color palettes with consistant lightness with Figma",
-      "description": "Figma is an UX tool, using diagrams to build user experiences, interfaces, prototypes, and illustrations… The tool can be extended with a plugin system. Figma tends to be the leader of UX tools market because of its inclusive and powerful business model. So, Figma is still the most exciting ux tool. By reading this article (Accessible Palette: stop using HSL for color systems), I noticed there is not any plugin on Figma to help build accessible color systems for UI. The opportunity is to develop a tool to create, edit and deploy color palettes.",
+      "description": "Figma is an UX tool, using diagrams to build user experiences, interfaces, prototypes, illustrations, etc. The tool can be extended with a plugin system. Figma tends to be the leader of UX tools market because of its inclusive and powerful business model. So, Figma is still the most exciting ux tool. By reading this article (Accessible Palette: stop using HSL for color systems), I noticed there is not any plugin on Figma to help build accessible color systems for UI. The opportunity is to develop a tool to create, edit and deploy color palettes.",
       "misc": {
         "date": "{'2022'}@:global.separator{'Monthly release'}",
         "objectives": "Creating UI color palettes with consistant lightness and contrast, Updating and deploying colors with ease to the team library",

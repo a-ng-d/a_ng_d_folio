@@ -2,6 +2,7 @@
   import { defineComponent } from 'vue'
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
+  import TwoColumns from '@/components/layouts/TwoColumns.vue'
   import ThreeColumns from '@/components/layouts/ThreeColumns.vue'
   import ContentContainer from '@/components/patterns/ContentContainer.vue'
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
@@ -13,6 +14,7 @@
     components: {
       OneColumn,
       WrapColumn,
+      TwoColumns,
       ThreeColumns,
       ContentContainer,
       LinkContainer,
@@ -58,51 +60,59 @@
     </OneColumn>
   </section>
   <section>
-    <WrapColumn
+    <TwoColumns
       :title="$t('work._ui_color_palette.part-1.title')"
-      :columns="3"
-      :isFullScreen="isFullScreen"
+      center
       :theme="theme"
     >
-      <template #plain>
+      <template #left>
+          <p>{{ $t('work._ui_color_palette.part-1.caption-1') }}</p>
+      </template>
+      <template #right>
         <Figure
           type="video"
           src="/videos/_work/_ui_color_palette/article-asset-1.mp4"
-          caption
           :width="1920"
           :height="1200"
-          @isMagnified="isFullScreen = $event"
         >
-          <template #caption>
-            <p class="discrete">{{ $t('work._ui_color_palette.part-1.caption-1') }}</p>
-          </template>
         </Figure>
+      </template>
+    </TwoColumns>
+    <TwoColumns
+      class="col-2--invert"
+      center
+      :theme="theme"
+    >
+      <template #left>
         <Figure
           type="video"
-          src="/videos/_work/_ui_color_palette/article-asset-2.mp4"
-          caption
+          src="/videos/_work/_ui_color_palette/article-asset-1.mp4"
           :width="1920"
           :height="1200"
-          @isMagnified="isFullScreen = $event"
         >
-          <template #caption>
-            <p class="discrete">{{ $t('work._ui_color_palette.part-1.caption-2') }}</p>
-          </template>
         </Figure>
+      </template>
+      <template #right>
+        <p>{{ $t('work._ui_color_palette.part-1.caption-2') }}</p>
+      </template>
+    </TwoColumns>
+    <TwoColumns
+      center
+      :theme="theme"
+    >
+      <template #left>
+          <p>{{ $t('work._ui_color_palette.part-1.caption-3') }}</p>
+      </template>
+      <template #right>
         <Figure
           type="video"
           src="/videos/_work/_ui_color_palette/article-asset-3.mp4"
-          caption
           :width="1920"
           :height="1200"
-          @isMagnified="isFullScreen = $event"
         >
-          <template #caption>
-            <p class="discrete">{{ $t('work._ui_color_palette.part-1.caption-3') }}</p>
-          </template>
         </Figure>
       </template>
-    </WrapColumn>
+    </TwoColumns>
   </section>
   <section class="success">
     <ThreeColumns
