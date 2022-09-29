@@ -661,8 +661,8 @@
           sk.frameRate(fps)
           camera = sk.createCamera()
 
-          if (window.DeviceOrientationEvent)
-            window.addEventListener('deviceorientation', sk.deviceMoved)
+          window.addEventListener('deviceorientation', sk.mobileMoved, true)
+          window.addEventListener('deviceorientation', sk.mobileTurned, true)
 
           // particles setting
           for (let i = 0 ; i < mNumber ; i++)
@@ -889,11 +889,11 @@
 
         sk.touchMoved = () => pov.push()
 
-        sk.deviceMoved = (e: any) => pov.orient(e.alpha, e.beta)
+        sk.mobileMoved = (e: any) => pov.orient(e.alpha, e.beta)
 
         sk.windowResized = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
 
-        sk.deviceTurned = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
+        sk.mobileTurned = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
       })
     }
   })
