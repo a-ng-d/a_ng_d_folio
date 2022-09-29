@@ -3,6 +3,7 @@
   import { store } from '@/utilities/store'
   import Button from '@/components/ui/Button.vue'
   import Container from '@/components/ui/Container.vue'
+  import VLazyImage from 'v-lazy-image'
   import { Dribbble, Codepen } from 'lucide-vue-next'
 
   export default defineComponent({
@@ -10,6 +11,7 @@
     components: {
       Button,
       Container,
+      VLazyImage,
       Dribbble,
       Codepen
     },
@@ -65,7 +67,7 @@
     <div class="asset-container__content" :data-theme="theme">
       <div class="asset-container__asset">
         <Transition name="fade" mode="in-out" :style="`--delay: ${isMagnified ? '0ms' : 'var(--delay-jogging)'}`">
-          <img v-if="!isMagnified" :src="thumbnail" :alt="alt" />
+          <v-lazy-image v-if="!isMagnified" :src="thumbnail" :alt="alt" />
           <video v-else-if="isMagnified && type === 'video'" preload="true" autoplay muted loop playsinline poster="">
             <source :src="hdnail" type="video/mp4" />
           </video>
@@ -120,10 +122,19 @@
       overflow: hidden
       border-radius: calc(var(--regular-border-radius) - var(--container-padding))
       transition: var(--simple-transition)
-      filter: v-bind("isMagnified ? 'brightness(1)' : 'brightness(.5)'")
+      animation: loading var(--duration-turtoise) infinite linear
+      box-shadow: var(--inner-border)
 
       img, video
         height: 100%
+        filter: v-bind("isMagnified ? 'brightness(1)' : 'brightness(.5)'")
+        transition: var(--simple-transition)
+
+        &.v-lazy-image
+          opacity: 0
+
+        &.v-lazy-image.v-lazy-image-loaded
+          opacity: 1
 
     &__description
       display: flex
@@ -144,6 +155,10 @@
 
   // Aspect
   .asset-container__content
+    --color-1: var(--color-creamy-sun)
+    --color-2: var(--color-soft-wind)
+    --color-3: var(--color-candy-floss)
+
     &[data-theme="DARK"]
       --text-color: var(--color-soil)
 </style>
