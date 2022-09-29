@@ -62,6 +62,7 @@
     @focus="store.isFocus = true"
     @blur="store.isFocus = false"
     class="container"
+    :class="isMagnified ? 'container--magnified' : ''"
     isInteractive
   >
     <div class="asset-container__content" :data-theme="theme">
@@ -101,7 +102,10 @@
   .container
     width: v-bind("isMagnified ? assetWidth : '30vh'")
     padding: var(--spacing-s-100)
-    cursor: pointer
+    cursor: zoom-in
+
+    &--magnified
+      cursor: zoom-out
 
   .asset-container
     &__content
