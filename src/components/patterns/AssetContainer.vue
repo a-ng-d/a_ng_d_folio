@@ -120,7 +120,8 @@
       display: flex
       justify-content: center
       overflow: hidden
-      border-radius: calc(var(--regular-border-radius) - var(--container-padding))
+      -webkit-mask-image: -webkit-radial-gradient(white, black)
+      border-radius: var(--asset-radius)
       transition: var(--simple-transition)
       animation: loading var(--duration-turtoise) infinite linear
       box-shadow: var(--inner-border)
@@ -128,7 +129,8 @@
       img, video
         height: 100%
         filter: v-bind("isMagnified ? 'brightness(1)' : 'brightness(.5)'")
-        transition: var(--simple-transition)
+        border-radius: var(--asset-radius)
+        transition: var(--slow-transition)
 
         &.v-lazy-image
           opacity: 0
@@ -158,6 +160,7 @@
     --color-1: var(--color-creamy-sun)
     --color-2: var(--color-soft-wind)
     --color-3: var(--color-candy-floss)
+    --asset-radius: calc(var(--regular-border-radius) - var(--container-padding))
 
     &[data-theme="DARK"]
       --text-color: var(--color-soil)
