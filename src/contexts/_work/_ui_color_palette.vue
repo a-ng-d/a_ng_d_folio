@@ -1,7 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import OneColumn from '@/components/layouts/OneColumn.vue'
-  import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import TwoColumns from '@/components/layouts/TwoColumns.vue'
   import ThreeColumns from '@/components/layouts/ThreeColumns.vue'
   import ContentContainer from '@/components/patterns/ContentContainer.vue'
@@ -13,7 +12,6 @@
     name: '_ui_color_palette',
     components: {
       OneColumn,
-      WrapColumn,
       TwoColumns,
       ThreeColumns,
       ContentContainer,
