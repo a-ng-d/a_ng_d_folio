@@ -31,11 +31,13 @@
         translation: 0 as number,
         opacity: 1 as number,
         time: 0 as number,
-        remainingScroll: 0 as number
+        remainingScroll: 0 as number,
+        isScrollingTextStopped: false as boolean
       }
     },
     watch: {
       scrollProgress(to) {
+        to > 0 ? this.isScrollingTextStopped = true : this.isScrollingTextStopped = false
         this.triggers.forEach((trigger, index) => {
           if (to >= trigger.top && to < trigger.bottom) {
             const startScaling = index == 0 ? 0 : -this.perspective,
@@ -87,6 +89,7 @@
             <Transition name="slide-up" style="--delay: var(--delay-turtoise)" appear>
               <ScrollingText
                 :label="$t('core.intro.title')"
+                :stopped="isScrollingTextStopped"
                 :theme="theme"
               />
             </Transition>
@@ -95,6 +98,7 @@
                 :label="$t('core.intro.subtitle')"
                 direction="RIGHT"
                 isSubTitle
+                :stopped="isScrollingTextStopped"
                 :theme="theme"
                 style="margin-left: calc(var(--sizing-s-000) * -1)"
               />
