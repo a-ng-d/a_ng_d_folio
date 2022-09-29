@@ -369,6 +369,9 @@
     .work
       flex-flow: column nowrap
 
+      &__illustration
+        flex: 1
+
       &__summary
         flex: 1
         justify-content: space-between
@@ -400,12 +403,10 @@
   @include device.smartphone
     .work
       flex-flow: column nowrap
+      padding: var(--layout-center) var(--layout-center)
 
       &__illustration
-        flex: 1
-
-        &__item
-          height: 125%
+        display: none
 
       &__summary
         flex: 1
