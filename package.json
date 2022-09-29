@@ -1,6 +1,14 @@
 {
   "name": "a_ng_d-folio",
-  "version": "0.9.13",
+  "version": "0.9.14",
+  "licence": {
+    "type": "CC-BY-4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/inVoltag/a_ng_d-folio"
+  }
   "scripts": {
     "dev": "vite",
     "expose": "vite --host",
