@@ -16,6 +16,10 @@
         type: Boolean,
         default: false
       },
+      stopped: {
+        type: Boolean,
+        default: false
+      },
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -25,11 +29,11 @@
 </script>
 
 <template>
-  <h1 v-if="!isSubTitle" class="scrolling-text" :data-theme="theme">
+  <h1 v-if="!isSubTitle" class="scrolling-text" :class="stopped ? 'scrolling-text--stopped' : 'scrolling-text--played'" :data-theme="theme">
     <span class="scrolling-text__instance">{{ label }}</span>
     <span class="scrolling-text__instance">{{ label }}</span>
   </h1>
-  <h4 v-else-if="isSubTitle" class="scrolling-text" :data-theme="theme">
+  <h4 v-else-if="isSubTitle" class="scrolling-text" :class="stopped ? 'scrolling-text--stopped' : 'scrolling-text--played'" :data-theme="theme">
     <span class="scrolling-text__instance">{{ label }}</span>
     <span class="scrolling-text__instance">{{ label }}</span>
   </h4>
@@ -47,6 +51,12 @@
       position: absolute
       animation: v-bind("direction === 'LEFT' ? 'across-left' : 'across-right'") 32000ms infinite forwards linear
       white-space: nowrap
+
+    &--stopped &__instance
+      animation-play-state: paused
+
+    &--played &__instance
+      animation-play-state: running
 
   // Aspect
   .scrolling-text
