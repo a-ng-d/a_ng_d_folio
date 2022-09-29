@@ -127,14 +127,14 @@
         transition: var(--simple-transition)
         border-radius: var(--asset-radius)
 
-      .v-lazy-image
-        transform: translateY(50%)
-        opacity: 0
+        &.v-lazy-image
+          transform: translateY(50%)
+          opacity: 0
 
-      .v-lazy-image.v-lazy-image-loaded
-        transform: translateY(0)
-        opacity: 1
-        cursor: zoom-in
+        &.v-lazy-image.v-lazy-image-loaded
+          transform: translateY(0)
+          opacity: 1
+          cursor: zoom-in
 
       &--magnified
         transform: scale(v-bind("maxScale")) translate(v-bind("`${pathX}px`"), v-bind("`${pathY}px`"))

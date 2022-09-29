@@ -61,11 +61,11 @@
         height: fit-content
         transition: var(--duration-turtoise) opacity ease
 
-      :deep(.v-lazy-image)
-        opacity: 0
+        &.v-lazy-image
+          opacity: 0
 
-      :deep(.v-lazy-image.v-lazy-image-loaded)
-        opacity: 1
+        &.v-lazy-image.v-lazy-image-loaded
+          opacity: 1
 
     &__caption :deep(p)
       padding: 0 var(--layout-center)
