@@ -82,6 +82,7 @@
         />
         <WrapColumn
           isSubSection
+          :columns="4"
           :theme="theme"
         >
           <template #plain>
@@ -95,32 +96,16 @@
               :description="project.type"
               :theme="theme"
             />
-          </template>
-        </WrapColumn>
-        <WrapColumn
-          :title="$t('global.objectives')"
-          isSubSection
-          :theme="theme"
-        >
-          <template #plain>
             <ContentContainer
               v-for="(objective, index) in project.objectives"
-              :title="`#${index + 1}`"
+              :title="`${$t('global.objective')} #${index + 1}`"
               :description="objective"
               :key="`#${index + 1}`"
               :theme="theme"
             />
-          </template>
-        </WrapColumn>
-        <WrapColumn
-          :title="$t('global.roles')"
-          isSubSection
-          :theme="theme"
-        >
-          <template #plain>
             <ContentContainer
               v-for="(role, index) in project.roles"
-              :title="`#${index + 1}`" :description="role"
+              :title="`${$t('global.role')} #${index + 1}`" :description="role"
               :key="`#${index + 1}`"
               :theme="theme"
             />
