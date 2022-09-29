@@ -59,7 +59,7 @@
       & > :deep(*)
         flex: 1 1 v-bind("columns == 3 ? 'calc(33% - var(--layout-column-gap))' : columns == 4 ? 'calc(25% - var(--layout-column-gap))' : 'calc(50% - var(--layout-column-gap))'")
 
-    @include device.tablet
+    @include device.mobile
       &__scroll
         overflow: auto
         padding: v-bind("isFullScreen ? '100vh' : '0'") 0
@@ -75,26 +75,20 @@
         width: fit-content
         padding: var(--spacing-xs-000) var(--layout-margin)
 
+    @include device.tablet
+      &__content
         & > :deep(*)
           flex: none
-          width: 50vw
+          width: 30vw
+
+    @include device.tablet-portrait
+      &__content
+        & > :deep(*)
+          flex: none
+          width: 40vw
 
     @include device.smartphone
-      &__scroll
-        overflow: auto
-        padding: v-bind("isFullScreen ? '100vh' : '0'") 0
-        margin: v-bind("isFullScreen ? '-100vh' : '0'") calc(var(--layout-margin) * -1)
-        scrollbar-width: none
-        transition: var(--simple-transition)
-
-        &::-webkit-scrollbar
-          display: none
-
       &__content
-        flex-flow: row nowrap
-        width: fit-content
-        padding: var(--spacing-xs-000) var(--layout-margin)
-
         & > :deep(*)
           flex: none
           width: 75vw
