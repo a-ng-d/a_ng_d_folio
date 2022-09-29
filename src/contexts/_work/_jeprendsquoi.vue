@@ -1,6 +1,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import OneColumn from '@/components/layouts/OneColumn.vue'
+  import TwoColumns from '@/components/layouts/TwoColumns.vue'
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
@@ -12,6 +13,7 @@
     name: '_jeprendsquoi',
     components: {
       OneColumn,
+      TwoColumns,
       WrapColumn,
       LinkContainer,
       Figure,
@@ -250,11 +252,10 @@
         </LinkContainer>
       </template>
     </OneColumn>
-    <WrapColumn
-      :isFullScreen="isFullScreen"
+    <TwoColumns
       :theme="theme"
     >
-      <template #plain>
+      <template #left>
         <Figure
           type="image"
           src="/images/_work/_jeprendsquoi/article-asset-7.gif"
@@ -267,6 +268,8 @@
             <p class="discrete">{{ $t('work._jeprendsquoi.part-2.caption-7') }}</p>
           </template>
         </Figure>
+      </template>
+      <template #right>
         <Figure
           type="image"
           src="/images/_work/_jeprendsquoi/article-asset-8.gif"
@@ -280,7 +283,7 @@
           </template>
         </Figure>
       </template>
-    </WrapColumn>
+    </TwoColumns>
   </section>
   <section class="ending">
   </section>
@@ -330,5 +333,5 @@
 
   @include device.smartphone
     section.ending
-      background: url(/images/_work/_jeprendsquoi/ending-asset-2.png) 50% v-bind('parallax(400, 100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-1.png) -155% v-bind('parallax(200, -100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-3.png) 300% v-bind('parallax(400, 100)') no-repeat
+      background: url(/images/_work/_jeprendsquoi/ending-asset-2.png) 50% v-bind('parallax(400, 100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-1.png) -155% v-bind('parallax(200, 100)') no-repeat, url(/images/_work/_jeprendsquoi/ending-asset-3.png) 300% v-bind('parallax(300, 100)') no-repeat
 </style>
