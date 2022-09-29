@@ -1,8 +1,12 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import VLazyImage from 'v-lazy-image'
 
   export default defineComponent({
     name: 'Figure',
+    components: {
+      VLazyImage
+    },
     props: {
       type: {
         type: String,
@@ -38,7 +42,7 @@
     methods: {
       magnifier(e: any) {
         const target: HTMLElement = e.currentTarget!,
-              status: string = target.children[0].getAttribute('lazy')!,
+              status: string = target.children[0].classList[1]!,
               x: number = target.getBoundingClientRect().x,
               y: number = target.getBoundingClientRect().y,
               w: number = target.getBoundingClientRect().width,
@@ -49,7 +53,7 @@
               scaleY: number = (document.body.clientHeight - (document.body.clientWidth * .16)) / h,
               refScale: number = Math.min(scaleX, scaleY)
 
-        if (status != 'loading') {
+        if (status === 'v-lazy-image-loaded') {
           this.isMagnified = !this.isMagnified
           this.maxScale = refScale
           this.pathX = (refX - x - (w / 2)) / refScale
@@ -79,7 +83,7 @@
       @wheel.passive="isMagnified = false"
       @touchmove.passive="isMagnified = false"
     >
-      <img v-if="type === 'image'" v-lazy="src" :alt="alt" />
+      <v-lazy-image v-if="type === 'image'" :src="src" :alt="alt" />
       <video v-else-if="type === 'video'" preload="metadata" controls>
         <source :src="src" type="video/mp4" />
       </video>
@@ -100,6 +104,7 @@
     &__asset
       display: flex
       width: 100%
+      height: v-bind("ratio + 'px'")
       border-radius: var(--asset-radius)
       box-shadow: var(--asset-border)
       justify-content: center
@@ -111,8 +116,8 @@
 
       &:before
         content: ''
-        width: 200vw
-        height: 200vh
+        width: 300vw
+        height: 300vh
         position: fixed
         background-color: hsla(var(--hsl-cream), var(--alpha))
         transition: var(--simple-transition)
@@ -122,12 +127,13 @@
         transition: var(--simple-transition)
         border-radius: var(--asset-radius)
 
-      img[lazy=loading]
-        transform: translateX(-100%)
-        height: v-bind("ratio + 'px'")
+      .v-lazy-image
+        transform: translateY(50%)
+        opacity: 0
 
-      img[lazy=loaded]
-        transform: translateX(0)
+      .v-lazy-image.v-lazy-image-loaded
+        transform: translateY(0)
+        opacity: 1
         cursor: zoom-in
 
       &--magnified
@@ -136,7 +142,7 @@
         cursor: zoom-out
         overflow: visible
 
-        img[lazy=loaded]
+        .v-lazy-image-loaded
           cursor: zoom-out
 
     &__caption

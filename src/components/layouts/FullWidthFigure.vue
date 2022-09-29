@@ -61,10 +61,10 @@
         height: fit-content
         transition: var(--duration-turtoise) opacity ease
 
-      :deep(img[lazy=loading])
+      :deep(.v-lazy-image)
         opacity: 0
 
-      :deep(img[lazy=loaded])
+      :deep(.v-lazy-image.v-lazy-image-loaded)
         opacity: 1
 
     &__caption :deep(p)

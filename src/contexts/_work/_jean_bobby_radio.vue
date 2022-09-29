@@ -7,6 +7,7 @@
   import FullWidthFigure from '@/components/layouts/FullWidthFigure.vue'
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
+  import VLazyImage from 'v-lazy-image'
   import { Info, Github, Radio } from 'lucide-vue-next'
   import { doMap } from '@/utilities/operations'
   import JBRAnimation from '@/assets/animations/_work/_jean_bobby_radio/animation.json'
@@ -19,6 +20,7 @@
       FullWidthFigure,
       LinkContainer,
       SimpleExternalLink,
+      VLazyImage,
       Info,
       Github,
       Radio,
@@ -121,7 +123,7 @@
       :theme="theme"
     >
       <template #asset>
-        <img v-lazy="'/images/_work/_jean_bobby_radio/article-asset-2.png'" :style="`transform: translateY(${parallax(50, -50)})`" />
+        <v-lazy-image src="/images/_work/_jean_bobby_radio/article-asset-2.png" :style="`transform: translateY(${parallax(50, -50)})`" />
       </template>
     </FullWidthFigure>
     <OneColumn
