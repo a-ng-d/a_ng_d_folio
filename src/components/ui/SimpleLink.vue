@@ -94,7 +94,7 @@
 
     &:focus
       transform: var(--focus-scale)
-      padding: 0 var(--spacing-m-000)
+      padding: 0 var(--spacing-s-000)
 
     &:active
       transform: var(--active-scale)
