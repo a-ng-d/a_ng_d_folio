@@ -661,7 +661,7 @@
           sk.frameRate(fps)
           camera = sk.createCamera()
 
-          window.addEventListener('deviceorientation', sk.mobileMoved, true)
+          //window.addEventListener('deviceorientation', console.log('ok'), true)
           window.addEventListener('deviceorientation', sk.mobileTurned, true)
 
           // particles setting
@@ -893,7 +893,7 @@
 
         sk.windowResized = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
 
-        sk.mobileTurned = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
+        sk.mobileTurned = () => console.log('ok')
       })
     }
   })
