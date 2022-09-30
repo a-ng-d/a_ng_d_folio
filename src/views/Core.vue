@@ -32,7 +32,16 @@
         opacity: 1 as number,
         time: 0 as number,
         remainingScroll: 0 as number,
-        isScrollingTextStopped: false as boolean
+        isScrollingTextStopped: false as boolean,
+        stops: [
+          'personal',
+          'productDesign',
+          'creativeTechnology',
+          'facilitation',
+          'communication',
+          'human',
+          'extra'
+        ] as Array<string>
       }
     },
     watch: {
@@ -85,7 +94,7 @@
     <article class="story" :data-theme="theme">
       <section class="story__intro">
         <div class="story__content" :class="section === 'section-1' ? 'story__content--centered' : null">
-          <div class="story__content--intro">
+          <div class="story__label story__label--intro">
             <Transition name="slide-up" style="--delay: var(--delay-turtoise)" appear>
               <ScrollingText
                 :label="$t('core.intro.title')"
@@ -106,142 +115,28 @@
           </div>
         </div>
       </section>
-      <section class="story__stop">
-        <div class="story__content" :class="section === 'section-2' ? 'story__content--centered' : null">
-          <div class="story__content--order-1">
-            <h1 data-highlighted="true">{{ $t('core.personal.title') }}</h1>
+      <section v-for="(stop, index) in stops" class="story__stop" :key="stop">
+        <div class="story__content" :class="section === `section-${index + 2}` ? 'story__content--centered' : null">
+          <div class="story__label story__label--order-1">
+            <h1 data-highlighted="true">{{ $t(`core.${stop}.title`) }}</h1>
           </div>
-          <div class="story__content--order-2">
-            <h3 data-highlighted="true">{{ $t('core.personal.summary') }}</h3>
+          <div class="story__label story__label--order-2">
+            <h3 data-highlighted="true">{{ $t(`core.${stop}.summary`) }}</h3>
           </div>
-          <div class="story__content--order-3">
-            <h6 data-highlighted="true">{{ $t('core.personal.mission-1') }}</h6>
+          <div class="story__label story__label--order-3">
+            <h6 data-highlighted="true">{{ $t(`core.${stop}.mission-1`) }}</h6>
           </div>
-          <div class="story__content--order-4">
-            <h6 data-highlighted="true">{{ $t('core.personal.mission-2') }}</h6>
+          <div class="story__label story__label--order-4">
+            <h6 data-highlighted="true">{{ $t(`core.${stop}.mission-2`) }}</h6>
           </div>
-          <div class="story__content--order-5">
-            <h6 data-highlighted="true">{{ $t('core.personal.mission-3') }}</h6>
-          </div>
-        </div>
-      </section>
-      <section class="story__stop">
-        <div class="story__content" :class="section === 'section-3' ? 'story__content--centered' : null">
-          <div class="story__content--order-1">
-            <h1 data-highlighted="true">{{ $t('core.productDesign.title') }}</h1>
-          </div>
-          <div class="story__content--order-2">
-            <h3 data-highlighted="true">{{ $t('core.productDesign.summary') }}</h3>
-          </div>
-          <div class="story__content--order-3">
-            <h6 data-highlighted="true">{{ $t('core.productDesign.mission-1') }}</h6>
-          </div>
-          <div class="story__content--order-4">
-            <h6 data-highlighted="true">{{ $t('core.productDesign.mission-2') }}</h6>
-          </div>
-          <div class="story__content--order-5">
-            <h6 data-highlighted="true">{{ $t('core.productDesign.mission-3') }}</h6>
-          </div>
-        </div>
-      </section>
-      <section class="story__stop">
-        <div class="story__content" :class="section === 'section-4' ? 'story__content--centered' : null">
-          <div class="story__content--order-1">
-            <h1 data-highlighted="true">{{ $t('core.creativeTechnology.title') }}</h1>
-          </div>
-          <div class="story__content--order-2">
-            <h3 data-highlighted="true">{{ $t('core.creativeTechnology.summary') }}</h3>
-          </div>
-          <div class="story__content--order-3">
-            <h6 data-highlighted="true">{{ $t('core.creativeTechnology.mission-1') }}</h6>
-          </div>
-          <div class="story__content--order-4">
-            <h6 data-highlighted="true">{{ $t('core.creativeTechnology.mission-2') }}</h6>
-          </div>
-          <div class="story__content--order-5">
-            <h6 data-highlighted="true">{{ $t('core.creativeTechnology.mission-3') }}</h6>
-          </div>
-        </div>
-      </section>
-      <section class="story__stop">
-        <div class="story__content" :class="section === 'section-5' ? 'story__content--centered' : null">
-          <div class="story__content--order-1">
-            <h1 data-highlighted="true">{{ $t('core.facilitation.title') }}</h1>
-          </div>
-          <div class="story__content--order-2">
-            <h3 data-highlighted="true">{{ $t('core.facilitation.summary') }}</h3>
-          </div>
-          <div class="story__content--order-3">
-            <h6 data-highlighted="true">{{ $t('core.facilitation.mission-1') }}</h6>
-          </div>
-          <div class="story__content--order-4">
-            <h6 data-highlighted="true">{{ $t('core.facilitation.mission-2') }}</h6>
-          </div>
-          <div class="story__content--order-5">
-            <h6 data-highlighted="true">{{ $t('core.facilitation.mission-3') }}</h6>
-          </div>
-        </div>
-      </section>
-      <section class="story__stop">
-        <div class="story__content" :class="section === 'section-6' ? 'story__content--centered' : null">
-          <div class="story__content--order-1">
-            <h1 data-highlighted="true">{{ $t('core.communication.title') }}</h1>
-          </div>
-          <div class="story__content--order-2">
-            <h3 data-highlighted="true">{{ $t('core.communication.summary') }}</h3>
-          </div>
-          <div class="story__content--order-3">
-            <h6 data-highlighted="true">{{ $t('core.communication.mission-1') }}</h6>
-          </div>
-          <div class="story__content--order-4">
-            <h6 data-highlighted="true">{{ $t('core.communication.mission-2') }}</h6>
-          </div>
-          <div class="story__content--order-5">
-            <h6 data-highlighted="true">{{ $t('core.communication.mission-3') }}</h6>
-          </div>
-        </div>
-      </section>
-      <section class="story__stop">
-        <div class="story__content" :class="section === 'section-7' ? 'story__content--centered' : null">
-          <div class="story__content--order-1">
-            <h1 data-highlighted="true">{{ $t('core.human.title') }}</h1>
-          </div>
-          <div class="story__content--order-2">
-            <h3 data-highlighted="true">{{ $t('core.human.summary') }}</h3>
-          </div>
-          <div class="story__content--order-3">
-            <h6 data-highlighted="true">{{ $t('core.human.mission-1') }}</h6>
-          </div>
-          <div class="story__content--order-4">
-            <h6 data-highlighted="true">{{ $t('core.human.mission-2') }}</h6>
-          </div>
-          <div class="story__content--order-5">
-            <h6 data-highlighted="true">{{ $t('core.human.mission-3') }}</h6>
-          </div>
-        </div>
-      </section>
-      <section class="story__stop">
-        <div class="story__content" :class="section === 'section-8' ? 'story__content--centered' : null">
-          <div class="story__content--order-1">
-            <h1 data-highlighted="true">{{ $t('core.extra.title') }}</h1>
-          </div>
-          <div class="story__content--order-2">
-            <h3 data-highlighted="true">{{ $t('core.extra.summary') }}</h3>
-          </div>
-          <div class="story__content--order-3">
-            <h6 data-highlighted="true">{{ $t('core.extra.mission-1') }}</h6>
-          </div>
-          <div class="story__content--order-4">
-            <h6 data-highlighted="true">{{ $t('core.extra.mission-2') }}</h6>
-          </div>
-          <div class="story__content--order-5">
-            <h6 data-highlighted="true">{{ $t('core.extra.mission-3') }}</h6>
+          <div class="story__label story__label--order-5">
+            <h6 data-highlighted="true">{{ $t(`core.${stop}.mission-3`) }}</h6>
           </div>
         </div>
       </section>
       <section class="story__outro">
         <div class="story__content" :class="section === 'section-9' ? 'story__content--centered' : null">
-          <div class="story__content--outro">
+          <div class="story__label story__label--outro">
             <h1>{{ $t('core.outro.title') }}</h1>
             <Button
               type="secondary"
@@ -287,6 +182,7 @@
 
       h1, h3, h6
         white-space: nowrap
+        -webkit-font-smoothing: subpixel-antialiased
 
       [data-highlighted="true"]
         &:after
@@ -307,7 +203,6 @@
         position: fixed
         top: 50%
         left: 50%
-        transform: translate(-50%, -50%)
         pointer-events: none
         opacity: 1
         max-width: 100%
@@ -315,6 +210,21 @@
         justify-content: center
         align-items: center
         flex-flow: column
+        transform: translate3d(-50%, -50%, 0)
+        -webkit-transform: translate3d(-50%, -50%, 0)
+        transform-style: preserve-3d
+
+    &__label
+      --translation-y: 0
+      --translation-z: v-bind("translation + 'vh'")
+      --perspective: v-bind("perspective + 'vh'")
+
+      transform: perspective(var(--perspective)) translate3d(0, var(--translation-y), var(--translation-z)) scale(1, 1)
+      backface-visibility: hidden
+      z-index: var(--index)
+      opacity: var(--opacity)
+      order: var(--order)
+      transform-style: preserve-3d
 
       &--intro, &--outro
         display: flex
@@ -323,44 +233,46 @@
         align-items: center
 
       &--intro
-        transform: perspective(v-bind("perspective + 'vh'")) translate3d(0, 0, v-bind("translation + 'vh'"))
-        opacity: 1
-        z-index: 6
+        --opacity: 1
+        --index: 6
+        --order: 1
 
       &--outro
-        transform: perspective(v-bind("perspective + 'vh'")) translate3d(0, 0, v-bind("translation < 0 ? translation + 'vh' : 0"))
-        opacity: v-bind("opacity")
-        z-index: 6
+        --translation-z: v-bind("translation < 0 ? translation + 'vh' : 0")
+        --opacity: v-bind("opacity")
+        --index: 6
+        --order: 1
 
       &--order-1
-        transform: perspective(v-bind("perspective * .1 + 'vh'")) translate3d(0, 0, v-bind("translation + 'vh'"))
-        opacity: v-bind("opacity")
-        z-index: 5
-        order: 2
+        --perspective: v-bind("perspective * .1 + 'vh'")
+        --opacity: v-bind("opacity")
+        --index: 5
+        --order: 2
 
       &--order-2
-        transform: perspective(v-bind("perspective *.2 + 'vh'")) translate3d(0, 0, v-bind("translation + 'vh'"))
-        opacity: v-bind("opacity")
-        z-index: 4
-        order: 3
+        --perspective: v-bind("perspective * .2 + 'vh'")
+        --opacity: v-bind("opacity")
+        --index: 4
+        --order: 3
 
       &--order-3
-        transform: perspective(v-bind("perspective * .8 + 'vh'")) translate3d(0, 0, v-bind("translation + 'vh'"))
-        opacity: v-bind("opacity")
-        z-index: 3
-        order: 1
+        --perspective: v-bind("perspective * .8 + 'vh'")
+        --opacity: v-bind("opacity")
+        --index: 3
+        --order: 1
 
       &--order-4
-        transform: perspective(v-bind("perspective * .9 + 'vh'")) translate3d(0, 100%, v-bind("translation + 'vh'"))
-        opacity: v-bind("opacity")
-        z-index: 2
-        order: 1
+        --translation-y: 100%
+        --perspective: v-bind("perspective * .9 + 'vh'")
+        --opacity: v-bind("opacity")
+        --index: 2
+        --order: 1
 
       &--order-5
-        transform: perspective(v-bind("perspective + 'vh'")) translate3d(0, 200%, v-bind("translation + 'vh'"))
-        opacity: v-bind("opacity")
-        z-index: 1
-        order: 1
+        --translation-y: 200%
+        --opacity: v-bind("opacity")
+        --index: 1
+        --order: 1
 
   // Aspect
   .story
