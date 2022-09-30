@@ -662,7 +662,9 @@
           camera = sk.createCamera()
 
           //window.addEventListener('deviceorientation', console.log('ok'), true)
-          window.addEventListener('deviceorientation', sk.mobileTurned, true)
+          window.addEventListener('deviceorientation', (e) => {
+            sk.povDIVE(2)
+          }, true)
 
           // particles setting
           for (let i = 0 ; i < mNumber ; i++)
@@ -893,7 +895,7 @@
 
         sk.windowResized = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
 
-        sk.mobileTurned = () => console.log('ok')
+        sk.mobileTurned = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
       })
     }
   })
