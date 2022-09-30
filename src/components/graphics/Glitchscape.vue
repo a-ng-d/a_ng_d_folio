@@ -83,7 +83,6 @@
       }
     },
     mounted: function() {
-
       glitchscape = new P5((sk: any) => {
         const
           mNumber:number = this.getParticlesNumber(),
@@ -661,10 +660,19 @@
           sk.frameRate(fps)
           camera = sk.createCamera()
 
-          //window.addEventListener('deviceorientation', console.log('ok'), true)
-          window.addEventListener('deviceorientation', (e) => {
-            sk.povDIVE(2)
-          }, true)
+          if (screen.orientation != undefined)
+            screen.orientation.addEventListener('change', (e: any) => {
+              sk.resizeCanvas(sk.windowHeight, sk.windowWidth, true)
+            }, true)
+          else
+            sk.windowResized = () => {
+              sk.resizeCanvas(sk.windowWidth, sk.windowHeight, true)
+            }
+
+          if (window.DeviceOrientationEvent)
+            window.addEventListener('deviceorientation', (e: any) => {
+              pov.orient(e.alpha, e.beta)
+            }, true)
 
           // particles setting
           for (let i = 0 ; i < mNumber ; i++)
@@ -890,12 +898,6 @@
         sk.mouseMoved = () => pov.push()
 
         sk.touchMoved = () => pov.push()
-
-        sk.mobileMoved = (e: any) => pov.orient(e.alpha, e.beta)
-
-        sk.windowResized = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
-
-        sk.mobileTurned = () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
       })
     }
   })
