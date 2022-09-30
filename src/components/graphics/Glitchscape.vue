@@ -614,8 +614,8 @@
             }
 
             if (this.params.isOriented) {
-              this.position.x = sk.lerp(this.position.x, this.params.target.position.x + doMap(this.params.alpha, -90, 90, sk.width * .2, -sk.width * .2), .1)
-              this.position.y = sk.lerp(this.position.y, this.params.target.position.y + doMap(this.params.beta, 0, 180, sk.height * .2, -sk.height * .2), .1)
+              this.position.x = sk.lerp(this.position.x, this.params.target.position.x + doMap(this.params.alpha, -90, 90, sk.width * .4, -sk.width * .4), .1)
+              this.position.y = sk.lerp(this.position.y, this.params.target.position.y + doMap(this.params.beta, 0, 180, sk.height * .4, -sk.height * .4), .1)
             }
 
             if (this.params.isScrolling) {
