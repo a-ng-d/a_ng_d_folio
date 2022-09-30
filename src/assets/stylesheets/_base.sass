@@ -1,5 +1,6 @@
-@use 'text-styles.sass' as text
-@use 'text-styles.sass' as title
+@use 'text-styles' as text
+@use 'text-styles' as title
+@use 'mixins' as device
 
 *,
 *::before,
@@ -75,6 +76,10 @@ section
   padding: var(--layout-section-gap) 0
   gap: var(--layout-box-gap)
   width: 100%
+
+@include device.mobile
+  section
+    width: 100vw
 
 a
   text-decoration: none
