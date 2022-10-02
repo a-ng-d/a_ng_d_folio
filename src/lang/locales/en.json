@@ -75,32 +75,38 @@
       "twitter": {
         "title": "Twitter",
         "description": "Curation, ideas, reactions and thoughts",
-        "href": "https://twitter.com/inVoltag",
-        "alt": "External link to my Twitter profile page"
+        "href": "https://twitter.com/a_ng_d",
+        "alt": "External link to my Twitter page"
       },
       "dribbble": {
         "title": "Dribbble",
         "description": "Concept, UI and animation",
-        "href": "https://dribbble.com/inVolt",
-        "alt": "External link to my Dribbble profile page"
+        "href": "https://dribbble.com/a_ng_d",
+        "alt": "External link to my Dribbble page"
       },
       "codepen": {
         "title": "Codepen",
         "description": "Procedural animation and code concept",
-        "href": "https://codepen.io/inVoltag",
-        "alt": "External link to my Codepen profile page"
+        "href": "https://codepen.io/a_ng_d",
+        "alt": "External link to my Codepen page"
       },
       "medium": {
         "title": "Medium",
         "description": "Articles and comments",
-        "href": "https://medium.com/{'@'}inVoltag",
-        "alt": "External link to my Medium profile page"
+        "href": "https://medium.com/{'@'}a_ng_d",
+        "alt": "External link to my Medium page"
       },
       "github": {
         "title": "Github",
         "description": "Dev projects and plugins for UX tools",
         "href": "https://github.com/inVoltag",
-        "alt": "External link to my GitHub profile page"
+        "alt": "External link to my GitHub page"
+      },
+      "instagram": {
+        "title": "Instagram",
+        "description": "Art and photography",
+        "href": "https://instagram.com/_a_ng_d",
+        "alt": "External link to my Instagram page"
       }
     },
     "career": {

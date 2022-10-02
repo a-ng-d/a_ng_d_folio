@@ -2,7 +2,7 @@
   import { defineComponent } from 'vue'
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import RichExternalLink from '@/components/ui/RichExternalLink.vue'
-  import { Twitter, Dribbble, BookOpen, Codepen, Github } from 'lucide-vue-next'
+  import { Twitter, Dribbble, BookOpen, Codepen, Github, Instagram } from 'lucide-vue-next'
 
   export default defineComponent({
     name: 'Networks',
@@ -13,7 +13,8 @@
       Dribbble,
       BookOpen,
       Codepen,
-      Github
+      Github,
+      Instagram
     },
     props: {
       theme: {
@@ -48,6 +49,11 @@
             name: 'medium',
             color: 'var(--color-titanium-white)',
             icon: 'BookOpen'
+          },
+          {
+            name: 'instagram',
+            color: 'var(--color-titanium-white)',
+            icon: 'Instagram'
           }
         ]
       }
