@@ -58,7 +58,7 @@
             icon: 'Mail'
           },{
             name: 'archive',
-            path: 'https://involt.io',
+            path: 'https://school.involt.io',
             icon: 'Archive'
           },
         ] as Array<{ name: string, path: string, icon: string }>
