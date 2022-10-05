@@ -2,6 +2,7 @@
   import { defineComponent } from 'vue'
   import Footer from '@/components/patterns/Footer.vue'
   import DevTools from '@/contexts/_attribution/DevTools.vue'
+  import Hosting from '@/contexts/_attribution/Hosting.vue'
   import UIAssets from '@/contexts/_attribution/UIAssets.vue'
   import SoundsMusics from '@/contexts/_attribution/SoundsMusics.vue'
 
@@ -10,6 +11,7 @@
     components: {
       Footer,
       DevTools,
+      Hosting,
       UIAssets,
       SoundsMusics
     },
@@ -27,6 +29,7 @@
     <Transition name="slide-up" appear style="--delay: var(--duration-turtoise)">
       <article class="article">
         <DevTools :theme="theme" />
+        <Hosting :theme="theme" />
         <UIAssets :theme="theme" />
         <SoundsMusics :theme="theme" />
       </article>

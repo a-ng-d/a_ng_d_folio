@@ -713,6 +713,19 @@
         "alt": "External link to the Vite.js website"
       }
     },
+    "hosting": {
+      "title": "Hosting",
+      "link-1": {
+        "label": "Compiled and Hosted on Netlify",
+        "href": "https://www.netlify.com",
+        "alt": "External link to the Netlify website"
+      },
+      "link-2": {
+        "label": "Domain name registered and managed on OVHCloud",
+        "href": "https://www.ovhcloud.com",
+        "alt": "External link to the OVHCloud website"
+      }
+    },
     "soundsmusics": {
       "title": "Sounds effects & Musics",
       "link-1": {
