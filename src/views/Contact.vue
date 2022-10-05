@@ -40,8 +40,21 @@
         <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * 1.5))" appear>
           <Button
             type="primary"
-            :label="$t('contact.email')"
-            path="mailto:a.grimaud@an.gd"
+            :label="$t('contact.email.hello')"
+            path="mailto:a.grimaud.hello@an.gd"
+            layout="ICON-LEFT"
+            :theme="theme"
+          >
+            <template #icon>
+              <Mail :size="24" />
+            </template>
+          </Button>
+        </Transition>
+        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * 1.5))" appear>
+          <Button
+            type="primary"
+            :label="$t('contact.email.pro')"
+            path="mailto:a.grimaud.pro@an.gd"
             layout="ICON-LEFT"
             :theme="theme"
           >
@@ -105,6 +118,10 @@
   @include device.smartphone
     .jumbotron
       &__actions
+        flex-flow: column nowrap
         gap: var(--spacing-l-000)
+
+        a
+          width: 100%
 
 </style>

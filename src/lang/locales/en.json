@@ -678,7 +678,10 @@
     "title": "@:glossary.contact@:global.separator@:global.author",
     "friendlyName": "@:glossary.contact",
     "description": "Currently working in a company as a Lead Product Designer, I feel free to share my knowledge by teaching young designers/students design + code. Available on demand to give a talk or facilitate a workshop.",
-    "email": "Send me an email"
+    "email": {
+      "hello": "Send me a message",
+      "pro": "Send me a request"
+    }
   },
   "attribution": {
     "title": "@:glossary.attribution@:global.separator@:global.author",
