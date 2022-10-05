@@ -149,22 +149,22 @@
       },
       "link-2": {
         "label": "{'La voix de l’équipe'}@:global.separator{'Team collaboration'}",
-        "href": "https://medium.com/{'@'}inVoltag/la-voix-de-léquipe-ef80e16f19e5",
+        "href": "https://medium.com/{'@'}a_ng_d/la-voix-de-léquipe-ef80e16f19e5",
         "alt": "External link to the \"La voix de l’équipe\" article on Medium"
       },
       "link-3": {
         "label": "{'Une rétrospective à distance ? 😨'}@:global.separator{'Team collaboration'",
-        "href": "https://medium.com/{'@'}inVoltag/une-rétrospective-à-distance-88bdab442d93",
+        "href": "https://medium.com/{'@'}a_ng_d/une-rétrospective-à-distance-88bdab442d93",
         "alt": "External link to the \"Une rétrospective à distance ? 😨\" article on Medium"
       },
       "link-4": {
         "label": "{'From Design to Agile Thinking, Converging to the right problem (the first diamond)'}@:global.separator{'Team collaboration'}",
-        "href": "https://www.linkedin.com/pulse/from-design-agile-thinkingconverging-right-problem-first-grimaud",
+        "href": "https://medium.com/{'@'}a_ng_d/from-design-to-agile-thinking-bf7618ff0f",
         "alt": "External link to the \"From Design to Agile Thinking, Converging to the right problem (the first diamond)\" article on LinkedIn"
       },
       "link-5": {
         "label": "{'From Design to Agile Thinking﹒Converging to the right solution (the second diamond)'}@:global.separator{'Team collaboration'}",
-        "href": "https://www.linkedin.com/pulse/from-design-agile-thinkingconverge-right-solution-second-grimaud",
+        "href": "https://medium.com/{'@'}a_ng_d/from-design-to-agile-thinking-70a4c8e5504a",
         "alt": "External link to the \"From Design to Agile Thinking﹒Converging to the right solution (the second diamond)\" article on LinkedIn"
       }
     },
