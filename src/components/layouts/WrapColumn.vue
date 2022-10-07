@@ -66,6 +66,8 @@
         margin: v-bind("isFullScreen ? '-100vh' : '0'") calc(var(--layout-margin) * -1)
         scrollbar-width: none
         transition: var(--simple-transition)
+        scroll-snap-type: x mandatory
+        scroll-padding-left: var(--layout-margin)
 
         &::-webkit-scrollbar
           display: none
@@ -74,6 +76,9 @@
         flex-flow: row nowrap
         width: fit-content
         padding: var(--spacing-xs-000) var(--layout-margin)
+
+        & > :deep(*)
+          scroll-snap-align: start
 
     @include device.tablet
       &__content
