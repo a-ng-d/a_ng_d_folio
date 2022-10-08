@@ -43,6 +43,7 @@
             :label="$t('contact.email.hello')"
             path="mailto:a.grimaud.hello@an.gd"
             layout="ICON-LEFT"
+            :alt="$t('contact.email.hello')"
             :theme="theme"
           >
             <template #icon>
@@ -56,6 +57,7 @@
             :label="$t('contact.email.pro')"
             path="mailto:a.grimaud.pro@an.gd"
             layout="ICON-LEFT"
+            :alt="$t('contact.email.hello')"
             :theme="theme"
           >
             <template #icon>
