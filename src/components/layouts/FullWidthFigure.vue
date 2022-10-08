@@ -76,7 +76,7 @@
   .figure
     --asset-background: v-bind('background')
     --asset-border: var(--image-border)
-    --caption-color: var(--color-sandstone)
+    --caption-color: var(--color-dry-soil)
 
     &[data-theme="DARK"]
       --caption-color: var(--color-clay)

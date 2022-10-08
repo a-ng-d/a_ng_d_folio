@@ -159,7 +159,7 @@
     --asset-border: var(--image-border)
     --asset-radius: var(--small-border-radius)
     --alpha: 0
-    --caption-color: var(--color-sandstone)
+    --caption-color: var(--color-dry-soil)
 
     &__asset--magnified
       --asset-border: none
