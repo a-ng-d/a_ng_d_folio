@@ -46,7 +46,7 @@
     class="external-link"
     :href="href"
     target="_blank"
-    :alt="alt"
+    :aria-label="alt"
     @focus="store.isFocus = true"
     @blur="store.isFocus = false"
     :data-theme="theme"

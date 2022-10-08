@@ -49,6 +49,7 @@
         to="/"
         tabindex="-1"
         id="back-home"
+        :aria-label="$t('global.back.home')"
       >
       </RouterLink>
       <Logotype :theme="theme" />

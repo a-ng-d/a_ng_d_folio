@@ -43,7 +43,7 @@
   <RouterLink
     class="internal-link"
     :to="path"
-    :alt="alt"
+    :aria-label="alt"
     @focus="store.isFocus = true"
     @blur="store.isFocus = false"
     :data-theme="theme"

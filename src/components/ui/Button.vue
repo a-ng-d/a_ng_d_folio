@@ -113,7 +113,7 @@
       @mouseout="collapseParticles"
       @focus="store.isFocus = true"
       @blur="store.isFocus = false"
-      :alt="alt"
+      :aria-label="alt"
       :data-theme="theme"
     >
       <div class="button__content">
@@ -150,7 +150,7 @@
       @blur="store.isFocus = false"
       :data-theme="theme"
       target="_blank"
-      :alt="alt"
+      :aria-label="alt"
     >
       <div class="button__content">
         <div v-if="layout != 'SIMPLE'" class="button__icon" :class="layout === 'ICON-ONLY' ? 'button__icon--transparent' : null">
