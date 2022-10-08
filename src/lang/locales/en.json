@@ -32,7 +32,12 @@
       "previous": "Previous project",
       "go": "Consult this project",
       "next": "Next project"
-    }
+    },
+    "pov": "Change point of view",
+    "filter": "Change the colored ambiant",
+    "glitch": "Glitch/Unglitch scene",
+    "quality": "Wireframe/Unwireframe scene",
+    "mute": "Mute/Unmute sound"
   },
   "global": {
     "author": "Aurélien Grimaud aka. A_NG_D⚡️",

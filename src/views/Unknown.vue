@@ -133,6 +133,7 @@
               layout="ICON-LEFT"
               :label="$t('global.back.home')"
               path="/"
+              :alt="$t('actions.home')"
               :theme="theme"
               extensible
             >
@@ -155,11 +156,13 @@
             <Dropdown
               :label="$t('unknown.pov.title')"
               :options="povs"
+              :alt="$t('actions.pov')"
               :theme="theme"
             />
             <Dropdown
               :label="$t('unknown.filter.title')"
               :options="filters"
+              :alt="$t('actions.filter')"
               :theme="theme"
             />
             <Container>
@@ -168,6 +171,7 @@
                   :label="$t('unknown.glitch.title')"
                   :on="() => $emit('glitch', true)"
                   :off="() => $emit('glitch', false)"
+                  :alt="$t('actions.glitch')"
                   :theme="theme"
                 />
               </div>
@@ -178,6 +182,7 @@
                   :label="$t('unknown.quality.title')"
                   :on="() => $emit('quality', 'LOW')"
                   :off="() => $emit('quality', 'HIGH')"
+                  :alt="$t('actions.quality')"
                   :theme="theme"
                 />
               </div>

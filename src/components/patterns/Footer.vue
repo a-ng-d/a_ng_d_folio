@@ -69,6 +69,7 @@
       layout="ICON-ONLY"
       @click="store.isSoundOn = !store.isSoundOn"
       style="height: calc(var(--footer-tag-height-size) - var(--border-size))"
+      :alt="$t('actions.mute')"
       :theme="theme"
     >
       <template #icon>

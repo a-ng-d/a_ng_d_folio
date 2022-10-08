@@ -22,6 +22,7 @@
         type: Function,
         required: true
       },
+      alt: String,
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -49,6 +50,7 @@
     <input
       type="checkbox"
       name="swt"
+      :aria-label="alt"
       @click="moveSwitch"
       @key.space="moveSwitch"
       @focus="store.isFocus = true"

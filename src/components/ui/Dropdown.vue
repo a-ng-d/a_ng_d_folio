@@ -19,10 +19,10 @@
     },
     props: {
       label: String,
-
       options: {
         type: Array
       },
+      alt: String,
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -86,6 +86,7 @@
       type="secondary"
       :label="allOptions[activeOption].name"
       layout="ICON-RIGHT"
+      :alt="alt"
       :theme="theme"
       @click="openOptions"
       @keyup.space="openOptions"
