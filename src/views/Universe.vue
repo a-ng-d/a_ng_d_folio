@@ -67,7 +67,7 @@
             alt: i18n.global.t('actions.archive'),
             icon: 'Archive'
           },
-        ] as Array<{ name: string, path: string, icon: string }>
+        ] as Array<{ name: string, path: string, alt: string, icon: string}>
       }
     },
     methods: {
