@@ -45,7 +45,10 @@
     "iobeya": "iObeya",
     "team": "team collaboration",
     "thinking": "design thinking",
-    "system": "design system"
+    "system": "design system",
+    "alt": {
+      "menu": "Access the shortcuts"
+    }
   },
   "home": {
     "author": "aurélien_grimaud_",

@@ -87,6 +87,7 @@
           :label="$t('global.back.home')"
           path="/"
           :layout="store.device != 'MOBILE' ? 'ICON-LEFT' : 'ICON-ONLY'"
+          :alt="$t('global.back.home')"
           :theme="theme"
         >
           <template #icon>
@@ -99,6 +100,7 @@
           :label="$t('global.menu')"
           path="/_universe"
           :layout="store.device != 'MOBILE' ? 'ICON-LEFT' : 'ICON-ONLY'"
+          :alt="$t('global.alt.menu')"
           :theme="theme"
         >
           <template #icon>
@@ -153,7 +155,7 @@
     h6
       text-align: right
       line-height: 1.4
-      
+
     &[data-theme="DARK"]
       --text-color: var(--color-cream)
 </style>
