@@ -48,6 +48,7 @@
       <SimpleExternalLink
         :label="$t('footer.repository')"
         href="https://github.com/inVoltag/a_ng_d-folio"
+        :alt="$t('footer.alt.repository')"
         small
         :theme="theme === 'DEFAULT' ? 'DARK' : 'DEFAULT'"
       />
@@ -55,6 +56,7 @@
       <SimpleLink
         :label="$t('footer.attribution')"
         path="/_attribution"
+        :alt="$t('footer.alt.attribution')"
         small
         :theme="theme === 'DEFAULT' ? 'DARK' : 'DEFAULT'"
       />

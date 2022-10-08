@@ -54,11 +54,22 @@
     "contact": "Contact",
     "work": "Selected work",
     "lab": "Shots lab",
-    "core": "Story"
+    "core": "Story",
+    "alt": {
+      "id": "Pick the business card up",
+      "contact": "Tell me hello",
+      "work": "Watch the selected work",
+      "lab": "Watch the shots lab",
+      "core": "Follow the core story and values"
+    }
   },
   "footer": {
     "attribution": "Attribution",
-    "repository": "Watch the repository"
+    "repository": "Watch the repository",
+    "alt": {
+      "attribution": "Consult the attributions",
+      "repository": "Watch the repository"
+    }
   },
   "id": {
     "title": "@:glossary.id@:global.separator@:global.author",
