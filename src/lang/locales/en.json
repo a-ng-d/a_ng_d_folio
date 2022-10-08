@@ -23,7 +23,15 @@
     "menu": "Access the shortcuts",
     "archive": "Access the previous portfolio",
     "home": "Back Home",
-    "close": "Close the shortcuts"
+    "close": "Close the shortcuts",
+    "slider": {
+      "previous": "Previous slides",
+      "next": "Next slides"
+    },
+    "projects": {
+      "previous": "Previous project",
+      "next": "Next project"
+    }
   },
   "global": {
     "author": "Aurélien Grimaud aka. A_NG_D⚡️",
@@ -684,7 +692,8 @@
   },
   "lab": {
     "title": "@:glossary.lab@:global.separator@:global.author",
-    "friendlyName": "@:glossary.lab"
+    "friendlyName": "@:glossary.lab",
+    "alt": "Image from an external source"
   },
   "contact": {
     "title": "@:glossary.contact@:global.separator@:global.author",

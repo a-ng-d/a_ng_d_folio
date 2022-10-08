@@ -142,6 +142,7 @@
               type="secondary"
               :label="$t('core.outro.retry')"
               layout="ICON-LEFT"
+              :alt="$t('core.outro.retry')"
               :theme="theme"
               @click="backToForeground"
             >

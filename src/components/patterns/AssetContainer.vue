@@ -82,6 +82,7 @@
             v-if="isMagnified"
             type="secondary"
             :path="sourceLink"
+            :alt="alt"
             layout="ICON-ONLY"
             theme="DEFAULT"
           >

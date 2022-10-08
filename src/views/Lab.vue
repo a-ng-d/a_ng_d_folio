@@ -169,6 +169,7 @@
           <Button
             type="secondary"
             layout="ICON-ONLY"
+            :alt="$t('actions.slider.previous')"
             :theme="theme"
             @click="slideLeft"
           >
@@ -191,6 +192,7 @@
               :title="shot.name"
               :thumbnail="`/images/_lab/sd/asset-${shots.length - index}.png`"
               :hdnail="`/images/_lab/hd/asset-${shots.length - index}.${shot.sourceFormat}`"
+              :alt="$t('lab.alt')"
               :type="shot.sourceType"
               :sourceName="shot.sourceName"
               :sourceLink="shot.sourceLink"
@@ -208,6 +210,7 @@
           <Button
             type="secondary"
             layout="ICON-ONLY"
+            :alt="$t('actions.slider.next')"
             :theme="theme"
             @click="slideRight"
           >

@@ -79,6 +79,7 @@
       @mouseout="collapseParticles"
       @focus="store.isFocus = true"
       @blur="store.isFocus = false"
+      :aria-label="alt"
       :data-theme="theme"
     >
       <div class="button__content">
