@@ -26,7 +26,7 @@
         type: Boolean,
         default: false
       },
-      isInverted: {
+      inverted: {
         type: Boolean,
         default: false
       },
@@ -209,7 +209,7 @@
 
     &__content
       display: flex
-      flex-direction: v-bind("isInverted ? 'row-reverse' : 'row'")
+      flex-direction: v-bind("inverted ? 'row-reverse' : 'row'")
       flex: 1
       z-index: 1
       pointer-events: none

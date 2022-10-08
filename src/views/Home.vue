@@ -46,7 +46,7 @@
             path="/_contact"
             :layout="store.device != 'MOBILE' ? 'ICON-BOTH' : 'ICON-ONLY'"
             :theme="theme"
-            isInverted
+            inverted
             tabindex="4"
             :alt="$t('actions.contact')"
           >
@@ -96,7 +96,7 @@
             path="/_core"
             :layout="store.device != 'MOBILE' ? 'ICON-BOTH' : 'ICON-ONLY'"
             :theme="theme"
-            isInverted
+            inverted
             tabindex="2"
             :alt="$t('actions.core')"
           >
