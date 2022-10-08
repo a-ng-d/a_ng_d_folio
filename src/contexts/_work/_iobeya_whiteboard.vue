@@ -77,6 +77,7 @@
           caption
           :width="1920"
           :height="912"
+          :alt="$t('work._iobeya_whiteboard.part-1.caption-1')"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_whiteboard.part-1.caption-1') }}</p>
@@ -121,6 +122,7 @@
           caption
           :width="1920"
           :height="680"
+          :alt="$t('work._iobeya_whiteboard.part-1.caption-2')"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_whiteboard.part-1.caption-2') }}</p>
@@ -167,6 +169,7 @@
           caption
           :width="1024"
           :height="770"
+          :alt="$t('work._iobeya_whiteboard.part-2.caption-1')"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_whiteboard.part-2.caption-1') }}</p>
@@ -180,6 +183,7 @@
           caption
           :width="1024"
           :height="770"
+          :alt="$t('work._iobeya_whiteboard.part-2.caption-2')"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_whiteboard.part-2.caption-2') }}</p>
@@ -204,6 +208,7 @@
           caption
           :width="1920"
           :height="680"
+          :alt="$t('work._iobeya_whiteboard.part-2.caption-3')"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_whiteboard.part-2.caption-3') }}</p>
@@ -226,6 +231,7 @@
           :description="$t('work._iobeya_whiteboard.part-2.info-1.description')"
           :cta="$t('work._iobeya_whiteboard.part-2.info-1.linkLabel')"
           href="https://www.sketch.com/s/b9ca2e39-f0a3-40b1-9f85-80da81775840/a/rG3Pa7/play"
+          :alt="$t('work._iobeya_whiteboard.part-2.info-1.alt')"
           :theme="theme"
         >
           <template #icon>
@@ -236,6 +242,7 @@
           :description="$t('work._iobeya_whiteboard.part-2.info-2.description')"
           :cta="$t('work._iobeya_whiteboard.part-2.info-2.linkLabel')"
           href="https://www.sketch.com/s/b9ca2e39-f0a3-40b1-9f85-80da81775840/a/mEQxdP/play"
+          :alt="$t('work._iobeya_whiteboard.part-2.info-2.alt')"
           :theme="theme"
         >
           <template #icon>
@@ -246,6 +253,7 @@
           :description="$t('work._iobeya_whiteboard.part-2.info-3.description')"
           :cta="$t('work._iobeya_whiteboard.part-2.info-3.linkLabel')"
           href="https://www.sketch.com/s/b9ca2e39-f0a3-40b1-9f85-80da81775840/a/ep3x9z/play"
+          :alt="$t('work._iobeya_whiteboard.part-2.info-3.alt')"
           :theme="theme"
         >
           <template #icon>
@@ -274,6 +282,7 @@
           caption
           :width="480"
           :height="480"
+          :alt="$t('work._iobeya_whiteboard.part-3.caption-1')"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_whiteboard.part-3.caption-1') }}</p>
@@ -287,6 +296,7 @@
           caption
           :width="480"
           :height="480"
+          :alt="$t('work._iobeya_whiteboard.part-3.caption-2')"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_whiteboard.part-3.caption-2') }}</p>
@@ -326,6 +336,7 @@
           caption
           :width="1920"
           :height="680"
+          :alt="$t('work._iobeya_whiteboard.part-3.caption-4')"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_whiteboard.part-3.caption-4') }}</p>
@@ -374,6 +385,7 @@
           :description="$t('work._iobeya_whiteboard.takeaways.takeaway-1.description')"
           :cta="$t('work._iobeya_whiteboard.takeaways.takeaway-1.linkLabel')"
           href="https://www.sketch.com/s/b9ca2e39-f0a3-40b1-9f85-80da81775840/a/Zdpol7/play"
+          :alt="$t('work._iobeya_whiteboard.takeaways.takeaway-1.alt')"
           :theme="theme"
         >
           <template #icon>

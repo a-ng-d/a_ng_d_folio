@@ -63,6 +63,7 @@
           caption
           :width="1440"
           :height="1100"
+          :alt="$t('work._awesome_ipsums.part-1.caption-1')"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._awesome_ipsums.part-1.caption-1') }}</p>
@@ -86,6 +87,7 @@
           src="/images/_work/_awesome_ipsums/article-asset-2.png"
           :width="1200"
           :height="1000"
+          :alt="$t('work._awesome_ipsums.part-2.paragraph-1')"
         />
       </template>
     </TwoColumns>
@@ -100,6 +102,7 @@
           src="/images/_work/_awesome_ipsums/article-asset-3.png"
           :width="1200"
           :height="1000"
+          :alt="$t('work._awesome_ipsums.part-2.paragraph-2')"
         />
       </template>
       <template #right>
@@ -119,6 +122,7 @@
           src="/images/_work/_awesome_ipsums/article-asset-4.png"
           :width="1200"
           :height="1000"
+          :alt="$t('work._awesome_ipsums.part-2.paragraph-3')"
         />
       </template>
     </TwoColumns>
@@ -135,6 +139,7 @@
           :description="$t('work._awesome_ipsums.takeaways.takeaway-1.description')"
           :cta="$t('work._awesome_ipsums.takeaways.takeaway-1.linkLabel')"
           href="https://github.com/inVoltag/sketch-awesome-ipsums/releases/latest/download/awesome-ipsums.sketchplugin.zip"
+          :alt="$t('work._awesome_ipsums.takeaways.takeaway-1.alt')"
           :theme="theme"
         >
           <template #icon>
@@ -145,6 +150,7 @@
           :description="$t('work._awesome_ipsums.takeaways.takeaway-2.description')"
           :cta="$t('work._awesome_ipsums.takeaways.takeaway-2.linkLabel')"
           href="https://github.com/inVoltag/sketch-awesome-ipsums"
+          :alt="$t('work._awesome_ipsums.takeaways.takeaway-2.alt')"
           :theme="theme"
         >
           <template #icon>

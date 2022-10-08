@@ -333,11 +333,13 @@
       "takeaways": {
         "takeaway-1": {
           "description": "If you want to test the plugin, you can install it on your Figma account from the plugin page.",
-          "linkLabel": "Install the plugin"
+          "linkLabel": "Install the plugin",
+          "alt": "External link to the plugin page on Figma Community"
         },
         "takeaway-2": {
           "description": "UI Color Palette is an open-source project. You can take a glance at the source code on Github.",
-          "linkLabel": "Watch the repository"
+          "linkLabel": "Watch the repository",
+          "alt": "External link to the plugin repository on Github"
         }
       }
     },
@@ -382,17 +384,20 @@
         "caption-8": "On the splash screen, the logotype fades in to introduce the app.",
         "info": {
           "description": "Yuka was a great inspiration at developing the brand, the voice and the ton.",
-          "linkLabel": "Discover Yuka"
+          "linkLabel": "Discover Yuka",
+          "alt": "External link to the Yuka homepage"
         }
       },
       "takeaways": {
         "takeaway-1": {
           "description": "The Android app is available as an APK. It is an ongoing test beta version.",
-          "linkLabel": "Download the APK"
+          "linkLabel": "Download the APK",
+          "alt": "External link to the APK app on Android"
         },
         "takeaway-2": {
           "description": "The iOS app is available on TestFlight. It is an ongoing test beta version.",
-          "linkLabel": "Install the app on iOS"
+          "linkLabel": "Install the app on iOS",
+          "alt": "External link to the beta app on iOS"
         }
       },
       "externalLinks": {
@@ -435,7 +440,8 @@
         "caption-1": "The web radio system has been designed thanks to a couple of open-source and free solutions as {linkTwo} or {linkThree}",
         "info": {
           "description": "This article explains the detailed flow for the most curious (in french)",
-          "linkLabel": "Read the article"
+          "linkLabel": "Read the article",
+          "alt": "External link to the article"
         }
       },
       "part-2": {
@@ -452,11 +458,13 @@
       "takeaways": {
         "takeaway-1": {
           "description": "The radio can be played on demand",
-          "linkLabel": "Listen to the radio"
+          "linkLabel": "Listen to the radio",
+          "alt": "External link to the radio"
         },
         "takeaway-2": {
           "description": "Jean-Bobby Radio is an open-source project. You can take a glance at the source code on Github.",
-          "linkLabel": "Watch the repository"
+          "linkLabel": "Watch the repository",
+          "alt": "External link to the repository"
         }
       },
       "externalLinks": {
@@ -543,15 +551,18 @@
       "takeaways": {
         "takeaway-1": {
           "description": "The iObeya Design System Global Strategy can be consulted to understand how to scale design through iObeya’s services and products (the presentation is fully interactive)",
-          "linkLabel": "Consult the strategy"
+          "linkLabel": "Consult the strategy",
+          "alt": "External link to the strategy on Figma"
         },
         "takeaway-2": {
           "description": "The application can be downloaded on the App Store",
-          "linkLabel": "Install the app on iOS"
+          "linkLabel": "Install the app on iOS",
+          "alt": "External link to the iObeya app on iOS"
         },
         "takeaway-3": {
           "description": "The application can be downloaded on the Google Play",
-          "linkLabel": "Install the app on Android"
+          "linkLabel": "Install the app on Android",
+          "alt": "External link to the iObeya app on Android"
         }
       },
       "externalLinks": {
@@ -601,11 +612,13 @@
       "takeaways": {
         "takeaway-1": {
           "description": "If you want to test the plugin, you can download the archive file from the project repository (double-click on the plugin file to install it).",
-          "linkLabel": "Download the archive"
+          "linkLabel": "Download the archive",
+          "alt": "External link to download the plugin"
         },
         "takeaway-2": {
           "description": "Awesome Ipsums is an open-source project. You can take a glance at the source code on Github.",
-          "linkLabel": "Watch the repository"
+          "linkLabel": "Watch the repository",
+          "alt": "External link to the repository"
         }
       }
     },
@@ -646,15 +659,18 @@
         "caption-3": "This cartography details the interaction between the three users during the whiteboard session",
         "info-1": {
           "description": "Pierre: the facilitator",
-          "linkLabel": "Launch the whiteboarding session"
+          "linkLabel": "Launch the whiteboarding session",
+          "alt": "External link to the Pierre's flow"
         },
         "info-2": {
           "description": "Paul: the participant",
-          "linkLabel": "Join the whiteboarding session"
+          "linkLabel": "Join the whiteboarding session",
+          "alt": "External link to the Paul's prototype"
         },
         "info-3": {
           "description": "Jacqueline: the external participant",
-          "linkLabel": "Join the whiteboarding session"
+          "linkLabel": "Join the whiteboarding session",
+          "alt": "External link to the Jacqueline's prototype"
         }
       },
       "part-3": {
@@ -687,7 +703,8 @@
       "takeaways": {
         "takeaway-1": {
           "description": "Extract of the final user flow",
-          "linkLabel": "Launch a whiteboard session"
+          "linkLabel": "Launch a whiteboard session",
+          "alt": "External link to the final prototype"
         }
       }
     }

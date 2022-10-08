@@ -162,6 +162,7 @@
           :description="$t('work._ui_color_palette.takeaways.takeaway-1.description')"
           :cta="$t('work._ui_color_palette.takeaways.takeaway-1.linkLabel')"
           href="https://www.figma.com/community/plugin/1063959496693642315/UI-Color-Palette"
+          :alt="$t('work._ui_color_palette.takeaways.takeaway-1.alt')"
           :theme="theme"
         >
           <template #icon>
@@ -172,6 +173,7 @@
           :description="$t('work._ui_color_palette.takeaways.takeaway-2.description')"
           :cta="$t('work._ui_color_palette.takeaways.takeaway-2.linkLabel')"
           href="https://github.com/inVoltag/figma-ui-color-palette"
+          :alt="$t('work._ui_color_palette.takeaways.takeaway-2.alt')"
           :theme="theme"
         >
           <template #icon>

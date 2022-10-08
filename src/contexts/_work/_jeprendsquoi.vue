@@ -86,6 +86,7 @@
           caption
           :width="1440"
           :height="900"
+          :alt="$t('work._jeprendsquoi.part-1.caption-1')"
           :theme="theme"
         >
           <template #caption>
@@ -130,6 +131,7 @@
           caption
           :width="1440"
           :height="900"
+          :alt="$t('work._jeprendsquoi.part-1.caption-2')"
         >
           <template #caption>
             <i18n-t keypath="work._jeprendsquoi.part-1.caption-2" tag="p" class="discrete" scope="global">
@@ -185,6 +187,7 @@
           caption
           :width="750"
           :height="1334"
+          :alt="$t('work._jeprendsquoi.part-2.caption-1')"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
@@ -197,6 +200,7 @@
           caption
           :width="750"
           :height="1334"
+          :alt="$t('work._jeprendsquoi.part-2.caption-2')"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
@@ -209,6 +213,7 @@
           caption
           :width="750"
           :height="1334"
+          :alt="$t('work._jeprendsquoi.part-2.caption-3')"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
@@ -221,6 +226,7 @@
           caption
           :width="750"
           :height="1334"
+          :alt="$t('work._jeprendsquoi.part-2.caption-4')"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
@@ -244,6 +250,7 @@
           :description="$t('work._jeprendsquoi.part-2.info.description')"
           :cta="$t('work._jeprendsquoi.part-2.info.linkLabel')"
           href="https://yuka.io"
+          :alt="$t('work._jeprendsquoi.part-2.info.alt')"
           :theme="theme"
         >
           <template #icon>
@@ -262,6 +269,7 @@
           caption
           :width="640"
           :height="640"
+          :alt="$t('work._jeprendsquoi.part-2.caption-7')"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
@@ -276,6 +284,7 @@
           caption
           :width="640"
           :height="640"
+          :alt="$t('work._jeprendsquoi.part-2.caption-8')"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
@@ -297,6 +306,7 @@
           :description="$t('work._jeprendsquoi.takeaways.takeaway-1.description')"
           :cta="$t('work._jeprendsquoi.takeaways.takeaway-1.linkLabel')"
           href="https://testflight.apple.com/join/AmEZ2igV"
+          :alt="$t('work._jeprendsquoi.takeaways.takeaway-1.alt')"
           :theme="theme"
         >
           <template #icon>
@@ -307,6 +317,7 @@
           :description="$t('work._jeprendsquoi.takeaways.takeaway-2.description')"
           :cta="$t('work._jeprendsquoi.takeaways.takeaway-2.linkLabel')"
           href="https://testflight.apple.com/join/AmEZ2igV"
+          :alt="$t('work._jeprendsquoi.takeaways.takeaway-2.alt')"
           :theme="theme"
         >
           <template #icon>

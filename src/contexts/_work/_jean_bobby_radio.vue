@@ -72,6 +72,7 @@
           :description="$t('work._jean_bobby_radio.part-1.info.description')"
           :cta="$t('work._jean_bobby_radio.part-1.info.linkLabel')"
           href="https://involtag.notion.site/Monter-une-webradio-d-entreprise-avec-peu-de-moyens-8f64fad1b661454999baa1f65ea27c11"
+          :alt="$t('work._jean_bobby_radio.part-1.info.alt')"
           :theme="theme"
         >
           <template #icon>
@@ -100,6 +101,7 @@
           caption
           :width="1922"
           :height="1202"
+          :alt="$t('work._jean_bobby_radio.part-2.caption-1')"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._jean_bobby_radio.part-2.caption-1') }}</p>
@@ -169,6 +171,7 @@
           :description="$t('work._jean_bobby_radio.takeaways.takeaway-1.description')"
           :cta="$t('work._jean_bobby_radio.takeaways.takeaway-1.linkLabel')"
           href="https://jean-bobby.radio.fm"
+          :alt="$t('work._jean_bobby_radio.takeaways.takeaway-1.alt')"
           :theme="theme"
         >
           <template #icon>
@@ -179,6 +182,7 @@
           :description="$t('work._jean_bobby_radio.takeaways.takeaway-2.description')"
           :cta="$t('work._jean_bobby_radio.takeaways.takeaway-2.linkLabel')"
           href="https://github.com/inVoltag/jean-bobby-radio"
+          :alt="$t('work._jean_bobby_radio.takeaways.takeaway-2.alt')"
           :theme="theme"
         >
           <template #icon>

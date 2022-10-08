@@ -113,6 +113,7 @@
           caption
           :width="1200"
           :height="1500"
+          :alt="$t('work._iobeya_mobile_ds.part-2.caption-1')"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_mobile_ds.part-2.caption-1') }}</p>
@@ -126,6 +127,7 @@
           caption
           :width="1200"
           :height="1500"
+          :alt="$t('work._iobeya_mobile_ds.part-2.caption-2')"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_mobile_ds.part-2.caption-2') }}</p>
@@ -144,6 +146,7 @@
           caption
           :width="1920"
           :height="1070"
+          :alt="$t('work._iobeya_mobile_ds.part-2.caption-3')"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_mobile_ds.part-2.caption-3') }}</p>
@@ -156,6 +159,7 @@
           caption
           :width="1920"
           :height="1650"
+          :alt="$t('work._iobeya_mobile_ds.part-2.caption-4')"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_mobile_ds.part-2.caption-4') }}</p>
@@ -168,6 +172,7 @@
           caption
           :width="1920"
           :height="1855"
+          :alt="$t('work._iobeya_mobile_ds.part-2.caption-5')"
         >
           <template #caption>
             <p class="discrete">{{ $t('work._iobeya_mobile_ds.part-2.caption-5') }}</p>
@@ -197,6 +202,7 @@
           caption
           :width="750"
           :height="1624"
+          :alt="$t('work._iobeya_mobile_ds.part-3.caption-1')"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
@@ -209,6 +215,7 @@
           caption
           :width="750"
           :height="1624"
+          :alt="$t('work._iobeya_mobile_ds.part-3.caption-2')"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
@@ -221,6 +228,7 @@
           caption
           :width="750"
           :height="1624"
+          :alt="$t('work._iobeya_mobile_ds.part-3.caption-3')"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
@@ -233,6 +241,7 @@
           caption
           :width="750"
           :height="1624"
+          :alt="$t('work._iobeya_mobile_ds.part-3.caption-4')"
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
@@ -287,6 +296,7 @@
           :description="$t('work._iobeya_mobile_ds.takeaways.takeaway-1.description')"
           :cta="$t('work._iobeya_mobile_ds.takeaways.takeaway-1.linkLabel')"
           href="https://www.figma.com/proto/1KL4RbABxDPiUTQLAXa2ci/Welcome-%F0%9F%91%8B?page-id=0%3A1&node-id=6%3A5&viewport=444%2C48%2C0.06&scaling=contain&starting-point-node-id=1%3A42"
+          :alt="$t('work._iobeya_mobile_ds.takeaways.takeaway-1.alt')"
           :theme="theme"
         >
           <template #icon>
@@ -297,6 +307,7 @@
           :description="$t('work._iobeya_mobile_ds.takeaways.takeaway-2.description')"
           :cta="$t('work._iobeya_mobile_ds.takeaways.takeaway-2.linkLabel')"
           href="https://apps.apple.com/cm/app/iobeya/id1489989781?platform=iphone"
+          :alt="$t('work._iobeya_mobile_ds.takeaways.takeaway-2.alt')"
           :theme="theme"
         >
           <template #icon>
@@ -307,6 +318,7 @@
           :description="$t('work._iobeya_mobile_ds.takeaways.takeaway-3.description')"
           :cta="$t('work._iobeya_mobile_ds.takeaways.takeaway-3.linkLabel')"
           href="https://play.google.com/store/apps/details?id=com.iobeya.mobile.android&gl=US"
+          :alt="$t('work._iobeya_mobile_ds.takeaways.takeaway-3.alt')"
           :theme="theme"
         >
           <template #icon>

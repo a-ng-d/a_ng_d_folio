@@ -13,6 +13,7 @@
       description: String,
       cta: String,
       href: String,
+      alt: String,
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -36,6 +37,7 @@
           :path="href"
           :label="cta"
           layout="SIMPLE"
+          :alt="alt"
           theme="DEFAULT"
         />
       </div>
