@@ -107,7 +107,7 @@
         <div class="work__illustration" :style="direction === 'right' ? '--offset: -100vw' : '--offset: 100vw'">
           <Transition name="across" :duration="duration" mode="out-in" class="work__illustration__item">
             <Vue3Lottie v-if="activeProjectCodeName === (projects[0] as any).meta.codeName" :animationData="((projects[0] as any) as any).meta.illustration" :rendererSettings="{ progressiveLoad: true }" />
-            <v-lazy-image v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName" :src="(projects[1] as any).meta.illustration" />
+            <v-lazy-image v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName" :src="(projects[1] as any).meta.illustration" :alt="$t('work._jeprendsquoi.illustration')" />
             <Vue3Lottie v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName" :animationData="(projects[2] as any).meta.illustration" :rendererSettings="{ progressiveLoad: true }" />
             <Vue3Lottie v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName" :animationData="(projects[3] as any).meta.illustration" :rendererSettings="{ progressiveLoad: true }" />
             <Vue3Lottie v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName" :animationData="(projects[4] as any).meta.illustration" :rendererSettings="{ progressiveLoad: true }" />
@@ -218,6 +218,7 @@
               <Button
                 type="secondary"
                 layout="ICON-ONLY"
+                :alt="$t('actions.projects.previous')"
                 :theme="theme"
                 @click="previousProject"
               >
@@ -230,6 +231,7 @@
                 :label="$t('global.go')"
                 :path="`/_work/${activeProjectCodeName}`"
                 layout="ICON-LEFT"
+                :alt="$t('actions.projects.go')"
                 :theme="theme"
               >
                 <template #icon>
@@ -239,6 +241,7 @@
               <Button
                 type="secondary"
                 layout="ICON-ONLY"
+                :alt="$t('actions.projects.next')"
                 :theme="theme"
                 @click="nextProject"
               >

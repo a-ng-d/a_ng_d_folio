@@ -29,6 +29,7 @@
       type="secondary"
       :path="previousPage"
       layout="ICON-ONLY"
+      :alt="$t('actions.projects.previous')"
       :theme="theme"
     >
       <template #icon>
@@ -39,6 +40,7 @@
       type="primary"
       :path="rootPage"
       layout="ICON-ONLY"
+      :alt="$t('actions.projects.go')"
       :theme="theme"
     >
       <template #icon>
@@ -49,6 +51,7 @@
       type="secondary"
       :path="nextPage"
       layout="ICON-ONLY"
+      :alt="$t('actions.projects.next')"
       :theme="theme"
     >
       <template #icon>
