@@ -48,7 +48,7 @@
             :theme="theme"
             isInverted
             tabindex="4"
-            :alt="$t('home.alt.contact')"
+            :alt="$t('actions.contact')"
           >
             <template #icon>
               <Mail :size="24" />
@@ -66,7 +66,7 @@
             :layout="store.device != 'MOBILE' ? 'ICON-BOTH' : 'ICON-ONLY'"
             :theme="theme"
             tabindex="5"
-            :alt="$t('home.alt.id')"
+            :alt="$t('actions.id')"
           >
             <template #icon>
               <User :size="24" />
@@ -98,7 +98,7 @@
             :theme="theme"
             isInverted
             tabindex="2"
-            :alt="$t('home.alt.core')"
+            :alt="$t('actions.core')"
           >
             <template #icon>
               <Heart :size="24" />
@@ -116,7 +116,7 @@
             :layout="store.device != 'MOBILE' ? 'ICON-BOTH' : 'SIMPLE'"
             :theme="theme"
             tabindex="1"
-            :alt="$t('home.alt.work')"
+            :alt="$t('actions.work')"
           >
             <template #icon>
               <Briefcase :size="24" />
@@ -134,7 +134,7 @@
             :layout="store.device != 'MOBILE' ? 'ICON-BOTH' : 'ICON-ONLY'"
             :theme="theme"
             tabindex="3"
-            :alt="$t('home.alt.lab')"
+            :alt="$t('actions.lab')"
           >
             <template #icon>
               <FlaskConical :size="24" />

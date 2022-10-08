@@ -38,27 +38,33 @@
           {
             name: 'core',
             path: '/_core',
+            alt: i18n.global.t('actions.core'),
             icon: 'Heart'
           },
           {
             name: 'work',
             path: '/_work',
+            alt: i18n.global.t('actions.work'),
             icon: 'Briefcase'
           },{
             name: 'lab',
             path: '/_lab',
+            alt: i18n.global.t('actions.lab'),
             icon: 'FlaskConical'
           },{
             name: 'short',
             path: '/_short',
+            alt: i18n.global.t('actions.id'),
             icon: 'User'
           },{
             name: 'contact',
             path: '/_contact',
+            alt: i18n.global.t('actions.contact'),
             icon: 'Mail'
           },{
             name: 'archive',
             path: 'https://school.involt.io',
+            alt: i18n.global.t('actions.archive'),
             icon: 'Archive'
           },
         ] as Array<{ name: string, path: string, icon: string }>
@@ -95,6 +101,7 @@
                 type="primary"
                 :path="world.path"
                 layout="ICON-ONLY"
+                :alt="world.alt"
                 @mouseover="expandTooltip"
                 @mouseout="collapseTooltip"
                 @focusin="expandTooltip"

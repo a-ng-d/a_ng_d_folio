@@ -100,7 +100,7 @@
           :label="$t('global.menu')"
           path="/_universe"
           :layout="store.device != 'MOBILE' ? 'ICON-LEFT' : 'ICON-ONLY'"
-          :alt="$t('global.alt.menu')"
+          :alt="$t('actions.menu')"
           :theme="theme"
         >
           <template #icon>
@@ -129,6 +129,7 @@
           type="primary"
           layout="ICON-ONLY"
           :path="previousPath"
+          :alt="$t('actions.close')"
           :theme="theme"
         >
           <template #icon>

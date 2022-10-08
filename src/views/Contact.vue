@@ -57,7 +57,7 @@
             :label="$t('contact.email.pro')"
             path="mailto:a.grimaud.pro@an.gd"
             layout="ICON-LEFT"
-            :alt="$t('contact.email.hello')"
+            :alt="$t('contact.email.pro')"
             :theme="theme"
           >
             <template #icon>

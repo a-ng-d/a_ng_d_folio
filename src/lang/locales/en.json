@@ -12,13 +12,25 @@
     "archive": "_Previous_work",
     "unknown": "_Unknown_universe"
   },
+  "actions": {
+    "id": "Pick the business card up",
+    "contact": "Tell me hello",
+    "work": "Watch the selected work",
+    "lab": "Watch the shots lab",
+    "core": "Follow the core story and values",
+    "attribution": "Consult the attributions",
+    "repository": "Watch the repository",
+    "menu": "Access the shortcuts",
+    "archive": "Access the previous portfolio",
+    "home": "Back Home",
+    "close": "Close the shortcuts"
+  },
   "global": {
     "author": "Aurélien Grimaud aka. A_NG_D⚡️",
     "separator": "・",
     "version": "Version",
     "license": "CC-BY-4.0 {year}",
     "back": {
-      "root": "Back to root",
       "home": "Back Home"
     },
     "menu": "Universe",
@@ -45,10 +57,7 @@
     "iobeya": "iObeya",
     "team": "team collaboration",
     "thinking": "design thinking",
-    "system": "design system",
-    "alt": {
-      "menu": "Access the shortcuts"
-    }
+    "system": "design system"
   },
   "home": {
     "author": "aurélien_grimaud_",
@@ -57,22 +66,11 @@
     "contact": "Contact",
     "work": "Selected work",
     "lab": "Shots lab",
-    "core": "Story",
-    "alt": {
-      "id": "Pick the business card up",
-      "contact": "Tell me hello",
-      "work": "Watch the selected work",
-      "lab": "Watch the shots lab",
-      "core": "Follow the core story and values"
-    }
+    "core": "Story"
   },
   "footer": {
     "attribution": "Attribution",
-    "repository": "Watch the repository",
-    "alt": {
-      "attribution": "Consult the attributions",
-      "repository": "Watch the repository"
-    }
+    "repository": "Watch the repository"
   },
   "id": {
     "title": "@:glossary.id@:global.separator@:global.author",
