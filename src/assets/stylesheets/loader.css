@@ -10,6 +10,7 @@ body, html {
   height: 100%;
   overflow: hidden
 }
+
 #loader {
   position: absolute;
   top: 0;
@@ -18,17 +19,12 @@ body, html {
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  gap: 8px 0;
   z-index: 6;
   background-image: linear-gradient(180deg, #C7E3FE 0%, #E0D1F3 75%, #F5D546 100%);
   background-position: 50% 100%;
   background-size: 100% 100%;
   pointer-events: none
-}
-#loader h6 {
-  opacity: 0;
-  padding: 0 var(--layout-center);
-  transition: transform var(--duration-turtoise) var(--ease-vroom), opacity var(--duration-jogging) var(--delay-running) var(--ease-vroom);
-  transform: translateY(var(--spacing-l-000));
 }
 #loader.loader--enter {
   animation: go-forwards--enter 3200ms cubic-bezier(.86, .12, .12, .86) forwards
@@ -38,8 +34,12 @@ body, html {
 }
 #loader.loader--loaded h6 {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0)
 }
+#loader.loader--loaded #nprogress {
+  opacity: 0
+}
+
 #animation {
   width: 400px;
   max-width: calc(100% - 120px);
@@ -48,6 +48,38 @@ body, html {
 #animation svg {
   height: 100%
 }
+
+#progress {
+  width: 400px;
+  max-width: calc(100% - 120px);
+  height: 24px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center
+}
+#progress h6 {
+  opacity: 0;
+  transition: transform var(--duration-turtoise) var(--ease-vroom), opacity var(--duration-jogging) var(--delay-running) var(--ease-vroom);
+  transform: translateY(var(--spacing-l-000));
+  order: 2
+}
+#progress #nprogress {
+  width: 100%;
+  max-width: calc(100% - 120px);
+  height: 4px;
+  border-radius: 2px;
+  overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  background-color: #4F4C4D;
+  transition: all 400ms ease
+}
+#progress #nprogress .bar {
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+  border-radius: 2px
+}
+
 @keyframes go-forwards--enter {
   0% {
     opacity: 0;

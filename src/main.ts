@@ -4,7 +4,7 @@ import router from './router'
 import { i18n } from './lang'
 import Vue3Lottie from 'vue3-lottie'
 
-declare const loop: any;
+declare const loop: any, NProgress: any
 
 const app = createApp(App),
 loader: HTMLElement = document.getElementById('loader')!,
@@ -22,6 +22,7 @@ window.onload = () => {
       loader.classList.add('loader--loaded')
       document.onkeyup = () => entrance()
       document.body.ontouchstart = () => entrance()
+      NProgress.done()
     } else loop.goToAndStop(420, true)
   }
 }
