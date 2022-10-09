@@ -10,11 +10,14 @@
     <meta name="author" content="Aurélien Grimaud">
     <link href="/src/assets/stylesheets/loader.css" rel="stylesheet" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
+    <script src='https://unpkg.com/nprogress@0.2.0/nprogress.js'></script>
   </head>
   <body>
     <div id="loader" class="loader--enter">
       <div id="animation"></div>
-      <h6>Press any key / Tap the screen</h6>
+      <div id="progress">
+        <h6>Press any key / Tap the screen</h6>
+      </div>
     </div>
     <div id="app" v-cloak></div>
     <audio id="feedback">
@@ -23,8 +26,13 @@
     <script type="module" src="/src/main.ts"></script>
     <script type="text/javascript">
       document.title = "Virtualization in progress…"
+      NProgress.configure({
+        showSpinner: false,
+        parent: '#progress'
+      })
+      NProgress.start()
       const loop = lottie.loadAnimation({
-        container: document.getElementById('animation'),
+        container: document.querySelector('#animation'),
         renderer: 'svg',
         loop: true,
         autoplay: true,
