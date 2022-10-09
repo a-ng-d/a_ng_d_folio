@@ -7,6 +7,8 @@
   import { easeInOutQuart } from '@/utilities/easings'
   import { ArrowLeft, ArrowRight } from 'lucide-vue-next'
 
+  let timeout: number
+
   export default defineComponent({
     name: 'Lab',
     components: {
@@ -85,7 +87,8 @@
           start: 0 as number,
           distance: 0 as number,
           hasPrevButton: false as boolean,
-          hasNextButton: true as boolean
+          hasNextButton: true as boolean,
+          timeout: null as void | null
         },
         active: '' as string,
         isAppeared: false as boolean
@@ -93,25 +96,30 @@
     },
     methods: {
       smoothScroll(e: Event) {
-        const target = e.target as HTMLElement
-        setTimeout(() => this.slider.velocity = scrollVelocity(target, target.scrollWidth - document.body.clientWidth, 'x'), 10)
-        this.slider.scale = doMap(this.slider.velocity, 1, 1.5, 1, .75)
-        this.slider.gap = doMap(this.slider.velocity, 1, 1.5, 1, 4)
+        if (timeout)
+      		window.cancelAnimationFrame(timeout)
 
-        if (target.scrollLeft >= target.scrollWidth - document.body.clientWidth - 10) {
-          this.slider.hasPrevButton = true
-          this.slider.hasNextButton = false
-        }
-        else if (target.scrollLeft <= 0) {
-          this.slider.hasPrevButton = false
-          this.slider.hasNextButton = true
-        }
-        else
-          this.slider.hasPrevButton = this.slider.hasNextButton = true
+      	timeout = window.requestAnimationFrame(() => {
+          const target = e.target as HTMLElement
+          setTimeout(() => this.slider.velocity = scrollVelocity(target, target.scrollWidth - document.body.clientWidth, 'x'), 10)
+          this.slider.scale = doMap(this.slider.velocity, 1, 1.5, 1, .9)
+          this.slider.gap = doMap(this.slider.velocity, 1, 1.5, 1, 4)
 
-        if (this.slider.slides != undefined)
-          for (let i = 1; i <= this.slider.slides; i++)
-            if (target.scrollLeft >= document.body.clientWidth * (i - 1) && target.scrollLeft < document.body.clientWidth * i) this.slider.slide = i
+          if (target.scrollLeft >= target.scrollWidth - document.body.clientWidth - 10) {
+            this.slider.hasPrevButton = true
+            this.slider.hasNextButton = false
+          }
+          else if (target.scrollLeft <= 0) {
+            this.slider.hasPrevButton = false
+            this.slider.hasNextButton = true
+          }
+          else
+            this.slider.hasPrevButton = this.slider.hasNextButton = true
+
+          if (this.slider.slides != undefined)
+            for (let i = 1; i <= this.slider.slides; i++)
+              if (target.scrollLeft >= document.body.clientWidth * (i - 1) && target.scrollLeft < document.body.clientWidth * i) this.slider.slide = i
+      	})
       },
       slideRight() {
         const scrollBox: HTMLElement = Array.from(document.getElementsByClassName('shots__scroll') as HTMLCollectionOf<HTMLElement>)[0]

@@ -8,6 +8,8 @@
   import Particles from '@/components/graphics/Particles.vue'
   import Audio from '@/components/ui/Audio.vue'
 
+  let timeout: number
+
   export default defineComponent({
     name: 'App',
     components: {
@@ -152,9 +154,14 @@
     },
     methods: {
       getScrollParams(e: Event) {
-        this.pageHeight = (e.target as HTMLElement).scrollHeight
-        this.scrollProgress = (e.target as HTMLElement).scrollTop
-        this.viewHeight = document.body.clientHeight
+      	if (timeout)
+      		window.cancelAnimationFrame(timeout)
+
+      	timeout = window.requestAnimationFrame(() => {
+          this.pageHeight = (e.target as HTMLElement).scrollHeight
+          this.scrollProgress = (e.target as HTMLElement).scrollTop
+          this.viewHeight = document.body.clientHeight
+      	})
       },
       resetDelay(e: HTMLElement) {
         e.style.transitionDelay = '0'
@@ -177,7 +184,7 @@
       isSameContext(to: string) {
         if(this.previousPath === to) return false
         else return true
-      }
+      },
     },
     created: function() {
       window.addEventListener("resize",  this.getScreenContext)
