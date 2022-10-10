@@ -97,7 +97,7 @@
           multiplier: number = scrWidth < 461 ? 1.5 : scrWidth < 1281 ? 1.25 : 1
 
         let
-          fps = 60,
+          fps = 30,
           speed = 4,
           alpha = 1,
           camera: any,

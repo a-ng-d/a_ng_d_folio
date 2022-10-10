@@ -196,7 +196,7 @@
 <template>
   <!--Transition-->
   <Particles
-    :weight="160"
+    :weight="176"
     :isExpanded="isExpanded"
     :movement="transition"
     :style="`position: absolute ; visibility: ${isHardTransited ? 'visible' : 'hidden'} ; z-index: 3`"

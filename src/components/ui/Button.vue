@@ -98,6 +98,7 @@
       <div class="button__background">
         <Particles
           v-if="store.device === 'DESKTOP'"
+          :weight="40"
           :isExpanded="isExpanded"
           :movement="movement"
         />
@@ -133,6 +134,7 @@
       <div class="button__background">
         <Particles
           v-if="store.device === 'DESKTOP'"
+          :weight="40"
           :isExpanded="isExpanded"
           :movement="movement"
         />
@@ -166,6 +168,7 @@
       <div class="button__background">
         <Particles
           v-if="store.device === 'DESKTOP'"
+          :weight="40"
           :isExpanded="isExpanded"
           :movement="movement"
         />
