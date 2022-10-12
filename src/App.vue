@@ -170,7 +170,7 @@
         this.isExpanded = true
       },
       collapseParticles() {
-        setTimeout(() => this.isExpanded = false, 200)
+        this.isExpanded = false
       },
       getProjects(src: Array<Route>) {
         let projects: Array<Route> = src.map((a: Route) => a)
