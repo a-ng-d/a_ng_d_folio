@@ -190,6 +190,8 @@
 
           sk.makeUnits(this.direction)
 
+          sk.noLoop()
+
         }
 
         sk.draw = () => {
@@ -200,9 +202,23 @@
         }
 
         // Events
-        sk.expand = () => units.forEach(unit => unit.expand(units.length))
+        sk.expand = () => {
+          sk.loop()
+          units.forEach(unit => unit.expand(units.length))
+          setTimeout(() => {
+            sk.noLoop()
+          }, 1600)
+        }
 
-        sk.collapse = () => units.forEach(unit => unit.collapse())
+        sk.collapse = () => {
+          sk.loop()
+          units.forEach(unit => unit.collapse())
+          setTimeout(() => {
+            sk.noLoop()
+          }, 1200)
+        }
+
+        sk.mouseReleased = () => sk.noLoop()
 
         sk.goUp = (movement: string) => {
           sk.makeUnits('vertical')
