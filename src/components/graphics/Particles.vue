@@ -207,7 +207,7 @@
           units.forEach(unit => unit.expand(units.length))
           setTimeout(() => {
             sk.noLoop()
-          }, 1600)
+          }, 2000)
         }
 
         sk.collapse = () => {
@@ -215,7 +215,7 @@
           units.forEach(unit => unit.collapse())
           setTimeout(() => {
             sk.noLoop()
-          }, 1200)
+          }, 2000)
         }
 
         sk.mouseReleased = () => sk.noLoop()
