@@ -94,7 +94,7 @@
           limitX: number = scrWidth * 2,
           limitY: number = scrHeight * 10,
           limitZ: number = scrHeight * 40,
-          multiplier: number = scrWidth < 461 ? 1.5 : scrWidth < 1281 ? 1.25 : 1
+          multiplier: number = scrWidth < 461 ? 2 : scrWidth < 1281 ? 1.5 : 1
 
         let
           fps = 30,
@@ -670,9 +670,9 @@
           for (let i = 0 ; i < mNumber ; i++)
             mountains.push(new Mountain({
               widthRange: [sk.width * 4, sk.width * 6],
-              heightRange: [-sk.height * 6, -sk.height * 9],
+              heightRange: [-sk.height * 8, -sk.height * 12],
               x: twoRangesRandom(-limitX, -sk.width, sk.width, limitX),
-              y: sk.height * 3,
+              y: sk.height * 4,
               zRange: [-limitZ, 0],
               foreground: HSLColors.cream,
               background: HSLColors.creamySun
