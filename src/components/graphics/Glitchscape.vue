@@ -94,7 +94,7 @@
           limitX: number = scrWidth * 2,
           limitY: number = scrHeight * 10,
           limitZ: number = scrHeight * 40,
-          multiplier: number = scrWidth < 461 ? 2 : scrWidth < 1281 ? 1.5 : 1
+          multiplier: number = scrWidth < 461 ? 2 : scrWidth < 1281 ? 1.5 : 1.25
 
         let
           fps = 30,
