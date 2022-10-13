@@ -654,7 +654,7 @@
 
           if (screen.orientation != undefined)
             screen.orientation.addEventListener('change', (e: any) => {
-              sk.resizeCanvas(sk.windowHeight, sk.windowWidth, true)
+              setTimeout(() => sk.resizeCanvas(sk.windowWidth, sk.windowHeight, true), 100)
             }, true)
           else
             sk.windowResized = () => {
