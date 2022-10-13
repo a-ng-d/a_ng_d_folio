@@ -252,7 +252,7 @@
     :pov="pov"
     :quality="quality"
     :isGlitched="isGlitched"
-    :scrollProgress="scrollProgress"
+    :scrollProgress="view != 'PROJECT' ? scrollProgress : 0"
     :scrollLimit="pageHeight - viewHeight"
     :numberOfProjects="numberOfProjects"
     :view="view"
