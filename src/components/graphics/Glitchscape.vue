@@ -79,7 +79,7 @@
       getParticlesNumber(): number {
         const device: string = this.store.device
         if (device === 'MOBILE') return 10
-        else return 30
+        else return 20
       }
     },
     mounted: function() {
@@ -239,16 +239,9 @@
               sk.rect((this.params.radius / 2), this.size.height, this.size.width, this.params.radius)
               sk.ellipse(this.size.width, this.size.height, this.params.radius, this.params.radius, quality)
               sk.rect(0, 0, (this.size.width + this.params.radius), (this.size.height + (this.params.radius / 2)))
-            sk.pop()
-          }
-
-          reflect = () => {
-            sk.push()
-              sk.rotateX(-this.params.radians)
-              sk.ellipse(0, -(this.size.height * 4), this.params.radius, this.params.radius, quality)
-              sk.rect((this.params.radius / 2), -(this.size.height * 4), this.size.width, this.params.radius)
-              sk.ellipse(this.size.width, -(this.size.height * 4), this.params.radius, this.params.radius, quality)
-              sk.rect(0, 0, (this.size.width + this.params.radius), -(this.size.height * 4 - (this.params.radius / 2)))
+              sk.ellipse(0, -(this.params.radius / 2), this.params.radius, this.params.radius, quality)
+              sk.rect((this.params.radius / 2), -(this.params.radius / 2), this.size.width, this.params.radius)
+              sk.ellipse(this.size.width, -(this.params.radius / 2), this.params.radius, this.params.radius, quality)
             sk.pop()
           }
 
@@ -264,7 +257,6 @@
               sk.rectMode(sk.CORNER)
               sk.ellipseMode(sk.CORNER)
               this.extrusion()
-              this.reflect()
             sk.pop()
           }
 
@@ -678,9 +670,9 @@
           for (let i = 0 ; i < mNumber ; i++)
             mountains.push(new Mountain({
               widthRange: [sk.width * 4, sk.width * 6],
-              heightRange: [-sk.height * 3, -sk.height * 5],
+              heightRange: [-sk.height * 6, -sk.height * 9],
               x: twoRangesRandom(-limitX, -sk.width, sk.width, limitX),
-              y: sk.height * .5,
+              y: sk.height * 3,
               zRange: [-limitZ, 0],
               foreground: HSLColors.cream,
               background: HSLColors.creamySun
@@ -698,7 +690,7 @@
             }))
           for (let i = 0 ; i < sNumber ; i++)
             stars.push(new Star({
-              sizeRange: [-sk.height * .01, -sk.height * .02],
+              sizeRange: [-sk.height * .02, -sk.height * .04],
               x: random(-limitX * 4, limitX * 4),
               yRange: [-limitY * 0.5, -limitY],
               z: random(-limitZ * 3, limitZ * 3),
