@@ -65,7 +65,7 @@
 
   // Structure
   .main-menu
-    --offset: calc(var(--header-height-size) * -1)
+    --offset: calc(var(--header-height-size) * -2)
 
     position: fixed
     width: 100%
