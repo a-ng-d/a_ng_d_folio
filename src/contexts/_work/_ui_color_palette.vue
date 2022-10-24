@@ -64,13 +64,13 @@
       :theme="theme"
     >
       <template #left>
-          <p>{{ $t('work._ui_color_palette.part-1.caption-1') }}</p>
+          <p>{{ $t('work._ui_color_palette.part-1.paragraph-1') }}</p>
       </template>
       <template #right>
         <Figure
           type="video"
           src="/videos/_work/_ui_color_palette/article-asset-1.mp4#t=0.5"
-          :width="1920"
+          :width="1600"
           :height="1200"
         >
         </Figure>
@@ -84,14 +84,14 @@
       <template #left>
         <Figure
           type="video"
-          src="/videos/_work/_ui_color_palette/article-asset-1.mp4#t=0.5"
-          :width="1920"
+          src="/videos/_work/_ui_color_palette/article-asset-2.mp4#t=0.5"
+          :width="1600"
           :height="1200"
         >
         </Figure>
       </template>
       <template #right>
-        <p>{{ $t('work._ui_color_palette.part-1.caption-2') }}</p>
+        <p>{{ $t('work._ui_color_palette.part-1.paragraph-2') }}</p>
       </template>
     </TwoColumns>
     <TwoColumns
@@ -99,13 +99,13 @@
       :theme="theme"
     >
       <template #left>
-          <p>{{ $t('work._ui_color_palette.part-1.caption-3') }}</p>
+          <p>{{ $t('work._ui_color_palette.part-1.paragraph-3') }}</p>
       </template>
       <template #right>
         <Figure
           type="video"
           src="/videos/_work/_ui_color_palette/article-asset-3.mp4#t=0.5"
-          :width="1920"
+          :width="1600"
           :height="1200"
         >
         </Figure>
@@ -119,7 +119,7 @@
     >
       <template #left>
         <ContentContainer
-          title="4"
+          title="6"
           :description="$t('global.comments')"
           :theme="theme"
         >
@@ -130,7 +130,7 @@
       </template>
       <template #middle>
         <ContentContainer
-          title="12K"
+          title="14K"
           :description="$t('global.installations')"
           :theme="theme"
         >
@@ -141,7 +141,7 @@
       </template>
       <template #right>
         <ContentContainer
-          title="103"
+          title="130"
           :description="$t('global.like')"
           :theme="theme"
         >

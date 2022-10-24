@@ -336,9 +336,9 @@
       },
       "part-1": {
         "title": "How does it work?",
-        "caption-1": "The workflow is quite simple: Select some starting colors on the canvas, edit the lightness scale, then create the color palette.",
-        "caption-2": "Then, edit the lightness scale (it will tweak the colors) and add them to the local styles.",
-        "caption-3": "Finally, tweak the lightness scale and update the local styles to maintain the color system with ease."
+        "paragraph-1": "The workflow is quite simple: Select some starting colors on the canvas, edit the lightness scale, then create the color palette.",
+        "paragraph-2": "Then, edit the lightness scale (it will tweak every color) and add them to the local styles.",
+        "paragraph-3": "Finally, adjust the starting colors and update the local styles to maintain the color system with ease."
       },
       "takeaways": {
         "takeaway-1": {
