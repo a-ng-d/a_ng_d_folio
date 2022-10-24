@@ -37,7 +37,7 @@
         </Transition>
       </div>
       <div class="jumbotron__actions">
-        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * 1.5))" appear>
+        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * 1))" appear>
           <Button
             type="primary"
             :label="$t('contact.email.hello')"
