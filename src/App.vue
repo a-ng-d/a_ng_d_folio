@@ -154,14 +154,14 @@
     },
     methods: {
       getScrollParams(e: Event) {
-      	if (timeout)
-      		window.cancelAnimationFrame(timeout)
+        if (timeout)
+          window.cancelAnimationFrame(timeout)
 
-      	timeout = window.requestAnimationFrame(() => {
+        timeout = window.requestAnimationFrame(() => {
           this.pageHeight = (e.target as HTMLElement).scrollHeight
           this.scrollProgress = (e.target as HTMLElement).scrollTop
           this.viewHeight = document.body.clientHeight
-      	})
+        })
       },
       resetDelay(e: HTMLElement) {
         e.style.transitionDelay = '0'
