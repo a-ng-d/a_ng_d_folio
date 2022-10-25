@@ -5,6 +5,7 @@
   import Button from '@/components/ui/Button.vue'
   import VLazyImage from 'v-lazy-image'
   import { ArrowLeft, ArrowRight, ArrowDown } from 'lucide-vue-next'
+  import { assets } from '@/utilities/assets'
 
   export default defineComponent({
     name: 'Work',
@@ -36,7 +37,8 @@
         position: this.activeProjectPosition as number,
         duration: 2000 as number,
         direction: 'right' as string,
-        touchStart: 0 as number
+        touchStart: 0 as number,
+        assets: assets
       }
     },
     methods: {
@@ -99,7 +101,7 @@
         <div v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName"></div>
         <div v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName"></div>
         <div v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName"></div>
-        <div v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName" style="background: url(/images/_work/_iobeya_whiteboard/background.png) 0% 0% no-repeat"></div>
+        <div v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName" style="background: url(/images/_work/_iobeya_whiteboard/background.webp) 0% 0% no-repeat"></div>
       </Transition>
     </div>
     <Transition name="slide-up" appear style="--delay: var(--duration-turtoise)">

@@ -99,7 +99,7 @@
       <template #plain>
         <Figure
           type="image"
-          :src="assets._jean_bobby_radio[1]"
+          :src="assets._jean_bobby_radio[0]"
           caption
           :width="1922"
           :height="1202"
@@ -127,7 +127,7 @@
       :theme="theme"
     >
       <template #asset>
-        <v-lazy-image :src="assets._jean_bobby_radio[2]" :style="`transform: translateY(${parallax(50, -50)})`" />
+        <v-lazy-image :src="assets._jean_bobby_radio[1]" :style="`transform: translateY(${parallax(50, -50)})`" />
       </template>
     </FullWidthFigure>
     <OneColumn
@@ -201,7 +201,7 @@
 
   section.ending
     height: 100vh
-    background: url(/images/_work/_jean_bobby_radio/ending-asset-2.svg) 50% v-bind('parallax(0, 50)') no-repeat, url(/images/_work/_jean_bobby_radio/ending-asset-1.png) 50% v-bind('parallax(-50, 50)') no-repeat
+    background: url(/images/_work/_jean_bobby_radio/ending-asset-2.svg) 50% v-bind('parallax(0, 50)') no-repeat, url(/images/_work/_jean_bobby_radio/ending-asset-1.webp) 50% v-bind('parallax(-50, 50)') no-repeat
     background-color: #190038 !important
     background-size: auto, cover
 </style>

@@ -16,6 +16,7 @@ import IMDSAnimation from '@/assets/animations/_work/_iobeya_mobile_ds/animation
 import AIAnimation from '@/assets/animations/_work/_awesome_ipsums/animation.json'
 import IWAnimation from '@/assets/animations/_work/_iobeya_whiteboard/animation.json'
 import { filters } from '@/utilities/colors'
+import { assets } from '@/utilities/assets'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -135,7 +136,7 @@ const router = createRouter({
         type: i18n.global.t('work._jeprendsquoi.misc.type'),
         position: 1,
         view: 'PROJECT',
-        illustration: '/images/_work/_jeprendsquoi/illustration.png',
+        illustration: assets._jeprendsquoi[0],
         background: filters._jeprendsquoi,
         theme: 'DEFAULT',
         filter: filters.grayscale,

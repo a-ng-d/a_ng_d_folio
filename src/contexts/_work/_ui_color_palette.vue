@@ -71,7 +71,7 @@
       <template #right>
         <Figure
           type="video"
-          :src="assets._ui_color_palette[1] + '#t=0.5'"
+          :src="assets._ui_color_palette[0] + '#t=0.5'"
           :width="1600"
           :height="1200"
         >
@@ -86,7 +86,7 @@
       <template #left>
         <Figure
           type="video"
-          :src="assets._ui_color_palette[2] + '#t=0.5'"
+          :src="assets._ui_color_palette[1] + '#t=0.5'"
           :width="1600"
           :height="1200"
         >
@@ -106,7 +106,7 @@
       <template #right>
         <Figure
           type="video"
-          :src="assets._ui_color_palette[3] + '#t=0.5'"
+          :src="assets._ui_color_palette[2] + '#t=0.5'"
           :width="1600"
           :height="1200"
         >
