@@ -651,6 +651,7 @@
           sk.rectMode(sk.CENTER)
           sk.frameRate(fps)
           camera = sk.createCamera()
+          sk.background(HSLColors.creamySun.hue, HSLColors.creamySun.saturation, HSLColors.creamySun.lightness)
 
           if (screen.orientation != undefined)
             screen.orientation.addEventListener('change', () => {
