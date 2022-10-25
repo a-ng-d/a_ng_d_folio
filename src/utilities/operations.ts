@@ -16,20 +16,21 @@ export const twoRangesRandom = (rangeLeftMin: number, rangeLeftMax: number, rang
   return dicer
 }
 
-let timer: any,
-    delta = 0,
-    velocity = 0,
-    currentPosition = 0,
-    snapPosition = 0
+let timer: () => void,
+    pick: number,
+    delta: number = 0,
+    velocity: number = 0,
+    currentPosition: number = 0,
+    snapPosition: number = 0
 export const scrollVelocity = (target: HTMLElement, scrollLimit: number, orientation: string) => {
   velocity = 1
   delta = 1
   currentPosition =  orientation === 'y' ? target.scrollTop : target.scrollLeft
-  window.cancelAnimationFrame(timer)
+  window.cancelAnimationFrame(pick)
   timer = () => {
     snapPosition = orientation === 'y' ? target.scrollTop : target.scrollLeft
   }
-  window.requestAnimationFrame(timer)
+  pick = window.requestAnimationFrame(timer)
   delta = Math.abs(currentPosition - snapPosition)
   if (delta < 1 || delta > 200) delta = 1
   currentPosition == 0 ? velocity = 1 :
