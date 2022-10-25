@@ -59,24 +59,24 @@
       },
       splitLetters(el: HTMLElement) {
         const
-          title: any = el.children[0],
-          label: string = title.innerText,
+          title: Element = el.children[0],
+          label: string = (title as HTMLElement).innerText,
           split: Array<string> = label.split('')
 
         title.innerHTML = ''
 
-        split.forEach((chr, index) => {
-          const shard: any = document.createElement('span')
-          shard.innerHTML = chr
-          shard.classList.add('shard')
-          shard.style = `--order: ${index}`
+        split.forEach((chr: string, index: number) => {
+          const shard: HTMLElement = document.createElement('span')
+          shard.innerHTML = chr as string
+          shard.classList.add('shard') as void
+          shard.style.cssText = `--order: ${index}`
           title.appendChild(shard)
         })
       },
-      lockTouchStart(e: any) {
+      lockTouchStart(e: TouchEvent) {
         this.touchStart = e.changedTouches[0].clientX
       },
-      shoudSwipeProject(e: any) {
+      shoudSwipeProject(e: TouchEvent) {
         const delta: number = this.touchStart - e.changedTouches[0].clientX
         if (delta < -200) return this.previousProject()
         else if (delta > 200) return this.nextProject()
