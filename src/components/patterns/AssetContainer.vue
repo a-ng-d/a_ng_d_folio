@@ -40,11 +40,15 @@
       }
     },
     methods: {
-      magnifier(e: any) {
-        const width = e.target.children[0].children[0].children[0].offsetWidth
+      magnifier(e: Event) {
+        let width: number
 
-        this.isMagnified = !this.isMagnified
-        this.assetWidth = width + 16 + 'px'
+        if (e.target != null) {
+          width = ((((e.target as HTMLElement).children[0] as HTMLElement).children[0] as HTMLElement).children[0] as HTMLElement).offsetWidth
+          this.isMagnified = !this.isMagnified
+          this.assetWidth = width + 16 + 'px'
+        }
+
       }
     },
     watch: {
