@@ -123,7 +123,7 @@
       },
       slideRight() {
         const scrollBox: HTMLElement = Array.from(document.getElementsByClassName('shots__scroll') as HTMLCollectionOf<HTMLElement>)[0]
-        let animationScroll: any, progress: number
+        let animationScroll: number, progress: number
 
         this.slider.time == 0 ? this.slider.start = scrollBox.scrollLeft : null
         this.slider.time == 0 ? this.slider.distance = (document.body.clientWidth * this.slider.slide) - scrollBox.scrollLeft : null
@@ -132,14 +132,16 @@
         progress = doMap(this.slider.time, 0, (1.6 * 600), 0, 1)
         scrollBox.scrollLeft = this.slider.start + (this.slider.distance * easeInOutQuart(progress))
 
+        animationScroll = requestAnimationFrame(this.slideRight)
+
         if (progress >= 1) {
           cancelAnimationFrame(animationScroll)
           this.slider.time = progress = 0
-        } else animationScroll = requestAnimationFrame(this.slideRight)
+        }
       },
       slideLeft() {
         const scrollBox: HTMLElement = Array.from(document.getElementsByClassName('shots__scroll') as HTMLCollectionOf<HTMLElement>)[0]
-        let animationScroll: any, progress: number, diff: number
+        let animationScroll: number, progress: number, diff: number
 
         this.slider.hasNextButton ? diff = this.slider.slide - 1 : diff = this.slider.slide - 2
 
@@ -150,10 +152,12 @@
         progress = doMap(this.slider.time, 0, (1.6 * 600), 0, 1)
         scrollBox.scrollLeft = this.slider.start - (this.slider.distance * easeInOutQuart(progress))
 
+        animationScroll = requestAnimationFrame(this.slideLeft)
+
         if (progress >= 1 || scrollBox.scrollLeft <= 0) {
           cancelAnimationFrame(animationScroll)
           this.slider.time = progress = 0
-        } else animationScroll = requestAnimationFrame(this.slideLeft)
+        }
       },
       makeSlides() {
         const scrollBox: HTMLElement = Array.from(document.getElementsByClassName('shots__scroll') as HTMLCollectionOf<HTMLElement>)[0]
