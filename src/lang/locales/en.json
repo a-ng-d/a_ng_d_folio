@@ -3,14 +3,14 @@
   "glossary": {
     "home": "_Home",
     "universe": "_Universe",
-    "core": "_Core_story_and_values",
-    "work": "_Selected_work",
-    "lab": "_Shots_lab",
-    "id": "_Business_card",
-    "contact": "_Tell_me_hello",
+    "core": "_Core_story{breakLine}_and_values",
+    "work": "_Selected{breakLine}_work",
+    "lab": "_Shots{breakLine}_lab",
+    "id": "_Business{breakLine}_card",
+    "contact": "_Tell_me{breakLine}_hello",
     "attribution": "_Attribution",
-    "archive": "_Previous_work",
-    "unknown": "_Unknown_universe"
+    "archive": "_Previous{breakLine}_work",
+    "unknown": "_Unknown{breakLine}_universe"
   },
   "actions": {
     "id": "Pick the business card up",

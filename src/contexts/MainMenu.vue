@@ -138,12 +138,48 @@
         </Button>
         <div class="universe-title" v-else>
           <Transition name="switch" mode="out-in">
-            <div v-if="view === 'SHORT'"><h6>{{ $t("glossary.id") }}</h6></div>
-            <div v-else-if="view === 'CORE'"><h6>{{ $t("glossary.core") }}</h6></div>
-            <div v-else-if="view === 'LAB'"><h6>{{ $t("glossary.lab") }}</h6></div>
-            <div v-else-if="view === 'UNIVERSE'"><h6>{{ $t("glossary.universe") }}</h6></div>
-            <div v-else-if="view === 'CONTACT'"><h6>{{ $t("glossary.contact") }}</h6></div>
-            <div v-else-if="view === 'ATTRIBUTION'"><h6>{{ $t("glossary.attribution") }}</h6></div>
+            <div v-if="view === 'SHORT'">
+              <i18n-t keypath="glossary.id" tag="h6" scope="global">
+                <template #breakLine>
+                  <br>
+                </template>
+              </i18n-t>
+            </div>
+            <div v-else-if="view === 'CORE'">
+              <i18n-t keypath="glossary.core" tag="h6" scope="global">
+                <template #breakLine>
+                  <br>
+                </template>
+              </i18n-t>
+            </div>
+            <div v-else-if="view === 'LAB'">
+              <i18n-t keypath="glossary.lab" tag="h6" scope="global">
+                <template #breakLine>
+                  <br>
+                </template>
+              </i18n-t>
+            </div>
+            <div v-else-if="view === 'UNIVERSE'">
+              <i18n-t keypath="glossary.universe" tag="h6" scope="global">
+                <template #breakLine>
+                  <br>
+                </template>
+              </i18n-t>
+            </div>
+            <div v-else-if="view === 'CONTACT'">
+              <i18n-t keypath="glossary.contact" tag="h6" scope="global">
+                <template #breakLine>
+                  <br>
+                </template>
+              </i18n-t>
+            </div>
+            <div v-else-if="view === 'ATTRIBUTION'">
+              <i18n-t keypath="glossary.attribution" tag="h6" scope="global">
+                <template #breakLine>
+                  <br>
+                </template>
+              </i18n-t>
+            </div>
           </Transition>
         </div>
       </Transition>
