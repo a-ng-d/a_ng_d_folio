@@ -653,7 +653,7 @@
           camera = sk.createCamera()
 
           if (screen.orientation != undefined)
-            screen.orientation.addEventListener('change', (e: any) => {
+            screen.orientation.addEventListener('change', () => {
               setTimeout(() => sk.resizeCanvas(sk.windowWidth, sk.windowHeight, true), 100)
             }, true)
           else
