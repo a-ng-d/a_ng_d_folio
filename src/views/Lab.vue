@@ -202,7 +202,7 @@
           >
             <AssetContainer
               :title="shot.name"
-              :thumbnail="`/images/_lab/sd/asset-${shots.length - index}.png`"
+              :thumbnail="`/images/_lab/sd/asset-${shots.length - index}.webp`"
               :hdnail="`/images/_lab/hd/asset-${shots.length - index}.${shot.sourceFormat}`"
               :alt="$t('lab.alt')"
               :type="shot.sourceType"
