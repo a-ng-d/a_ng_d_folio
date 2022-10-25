@@ -60,10 +60,10 @@
       map(current: number) {
         return doMap(current, 0, this.allOptions.length - 1, this.allOptions.length - 1, 0)
       },
-      browseOptions(e: any) {
-        const relatedTarget: HTMLElement | null = e.relatedTarget
+      browseOptions(e: FocusEvent) {
+        const relatedTarget: EventTarget | null = e.relatedTarget
         if (relatedTarget != null)
-          relatedTarget.closest('.dropdown__option') == null ? this.isExpanded = false : null
+          (relatedTarget as Element).closest('.dropdown__option') == null ? this.isExpanded = false : null
       }
     },
     created: function() {
