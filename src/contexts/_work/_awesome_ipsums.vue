@@ -6,6 +6,7 @@
   import Figure from '@/components/patterns/Figure.vue'
   import { Download, Github } from 'lucide-vue-next'
   import { doMap } from '@/utilities/operations'
+  import { assets } from '@/utilities/assets'
 
   export default defineComponent({
     name: '_jean_bobby_radio',
@@ -29,6 +30,11 @@
       theme: {
         type: String,
         default: 'DEFAULT'
+      }
+    },
+    data: function() {
+      return {
+        assets: assets
       }
     },
     methods: {
@@ -59,7 +65,7 @@
       <template #right>
         <Figure
           type="image"
-          src="/images/_work/_awesome_ipsums/article-asset-1.png"
+          :src="assets._awesome_ipsums[0]"
           caption
           :width="1440"
           :height="1100"
@@ -84,7 +90,7 @@
       <template #right>
         <Figure
           type="image"
-          src="/images/_work/_awesome_ipsums/article-asset-2.png"
+          :src="assets._awesome_ipsums[1]"
           :width="1200"
           :height="1000"
           :alt="$t('work._awesome_ipsums.part-2.paragraph-1')"
@@ -99,7 +105,7 @@
       <template #left>
         <Figure
           type="image"
-          src="/images/_work/_awesome_ipsums/article-asset-3.png"
+          :src="assets._awesome_ipsums[2]"
           :width="1200"
           :height="1000"
           :alt="$t('work._awesome_ipsums.part-2.paragraph-2')"
@@ -119,7 +125,7 @@
       <template #right>
         <Figure
           type="image"
-          src="/images/_work/_awesome_ipsums/article-asset-4.png"
+          :src="assets._awesome_ipsums[3]"
           :width="1200"
           :height="1000"
           :alt="$t('work._awesome_ipsums.part-2.paragraph-3')"

@@ -8,6 +8,7 @@
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
   import { User, PlayCircle } from 'lucide-vue-next'
+  import { assets } from '@/utilities/assets'
 
   export default defineComponent({
     name: '_iobeya_whiteboard',
@@ -35,7 +36,12 @@
         type: String,
         default: 'DEFAULT'
       }
-    }
+    },
+    data: function() {
+      return {
+        assets: assets
+      }
+    },
   })
 </script>
 
@@ -73,7 +79,7 @@
       <template #plain>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_whiteboard/article-asset-1.png"
+          :src="assets._iobeya_whiteboard[1]"
           caption
           :width="1920"
           :height="912"
@@ -98,7 +104,7 @@
       <template #left>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_whiteboard/article-asset-2.png"
+          :src="assets._iobeya_whiteboard[2]"
           :width="1920"
           :height="912"
         />
@@ -106,7 +112,7 @@
       <template #right>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_whiteboard/article-asset-3.png"
+          :src="assets._iobeya_whiteboard[3]"
           :width="1920"
           :height="912"
         />
@@ -118,7 +124,7 @@
       <template #plain>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_whiteboard/article-asset-4.png"
+          :src="assets._iobeya_whiteboard[4]"
           caption
           :width="1920"
           :height="680"
@@ -143,7 +149,7 @@
       <template #plain>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_whiteboard/article-asset-5.png"
+          :src="assets._iobeya_whiteboard[5]"
           :width="1920"
           :height="912"
         />
@@ -165,7 +171,7 @@
       <template #left>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_whiteboard/article-asset-6.png"
+          :src="assets._iobeya_whiteboard[6]"
           caption
           :width="1024"
           :height="770"
@@ -179,7 +185,7 @@
       <template #right>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_whiteboard/article-asset-7.png"
+          :src="assets._iobeya_whiteboard[7]"
           caption
           :width="1024"
           :height="770"
@@ -204,7 +210,7 @@
       <template #plain>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_whiteboard/article-asset-8.png"
+          :src="assets._iobeya_whiteboard[8]"
           caption
           :width="1920"
           :height="680"
@@ -278,7 +284,7 @@
       <template #left>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_whiteboard/article-asset-9.svg"
+          :src="assets._iobeya_whiteboard[9]"
           caption
           :width="480"
           :height="480"
@@ -292,7 +298,7 @@
       <template #right>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_whiteboard/article-asset-10.svg"
+          :src="assets._iobeya_whiteboard[10]"
           caption
           :width="480"
           :height="480"
@@ -312,7 +318,7 @@
     >
       <template #asset>
         <video class="full-width-video" preload="true" autoplay muted loop playsinline poster="">
-          <source src="/videos/_work/_iobeya_whiteboard/article-asset-1.mp4" type="video/mp4" />
+          <source :src="assets._iobeya_whiteboard[12]" type="video/mp4" />
         </video>
       </template>
       <template #caption>
@@ -332,7 +338,7 @@
       <template #plain>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_whiteboard/article-asset-11.png"
+          :src="assets._iobeya_whiteboard[11]"
           caption
           :width="1920"
           :height="680"

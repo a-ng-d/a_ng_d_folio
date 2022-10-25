@@ -11,6 +11,7 @@
   import { Info, Github, Radio } from 'lucide-vue-next'
   import { doMap } from '@/utilities/operations'
   import JBRAnimation from '@/assets/animations/_work/_jean_bobby_radio/animation.json'
+  import { assets } from '@/utilities/assets'
 
   export default defineComponent({
     name: '_jean_bobby_radio',
@@ -43,7 +44,8 @@
     data: function() {
       return {
         store,
-        JBRAnimation
+        JBRAnimation,
+        assets: assets
       }
     },
     methods: {
@@ -97,7 +99,7 @@
       <template #plain>
         <Figure
           type="image"
-          src="/images/_work/_jean_bobby_radio/article-asset-1.png"
+          :src="assets._jean_bobby_radio[1]"
           caption
           :width="1922"
           :height="1202"
@@ -125,7 +127,7 @@
       :theme="theme"
     >
       <template #asset>
-        <v-lazy-image src="/images/_work/_jean_bobby_radio/article-asset-2.png" :style="`transform: translateY(${parallax(50, -50)})`" />
+        <v-lazy-image :src="assets._jean_bobby_radio[2]" :style="`transform: translateY(${parallax(50, -50)})`" />
       </template>
     </FullWidthFigure>
     <OneColumn

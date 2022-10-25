@@ -8,6 +8,7 @@
   import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
   import { Info, Bot, Apple } from 'lucide-vue-next'
   import { doMap } from '@/utilities/operations'
+  import { assets } from '@/utilities/assets'
 
   export default defineComponent({
     name: '_jeprendsquoi',
@@ -38,7 +39,8 @@
     },
     data: function() {
       return {
-        isFullScreen: false as boolean
+        isFullScreen: false as boolean,
+        assets: assets
       }
     },
     methods: {
@@ -82,7 +84,7 @@
       <template #plain>
         <Figure
           type="image"
-          src="/images/_work/_jeprendsquoi/article-asset-1.png"
+          :src="assets._jeprendsquoi[2]"
           caption
           :width="1440"
           :height="900"
@@ -127,7 +129,7 @@
       <template #plain>
         <Figure
           type="image"
-          src="/images/_work/_jeprendsquoi/article-asset-2.png"
+          :src="assets._jeprendsquoi[3]"
           caption
           :width="1440"
           :height="900"
@@ -183,7 +185,7 @@
       <template #plain>
         <Figure
           type="image"
-          src="/images/_work/_jeprendsquoi/article-asset-3.jpeg"
+          :src="assets._jeprendsquoi[4]"
           caption
           :width="750"
           :height="1334"
@@ -196,7 +198,7 @@
         </Figure>
         <Figure
           type="image"
-          src="/images/_work/_jeprendsquoi/article-asset-4.jpeg"
+          :src="assets._jeprendsquoi[5]"
           caption
           :width="750"
           :height="1334"
@@ -209,7 +211,7 @@
         </Figure>
         <Figure
           type="image"
-          src="/images/_work/_jeprendsquoi/article-asset-5.jpeg"
+          :src="assets._jeprendsquoi[6]"
           caption
           :width="750"
           :height="1334"
@@ -222,7 +224,7 @@
         </Figure>
         <Figure
           type="image"
-          src="/images/_work/_jeprendsquoi/article-asset-6.jpeg"
+          :src="assets._jeprendsquoi[7]"
           caption
           :width="750"
           :height="1334"
@@ -265,7 +267,7 @@
       <template #left>
         <Figure
           type="image"
-          src="/images/_work/_jeprendsquoi/article-asset-7.gif"
+          :src="assets._jeprendsquoi[8]"
           caption
           :width="640"
           :height="640"
@@ -280,7 +282,7 @@
       <template #right>
         <Figure
           type="image"
-          src="/images/_work/_jeprendsquoi/article-asset-8.gif"
+          :src="assets._jeprendsquoi[9]"
           caption
           :width="640"
           :height="640"

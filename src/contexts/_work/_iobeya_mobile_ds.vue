@@ -8,6 +8,7 @@
   import Figure from '@/components/patterns/Figure.vue'
   import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
   import { Play, Bot, Apple } from 'lucide-vue-next'
+  import { assets } from '@/utilities/assets'
 
   export default defineComponent({
     name: '_jeprendsquoi',
@@ -39,7 +40,8 @@
     },
     data: function() {
       return {
-        isFullScreen: false as boolean
+        isFullScreen: false as boolean,
+        assets: assets
       }
     }
   })
@@ -109,7 +111,7 @@
       <template #left>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_mobile_ds/article-asset-1.png"
+          :src="assets._iobeya_mobile_ds[0]"
           caption
           :width="1200"
           :height="1500"
@@ -123,7 +125,7 @@
       <template #right>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_mobile_ds/article-asset-2.png"
+          :src="assets._iobeya_mobile_ds[1]"
           caption
           :width="1200"
           :height="1500"
@@ -142,7 +144,7 @@
         <p>{{ $t('work._iobeya_mobile_ds.part-2.paragraph-3') }}</p>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_mobile_ds/article-asset-3.png"
+          :src="assets._iobeya_mobile_ds[2]"
           caption
           :width="1920"
           :height="1070"
@@ -155,7 +157,7 @@
         <p>{{ $t('work._iobeya_mobile_ds.part-2.paragraph-4') }}</p>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_mobile_ds/article-asset-4.png"
+          :src="assets._iobeya_mobile_ds[3]"
           caption
           :width="1920"
           :height="1650"
@@ -168,7 +170,7 @@
         <p>{{ $t('work._iobeya_mobile_ds.part-2.paragraph-5') }}</p>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_mobile_ds/article-asset-5.png"
+          :src="assets._iobeya_mobile_ds[4]"
           caption
           :width="1920"
           :height="1855"
@@ -198,7 +200,7 @@
       <template #plain>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_mobile_ds/article-asset-6.png"
+          :src="assets._iobeya_mobile_ds[5]"
           caption
           :width="750"
           :height="1624"
@@ -211,7 +213,7 @@
         </Figure>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_mobile_ds/article-asset-7.png"
+          :src="assets._iobeya_mobile_ds[6]"
           caption
           :width="750"
           :height="1624"
@@ -224,7 +226,7 @@
         </Figure>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_mobile_ds/article-asset-8.png"
+          :src="assets._iobeya_mobile_ds[7]"
           caption
           :width="750"
           :height="1624"
@@ -237,7 +239,7 @@
         </Figure>
         <Figure
           type="image"
-          src="/images/_work/_iobeya_mobile_ds/article-asset-9.png"
+          :src="assets._iobeya_mobile_ds[8]"
           caption
           :width="750"
           :height="1624"

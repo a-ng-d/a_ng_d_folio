@@ -7,6 +7,7 @@
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
   import { Heart, MessageCircle, Download, Figma, Github } from 'lucide-vue-next'
+  import { assets } from '@/utilities/assets'
 
   export default defineComponent({
     name: '_ui_color_palette',
@@ -39,7 +40,8 @@
     },
     data: function() {
       return {
-        isFullScreen: false as boolean
+        isFullScreen: false as boolean,
+        assets: assets
       }
     }
   })
@@ -69,7 +71,7 @@
       <template #right>
         <Figure
           type="video"
-          src="/videos/_work/_ui_color_palette/article-asset-1.mp4#t=0.5"
+          :src="assets._ui_color_palette[1] + '#t=0.5'"
           :width="1600"
           :height="1200"
         >
@@ -84,7 +86,7 @@
       <template #left>
         <Figure
           type="video"
-          src="/videos/_work/_ui_color_palette/article-asset-2.mp4#t=0.5"
+          :src="assets._ui_color_palette[2] + '#t=0.5'"
           :width="1600"
           :height="1200"
         >
@@ -104,7 +106,7 @@
       <template #right>
         <Figure
           type="video"
-          src="/videos/_work/_ui_color_palette/article-asset-3.mp4#t=0.5"
+          :src="assets._ui_color_palette[3] + '#t=0.5'"
           :width="1600"
           :height="1200"
         >
