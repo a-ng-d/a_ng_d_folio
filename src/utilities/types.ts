@@ -156,6 +156,10 @@ export interface Option {
   isActive: boolean
 }
 
+export interface Asset {
+  [x: string]: Array<string>
+}
+
 type JSONValue =
     | string
     | number
