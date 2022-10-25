@@ -70,6 +70,7 @@ export const assets: Asset = {
     '/images/_work/_iobeya_whiteboard/article-asset-8.webp',
     '/images/_work/_iobeya_whiteboard/article-asset-9.svg',
     '/images/_work/_iobeya_whiteboard/article-asset-10.svg',
-    '/images/_work/_iobeya_whiteboard/article-asset-11.webp'
+    '/images/_work/_iobeya_whiteboard/article-asset-11.webp',
+    '/videos/_work/_iobeya_whiteboard/article-asset-1.mp4'
   ]
 }
