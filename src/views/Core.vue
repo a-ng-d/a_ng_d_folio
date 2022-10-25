@@ -60,7 +60,7 @@
     },
     methods: {
       backToForeground() {
-        let animateScroll: any, progress: number
+        let animateScroll: number, progress: number
 
         this.time == 0 ? this.remainingScroll = (this.scrollLimit as number) - ((this.scrollLimit as number) - this.$el.scrollTop) : null
 
@@ -68,10 +68,12 @@
         progress = doMap(this.time, 0, (5 * 600), 1, 0)
         this.$el.scrollTop = this.remainingScroll * easeInOutQuart(progress)
 
+        animateScroll = requestAnimationFrame(this.backToForeground)
+
         if (progress <= 0 || this.$el.scrollTop < 0) {
           cancelAnimationFrame(animateScroll)
           this.time = progress = this.remainingScroll = 0
-        } else animateScroll = requestAnimationFrame(this.backToForeground)
+        }
       }
     },
     mounted: function() {
