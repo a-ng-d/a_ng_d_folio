@@ -29,11 +29,11 @@
     data: function() {
       return {
         tooltip: {
-          isActive: false as boolean,
-          name: '' as string,
-          title: '' as string,
-          description: '' as string
-        } as any,
+          isActive: false,
+          name: '',
+          title: '',
+          description: ''
+        } as { isActive: boolean, name: string, title: string, description: string },
         universe: [
           {
             name: 'core',
@@ -78,9 +78,7 @@
         this.tooltip.description = i18n.global.t(`universe.${(e.target as HTMLElement).id}.description`)
       },
       collapseTooltip() {
-        this.tooltip = {
-          isActive: false
-        }
+        this.tooltip.isActive = false
       },
       random(min: number, max: number) {
         return random(min, max)
