@@ -18,8 +18,14 @@
         type: Boolean,
         default: false
       },
-      width: Number,
-      height: Number,
+      width: {
+        type: Number,
+        required: true
+      },
+      height: {
+        type: Number,
+        required: true
+      },
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -40,18 +46,19 @@
       }
     },
     methods: {
-      magnifier(e: any) {
-        const target: HTMLElement = e.currentTarget!,
-              classes: Array<string> = target.children[0].classList.value.split(' ')!,
-              x: number = target.getBoundingClientRect().x,
-              y: number = target.getBoundingClientRect().y,
-              w: number = target.getBoundingClientRect().width,
-              h: number = target.getBoundingClientRect().height,
-              refX: number = document.body.clientWidth / 2,
-              refY: number = document.body.clientHeight / 2,
-              scaleX: number = (document.body.clientWidth - (document.body.clientWidth * .08)) / w,
-              scaleY: number = (document.body.clientHeight - (document.body.clientWidth * .16)) / h,
-              refScale: number = Math.min(scaleX, scaleY)
+      magnifier(e: Event) {
+        const
+          target: EventTarget | null = e.currentTarget,
+          classes: Array<string> = (target as HTMLElement).children[0].classList.value.split(' '),
+          x: number = (target as HTMLElement).getBoundingClientRect().x,
+          y: number = (target as HTMLElement).getBoundingClientRect().y,
+          w: number = (target as HTMLElement).getBoundingClientRect().width,
+          h: number = (target as HTMLElement).getBoundingClientRect().height,
+          refX: number = document.body.clientWidth / 2,
+          refY: number = document.body.clientHeight / 2,
+          scaleX: number = (document.body.clientWidth - (document.body.clientWidth * .08)) / w,
+          scaleY: number = (document.body.clientHeight - (document.body.clientWidth * .16)) / h,
+          refScale: number = Math.min(scaleX, scaleY)
 
         if (classes.includes('v-lazy-image-loaded') || classes.includes('v-lazy-video')) {
           this.isMagnified = !this.isMagnified
@@ -62,7 +69,7 @@
       },
       setRatio(parentWidth: number) {
         if (this.width != undefined || this.height != undefined)
-          this.ratio = (parentWidth * this.height!) / this.width!
+          this.ratio = (parentWidth * this.height) / this.width
         else this.ratio = 640
       }
     },
