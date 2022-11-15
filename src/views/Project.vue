@@ -43,6 +43,17 @@
         type: String,
         default: 'DEFAULT'
       }
+    },
+    mounted: function() {
+      let controller = new ScrollMagic.Controller()
+
+      new ScrollMagic.Scene({triggerElement: "#trigger-title"})
+  			.setClassToggle("#title", "entrance-to")
+  			.addTo(controller)
+
+      new ScrollMagic.Scene({triggerElement: "#trigger-description"})
+  			.setClassToggle("#description", "entrance-to")
+  			.addTo(controller)
     }
   })
 </script>
@@ -67,19 +78,26 @@
           />
         </Transition>
       </section>
+      <div id="trigger-description"></div>
       <section class="description">
         <OneColumn
           :theme="theme"
+          id="description"
+          class="entrance-active entrance-from"
         >
           <template #plain>
             <p class="enhanced">{{ $t(`work.${project.codeName}.description`) }}</p>
           </template>
         </OneColumn>
       </section>
+      <div id="trigger-title"></div>
       <section class="overview">
         <WrapColumn
+          :title="$t('global.overview')"
           :columns="4"
           :theme="theme"
+          id="title"
+          class="entrance-active entrance-from"
         >
           <template #plain>
             <ContentContainer
@@ -140,6 +158,17 @@
       height: fit-content
 
   // Aspect
+  .entrance-active
+    transition: transform var(--duration-turtoise) var(--delay, 0ms) var(--ease-rebound), opacity var(--duration-jogging) var(--delay, 0ms) ease
+
+  .entrance-from
+    transform: translateY(var(--spacing-xl-000))
+    opacity: 0
+
+  .entrance-to
+    transform: translateY(0)
+    opacity: 1
+
   :deep(section:nth-child(2n + 1))
     background-color: var(--color-titanium-white)
 
