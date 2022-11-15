@@ -22,6 +22,7 @@
     "lucide-vue-next": "^0.84.0",
     "nprogress": "^0.2.0",
     "p5": "^1.4.1",
+    "scrollmagic": "^2.0.8",
     "uuid": "^8.3.2",
     "v-lazy-image": "^2.1.1",
     "vue": "^3.2.33",
