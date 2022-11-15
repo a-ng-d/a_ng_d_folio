@@ -13,6 +13,7 @@
   import _awesome_ipsums from '@/contexts/_work/_awesome_ipsums.vue'
   import _iobeya_whiteboard from '@/contexts/_work/_iobeya_whiteboard.vue'
   import _iobeya_mobile_ds from '@/contexts/_work/_iobeya_mobile_ds.vue'
+  import ScrollMagic from 'scrollmagic'
 
   export default defineComponent({
     name: 'Project',
