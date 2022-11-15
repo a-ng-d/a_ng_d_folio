@@ -76,12 +76,8 @@
         </OneColumn>
       </section>
       <section class="overview">
-        <OneColumn
-          :title="$t('global.overview')"
-          :theme="theme"
-        />
         <WrapColumn
-          isSubSection
+          :title="$t('global.overview')"
           :columns="4"
           :theme="theme"
         >
