@@ -92,8 +92,8 @@
           scrWidth: number = window.innerWidth,
           scrHeight: number = window.innerHeight,
           limitX: number = scrWidth * 2,
-          limitY: number = scrHeight * 10,
-          limitZ: number = scrHeight * 40,
+          limitY: number = scrHeight * 40,
+          limitZ: number = scrHeight * 80,
           multiplier: number = scrWidth < 461 ? 1.5 : scrWidth < 1281 ? 1.25 : 1.15
 
         let
@@ -670,10 +670,10 @@
           // particles setting
           for (let i = 0 ; i < mNumber ; i++)
             mountains.push(new Mountain({
-              widthRange: [sk.width * 4, sk.width * 6],
-              heightRange: [-sk.height * 18, -sk.height * 20],
+              widthRange: [sk.width * 10, sk.width * 12],
+              heightRange: [-sk.height * 20, -sk.height * 22],
               x: twoRangesRandom(-limitX, -sk.width, sk.width, limitX),
-              y: sk.height * 12,
+              y: sk.height * 10,
               zRange: [-limitZ, 0],
               foreground: HSLColors.cream,
               background: HSLColors.creamySun
