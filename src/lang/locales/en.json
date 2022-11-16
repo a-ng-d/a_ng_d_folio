@@ -205,6 +205,11 @@
         "label": "{'A design system is like a residential complex'}@:global.separator{'iObeya'}",
         "href": "https://www.figma.com/proto/PQUAoyNxomDEyDjf5Tr9cy/Tech-Talks-%231?page-id=0%3A1&node-id=19%3A3389&viewport=45%2C495%2C0.02&scaling=contain",
         "alt": "External link to the \"A design system is like a residential complex\" slides on Figma"
+      },
+      "link-3": {
+        "label": "{'How to facilitate a workshop with a lot of participants'}@:global.separator{'iObeya'}",
+        "href": "https://www.figma.com/proto/uv5pe7vG18EUR9M829Q2Bx/How-to-facilitate-a-workshop-with-a-lot-of-participants?page-id=0%3A1&node-id=1%3A291&viewport=103%2C712%2C0.06&scaling=contain&starting-point-node-id=1%3A291",
+        "alt": "External link to the \"How to facilitate a workshop with a lot of participants slides on Figma"
       }
     },
     "workshops": {
