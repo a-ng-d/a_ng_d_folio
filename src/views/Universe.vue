@@ -1,5 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { store } from '@/utilities/store'
   import { i18n } from '@/lang'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
@@ -28,6 +29,7 @@
     },
     data: function() {
       return {
+        store,
         tooltip: {
           isActive: false,
           name: '',
@@ -88,12 +90,12 @@
 </script>
 
 <template>
-  <main class="page">
+  <main class="page" :data-theme="theme">
     <section class="menu">
       <ul class="menu__items">
         <li v-for="(world, index) in universe" :key="world.name">
           <Transition name="slide-up" appear :style="`--delay: calc(var(--delay-turtoise) + ${index * 100}ms)`">
-            <div :style="`position: absolute ; top: ${random(0, 80)}% ; right: ${random(0, 80)}%`">
+            <div :style="`top: ${random(-10, 10)}% ; left: ${random(-20, 20)}%`">
               <Button
                 :id="world.name"
                 type="primary"
@@ -110,6 +112,11 @@
                   <Component :is="world.icon" :size="24" />
                 </template>
               </Button>
+              <i18n-t v-if="store.device === 'MOBILE'" :keypath="`universe.${world.name}.title`" tag="p" scope="global" class="discrete">
+                <template #breakLine>
+                  <br>
+                </template>
+              </i18n-t>
             </div>
           </Transition>
         </li>
@@ -166,6 +173,16 @@
 
       & > li
         flex: 1
+        display: flex
+        align-items: center
+        justify-content: center
+
+      li > div
+        --text-color: var(--color-cream)
+        display: flex
+        flex-flow: column nowrap
+        align-items: center
+        gap: var(--layout-paragraph-gap)
 
   @include device.tablet
     .menu
@@ -182,4 +199,6 @@
       &__items
         flex-flow: column nowrap
 
+        li > div
+          flex-flow: row nowrap
 </style>
