@@ -91,14 +91,14 @@
           quality = 50,
           scrWidth: number = window.innerWidth,
           scrHeight: number = window.innerHeight,
-          limitX: number = scrWidth * 2,
+          limitX: number = scrWidth * 4,
           limitY: number = scrHeight * 40,
           limitZ: number = scrHeight * 80,
-          multiplier: number = scrWidth < 461 ? 1.5 : scrWidth < 1281 ? 1.25 : 1.15
+          multiplier: number = scrWidth < 461 ? 1.5 : scrWidth < 1281 ? 1.25 : 1.2
 
         let
           fps = 30,
-          speed = 4,
+          speed = 30,
           alpha = 1,
           camera: any,
           mountains: Array<Mountain> = [],
@@ -345,10 +345,10 @@
             else
               this.position.z = this.props.zRange[0]
 
-            if (this.position.x <= sk.width * 4)
+            if (this.position.x <= limitX * 4)
               this.position.x += speed / 2
             else
-              this.position.x = -sk.width * 4
+              this.position.x = -limitX * 4
 
             if (sk.millis() > this.params.order * this.params.gap)
               this.params.start = sk.lerp(this.params.start, this.position.y, this.params.speed)
@@ -636,10 +636,10 @@
         let pov = new Pov({
           x: 0,
           y: -window.innerHeight * .75,
-          z: -limitZ,
+          z: -limitZ * 2,
           cX: 0,
           cY: -window.innerHeight * .75,
-          cZ: -limitZ,
+          cZ: -limitZ * 2,
           rH: 0,
           rV: 0
         })
@@ -680,10 +680,10 @@
             }))
           for (let i = 0 ; i < cNumber ; i++)
             clouds.push(new Cloud({
-              widthRange: [sk.width * .25, sk.width],
-              heightRange: [-sk.height * .05, -sk.height * .1],
+              widthRange: [sk.width, sk.width * 2],
+              heightRange: [-sk.height * .1, -sk.height * .15],
               x: random(-limitX, limitX),
-              y: random(-sk.height * .5, -sk.height * 1.5),
+              y: random(-sk.height * 1, -sk.height * 2),
               zRange: [-limitZ, 0],
               rows: sk.int(random(3, 5)),
               foreground: HSLColors.clay,
@@ -691,7 +691,7 @@
             }))
           for (let i = 0 ; i < sNumber ; i++)
             stars.push(new Star({
-              sizeRange: [-sk.height * .02, -sk.height * .04],
+              sizeRange: [-sk.height * .05, -sk.height * .15],
               x: random(-limitX * 4, limitX * 4),
               yRange: [-limitY * 0.5, -limitY],
               z: random(-limitZ * 3, limitZ * 3),
@@ -748,7 +748,7 @@
           sk.push()
             sk.noStroke()
             sk.fill(HSLColors.creamySun.hue, HSLColors.creamySun.saturation, HSLColors.creamySun.lightness, alpha)
-            sk.box(limitX * 10, 5, limitZ * 10)
+            sk.box(limitX * 20, 5, limitZ * 20)
           sk.pop()
 
         }
