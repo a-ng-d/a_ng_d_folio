@@ -8,8 +8,7 @@
 #awards {
   position: fixed;
   z-index: 999;
-  transform: translate(50%, -50%);
-  top: 50%;
+  bottom: var(--layout-column-gap);
   right: 0;
   display: flex;
   flex-direction: column;
@@ -23,21 +22,29 @@
   transition: var(--duration-jogging)
 }
 
-#awards a:hover {
-  transform: translateX(-50%)
+#awwwards {
+  transform: translateX(50%)
 }
 
-#cssda-badge{
+#cssda {
+  transform: translateX(40px)
+}
+
+#cssda:hover {
+  transform: translateX(-16px)
+}
+
+#cssda-badge {
   width: 90px;
   height: 90px;
   border-radius: 90px;
-  background: transparent;
+  background: #4F4C4D;
   -webkit-transition: all .25s cubic-bezier(.615,.19,.305,.91);
   -moz-transition: all .25s cubic-bezier(.615,.19,.305,.91);
   transition: all .25s cubic-bezier(.615,.19,.305,.91);
   cursor: pointer;
 }
-#cssda-badge:hover{
+#cssda-badge:hover {
   -webkit-animation: bounce .75s linear both;
   -moz-animation: bounce .75s linear both;
   animation: bounce .75s linear both;
@@ -47,12 +54,12 @@
   position: absolute;
   width: 90px;
   height: 90px;
+  fill: #F6F3F3;
+}
+#cssda-badge:hover svg {
   fill: #4F4C4D;
 }
-#cssda-badge:hover svg{
-  fill: #4F4C4D;
-}
-.cssda-badge-content{
+.cssda-badge-content {
   position: absolute;
   width: 90px;
   height: 90px;
@@ -60,44 +67,19 @@
   -moz-transition: all .12s cubic-bezier(.615,.19,.305,.91);
   transition: all .12s cubic-bezier(.615,.19,.305,.91);
 }
-#cssda-badge:hover .cssda-badge-content{
+#cssda-badge:hover .cssda-badge-content {
   -webkit-transform: rotate(360deg);
   -moz-transform: rotate(360deg);
   transform: rotate(360deg);
 }
-#cssda-badge:hover #cssda-badge-logo{
+#cssda-badge:hover #cssda-badge-logo {
   -webkit-transform: scale(1.1);
   -moz-transform: scale(1.1);
   transform: scale(1.1);
 }
-@media only screen and (max-width: 700px) {
-  #cssda-badge{
-    /* monogram responsive position here */
-    top: calc(50% - 30px);
-    left: calc(50% - 30px);
-    /* ––– */
-    width: 60px;
-    height: 60px;
-  }
-  #cssda-badge svg {
-    width: 60px;
-    height: 60px;
-  }
-  #cssda-badge-logo{
-    -webkit-transform: scale(1.35);
-    -moz-transform: scale(1.35);
-    transform: scale(1.35);
-  }
-  #cssda-badge:hover #cssda-badge-logo{
-    -webkit-transform: scale(1.5);
-    -moz-transform: scale(1.5);
-    transform: scale(1.5);
-  }
-  #cssda-badge-title{
-    display: none;
-  }
-  #cssda-badge-award{
-    display: none;
+@media only screen and (max-width: 1280px) {
+  #awards {
+    display: none
   }
 }
 
