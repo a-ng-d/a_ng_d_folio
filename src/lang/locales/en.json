@@ -329,7 +329,7 @@
       "shortDescription": "Accessible color palettes with consistant lightness with Figma",
       "description": "Figma is an UX tool, using diagrams to build user experiences, interfaces, prototypes, illustrations, etc. The tool can be extended with a plugin system. Figma tends to be the leader of UX tools market because of its inclusive and powerful business model. So, Figma is still the most exciting ux tool. By reading this article (Accessible Palette: stop using HSL for color systems), I noticed there is not any plugin on Figma to help build accessible color systems for UI. The opportunity is to develop a tool to create, edit and deploy color palettes.",
       "misc": {
-        "date": "{'2022'}@:global.separator{'Monthly release'}@:global.separator{'V12'}",
+        "date": "{'2022'}@:global.separator{'Monthly release'}@:global.separator{'V14'}",
         "objectives": "Creating UI color palettes with consistant lightness and contrast, Updating and deploying colors with ease to the team library",
         "roles": "Developing the scripts to create/edit/deploy color palette (React)",
         "type": "@:global.type.side"
@@ -340,21 +340,38 @@
         "paragraph-2": "It works like the HSL (Hue-Saturation-Lightness) color model. The HSL is simple to use to build a color system, because the lightness can just be changed to create variants. The LCH too, but the Chroma, and the Hue are automatically adjusted to keep the colors within the sRGB gamut."
       },
       "part-1": {
-        "title": "How does it work?",
-        "paragraph-1": "The workflow is quite simple: Select some starting colors on the canvas, edit the lightness scale, then create the color palette.",
-        "paragraph-2": "Then, edit the lightness scale (it will tweak every color) and add them to the local styles.",
-        "paragraph-3": "Finally, adjust the starting colors and update the local styles to maintain the color system with ease."
+        "title": "Create the palette from scratch (or with a bit of help)",
+        "paragraph-1": "Select the colors you want to spread into shades directly from your document's canvas",
+        "paragraph-2": "Let you guide by the existing pre-configured stops (Material Design, Atlassian…) or make it your own way",
+        "paragraph-3": "Every shade from the starting colors are gathered within a calibrated palette compliant with WCAG guidelines"
+      },
+      "part-2": {
+        "title": "Control the palette with WYSIWYG",
+        "paragraph-1": "Slide the stops to change the lightness of every color, and keep a palette with consistant contrasts",
+        "paragraph-2": "Rename, add, remove, change, reorder each color… Keep a full control of the color palette",
+        "paragraph-3": "WCAG 2.0 scores help you build the most respectful palette for accessibility"
+      },
+      "part-3": {
+        "title": "Deploy and spread the color standard",
+        "paragraph-1": "Add with a single click every color of the palette to the document local styles",
+        "paragraph-2": "Publish the local styles and spread standardized color to your team",
+        "paragraph-3": "Export the palette to a JSON document or CSS Custom Properties"
       },
       "takeaways": {
         "takeaway-1": {
-          "description": "If you want to test the plugin, you can install it on your Figma account from the plugin page.",
-          "linkLabel": "Install the plugin",
+          "description": "If you want to test the plugin, you can run it on your Figma account from the plugin page.",
+          "linkLabel": "Try it out",
           "alt": "External link to the plugin page on Figma Community"
         },
         "takeaway-2": {
           "description": "UI Color Palette is an open-source project. You can take a glance at the source code on Github.",
           "linkLabel": "Watch the repository",
           "alt": "External link to the plugin repository on Github"
+        },
+        "takeaway-3": {
+          "description": "To learn more about UI Color Palette, you may watch the website.",
+          "linkLabel": "Consult the website",
+          "alt": "External link to the plugin website"
         }
       }
     },

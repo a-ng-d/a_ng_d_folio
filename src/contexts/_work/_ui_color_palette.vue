@@ -6,7 +6,7 @@
   import ContentContainer from '@/components/patterns/ContentContainer.vue'
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
-  import { Heart, MessageCircle, Download, Figma, Github } from 'lucide-vue-next'
+  import { Heart, MessageCircle, Download, Figma, Github, Pointer } from 'lucide-vue-next'
   import { assets } from '@/utilities/assets'
 
   export default defineComponent({
@@ -22,7 +22,8 @@
       MessageCircle,
       Download,
       Figma,
-      Github
+      Github,
+      Pointer
     },
     props: {
       scrollProgress: {
@@ -66,7 +67,13 @@
       :theme="theme"
     >
       <template #left>
-          <p>{{ $t('work._ui_color_palette.part-1.paragraph-1') }}</p>
+        <p>
+          <ol>
+            <li>{{ $t('work._ui_color_palette.part-1.paragraph-1') }}</li>
+            <li>{{ $t('work._ui_color_palette.part-1.paragraph-2') }}</li>
+            <li>{{ $t('work._ui_color_palette.part-1.paragraph-3') }}</li>
+          </ol>
+        </p>
       </template>
       <template #right>
         <Figure
@@ -78,7 +85,10 @@
         </Figure>
       </template>
     </TwoColumns>
+  </section>
+  <section>
     <TwoColumns
+      :title="$t('work._ui_color_palette.part-2.title')"
       class="col-2--invert"
       center
       :theme="theme"
@@ -93,15 +103,30 @@
         </Figure>
       </template>
       <template #right>
-        <p>{{ $t('work._ui_color_palette.part-1.paragraph-2') }}</p>
+        <p>
+          <ol>
+            <li>{{ $t('work._ui_color_palette.part-2.paragraph-1') }}</li>
+            <li>{{ $t('work._ui_color_palette.part-2.paragraph-2') }}</li>
+            <li>{{ $t('work._ui_color_palette.part-2.paragraph-3') }}</li>
+          </ol>
+        </p>
       </template>
     </TwoColumns>
+  </section>
+  <section>
     <TwoColumns
+      :title="$t('work._ui_color_palette.part-3.title')"
       center
       :theme="theme"
     >
       <template #left>
-          <p>{{ $t('work._ui_color_palette.part-1.paragraph-3') }}</p>
+        <p>
+          <ol>
+            <li>{{ $t('work._ui_color_palette.part-3.paragraph-1') }}</li>
+            <li>{{ $t('work._ui_color_palette.part-3.paragraph-2') }}</li>
+            <li>{{ $t('work._ui_color_palette.part-3.paragraph-3') }}</li>
+          </ol>
+        </p>
       </template>
       <template #right>
         <Figure
@@ -132,7 +157,7 @@
       </template>
       <template #middle>
         <ContentContainer
-          title="14K"
+          title="+18K"
           :description="$t('global.installations')"
           :theme="theme"
         >
@@ -143,7 +168,7 @@
       </template>
       <template #right>
         <ContentContainer
-          title="130"
+          title="+160"
           :description="$t('global.like')"
           :theme="theme"
         >
@@ -180,6 +205,17 @@
         >
           <template #icon>
             <Github :size="48" />
+          </template>
+        </LinkContainer>
+        <LinkContainer
+          :description="$t('work._ui_color_palette.takeaways.takeaway-3.description')"
+          :cta="$t('work._ui_color_palette.takeaways.takeaway-3.linkLabel')"
+          href="https://www.ui-color-palette.com"
+          :alt="$t('work._ui_color_palette.takeaways.takeaway-3.alt')"
+          :theme="theme"
+        >
+          <template #icon>
+            <Pointer :size="48" />
           </template>
         </LinkContainer>
       </template>
