@@ -182,7 +182,7 @@
         // Sketch
         sk.setup = () => {
 
-          sk.createCanvas(this.$el.clientWidth, this.$el.clientHeight).parent(this.uuid)
+          sk.createCanvas(this.$el.clientWidth + 8, this.$el.clientHeight + 8).parent(this.uuid)
           sk.colorMode(sk.HSL)
           sk.rectMode(sk.CENTER)
 
@@ -266,4 +266,7 @@
     pointer-events: none
     z-index: 3
     position: absolute
+    display: flex
+    justify-content: center
+    align-items: center
 </style>
