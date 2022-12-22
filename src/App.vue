@@ -332,6 +332,13 @@
       --font-size-relative: 8vw
       --header-height-size: var(--sizing-xl-700)
       --logotype-size: var(--sizing-xl-500)
+  
+  @include device.smaller-screen
+    :root
+      --font-size-ref: 0.625px !important
+      --font-size-relative: 8vw
+      --header-height-size: var(--sizing-xl-700)
+      --logotype-size: var(--sizing-xl-500)
 
   @include device.smartphone
     :root
