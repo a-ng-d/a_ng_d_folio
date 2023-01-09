@@ -275,7 +275,8 @@
             start: number,
             isGlitched: boolean,
             isStrokedOnly: boolean,
-            alpha: number
+            alpha: number,
+            beta: number
           }
           backup: {
             rows: Array<Row>
@@ -300,7 +301,8 @@
               start: sk.height,
               isGlitched: false,
               isStrokedOnly: true,
-              alpha: 0
+              alpha: 0,
+              beta: 1
             }
             for (let i = 1 ; i < this.props.rows ; i++)
               this.params.rows.push({
@@ -335,7 +337,10 @@
             this.params.rows = this.backup.rows
           }
 
-          wireframe = () => this.params.isStrokedOnly = true
+          wireframe = () => {
+            this.params.isStrokedOnly = true
+            this.params.alpha = this.params.beta
+          }
 
           unwireframe = () => this.params.isStrokedOnly = false
 
@@ -345,10 +350,15 @@
             else
               this.position.z = this.props.zRange[0]
 
-            if (this.position.x <= limitX * 4)
-              this.position.x += speed / 2
+            if (this.position.x <= limitX * 2)
+              this.position.x += speed * 2
             else
-              this.position.x = -limitX * 4
+              this.position.x = -limitX * 2
+            
+            if (this.position.x >= -limitX * 2 && this.position.x <= -limitX)
+              this.params.beta = doMap(this.position.x, -limitX * 2, -limitX, 0, 1)
+            else if (this.position.x >= limitX && this.position.x <= limitX * 2)
+              this.params.beta = doMap(this.position.x, limitX, limitX * 2, 1, 0)
 
             if (sk.millis() > this.params.order * this.params.gap)
               this.params.start = sk.lerp(this.params.start, this.position.y, this.params.speed)
@@ -364,7 +374,7 @@
             if (this.params.isStrokedOnly)
               this.params.alpha = sk.lerp(this.params.alpha, 0, this.params.speed * .5)
             else
-              this.params.alpha = sk.lerp(this.params.alpha, 1, this.params.speed * .5)
+              this.params.alpha = sk.lerp(this.params.alpha, this.params.beta, this.params.speed * .5)
 
             this.draw()
           }
@@ -386,9 +396,9 @@
 
             sk.push()
               sk.translate(this.position.x, this.params.start, this.position.z)
-              sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness(), this.params.alpha)
+              sk.fill(this.deepHue(), this.deepSaturation(), this.deepLightness(), this.params.isStrokedOnly ? this.params.alpha : this.params.alpha < .98 ? this.params.alpha : this.params.beta)
               sk.stroke(this.deepHue(), this.deepSaturation(), this.deepLightness())
-              sk.strokeWeight(1)
+              sk.strokeWeight(this.params.beta)
               this.params.isGlitched ? sk.fill(randomColor.hue, randomColor.saturation, randomColor.lightness) : null
               this.params.rows.forEach(row => {
                 this.drow(row.x, offsetY, row.width, row.height)
@@ -670,7 +680,7 @@
           // particles setting
           for (let i = 0 ; i < mNumber ; i++)
             mountains.push(new Mountain({
-              widthRange: [sk.width * 10, sk.width * 12],
+              widthRange: [sk.width * 14, sk.width * 16],
               heightRange: [-sk.height * 20, -sk.height * 22],
               x: twoRangesRandom(-limitX, -sk.width, sk.width, limitX),
               y: sk.height * 10,
@@ -682,7 +692,7 @@
             clouds.push(new Cloud({
               widthRange: [sk.width, sk.width * 2],
               heightRange: [-sk.height * .1, -sk.height * .15],
-              x: random(-limitX, limitX),
+              x: random(-limitX * 2, limitX * 2),
               y: random(-sk.height * 1, -sk.height * 2),
               zRange: [-limitZ, 0],
               rows: sk.int(random(3, 5)),
