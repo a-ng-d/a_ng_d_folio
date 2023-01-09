@@ -786,6 +786,11 @@
         "label": "Vite.js as frontend build tool by Evan You",
         "href": "https://vitejs.dev",
         "alt": "External link to the Vite.js website"
+      },
+      "link-3": {
+        "label": "p5.js as drawing canvas engine by Qianqian Ye",
+        "href": "https://p5js.org",
+        "alt": "External link to the p5.js website"
       }
     },
     "hosting": {
