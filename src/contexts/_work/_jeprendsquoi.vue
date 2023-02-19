@@ -307,7 +307,7 @@
         <LinkContainer
           :description="$t('work._jeprendsquoi.takeaways.takeaway-1.description')"
           :cta="$t('work._jeprendsquoi.takeaways.takeaway-1.linkLabel')"
-          href="https://testflight.apple.com/join/AmEZ2igV"
+          href="https://drive.google.com/file/d/1Tx5d1EZLWERLJ2398BEAQsPycZJKwhTm/view?usp=share_link"
           :alt="$t('work._jeprendsquoi.takeaways.takeaway-1.alt')"
           :theme="theme"
         >
@@ -318,7 +318,7 @@
         <LinkContainer
           :description="$t('work._jeprendsquoi.takeaways.takeaway-2.description')"
           :cta="$t('work._jeprendsquoi.takeaways.takeaway-2.linkLabel')"
-          href="https://testflight.apple.com/join/AmEZ2igV"
+          href="https://testflight.apple.com/join/MWCqjMMu"
           :alt="$t('work._jeprendsquoi.takeaways.takeaway-2.alt')"
           :theme="theme"
         >
