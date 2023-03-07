@@ -351,7 +351,7 @@
               this.position.z = this.props.zRange[0]
 
             if (this.position.x <= limitX * 2)
-              this.position.x += speed * 2
+              this.position.x += speed
             else
               this.position.x = -limitX * 2
             
