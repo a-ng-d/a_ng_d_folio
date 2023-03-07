@@ -38,6 +38,7 @@
         numberOfProjects: this.getProjects(this.$router.options.routes).length as number,
         isQuickMenu: false as boolean,
         previousPath: '' as string,
+        isUIHere: true as boolean,
         theme: 'DEFAULT' as string
       }
     },
@@ -210,6 +211,7 @@
       :activeProjectPosition="activeProjectPosition"
       :goback="isQuickMenu"
       :previousPath="previousPath"
+      :ui="isUIHere"
       :theme="theme"
     />
   </Transition>
@@ -233,6 +235,7 @@
         :scrollProgress="scrollProgress"
         :scrollLimit="pageHeight - viewHeight"
         :filter="filter"
+        :ui="isUIHere"
         :theme="theme"
         @activeProjectPosition="activeProjectPosition = $event"
         @activeProjectBackground="filter = $event"
@@ -241,6 +244,7 @@
         @quality="quality = $event"
         @glitch="isGlitched = $event"
         @filter="filter = $event"
+        @isUIHere="isUIHere = $event"
         @theme="theme = $event"
       />
     </Transition>

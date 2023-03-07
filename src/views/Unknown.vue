@@ -25,6 +25,10 @@
     },
     props: {
       filter: Object,
+      ui: {
+        type: Boolean,
+        default: true
+      },
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -116,20 +120,18 @@
           }
         ] as Array<Option>,
         interval: 0,
-        currentInterval: 0,
-        isUIHere: 1
+        currentInterval: 0
       }
     },
     methods: {
       mouseOffsetCatching() {
         window.onmousemove = (e: MouseEvent) => {
           this.currentInterval = e.clientX - e.clientY
-          this.isUIHere = 1
-          console.log("ok")
+          this.$emit('isUIHere', true)
         } 
       },
       fadeOutUI() {
-        this.interval === this.currentInterval ? this.isUIHere = 0 : this.isUIHere = 1
+        this.interval === this.currentInterval ? this.$emit('isUIHere', false) : this.$emit('isUIHere', true)
         this.interval = this.currentInterval
       }
     },
@@ -231,7 +233,7 @@
     grid-area: main
     height: 10000rem
     transition: var(--slow-transition)
-    opacity: v-bind("isUIHere")
+    opacity: v-bind("ui ? 1 : 0")
 
   .controler
     display: flex

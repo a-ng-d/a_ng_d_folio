@@ -44,6 +44,10 @@
         type: String,
         default: '/'
       },
+      ui: {
+        type: Boolean,
+        default: true
+      },
       theme: {
         type: String,
         default: 'DEFAULT'
@@ -189,6 +193,9 @@
 
 <style scoped lang="sass">
   .main-menu
+    transition: var(--slow-transition)
+    opacity: v-bind("ui ? 1 : 0")
+      
     h6
       text-align: right
       line-height: 1.4
