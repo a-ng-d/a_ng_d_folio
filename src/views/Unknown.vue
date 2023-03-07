@@ -119,8 +119,9 @@
             isActive: false
           }
         ] as Array<Option>,
-        interval: 0,
-        currentInterval: 0
+        interval: 0 as number,
+        currentInterval: 0 as number,
+        fadeInterval: 0
       }
     },
     methods: {
@@ -130,6 +131,20 @@
           this.$emit('isUIHere', true)
         } 
       },
+      clickCatching() {
+        window.onclick = (e: MouseEvent) => {
+          this.$emit('isUIHere', true)
+          clearInterval(this.fadeInterval)
+          this.fadeInterval = setInterval(this.fadeOutUI, 4000)
+        } 
+      },
+      touchCatching() {
+        window.ontouchstart = (e: TouchEvent) => {
+          this.$emit('isUIHere', true)
+          clearInterval(this.fadeInterval)
+          this.fadeInterval = setInterval(this.fadeOutUI, 4000)
+        } 
+      },
       fadeOutUI() {
         this.interval === this.currentInterval ? this.$emit('isUIHere', false) : this.$emit('isUIHere', true)
         this.interval = this.currentInterval
@@ -137,10 +152,14 @@
     },
     mounted: function() {
       this.mouseOffsetCatching()
-      setInterval(this.fadeOutUI, 2000)
+      this.clickCatching()
+      this.touchCatching()
+      this.fadeInterval = setInterval(this.fadeOutUI, 4000)
     },
     unmounted: function() {
       window.onmousemove = null
+      window.onclick = null
+      clearInterval(this.fadeInterval)
     }
   })
 </script>
