@@ -114,8 +114,31 @@
             action: () => this.$emit('filter', filters.nightly),
             isActive: false
           }
-        ] as Array<Option>
+        ] as Array<Option>,
+        interval: 0,
+        currentInterval: 0,
+        isUIHere: 1
       }
+    },
+    methods: {
+      mouseOffsetCatching() {
+        window.onmousemove = (e: MouseEvent) => {
+          this.currentInterval = e.clientX - e.clientY
+          this.isUIHere = 1
+          console.log("ok")
+        } 
+      },
+      fadeOutUI() {
+        this.interval === this.currentInterval ? this.isUIHere = 0 : this.isUIHere = 1
+        this.interval = this.currentInterval
+      }
+    },
+    mounted: function() {
+      this.mouseOffsetCatching()
+      setInterval(this.fadeOutUI, 2000)
+    },
+    unmounted: function() {
+      window.onmousemove = null
     }
   })
 </script>
@@ -207,6 +230,8 @@
   .unknown
     grid-area: main
     height: 10000rem
+    transition: var(--slow-transition)
+    opacity: v-bind("isUIHere")
 
   .controler
     display: flex
