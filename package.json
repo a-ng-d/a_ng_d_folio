@@ -16,10 +16,7 @@
     "preview": "vite preview --port 5050",
     "typecheck": "vue-tsc --noEmit",
     "typecheck:watch": "vue-tsc --noEmit --watch",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "major": "git add . && git commit -m 'Upgrade to major version' && npm version major",
-    "minor": "git add . && git commit -m 'Upgrade to minor version' && npm version minor",
-    "patch": "git add . && git commit -m 'Upgrade to patch version' && npm version patch"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
     "lucide-vue-next": "^0.84.0",
