@@ -7,7 +7,7 @@
 
 #awards {
   position: fixed;
-  z-index: 999;
+  z-index: 98;
   bottom: var(--layout-column-gap);
   right: 0;
   display: flex;
