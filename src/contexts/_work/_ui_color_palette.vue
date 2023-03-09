@@ -42,7 +42,10 @@
     data: function() {
       return {
         isFullScreen: false as boolean,
-        assets: assets
+        assets: assets,
+        likes: 'Loading…',
+        comments: 'Loading…',
+        runs: 'Loading…'
       }
     }
   })
@@ -146,7 +149,7 @@
     >
       <template #left>
         <ContentContainer
-          title="6"
+          :title="comments"
           :description="$t('global.comments')"
           :theme="theme"
         >
@@ -157,7 +160,7 @@
       </template>
       <template #middle>
         <ContentContainer
-          title="+18K"
+          :title="runs"
           :description="$t('global.installations')"
           :theme="theme"
         >
@@ -168,7 +171,7 @@
       </template>
       <template #right>
         <ContentContainer
-          title="+160"
+          :title="likes"
           :description="$t('global.like')"
           :theme="theme"
         >
