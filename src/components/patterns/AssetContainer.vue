@@ -107,10 +107,10 @@
   .container
     width: v-bind("isMagnified ? assetWidth : '30vh'")
     padding: var(--spacing-s-100)
-    cursor: zoom-in
+    // cursor: zoom-in
 
     &--magnified
-      cursor: zoom-out
+      // cursor: zoom-out
 
   .asset-container
     &__content

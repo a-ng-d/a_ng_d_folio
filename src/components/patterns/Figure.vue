@@ -141,16 +141,16 @@
         &.v-lazy-image.v-lazy-image-loaded
           transform: translateY(0)
           opacity: 1
-          cursor: zoom-in
+          // cursor: zoom-in
 
       &--magnified
         transform: scale(v-bind("maxScale")) translate(v-bind("`${pathX}px`"), v-bind("`${pathY}px`"))
         z-index: 5
-        cursor: zoom-out
+        // cursor: zoom-out
         overflow: visible
 
         .v-lazy-image-loaded
-          cursor: zoom-out
+          // cursor: zoom-out
 
     &__caption
       z-index: 1

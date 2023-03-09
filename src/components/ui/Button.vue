@@ -199,6 +199,7 @@
     box-shadow: 0 0 0 var(--border-size) var(--outline-color)
     overflow: hidden
     transition: var(--simple-transition)
+    // cursor: pointer
 
     &:before
       content: ''
