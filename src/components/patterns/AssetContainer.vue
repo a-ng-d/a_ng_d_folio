@@ -65,7 +65,7 @@
     @keyup.enter="magnifier"
     @focus="store.isFocus = true"
     @blur="store.isFocus = false"
-    class="container"
+    class="container card"
     :class="isMagnified ? 'container--magnified' : ''"
     isInteractive
   >
