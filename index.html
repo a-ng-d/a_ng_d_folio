@@ -70,11 +70,14 @@
         ) cursor.style.transform = 'scale(1.4)'
         else cursor.style.transform = 'scale(1)'
       }
-      window.onmousedown = (e) => {
+      window.onmousedown = () => {
         cursor.style.transform = 'scale(.8)'
       }
-      window.onmouseup = (e) => {
+      window.onmouseup = () => {
         cursor.style.transform = 'scale(1)'
+      }
+      window.onmouseout = () => {
+        cursor.style.visibility = 'hidden'
       }
     </script>
     <div id="awards">
