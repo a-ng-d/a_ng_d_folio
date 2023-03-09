@@ -10,9 +10,3 @@ body, a, svg, button {
   visibility: hidden;
   transition: transform 400ms cubic-bezier(.86, .12, .12, .86);
 }
-
-@media only screen and (max-width: 1280px) {
-  #cursor {
-    display: none
-  }
-}
