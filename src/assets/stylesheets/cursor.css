@@ -1,0 +1,18 @@
+body, a, svg, button {
+  cursor: none
+}
+
+#cursor {
+  position: fixed;
+  z-index: 99;
+  pointer-events: none;
+  transform-origin: 50%;
+  visibility: hidden;
+  transition: transform 400ms cubic-bezier(.86, .12, .12, .86);
+}
+
+@media only screen and (max-width: 1280px) {
+  #cursor {
+    display: none
+  }
+}

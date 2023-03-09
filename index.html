@@ -14,10 +14,16 @@
     <meta property="og:image" content="https://an.gd/share-cover.png" />
     <link href="/src/assets/stylesheets/loader.css" rel="stylesheet" />
     <link href="/src/assets/stylesheets/awards.css" rel="stylesheet" />
+    <link href="/src/assets/stylesheets/cursor.css" rel="stylesheet" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
     <script src='https://unpkg.com/nprogress@0.2.0/nprogress.js'></script>
   </head>
   <body>
+    <svg width="76" height="72" viewBox="0 0 76 72" fill="none" xmlns="http://www.w3.org/2000/svg" id="cursor">
+      <path d="M37.9995 4.78972C49.6251 -1.27639 64.0781 2.84422 70.6982 14.2976C75.2774 22.2201 74.9408 31.6301 70.6335 39.0036C70.9552 47.8111 66.5121 56.4999 58.3384 61.2137C52.0365 64.848 46.0012 68.9983 38.4485 69.1313C30.5185 69.2805 24.2435 65.0099 17.6616 61.2142C9.48795 56.5005 5.04483 47.8116 5.36646 39.0041C1.05918 31.6306 0.72259 22.2206 5.3018 14.2982C11.9217 2.8451 26.374 -1.2756 37.9995 4.78972Z" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M37.9995 4.78972C49.6251 -1.27639 64.0781 2.84422 70.6982 14.2976C75.2774 22.2201 74.9408 31.6301 70.6335 39.0036C70.9552 47.8111 66.5121 56.4999 58.3384 61.2137C52.0365 64.848 46.0012 68.9983 38.4485 69.1313C30.5185 69.2805 24.2435 65.0099 17.6616 61.2142C9.48795 56.5005 5.04483 47.8116 5.36646 39.0041C1.05918 31.6306 0.72259 22.2206 5.3018 14.2982C11.9217 2.8451 26.374 -1.2756 37.9995 4.78972Z" stroke="#4F4C4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M49.8038 27.4599C51.0219 29.5699 50.299 32.2679 48.1891 33.4861L45.9844 34.759C46.622 35.1327 47.1742 35.672 47.5701 36.3577C48.7883 38.4677 48.0654 41.1657 45.9555 42.3839L40.607 45.472C39.9341 45.8605 39.2014 46.0515 38.4759 46.0632C37.6984 46.0791 36.9067 45.8896 36.184 45.4723L30.8355 42.3843C28.7256 41.1661 28.0027 38.4681 29.2209 36.3581C29.6168 35.6723 30.169 35.1331 30.8066 34.7593L28.6019 33.4864C26.492 32.2682 25.7691 29.5702 26.9873 27.4603C28.2054 25.3503 30.9034 24.6273 33.0133 25.8455C34.8071 26.8812 36.6104 27.902 38.3952 28.953C40.1801 27.9017 41.9837 26.881 43.7777 25.8452C45.8876 24.627 48.5856 25.3499 49.8038 27.4599Z" fill="white" stroke="#4F4C4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>      
     <div id="loader" class="loader--enter">
       <div id="animation"></div>
       <div id="progress">
@@ -43,6 +49,33 @@
         autoplay: true,
         path: '/animations/_loader/data.json'
       })
+    </script>
+    <script type="text/javascript">
+      const cursor = document.getElementById('cursor')
+      window.onmousemove = (e) => {
+        e.preventDefault()
+        cursor.style.left = (e.clientX - (cursor.clientWidth / 2)) + 'px'
+        cursor.style.top = (e.clientY - (cursor.clientHeight / 2)) + 'px'
+        cursor.style.visibility = 'visible'
+        if (
+          e.target.closest('.button') != null ||
+          e.target.closest('.rich-external-link') != null ||
+          e.target.closest('.external-link') != null ||
+          e.target.closest('.internal-link') != null ||
+          e.target.closest('#logotype') != null ||
+          e.target.closest('#cssda') != null ||
+          e.target.closest('#awwwards') != null ||
+          e.target.closest('.figure') != null ||
+          e.target.closest('.card') != null
+        ) cursor.style.transform = 'scale(1.4)'
+        else cursor.style.transform = 'scale(1)'
+      }
+      window.onmousedown = (e) => {
+        cursor.style.transform = 'scale(.8)'
+      }
+      window.onmouseup = (e) => {
+        cursor.style.transform = 'scale(1)'
+      }
     </script>
     <div id="awards">
       <a id="cssda" href="https://www.cssdesignawards.com/sites/portfolio-of-a_ng_d/42538/" target="_blank">  
