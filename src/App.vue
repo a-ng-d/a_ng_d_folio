@@ -199,7 +199,7 @@
 <template>
   <!--Awards-->
   <Transition name="pull-left" style="--delay: var(--duration-turtoise)" appear>
-    <Awards />
+    <Awards v-if="store.device === 'DESKTOP'" />
   </Transition>
   
   <!--Transition-->

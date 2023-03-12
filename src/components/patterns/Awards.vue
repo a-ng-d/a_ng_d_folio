@@ -64,8 +64,6 @@
 </template>
 
 <style scoped lang="sass">
-  @use '@/assets/stylesheets/mixins' as device
-
   #awards
     position: fixed
     z-index: 98
@@ -132,8 +130,4 @@
     -webkit-transform: scale(1.1)
     -moz-transform: scale(1.1)
     transform: scale(1.1)
-  
-  @include device.mobile
-    #awards
-      display: none
 </style>
