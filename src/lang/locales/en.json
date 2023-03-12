@@ -63,7 +63,7 @@
     "objective": "Objective",
     "role": "Role",
     "success": "Success criteria",
-    "like": "Like",
+    "like": "Likes",
     "comments": "Comments",
     "installations": "Unique runs",
     "credit": "Credit",
@@ -162,7 +162,7 @@
         "creativeTechnologist": {
           "start": "2021",
           "end": "2023",
-          "title": "Product Designer + Creative Technologist"
+          "title": "Lead Product Designer + Creative Technologist"
         }
       }
     },
