@@ -69,10 +69,14 @@
         ) cursor.style.transform = 'scale(1.4)'
         else cursor.style.transform = 'scale(1)'
       }
-      window.onmousedown = () => {
-        cursor.style.transform = 'scale(.8)'
-      }
-      window.onmouseup = () => {
+      window.onmousedown = () => cursor.style.transform = 'scale(.8)'
+      window.onmouseup = () => cursor.style.transform = 'scale(1)'
+      window.onmouseout = (e) => {
+        if (e.clientX <= 0 || e.clientX >= window.innerWidth)
+          cursor.style.transform = 'scale(0)'
+        else if (e.clientY <= 0 || e.clientY >= window.innerHeight)
+          cursor.style.transform = 'scale(0)'
+        else 
         cursor.style.transform = 'scale(1)'
       }
       window.onmouseout = () => {
