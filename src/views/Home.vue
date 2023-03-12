@@ -4,7 +4,16 @@
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import ScrollingText from '@/components/ui/ScrollingText.vue'
-  import { ArrowLeft, ArrowDown, ArrowRight, Heart, Briefcase, FlaskConical, Mail, User } from 'lucide-vue-next'
+  import {
+    ArrowLeft,
+    ArrowDown,
+    ArrowRight,
+    Heart,
+    Briefcase,
+    FlaskConical,
+    Mail,
+    User,
+  } from 'lucide-vue-next'
 
   export default defineComponent({
     name: 'Home',
@@ -19,19 +28,19 @@
       Briefcase,
       FlaskConical,
       Mail,
-      User
+      User,
     },
     props: {
       theme: {
         type: String,
-        default: 'DEFAULT'
+        default: 'DEFAULT',
+      },
+    },
+    data: function () {
+      return {
+        store,
       }
     },
-    data: function() {
-      return {
-        store
-      }
-    }
   })
 </script>
 
@@ -39,7 +48,13 @@
   <main class="page">
     <section class="jumbotron">
       <div class="jumbotron__actions">
-        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * 2.5))" appear>
+        <Transition
+          name="slide-up"
+          style="
+            --delay: calc(var(--delay-turtoise) + (var(--duration-step) * 2.5));
+          "
+          appear
+        >
           <Button
             type="secondary"
             :label="$t('home.contact')"
@@ -58,7 +73,13 @@
             </template>
           </Button>
         </Transition>
-        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * 3))" appear>
+        <Transition
+          name="slide-up"
+          style="
+            --delay: calc(var(--delay-turtoise) + (var(--duration-step) * 3));
+          "
+          appear
+        >
           <Button
             type="secondary"
             :label="$t('home.id')"
@@ -78,18 +99,31 @@
         </Transition>
       </div>
       <div class="jumbotron__content" :data-theme="theme">
-        <Transition name="slide-up" style="--delay: var(--delay-turtoise)" appear>
-          <ScrollingText
-            :label="$t('home.author')"
-            :theme="theme"
-          />
+        <Transition
+          name="slide-up"
+          style="--delay: var(--delay-turtoise)"
+          appear
+        >
+          <ScrollingText :label="$t('home.author')" :theme="theme" />
         </Transition>
-        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * .5))" appear>
-          <h4 class="jumbotron__baseline">{{ $t("home.baseline") }}</h4>
+        <Transition
+          name="slide-up"
+          style="
+            --delay: calc(var(--delay-turtoise) + (var(--duration-step) * 0.5));
+          "
+          appear
+        >
+          <h4 class="jumbotron__baseline">{{ $t('home.baseline') }}</h4>
         </Transition>
       </div>
       <div class="jumbotron__actions">
-        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * 1.5))" appear>
+        <Transition
+          name="slide-up"
+          style="
+            --delay: calc(var(--delay-turtoise) + (var(--duration-step) * 1.5));
+          "
+          appear
+        >
           <Button
             type="secondary"
             :label="$t('home.core')"
@@ -108,7 +142,13 @@
             </template>
           </Button>
         </Transition>
-        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * 1))" appear>
+        <Transition
+          name="slide-up"
+          style="
+            --delay: calc(var(--delay-turtoise) + (var(--duration-step) * 1));
+          "
+          appear
+        >
           <Button
             type="primary"
             :label="$t('home.work')"
@@ -126,7 +166,13 @@
             </template>
           </Button>
         </Transition>
-        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * 2))" appear>
+        <Transition
+          name="slide-up"
+          style="
+            --delay: calc(var(--delay-turtoise) + (var(--duration-step) * 2));
+          "
+          appear
+        >
           <Button
             type="secondary"
             :label="$t('home.lab')"
@@ -147,10 +193,7 @@
       </div>
     </section>
     <Transition name="pull-up" style="--delay: var(--delay-turtoise)" appear>
-      <Footer
-        alignment="L"
-        :theme="theme"
-      />
+      <Footer alignment="L" :theme="theme" />
     </Transition>
   </main>
 </template>

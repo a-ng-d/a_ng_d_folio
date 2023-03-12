@@ -6,29 +6,29 @@
     props: {
       label: {
         type: String,
-        required: true
+        required: true,
       },
       underlined: {
         type: Boolean,
-        default: false
+        default: false,
       },
       highlighted: {
         type: Boolean,
-        default: false
+        default: false,
       },
       small: {
         type: Boolean,
-        default: false
+        default: false,
       },
       large: {
         type: Boolean,
-        default: false
+        default: false,
       },
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
-    }
+        default: 'DEFAULT',
+      },
+    },
   })
 </script>
 
@@ -39,7 +39,9 @@
     :data-underlined="underlined"
     :data-highlighted="highlighted"
   >
-    <span :class="small ? 'small-label' : large ? 'enhanced-label' : 'label'">{{ label }}</span>
+    <span :class="small ? 'small-label' : large ? 'enhanced-label' : 'label'">{{
+      label
+    }}</span>
   </div>
 </template>
 

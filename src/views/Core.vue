@@ -13,19 +13,25 @@
       Button,
       ScrollingText,
       Footer,
-      SkipBack
+      SkipBack,
     },
     props: {
       scrollProgress: Number,
       scrollLimit: Number,
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
-    data: function() {
+    data: function () {
       return {
-        triggers: [] as Array<{ element: HTMLElement, top: number, bottom: number, middle: number, height: number }>,
+        triggers: [] as Array<{
+          element: HTMLElement
+          top: number
+          bottom: number
+          middle: number
+          height: number
+        }>,
         section: 'section-1' as string,
         perspective: 300 as number,
         translation: 0 as number,
@@ -40,32 +46,48 @@
           'facilitation',
           'communication',
           'human',
-          'extra'
-        ] as Array<string>
+          'extra',
+        ] as Array<string>,
       }
     },
     watch: {
       scrollProgress(to) {
-        to > 0 ? this.isScrollingTextStopped = true : this.isScrollingTextStopped = false
+        to > 0
+          ? (this.isScrollingTextStopped = true)
+          : (this.isScrollingTextStopped = false)
         this.triggers.forEach((trigger, index) => {
           if (to >= trigger.top && to < trigger.bottom) {
             const startScaling = index == 0 ? 0 : -this.perspective,
-                  endScaling = this.perspective
+              endScaling = this.perspective
             this.section = `section-${index + 1}`
-            this.translation = doMap(to, trigger.top, trigger.bottom, startScaling, endScaling)
-            to < trigger.middle ? index != 0 ? this.opacity = doMap(to, trigger.top, trigger.middle, 0, 1) : this.opacity = 1 : this.opacity = 1
+            this.translation = doMap(
+              to,
+              trigger.top,
+              trigger.bottom,
+              startScaling,
+              endScaling
+            )
+            to < trigger.middle
+              ? index != 0
+                ? (this.opacity = doMap(to, trigger.top, trigger.middle, 0, 1))
+                : (this.opacity = 1)
+              : (this.opacity = 1)
           }
         })
-      }
+      },
     },
     methods: {
       backToForeground() {
         let animateScroll: number, progress: number
 
-        this.time == 0 ? this.remainingScroll = (this.scrollLimit as number) - ((this.scrollLimit as number) - this.$el.scrollTop) : null
+        this.time == 0
+          ? (this.remainingScroll =
+              (this.scrollLimit as number) -
+              ((this.scrollLimit as number) - this.$el.scrollTop))
+          : null
 
         this.time += 10
-        progress = doMap(this.time, 0, (5 * 600), 1, 0)
+        progress = doMap(this.time, 0, 5 * 600, 1, 0)
         this.$el.scrollTop = this.remainingScroll * easeInOutQuart(progress)
 
         animateScroll = requestAnimationFrame(this.backToForeground)
@@ -74,20 +96,20 @@
           cancelAnimationFrame(animateScroll)
           this.time = progress = this.remainingScroll = 0
         }
-      }
+      },
     },
-    mounted: function() {
+    mounted: function () {
       const triggers: Array<HTMLElement> = this.$el.children[0].children
       triggers.forEach((trigger: HTMLElement) => {
         this.triggers.push({
           element: trigger,
           top: trigger.offsetTop,
           bottom: trigger.offsetTop + trigger.offsetHeight,
-          middle: trigger.offsetTop + trigger.offsetHeight * .5,
-          height: trigger.offsetHeight
+          middle: trigger.offsetTop + trigger.offsetHeight * 0.5,
+          height: trigger.offsetHeight,
         })
       })
-    }
+    },
   })
 </script>
 
@@ -95,16 +117,31 @@
   <main class="page">
     <article class="story" :data-theme="theme">
       <section class="story__intro">
-        <div class="story__content" :class="section === 'section-1' ? 'story__content--centered' : null">
+        <div
+          class="story__content"
+          :class="section === 'section-1' ? 'story__content--centered' : null"
+        >
           <div class="story__label story__label--intro">
-            <Transition name="slide-up" style="--delay: var(--delay-turtoise)" appear>
+            <Transition
+              name="slide-up"
+              style="--delay: var(--delay-turtoise)"
+              appear
+            >
               <ScrollingText
                 :label="$t('core.intro.title')"
                 :stopped="isScrollingTextStopped"
                 :theme="theme"
               />
             </Transition>
-            <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * .5))" appear>
+            <Transition
+              name="slide-up"
+              style="
+                --delay: calc(
+                  var(--delay-turtoise) + (var(--duration-step) * 0.5)
+                );
+              "
+              appear
+            >
               <ScrollingText
                 :label="$t('core.intro.subtitle')"
                 direction="RIGHT"
@@ -118,7 +155,14 @@
         </div>
       </section>
       <section v-for="(stop, index) in stops" class="story__stop" :key="stop">
-        <div class="story__content" :class="section === `section-${index + 2}` ? 'story__content--centered' : null">
+        <div
+          class="story__content"
+          :class="
+            section === `section-${index + 2}`
+              ? 'story__content--centered'
+              : null
+          "
+        >
           <div class="story__label story__label--order-1">
             <h1 data-highlighted="true">{{ $t(`core.${stop}.title`) }}</h1>
           </div>
@@ -137,7 +181,10 @@
         </div>
       </section>
       <section class="story__outro">
-        <div class="story__content" :class="section === 'section-9' ? 'story__content--centered' : null">
+        <div
+          class="story__content"
+          :class="section === 'section-9' ? 'story__content--centered' : null"
+        >
           <div class="story__label story__label--outro">
             <h1>{{ $t('core.outro.title') }}</h1>
             <Button
@@ -157,10 +204,7 @@
       </section>
     </article>
     <Transition name="pull-up" style="--delay: var(--delay-turtoise)" appear>
-      <Footer
-        alignment="L"
-        :theme="theme"
-      />
+      <Footer alignment="L" :theme="theme" />
     </Transition>
   </main>
 </template>

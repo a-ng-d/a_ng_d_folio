@@ -6,36 +6,36 @@
   export default defineComponent({
     name: 'SimpleLink',
     components: {
-      Label
+      Label,
     },
     props: {
       label: {
         type: String,
-        required: true
+        required: true,
       },
       path: {
         type: String,
-        required: true
+        required: true,
       },
       alt: String,
       small: {
         type: Boolean,
-        default: false
+        default: false,
       },
       large: {
         type: Boolean,
-        default: false
+        default: false,
       },
       theme: {
         type: String,
-        default: 'DEFAULT'
+        default: 'DEFAULT',
+      },
+    },
+    data: function () {
+      return {
+        store,
       }
     },
-    data: function() {
-      return {
-        store
-      }
-    }
   })
 </script>
 

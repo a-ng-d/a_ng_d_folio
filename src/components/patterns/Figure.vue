@@ -5,93 +5,107 @@
   export default defineComponent({
     name: 'Figure',
     components: {
-      VLazyImage
+      VLazyImage,
     },
     props: {
       type: {
         type: String,
-        default: 'image'
+        default: 'image',
       },
       src: String,
       alt: String,
       caption: {
         type: Boolean,
-        default: false
+        default: false,
       },
       width: {
         type: Number,
-        required: true
+        required: true,
       },
       height: {
         type: Number,
-        required: true
+        required: true,
       },
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
     watch: {
       isMagnified(to) {
         to ? this.$emit('isMagnified', true) : this.$emit('isMagnified', false)
-      }
+      },
     },
-    data: function() {
+    data: function () {
       return {
         isMagnified: false as boolean,
         maxScale: 1 as number,
         pathX: 0 as number,
         pathY: 0 as number,
-        ratio: 0 as number
+        ratio: 0 as number,
       }
     },
     methods: {
       magnifier(e: Event) {
-        const
-          target: EventTarget | null = e.currentTarget,
-          classes: Array<string> = (target as HTMLElement).children[0].classList.value.split(' '),
+        const target: EventTarget | null = e.currentTarget,
+          classes: Array<string> = (
+            target as HTMLElement
+          ).children[0].classList.value.split(' '),
           x: number = (target as HTMLElement).getBoundingClientRect().x,
           y: number = (target as HTMLElement).getBoundingClientRect().y,
           w: number = (target as HTMLElement).getBoundingClientRect().width,
           h: number = (target as HTMLElement).getBoundingClientRect().height,
           refX: number = document.body.clientWidth / 2,
           refY: number = document.body.clientHeight / 2,
-          scaleX: number = (document.body.clientWidth - (document.body.clientWidth * .08)) / w,
-          scaleY: number = (document.body.clientHeight - (document.body.clientWidth * .16)) / h,
+          scaleX: number =
+            (document.body.clientWidth - document.body.clientWidth * 0.08) / w,
+          scaleY: number =
+            (document.body.clientHeight - document.body.clientWidth * 0.16) / h,
           refScale: number = Math.min(scaleX, scaleY)
 
-        if (classes.includes('v-lazy-image-loaded') || classes.includes('v-lazy-video')) {
+        if (
+          classes.includes('v-lazy-image-loaded') ||
+          classes.includes('v-lazy-video')
+        ) {
           this.isMagnified = !this.isMagnified
           this.maxScale = refScale
-          this.pathX = (refX - x - (w / 2)) / refScale
-          this.pathY = (refY - y - (h / 2)) / refScale
+          this.pathX = (refX - x - w / 2) / refScale
+          this.pathY = (refY - y - h / 2) / refScale
         }
       },
       setRatio(parentWidth: number) {
         if (this.width != undefined || this.height != undefined)
           this.ratio = (parentWidth * this.height) / this.width
         else this.ratio = 640
-      }
+      },
     },
-    created: function() {
-      window.addEventListener("resize", () => this.setRatio(this.$el.children[0].offsetWidth))
+    created: function () {
+      window.addEventListener('resize', () =>
+        this.setRatio(this.$el.children[0].offsetWidth)
+      )
     },
-    mounted: function() {
+    mounted: function () {
       this.setRatio(this.$el.children[0].offsetWidth)
-    }
+    },
   })
 </script>
 
 <template>
   <figure class="figure" :data-theme="theme">
-    <div class="figure__asset"
+    <div
+      class="figure__asset"
       :class="isMagnified ? 'figure__asset--magnified' : null"
       @click="magnifier"
       @wheel.passive="isMagnified = false"
       @touchmove.passive="isMagnified = false"
     >
       <v-lazy-image v-if="type === 'image'" :src="src" :alt="alt" />
-      <video v-else-if="type === 'video'" class="v-lazy-video" preload="metadata" controls>
+      <video
+        v-else-if="type === 'video'"
+        class="v-lazy-video"
+        preload="metadata"
+        controls
+      >
         <source :src="src" type="video/mp4" />
       </video>
     </div>

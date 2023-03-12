@@ -5,42 +5,46 @@
   export default defineComponent({
     name: 'Header',
     components: {
-      Logotype
+      Logotype,
     },
     props: {
       background: {
         type: String,
-        default: 'var(--color-deep-black)'
+        default: 'var(--color-deep-black)',
       },
       scrollProgress: {
         type: Number,
-        default: 0
+        default: 0,
       },
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
-    data: function() {
+    data: function () {
       return {
-        isStuck: false as boolean
+        isStuck: false as boolean,
       }
     },
     watch: {
       scrollProgress() {
-        this.scrollProgress > 0 ? this.isStuck = true : this.isStuck = false
-      }
+        this.scrollProgress > 0 ? (this.isStuck = true) : (this.isStuck = false)
+      },
     },
     methods: {
       backHome() {
         (document.querySelector('#back-home') as HTMLElement).click()
-      }
-    }
+      },
+    },
   })
 </script>
 
 <template>
-  <header class="main-menu" :class="isStuck ? 'main-menu--stuck' : null" :data-theme="theme">
+  <header
+    class="main-menu"
+    :class="isStuck ? 'main-menu--stuck' : null"
+    :data-theme="theme"
+  >
     <div class="main-menu__left-part">
       <slot name="left-part"></slot>
     </div>
@@ -124,5 +128,4 @@
   .main-menu
     &__logotype:active
       transform: var(--active-scale)
-
 </style>

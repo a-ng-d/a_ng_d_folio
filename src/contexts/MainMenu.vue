@@ -17,45 +17,45 @@
       Navigation,
       Rocket,
       Home,
-      X
+      X,
     },
     props: {
       view: {
         type: String,
-        required: true
+        required: true,
       },
       scrollProgress: {
         type: Number,
-        default: 0
+        default: 0,
       },
       projects: {
         type: Array,
-        required: true
+        required: true,
       },
       activeProjectPosition: {
         type: Number,
-        required: true
+        required: true,
       },
       goback: {
         type: Boolean,
-        default: false
+        default: false,
       },
       previousPath: {
         type: String,
-        default: '/'
+        default: '/',
       },
       ui: {
         type: Boolean,
-        default: true
+        default: true,
       },
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
-    data: function() {
+    data: function () {
       return {
-        store
+        store,
       }
     },
     methods: {
@@ -63,17 +63,32 @@
         const actions: { [key: string]: string } = {
           SHORT: 'var(--color-soft-wind)',
           CORE: 'var(--color-candy-floss)',
-          PROJECT: this.theme === 'DEFAULT' ? 'var(--color-cream)' : 'var(--color-soil)'
+          PROJECT:
+            this.theme === 'DEFAULT'
+              ? 'var(--color-cream)'
+              : 'var(--color-soil)',
         }
         return actions[view] ?? 'transparent'
       },
       previousProject() {
-        return (this.projects[(this.activeProjectPosition as number) - 1 >= 0 ? (this.activeProjectPosition as unknown as number) - 1 : this.projects.length - 1] as Route).path
+        return (
+          this.projects[
+            (this.activeProjectPosition as number) - 1 >= 0
+              ? (this.activeProjectPosition as unknown as number) - 1
+              : this.projects.length - 1
+          ] as Route
+        ).path
       },
       nextProject() {
-        return (this.projects[(this.activeProjectPosition as number) + 1 < this.projects.length ? (this.activeProjectPosition as unknown as number) + 1 : 0] as Route).path
-      }
-    }
+        return (
+          this.projects[
+            (this.activeProjectPosition as number) + 1 < this.projects.length
+              ? (this.activeProjectPosition as unknown as number) + 1
+              : 0
+          ] as Route
+        ).path
+      },
+    },
   })
 </script>
 
@@ -145,42 +160,42 @@
             <div v-if="view === 'SHORT'">
               <i18n-t keypath="glossary.id" tag="h6" scope="global">
                 <template #breakLine>
-                  <br>
+                  <br />
                 </template>
               </i18n-t>
             </div>
             <div v-else-if="view === 'CORE'">
               <i18n-t keypath="glossary.core" tag="h6" scope="global">
                 <template #breakLine>
-                  <br>
+                  <br />
                 </template>
               </i18n-t>
             </div>
             <div v-else-if="view === 'LAB'">
               <i18n-t keypath="glossary.lab" tag="h6" scope="global">
                 <template #breakLine>
-                  <br>
+                  <br />
                 </template>
               </i18n-t>
             </div>
             <div v-else-if="view === 'UNIVERSE'">
               <i18n-t keypath="glossary.universe" tag="h6" scope="global">
                 <template #breakLine>
-                  <br>
+                  <br />
                 </template>
               </i18n-t>
             </div>
             <div v-else-if="view === 'CONTACT'">
               <i18n-t keypath="glossary.contact" tag="h6" scope="global">
                 <template #breakLine>
-                  <br>
+                  <br />
                 </template>
               </i18n-t>
             </div>
             <div v-else-if="view === 'ATTRIBUTION'">
               <i18n-t keypath="glossary.attribution" tag="h6" scope="global">
                 <template #breakLine>
-                  <br>
+                  <br />
                 </template>
               </i18n-t>
             </div>
@@ -195,7 +210,7 @@
   .main-menu
     transition: var(--slow-transition)
     opacity: v-bind("ui ? 1 : 0")
-      
+
     h6
       text-align: right
       line-height: 1.4

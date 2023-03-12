@@ -6,21 +6,21 @@
     props: {
       center: {
         type: Boolean,
-        default: false
+        default: false,
       },
       background: {
         type: String,
-        default: 'var(--color-creamy-sun)'
+        default: 'var(--color-creamy-sun)',
       },
       caption: {
         type: Boolean,
-        default: false
+        default: false,
       },
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
-    }
+        default: 'DEFAULT',
+      },
+    },
   })
 </script>
 

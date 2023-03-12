@@ -7,21 +7,21 @@
       title: String,
       isSubSection: {
         type: Boolean,
-        default: false
+        default: false,
       },
       columns: {
         type: Number,
-        default: 2
+        default: 2,
       },
       isFullScreen: {
         type: Boolean,
-        default: false
+        default: false,
       },
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
-    }
+        default: 'DEFAULT',
+      },
+    },
   })
 </script>
 

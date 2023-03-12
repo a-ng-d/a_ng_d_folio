@@ -2,7 +2,14 @@
   import { defineComponent } from 'vue'
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import RichExternalLink from '@/components/ui/RichExternalLink.vue'
-  import { Twitter, Dribbble, BookOpen, Codepen, Github, Instagram } from 'lucide-vue-next'
+  import {
+    Twitter,
+    Dribbble,
+    BookOpen,
+    Codepen,
+    Github,
+    Instagram,
+  } from 'lucide-vue-next'
 
   export default defineComponent({
     name: 'Networks',
@@ -14,59 +21,56 @@
       BookOpen,
       Codepen,
       Github,
-      Instagram
+      Instagram,
     },
     props: {
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
-    data: function() {
+    data: function () {
       return {
         networks: [
           {
             name: 'twitter',
             color: 'var(--color-soft-wind)',
-            icon: 'Twitter'
+            icon: 'Twitter',
           },
           {
             name: 'codepen',
             color: 'var(--color-deep-black)',
-            icon: 'Codepen'
+            icon: 'Codepen',
           },
           {
             name: 'github',
             color: 'var(--color-creamy-sun)',
-            icon: 'Github'
+            icon: 'Github',
           },
           {
             name: 'dribbble',
             color: 'var(--color-candy-floss)',
-            icon: 'Dribbble'
+            icon: 'Dribbble',
           },
           {
             name: 'medium',
             color: 'var(--color-titanium-white)',
-            icon: 'BookOpen'
+            icon: 'BookOpen',
           },
           {
             name: 'instagram',
             color: 'var(--color-titanium-white)',
-            icon: 'Instagram'
-          }
-        ]
+            icon: 'Instagram',
+          },
+        ],
       }
-    }
+    },
   })
 </script>
 
 <template>
   <section>
-    <WrapColumn
-      :title="$t('id.network.title')"
-      :theme="theme"
-    >
+    <WrapColumn :title="$t('id.network.title')" :theme="theme">
       <template #plain>
         <RichExternalLink
           v-for="network in networks"
@@ -79,7 +83,15 @@
           :theme="theme"
         >
           <template #icon>
-            <Component :is="network.icon" :size="48" :style="network.color === 'var(--color-deep-black)' ? '--icon-color: var(--color-titanium-white)' : ''" />
+            <Component
+              :is="network.icon"
+              :size="48"
+              :style="
+                network.color === 'var(--color-deep-black)'
+                  ? '--icon-color: var(--color-titanium-white)'
+                  : ''
+              "
+            />
           </template>
         </RichExternalLink>
       </template>
@@ -87,6 +99,4 @@
   </section>
 </template>
 
-<style scoped lang="sass">
-
-</style>
+<style scoped lang="sass"></style>

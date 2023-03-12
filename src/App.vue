@@ -19,9 +19,9 @@
       Glitchscape,
       Particles,
       Awards,
-      Audio
+      Audio,
     },
-    data: function() {
+    data: function () {
       return {
         store,
         filter: {},
@@ -37,28 +37,35 @@
         isHardTransited: false as boolean,
         projects: this.getProjects(this.$router.options.routes) as Array<Route>,
         activeProjectPosition: 0 as number,
-        numberOfProjects: this.getProjects(this.$router.options.routes).length as number,
+        numberOfProjects: this.getProjects(this.$router.options.routes)
+          .length as number,
         isQuickMenu: false as boolean,
         previousPath: '' as string,
         isUIHere: true as boolean,
-        theme: 'DEFAULT' as string
+        theme: 'DEFAULT' as string,
       }
     },
     watch: {
-      '$route' (to, from) {
+      $route(to, from) {
         this.view = to.meta.view
         document.title = to.meta.title
         this.filter = to.meta.filter
         this.pov = to.meta.pov
         this.quality = to.meta.quality
         this.scrollProgress = 0
-        this.activeProjectPosition = to.meta.view === 'WORK' ? this.activeProjectPosition :
-                                     to.meta.view === 'PROJECT' ? to.meta.position :
-                                     0
+        this.activeProjectPosition =
+          to.meta.view === 'WORK'
+            ? this.activeProjectPosition
+            : to.meta.view === 'PROJECT'
+            ? to.meta.position
+            : 0
 
-        this.theme = this.view === 'PROJECT' ? 'DEFAULT' :
-                     this.view === 'WORK' ? this.projects[this.activeProjectPosition].meta.theme :
-                     to.meta.theme
+        this.theme =
+          this.view === 'PROJECT'
+            ? 'DEFAULT'
+            : this.view === 'WORK'
+            ? this.projects[this.activeProjectPosition].meta.theme
+            : to.meta.theme
 
         const AB: { [key: string]: () => void } = {
           'HOME > CORE': () => {
@@ -85,13 +92,15 @@
             this.transition = 'go-up'
             this.isHardTransited = true
           },
-          'WORK > PROJECT': () => this.transition = 'go-down',
-          'PROJECT > WORK': () => this.transition = 'go-up',
+          'WORK > PROJECT': () => (this.transition = 'go-down'),
+          'PROJECT > WORK': () => (this.transition = 'go-up'),
           'PROJECT > PROJECT': () => {
             let diff = from.meta.position - to.meta.position
-            diff == this.numberOfProjects - 1 ? diff = -1 : diff
-            diff == -this.numberOfProjects + 1 ? diff = 1 : diff
-            return diff < 0 ? this.transition = 'push-right' : this.transition = 'push-left'
+            diff == this.numberOfProjects - 1 ? (diff = -1) : diff
+            diff == -this.numberOfProjects + 1 ? (diff = 1) : diff
+            return diff < 0
+              ? (this.transition = 'push-right')
+              : (this.transition = 'push-left')
           },
           'PROJECT > HOME': () => {
             this.transition = 'go-up'
@@ -112,53 +121,51 @@
           'CONTACT > HOME': () => {
             this.transition = 'go-right'
             this.isHardTransited = true
-          }
+          },
         }
 
         const A: { [key: string]: () => void } = {
-          'UNIVERSE': () => {
+          UNIVERSE: () => {
             this.transition = 'go-down'
             this.isHardTransited = this.isSameContext(to.path)
           },
-          'ATTRIBUTION': () => {
+          ATTRIBUTION: () => {
             this.transition = 'go-up'
             this.isHardTransited = this.isSameContext(to.path)
           },
-          'UNKNOWN': () => {
+          UNKNOWN: () => {
             this.transition = 'go-up'
             this.isHardTransited = this.isSameContext(to.path)
-          }
+          },
         }
 
         const B: { [key: string]: () => void } = {
-          'UNIVERSE': () => {
+          UNIVERSE: () => {
             this.transition = 'go-up'
             this.isQuickMenu = true
             this.isHardTransited = false
             this.previousPath = from.path
           },
-          'ATTRIBUTION': () => {
+          ATTRIBUTION: () => {
             this.transition = 'go-down'
             this.isHardTransited = this.isSameContext(to.path)
           },
-          'UNKNOWN': () => {
+          UNKNOWN: () => {
             this.transition = 'go-down'
             this.isHardTransited = this.isSameContext(to.path)
-          }
+          },
         }
 
         A[from.meta.view]?.()
 
-        if (from.name != undefined)
-          B[to.meta.view]?.()
+        if (from.name != undefined) B[to.meta.view]?.()
 
         AB[`${from.meta.view} > ${to.meta.view}`]?.()
-      }
+      },
     },
     methods: {
       getScrollParams(e: Event) {
-        if (timeout)
-          window.cancelAnimationFrame(timeout)
+        if (timeout) window.cancelAnimationFrame(timeout)
 
         timeout = window.requestAnimationFrame(() => {
           this.pageHeight = (e.target as HTMLElement).scrollHeight
@@ -177,43 +184,47 @@
       },
       getProjects(src: Array<Route>) {
         let projects: Array<Route> = src.map((a: Route) => a)
-        projects = projects.filter((project: Route) => project.meta.view === 'PROJECT').sort((a: Route, b: Route) => a.meta.position - b.meta.position)
+        projects = projects
+          .filter((project: Route) => project.meta.view === 'PROJECT')
+          .sort((a: Route, b: Route) => a.meta.position - b.meta.position)
         return projects
       },
       getScreenContext() {
-        window.innerWidth < 1280 ? this.store.device = 'MOBILE' : this.store.device = 'DESKTOP'
-        this.store.device === 'MOBILE' ? this.store.isSoundOn = false : this.store.isSoundOn = true
+        window.innerWidth < 1280
+          ? (this.store.device = 'MOBILE')
+          : (this.store.device = 'DESKTOP')
+        this.store.device === 'MOBILE'
+          ? (this.store.isSoundOn = false)
+          : (this.store.isSoundOn = true)
       },
       isSameContext(to: string) {
-        if(this.previousPath === to) return false
+        if (this.previousPath === to) return false
         else return true
       },
     },
-    created: function() {
-      window.addEventListener("resize",  this.getScreenContext)
+    created: function () {
+      window.addEventListener('resize', this.getScreenContext)
       this.getScreenContext()
-    }
+    },
   })
 </script>
 
 <template>
   <!--Awards-->
   <Transition name="pull-left" style="--delay: var(--duration-turtoise)" appear>
-    <Awards
-      v-if="store.device === 'DESKTOP'"
-      :ui="isUIHere"
-    />
+    <Awards v-if="store.device === 'DESKTOP'" :ui="isUIHere" />
   </Transition>
-  
+
   <!--Transition-->
-  <Particles
-    :weight="176"
-    :isExpanded="isExpanded"
-    :movement="transition"
-  />
+  <Particles :weight="176" :isExpanded="isExpanded" :movement="transition" />
 
   <!--Menu-->
-  <Transition name="pull-down" style="--delay: var(--duration-turtoise)" @after-leave="resetDelay" appear>
+  <Transition
+    name="pull-down"
+    style="--delay: var(--duration-turtoise)"
+    @after-leave="resetDelay"
+    appear
+  >
     <MainMenu
       :scrollProgress="scrollProgress"
       :view="view"
@@ -278,37 +289,37 @@
     autoplay
     loop
     :muted="!store.isSoundOn"
-    :volume=".15"
+    :volume="0.15"
   />
   <Audio
     src="/sounds/entrance.mp3"
     autoplay
     :muted="!store.isSoundOn"
-    :volume=".2"
+    :volume="0.2"
   />
   <Audio
     src="/sounds/transition-in.mp3"
     :muted="!store.isSoundOn"
     :play="isExpanded"
-    :volume=".4"
+    :volume="0.4"
   />
   <Audio
     src="/sounds/transition-out.mp3"
     :muted="!store.isSoundOn"
     :play="!isExpanded"
-    :volume=".4"
+    :volume="0.4"
   />
   <Audio
     src="/sounds/interaction-over.mp3"
     :muted="!store.isSoundOn"
     :play="store.isOver"
-    :volume=".4"
+    :volume="0.4"
   />
   <Audio
     src="/sounds/interaction-focus.mp3"
     :muted="!store.isSoundOn"
     :play="store.isFocus"
-    :volume=".3"
+    :volume="0.3"
   />
 </template>
 
@@ -346,7 +357,7 @@
       --font-size-relative: 8vw
       --header-height-size: var(--sizing-xl-700)
       --logotype-size: var(--sizing-xl-500)
-  
+
   @include device.smaller-screen
     :root
       --font-size-ref: 0.625px !important

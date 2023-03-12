@@ -9,20 +9,20 @@
       description: String,
       color: {
         type: String,
-        default: 'var(color-soil)'
+        default: 'var(color-soil)',
       },
       href: String,
       alt: String,
       theme: {
         type: String,
-        default: 'DEFAULT'
+        default: 'DEFAULT',
+      },
+    },
+    data: function () {
+      return {
+        store,
       }
     },
-    data: function() {
-      return {
-        store
-      }
-    }
   })
 </script>
 

@@ -13,7 +13,7 @@
       Container,
       VLazyImage,
       Dribbble,
-      Codepen
+      Codepen,
     },
     props: {
       title: String,
@@ -25,18 +25,18 @@
       sourceLink: String,
       unmagnify: {
         type: Boolean,
-        default: false
+        default: false,
       },
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
-    data: function() {
+    data: function () {
       return {
         store,
         isMagnified: false as boolean,
-        assetWidth: 0 as unknown
+        assetWidth: 0 as unknown,
       }
     },
     methods: {
@@ -44,18 +44,22 @@
         let width: number
 
         if (e.target != null) {
-          width = ((((e.target as HTMLElement).children[0] as HTMLElement).children[0] as HTMLElement).children[0] as HTMLElement).offsetWidth
+          width = (
+            (
+              ((e.target as HTMLElement).children[0] as HTMLElement)
+                .children[0] as HTMLElement
+            ).children[0] as HTMLElement
+          ).offsetWidth
           this.isMagnified = !this.isMagnified
           this.assetWidth = width + 16 + 'px'
         }
-
-      }
+      },
     },
     watch: {
       unmagnify(to) {
-        to == true ? this.isMagnified = false : this.isMagnified
-      }
-    }
+        to == true ? (this.isMagnified = false) : this.isMagnified
+      },
+    },
   })
 </script>
 
@@ -71,17 +75,37 @@
   >
     <div class="asset-container__content" :data-theme="theme">
       <div class="asset-container__asset">
-        <Transition name="fade" mode="in-out" :style="`--delay: ${isMagnified ? '0ms' : 'var(--delay-jogging)'}`">
+        <Transition
+          name="fade"
+          mode="in-out"
+          :style="`--delay: ${isMagnified ? '0ms' : 'var(--delay-jogging)'}`"
+        >
           <v-lazy-image v-if="!isMagnified" :src="thumbnail" :alt="alt" />
-          <video v-else-if="isMagnified && type === 'video'" preload="true" autoplay muted loop playsinline poster="">
+          <video
+            v-else-if="isMagnified && type === 'video'"
+            preload="true"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster=""
+          >
             <source :src="hdnail" type="video/mp4" />
           </video>
-          <img v-else-if="isMagnified && type === 'image'" :src="hdnail" :alt="alt" />
+          <img
+            v-else-if="isMagnified && type === 'image'"
+            :src="hdnail"
+            :alt="alt"
+          />
         </Transition>
       </div>
       <div class="asset-container__description">
         <h5>{{ title }}</h5>
-        <Transition name="switch" mode="out-in" style="--delay: var(--delay-hare)">
+        <Transition
+          name="switch"
+          mode="out-in"
+          style="--delay: var(--delay-hare)"
+        >
           <Button
             v-if="isMagnified"
             type="secondary"

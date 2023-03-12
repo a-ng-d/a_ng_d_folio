@@ -6,7 +6,14 @@
   import ContentContainer from '@/components/patterns/ContentContainer.vue'
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
-  import { Heart, MessageCircle, Download, Figma, Github, Pointer } from 'lucide-vue-next'
+  import {
+    Heart,
+    MessageCircle,
+    Download,
+    Figma,
+    Github,
+    Pointer,
+  } from 'lucide-vue-next'
   import { assets } from '@/utilities/assets'
 
   export default defineComponent({
@@ -23,32 +30,32 @@
       Download,
       Figma,
       Github,
-      Pointer
+      Pointer,
     },
     props: {
       scrollProgress: {
         type: Number,
-        required: true
+        required: true,
       },
       scrollLimit: {
         type: Number,
-        required: true
+        required: true,
       },
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
-    data: function() {
+    data: function () {
       return {
         isFullScreen: false as boolean,
         assets: assets,
         likes: 'Loading…',
         comments: 'Loading…',
-        runs: 'Loading…'
+        runs: 'Loading…',
       }
     },
-    created: function() {
+    created: function () {
       this.$watch(
         () => this.$route.params,
         () => {
@@ -60,20 +67,20 @@
     methods: {
       async fetchData() {
         await fetch(
-          "https://api.allorigins.win/raw?url=https://figma.com/api/plugins/profile/1716027"
+          'https://api.allorigins.win/raw?url=https://figma.com/api/plugins/profile/1716027'
         )
-          .then(response => response.json())
-          .then(data => {
-            this.comments = (data.meta[0].comment_count).toString()
-            this.runs = (data.meta[0].unique_run_count).toString()
-            this.likes = (data.meta[0].like_count).toString()
+          .then((response) => response.json())
+          .then((data) => {
+            this.comments = data.meta[0].comment_count.toString()
+            this.runs = data.meta[0].unique_run_count.toString()
+            this.likes = data.meta[0].like_count.toString()
           })
-          .catch(error => {
+          .catch((error) => {
             this.comments = this.runs = this.likes = 'Ø'
             throw new Error(error)
           })
-      }
-    }
+      },
+    },
   })
 </script>
 
@@ -96,13 +103,11 @@
       :theme="theme"
     >
       <template #left>
-        <p>
-          <ol>
-            <li>{{ $t('work._ui_color_palette.part-1.paragraph-1') }}</li>
-            <li>{{ $t('work._ui_color_palette.part-1.paragraph-2') }}</li>
-            <li>{{ $t('work._ui_color_palette.part-1.paragraph-3') }}</li>
-          </ol>
-        </p>
+        <ol>
+          <li>{{ $t('work._ui_color_palette.part-1.paragraph-1') }}</li>
+          <li>{{ $t('work._ui_color_palette.part-1.paragraph-2') }}</li>
+          <li>{{ $t('work._ui_color_palette.part-1.paragraph-3') }}</li>
+        </ol>
       </template>
       <template #right>
         <Figure
@@ -132,13 +137,11 @@
         </Figure>
       </template>
       <template #right>
-        <p>
-          <ol>
-            <li>{{ $t('work._ui_color_palette.part-2.paragraph-1') }}</li>
-            <li>{{ $t('work._ui_color_palette.part-2.paragraph-2') }}</li>
-            <li>{{ $t('work._ui_color_palette.part-2.paragraph-3') }}</li>
-          </ol>
-        </p>
+        <ol>
+          <li>{{ $t('work._ui_color_palette.part-2.paragraph-1') }}</li>
+          <li>{{ $t('work._ui_color_palette.part-2.paragraph-2') }}</li>
+          <li>{{ $t('work._ui_color_palette.part-2.paragraph-3') }}</li>
+        </ol>
       </template>
     </TwoColumns>
   </section>
@@ -149,13 +152,11 @@
       :theme="theme"
     >
       <template #left>
-        <p>
-          <ol>
-            <li>{{ $t('work._ui_color_palette.part-3.paragraph-1') }}</li>
-            <li>{{ $t('work._ui_color_palette.part-3.paragraph-2') }}</li>
-            <li>{{ $t('work._ui_color_palette.part-3.paragraph-3') }}</li>
-          </ol>
-        </p>
+        <ol>
+          <li>{{ $t('work._ui_color_palette.part-3.paragraph-1') }}</li>
+          <li>{{ $t('work._ui_color_palette.part-3.paragraph-2') }}</li>
+          <li>{{ $t('work._ui_color_palette.part-3.paragraph-3') }}</li>
+        </ol>
       </template>
       <template #right>
         <Figure
@@ -169,10 +170,7 @@
     </TwoColumns>
   </section>
   <section class="success">
-    <ThreeColumns
-      :title="$t('global.success')"
-      :theme="theme"
-    >
+    <ThreeColumns :title="$t('global.success')" :theme="theme">
       <template #left>
         <ContentContainer
           :title="comments"
@@ -209,13 +207,12 @@
     </ThreeColumns>
   </section>
   <section class="takeaways">
-    <OneColumn
-      :title="$t('global.takeaways')"
-      :theme="theme"
-    >
+    <OneColumn :title="$t('global.takeaways')" :theme="theme">
       <template #plain>
         <LinkContainer
-          :description="$t('work._ui_color_palette.takeaways.takeaway-1.description')"
+          :description="
+            $t('work._ui_color_palette.takeaways.takeaway-1.description')
+          "
           :cta="$t('work._ui_color_palette.takeaways.takeaway-1.linkLabel')"
           href="https://www.figma.com/community/plugin/1063959496693642315/UI-Color-Palette"
           :alt="$t('work._ui_color_palette.takeaways.takeaway-1.alt')"
@@ -226,7 +223,9 @@
           </template>
         </LinkContainer>
         <LinkContainer
-          :description="$t('work._ui_color_palette.takeaways.takeaway-2.description')"
+          :description="
+            $t('work._ui_color_palette.takeaways.takeaway-2.description')
+          "
           :cta="$t('work._ui_color_palette.takeaways.takeaway-2.linkLabel')"
           href="https://github.com/inVoltag/figma-ui-color-palette"
           :alt="$t('work._ui_color_palette.takeaways.takeaway-2.alt')"
@@ -237,7 +236,9 @@
           </template>
         </LinkContainer>
         <LinkContainer
-          :description="$t('work._ui_color_palette.takeaways.takeaway-3.description')"
+          :description="
+            $t('work._ui_color_palette.takeaways.takeaway-3.description')
+          "
           :cta="$t('work._ui_color_palette.takeaways.takeaway-3.linkLabel')"
           href="https://www.ui-color-palette.com"
           :alt="$t('work._ui_color_palette.takeaways.takeaway-3.alt')"
@@ -252,6 +253,4 @@
   </section>
 </template>
 
-<style scoped lang="sass">
-
-</style>
+<style scoped lang="sass"></style>

@@ -6,71 +6,75 @@
   export default defineComponent({
     name: 'Button',
     components: {
-      Particles
+      Particles,
     },
     props: {
       type: {
         type: String,
-        default: 'primary'
+        default: 'primary',
       },
       label: String,
       path: {
         type: String,
-        default: ''
+        default: '',
       },
       layout: {
         type: String,
-        default: 'SIMPLE'
+        default: 'SIMPLE',
       },
       extensible: {
         type: Boolean,
-        default: false
+        default: false,
       },
       inverted: {
         type: Boolean,
-        default: false
+        default: false,
       },
       alt: String,
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
-    data: function() {
+    data: function () {
       return {
         store,
-        isExtensible: this.extensible ? '100%' : 'fit-content' as string,
+        isExtensible: this.extensible ? '100%' : ('fit-content' as string),
         isExpanded: false as boolean,
         isExternal: false as boolean,
-        movement: '' as string
+        movement: '' as string,
       }
     },
     methods: {
       expandParticles(e: MouseEvent) {
         const mouseX: number = e.offsetX,
-              buttonWidth: number = this.$el.clientWidth,
-              buttonHalfWidth: number = buttonWidth / 2
+          buttonWidth: number = this.$el.clientWidth,
+          buttonHalfWidth: number = buttonWidth / 2
 
-        if (mouseX > buttonHalfWidth && mouseX <= buttonWidth + 10) this.movement = 'go-right'
+        if (mouseX > buttonHalfWidth && mouseX <= buttonWidth + 10)
+          this.movement = 'go-right'
         else this.movement = 'go-left'
 
         this.store.isOver = true
-        setTimeout(() => this.isExpanded = true, 50)
+        setTimeout(() => (this.isExpanded = true), 50)
       },
       collapseParticles() {
         this.store.isOver = false
-        setTimeout(() => this.isExpanded = false, 50)
-      }
+        setTimeout(() => (this.isExpanded = false), 50)
+      },
     },
-    created: function() {
-      this.path.indexOf('http') == 0 ? this.isExternal = true : this.isExternal
-      this.path.indexOf('mailto') == 0 ? this.isExternal = true : this.isExternal
-    }
+    created: function () {
+      this.path.indexOf('http') == 0
+        ? (this.isExternal = true)
+        : this.isExternal
+      this.path.indexOf('mailto') == 0
+        ? (this.isExternal = true)
+        : this.isExternal
+    },
   })
 </script>
 
 <template>
-
   <template v-if="path === ''">
     <button
       class="button"
@@ -83,7 +87,11 @@
       :data-theme="theme"
     >
       <div class="button__content">
-        <div v-if="layout != 'SIMPLE'" class="button__icon" :class="layout === 'ICON-ONLY' ? 'button__icon--transparent' : null">
+        <div
+          v-if="layout != 'SIMPLE'"
+          class="button__icon"
+          :class="layout === 'ICON-ONLY' ? 'button__icon--transparent' : null"
+        >
           <slot name="icon"></slot>
         </div>
         <div v-if="layout != 'ICON-ONLY'" class="button__label">
@@ -119,7 +127,11 @@
       :data-theme="theme"
     >
       <div class="button__content">
-        <div v-if="layout != 'SIMPLE'" class="button__icon" :class="layout === 'ICON-ONLY' ? 'button__icon--transparent' : null">
+        <div
+          v-if="layout != 'SIMPLE'"
+          class="button__icon"
+          :class="layout === 'ICON-ONLY' ? 'button__icon--transparent' : null"
+        >
           <slot name="icon"></slot>
         </div>
         <div v-if="layout != 'ICON-ONLY'" class="button__label">
@@ -156,7 +168,11 @@
       :aria-label="alt"
     >
       <div class="button__content">
-        <div v-if="layout != 'SIMPLE'" class="button__icon" :class="layout === 'ICON-ONLY' ? 'button__icon--transparent' : null">
+        <div
+          v-if="layout != 'SIMPLE'"
+          class="button__icon"
+          :class="layout === 'ICON-ONLY' ? 'button__icon--transparent' : null"
+        >
           <slot name="icon"></slot>
         </div>
         <div v-if="layout != 'ICON-ONLY'" class="button__label">
@@ -175,7 +191,6 @@
       </div>
     </a>
   </template>
-
 </template>
 
 <style scoped lang="sass">

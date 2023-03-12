@@ -7,7 +7,7 @@
     name: 'LinkContainer',
     components: {
       Button,
-      Container
+      Container,
     },
     props: {
       description: String,
@@ -16,9 +16,9 @@
       alt: String,
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
-    }
+        default: 'DEFAULT',
+      },
+    },
   })
 </script>
 

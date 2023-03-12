@@ -12,14 +12,14 @@
       TwoColumns,
       Button,
       Linkedin,
-      Download
+      Download,
     },
     props: {
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
-    }
+        default: 'DEFAULT',
+      },
+    },
   })
 </script>
 
@@ -58,53 +58,53 @@
         </Button>
       </template>
     </TwoColumns>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <div>
           <div>
             <h5>
-              <span>{{ $t("id.career.ecv.start") }}</span>
-              <span>{{ $t("global.separator") }}</span>
-              <span>{{ $t("id.career.ecv.end") }}</span>
+              <span>{{ $t('id.career.ecv.start') }}</span>
+              <span>{{ $t('global.separator') }}</span>
+              <span>{{ $t('id.career.ecv.end') }}</span>
             </h5>
-            <h4>{{ $t("id.career.ecv.title") }}</h4>
-            <p>{{ $t("id.career.ecv.label") }}</p>
+            <h4>{{ $t('id.career.ecv.title') }}</h4>
+            <p>{{ $t('id.career.ecv.label') }}</p>
           </div>
         </div>
         <div>
           <div>
             <h5>
-              <span>{{ $t("id.career.iobeya.start") }}</span>
-              <span>{{ $t("global.separator") }}</span>
-              <span>{{ $t("id.career.iobeya.end") }}</span>
+              <span>{{ $t('id.career.iobeya.start') }}</span>
+              <span>{{ $t('global.separator') }}</span>
+              <span>{{ $t('id.career.iobeya.end') }}</span>
             </h5>
-            <h4>{{ $t("id.career.iobeya.title") }}</h4>
+            <h4>{{ $t('id.career.iobeya.title') }}</h4>
           </div>
           <div>
             <h6>
-              <span>{{ $t("id.career.iobeya.uxDesign.start") }}</span>
-              <span>{{ $t("global.separator") }}</span>
-              <span>{{ $t("id.career.iobeya.uxDesign.end") }}</span>
+              <span>{{ $t('id.career.iobeya.uxDesign.start') }}</span>
+              <span>{{ $t('global.separator') }}</span>
+              <span>{{ $t('id.career.iobeya.uxDesign.end') }}</span>
             </h6>
-            <p>{{ $t("id.career.iobeya.uxDesign.title") }}</p>
+            <p>{{ $t('id.career.iobeya.uxDesign.title') }}</p>
           </div>
           <div>
             <h6>
-              <span>{{ $t("id.career.iobeya.productDesign.start") }}</span>
-              <span>{{ $t("global.separator") }}</span>
-              <span>{{ $t("id.career.iobeya.productDesign.end") }}</span>
+              <span>{{ $t('id.career.iobeya.productDesign.start') }}</span>
+              <span>{{ $t('global.separator') }}</span>
+              <span>{{ $t('id.career.iobeya.productDesign.end') }}</span>
             </h6>
-            <p>{{ $t("id.career.iobeya.productDesign.title") }}</p>
+            <p>{{ $t('id.career.iobeya.productDesign.title') }}</p>
           </div>
           <div>
             <h6>
-              <span>{{ $t("id.career.iobeya.creativeTechnologist.start") }}</span>
-              <span>{{ $t("global.separator") }}</span>
-              <span>{{ $t("id.career.iobeya.creativeTechnologist.end") }}</span>
+              <span>{{
+                $t('id.career.iobeya.creativeTechnologist.start')
+              }}</span>
+              <span>{{ $t('global.separator') }}</span>
+              <span>{{ $t('id.career.iobeya.creativeTechnologist.end') }}</span>
             </h6>
-            <p>{{ $t("id.career.iobeya.creativeTechnologist.title") }}</p>
+            <p>{{ $t('id.career.iobeya.creativeTechnologist.title') }}</p>
           </div>
         </div>
       </template>

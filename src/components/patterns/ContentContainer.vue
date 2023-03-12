@@ -5,16 +5,16 @@
   export default defineComponent({
     name: 'ContentContainer',
     components: {
-      Container
+      Container,
     },
     props: {
       title: String,
       description: String,
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
-    }
+        default: 'DEFAULT',
+      },
+    },
   })
 </script>
 

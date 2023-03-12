@@ -6,34 +6,44 @@
     props: {
       label: {
         type: String,
-        default: 'Some scrolling text'
+        default: 'Some scrolling text',
       },
       direction: {
         type: String,
-        default: 'LEFT'
+        default: 'LEFT',
       },
       isSubTitle: {
         type: Boolean,
-        default: false
+        default: false,
       },
       stopped: {
         type: Boolean,
-        default: false
+        default: false,
       },
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
-    }
+        default: 'DEFAULT',
+      },
+    },
   })
 </script>
 
 <template>
-  <h1 v-if="!isSubTitle" class="scrolling-text" :class="stopped ? 'scrolling-text--stopped' : 'scrolling-text--played'" :data-theme="theme">
+  <h1
+    v-if="!isSubTitle"
+    class="scrolling-text"
+    :class="stopped ? 'scrolling-text--stopped' : 'scrolling-text--played'"
+    :data-theme="theme"
+  >
     <span class="scrolling-text__instance">{{ label }}</span>
     <span class="scrolling-text__instance">{{ label }}</span>
   </h1>
-  <h4 v-else-if="isSubTitle" class="scrolling-text" :class="stopped ? 'scrolling-text--stopped' : 'scrolling-text--played'" :data-theme="theme">
+  <h4
+    v-else-if="isSubTitle"
+    class="scrolling-text"
+    :class="stopped ? 'scrolling-text--stopped' : 'scrolling-text--played'"
+    :data-theme="theme"
+  >
     <span class="scrolling-text__instance">{{ label }}</span>
     <span class="scrolling-text__instance">{{ label }}</span>
   </h4>

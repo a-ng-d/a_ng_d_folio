@@ -31,8 +31,8 @@ const router = createRouter({
         theme: 'DEFAULT',
         filter: filters.creamySun,
         pov: 'RESET',
-        quality: 'HIGH'
-      }
+        quality: 'HIGH',
+      },
     },
     {
       path: '/_short',
@@ -44,8 +44,8 @@ const router = createRouter({
         theme: 'DEFAULT',
         filter: filters.grayscale,
         pov: 'INVERT',
-        quality: 'HIGH'
-      }
+        quality: 'HIGH',
+      },
     },
     {
       path: '/_universe',
@@ -57,8 +57,8 @@ const router = createRouter({
         theme: 'DARK',
         filter: filters.nightly,
         pov: 'DONTLOOKUP',
-        quality: 'HIGH'
-      }
+        quality: 'HIGH',
+      },
     },
     {
       path: '/_core',
@@ -70,8 +70,8 @@ const router = createRouter({
         theme: 'DEFAULT',
         filter: filters.candyFloss,
         pov: 'RESET',
-        quality: 'HIGH'
-      }
+        quality: 'HIGH',
+      },
     },
     {
       path: '/_lab',
@@ -83,8 +83,8 @@ const router = createRouter({
         theme: 'DEFAULT',
         filter: filters.softWind,
         pov: 'SIDE',
-        quality: 'LOW'
-      }
+        quality: 'LOW',
+      },
     },
     {
       path: '/_work',
@@ -95,8 +95,8 @@ const router = createRouter({
         view: 'WORK',
         filter: filters.grayscale,
         pov: 'DIVE_3',
-        quality: 'LOW'
-      }
+        quality: 'LOW',
+      },
     },
     {
       path: '/_work/_ui_color_palette',
@@ -108,7 +108,9 @@ const router = createRouter({
         description: i18n.global.t('work._ui_color_palette.description'),
         summary: i18n.global.t('work._ui_color_palette.shortDescription'),
         date: i18n.global.t('work._ui_color_palette.misc.date'),
-        objectives: i18n.global.t('work._ui_color_palette.misc.objectives').split(', '),
+        objectives: i18n.global
+          .t('work._ui_color_palette.misc.objectives')
+          .split(', '),
         roles: i18n.global.t('work._ui_color_palette.misc.roles').split(', '),
         type: i18n.global.t('work._ui_color_palette.misc.type'),
         position: 0,
@@ -118,8 +120,8 @@ const router = createRouter({
         theme: 'DEFAULT',
         filter: filters.grayscale,
         pov: 'DIVE_1',
-        quality: 'LOW'
-      }
+        quality: 'LOW',
+      },
     },
     {
       path: '/_work/_jeprendsquoi',
@@ -131,7 +133,9 @@ const router = createRouter({
         description: i18n.global.t('work._jeprendsquoi.description'),
         summary: i18n.global.t('work._jeprendsquoi.shortDescription'),
         date: i18n.global.t('work._jeprendsquoi.misc.date'),
-        objectives: i18n.global.t('work._jeprendsquoi.misc.objectives').split(', '),
+        objectives: i18n.global
+          .t('work._jeprendsquoi.misc.objectives')
+          .split(', '),
         roles: i18n.global.t('work._jeprendsquoi.misc.roles').split(', '),
         type: i18n.global.t('work._jeprendsquoi.misc.type'),
         position: 1,
@@ -141,8 +145,8 @@ const router = createRouter({
         theme: 'DEFAULT',
         filter: filters.grayscale,
         pov: 'DIVE_2',
-        quality: 'LOW'
-      }
+        quality: 'LOW',
+      },
     },
     {
       path: '/_work/_jean_bobby_radio',
@@ -154,7 +158,9 @@ const router = createRouter({
         description: i18n.global.t('work._jean_bobby_radio.description'),
         summary: i18n.global.t('work._jean_bobby_radio.shortDescription'),
         date: i18n.global.t('work._jean_bobby_radio.misc.date'),
-        objectives: i18n.global.t('work._jean_bobby_radio.misc.objectives').split(', '),
+        objectives: i18n.global
+          .t('work._jean_bobby_radio.misc.objectives')
+          .split(', '),
         roles: i18n.global.t('work._jean_bobby_radio.misc.roles').split(', '),
         type: i18n.global.t('work._jean_bobby_radio.misc.type'),
         position: 2,
@@ -164,8 +170,8 @@ const router = createRouter({
         theme: 'DARK',
         filter: filters.grayscale,
         pov: 'DIVE_3',
-        quality: 'LOW'
-      }
+        quality: 'LOW',
+      },
     },
     {
       path: '/_work/_iobeya_mobile_ds',
@@ -177,7 +183,9 @@ const router = createRouter({
         description: i18n.global.t('work._iobeya_mobile_ds.description'),
         summary: i18n.global.t('work._iobeya_mobile_ds.shortDescription'),
         date: i18n.global.t('work._iobeya_mobile_ds.misc.date'),
-        objectives: i18n.global.t('work._iobeya_mobile_ds.misc.objectives').split(', '),
+        objectives: i18n.global
+          .t('work._iobeya_mobile_ds.misc.objectives')
+          .split(', '),
         roles: i18n.global.t('work._iobeya_mobile_ds.misc.roles').split(', '),
         type: i18n.global.t('work._iobeya_mobile_ds.misc.type'),
         position: 3,
@@ -187,8 +195,8 @@ const router = createRouter({
         theme: 'DARK',
         filter: filters.grayscale,
         pov: 'DIVE_4',
-        quality: 'LOW'
-      }
+        quality: 'LOW',
+      },
     },
     {
       path: '/_work/_awesome_ipsums',
@@ -200,7 +208,9 @@ const router = createRouter({
         description: i18n.global.t('work._awesome_ipsums.description'),
         summary: i18n.global.t('work._awesome_ipsums.shortDescription'),
         date: i18n.global.t('work._awesome_ipsums.misc.date'),
-        objectives: i18n.global.t('work._awesome_ipsums.misc.objectives').split(', '),
+        objectives: i18n.global
+          .t('work._awesome_ipsums.misc.objectives')
+          .split(', '),
         roles: i18n.global.t('work._awesome_ipsums.misc.roles').split(', '),
         type: i18n.global.t('work._awesome_ipsums.misc.type'),
         position: 4,
@@ -210,8 +220,8 @@ const router = createRouter({
         theme: 'DARK',
         filter: filters.grayscale,
         pov: 'DIVE_5',
-        quality: 'LOW'
-      }
+        quality: 'LOW',
+      },
     },
     {
       path: '/_work/_iobeya_whiteboard',
@@ -223,7 +233,9 @@ const router = createRouter({
         description: i18n.global.t('work._iobeya_whiteboard.description'),
         summary: i18n.global.t('work._iobeya_whiteboard.shortDescription'),
         date: i18n.global.t('work._iobeya_whiteboard.misc.date'),
-        objectives: i18n.global.t('work._iobeya_whiteboard.misc.objectives').split(', '),
+        objectives: i18n.global
+          .t('work._iobeya_whiteboard.misc.objectives')
+          .split(', '),
         roles: i18n.global.t('work._iobeya_whiteboard.misc.roles').split(', '),
         type: i18n.global.t('work._iobeya_whiteboard.misc.type'),
         position: 5,
@@ -233,8 +245,8 @@ const router = createRouter({
         theme: 'DARK',
         filter: filters.grayscale,
         pov: 'DIVE_6',
-        quality: 'LOW'
-      }
+        quality: 'LOW',
+      },
     },
     {
       path: '/_contact',
@@ -246,8 +258,8 @@ const router = createRouter({
         theme: 'DEFAULT',
         filter: filters.grayscale,
         pov: 'RESET',
-        quality: 'HIGH'
-      }
+        quality: 'HIGH',
+      },
     },
     {
       path: '/_attribution',
@@ -259,8 +271,8 @@ const router = createRouter({
         theme: 'DEFAULT',
         filter: filters.grayscale,
         pov: 'RESET',
-        quality: 'HIGH'
-      }
+        quality: 'HIGH',
+      },
     },
     {
       path: '/:pathMatch(.*)*',
@@ -272,10 +284,10 @@ const router = createRouter({
         theme: 'DEFAULT',
         filter: filters.creamySun,
         pov: 'RESET',
-        quality: 'HIGH'
-      }
+        quality: 'HIGH',
+      },
     },
-  ]
+  ],
 })
 
 export default router

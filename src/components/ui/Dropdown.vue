@@ -15,73 +15,89 @@
       Container,
       Label,
       ChevronDown,
-      Check
+      Check,
     },
     props: {
       label: String,
       options: {
-        type: Array
+        type: Array,
       },
       alt: String,
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
-    data: function() {
+    data: function () {
       return {
         store,
         isExpanded: false as boolean,
         activeOption: 0 as number,
-        allOptions: this.options as Array<Option>
+        allOptions: this.options as Array<Option>,
       }
     },
     watch: {
       isExpanded(to) {
-        if (to == false) window.removeEventListener('click',  this.closeOptions)
-        else setTimeout(() => (this.$refs.option as Array<HTMLElement>)[0].focus(), 200)
-      }
+        if (to == false) window.removeEventListener('click', this.closeOptions)
+        else
+          setTimeout(
+            () => (this.$refs.option as Array<HTMLElement>)[0].focus(),
+            200
+          )
+      },
     },
     methods: {
       setOption(callback: () => void, name: string, order: number) {
-        this.allOptions[this.activeOption].isActive = false;
-        setTimeout(() => (this.activeOption) = order, 900);
-        this.allOptions[order].isActive = true;
-        this.isExpanded = false;
+        this.allOptions[this.activeOption].isActive = false
+        setTimeout(() => (this.activeOption = order), 900)
+        this.allOptions[order].isActive = true
+        this.isExpanded = false
         callback?.()
       },
       openOptions() {
         this.isExpanded = true
-        setTimeout(() => window.addEventListener('click',  this.closeOptions), 200)
+        setTimeout(
+          () => window.addEventListener('click', this.closeOptions),
+          200
+        )
       },
       closeOptions(e: Event) {
-        if ((e.target as HTMLElement).closest('.dropdown__list') == null) this.isExpanded = false
+        if ((e.target as HTMLElement).closest('.dropdown__list') == null)
+          this.isExpanded = false
       },
       map(current: number) {
-        return doMap(current, 0, this.allOptions.length - 1, this.allOptions.length - 1, 0)
+        return doMap(
+          current,
+          0,
+          this.allOptions.length - 1,
+          this.allOptions.length - 1,
+          0
+        )
       },
       browseOptions(e: FocusEvent) {
         const relatedTarget: EventTarget | null = e.relatedTarget
         if (relatedTarget != null)
-          (relatedTarget as Element).closest('.dropdown__option') == null ? this.isExpanded = false : null
-      }
+          (relatedTarget as Element).closest('.dropdown__option') == null
+            ? (this.isExpanded = false)
+            : null
+      },
     },
-    created: function() {
-      this.activeOption = this.allOptions.findIndex(option => {
-        if (option.isActive == true)
-          return true
+    created: function () {
+      this.activeOption = this.allOptions.findIndex((option) => {
+        if (option.isActive == true) return true
       })
-    }
+    },
   })
 </script>
 
 <template>
-  <div class="dropdown" @keydown.esc="isExpanded = false" @focusout="browseOptions" :data-theme="theme">
-    <Label
-      v-if="label != undefined"
-      :label="label"
-      :theme="theme"
-    />
+  <div
+    class="dropdown"
+    @keydown.esc="isExpanded = false"
+    @focusout="browseOptions"
+    :data-theme="theme"
+  >
+    <Label v-if="label != undefined" :label="label" :theme="theme" />
     <Button
       type="secondary"
       :label="allOptions[activeOption].name"
@@ -98,10 +114,7 @@
       </template>
     </Button>
     <Transition name="switch" style="--delay: 0ms">
-      <Container
-        class="dropdown__list"
-        v-if="isExpanded"
-      >
+      <Container class="dropdown__list" v-if="isExpanded">
         <ul class="dropdown__options">
           <li
             v-for="(option, index) in allOptions"
@@ -116,12 +129,11 @@
             ref="option"
           >
             <Transition name="switch">
-              <i v-if="option.isActive" class="dropdown__option__icon"><Check :size="24" /></i>
+              <i v-if="option.isActive" class="dropdown__option__icon"
+                ><Check :size="24"
+              /></i>
             </Transition>
-            <Label
-              class="dropdown__option__label"
-              :label="option.name"
-            />
+            <Label class="dropdown__option__label" :label="option.name" />
           </li>
         </ul>
       </Container>

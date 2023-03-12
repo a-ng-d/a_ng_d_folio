@@ -16,67 +16,78 @@
       Button,
       AssetContainer,
       ArrowLeft,
-      ArrowRight
+      ArrowRight,
     },
     props: {
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
-    data: function() {
+    data: function () {
       return {
         shots: [
           {
             name: 'SCI-FI UI #1',
             sourceName: 'Dribbble',
-            sourceLink: 'https://dribbble.com/shots/6383160-SCI-FI-UI-1-WAVING-SQUARE-PARTICLE',
+            sourceLink:
+              'https://dribbble.com/shots/6383160-SCI-FI-UI-1-WAVING-SQUARE-PARTICLE',
             sourceType: 'video',
-            sourceFormat: 'mp4'
+            sourceFormat: 'mp4',
           },
           {
             name: 'SCI-FI UI #2',
             sourceName: 'Dribbble',
-            sourceLink: 'https://dribbble.com/shots/6932423-SCI-FI-UI-2-WAVING-SQUARE-DROPDOWN',
+            sourceLink:
+              'https://dribbble.com/shots/6932423-SCI-FI-UI-2-WAVING-SQUARE-DROPDOWN',
             sourceType: 'video',
-            sourceFormat: 'mp4'
+            sourceFormat: 'mp4',
           },
           {
             name: 'All Around The World',
             sourceName: 'Dribbble',
-            sourceLink: 'https://dribbble.com/shots/15606194-All-Around-The-World',
+            sourceLink:
+              'https://dribbble.com/shots/15606194-All-Around-The-World',
             sourceType: 'video',
-            sourceFormat: 'mp4'
+            sourceFormat: 'mp4',
           },
           {
             name: '💛 Funky 💜 Play button',
             sourceName: 'Dribbble',
-            sourceLink: 'https://dribbble.com/shots/11472664--Funky-Play-button',
+            sourceLink:
+              'https://dribbble.com/shots/11472664--Funky-Play-button',
             sourceType: 'video',
-            sourceFormat: 'mp4'
+            sourceFormat: 'mp4',
           },
           {
             name: 'Ciblémie',
             sourceName: 'Dribbble',
             sourceLink: 'https://dribbble.com/shots/5834075-Cibl-mie-Slider',
             sourceType: 'video',
-            sourceFormat: 'mp4'
+            sourceFormat: 'mp4',
           },
           {
-            name: 'What\'s in the gift?',
+            name: "What's in the gift?",
             sourceName: 'Dribbble',
-            sourceLink: 'https://dribbble.com/shots/3945533-Anniversary-What-s-in-the-gift',
+            sourceLink:
+              'https://dribbble.com/shots/3945533-Anniversary-What-s-in-the-gift',
             sourceType: 'image',
-            sourceFormat: 'gif'
+            sourceFormat: 'gif',
           },
           {
             name: 'Soundbox card',
             sourceName: 'Codepen',
             sourceLink: 'https://codepen.io/inVoltag/full/QdOVQQ',
             sourceType: 'video',
-            sourceFormat: 'mp4'
-          }
-        ] as Array<{ name: string, sourceName: string, sourceLink: string, sourceType: string, sourceFormat: string }>,
+            sourceFormat: 'mp4',
+          },
+        ] as Array<{
+          name: string
+          sourceName: string
+          sourceLink: string
+          sourceType: string
+          sourceFormat: string
+        }>,
         slider: {
           velocity: 1 as number,
           scale: 1 as number,
@@ -88,49 +99,71 @@
           distance: 0 as number,
           hasPrevButton: false as boolean,
           hasNextButton: true as boolean,
-          timeout: null as void | null
+          timeout: null as void | null,
         },
         active: '' as string,
-        isAppeared: false as boolean
+        isAppeared: false as boolean,
       }
     },
     methods: {
       smoothScroll(e: Event) {
-        if (timeout)
-          window.cancelAnimationFrame(timeout)
+        if (timeout) window.cancelAnimationFrame(timeout)
 
         timeout = window.requestAnimationFrame(() => {
           const target = e.target as HTMLElement
-          setTimeout(() => this.slider.velocity = scrollVelocity(target, target.scrollWidth - document.body.clientWidth, 'x'), 10)
-          this.slider.scale = doMap(this.slider.velocity, 1, 1.5, 1, .9)
+          setTimeout(
+            () =>
+              (this.slider.velocity = scrollVelocity(
+                target,
+                target.scrollWidth - document.body.clientWidth,
+                'x'
+              )),
+            10
+          )
+          this.slider.scale = doMap(this.slider.velocity, 1, 1.5, 1, 0.9)
           this.slider.gap = doMap(this.slider.velocity, 1, 1.5, 1, 4)
 
-          if (target.scrollLeft >= target.scrollWidth - document.body.clientWidth - 10) {
+          if (
+            target.scrollLeft >=
+            target.scrollWidth - document.body.clientWidth - 10
+          ) {
             this.slider.hasPrevButton = true
             this.slider.hasNextButton = false
-          }
-          else if (target.scrollLeft <= 0) {
+          } else if (target.scrollLeft <= 0) {
             this.slider.hasPrevButton = false
             this.slider.hasNextButton = true
-          }
-          else
-            this.slider.hasPrevButton = this.slider.hasNextButton = true
+          } else this.slider.hasPrevButton = this.slider.hasNextButton = true
 
           if (this.slider.slides != undefined)
             for (let i = 1; i <= this.slider.slides; i++)
-              if (target.scrollLeft >= document.body.clientWidth * (i - 1) && target.scrollLeft < document.body.clientWidth * i) this.slider.slide = i
+              if (
+                target.scrollLeft >= document.body.clientWidth * (i - 1) &&
+                target.scrollLeft < document.body.clientWidth * i
+              )
+                this.slider.slide = i
         })
       },
       slideRight() {
-        const scrollBox: HTMLElement = Array.from(document.getElementsByClassName('shots__scroll') as HTMLCollectionOf<HTMLElement>)[0]
+        const scrollBox: HTMLElement = Array.from(
+          document.getElementsByClassName(
+            'shots__scroll'
+          ) as HTMLCollectionOf<HTMLElement>
+        )[0]
         let animationScroll: number, progress: number
 
-        this.slider.time == 0 ? this.slider.start = scrollBox.scrollLeft : null
-        this.slider.time == 0 ? this.slider.distance = (document.body.clientWidth * this.slider.slide) - scrollBox.scrollLeft : null
+        this.slider.time == 0
+          ? (this.slider.start = scrollBox.scrollLeft)
+          : null
+        this.slider.time == 0
+          ? (this.slider.distance =
+              document.body.clientWidth * this.slider.slide -
+              scrollBox.scrollLeft)
+          : null
 
         this.slider.time += 10
-        progress = doMap(this.slider.time, 0, (1.6 * 600), 0, 1)
-        scrollBox.scrollLeft = this.slider.start + (this.slider.distance * easeInOutQuart(progress))
+        progress = doMap(this.slider.time, 0, 1.6 * 600, 0, 1)
+        scrollBox.scrollLeft =
+          this.slider.start + this.slider.distance * easeInOutQuart(progress)
 
         animationScroll = requestAnimationFrame(this.slideRight)
 
@@ -140,17 +173,29 @@
         }
       },
       slideLeft() {
-        const scrollBox: HTMLElement = Array.from(document.getElementsByClassName('shots__scroll') as HTMLCollectionOf<HTMLElement>)[0]
+        const scrollBox: HTMLElement = Array.from(
+          document.getElementsByClassName(
+            'shots__scroll'
+          ) as HTMLCollectionOf<HTMLElement>
+        )[0]
         let animationScroll: number, progress: number, diff: number
 
-        this.slider.hasNextButton ? diff = this.slider.slide - 1 : diff = this.slider.slide - 2
+        this.slider.hasNextButton
+          ? (diff = this.slider.slide - 1)
+          : (diff = this.slider.slide - 2)
 
-        this.slider.time == 0 ? this.slider.start = scrollBox.scrollLeft : null
-        this.slider.time == 0 ? this.slider.distance =  scrollBox.scrollLeft - (document.body.clientWidth * diff) : null
+        this.slider.time == 0
+          ? (this.slider.start = scrollBox.scrollLeft)
+          : null
+        this.slider.time == 0
+          ? (this.slider.distance =
+              scrollBox.scrollLeft - document.body.clientWidth * diff)
+          : null
 
         this.slider.time += 10
-        progress = doMap(this.slider.time, 0, (1.6 * 600), 0, 1)
-        scrollBox.scrollLeft = this.slider.start - (this.slider.distance * easeInOutQuart(progress))
+        progress = doMap(this.slider.time, 0, 1.6 * 600, 0, 1)
+        scrollBox.scrollLeft =
+          this.slider.start - this.slider.distance * easeInOutQuart(progress)
 
         animationScroll = requestAnimationFrame(this.slideLeft)
 
@@ -160,16 +205,21 @@
         }
       },
       makeSlides() {
-        const scrollBox: HTMLElement = Array.from(document.getElementsByClassName('shots__scroll') as HTMLCollectionOf<HTMLElement>)[0]
-        this.slider.slides = Math.ceil(scrollBox.scrollWidth / document.body.clientWidth) ?? 4
-      }
+        const scrollBox: HTMLElement = Array.from(
+          document.getElementsByClassName(
+            'shots__scroll'
+          ) as HTMLCollectionOf<HTMLElement>
+        )[0]
+        this.slider.slides =
+          Math.ceil(scrollBox.scrollWidth / document.body.clientWidth) ?? 4
+      },
     },
-    created: function() {
-      window.addEventListener("resize",  this.makeSlides)
+    created: function () {
+      window.addEventListener('resize', this.makeSlides)
     },
-    mounted: function() {
+    mounted: function () {
       this.makeSlides()
-    }
+    },
   })
 </script>
 
@@ -177,7 +227,10 @@
   <main class="page">
     <section class="shots">
       <Transition name="switch" appear>
-        <div v-if="slider.hasPrevButton" class="navigation-button navigation-button--left">
+        <div
+          v-if="slider.hasPrevButton"
+          class="navigation-button navigation-button--left"
+        >
           <Button
             type="secondary"
             layout="ICON-ONLY"
@@ -196,14 +249,18 @@
           <Transition
             v-for="(shot, index) in shots"
             name="slide-up"
-            :style="`--delay: calc(var(--delay-turtoise) + (var(--duration-step) * ${(index * .5) - .5}))`"
+            :style="`--delay: calc(var(--delay-turtoise) + (var(--duration-step) * ${
+              index * 0.5 - 0.5
+            }))`"
             :key="`shot-${index + 1}`"
             appear
           >
             <AssetContainer
               :title="shot.name"
               :thumbnail="`/images/_lab/sd/asset-${shots.length - index}.webp`"
-              :hdnail="`/images/_lab/hd/asset-${shots.length - index}.${shot.sourceFormat}`"
+              :hdnail="`/images/_lab/hd/asset-${shots.length - index}.${
+                shot.sourceFormat
+              }`"
               :alt="$t('lab.alt')"
               :type="shot.sourceType"
               :sourceName="shot.sourceName"
@@ -217,8 +274,16 @@
           </Transition>
         </div>
       </div>
-      <Transition name="switch" :style="`--delay: ${isAppeared ? '0ms' : 'var(--delay-turtoise)'}`" appear @after-enter="isAppeared = true">
-        <div v-if="slider.hasNextButton" class="navigation-button navigation-button--right">
+      <Transition
+        name="switch"
+        :style="`--delay: ${isAppeared ? '0ms' : 'var(--delay-turtoise)'}`"
+        appear
+        @after-enter="isAppeared = true"
+      >
+        <div
+          v-if="slider.hasNextButton"
+          class="navigation-button navigation-button--right"
+        >
           <Button
             type="secondary"
             layout="ICON-ONLY"
@@ -234,10 +299,7 @@
       </Transition>
     </section>
     <Transition name="pull-up" style="--delay: var(--delay-turtoise)" appear>
-      <Footer
-        alignment="L"
-        :theme="theme"
-      />
+      <Footer alignment="L" :theme="theme" />
     </Transition>
   </main>
 </template>

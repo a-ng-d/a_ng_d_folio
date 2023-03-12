@@ -6,17 +6,17 @@
     props: {
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
-    data: function() {
+    data: function () {
       return {
         width: 50 as number,
         duration: 800 as number,
         easing: '.86 .12 .12 .86' as string,
-        delay: 100 as number
+        delay: 100 as number,
       }
-    }
+    },
   })
 </script>
 
@@ -133,7 +133,8 @@
       x2="193.651"
       y2="234.404"
       :stroke-width="width"
-      stroke-dasharray="130" stroke-dashoffset="0"
+      stroke-dasharray="130"
+      stroke-dashoffset="0"
       stroke-linecap="round"
     >
       <animate
@@ -288,7 +289,6 @@
     </line>
   </svg>
 </template>
-
 
 <style scoped lang="sass">
   // Structure

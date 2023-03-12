@@ -22,28 +22,28 @@
       SimpleExternalLink,
       Play,
       Bot,
-      Apple
+      Apple,
     },
     props: {
       scrollProgress: {
         type: Number,
-        required: true
+        required: true,
       },
       scrollLimit: {
         type: Number,
-        required: true
+        required: true,
       },
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
-    data: function() {
+    data: function () {
       return {
         isFullScreen: false as boolean,
-        assets: assets
+        assets: assets,
       }
-    }
+    },
   })
 </script>
 
@@ -55,7 +55,11 @@
     >
       <template #plain>
         <p>{{ $t('work._iobeya_mobile_ds.challenge.paragraph-1') }}</p>
-        <i18n-t keypath="work._iobeya_mobile_ds.challenge.paragraph-2" tag="p" scope="global">
+        <i18n-t
+          keypath="work._iobeya_mobile_ds.challenge.paragraph-2"
+          tag="p"
+          scope="global"
+        >
           <template #linkOne>
             <SimpleExternalLink
               :label="$t('work._iobeya_mobile_ds.externalLinks.linkOne.label')"
@@ -82,10 +86,16 @@
       :theme="theme"
     >
       <template #plain>
-        <i18n-t keypath="work._iobeya_mobile_ds.part-1.paragraph-1" tag="p" scope="global">
+        <i18n-t
+          keypath="work._iobeya_mobile_ds.part-1.paragraph-1"
+          tag="p"
+          scope="global"
+        >
           <template #linkThree>
             <SimpleExternalLink
-              :label="$t('work._iobeya_mobile_ds.externalLinks.linkThree.label')"
+              :label="
+                $t('work._iobeya_mobile_ds.externalLinks.linkThree.label')
+              "
               :href="$t('work._iobeya_mobile_ds.externalLinks.linkThree.href')"
               :alt="$t('work._iobeya_mobile_ds.externalLinks.linkThree.alt')"
               :theme="theme"
@@ -105,9 +115,7 @@
         <p>{{ $t('work._iobeya_mobile_ds.part-2.paragraph-2') }}</p>
       </template>
     </OneColumn>
-    <TwoColumns
-      :theme="theme"
-    >
+    <TwoColumns :theme="theme">
       <template #left>
         <Figure
           type="image"
@@ -118,7 +126,9 @@
           :alt="$t('work._iobeya_mobile_ds.part-2.caption-1')"
         >
           <template #caption>
-            <p class="discrete">{{ $t('work._iobeya_mobile_ds.part-2.caption-1') }}</p>
+            <p class="discrete">
+              {{ $t('work._iobeya_mobile_ds.part-2.caption-1') }}
+            </p>
           </template>
         </Figure>
       </template>
@@ -132,14 +142,14 @@
           :alt="$t('work._iobeya_mobile_ds.part-2.caption-2')"
         >
           <template #caption>
-            <p class="discrete">{{ $t('work._iobeya_mobile_ds.part-2.caption-2') }}</p>
+            <p class="discrete">
+              {{ $t('work._iobeya_mobile_ds.part-2.caption-2') }}
+            </p>
           </template>
         </Figure>
       </template>
     </TwoColumns>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <p>{{ $t('work._iobeya_mobile_ds.part-2.paragraph-3') }}</p>
         <Figure
@@ -151,7 +161,9 @@
           :alt="$t('work._iobeya_mobile_ds.part-2.caption-3')"
         >
           <template #caption>
-            <p class="discrete">{{ $t('work._iobeya_mobile_ds.part-2.caption-3') }}</p>
+            <p class="discrete">
+              {{ $t('work._iobeya_mobile_ds.part-2.caption-3') }}
+            </p>
           </template>
         </Figure>
         <p>{{ $t('work._iobeya_mobile_ds.part-2.paragraph-4') }}</p>
@@ -164,7 +176,9 @@
           :alt="$t('work._iobeya_mobile_ds.part-2.caption-4')"
         >
           <template #caption>
-            <p class="discrete">{{ $t('work._iobeya_mobile_ds.part-2.caption-4') }}</p>
+            <p class="discrete">
+              {{ $t('work._iobeya_mobile_ds.part-2.caption-4') }}
+            </p>
           </template>
         </Figure>
         <p>{{ $t('work._iobeya_mobile_ds.part-2.paragraph-5') }}</p>
@@ -177,7 +191,9 @@
           :alt="$t('work._iobeya_mobile_ds.part-2.caption-5')"
         >
           <template #caption>
-            <p class="discrete">{{ $t('work._iobeya_mobile_ds.part-2.caption-5') }}</p>
+            <p class="discrete">
+              {{ $t('work._iobeya_mobile_ds.part-2.caption-5') }}
+            </p>
           </template>
         </Figure>
       </template>
@@ -192,11 +208,7 @@
         <p>{{ $t('work._iobeya_mobile_ds.part-3.paragraph-1') }}</p>
       </template>
     </OneColumn>
-    <WrapColumn
-      :columns="4"
-      :isFullScreen="isFullScreen"
-      :theme="theme"
-    >
+    <WrapColumn :columns="4" :isFullScreen="isFullScreen" :theme="theme">
       <template #plain>
         <Figure
           type="image"
@@ -208,7 +220,9 @@
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
-            <p class="discrete">{{ $t('work._iobeya_mobile_ds.part-3.caption-1') }}</p>
+            <p class="discrete">
+              {{ $t('work._iobeya_mobile_ds.part-3.caption-1') }}
+            </p>
           </template>
         </Figure>
         <Figure
@@ -221,7 +235,9 @@
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
-            <p class="discrete">{{ $t('work._iobeya_mobile_ds.part-3.caption-2') }}</p>
+            <p class="discrete">
+              {{ $t('work._iobeya_mobile_ds.part-3.caption-2') }}
+            </p>
           </template>
         </Figure>
         <Figure
@@ -234,7 +250,9 @@
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
-            <p class="discrete">{{ $t('work._iobeya_mobile_ds.part-3.caption-3') }}</p>
+            <p class="discrete">
+              {{ $t('work._iobeya_mobile_ds.part-3.caption-3') }}
+            </p>
           </template>
         </Figure>
         <Figure
@@ -247,18 +265,16 @@
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
-            <p class="discrete">{{ $t('work._iobeya_mobile_ds.part-3.caption-4') }}</p>
+            <p class="discrete">
+              {{ $t('work._iobeya_mobile_ds.part-3.caption-4') }}
+            </p>
           </template>
         </Figure>
       </template>
     </WrapColumn>
   </section>
   <section class="credit">
-    <WrapColumn
-      :title="$t('global.credit')"
-      :columns="2"
-      :theme="theme"
-    >
+    <WrapColumn :title="$t('global.credit')" :columns="2" :theme="theme">
       <template #plain>
         <ContentContainer
           :title="$t('work._iobeya_mobile_ds.credit.contributor-1.name')"
@@ -289,13 +305,12 @@
     </WrapColumn>
   </section>
   <section class="takeaways">
-    <OneColumn
-      :title="$t('global.takeaways')"
-      :theme="theme"
-    >
+    <OneColumn :title="$t('global.takeaways')" :theme="theme">
       <template #plain>
         <LinkContainer
-          :description="$t('work._iobeya_mobile_ds.takeaways.takeaway-1.description')"
+          :description="
+            $t('work._iobeya_mobile_ds.takeaways.takeaway-1.description')
+          "
           :cta="$t('work._iobeya_mobile_ds.takeaways.takeaway-1.linkLabel')"
           href="https://www.figma.com/proto/1KL4RbABxDPiUTQLAXa2ci/Welcome-%F0%9F%91%8B?page-id=0%3A1&node-id=6%3A5&viewport=444%2C48%2C0.06&scaling=contain&starting-point-node-id=1%3A42"
           :alt="$t('work._iobeya_mobile_ds.takeaways.takeaway-1.alt')"
@@ -306,7 +321,9 @@
           </template>
         </LinkContainer>
         <LinkContainer
-          :description="$t('work._iobeya_mobile_ds.takeaways.takeaway-2.description')"
+          :description="
+            $t('work._iobeya_mobile_ds.takeaways.takeaway-2.description')
+          "
           :cta="$t('work._iobeya_mobile_ds.takeaways.takeaway-2.linkLabel')"
           href="https://apps.apple.com/cm/app/iobeya/id1489989781?platform=iphone"
           :alt="$t('work._iobeya_mobile_ds.takeaways.takeaway-2.alt')"
@@ -317,7 +334,9 @@
           </template>
         </LinkContainer>
         <LinkContainer
-          :description="$t('work._iobeya_mobile_ds.takeaways.takeaway-3.description')"
+          :description="
+            $t('work._iobeya_mobile_ds.takeaways.takeaway-3.description')
+          "
           :cta="$t('work._iobeya_mobile_ds.takeaways.takeaway-3.linkLabel')"
           href="https://play.google.com/store/apps/details?id=com.iobeya.mobile.android&gl=US"
           :alt="$t('work._iobeya_mobile_ds.takeaways.takeaway-3.alt')"
@@ -332,6 +351,4 @@
   </section>
 </template>
 
-<style scoped lang="sass">
-
-</style>
+<style scoped lang="sass"></style>

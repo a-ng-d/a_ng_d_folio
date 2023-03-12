@@ -6,17 +6,17 @@
     props: {
       pages: {
         type: [Array, Object],
-        required: true
+        required: true,
       },
       activePage: {
         type: Number,
-        required: true
+        required: true,
       },
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
-    }
+        default: 'DEFAULT',
+      },
+    },
   })
 </script>
 
@@ -27,8 +27,8 @@
         v-for="n in pages.length"
         class="pagination__dot"
         :class="n == activePage + 1 ? 'pagination__dot--active' : ''"
-        :key="`dots-${n}`">
-      </div>
+        :key="`dots-${n}`"
+      ></div>
     </div>
   </div>
 </template>

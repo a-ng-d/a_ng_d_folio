@@ -9,7 +9,7 @@
       Button,
       ArrowUp,
       ArrowRight,
-      ArrowLeft
+      ArrowLeft,
     },
     props: {
       previousPage: String,
@@ -17,9 +17,9 @@
       nextPage: String,
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
-    }
+        default: 'DEFAULT',
+      },
+    },
   })
 </script>
 

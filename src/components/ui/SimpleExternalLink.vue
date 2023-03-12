@@ -8,36 +8,36 @@
     name: 'SimpleExternalLink',
     components: {
       ExternalLink,
-      Label
+      Label,
     },
     props: {
       label: {
         type: String,
-        required: true
+        required: true,
       },
       href: {
         type: String,
-        required: true
+        required: true,
       },
       alt: String,
       small: {
         type: Boolean,
-        default: false
+        default: false,
       },
       large: {
         type: Boolean,
-        default: false
+        default: false,
       },
       theme: {
         type: String,
-        default: 'DEFAULT'
+        default: 'DEFAULT',
+      },
+    },
+    data: function () {
+      return {
+        store,
       }
     },
-    data: function() {
-      return {
-        store
-      }
-    }
   })
 </script>
 
@@ -52,9 +52,7 @@
     :data-theme="theme"
   >
     <div class="external-link__icon">
-      <ExternalLink
-        :size="small ? 16 : large ? 32 : 24"
-      />
+      <ExternalLink :size="small ? 16 : large ? 32 : 24" />
     </div>
     <div class="external-link__label">
       <Label

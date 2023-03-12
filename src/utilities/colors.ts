@@ -6,71 +6,71 @@ export const HSLColors: Colors = {
     saturation: 100,
     lightness: 8,
     type: 'value',
-    name: 'DEEP_BLACK'
+    name: 'DEEP_BLACK',
   },
   titaniumWhite: {
     hue: 0,
     saturation: 0,
     lightness: 100,
     type: 'value',
-    name: 'TITANIUM_WHITE'
+    name: 'TITANIUM_WHITE',
   },
   soil: {
     hue: 340,
     saturation: 2,
     lightness: 30,
     type: 'grayscale',
-    name: 'SOIL'
+    name: 'SOIL',
   },
   sandstone: {
     hue: 345,
     saturation: 2,
     lightness: 61,
     type: 'grayscale',
-    name: 'SANDSTONE'
+    name: 'SANDSTONE',
   },
   clay: {
     hue: 3,
     saturation: 4,
     lightness: 78,
     type: 'grayscale',
-    name: 'CLAY'
+    name: 'CLAY',
   },
   cream: {
     hue: 3,
     saturation: 14,
     lightness: 96,
     type: 'grayscale',
-    name: 'CREAM'
+    name: 'CREAM',
   },
   creamySun: {
     hue: 49,
     saturation: 90,
     lightness: 62,
     type: 'primary',
-    name: 'CREAMYSUN'
+    name: 'CREAMYSUN',
   },
   softWind: {
     hue: 209,
     saturation: 96,
     lightness: 89,
     type: 'primary',
-    name: 'SOFT_WIND'
+    name: 'SOFT_WIND',
   },
   candyFloss: {
     hue: 266,
     saturation: 60,
     lightness: 89,
     type: 'primary',
-    name: 'CANDY_FLOSS'
+    name: 'CANDY_FLOSS',
   },
   clearWater: {
     hue: 209,
     saturation: 96,
     lightness: 69,
     type: 'secondary',
-    name: 'CLEAR_WATER'
-  }
+    name: 'CLEAR_WATER',
+  },
 }
 
 export const filters: Filters = {
@@ -80,7 +80,7 @@ export const filters: Filters = {
     invert: '0',
     saturation: '.9',
     grayscale: '0%',
-    name: 'CREAMY_SUN'
+    name: 'CREAMY_SUN',
   },
   nightly: {
     hue: '20deg',
@@ -88,7 +88,7 @@ export const filters: Filters = {
     invert: '1',
     saturation: '.3',
     grayscale: '0%',
-    name: 'NIGHTLY'
+    name: 'NIGHTLY',
   },
   candyFloss: {
     hue: '200deg',
@@ -96,7 +96,7 @@ export const filters: Filters = {
     invert: '0',
     saturation: '.8',
     grayscale: '0%',
-    name: 'CANDY_FLOSS'
+    name: 'CANDY_FLOSS',
   },
   softWind: {
     hue: '170deg',
@@ -104,7 +104,7 @@ export const filters: Filters = {
     invert: '0',
     saturation: '.8',
     grayscale: '0%',
-    name: 'SOFT_WIND'
+    name: 'SOFT_WIND',
   },
   grayscale: {
     hue: '0deg',
@@ -112,7 +112,7 @@ export const filters: Filters = {
     invert: '0',
     saturation: '1',
     grayscale: '100%',
-    name: 'GRAYSCALE'
+    name: 'GRAYSCALE',
   },
   _ui_color_palette: {
     hue: '128deg',
@@ -120,7 +120,7 @@ export const filters: Filters = {
     invert: '0',
     saturation: '.55',
     grayscale: '0%',
-    name: '_UI_COLOR_PALETTE'
+    name: '_UI_COLOR_PALETTE',
   },
   _jeprendsquoi: {
     hue: '0deg',
@@ -128,7 +128,7 @@ export const filters: Filters = {
     invert: '0',
     saturation: '1',
     grayscale: '100%',
-    name: '_JEPRENDSQUOI'
+    name: '_JEPRENDSQUOI',
   },
   _jean_bobby_radio: {
     hue: '32deg',
@@ -136,7 +136,7 @@ export const filters: Filters = {
     invert: '1',
     saturation: '.3',
     grayscale: '0%',
-    name: '_JEAN_BOBBY_RADIO'
+    name: '_JEAN_BOBBY_RADIO',
   },
   _iobeya_mobile_ds: {
     hue: '343deg',
@@ -144,7 +144,7 @@ export const filters: Filters = {
     invert: '1',
     saturation: '.7',
     grayscale: '0%',
-    name: '_IOBEYA_MOBILE_DS'
+    name: '_IOBEYA_MOBILE_DS',
   },
   _awesome_ipsums: {
     hue: '82deg',
@@ -152,7 +152,7 @@ export const filters: Filters = {
     invert: '0',
     saturation: '.9',
     grayscale: '0%',
-    name: '_AWESOME_IPSUMS'
+    name: '_AWESOME_IPSUMS',
   },
   _iobeya_whiteboard: {
     hue: '343deg',
@@ -160,6 +160,6 @@ export const filters: Filters = {
     invert: '1',
     saturation: '.7',
     grayscale: '0%',
-    name: '_IOBEYA_WHITEBOARD'
-  }
+    name: '_IOBEYA_WHITEBOARD',
+  },
 }

@@ -12,7 +12,7 @@
   import { filters } from '@/utilities/colors'
   import { i18n } from '@/lang'
 
-  export default defineComponent ({
+  export default defineComponent({
     name: 'Unknown',
     components: {
       Button,
@@ -21,25 +21,27 @@
       Label,
       Switch,
       Footer,
-      Home
+      Home,
     },
     props: {
       filter: Object,
       ui: {
         type: Boolean,
-        default: true
+        default: true,
       },
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
     watch: {
       filter(to) {
-        to['name'] === 'NIGHTLY' ? this.$emit('theme', 'DARK') : this.$emit('theme', 'DEFAULT')
-      }
+        to['name'] === 'NIGHTLY'
+          ? this.$emit('theme', 'DARK')
+          : this.$emit('theme', 'DEFAULT')
+      },
     },
-    data: function() {
+    data: function () {
       return {
         store,
         povs: [
@@ -49,7 +51,7 @@
               this.$emit('pov', 'RESET')
               this.$el.scrollTop = 0
             },
-            isActive: true
+            isActive: true,
           },
           {
             name: i18n.global.t('unknown.pov.invert'),
@@ -57,7 +59,7 @@
               this.$emit('pov', 'INVERT')
               this.$el.scrollTop = 0
             },
-            isActive: false
+            isActive: false,
           },
           {
             name: i18n.global.t('unknown.pov.dontLookUp'),
@@ -65,7 +67,7 @@
               this.$emit('pov', 'DONTLOOKUP')
               this.$el.scrollTop = 0
             },
-            isActive: false
+            isActive: false,
           },
           {
             name: i18n.global.t('unknown.pov.dive'),
@@ -73,7 +75,7 @@
               this.$emit('pov', 'DIVE_3')
               this.$el.scrollTop = 0
             },
-            isActive: false
+            isActive: false,
           },
           {
             name: i18n.global.t('unknown.pov.side'),
@@ -81,7 +83,7 @@
               this.$emit('pov', 'SIDE')
               this.$el.scrollTop = 0
             },
-            isActive: false
+            isActive: false,
           },
           {
             name: i18n.global.t('unknown.pov.global'),
@@ -89,39 +91,39 @@
               this.$emit('pov', 'GLOBAL')
               this.$el.scrollTop = 0
             },
-            isActive: false
-          }
+            isActive: false,
+          },
         ] as Array<Option>,
         filters: [
           {
             name: i18n.global.t('unknown.filter.creamySun'),
             action: () => this.$emit('filter', filters.creamySun),
-            isActive: true
+            isActive: true,
           },
           {
             name: i18n.global.t('unknown.filter.softWind'),
             action: () => this.$emit('filter', filters.softWind),
-            isActive: false
+            isActive: false,
           },
           {
             name: i18n.global.t('unknown.filter.candyFloss'),
             action: () => this.$emit('filter', filters.candyFloss),
-            isActive: false
+            isActive: false,
           },
           {
             name: i18n.global.t('unknown.filter.grayscale'),
             action: () => this.$emit('filter', filters.grayscale),
-            isActive: false
+            isActive: false,
           },
           {
             name: i18n.global.t('unknown.filter.nightly'),
             action: () => this.$emit('filter', filters.nightly),
-            isActive: false
-          }
+            isActive: false,
+          },
         ] as Array<Option>,
         interval: 0 as number,
         currentInterval: 0 as number,
-        fadeInterval: 0
+        fadeInterval: 0,
       }
     },
     methods: {
@@ -129,38 +131,40 @@
         this.$el.onmousemove = (e: MouseEvent) => {
           this.currentInterval = e.clientX - e.clientY
           this.$emit('isUIHere', true)
-        } 
+        }
       },
       clickCatching() {
         this.$el.onclick = (e: MouseEvent) => {
           this.$emit('isUIHere', true)
           clearInterval(this.fadeInterval)
           this.fadeInterval = setInterval(this.fadeOutUI, 4000)
-        } 
+        }
       },
       touchCatching() {
         this.$el.ontouchstart = (e: TouchEvent) => {
           this.$emit('isUIHere', true)
           clearInterval(this.fadeInterval)
           this.fadeInterval = setInterval(this.fadeOutUI, 4000)
-        } 
+        }
       },
       fadeOutUI() {
-        this.interval === this.currentInterval ? this.$emit('isUIHere', false) : this.$emit('isUIHere', true)
+        this.interval === this.currentInterval
+          ? this.$emit('isUIHere', false)
+          : this.$emit('isUIHere', true)
         this.interval = this.currentInterval
-      }
+      },
     },
-    mounted: function() {
+    mounted: function () {
       this.mouseOffsetCatching()
       this.clickCatching()
       this.touchCatching()
       this.fadeInterval = setInterval(this.fadeOutUI, 4000)
     },
-    unmounted: function() {
+    unmounted: function () {
       this.$el.onmousemove = null
       this.$el.onclick = null
       clearInterval(this.fadeInterval)
-    }
+    },
   })
 </script>
 
@@ -168,7 +172,15 @@
   <main class="page">
     <article class="unknown" :data-theme="theme">
       <section class="controler">
-        <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + (var(--duration-step) * 1))" appear>
+        <Transition
+          name="slide-up"
+          style="
+            --delay: calc(
+              var(--duration-turtoise) + (var(--duration-step) * 1)
+            );
+          "
+          appear
+        >
           <div class="controler__content controler__content">
             <h3>{{ $t('unknown.intro.title') }}</h3>
             <p>{{ $t('unknown.intro.subtitle') }}</p>
@@ -187,16 +199,32 @@
             </Button>
           </div>
         </Transition>
-        <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + (var(--duration-step) * 3))" appear>
+        <Transition
+          name="slide-up"
+          style="
+            --delay: calc(
+              var(--duration-turtoise) + (var(--duration-step) * 3)
+            );
+          "
+          appear
+        >
           <div class="controler__scroll">
-            <Label
-              :label="$t('global.scrollDown')"
-              :theme="theme"
-            />
+            <Label :label="$t('global.scrollDown')" :theme="theme" />
           </div>
         </Transition>
-        <Transition name="slide-up" style="--delay: calc(var(--duration-turtoise) + (var(--duration-step) * 2))" appear>
-          <div v-if="store.device != 'MOBILE'" class="controler__content controler__content">
+        <Transition
+          name="slide-up"
+          style="
+            --delay: calc(
+              var(--duration-turtoise) + (var(--duration-step) * 2)
+            );
+          "
+          appear
+        >
+          <div
+            v-if="store.device != 'MOBILE'"
+            class="controler__content controler__content"
+          >
             <Dropdown
               :label="$t('unknown.pov.title')"
               :options="povs"
@@ -236,10 +264,7 @@
       </section>
     </article>
     <Transition name="pull-up" style="--delay: var(--delay-turtoise)" appear>
-      <Footer
-        alignment="L"
-        :theme="theme"
-      />
+      <Footer alignment="L" :theme="theme" />
     </Transition>
   </main>
 </template>

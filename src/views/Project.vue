@@ -29,20 +29,20 @@
       _jean_bobby_radio,
       _awesome_ipsums,
       _iobeya_whiteboard,
-      _iobeya_mobile_ds
+      _iobeya_mobile_ds,
     },
     props: {
       project: {
         type: Object,
-        required: true
+        required: true,
       },
       scrollProgress: Number,
       scrollLimit: Number,
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
-    }
+        default: 'DEFAULT',
+      },
+    },
   })
 </script>
 
@@ -50,15 +50,34 @@
   <main class="page">
     <article class="project" :data-theme="theme">
       <section class="title">
-        <Transition name="slide-up" style="--delay: var(--delay-turtoise)" appear>
-          <ScrollingText
-            :label="project.codeName"
-            :theme="theme"
-          />
+        <Transition
+          name="slide-up"
+          style="--delay: var(--delay-turtoise)"
+          appear
+        >
+          <ScrollingText :label="project.codeName" :theme="theme" />
         </Transition>
-        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * .5))" appear>
+        <Transition
+          name="slide-up"
+          style="
+            --delay: calc(var(--delay-turtoise) + (var(--duration-step) * 0.5));
+          "
+          appear
+        >
           <ScrollingText
-            :label="$t('global.navigate') + $t('global.separator') + $t('global.discover') + $t('global.separator') + project.date + $t('global.separator') + project.summary + $t('global.separator') + 'Project #' + (project.position + 1) + $t('global.separator')"
+            :label="
+              $t('global.navigate') +
+              $t('global.separator') +
+              $t('global.discover') +
+              $t('global.separator') +
+              project.date +
+              $t('global.separator') +
+              project.summary +
+              $t('global.separator') +
+              'Project #' +
+              (project.position + 1) +
+              $t('global.separator')
+            "
             direction="RIGHT"
             isSubTitle
             :theme="theme"
@@ -67,20 +86,16 @@
         </Transition>
       </section>
       <section class="description">
-        <OneColumn
-          :theme="theme"
-        >
+        <OneColumn :theme="theme">
           <template #plain>
-            <p class="enhanced">{{ $t(`work.${project.codeName}.description`) }}</p>
+            <p class="enhanced">
+              {{ $t(`work.${project.codeName}.description`) }}
+            </p>
           </template>
         </OneColumn>
       </section>
       <section class="overview">
-        <WrapColumn
-          :title="$t('global.overview')"
-          :columns="4"
-          :theme="theme"
-        >
+        <WrapColumn :title="$t('global.overview')" :columns="4" :theme="theme">
           <template #plain>
             <ContentContainer
               :title="$t('global.date')"
@@ -101,7 +116,8 @@
             />
             <ContentContainer
               v-for="(role, index) in project.roles"
-              :title="`${$t('global.role')} #${index + 1}`" :description="role"
+              :title="`${$t('global.role')} #${index + 1}`"
+              :description="role"
               :key="`#${index + 1}`"
               :theme="theme"
             />

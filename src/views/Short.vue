@@ -17,20 +17,24 @@
       Career,
       Stories,
       Talks,
-      Workshops
+      Workshops,
     },
     props: {
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
-    }
+        default: 'DEFAULT',
+      },
+    },
   })
 </script>
 
 <template>
   <main class="page">
-    <Transition name="slide-up" appear style="--delay: var(--duration-turtoise)">
+    <Transition
+      name="slide-up"
+      appear
+      style="--delay: var(--duration-turtoise)"
+    >
       <article class="article">
         <About :theme="theme" />
         <Networks :theme="theme" />
@@ -40,10 +44,7 @@
         <Workshops :theme="theme" />
       </article>
     </Transition>
-    <Footer
-      alignment="CENTER"
-      :theme="theme"
-    />
+    <Footer alignment="CENTER" :theme="theme" />
   </main>
 </template>
 

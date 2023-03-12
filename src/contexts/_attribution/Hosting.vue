@@ -7,28 +7,25 @@
     name: 'Hosting',
     components: {
       OneColumn,
-      SimpleExternalLink
+      SimpleExternalLink,
     },
     props: {
       theme: {
         type: String,
-        default: 'DEFAULT'
+        default: 'DEFAULT',
+      },
+    },
+    data: function () {
+      return {
+        links: ['link-2', 'link-1'] as Array<string>,
       }
     },
-    data: function() {
-      return {
-        links: ['link-2', 'link-1'] as Array<string>
-      }
-    }
   })
 </script>
 
 <template>
   <section>
-    <OneColumn
-      :title="$t('attribution.hosting.title')"
-      :theme="theme"
-    >
+    <OneColumn :title="$t('attribution.hosting.title')" :theme="theme">
       <template #plain>
         <SimpleExternalLink
           v-for="link in links"
@@ -43,6 +40,4 @@
   </section>
 </template>
 
-<style scoped lang="sass">
-
-</style>
+<style scoped lang="sass"></style>

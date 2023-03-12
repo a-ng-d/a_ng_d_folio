@@ -21,66 +21,56 @@
       SimpleExternalLink,
       Info,
       Bot,
-      Apple
+      Apple,
     },
     props: {
       scrollProgress: {
         type: Number,
-        required: true
+        required: true,
       },
       scrollLimit: {
         type: Number,
-        required: true
+        required: true,
       },
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
-    data: function() {
+    data: function () {
       return {
         isFullScreen: false as boolean,
-        assets: assets
+        assets: assets,
       }
     },
     methods: {
       parallax(start: number, end: number) {
         return `${doMap(this.scrollProgress, 0, this.scrollLimit, start, end)}%`
-      }
-    }
+      },
+    },
   })
 </script>
 
 <template>
   <section class="challenge">
-    <OneColumn
-      :title="$t('work._jeprendsquoi.challenge.title')"
-      :theme="theme"
-    >
+    <OneColumn :title="$t('work._jeprendsquoi.challenge.title')" :theme="theme">
       <template #plain>
         <p>{{ $t('work._jeprendsquoi.challenge.paragraph-1') }}</p>
-        <p>
-          <ul>
-            <li>{{ $t('work._jeprendsquoi.challenge.point-1') }}</li>
-            <li>{{ $t('work._jeprendsquoi.challenge.point-2') }}</li>
-          </ul>
-        </p>
+        <ul>
+          <li>{{ $t('work._jeprendsquoi.challenge.point-1') }}</li>
+          <li>{{ $t('work._jeprendsquoi.challenge.point-2') }}</li>
+        </ul>
         <p>{{ $t('work._jeprendsquoi.challenge.paragraph-2') }}</p>
       </template>
     </OneColumn>
   </section>
   <section>
-    <OneColumn
-      :title="$t('work._jeprendsquoi.part-1.title')"
-      :theme="theme"
-    >
+    <OneColumn :title="$t('work._jeprendsquoi.part-1.title')" :theme="theme">
       <template #plain>
         <p>{{ $t('work._jeprendsquoi.part-1.paragraph-1') }}</p>
       </template>
     </OneColumn>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <Figure
           type="image"
@@ -92,7 +82,12 @@
           :theme="theme"
         >
           <template #caption>
-            <i18n-t keypath="work._jeprendsquoi.part-1.caption-1" tag="p" class="discrete" scope="global">
+            <i18n-t
+              keypath="work._jeprendsquoi.part-1.caption-1"
+              tag="p"
+              class="discrete"
+              scope="global"
+            >
               <template #linkOne>
                 <SimpleExternalLink
                   :label="$t('work._jeprendsquoi.externalLinks.linkOne.label')"
@@ -116,16 +111,12 @@
         </Figure>
       </template>
     </OneColumn>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <p>{{ $t('work._jeprendsquoi.part-1.paragraph-2') }}</p>
       </template>
     </OneColumn>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <Figure
           type="image"
@@ -136,10 +127,17 @@
           :alt="$t('work._jeprendsquoi.part-1.caption-2')"
         >
           <template #caption>
-            <i18n-t keypath="work._jeprendsquoi.part-1.caption-2" tag="p" class="discrete" scope="global">
+            <i18n-t
+              keypath="work._jeprendsquoi.part-1.caption-2"
+              tag="p"
+              class="discrete"
+              scope="global"
+            >
               <template #linkThree>
                 <SimpleExternalLink
-                  :label="$t('work._jeprendsquoi.externalLinks.linkThree.label')"
+                  :label="
+                    $t('work._jeprendsquoi.externalLinks.linkThree.label')
+                  "
                   :href="$t('work._jeprendsquoi.externalLinks.linkThree.href')"
                   :alt="$t('work._jeprendsquoi.externalLinks.linkThree.alt')"
                   small
@@ -151,21 +149,20 @@
         </Figure>
       </template>
     </OneColumn>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <p>{{ $t('work._jeprendsquoi.part-1.paragraph-3') }}</p>
       </template>
     </OneColumn>
   </section>
   <section>
-    <OneColumn
-      :title="$t('work._jeprendsquoi.part-2.title')"
-      :theme="theme"
-    >
+    <OneColumn :title="$t('work._jeprendsquoi.part-2.title')" :theme="theme">
       <template #plain>
-        <i18n-t keypath="work._jeprendsquoi.part-2.paragraph-1" tag="p" scope="global">
+        <i18n-t
+          keypath="work._jeprendsquoi.part-2.paragraph-1"
+          tag="p"
+          scope="global"
+        >
           <template #linkFour>
             <SimpleExternalLink
               :label="$t('work._jeprendsquoi.externalLinks.linkFour.label')"
@@ -177,11 +174,7 @@
         </i18n-t>
       </template>
     </OneColumn>
-    <WrapColumn
-      :columns="4"
-      :isFullScreen="isFullScreen"
-      :theme="theme"
-    >
+    <WrapColumn :columns="4" :isFullScreen="isFullScreen" :theme="theme">
       <template #plain>
         <Figure
           type="image"
@@ -193,7 +186,9 @@
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
-            <p class="discrete">{{ $t('work._jeprendsquoi.part-2.caption-1') }}</p>
+            <p class="discrete">
+              {{ $t('work._jeprendsquoi.part-2.caption-1') }}
+            </p>
           </template>
         </Figure>
         <Figure
@@ -206,7 +201,9 @@
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
-            <p class="discrete">{{ $t('work._jeprendsquoi.part-2.caption-2') }}</p>
+            <p class="discrete">
+              {{ $t('work._jeprendsquoi.part-2.caption-2') }}
+            </p>
           </template>
         </Figure>
         <Figure
@@ -219,7 +216,9 @@
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
-            <p class="discrete">{{ $t('work._jeprendsquoi.part-2.caption-3') }}</p>
+            <p class="discrete">
+              {{ $t('work._jeprendsquoi.part-2.caption-3') }}
+            </p>
           </template>
         </Figure>
         <Figure
@@ -232,21 +231,19 @@
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
-            <p class="discrete">{{ $t('work._jeprendsquoi.part-2.caption-4') }}</p>
+            <p class="discrete">
+              {{ $t('work._jeprendsquoi.part-2.caption-4') }}
+            </p>
           </template>
         </Figure>
       </template>
     </WrapColumn>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <p>{{ $t('work._jeprendsquoi.part-2.paragraph-2') }}</p>
       </template>
     </OneColumn>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <LinkContainer
           :description="$t('work._jeprendsquoi.part-2.info.description')"
@@ -261,9 +258,7 @@
         </LinkContainer>
       </template>
     </OneColumn>
-    <TwoColumns
-      :theme="theme"
-    >
+    <TwoColumns :theme="theme">
       <template #left>
         <Figure
           type="image"
@@ -275,7 +270,9 @@
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
-            <p class="discrete">{{ $t('work._jeprendsquoi.part-2.caption-7') }}</p>
+            <p class="discrete">
+              {{ $t('work._jeprendsquoi.part-2.caption-7') }}
+            </p>
           </template>
         </Figure>
       </template>
@@ -290,22 +287,22 @@
           @isMagnified="isFullScreen = $event"
         >
           <template #caption>
-            <p class="discrete">{{ $t('work._jeprendsquoi.part-2.caption-8') }}</p>
+            <p class="discrete">
+              {{ $t('work._jeprendsquoi.part-2.caption-8') }}
+            </p>
           </template>
         </Figure>
       </template>
     </TwoColumns>
   </section>
-  <section class="ending">
-  </section>
+  <section class="ending"></section>
   <section class="takeaways">
-    <OneColumn
-      :title="$t('global.takeaways')"
-      :theme="theme"
-    >
+    <OneColumn :title="$t('global.takeaways')" :theme="theme">
       <template #plain>
         <LinkContainer
-          :description="$t('work._jeprendsquoi.takeaways.takeaway-1.description')"
+          :description="
+            $t('work._jeprendsquoi.takeaways.takeaway-1.description')
+          "
           :cta="$t('work._jeprendsquoi.takeaways.takeaway-1.linkLabel')"
           href="https://drive.google.com/file/d/1Tx5d1EZLWERLJ2398BEAQsPycZJKwhTm/view?usp=share_link"
           :alt="$t('work._jeprendsquoi.takeaways.takeaway-1.alt')"
@@ -316,7 +313,9 @@
           </template>
         </LinkContainer>
         <LinkContainer
-          :description="$t('work._jeprendsquoi.takeaways.takeaway-2.description')"
+          :description="
+            $t('work._jeprendsquoi.takeaways.takeaway-2.description')
+          "
           :cta="$t('work._jeprendsquoi.takeaways.takeaway-2.linkLabel')"
           href="https://testflight.apple.com/join/MWCqjMMu"
           :alt="$t('work._jeprendsquoi.takeaways.takeaway-2.alt')"

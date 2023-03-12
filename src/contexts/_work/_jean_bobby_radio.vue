@@ -25,34 +25,34 @@
       Info,
       Github,
       Radio,
-      Vue3Lottie
+      Vue3Lottie,
     },
     props: {
       scrollProgress: {
         type: Number,
-        required: true
+        required: true,
       },
       scrollLimit: {
         type: Number,
-        required: true
+        required: true,
       },
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
-    data: function() {
+    data: function () {
       return {
         store,
         JBRAnimation,
-        assets: assets
+        assets: assets,
       }
     },
     methods: {
       parallax(start: number, end: number) {
         return `${doMap(this.scrollProgress, 0, this.scrollLimit, start, end)}%`
-      }
-    }
+      },
+    },
   })
 </script>
 
@@ -66,9 +66,7 @@
         <p>{{ $t('work._jean_bobby_radio.part-1.paragraph-1') }}</p>
       </template>
     </OneColumn>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <LinkContainer
           :description="$t('work._jean_bobby_radio.part-1.info.description')"
@@ -93,9 +91,7 @@
         <p>{{ $t('work._jean_bobby_radio.part-2.paragraph-1') }}</p>
       </template>
     </OneColumn>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <Figure
           type="image"
@@ -106,7 +102,9 @@
           :alt="$t('work._jean_bobby_radio.part-2.caption-1')"
         >
           <template #caption>
-            <p class="discrete">{{ $t('work._jean_bobby_radio.part-2.caption-1') }}</p>
+            <p class="discrete">
+              {{ $t('work._jean_bobby_radio.part-2.caption-1') }}
+            </p>
           </template>
         </Figure>
       </template>
@@ -121,33 +119,30 @@
         <p>{{ $t('work._jean_bobby_radio.part-3.paragraph-1') }}</p>
       </template>
     </OneColumn>
-    <FullWidthFigure
-      center
-      background="#190038"
-      :theme="theme"
-    >
+    <FullWidthFigure center background="#190038" :theme="theme">
       <template #asset>
-        <v-lazy-image :src="assets._jean_bobby_radio[1]" :style="`transform: translateY(${parallax(50, -50)})`" />
+        <v-lazy-image
+          :src="assets._jean_bobby_radio[1]"
+          :style="`transform: translateY(${parallax(50, -50)})`"
+        />
       </template>
     </FullWidthFigure>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <p>{{ $t('work._jean_bobby_radio.part-3.paragraph-2') }}</p>
       </template>
     </OneColumn>
-    <FullWidthFigure
-      center
-      background="#190038"
-      caption
-      :theme="theme"
-    >
+    <FullWidthFigure center background="#190038" caption :theme="theme">
       <template #asset>
         <Vue3Lottie :animationData="JBRAnimation" />
       </template>
       <template #caption>
-        <i18n-t keypath="work._jean_bobby_radio.part-3.caption-1" tag="p" class="discrete" scope="global">
+        <i18n-t
+          keypath="work._jean_bobby_radio.part-3.caption-1"
+          tag="p"
+          class="discrete"
+          scope="global"
+        >
           <template #linkOne>
             <SimpleExternalLink
               :label="$t('work._jean_bobby_radio.externalLinks.linkOne.label')"
@@ -161,16 +156,14 @@
       </template>
     </FullWidthFigure>
   </section>
-  <section class="ending">
-  </section>
+  <section class="ending"></section>
   <section class="takeaways">
-    <OneColumn
-      :title="$t('global.takeaways')"
-      :theme="theme"
-    >
+    <OneColumn :title="$t('global.takeaways')" :theme="theme">
       <template #plain>
         <LinkContainer
-          :description="$t('work._jean_bobby_radio.takeaways.takeaway-1.description')"
+          :description="
+            $t('work._jean_bobby_radio.takeaways.takeaway-1.description')
+          "
           :cta="$t('work._jean_bobby_radio.takeaways.takeaway-1.linkLabel')"
           href="https://jean-bobby.radio.fm"
           :alt="$t('work._jean_bobby_radio.takeaways.takeaway-1.alt')"
@@ -181,7 +174,9 @@
           </template>
         </LinkContainer>
         <LinkContainer
-          :description="$t('work._jean_bobby_radio.takeaways.takeaway-2.description')"
+          :description="
+            $t('work._jean_bobby_radio.takeaways.takeaway-2.description')
+          "
           :cta="$t('work._jean_bobby_radio.takeaways.takeaway-2.linkLabel')"
           href="https://github.com/inVoltag/jean-bobby-radio"
           :alt="$t('work._jean_bobby_radio.takeaways.takeaway-2.alt')"

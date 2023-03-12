@@ -5,7 +5,14 @@
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import ContentContainer from '@/components/patterns/ContentContainer.vue'
-  import { Heart, Briefcase, FlaskConical, User, Mail, Archive } from 'lucide-vue-next'
+  import {
+    Heart,
+    Briefcase,
+    FlaskConical,
+    User,
+    Mail,
+    Archive,
+  } from 'lucide-vue-next'
   import { random } from '@/utilities/operations'
 
   export default defineComponent({
@@ -19,73 +26,86 @@
       FlaskConical,
       User,
       Mail,
-      Archive
+      Archive,
     },
     props: {
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
-    data: function() {
+    data: function () {
       return {
         store,
         tooltip: {
           isActive: false,
           name: '',
           title: '',
-          description: ''
-        } as { isActive: boolean, name: string, title: string, description: string },
+          description: '',
+        } as {
+          isActive: boolean
+          name: string
+          title: string
+          description: string
+        },
         universe: [
           {
             name: 'core',
             path: '/_core',
             alt: i18n.global.t('actions.core'),
-            icon: 'Heart'
+            icon: 'Heart',
           },
           {
             name: 'work',
             path: '/_work',
             alt: i18n.global.t('actions.work'),
-            icon: 'Briefcase'
-          },{
+            icon: 'Briefcase',
+          },
+          {
             name: 'lab',
             path: '/_lab',
             alt: i18n.global.t('actions.lab'),
-            icon: 'FlaskConical'
-          },{
+            icon: 'FlaskConical',
+          },
+          {
             name: 'short',
             path: '/_short',
             alt: i18n.global.t('actions.id'),
-            icon: 'User'
-          },{
+            icon: 'User',
+          },
+          {
             name: 'contact',
             path: '/_contact',
             alt: i18n.global.t('actions.contact'),
-            icon: 'Mail'
-          },{
+            icon: 'Mail',
+          },
+          {
             name: 'archive',
             path: 'https://school.involt.io',
             alt: i18n.global.t('actions.archive'),
-            icon: 'Archive'
+            icon: 'Archive',
           },
-        ] as Array<{ name: string, path: string, alt: string, icon: string}>
+        ] as Array<{ name: string; path: string; alt: string; icon: string }>,
       }
     },
     methods: {
       expandTooltip(e: Event) {
         this.tooltip.isActive = true
         this.tooltip.name = (e.target as HTMLElement).id
-        this.tooltip.title = i18n.global.t(`universe.${(e.target as HTMLElement).id}.title`)
-        this.tooltip.description = i18n.global.t(`universe.${(e.target as HTMLElement).id}.description`)
+        this.tooltip.title = i18n.global.t(
+          `universe.${(e.target as HTMLElement).id}.title`
+        )
+        this.tooltip.description = i18n.global.t(
+          `universe.${(e.target as HTMLElement).id}.description`
+        )
       },
       collapseTooltip() {
         this.tooltip.isActive = false
       },
       random(min: number, max: number) {
         return random(min, max)
-      }
-    }
+      },
+    },
   })
 </script>
 
@@ -94,8 +114,14 @@
     <section class="menu">
       <ul class="menu__items">
         <li v-for="(world, index) in universe" :key="world.name">
-          <Transition name="slide-up" appear :style="`--delay: calc(var(--delay-turtoise) + ${index * 100}ms)`">
-            <div :style="`top: ${random(-10, 10)}% ; left: ${random(-20, 20)}%`">
+          <Transition
+            name="slide-up"
+            appear
+            :style="`--delay: calc(var(--delay-turtoise) + ${index * 100}ms)`"
+          >
+            <div
+              :style="`top: ${random(-10, 10)}% ; left: ${random(-20, 20)}%`"
+            >
               <Button
                 :id="world.name"
                 type="primary"
@@ -112,9 +138,15 @@
                   <Component :is="world.icon" :size="24" />
                 </template>
               </Button>
-              <i18n-t v-if="store.device === 'MOBILE'" :keypath="`universe.${world.name}.title`" tag="p" scope="global" class="discrete">
+              <i18n-t
+                v-if="store.device === 'MOBILE'"
+                :keypath="`universe.${world.name}.title`"
+                tag="p"
+                scope="global"
+                class="discrete"
+              >
                 <template #breakLine>
-                  <br>
+                  <br />
                 </template>
               </i18n-t>
             </div>
@@ -132,10 +164,7 @@
       </div>
     </section>
     <Transition name="pull-up" style="--delay: var(--delay-turtoise)" appear>
-      <Footer
-        alignment="left"
-        :theme="theme"
-      />
+      <Footer alignment="left" :theme="theme" />
     </Transition>
   </main>
 </template>

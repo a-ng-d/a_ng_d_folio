@@ -7,45 +7,34 @@
     name: 'About',
     components: {
       OneColumn,
-      Label
+      Label,
     },
     props: {
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
-    }
+        default: 'DEFAULT',
+      },
+    },
   })
 </script>
 
 <template>
   <section>
-    <OneColumn
-      :title="$t('id.about.title')"
-      :theme="theme"
-    >
+    <OneColumn :title="$t('id.about.title')" :theme="theme">
       <template #plain>
         <div>
           <i18n-t keypath="id.about.experience" tag="p">
             <template v-slot:iobeya>
-              <Label
-                :label="$t('global.iobeya')"
-                highlighted
-                :theme="theme"
-              />
+              <Label :label="$t('global.iobeya')" highlighted :theme="theme" />
             </template>
             <template v-slot:year>
               {{ new Date().getFullYear() - 2015 }}
             </template>
           </i18n-t>
-          <p>{{ $t("id.about.mission") }}</p>
+          <p>{{ $t('id.about.mission') }}</p>
           <i18n-t keypath="id.about.activities" tag="p">
             <template #team>
-              <Label
-                :label="$t('global.team')"
-                highlighted
-                :theme="theme"
-              />
+              <Label :label="$t('global.team')" highlighted :theme="theme" />
             </template>
             <template #thinking>
               <Label
@@ -55,20 +44,14 @@
               />
             </template>
             <template #system>
-              <Label
-                :label="$t('global.system')"
-                highlighted
-                :theme="theme"
-              />
+              <Label :label="$t('global.system')" highlighted :theme="theme" />
             </template>
           </i18n-t>
-          <p>{{ $t("id.about.side") }}</p>
+          <p>{{ $t('id.about.side') }}</p>
         </div>
       </template>
     </OneColumn>
   </section>
 </template>
 
-<style scoped lang="sass">
-
-</style>
+<style scoped lang="sass"></style>

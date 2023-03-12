@@ -6,47 +6,45 @@
   export default defineComponent({
     name: 'Switch',
     components: {
-      Particles
+      Particles,
     },
     props: {
       label: String,
       active: {
         type: Boolean,
-        default: false
+        default: false,
       },
       on: {
         type: Function,
-        required: true
+        required: true,
       },
       off: {
         type: Function,
-        required: true
+        required: true,
       },
       alt: String,
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
-    data: function() {
+    data: function () {
       return {
         store,
-        isActive: this.active as boolean
+        isActive: this.active as boolean,
       }
     },
     methods: {
       moveSwitch() {
         this.isActive = !this.isActive
         this.isActive ? this.on() : this.off()
-      }
-    }
+      },
+    },
   })
 </script>
 
 <template>
-  <div class="switch"
-    :data-theme="theme"
-  >
+  <div class="switch" :data-theme="theme">
     <input
       type="checkbox"
       name="swt"
@@ -57,15 +55,14 @@
       @blur="store.isFocus = false"
     />
     <div class="switch__item">
-      <label v-if="label != undefined" class="switch__label" for="swt"><p>{{ label }}</p></label>
+      <label v-if="label != undefined" class="switch__label" for="swt"
+        ><p>{{ label }}</p></label
+      >
       <div class="switch__indicator">
         <div class="switch__slide">
           <div class="switch__knob"></div>
           <div class="switch__background">
-            <Particles
-              :weight="16"
-              :isExpanded="isActive"
-            />
+            <Particles :weight="16" :isExpanded="isActive" />
           </div>
         </div>
       </div>

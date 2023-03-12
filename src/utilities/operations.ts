@@ -1,31 +1,47 @@
-export const doMap = (value: number, oldMin: number, oldMax: number, newMin: number, newMax: number) => {
+export const doMap = (
+  value: number,
+  oldMin: number,
+  oldMax: number,
+  newMin: number,
+  newMax: number
+) => {
   const oldRange = oldMax - oldMin,
-        newRange = newMax - newMin
+    newRange = newMax - newMin
 
-  return ((value - oldMin) * newRange / oldRange) + newMin
+  return ((value - oldMin) * newRange) / oldRange + newMin
 }
 
-export const random = (min: number, max: number) => Math.floor(Math.random() * (max - min)) + min
+export const random = (min: number, max: number) =>
+  Math.floor(Math.random() * (max - min)) + min
 
-export const twoRangesRandom = (rangeLeftMin: number, rangeLeftMax: number, rangeRightMin: number, rangeRightMax: number) => {
+export const twoRangesRandom = (
+  rangeLeftMin: number,
+  rangeLeftMax: number,
+  rangeRightMin: number,
+  rangeRightMax: number
+) => {
   const randomLeft: number = random(rangeLeftMin, rangeLeftMax),
-        randomRight: number = random(rangeRightMin, rangeRightMax),
-        dice: number = Math.random()
+    randomRight: number = random(rangeRightMin, rangeRightMax),
+    dice: number = Math.random()
 
-  const dicer: number = dice < .5 ? randomLeft : randomRight
+  const dicer: number = dice < 0.5 ? randomLeft : randomRight
   return dicer
 }
 
 let timer: () => void,
-    pick: number,
-    delta: number = 0,
-    velocity: number = 0,
-    currentPosition: number = 0,
-    snapPosition: number = 0
-export const scrollVelocity = (target: HTMLElement, scrollLimit: number, orientation: string) => {
+  pick: number,
+  delta = 0,
+  velocity = 0,
+  currentPosition = 0,
+  snapPosition = 0
+export const scrollVelocity = (
+  target: HTMLElement,
+  scrollLimit: number,
+  orientation: string
+) => {
   velocity = 1
   delta = 1
-  currentPosition =  orientation === 'y' ? target.scrollTop : target.scrollLeft
+  currentPosition = orientation === 'y' ? target.scrollTop : target.scrollLeft
   window.cancelAnimationFrame(pick)
   timer = () => {
     snapPosition = orientation === 'y' ? target.scrollTop : target.scrollLeft
@@ -33,9 +49,11 @@ export const scrollVelocity = (target: HTMLElement, scrollLimit: number, orienta
   pick = window.requestAnimationFrame(timer)
   delta = Math.abs(currentPosition - snapPosition)
   if (delta < 1 || delta > 200) delta = 1
-  currentPosition == 0 ? velocity = 1 :
-                         currentPosition > scrollLimit - 1 ? velocity = 1 :
-                         velocity = doMap(delta, 1, 200, 1, 1.5)
+  currentPosition == 0
+    ? (velocity = 1)
+    : currentPosition > scrollLimit - 1
+    ? (velocity = 1)
+    : (velocity = doMap(delta, 1, 200, 1, 1.5))
 
   return velocity
 }

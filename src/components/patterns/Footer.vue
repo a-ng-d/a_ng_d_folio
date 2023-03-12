@@ -13,38 +13,50 @@
       SimpleExternalLink,
       SimpleLink,
       Volume,
-      Volume2
+      Volume2,
     },
     props: {
       alignment: {
         type: String,
-        default: 'LEFT'
+        default: 'LEFT',
       },
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
-    data: function() {
+    data: function () {
       return {
         store,
         version: __APP_VERSION__ as string,
-        flex: this.alignment === 'LEFT' ? 'flex-start' :
-              this.alignment === 'CENTER' ? 'center' :
-              this.alignment === 'RIGHT' ? 'flex-end' :
-              'flex-start' as string
+        flex:
+          this.alignment === 'LEFT'
+            ? 'flex-start'
+            : this.alignment === 'CENTER'
+            ? 'center'
+            : this.alignment === 'RIGHT'
+            ? 'flex-end'
+            : ('flex-start' as string),
       }
-    }
+    },
   })
 </script>
 
 <template>
   <footer class="footer" :data-theme="theme">
     <div class="footer__tag">
-      <span class="footer__tag__content small-label">{{ $t("global.author") }}</span>
-      <span class="footer__tag__content small-label">{{ $t("global.separator") }}</span>
-      <span class="footer__tag__content small-label">{{ $t("global.license", { year: new Date().getFullYear() }) }}</span>
-      <span class="footer__tag__content small-label">{{ $t("global.separator") }}</span>
+      <span class="footer__tag__content small-label">{{
+        $t('global.author')
+      }}</span>
+      <span class="footer__tag__content small-label">{{
+        $t('global.separator')
+      }}</span>
+      <span class="footer__tag__content small-label">{{
+        $t('global.license', { year: new Date().getFullYear() })
+      }}</span>
+      <span class="footer__tag__content small-label">{{
+        $t('global.separator')
+      }}</span>
       <SimpleExternalLink
         :label="$t('footer.repository')"
         href="https://github.com/inVoltag/a_ng_d-folio"
@@ -52,7 +64,9 @@
         small
         :theme="theme === 'DEFAULT' ? 'DARK' : 'DEFAULT'"
       />
-      <span class="footer__tag__content small-label">{{ $t("global.separator") }}</span>
+      <span class="footer__tag__content small-label">{{
+        $t('global.separator')
+      }}</span>
       <SimpleLink
         :label="$t('footer.attribution')"
         path="/_attribution"
@@ -60,8 +74,12 @@
         small
         :theme="theme === 'DEFAULT' ? 'DARK' : 'DEFAULT'"
       />
-      <span class="footer__tag__content small-label">{{ $t("global.separator") }}</span>
-      <span class="footer__tag__content small-label">{{ `${$t("global.version")} ${version}` }}</span>
+      <span class="footer__tag__content small-label">{{
+        $t('global.separator')
+      }}</span>
+      <span class="footer__tag__content small-label">{{
+        `${$t('global.version')} ${version}`
+      }}</span>
     </div>
     <Button
       v-if="store.device === 'DESKTOP'"

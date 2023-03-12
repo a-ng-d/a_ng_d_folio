@@ -16,49 +16,44 @@
       LinkContainer,
       Figure,
       Download,
-      Github
+      Github,
     },
     props: {
       scrollProgress: {
         type: Number,
-        required: true
+        required: true,
       },
       scrollLimit: {
         type: Number,
-        required: true
+        required: true,
       },
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
+        default: 'DEFAULT',
+      },
     },
-    data: function() {
+    data: function () {
       return {
-        assets: assets
+        assets: assets,
       }
     },
     methods: {
       parallax(start: number, end: number) {
         return `${doMap(this.scrollProgress, 0, this.scrollLimit, start, end)}%`
-      }
-    }
+      },
+    },
   })
 </script>
 
 <template>
   <section>
-    <TwoColumns
-      :title="$t('work._awesome_ipsums.part-1.title')"
-      :theme="theme"
-    >
+    <TwoColumns :title="$t('work._awesome_ipsums.part-1.title')" :theme="theme">
       <template #left>
         <p>{{ $t('work._awesome_ipsums.part-1.paragraph-1') }}</p>
-        <p>
-          <ul>
-            <li>{{ $t('work._awesome_ipsums.part-1.point-1') }}</li>
-            <li>{{ $t('work._awesome_ipsums.part-1.point-2') }}</li>
-          </ul>
-        </p>
+        <ul>
+          <li>{{ $t('work._awesome_ipsums.part-1.point-1') }}</li>
+          <li>{{ $t('work._awesome_ipsums.part-1.point-2') }}</li>
+        </ul>
         <p>{{ $t('work._awesome_ipsums.part-1.paragraph-2') }}</p>
         <p>{{ $t('work._awesome_ipsums.part-1.paragraph-3') }}</p>
       </template>
@@ -72,7 +67,9 @@
           :alt="$t('work._awesome_ipsums.part-1.caption-1')"
         >
           <template #caption>
-            <p class="discrete">{{ $t('work._awesome_ipsums.part-1.caption-1') }}</p>
+            <p class="discrete">
+              {{ $t('work._awesome_ipsums.part-1.caption-1') }}
+            </p>
           </template>
         </Figure>
       </template>
@@ -97,11 +94,7 @@
         />
       </template>
     </TwoColumns>
-    <TwoColumns
-      class="col-2--invert"
-      center
-      :theme="theme"
-    >
+    <TwoColumns class="col-2--invert" center :theme="theme">
       <template #left>
         <Figure
           type="image"
@@ -115,10 +108,7 @@
         <p>{{ $t('work._awesome_ipsums.part-2.paragraph-2') }}</p>
       </template>
     </TwoColumns>
-    <TwoColumns
-      center
-      :theme="theme"
-    >
+    <TwoColumns center :theme="theme">
       <template #left>
         <p>{{ $t('work._awesome_ipsums.part-2.paragraph-3') }}</p>
       </template>
@@ -133,16 +123,14 @@
       </template>
     </TwoColumns>
   </section>
-  <section class="ending">
-  </section>
+  <section class="ending"></section>
   <section class="takeaways">
-    <OneColumn
-      :title="$t('global.takeaways')"
-      :theme="theme"
-    >
+    <OneColumn :title="$t('global.takeaways')" :theme="theme">
       <template #plain>
         <LinkContainer
-          :description="$t('work._awesome_ipsums.takeaways.takeaway-1.description')"
+          :description="
+            $t('work._awesome_ipsums.takeaways.takeaway-1.description')
+          "
           :cta="$t('work._awesome_ipsums.takeaways.takeaway-1.linkLabel')"
           href="https://github.com/inVoltag/sketch-awesome-ipsums/releases/latest/download/awesome-ipsums.sketchplugin.zip"
           :alt="$t('work._awesome_ipsums.takeaways.takeaway-1.alt')"
@@ -153,7 +141,9 @@
           </template>
         </LinkContainer>
         <LinkContainer
-          :description="$t('work._awesome_ipsums.takeaways.takeaway-2.description')"
+          :description="
+            $t('work._awesome_ipsums.takeaways.takeaway-2.description')
+          "
           :cta="$t('work._awesome_ipsums.takeaways.takeaway-2.linkLabel')"
           href="https://github.com/inVoltag/sketch-awesome-ipsums"
           :alt="$t('work._awesome_ipsums.takeaways.takeaway-2.alt')"

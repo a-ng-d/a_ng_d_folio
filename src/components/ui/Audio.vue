@@ -6,28 +6,28 @@
     props: {
       src: {
         type: String,
-        required: true
+        required: true,
       },
       muted: {
         type: Boolean,
-        default: false
+        default: false,
       },
       autoplay: {
         type: Boolean,
-        default: false
+        default: false,
       },
       loop: {
         type: Boolean,
-        default: false
+        default: false,
       },
       play: {
         type: Boolean,
-        default: false
+        default: false,
       },
       volume: {
         type: Number,
-        default: 1
-      }
+        default: 1,
+      },
     },
     watch: {
       volume(to) {
@@ -39,25 +39,18 @@
           this.$el.pause()
           this.$el.currentTime = 0
         }
-      }
+      },
     },
-    mounted: function() {
+    mounted: function () {
       this.$el.volume = this.volume
-    }
+    },
   })
 </script>
 
 <template>
-  <audio
-    :autoplay="autoplay"
-    :muted="muted"
-    :loop="loop"
-    :volume="volume"
-  >
-    <source :src="src" type="audio/mpeg">
+  <audio :autoplay="autoplay" :muted="muted" :loop="loop" :volume="volume">
+    <source :src="src" type="audio/mpeg" />
   </audio>
 </template>
 
-<style scoped lang="sass">
-
-</style>
+<style scoped lang="sass"></style>

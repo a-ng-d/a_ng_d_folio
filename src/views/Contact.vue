@@ -11,14 +11,14 @@
       Footer,
       Button,
       ScrollingText,
-      Mail
+      Mail,
     },
     props: {
       theme: {
         type: String,
-        default: 'DEFAULT'
-      }
-    }
+        default: 'DEFAULT',
+      },
+    },
   })
 </script>
 
@@ -26,18 +26,31 @@
   <main class="page">
     <section class="jumbotron">
       <div class="jumbotron__content" :data-theme="theme">
-        <Transition name="slide-up" style="--delay: var(--delay-turtoise)" appear>
-          <ScrollingText
-            :label="$t('contact.friendlyName')"
-            :theme="theme"
-          />
+        <Transition
+          name="slide-up"
+          style="--delay: var(--delay-turtoise)"
+          appear
+        >
+          <ScrollingText :label="$t('contact.friendlyName')" :theme="theme" />
         </Transition>
-        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * .5))" appear>
-          <p class="jumbotron__baseline">{{ $t("contact.description") }}</p>
+        <Transition
+          name="slide-up"
+          style="
+            --delay: calc(var(--delay-turtoise) + (var(--duration-step) * 0.5));
+          "
+          appear
+        >
+          <p class="jumbotron__baseline">{{ $t('contact.description') }}</p>
         </Transition>
       </div>
       <div class="jumbotron__actions">
-        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * 1))" appear>
+        <Transition
+          name="slide-up"
+          style="
+            --delay: calc(var(--delay-turtoise) + (var(--duration-step) * 1));
+          "
+          appear
+        >
           <Button
             type="primary"
             :label="$t('contact.email.hello')"
@@ -51,7 +64,13 @@
             </template>
           </Button>
         </Transition>
-        <Transition name="slide-up" style="--delay: calc(var(--delay-turtoise) + (var(--duration-step) * 1.5))" appear>
+        <Transition
+          name="slide-up"
+          style="
+            --delay: calc(var(--delay-turtoise) + (var(--duration-step) * 1.5));
+          "
+          appear
+        >
           <Button
             type="primary"
             :label="$t('contact.email.pro')"
@@ -68,10 +87,7 @@
       </div>
     </section>
     <Transition name="pull-up" style="--delay: var(--delay-turtoise)" appear>
-      <Footer
-        alignment="L"
-        :theme="theme"
-      />
+      <Footer alignment="L" :theme="theme" />
     </Transition>
   </main>
 </template>
@@ -125,5 +141,4 @@
 
         a
           width: 100%
-
 </style>

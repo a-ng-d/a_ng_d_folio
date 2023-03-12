@@ -7,28 +7,31 @@
     name: 'SoundsMusics',
     components: {
       OneColumn,
-      SimpleExternalLink
+      SimpleExternalLink,
     },
     props: {
       theme: {
         type: String,
-        default: 'DEFAULT'
+        default: 'DEFAULT',
+      },
+    },
+    data: function () {
+      return {
+        links: [
+          'link-5',
+          'link-4',
+          'link-3',
+          'link-2',
+          'link-1',
+        ] as Array<string>,
       }
     },
-    data: function() {
-      return {
-        links: ['link-5', 'link-4', 'link-3','link-2', 'link-1'] as Array<string>
-      }
-    }
   })
 </script>
 
 <template>
   <section>
-    <OneColumn
-      :title="$t('attribution.soundsmusics.title')"
-      :theme="theme"
-    >
+    <OneColumn :title="$t('attribution.soundsmusics.title')" :theme="theme">
       <template #plain>
         <SimpleExternalLink
           v-for="link in links"
@@ -43,6 +46,4 @@
   </section>
 </template>
 
-<style scoped lang="sass">
-
-</style>
+<style scoped lang="sass"></style>
