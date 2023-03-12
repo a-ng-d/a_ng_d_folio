@@ -55,7 +55,7 @@
         e.preventDefault()
         cursor.style.left = (e.clientX - (cursor.clientWidth / 2)) + 'px'
         cursor.style.top = (e.clientY - (cursor.clientHeight / 2)) + 'px'
-        e.sourceCapabilities.firesTouchEvents ? cursor.style.visibility = 'hidden' : cursor.style.visibility = 'visible'
+        e.sourceCapabilities.firesTouchEvents ? cursor.style.visibility = 'hidden' : cursor.style.transform = 'scale(0)'
         if (
           e.target.closest('.button') != null ||
           e.target.closest('.rich-external-link') != null ||
@@ -77,10 +77,7 @@
         else if (e.clientY <= 0 || e.clientY >= window.innerHeight)
           cursor.style.transform = 'scale(0)'
         else 
-        cursor.style.transform = 'scale(1)'
-      }
-      window.onmouseout = () => {
-        cursor.style.visibility = 'hidden'
+          cursor.style.transform = 'scale(1)'
       }
     </script>
   </body>
