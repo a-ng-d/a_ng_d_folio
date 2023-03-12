@@ -126,20 +126,20 @@
     },
     methods: {
       mouseOffsetCatching() {
-        window.onmousemove = (e: MouseEvent) => {
+        this.$el.onmousemove = (e: MouseEvent) => {
           this.currentInterval = e.clientX - e.clientY
           this.$emit('isUIHere', true)
         } 
       },
       clickCatching() {
-        window.onclick = (e: MouseEvent) => {
+        this.$el.onclick = (e: MouseEvent) => {
           this.$emit('isUIHere', true)
           clearInterval(this.fadeInterval)
           this.fadeInterval = setInterval(this.fadeOutUI, 4000)
         } 
       },
       touchCatching() {
-        window.ontouchstart = (e: TouchEvent) => {
+        this.$el.ontouchstart = (e: TouchEvent) => {
           this.$emit('isUIHere', true)
           clearInterval(this.fadeInterval)
           this.fadeInterval = setInterval(this.fadeOutUI, 4000)
@@ -157,8 +157,8 @@
       this.fadeInterval = setInterval(this.fadeOutUI, 4000)
     },
     unmounted: function() {
-      window.onmousemove = null
-      window.onclick = null
+      this.$el.onmousemove = null
+      this.$el.onclick = null
       clearInterval(this.fadeInterval)
     }
   })
