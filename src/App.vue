@@ -6,6 +6,7 @@
   import MainMenu from '@/contexts/MainMenu.vue'
   import Glitchscape from '@/components/graphics/Glitchscape.vue'
   import Particles from '@/components/graphics/Particles.vue'
+  import Awards from '@/components/patterns/Awards.vue'
   import Audio from '@/components/ui/Audio.vue'
 
   let timeout: number
@@ -17,6 +18,7 @@
       MainMenu,
       Glitchscape,
       Particles,
+      Awards,
       Audio
     },
     data: function() {
@@ -195,6 +197,11 @@
 </script>
 
 <template>
+  <!--Awards-->
+  <Transition name="pull-left" style="--delay: var(--duration-turtoise)" appear>
+    <Awards />
+  </Transition>
+  
   <!--Transition-->
   <Particles
     :weight="176"
