@@ -186,8 +186,12 @@
 // Pull transitions
 .pull-up-enter-active,
 .pull-up-leave-active,
+.pull-right-enter-active,
+.pull-right-leave-active,
 .pull-down-enter-active,
-.pull-down-leave-active
+.pull-down-leave-active,
+.pull-left-enter-active,
+.pull-left-leave-active
   transition: all var(--duration-turtoise) var(--delay, 0ms) var(--ease-vroom) !important
 
 //// Pull up
@@ -198,7 +202,7 @@
 //// Pull right
 .pull-right-enter-from,
 .pull-right-leave-to
-  transform: translateX(100%) !important
+  transform: translateX(-100%) !important
 
 //// Pull down
 .pull-down-enter-from,
@@ -208,7 +212,7 @@
 //// Pull left
 .pull-left-enter-from,
 .pull-left-leave-to
-  transform: translateX(-100%) !important
+  transform: translateX(100%) !important
 
 //// Slide transitions
 .slide-up-leave-active,
