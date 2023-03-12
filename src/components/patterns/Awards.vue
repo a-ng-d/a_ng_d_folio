@@ -2,7 +2,13 @@
   import { defineComponent } from 'vue'
 
   export default defineComponent({
-    name: 'ContentContainer'
+    name: 'ContentContainer',
+    props: {
+      ui: {
+        type: Boolean,
+        default: true
+      }
+    },
   })
 </script>
 
@@ -74,6 +80,8 @@
     align-items: center
     gap: var(--layout-paragraph-gap)
     pointer-events: none
+    opacity: v-bind("ui ? 1 : 0")
+    transition: var(--slow-transition)
   
   #awards a
     pointer-events: all
