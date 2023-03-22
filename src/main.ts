@@ -11,14 +11,14 @@ const app = createApp(App),
   loader: HTMLElement = document.getElementById('loader')!,
   feedback: any = document.getElementById('feedback')!
 
-document.title = "Virtualization in progress…"
+document.title = 'Virtualization in progress…'
 
 // Progress bar
 NProgress.configure({
   showSpinner: false,
   parent: '#progress',
   easing: 'ease',
-  speed: 200
+  speed: 200,
 })
 NProgress.start()
 

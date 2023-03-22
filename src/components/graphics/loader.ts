@@ -5,7 +5,7 @@ const Loop: any = Lottie.loadAnimation({
   renderer: 'svg',
   loop: true,
   autoplay: true,
-  path: '/animations/_loader/data.json'
+  path: '/animations/_loader/data.json',
 })
 
 export default Loop

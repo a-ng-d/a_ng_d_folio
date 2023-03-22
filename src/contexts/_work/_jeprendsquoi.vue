@@ -22,7 +22,7 @@
       Info,
       Bot,
       Apple,
-      Pointer
+      Pointer,
     },
     props: {
       scrollProgress: {
