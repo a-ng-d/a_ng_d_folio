@@ -508,6 +508,7 @@
       flex-flow: column nowrap
       padding: 0
       gap: var(--layout-row-gap) 0
+      list-style-type: none
 
       &__item
         --delay: var(--delay-hare)
