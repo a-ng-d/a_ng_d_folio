@@ -1,36 +1,52 @@
 import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import { i18n } from './lang'
+import App from '@/App.vue'
+import router from '@/router'
+import { i18n } from '@/lang'
+import Loop from '@/components/graphics/loader'
+import SetCursor from '@/components/graphics/cursor'
 import Vue3Lottie from 'vue3-lottie'
-
-declare const loop: any, NProgress: any
+import NProgress from 'nprogress'
 
 const app = createApp(App),
   loader: HTMLElement = document.getElementById('loader')!,
   feedback: any = document.getElementById('feedback')!
 
+document.title = "Virtualization in progress…"
+
+// Progress bar
+NProgress.configure({
+  showSpinner: false,
+  parent: '#progress',
+  easing: 'ease',
+  speed: 200
+})
+NProgress.start()
+
+// Cursor
+SetCursor()
+
+// Loading screen
 window.onload = () => {
   let isFrozen = false
 
-  loop.playSegments([[0, 200]], false)
+  Loop.playSegments([[0, 200]], false)
 
-  loop.onLoopComplete = () => {
+  Loop.onLoopComplete = () => {
     isFrozen = !isFrozen
     if (isFrozen) {
-      loop.goToAndStop(200, true)
+      Loop.goToAndStop(200, true)
       loader.classList.add('loader--loaded')
       document.onkeyup = () => entrance()
       document.body.ontouchstart = () => entrance()
       NProgress.done()
-    } else loop.goToAndStop(420, true)
+    } else Loop.goToAndStop(420, true)
   }
 }
 
 const entrance = (): void => {
-  loop.setSpeed(2)
-  loop.playSegments([[200, 420]], false)
-  loop.play()
+  Loop.setSpeed(2)
+  Loop.playSegments([[200, 420]], false)
+  Loop.play()
   feedback.volume = 0.2
   document.body.clientWidth > 1280 ? feedback.play() : null
   document.onkeyup = null
@@ -43,7 +59,7 @@ const entrance = (): void => {
     2000
   )
   setTimeout(() => {
-    loop.destroy()
+    Loop.destroy()
     loader.innerHTML = ''
     app.use(router).use(i18n).use(Vue3Lottie).mount('#app')
   }, 3600)

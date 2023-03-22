@@ -14,8 +14,6 @@
     <meta property="og:image" content="https://an.gd/share-cover.png" />
     <link href="/src/assets/stylesheets/loader.css" rel="stylesheet" />
     <link href="/src/assets/stylesheets/cursor.css" rel="stylesheet" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
-    <script src='https://unpkg.com/nprogress@0.2.0/nprogress.js'></script>
   </head>
   <body>
     <svg width="76" height="72" viewBox="0 0 76 72" fill="none" xmlns="http://www.w3.org/2000/svg" id="cursor">
@@ -34,53 +32,5 @@
       <source src="/sounds/start.mp3" type="audio/mpeg">
     </audio>
     <script type="module" src="/src/main.ts"></script>
-    <script type="text/javascript">
-      document.title = "Virtualization in progress…"
-      NProgress.configure({
-        showSpinner: false,
-        parent: '#progress'
-      })
-      NProgress.start()
-      const loop = lottie.loadAnimation({
-        container: document.querySelector('#animation'),
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: '/animations/_loader/data.json'
-      })
-    </script>
-    <script type="text/javascript">
-      const cursor = document.getElementById('cursor')
-      window.onmousemove = (e) => {
-        e.preventDefault()
-        cursor.style.left = (e.clientX - (cursor.clientWidth / 2)) + 'px'
-        cursor.style.top = (e.clientY - (cursor.clientHeight / 2)) + 'px'
-        if (
-          e.target.closest('.button') != null ||
-          e.target.closest('.rich-external-link') != null ||
-          e.target.closest('.external-link') != null ||
-          e.target.closest('.internal-link') != null ||
-          e.target.closest('#logotype') != null ||
-          e.target.closest('#cssda') != null ||
-          e.target.closest('#awwwards') != null ||
-          e.target.closest('.figure') != null ||
-          e.target.closest('.card') != null
-        ) cursor.style.transform = 'scale(1.4)'
-        else cursor.style.transform = 'scale(1)'
-      }
-      window.ontouchstart = (e) => {
-        cursor.style.visibility = 'hidden'
-      }
-      window.onmousedown = () => cursor.style.transform = 'scale(.8)'
-      window.onmouseup = () => cursor.style.transform = 'scale(1)'
-      window.onmouseout = (e) => {
-        if (e.clientX <= 0 || e.clientX >= window.innerWidth)
-          cursor.style.transform = 'scale(0)'
-        else if (e.clientY <= 0 || e.clientY >= window.innerHeight)
-          cursor.style.transform = 'scale(0)'
-        else 
-          cursor.style.transform = 'scale(1)'
-      }
-    </script>
   </body>
 </html>
