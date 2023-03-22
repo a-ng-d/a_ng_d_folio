@@ -2,14 +2,15 @@
   import { defineComponent } from 'vue'
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import TwoColumns from '@/components/layouts/TwoColumns.vue'
-  import ThreeColumns from '@/components/layouts/ThreeColumns.vue'
+  import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import ContentContainer from '@/components/patterns/ContentContainer.vue'
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
   import {
     Heart,
     MessageCircle,
-    Download,
+    Play,
+    Rocket,
     Figma,
     Github,
     Pointer,
@@ -19,6 +20,7 @@
     getUIColorPaletteLikes,
     getUIColorPaletteComments,
     getUIColorPaletteRuns,
+    getUIColorPaletteVersion,
   } from '@/utilities/fetch'
 
   export default defineComponent({
@@ -26,13 +28,14 @@
     components: {
       OneColumn,
       TwoColumns,
-      ThreeColumns,
+      WrapColumn,
       ContentContainer,
       LinkContainer,
       Figure,
       Heart,
       MessageCircle,
-      Download,
+      Play,
+      Rocket,
       Figma,
       Github,
       Pointer,
@@ -58,12 +61,14 @@
         likes: '…',
         comments: '…',
         runs: '…',
+        version: '…',
       }
     },
     created: async function () {
       this.likes = await getUIColorPaletteLikes()
       this.comments = await getUIColorPaletteComments()
       this.runs = await getUIColorPaletteRuns()
+      this.version = await getUIColorPaletteVersion()
     },
   })
 </script>
@@ -154,8 +159,8 @@
     </TwoColumns>
   </section>
   <section class="success">
-    <ThreeColumns :title="$t('global.success')" :theme="theme">
-      <template #left>
+    <WrapColumn :title="$t('global.success')" :theme="theme">
+      <template #plain>
         <ContentContainer
           :title="comments"
           :description="$t('global.comments')"
@@ -165,19 +170,15 @@
             <MessageCircle :size="48" />
           </template>
         </ContentContainer>
-      </template>
-      <template #middle>
         <ContentContainer
           :title="runs"
           :description="$t('global.installations')"
           :theme="theme"
         >
           <template #icon>
-            <Download :size="48" />
+            <Play :size="48" />
           </template>
         </ContentContainer>
-      </template>
-      <template #right>
         <ContentContainer
           :title="likes"
           :description="$t('global.like')"
@@ -187,8 +188,17 @@
             <Heart :size="48" />
           </template>
         </ContentContainer>
+        <ContentContainer
+          :title="version"
+          :description="$t('global.version')"
+          :theme="theme"
+        >
+          <template #icon>
+            <Rocket :size="48" />
+          </template>
+        </ContentContainer>
       </template>
-    </ThreeColumns>
+    </WrapColumn>
   </section>
   <section class="takeaways">
     <OneColumn :title="$t('global.takeaways')" :theme="theme">

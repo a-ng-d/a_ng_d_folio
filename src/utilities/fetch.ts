@@ -27,13 +27,9 @@ const fetchUIColorPaletteStats = fetchWithTimeout(
 
 export const getUIColorPaletteVersion = async () => {
   try {
-    version = `Version ${
-      (await fetchUIColorPaletteStats).versions[
-        (await fetchUIColorPaletteStats).current_plugin_version_id
-      ].version
-    }`
+    version = `v${(await fetchUIColorPaletteStats).versions[(await fetchUIColorPaletteStats).current_plugin_version_id].version}`
   } catch (error) {
-    version = 'Version 🍌'
+    version = '🍌'
   }
   return version
 }
