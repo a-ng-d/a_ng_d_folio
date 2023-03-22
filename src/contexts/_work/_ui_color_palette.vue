@@ -58,10 +58,10 @@
       return {
         isFullScreen: false as boolean,
         assets: assets,
-        likes: '…',
-        comments: '…',
-        runs: '…',
-        version: '…',
+        likes: '❤️',
+        comments: '💬',
+        runs: '▶️',
+        version: '🚀',
       }
     },
     created: async function () {
