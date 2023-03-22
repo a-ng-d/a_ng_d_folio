@@ -1,7 +1,23 @@
 let version, likes, comments, runs
 
-const fetchUIColorPaletteStats = fetch(
-  'https://api.allorigins.win/raw?url=https://figma.com/api/plugins/profile/1716027'
+async function fetchWithTimeout(resource: string, options: any = {}) {
+  const { timeout = 8000 } = options
+  
+  const controller = new AbortController()
+  const id = setTimeout(() => controller.abort(), timeout)
+  const response = await fetch(resource, {
+    ...options,
+    signal: controller.signal  
+  })
+  clearTimeout(id)
+  return response
+}
+
+const fetchUIColorPaletteStats = fetchWithTimeout(
+  'https://api.allorigins.win/raw?url=https://figma.com/api/plugins/profile/1716027',
+  {
+    timeout: 5000
+  }
 )
   .then((response) => response.json())
   .then((data) => data.meta[0])
