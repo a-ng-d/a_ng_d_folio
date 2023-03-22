@@ -17,6 +17,7 @@ import AIAnimation from '@/assets/animations/_work/_awesome_ipsums/animation.jso
 import IWAnimation from '@/assets/animations/_work/_iobeya_whiteboard/animation.json'
 import { filters } from '@/utilities/colors'
 import { assets } from '@/utilities/assets'
+import { getUIColorPaletteVersion } from '@/utilities/fetch'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -107,7 +108,7 @@ const router = createRouter({
         codeName: i18n.global.t('work._ui_color_palette.shortTitle'),
         description: i18n.global.t('work._ui_color_palette.description'),
         summary: i18n.global.t('work._ui_color_palette.shortDescription'),
-        date: i18n.global.t('work._ui_color_palette.misc.date'),
+        date: i18n.global.t('work._ui_color_palette.misc.date', { version: await getUIColorPaletteVersion() }),
         objectives: i18n.global
           .t('work._ui_color_palette.misc.objectives')
           .split(', '),
