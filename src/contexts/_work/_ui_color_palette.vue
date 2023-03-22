@@ -162,15 +162,6 @@
     <WrapColumn :title="$t('global.success')" :theme="theme">
       <template #plain>
         <ContentContainer
-          :title="comments"
-          :description="$t('global.comments')"
-          :theme="theme"
-        >
-          <template #icon>
-            <MessageCircle :size="48" />
-          </template>
-        </ContentContainer>
-        <ContentContainer
           :title="runs"
           :description="$t('global.installations')"
           :theme="theme"
@@ -186,6 +177,15 @@
         >
           <template #icon>
             <Heart :size="48" />
+          </template>
+        </ContentContainer>
+        <ContentContainer
+          :title="comments"
+          :description="$t('global.comments')"
+          :theme="theme"
+        >
+          <template #icon>
+            <MessageCircle :size="48" />
           </template>
         </ContentContainer>
         <ContentContainer
