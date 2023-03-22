@@ -318,7 +318,7 @@
             $t('work._jeprendsquoi.takeaways.takeaway-2.description')
           "
           :cta="$t('work._jeprendsquoi.takeaways.takeaway-2.linkLabel')"
-          href="https://testflight.apple.com/join/MWCqjMMu"
+          href="https://apps.apple.com/fr/app/jeprendsquoi/id1672862298"
           :alt="$t('work._jeprendsquoi.takeaways.takeaway-2.alt')"
           :theme="theme"
         >
