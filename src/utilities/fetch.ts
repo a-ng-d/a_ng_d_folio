@@ -17,7 +17,7 @@ export const getUIColorPaletteVersion = async () => {
       ].version
     }`
   } catch (error) {
-    version = 'Version KO'
+    version = 'Version 🍌'
   }
   return version
 }
@@ -26,7 +26,7 @@ export const getUIColorPaletteLikes = async () => {
   try {
     likes = (await fetchUIColorPaletteStats).like_count.toString()
   } catch (error) {
-    likes = 'KO'
+    likes = '❤️'
   }
   return likes
 }
@@ -35,7 +35,7 @@ export const getUIColorPaletteComments = async () => {
   try {
     comments = (await fetchUIColorPaletteStats).comment_count.toString()
   } catch (error) {
-    comments = 'KO'
+    comments = '💬'
   }
   return comments
 }
@@ -44,7 +44,7 @@ export const getUIColorPaletteRuns = async () => {
   try {
     runs = (await fetchUIColorPaletteStats).unique_run_count.toString()
   } catch (error) {
-    runs = 'KO'
+    runs = '▶️'
   }
   return runs
 }
