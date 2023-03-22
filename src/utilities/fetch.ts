@@ -19,7 +19,7 @@ const fetchUIColorPaletteStats = fetchWithTimeout(
     timeout: 5000
   }
 )
-  .then((response) => response.json())
+  .then((response) => response.ok ? response.json() : Promise.reject())
   .then((data) => data.meta[0])
   .catch((error) => {
     throw new Error(error)
