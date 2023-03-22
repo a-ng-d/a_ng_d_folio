@@ -108,7 +108,9 @@ const router = createRouter({
         codeName: i18n.global.t('work._ui_color_palette.shortTitle'),
         description: i18n.global.t('work._ui_color_palette.description'),
         summary: i18n.global.t('work._ui_color_palette.shortDescription'),
-        date: i18n.global.t('work._ui_color_palette.misc.date', { version: await getUIColorPaletteVersion() }),
+        date: i18n.global.t('work._ui_color_palette.misc.date', {
+          version: await getUIColorPaletteVersion(),
+        }),
         objectives: i18n.global
           .t('work._ui_color_palette.misc.objectives')
           .split(', '),

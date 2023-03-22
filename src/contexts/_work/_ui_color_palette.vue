@@ -15,7 +15,11 @@
     Pointer,
   } from 'lucide-vue-next'
   import { assets } from '@/utilities/assets'
-  import { getUIColorPaletteLikes, getUIColorPaletteComments, getUIColorPaletteRuns } from '@/utilities/fetch' 
+  import {
+    getUIColorPaletteLikes,
+    getUIColorPaletteComments,
+    getUIColorPaletteRuns,
+  } from '@/utilities/fetch'
 
   export default defineComponent({
     name: '_ui_color_palette',
@@ -60,7 +64,7 @@
       this.likes = await getUIColorPaletteLikes()
       this.comments = await getUIColorPaletteComments()
       this.runs = await getUIColorPaletteRuns()
-    }
+    },
   })
 </script>
 
