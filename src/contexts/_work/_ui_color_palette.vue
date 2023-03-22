@@ -15,6 +15,7 @@
     Pointer,
   } from 'lucide-vue-next'
   import { assets } from '@/utilities/assets'
+  import { getUIColorPaletteLikes, getUIColorPaletteComments, getUIColorPaletteRuns } from '@/utilities/fetch' 
 
   export default defineComponent({
     name: '_ui_color_palette',
@@ -50,37 +51,16 @@
       return {
         isFullScreen: false as boolean,
         assets: assets,
-        likes: 'Loading…',
-        comments: 'Loading…',
-        runs: 'Loading…',
+        likes: '…',
+        comments: '…',
+        runs: '…',
       }
     },
-    created: function () {
-      this.$watch(
-        () => this.$route.params,
-        () => {
-          this.fetchData()
-        },
-        { immediate: true }
-      )
-    },
-    methods: {
-      async fetchData() {
-        await fetch(
-          'https://api.allorigins.win/raw?url=https://figma.com/api/plugins/profile/1716027'
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            this.comments = data.meta[0].comment_count.toString()
-            this.runs = data.meta[0].unique_run_count.toString()
-            this.likes = data.meta[0].like_count.toString()
-          })
-          .catch((error) => {
-            this.comments = this.runs = this.likes = 'Ø'
-            throw new Error(error)
-          })
-      },
-    },
+    created: async function () {
+      this.likes = await getUIColorPaletteLikes()
+      this.comments = await getUIColorPaletteComments()
+      this.runs = await getUIColorPaletteRuns()
+    }
   })
 </script>
 
