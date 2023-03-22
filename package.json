@@ -20,6 +20,7 @@
     "pretty": "npx prettier --write './src/**/*.vue' './src/**/*.ts'"
   },
   "dependencies": {
+    "lottie-web": "^5.10.2",
     "lucide-vue-next": "^0.84.0",
     "nprogress": "^0.2.0",
     "p5": "^1.4.1",
@@ -34,6 +35,7 @@
     "@fontsource/sora": "^4.5.5",
     "@rushstack/eslint-patch": "^1.1.0",
     "@types/node": "^16.11.26",
+    "@types/nprogress": "^0.2.0",
     "@types/p5": "^1.4.3",
     "@types/uuid": "^8.3.4",
     "@vitejs/plugin-vue": "^2.3.1",
