@@ -6,7 +6,7 @@
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
   import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
-  import { Info, Bot, Apple } from 'lucide-vue-next'
+  import { Info, Bot, Apple, Pointer } from 'lucide-vue-next'
   import { doMap } from '@/utilities/operations'
   import { assets } from '@/utilities/assets'
 
@@ -22,6 +22,7 @@
       Info,
       Bot,
       Apple,
+      Pointer
     },
     props: {
       scrollProgress: {
@@ -317,12 +318,25 @@
             $t('work._jeprendsquoi.takeaways.takeaway-2.description')
           "
           :cta="$t('work._jeprendsquoi.takeaways.takeaway-2.linkLabel')"
-          href="https://testflight.apple.com/join/MWCqjMMu"
+          href="https://apps.apple.com/fr/app/jeprendsquoi/id1672862298"
           :alt="$t('work._jeprendsquoi.takeaways.takeaway-2.alt')"
           :theme="theme"
         >
           <template #icon>
             <Apple :size="48" />
+          </template>
+        </LinkContainer>
+        <LinkContainer
+          :description="
+            $t('work._jeprendsquoi.takeaways.takeaway-3.description')
+          "
+          :cta="$t('work._jeprendsquoi.takeaways.takeaway-3.linkLabel')"
+          href="https://jeprendsquoi.app"
+          :alt="$t('work._jeprendsquoi.takeaways.takeaway-3.alt')"
+          :theme="theme"
+        >
+          <template #icon>
+            <Pointer :size="48" />
           </template>
         </LinkContainer>
       </template>

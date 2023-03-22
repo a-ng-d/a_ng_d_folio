@@ -392,7 +392,7 @@
       "description": "I often go at the market, to buy some fresh and local food. For decades, my parents taught me consume local food is the best way to feed, because the local economy is stimulated and the carbon footprint is lower. So, avoiding supermarket and co. is a leitmotiv. However, the local market reveals its own limits because of some absurdities: find some cherries in winter (17€ a kilogram), some tomatoes or melons on november… The bitter conclusion is simple: strict seasonality is not in the minds of people.",
       "illustration": "jeprendsquoi illustration with a big smartphone",
       "misc": {
-        "date": "{'2021'}@:global.separator{'Beta released'}",
+        "date": "{'2021'}@:global.separator{'iOS app released'}",
         "objectives": "Checking a product's seasonality (fruits and vegetable), Encouraging people to contribute to the products' seasonality database",
         "roles": "Building and maintaining the database, Creating a brand: jeprendsquoi (the daily helper), Designing a mobile companion to find the right information insitu (supermarket & market), Developing a mobile app with a no-code solution",
         "type": "@:global.type.side"
@@ -437,9 +437,14 @@
           "alt": "External link to the APK app on Android"
         },
         "takeaway-2": {
-          "description": "The iOS app is available on TestFlight. It is an ongoing test beta version.",
+          "description": "The iOS app is available on the App Store",
           "linkLabel": "Install the app on iOS",
           "alt": "External link to the beta app on iOS"
+        },
+        "takeaway-3": {
+          "description": "To learn more about jeprendsquoi, you may watch the website (exclusively in french).",
+          "linkLabel": "Consult the website",
+          "alt": "External link to the app website"
         }
       },
       "externalLinks": {
