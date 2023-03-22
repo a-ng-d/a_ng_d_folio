@@ -440,6 +440,11 @@
           "description": "The iOS app is available on TestFlight. It is an ongoing test beta version.",
           "linkLabel": "Install the app on iOS",
           "alt": "External link to the beta app on iOS"
+        },
+        "takeaway-3": {
+          "description": "To learn more about jeprendsquoi, you may watch the website (exclusively in french).",
+          "linkLabel": "Consult the website",
+          "alt": "External link to the app website"
         }
       },
       "externalLinks": {
