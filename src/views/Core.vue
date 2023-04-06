@@ -136,9 +136,7 @@
             <Transition
               name="slide-up"
               style="
-                --delay: calc(
-                  var(--delay-turtoise) + (var(--duration-step) * 0.5)
-                );
+                --delay: calc(var(--delay-turtoise) + (var(--duration-step) * 0.5));
               "
               appear
             >
