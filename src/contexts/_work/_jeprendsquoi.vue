@@ -305,7 +305,7 @@
             $t('work._jeprendsquoi.takeaways.takeaway-1.description')
           "
           :cta="$t('work._jeprendsquoi.takeaways.takeaway-1.linkLabel')"
-          href="https://drive.google.com/file/d/1Tx5d1EZLWERLJ2398BEAQsPycZJKwhTm/view?usp=share_link"
+          href="https://play.google.com/store/apps/details?id=app.bravostudio.A01F6ZSK8YBS59Y8H0ZH6BN4D4F"
           :alt="$t('work._jeprendsquoi.takeaways.takeaway-1.alt')"
           :theme="theme"
         >

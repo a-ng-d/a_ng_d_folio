@@ -437,9 +437,9 @@
       },
       "takeaways": {
         "takeaway-1": {
-          "description": "The Android app is available as an APK. It is an ongoing test beta version.",
-          "linkLabel": "Download the APK",
-          "alt": "External link to the APK app on Android"
+          "description": "The Android app is available on Google Play",
+          "linkLabel": "Install the app on Android",
+          "alt": "External link to the jeprendquoi Google Play page"
         },
         "takeaway-2": {
           "description": "The iOS app is available on the App Store",
