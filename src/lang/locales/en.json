@@ -238,6 +238,11 @@
         "label": "{'PoC à deux'}@:global.separator{'LISAA'}@:global.separator{'Paris'}@:global.separator{'Mar. 2023'}",
         "href": "https://kutt.it/workshop-lisaa-5",
         "alt": "External link to the \"PoC à deux\" slides on Figma"
+      },
+      "link-6": {
+        "label": "{'Expérience immersive'}@:global.separator{'Sup de Pub'}@:global.separator{'Paris'}@:global.separator{'Apr. 2023'}",
+        "href": "https://kutt.it/workshop-sdp-1",
+        "alt": "External link to the \"Expérience immersive\" slides on Figma"
       }
     }
   },

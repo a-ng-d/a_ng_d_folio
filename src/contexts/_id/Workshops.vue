@@ -18,6 +18,7 @@
     data: function () {
       return {
         links: [
+          'link-6',
           'link-5',
           'link-4',
           'link-3',
