@@ -150,8 +150,7 @@
         <div
           v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName"
           style="
-            background: url(/images/_work/_iobeya_whiteboard/background.webp) 0%
-              0% no-repeat;
+            background: url(/images/_work/_iobeya_whiteboard/background.webp) 0% 0% no-repeat;
           "
         ></div>
       </Transition>
