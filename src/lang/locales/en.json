@@ -341,11 +341,11 @@
     "_ui_color_palette": {
       "title": "@:work._ui_color_palette.shortTitle@:global.separator@:global.author",
       "shortTitle": "_ui_color_palette",
-      "shortDescription": "Accessible color palettes with consistant lightness with Figma",
+      "shortDescription": "Accessible color palettes with consistent lightness with Figma",
       "description": "Figma is an UX tool, using diagrams to build user experiences, interfaces, prototypes, illustrations, etc. The tool can be extended with a plugin system. Figma tends to be the leader of UX tools market because of its inclusive and powerful business model. So, Figma is still the most exciting ux tool. By reading this article (Accessible Palette: stop using HSL for color systems), I noticed there is not any plugin on Figma to help build accessible color systems for UI. The opportunity is to develop a tool to create, edit and deploy color palettes.",
       "misc": {
         "date": "{'2022'}@:global.separator{'Bi-monthty release'}",
-        "objectives": "Creating UI color palettes with consistant lightness and contrast, Updating and deploying colors with ease to the team library",
+        "objectives": "Creating UI color palettes with consistent lightness and contrast, Updating and deploying colors with ease to the team library",
         "roles": "Developing the scripts to create/edit/deploy color palette (React)",
         "type": "@:global.type.side"
       },
@@ -362,7 +362,7 @@
       },
       "part-2": {
         "title": "Control the palette with WYSIWYG",
-        "paragraph-1": "Slide the stops to change the lightness of every color, and keep a palette with consistant contrasts",
+        "paragraph-1": "Slide the stops to change the lightness of every color, and keep a palette with consistent contrasts",
         "paragraph-2": "Rename, add, remove, change, reorder each color… Keep a full control of the color palette",
         "paragraph-3": "WCAG 2.0 scores help you build the most respectful palette for accessibility"
       },
