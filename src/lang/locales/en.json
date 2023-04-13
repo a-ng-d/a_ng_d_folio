@@ -91,7 +91,7 @@
     "friendlyName": "@:glossary.id",
     "about": {
       "title": "你好 nǐ hǎo!",
-      "experience": "I’m Aurélien or 立安 (lì ān) in China. Former Product Designer at {iobeya} for {year} years and an UI + code enthousiast.",
+      "experience": "I’m Aurélien or 立安 (lì ān) in China. Product Designer for {year} (ex-{iobeya}) and an UI + code enthousiast.",
       "mission": "Filling the gap between business, designers and developers universe is my leitmotiv, by learning code and teaching design.",
       "activities": "I also write about {team}, {thinking} and {system}, animate meetups, participate in a french design system community (Design System France).",
       "side": "Otherwise, I customize furnitures and explore procedural animation."
