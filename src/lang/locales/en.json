@@ -94,7 +94,7 @@
       "experience": "I’m Aurélien or 立安 (lì ān) in China. Product Designer for {year} (ex-{iobeya}) and an UI + code enthousiast.",
       "mission": "Filling the gap between business, designers and developers universe is my leitmotiv, by learning code and teaching design.",
       "activities": "I also write about {team}, {thinking} and {system}, animate meetups, participate in a french design system community (Design System France).",
-      "side": "Otherwise, I customize furnitures and explore procedural animation."
+      "side": "Otherwise, I both customize furnitures and explore procedural animation."
     },
     "network": {
       "title": "Networks (find me on the internets)",
@@ -540,7 +540,7 @@
     "_iobeya_mobile_ds": {
       "title": "@:work._iobeya_mobile_ds.shortTitle@:global.separator@:global.author",
       "shortTitle": "_iobeya_mobile_ds",
-      "shortDescription": "iObeya mobile application cross-libs design dystem",
+      "shortDescription": "iObeya mobile application cross-libs design system",
       "description": "The iObeya mobile application extends productivity and operational excellence through a project management system at the fingertips. It was a new opportunity of bootstrapping a new design system model from scratch, enhancing design and tech dependencies. iObeya web application is a monolith, and we were going to divide it into micro-frontends and API-driven developments.",
       "misc": {
         "date": "{'2019'}@:global.separator{'Released'}",
