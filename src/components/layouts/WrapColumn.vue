@@ -84,13 +84,14 @@
       &__content
         & > :deep(*)
           flex: none
-          width: 30vw
+          width: 25vw
+          min-width: 400rem
 
     @include device.tablet-portrait
       &__content
         & > :deep(*)
           flex: none
-          width: 40vw
+          width: 50vw
 
     @include device.smartphone
       &__content
