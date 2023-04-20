@@ -137,7 +137,8 @@
     },
     "career": {
       "title": "Career ({year} years of digital products)",
-      "resume": "Download my resume",
+      "resume": "Download my resume (PDF)",
+      "portfolio": "Download my portfolio (PDF)",
       "linkedIn": "Connect on my LinkedIn",
       "ecv": {
         "start": "2010",

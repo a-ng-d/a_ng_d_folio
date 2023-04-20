@@ -1,7 +1,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import OneColumn from '@/components/layouts/OneColumn.vue'
-  import TwoColumns from '@/components/layouts/TwoColumns.vue'
+  import ThreeColumns from '@/components/layouts/ThreeColumns.vue'
   import Button from '@/components/ui/Button.vue'
   import { Linkedin, Download } from 'lucide-vue-next'
 
@@ -9,7 +9,7 @@
     name: 'Career',
     components: {
       OneColumn,
-      TwoColumns,
+      ThreeColumns,
       Button,
       Linkedin,
       Download,
@@ -25,7 +25,7 @@
 
 <template>
   <section>
-    <TwoColumns
+    <ThreeColumns
       :title="$t('id.career.title', { year: new Date().getFullYear() - 2015 })"
       :theme="theme"
     >
@@ -33,7 +33,21 @@
         <Button
           type="secondary"
           :label="$t('id.career.resume')"
-          path="https://drive.google.com/file/d/1cYw57q13EwNIi1EshzMVYFouqhXrA6ji/view?usp=sharing"
+          path="https://link.an.gd/resume"
+          layout="ICON-LEFT"
+          extensible
+          :theme="theme"
+        >
+          <template #icon>
+            <Download :size="24" />
+          </template>
+        </Button>
+      </template>
+      <template #middle>
+        <Button
+          type="secondary"
+          :label="$t('id.career.portfolio')"
+          path="https://link.an.gd/portfolio"
           layout="ICON-LEFT"
           extensible
           :theme="theme"
@@ -57,7 +71,7 @@
           </template>
         </Button>
       </template>
-    </TwoColumns>
+    </ThreeColumns>
     <OneColumn :theme="theme">
       <template #plain>
         <div>
