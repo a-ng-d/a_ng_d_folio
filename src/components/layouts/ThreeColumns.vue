@@ -54,6 +54,11 @@
       gap: var(--layout-row-gap) 0
       justify-content: v-bind("center ? 'center' : 'flex-start'")
 
+  @include device.tablet-portrait
+    .col-3
+      &__columns
+        flex-flow: column nowrap
+  
   @include device.smartphone
     .col-3
       &__columns
