@@ -18,6 +18,8 @@
     data: function () {
       return {
         links: [
+          'link-8',
+          'link-7',
           'link-6',
           'link-5',
           'link-4',

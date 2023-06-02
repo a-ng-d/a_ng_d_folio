@@ -244,6 +244,16 @@
         "label": "{'Expérience immersive'}@:global.separator{'Sup de Pub'}@:global.separator{'Paris'}@:global.separator{'Apr. 2023'}",
         "href": "https://link.an.gd/workshop-omnes-1",
         "alt": "External link to the \"Expérience immersive\" slides on Figma"
+      },
+      "link-7": {
+        "label": "{'Documentaire Web'}@:global.separator{'Sup de Création'}@:global.separator{'Paris'}@:global.separator{'May 2023'}",
+        "href": "https://link.an.gd/workshop-omnes-2",
+        "alt": "External link to the \"Documentaire Web\" slides on Figma"
+      },
+      "link-8": {
+        "label": "{'One page'}@:global.separator{'Sup de Création'}@:global.separator{'Paris'}@:global.separator{'Jun. 2023'}",
+        "href": "https://link.an.gd/workshop-omnes-3",
+        "alt": "External link to the \"One page\" slides on Figma"
       }
     }
   },
