@@ -649,7 +649,7 @@
     "_awesome_ipsums": {
       "title": "@:work._awesome_ipsums.shortTitle@:global.separator@:global.author",
       "shortTitle": "_awesome_ipsums",
-      "shortDescription": "Design team’s own Lorem Ipsums from a simple Google Spreadsheet",
+      "shortDescription": "Design team’s own Lorem Ipsums from a simple Google Spreadsheet with Sketch",
       "description": "Sketch is an UX tool, using diagrams to build user experiences, interfaces, prototypes, and illustrations… The tool can be extended with a plugin system where the purpose is to add additional features, or script actions. The idea of making a more fun Lorem Ipsum tool was a great opportunity to make a Sketch Plugin and understand how it works.",
       "misc": {
         "date": "{'2019'}@:global.separator{'Released'}",
