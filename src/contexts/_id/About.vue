@@ -47,7 +47,11 @@
               <Label :label="$t('global.system')" highlighted :theme="theme" />
             </template>
           </i18n-t>
-          <p>{{ $t('id.about.side') }}</p>
+          <i18n-t keypath="id.about.side" tag="p">
+            <template #uicp>
+              <Label :label="$t('global.uicp')" highlighted :theme="theme" />
+            </template>
+          </i18n-t>
         </div>
       </template>
     </OneColumn>

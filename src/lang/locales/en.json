@@ -71,7 +71,8 @@
     "iobeya": "iObeya",
     "team": "team collaboration",
     "thinking": "design thinking",
-    "system": "design system"
+    "system": "design system",
+    "uicp": "UI Color Palette"
   },
   "home": {
     "author": "aurélien_grimaud_",
@@ -91,10 +92,10 @@
     "friendlyName": "@:glossary.id",
     "about": {
       "title": "你好 nǐ hǎo!",
-      "experience": "I’m Aurélien or 立安 (lì ān) in China. Product Designer for {year} years (ex-{iobeya}) and an UI + code enthousiast.",
-      "mission": "Filling the gap between business, designers and developers universe is my leitmotiv, by learning code and teaching design.",
-      "activities": "I also write about {team}, {thinking} and {system}, animate meetups, participate in a french design system community (Design System France).",
-      "side": "Otherwise, I both customize furnitures and explore procedural animation."
+      "experience": "I’m Aurélien (or 立安－lì ān in China). Product Designer for {year} years (ex-{iobeya}) and a UI + code enthousiast.",
+      "mission": "Filling the gap between business, designers and developers is my leitmotiv, by enabling collective intelligence, testing and learning.",
+      "activities": "I also write about {team}, {thinking} and {system}－I teach UX at design schools－I coach Junior Product Designers.",
+      "side": "Otherwise, I manage the {uicp} plugin on Figma."
     },
     "network": {
       "title": "Networks (find me on the internets)",
