@@ -746,6 +746,12 @@
         "caption-3": "This animation makes a transition between contexts while onboarding the end-user",
         "caption-4": "The final userflows, ready-to-dev."
       },
+      "success": {
+        "title-1": "A pain reliever for large meetings and events",
+        "title-2": "Deployed at scale over Miro",
+        "paragraph-1": "The whiteboarding session including team members, guests, stakeholders, suppliers allows to accelerate decision-making and enable collective intelligence.",
+        "paragraph-2": "Miro is a relevant solution to enable people by doing whiteboarding sessions, and yet, it cannot be fully integrated with a large enterprise’s standards and processes. This is the reason several large enterprise have deployed iObeya because it can do both."
+      },
       "credit": {
         "contributor-1": {
           "name": "Julien Bréhier",
@@ -769,6 +775,11 @@
           "description": "Extract of the final user flow",
           "linkLabel": "Launch a whiteboard session",
           "alt": "External link to the final prototype"
+        },
+        "takeaway-2": {
+          "description": "The Whiteboarding session feature is detailed on the iObeya website",
+          "linkLabel": "Consult the page",
+          "alt": "External link to the iObeya whiteboarding session feature page"
         }
       }
     }

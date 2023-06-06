@@ -7,7 +7,7 @@
   import ContentContainer from '@/components/patterns/ContentContainer.vue'
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
-  import { User, PlayCircle } from 'lucide-vue-next'
+  import { User, PlayCircle, MousePointer } from 'lucide-vue-next'
   import { assets } from '@/utilities/assets'
 
   export default defineComponent({
@@ -22,6 +22,7 @@
       Figure,
       User,
       PlayCircle,
+      MousePointer
     },
     props: {
       scrollProgress: {
@@ -342,6 +343,23 @@
       </template>
     </OneColumn>
   </section>
+  <section class="success">
+    <OneColumn
+      :title="$t('global.success')"
+      :theme="theme"
+    >
+    </OneColumn>
+    <TwoColumns :theme="theme">
+      <template #left>
+        <h4>{{ $t('work._iobeya_whiteboard.success.title-1') }}</h4>
+        <p>{{ $t('work._iobeya_whiteboard.success.paragraph-1') }}</p>
+      </template>
+      <template #right>
+        <h4>{{ $t('work._iobeya_whiteboard.success.title-2') }}</h4>
+        <p>{{ $t('work._iobeya_whiteboard.success.paragraph-2') }}</p>
+      </template>
+    </TwoColumns>
+  </section>
   <section class="credit">
     <WrapColumn :title="$t('global.credit')" :columns="3" :theme="theme">
       <template #plain>
@@ -382,6 +400,19 @@
         >
           <template #icon>
             <PlayCircle :size="48" />
+          </template>
+        </LinkContainer>
+        <LinkContainer
+          :description="
+            $t('work._iobeya_whiteboard.takeaways.takeaway-2.description')
+          "
+          :cta="$t('work._iobeya_whiteboard.takeaways.takeaway-2.linkLabel')"
+          href="https://www.iobeya.com/features/whiteboarding-session/"
+          :alt="$t('work._iobeya_whiteboard.takeaways.takeaway-2.alt')"
+          :theme="theme"
+        >
+          <template #icon>
+            <MousePointer :size="48" />
           </template>
         </LinkContainer>
       </template>
