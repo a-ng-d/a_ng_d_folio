@@ -175,9 +175,7 @@
         <Transition
           name="slide-up"
           style="
-            --delay: calc(
-              var(--duration-turtoise) + (var(--duration-step) * 1)
-            );
+            --delay: calc(var(--duration-turtoise) + (var(--duration-step) * 1));
           "
           appear
         >
@@ -202,9 +200,7 @@
         <Transition
           name="slide-up"
           style="
-            --delay: calc(
-              var(--duration-turtoise) + (var(--duration-step) * 3)
-            );
+            --delay: calc(var(--duration-turtoise) + (var(--duration-step) * 3));
           "
           appear
         >
@@ -215,9 +211,7 @@
         <Transition
           name="slide-up"
           style="
-            --delay: calc(
-              var(--duration-turtoise) + (var(--duration-step) * 2)
-            );
+            --delay: calc(var(--duration-turtoise) + (var(--duration-step) * 2));
           "
           appear
         >
