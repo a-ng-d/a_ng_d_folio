@@ -102,7 +102,7 @@
         <Figure
           type="video"
           :src="assets._ui_color_palette[0] + '#t=0.5'"
-          :width="1600"
+          :width="1846"
           :height="1200"
         >
         </Figure>
@@ -120,7 +120,7 @@
         <Figure
           type="video"
           :src="assets._ui_color_palette[1] + '#t=0.5'"
-          :width="1600"
+          :width="1846"
           :height="1200"
         >
         </Figure>
@@ -151,7 +151,7 @@
         <Figure
           type="video"
           :src="assets._ui_color_palette[2] + '#t=0.5'"
-          :width="1600"
+          :width="1846"
           :height="1200"
         >
         </Figure>
