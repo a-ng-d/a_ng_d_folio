@@ -311,6 +311,7 @@
           poster=""
         >
           <source :src="assets._iobeya_whiteboard[12]" type="video/mp4" />
+          <source :src="assets._iobeya_whiteboard[13]" type="video/webm" />
         </video>
       </template>
       <template #caption>

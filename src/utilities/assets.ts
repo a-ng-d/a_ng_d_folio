@@ -59,6 +59,7 @@ export const assets: Asset = {
     '/images/_work/_iobeya_whiteboard/article-asset-10.svg',
     '/images/_work/_iobeya_whiteboard/article-asset-11.webp',
     '/videos/_work/_iobeya_whiteboard/article-asset-1.mp4',
+    '/videos/_work/_iobeya_whiteboard/article-asset-1.webm'
   ],
   lab: [
     '/images/_lab/sd/asset-1.webp',
