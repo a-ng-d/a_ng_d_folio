@@ -5,6 +5,9 @@ export const assets: Asset = {
     '/videos/_work/_ui_color_palette/article-asset-1.mp4',
     '/videos/_work/_ui_color_palette/article-asset-2.mp4',
     '/videos/_work/_ui_color_palette/article-asset-3.mp4',
+    '/videos/_work/_ui_color_palette/article-asset-1.webm',
+    '/videos/_work/_ui_color_palette/article-asset-2.webm',
+    '/videos/_work/_ui_color_palette/article-asset-3.webm',
   ],
   _jeprendsquoi: [
     '/images/_work/_jeprendsquoi/illustration.webp',
