@@ -92,8 +92,8 @@
     "friendlyName": "@:glossary.id",
     "about": {
       "title": "你好 nǐ hǎo!",
-      "experience": "I’m Aurélien (or 立安－lì ān in China). Product Designer for {year} years (ex-{iobeya}) and a UI + code enthousiast.",
-      "mission": "Filling the gap between business, designers and developers is my leitmotiv, by enabling collective intelligence, testing and learning.",
+      "experience": "I’m Aurélien (or 立安－lì ān in China). Product Designer for {year} years (ex-{iobeya}) and a UI + code enthusiast.",
+      "mission": "Filling the gap between business, designers, and developers is my leitmotiv, by enabling collective intelligence, testing, and learning.",
       "activities": "I also write about {team}, {thinking} and {system}－I teach UX at design schools－I coach Junior Product Designers.",
       "side": "Otherwise, I manage the {uicp} plugin on Figma."
     },
