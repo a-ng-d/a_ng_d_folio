@@ -1,4 +1,4 @@
-let version, likes, comments, runs
+let version, saves, rating, users
 
 async function fetchWithTimeout(resource: string, options: any = {}) {
   const { timeout = 8000 } = options
@@ -27,40 +27,39 @@ const fetchUIColorPaletteStats = fetchWithTimeout(
 
 export const getUIColorPaletteVersion = async () => {
   try {
-    version = `v${
+    version =
       (await fetchUIColorPaletteStats).versions[
         (await fetchUIColorPaletteStats).current_plugin_version_id
       ].version
-    }`
   } catch (error) {
     version = '🚀'
   }
   return version
 }
 
-export const getUIColorPaletteLikes = async () => {
+export const getUIColorPaletteSaves = async () => {
   try {
-    likes = (await fetchUIColorPaletteStats).like_count.toString()
+    saves = (await fetchUIColorPaletteStats).install_count.toString()
   } catch (error) {
-    likes = '❤️'
+    saves = '❤️'
   }
-  return likes
+  return saves
 }
 
-export const getUIColorPaletteComments = async () => {
+export const getUIColorPaletteRating = async () => {
   try {
-    comments = (await fetchUIColorPaletteStats).comment_count.toString()
+    rating = `${(await fetchUIColorPaletteStats).community_rating_stats.avg_rating.toString()}/5`
   } catch (error) {
-    comments = '💬'
+    rating = '⭐️'
   }
-  return comments
+  return rating
 }
 
-export const getUIColorPaletteRuns = async () => {
+export const getUIColorPaletteUsers = async () => {
   try {
-    runs = (await fetchUIColorPaletteStats).unique_run_count.toString()
+    users = (await fetchUIColorPaletteStats).unique_run_count.toString()
   } catch (error) {
-    runs = '▶️'
+    users = '😃'
   }
-  return runs
+  return users
 }

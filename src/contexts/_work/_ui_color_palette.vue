@@ -8,8 +8,8 @@
   import Figure from '@/components/patterns/Figure.vue'
   import {
     Heart,
-    MessageCircle,
-    Play,
+    Star,
+    Users,
     Rocket,
     Figma,
     Github,
@@ -17,9 +17,9 @@
   } from 'lucide-vue-next'
   import { assets } from '@/utilities/assets'
   import {
-    getUIColorPaletteLikes,
-    getUIColorPaletteComments,
-    getUIColorPaletteRuns,
+    getUIColorPaletteSaves,
+    getUIColorPaletteRating,
+    getUIColorPaletteUsers,
     getUIColorPaletteVersion,
   } from '@/utilities/fetch'
 
@@ -33,8 +33,8 @@
       LinkContainer,
       Figure,
       Heart,
-      MessageCircle,
-      Play,
+      Star,
+      Users,
       Rocket,
       Figma,
       Github,
@@ -58,16 +58,16 @@
       return {
         isFullScreen: false as boolean,
         assets: assets,
-        likes: '❤️',
-        comments: '💬',
-        runs: '▶️',
+        saves: '❤️',
+        rating: '💬',
+        users: '▶️',
         version: '🚀',
       }
     },
     created: async function () {
-      this.likes = await getUIColorPaletteLikes()
-      this.comments = await getUIColorPaletteComments()
-      this.runs = await getUIColorPaletteRuns()
+      this.saves = await getUIColorPaletteSaves()
+      this.rating = await getUIColorPaletteRating()
+      this.users = await getUIColorPaletteUsers()
       this.version = await getUIColorPaletteVersion()
     },
   })
@@ -165,17 +165,17 @@
     <WrapColumn :title="$t('global.success')" :theme="theme">
       <template #plain>
         <ContentContainer
-          :title="runs"
-          :description="$t('global.installations')"
+          :title="users"
+          :description="$t('global.users')"
           :theme="theme"
         >
           <template #icon>
-            <Play :size="48" />
+            <Users :size="48" />
           </template>
         </ContentContainer>
         <ContentContainer
-          :title="likes"
-          :description="$t('global.like')"
+          :title="saves"
+          :description="$t('global.saves')"
           :theme="theme"
         >
           <template #icon>
@@ -183,17 +183,17 @@
           </template>
         </ContentContainer>
         <ContentContainer
-          :title="comments"
-          :description="$t('global.comments')"
+          :title="rating"
+          :description="$t('global.rating')"
           :theme="theme"
         >
           <template #icon>
-            <MessageCircle :size="48" />
+            <Star :size="48" />
           </template>
         </ContentContainer>
         <ContentContainer
           :title="version"
-          :description="$t('global.version')"
+          :description="$t('global.versions')"
           :theme="theme"
         >
           <template #icon>
