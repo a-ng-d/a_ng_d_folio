@@ -134,8 +134,7 @@
         <div
           v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName"
           style="
-            background: url(/images/_work/_jeprendsquoi/background.svg) 50% /
-              cover no-repeat;
+            background: url(/images/_work/_iobeya_whiteboard/background.webp) 0% 0% no-repeat;
           "
         ></div>
         <div
@@ -143,15 +142,15 @@
         ></div>
         <div
           v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName"
+          style="
+            background: url(/images/_work/_jeprendsquoi/background.svg) 50% / cover no-repeat;
+          "
         ></div>
         <div
           v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName"
         ></div>
         <div
           v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName"
-          style="
-            background: url(/images/_work/_iobeya_whiteboard/background.webp) 0% 0% no-repeat;
-          "
         ></div>
       </Transition>
     </div>
@@ -175,20 +174,20 @@
           >
             <Vue3Lottie
               v-if="activeProjectCodeName === (projects[0] as any).meta.codeName"
-              :animationData="((projects[0] as any) as any).meta.illustration"
+              :animationData="(projects[0] as any).meta.illustration"
             />
-            <v-lazy-image
+            <Vue3Lottie
               v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName"
-              :src="(projects[1] as any).meta.illustration"
-              :alt="$t('work._jeprendsquoi.illustration')"
+              :animationData="(projects[1] as any).meta.illustration"
             />
             <Vue3Lottie
               v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName"
               :animationData="(projects[2] as any).meta.illustration"
             />
-            <Vue3Lottie
+            <v-lazy-image
               v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName"
-              :animationData="(projects[3] as any).meta.illustration"
+              :src="(projects[3] as any).meta.illustration"
+              :alt="$t('work._jeprendsquoi.illustration')"
             />
             <Vue3Lottie
               v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName"
