@@ -173,8 +173,8 @@
           this.viewHeight = document.body.clientHeight
         })
       },
-      resetDelay(e: HTMLElement) {
-        e.style.transitionDelay = '0'
+      resetDelay(e: Element) {
+        (e as HTMLElement).style.transitionDelay = '0'
       },
       expandParticles() {
         this.isExpanded = true

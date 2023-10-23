@@ -77,7 +77,7 @@
           1500
         )
       },
-      splitLetters(el: HTMLElement) {
+      splitLetters(el: Element) {
         const title: Element = el.children[0],
           label: string = (title as HTMLElement).innerText,
           split: Array<string> = label.split('')
