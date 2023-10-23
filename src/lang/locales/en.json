@@ -213,6 +213,11 @@
         "label": "{'How to facilitate a workshop with a lot of participants'}@:global.separator{'iObeya'}",
         "href": "https://link.an.gd/talk-facilitation-tips",
         "alt": "External link to the \"How to facilitate a workshop with a lot of participants slides on Figma"
+      },
+      "link-4": {
+        "label": "{'Ramifions le fleuve de notre recherche d\\'activité'}@:global.separator{'Human Talks'}",
+        "href": "https://link.an.gd/talk-ramifions-le-fleuve-de-notre-recherche-d-activite",
+        "alt": "External link to the \"Ramifions le fleuve de notre recherche d'activité\" slides on Figma"
       }
     },
     "workshops": {
