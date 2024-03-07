@@ -1,5 +1,5 @@
 {
-  "title": "@:global.author@:global.separator{'Senior Product Designer & Creative Technologist'}",
+  "title": "@:global.author@:global.separator{'Senior Product Designer & DesignOps Specialist'}",
   "glossary": {
     "home": "_Home",
     "universe": "_Universe",
@@ -40,7 +40,7 @@
     "mute": "Mute/Unmute sound"
   },
   "global": {
-    "author": "Aurélien Grimaud aka. A_NG_D⚡️",
+    "author": "Aurélien Grimaud aka. a_ng_d⚡️",
     "separator": "・",
     "version": "Version",
     "license": "CC BY 4.0 {year}",
@@ -77,7 +77,7 @@
   },
   "home": {
     "author": "aurélien_grimaud_",
-    "baseline": "Fresh blend of Product Design, Creative Technology, and Rogue-like Love",
+    "baseline": "Fresh blend of Product Design, DesOps, and Creative Technology",
     "id": "Business card",
     "contact": "Contact",
     "work": "Selected work",
@@ -306,7 +306,7 @@
     "friendlyName": "@:glossary.core",
     "intro": {
       "title": "@:glossary.core",
-      "subtitle": "{'You may find an echo 😉'}@:global.separator{'Watch my story and core values by scrolling down'}@:global.separator{'D for DESIGNER'}@:global.separator{'NG for ENGINEER'}@:global.separator{'A for ALTERNATIVE'}@:global.separator{'A_NG_D for AurélienN GrimauD'}@:global.separator"
+      "subtitle": "{'You may find an echo 😉'}@:global.separator{'Watch my story and core values by scrolling down'}@:global.separator{'D for DESIGNER'}@:global.separator{'NG for ENGINEER'}@:global.separator{'A for ALTERNATIVE'}@:global.separator{'a_ng_d for AurélienN GrimauD'}@:global.separator"
     },
     "personal": {
       "title": "_manifesto",
