@@ -162,4 +162,12 @@ export const filters: Filters = {
     grayscale: '0%',
     name: '_IOBEYA_WHITEBOARD',
   },
+  _iobeya_creativity: {
+    hue: '343deg',
+    brightness: '1.5',
+    invert: '1',
+    saturation: '.7',
+    grayscale: '0%',
+    name: '_IOBEYA_CREATIVITY',
+  },
 }

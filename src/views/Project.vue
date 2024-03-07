@@ -13,6 +13,7 @@
   import _awesome_ipsums from '@/contexts/_work/_awesome_ipsums.vue'
   import _iobeya_whiteboard from '@/contexts/_work/_iobeya_whiteboard.vue'
   import _iobeya_mobile_ds from '@/contexts/_work/_iobeya_mobile_ds.vue'
+  import _iobeya_creativity from '@/contexts/_work/_iobeya_creativity.vue'
 
   export default defineComponent({
     name: 'Project',
@@ -30,6 +31,7 @@
       _awesome_ipsums,
       _iobeya_whiteboard,
       _iobeya_mobile_ds,
+      _iobeya_creativity
     },
     props: {
       project: {
