@@ -798,6 +798,115 @@
           "alt": "External link to the iObeya whiteboarding session feature page"
         }
       }
+    },
+    "_iobeya_creativity": {
+      "title": "@:work._iobeya_creativity.shortTitle@:global.separator@:global.author",
+      "shortTitle": "_iobeya_creativity",
+      "shortDescription": "Go-to-Creativity: iObeya Brainstorming and Voting session",
+      "description": "The Brainstorming and Voting features in iObeya are a uniquely creative combination. They are designed to encourage open dialogue and stimulate innovation. The tone these features bring is distinctive within the iObeya spectrum, where fun and efficiency intersect.",
+      "misc": {
+        "date": "{'2016'}@:global.separator{'Released'}",
+        "objectives": "Enabling collective intelligence, Facilitating creative sessions",
+        "roles": "Designing the flows for participants and facilitators, Enhancing the immersion of creative meetings with illustrations and animations, Promoting mobility and virality, Overseeing the delivery process",
+        "type": "@:global.type.pro"
+      },
+      "challenge": {
+        "title": "What is the challenge?",
+        "paragraph-1": "Serious games serve as a powerful tool for harnessing collective intelligence, solving problems, and defining actions. These games are accessible and easy to play. iObeya is utilized as a presentation tool, with guided meetings, but it falls short in managing creative animations and activities.",
+        "paragraph-2": "The challenge lies in efficiently enabling collective intelligence."
+      },
+      "part-1": {
+        "title": "Divergence-Convergence as a tool to enable collective intelligence",
+        "paragraph-1": "Facilitators use brainstorming to stimulate creativity and voting to achieve results. Brainstorming allows individuals to jot down and share their ideas, while voting aids in selecting the most suitable one. This combination stems from the Double Diamonds model, where the essence lies in the Divergence-Convergence process."
+      },
+      "part-2": {
+        "title": "Diverging through Brainstorming",
+        "paragraph-1": "To understand the overall process, let's consider a team retrospective as an example. In this situation, team members provide structured feedback. The goal is to identify the most significant issues to address and then establish action plans by the end of the activity.",
+        "paragraph-2": "The facilitator sets up the brainstorming session for 10 minutes. After starting the session, both the facilitator and participants enter the brainstorming mode. A brief tutorial is provided to help participants prepare for sharing their ideas.",
+        "paragraph-3": "The facilitator grants each participant access to the session. Participants may use the QR code to access the session on their mobile devices.",
+        "paragraph-4": "The facilitator concludes the session when the allotted time has elapsed. Each participant is then thanked and involved in the reconciliation phase.",
+        "paragraph-5": "The results are collected based on the set of notes configured by the facilitator.",
+        "caption-1": "The Actions for Retrospectives board is waiting for receiving team members’ feedback!",
+        "caption-2": "The facilitator configuring the session…",
+        "caption-3": "A participant (using a desktop) watching the tutorial…",
+        "caption-4": "A participant (using a mobile) watching the tutorial…",
+        "caption-5": "The facilitator’s screen, enhancing the remaining time and the ideas submitted…",
+        "caption-6": "A participant (using a desktop) writing feedback according to the legend configured by the facilitator…",
+        "caption-7": "A participant (using a mobile) writing feedback according to the legend configured by the facilitator…",
+        "caption-8": "A participant or the facilitator (using a desktop) being graciously thanked…",
+        "caption-9": "A participant (using a mobile) being graciously thanked…"
+      },
+      "part-3": {
+        "title": "Convergence through Voting",
+        "paragraph-1": "The next step is to select the most relevant ideas based on their priority level. Voting allows team members to converge without getting caught up in endless discussions. The principle is straightforward: allocate tokens to the most relevant ideas or feedback.",
+        "paragraph-2": "The facilitator sets up the voting session to last for 10 minutes and assigns a certain number of tokens to each participant. After the session is launched, both the facilitator and participants enter voting mode. This mode is further clarified with a brief animation.",
+        "paragraph-3": "When the session time is up, the facilitator concludes it. Each participant is then thanked and invited to the board for the synthesis phase.",
+        "paragraph-4": "The results are presented alongside their scores.",
+        "paragraph-5": "The activity is nearly complete. After gathering the most \"liked\" ideas and feedback, participants will record actions and assign an owner for each one.",
+        "caption-1": "The facilitator configuring the session…",
+        "caption-2": "A participant (using a desktop) watching the tutorial…",
+        "caption-3": "A participant (using a mobile) watching the tutorial…",
+        "caption-4": "The facilitator’s screen, enhancing the remaining time…",
+        "caption-5": "A participant (using a desktop) allocating tokens to the batch of selected feedback…",
+        "caption-6": "A participant (using a mobile) allocating tokens to the batch of selected feedback…",
+        "caption-7": "A participant or the facilitator (using a desktop) being graciously thanked…",
+        "caption-8": "A participant (using a mobile) being graciously thanked…"
+      },
+      "part-4": {
+        "title": "An opportunity to enable Emotional Design",
+        "paragraph-1": "To facilitate collective intelligence and enhance creativity, we hypothesize that employing animation and illustrations in the user interface can guide participants toward a certain mindset.",
+        "paragraph-2": "Firstly, users need to understand how to participate, for example, through interactions. Both modes include an animated tutorial, as participants may not know how to use iObeya. We presume that this approach could more readily capture users' attention.",
+        "paragraph-3": "On the other hand, both of the modes enhance an infinte pattern animation composed by moving particles. It may increase participants attention and it reinforces the identity of each of the modes.",
+        "paragraph-4": "Finally, those modes are mainly and simply FUN: the global tone has been designed to bridge fun and efficience.",
+        "caption-1": "How to participate in a brainstorming session",
+        "caption-2": "How to participate in a voting session",
+        "caption-3": "The divergence: Brainstormring",
+        "caption-4": "The convergence: Voting"
+      },
+      "success": {
+        "title": "Go further…",
+        "paragraph-1": "Compared to our competitors (Klaxoon and Mural), iObeya could benefit from several improvements:",
+        "paragraph-2": "Stay tuned!",
+        "point-1": "Allow external participants to access modes (the whiteboarding session is one possible solution).",
+        "point-2": "Encourage idea generation (through drawings, pictures, rounds, etc.).",
+        "point-3": "Maintain awareness of the activity context.",
+        "point-4": "Facilitate smoother interactions between the facilitator and participants."
+      },
+      "credit": {
+        "contributor-1": {
+          "name": "Guillaume Mignard",
+          "role": "Head of Product Design"
+        },
+        "contributor-2": {
+          "name": "Florian Fesseler",
+          "role": "Engineering Manager"
+        },
+        "contributor-3": {
+          "name": "Benoit Marchand",
+          "role": "Senior Front-End Developer"
+        },
+        "contributor-4": {
+          "name": "Caroline Sarcona",
+          "role": "Product Designer"
+        }
+      },
+      "takeaways": {
+        "takeaway-1": {
+          "description": "I've authored an article on how to facilitate remote team retrospectives (FR).",
+          "linkLabel": "Read the article",
+          "alt": "External link to the how to facilitate remote team retrospectives (FR) article"
+        },
+        "takeaway-2": {
+          "description": "The entire Brainstorming User Flow Map can be consulted in full-size",
+          "linkLabel": "Consult this map",
+          "alt": "External link to the Brainstorming User Flow Map"
+        },
+        "takeaway-3": {
+          "description": "The entire Voting Flow User Map can be consulted in full-size",
+          "linkLabel": "Consult this map",
+          "alt": "External link to the Voting User Flow Map"
+        }
+      }
     }
   },
   "lab": {
