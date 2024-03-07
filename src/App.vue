@@ -174,7 +174,7 @@
         })
       },
       resetDelay(e: Element) {
-        (e as HTMLElement).style.transitionDelay = '0'
+        ;(e as HTMLElement).style.transitionDelay = '0'
       },
       expandParticles() {
         this.isExpanded = true

@@ -19,7 +19,7 @@
       LinkContainer,
       Figure,
       Newspaper,
-      Glasses
+      Glasses,
     },
     props: {
       scrollProgress: {
@@ -102,9 +102,7 @@
         </Figure>
       </template>
     </OneColumn>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <p>{{ $t('work._iobeya_creativity.part-2.paragraph-2') }}</p>
       </template>
@@ -161,9 +159,7 @@
         </Figure>
       </template>
     </TwoColumns>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <p>{{ $t('work._iobeya_creativity.part-2.paragraph-3') }}</p>
       </template>
@@ -220,9 +216,7 @@
         </Figure>
       </template>
     </TwoColumns>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <p>{{ $t('work._iobeya_creativity.part-2.paragraph-4') }}</p>
       </template>
@@ -261,9 +255,7 @@
         </Figure>
       </template>
     </TwoColumns>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <p>{{ $t('work._iobeya_creativity.part-2.paragraph-5') }}</p>
       </template>
@@ -288,9 +280,7 @@
         <p>{{ $t('work._iobeya_creativity.part-4.paragraph-1') }}</p>
       </template>
     </OneColumn>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <p>{{ $t('work._iobeya_creativity.part-4.paragraph-2') }}</p>
       </template>
@@ -329,9 +319,7 @@
         </Figure>
       </template>
     </TwoColumns>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <p>{{ $t('work._iobeya_creativity.part-4.paragraph-3') }}</p>
       </template>
@@ -370,9 +358,7 @@
         </Figure>
       </template>
     </TwoColumns>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <Figure
           type="video"
@@ -382,9 +368,7 @@
         />
       </template>
     </OneColumn>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <p>{{ $t('work._iobeya_creativity.part-4.paragraph-4') }}</p>
       </template>

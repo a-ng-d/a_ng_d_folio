@@ -31,7 +31,7 @@
       _awesome_ipsums,
       _iobeya_whiteboard,
       _iobeya_mobile_ds,
-      _iobeya_creativity
+      _iobeya_creativity,
     },
     props: {
       project: {

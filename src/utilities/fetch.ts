@@ -27,10 +27,9 @@ const fetchUIColorPaletteStats = fetchWithTimeout(
 
 export const getUIColorPaletteVersion = async () => {
   try {
-    version =
-      (await fetchUIColorPaletteStats).versions[
-        (await fetchUIColorPaletteStats).current_plugin_version_id
-      ].version
+    version = (await fetchUIColorPaletteStats).versions[
+      (await fetchUIColorPaletteStats).current_plugin_version_id
+    ].version
   } catch (error) {
     version = '🚀'
   }
@@ -48,7 +47,9 @@ export const getUIColorPaletteSaves = async () => {
 
 export const getUIColorPaletteRating = async () => {
   try {
-    rating = `${(await fetchUIColorPaletteStats).community_rating_stats.avg_rating.toString()}/5`
+    rating = `${(
+      await fetchUIColorPaletteStats
+    ).community_rating_stats.avg_rating.toString()}/5`
   } catch (error) {
     rating = '⭐️'
   }

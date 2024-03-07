@@ -58,7 +58,7 @@
     .col-3
       &__columns
         flex-flow: column nowrap
-  
+
   @include device.smartphone
     .col-3
       &__columns

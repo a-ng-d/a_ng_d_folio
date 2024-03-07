@@ -107,7 +107,11 @@
         controls
       >
         <source v-if="src?.includes('mp4')" :src="src" type="video/mp4" />
-        <source v-else="src.includes('webm') != undefined" :src="src" type="video/webm" />
+        <source
+          v-else="src.includes('webm') != undefined"
+          :src="src"
+          type="video/webm"
+        />
       </video>
     </div>
     <figcaption v-if="caption" class="figure__caption">

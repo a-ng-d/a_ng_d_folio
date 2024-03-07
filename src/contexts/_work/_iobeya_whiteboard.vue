@@ -22,7 +22,7 @@
       Figure,
       User,
       PlayCircle,
-      MousePointer
+      MousePointer,
     },
     props: {
       scrollProgress: {
@@ -344,11 +344,7 @@
     </OneColumn>
   </section>
   <section class="success">
-    <OneColumn
-      :title="$t('global.success')"
-      :theme="theme"
-    >
-    </OneColumn>
+    <OneColumn :title="$t('global.success')" :theme="theme"> </OneColumn>
     <TwoColumns :theme="theme">
       <template #left>
         <h4>{{ $t('work._iobeya_whiteboard.success.title-1') }}</h4>

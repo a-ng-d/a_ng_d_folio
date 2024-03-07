@@ -54,10 +54,10 @@
       flex: 1
       gap: var(--layout-row-gap) 0
       justify-content: v-bind("center ? 'center' : 'flex-start'")
-    
+
       &:first-child
         flex: v-bind("layout === '2_1' ? '2' : '1'")
-      
+
       &:last-child
         flex: v-bind("layout === '1_2' ? '2' : '1'")
 
