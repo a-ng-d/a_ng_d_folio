@@ -384,21 +384,21 @@
       },
       "part-1": {
         "title": "Create the palette from scratch (or with a bit of help)",
-        "paragraph-1": "Select the colors you want to spread into shades directly from your document's canvas",
-        "paragraph-2": "Let you guide by the existing pre-configured stops (Material Design, Atlassian…) or make it your own way",
-        "paragraph-3": "Every shade from the starting colors are gathered within a calibrated palette compliant with WCAG guidelines"
+        "paragraph-1": "Select the colors you want to spread into shades directly from your document's canvas.",
+        "paragraph-2": "Let you guide by the existing pre-configured stops (Material Design, Atlassian…) or make it your own way.",
+        "paragraph-3": "Every shade from the starting colors are gathered within a calibrated palette compliant with WCAG guidelines."
       },
       "part-2": {
         "title": "Control the palette with WYSIWYG",
-        "paragraph-1": "Slide the stops to change the lightness of every color, and keep a palette with consistent contrasts",
-        "paragraph-2": "Rename, add, remove, change, reorder each color… Keep a full control of the color palette",
-        "paragraph-3": "WCAG 2.0 scores help you build the most respectful palette for accessibility"
+        "paragraph-1": "Slide the stops to change the lightness of every color, and keep a palette with consistent contrasts.",
+        "paragraph-2": "Rename, add, remove, change, reorder each color… Keep a full control of the color palette.",
+        "paragraph-3": "WCAG 2.0 scores help you build the most respectful palette for accessibility."
       },
       "part-3": {
         "title": "Deploy and spread the color standard",
-        "paragraph-1": "Add with a single click every color of the palette to the document local styles",
-        "paragraph-2": "Publish the local styles and spread standardized color to your team",
-        "paragraph-3": "Export the palette to a JSON document or CSS Custom Properties"
+        "paragraph-1": "Add with a single click every color of the palette to the document local styles.",
+        "paragraph-2": "Publish the local styles and spread standardized color to your team.",
+        "paragraph-3": "Export the palette to a JSON document or CSS Custom Properties."
       },
       "takeaways": {
         "takeaway-1": {
@@ -434,8 +434,8 @@
         "title": "The problem of non-seasonal food",
         "paragraph-1": "A non-seasonal fruit or vegetable comes from:",
         "paragraph-2": "Abroad, the carbon footprint is high because of the transportation: by boat or plane. And yet, cultivate inside a greenhouse has a more expensive carbon footprint. Indeed, a greenhouse keeps a non-stop heat to simulate the season temperature, and make the cultivation grow. That is why we can see some tomatoes on november, they grow in a greenhouse in Brittany.",
-        "point-1": "Abroad, in a country where the cultivation is seasonal or locally unavailable",
-        "point-2": "Cultivated in a greenhouse"
+        "point-1": "Abroad, in a country where the cultivation is seasonal or locally unavailable.",
+        "point-2": "Cultivated in a greenhouse."
       },
       "part-1": {
         "title": "A first prototype to solve the problem",
@@ -679,8 +679,8 @@
         "paragraph-1": "Lorem ipsum is often used to simulate content into a designed web page. Nevertheless, there may be some issues:",
         "paragraph-2": "Lorem ipsum could be fun, relevant, and fully personalized. A design team can create, collect and reuse his own fake content. How to get this team involved in collecting content? An online spreadsheet, because it is easy to maintain and always up-to-date.",
         "paragraph-3": "Google Spreadsheet is simple to use and collaborative. It can act as a micro-database for micro-projects.",
-        "point-1": "It does not make any sense",
-        "point-2": "It is quite boring and repetitive",
+        "point-1": "It does not make any sense.",
+        "point-2": "It is quite boring and repetitive.",
         "caption-1": "It is possible to create a new text or update one by filling it with a random value from the spreadsheet"
       },
       "part-2": {
@@ -718,8 +718,8 @@
         "paragraph-1": "iObeya is a structured and strict software. The model is a room = a declared team = a project. This model has some limitations:",
         "paragraph-2": "The platform is fully customizable but the users must be declared and allocated by hand. Besides, the license limits the number of users in a room.",
         "paragraph-3": "The strict and heavy users management is a big pain, so open the platform to any user is our main assumption.",
-        "point-1": "Hard to be deployed through a large company (> 50.000 employees)",
-        "point-2": "Heavy workflow between the requester and the IT service"
+        "point-1": "Hard to be deployed through a large company (> 50.000 employees.)",
+        "point-2": "Heavy workflow between the requester and the IT service."
       },
       "part-1": {
         "title": "Defining several low-fi flows to make stakeholders aligned",

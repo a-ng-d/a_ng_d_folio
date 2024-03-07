@@ -102,8 +102,8 @@
         <Figure
           type="video"
           :src="assets._ui_color_palette[0] + '#t=0.5'"
-          :width="1846"
-          :height="1200"
+          :width="1920"
+          :height="1080"
         >
         </Figure>
       </template>
@@ -120,8 +120,8 @@
         <Figure
           type="video"
           :src="assets._ui_color_palette[1] + '#t=0.5'"
-          :width="1846"
-          :height="1200"
+          :width="1920"
+          :height="1080"
         >
         </Figure>
       </template>
@@ -151,8 +151,8 @@
         <Figure
           type="video"
           :src="assets._ui_color_palette[2] + '#t=0.5'"
-          :width="1846"
-          :height="1200"
+          :width="1920"
+          :height="1080"
         >
         </Figure>
       </template>
