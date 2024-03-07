@@ -13,7 +13,6 @@
         default: 'image',
       },
       src: String,
-      altsrc: String,
       alt: String,
       caption: {
         type: Boolean,
@@ -107,8 +106,8 @@
         preload="metadata"
         controls
       >
-        <source :src="src" type="video/mp4" />
-        <source v-if="altsrc != undefined" :src="altsrc" type="video/webm" />
+        <source v-if="src.includes('mp4')" :src="src" type="video/mp4" />
+        <source v-if="src.includes('webm') != undefined" :src="src" type="video/webm" />
       </video>
     </div>
     <figcaption v-if="caption" class="figure__caption">
