@@ -6,6 +6,10 @@
     props: {
       title: String,
       center: Boolean,
+      layout: {
+        type: String,
+        default: '1_1',
+      },
       theme: {
         type: String,
         default: 'DEFAULT',
@@ -50,6 +54,12 @@
       flex: 1
       gap: var(--layout-row-gap) 0
       justify-content: v-bind("center ? 'center' : 'flex-start'")
+    
+      &:first-child
+        flex: v-bind("layout === '2_1' ? '2' : '1'")
+      
+      &:last-child
+        flex: v-bind("layout === '1_2' ? '2' : '1'")
 
   @include device.smartphone
     .col-2
