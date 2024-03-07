@@ -23,6 +23,7 @@ export interface Filters {
   _awesome_ipsums: HuBrInSaGr
   _iobeya_whiteboard: HuBrInSaGr
   _iobeya_mobile_ds: HuBrInSaGr
+  _iobeya_creativity: HuBrInSaGr
 }
 
 export interface HuSaLiTy {

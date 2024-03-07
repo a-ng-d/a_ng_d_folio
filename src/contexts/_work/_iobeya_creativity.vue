@@ -3,7 +3,6 @@
   import OneColumn from '@/components/layouts/OneColumn.vue'
   import TwoColumns from '@/components/layouts/TwoColumns.vue'
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
-  import FullWidthFigure from '@/components/layouts/FullWidthFigure.vue'
   import ContentContainer from '@/components/patterns/ContentContainer.vue'
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
@@ -16,7 +15,6 @@
       OneColumn,
       TwoColumns,
       WrapColumn,
-      FullWidthFigure,
       ContentContainer,
       LinkContainer,
       Figure,
