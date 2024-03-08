@@ -5,6 +5,9 @@ export const assets: Asset = {
     '/videos/_work/_ui_color_palette/article-asset-1.webm',
     '/videos/_work/_ui_color_palette/article-asset-2.webm',
     '/videos/_work/_ui_color_palette/article-asset-3.webm',
+    '/videos/_work/_ui_color_palette/article-asset-1.mp4',
+    '/videos/_work/_ui_color_palette/article-asset-2.mp4',
+    '/videos/_work/_ui_color_palette/article-asset-3.mp4',
   ],
   _jeprendsquoi: [
     '/images/_work/_jeprendsquoi/illustration.webp',
@@ -56,6 +59,7 @@ export const assets: Asset = {
     '/images/_work/_iobeya_whiteboard/article-asset-10.svg',
     '/images/_work/_iobeya_whiteboard/article-asset-11.webp',
     '/videos/_work/_iobeya_whiteboard/article-asset-1.webm',
+    '/videos/_work/_iobeya_whiteboard/article-asset-1.mp4',
   ],
   _iobeya_creativity: [
     '/images/_work/_iobeya_creativity/background.webp',
@@ -87,6 +91,11 @@ export const assets: Asset = {
     '/videos/_work/_iobeya_creativity/article-asset-3.webm',
     '/videos/_work/_iobeya_creativity/article-asset-4.webm',
     '/videos/_work/_iobeya_creativity/article-asset-5.webm',
+    '/videos/_work/_iobeya_creativity/article-asset-1.mp4',
+    '/videos/_work/_iobeya_creativity/article-asset-2.mp4',
+    '/videos/_work/_iobeya_creativity/article-asset-3.mp4',
+    '/videos/_work/_iobeya_creativity/article-asset-4.mp4',
+    '/videos/_work/_iobeya_creativity/article-asset-5.mp4',
   ],
   lab: [
     '/images/_lab/sd/asset-1.webp',

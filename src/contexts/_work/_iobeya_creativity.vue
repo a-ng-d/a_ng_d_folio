@@ -289,7 +289,8 @@
       <template #left>
         <Figure
           type="video"
-          :src="assets._iobeya_creativity[24]"
+          :src="assets._iobeya_creativity[24] + '#t=0.5'"
+          :altsrc="assets._iobeya_creativity[29] + '#t=0.5'"
           caption
           :width="1244"
           :height="1244"
@@ -305,7 +306,8 @@
       <template #right>
         <Figure
           type="video"
-          :src="assets._iobeya_creativity[25]"
+          :src="assets._iobeya_creativity[25] + '#t=0.5'"
+          :altsrc="assets._iobeya_creativity[30] + '#t=0.5'"
           caption
           :width="1244"
           :height="1244"
@@ -328,7 +330,8 @@
       <template #left>
         <Figure
           type="video"
-          :src="assets._iobeya_creativity[26]"
+          :src="assets._iobeya_creativity[26] + '#t=0.5'"
+          :altsrc="assets._iobeya_creativity[31] + '#t=0.5'"
           caption
           :width="1920"
           :height="1242"
@@ -344,7 +347,8 @@
       <template #right>
         <Figure
           type="video"
-          :src="assets._iobeya_creativity[27]"
+          :src="assets._iobeya_creativity[27 + '#t=0.5']"
+          :altsrc="assets._iobeya_creativity[32] + '#t=0.5'"
           caption
           :width="1920"
           :height="1242"
@@ -362,7 +366,8 @@
       <template #plain>
         <Figure
           type="video"
-          :src="assets._iobeya_creativity[28]"
+          :src="assets._iobeya_creativity[28]  + '#t=0.5'"
+          :altsrc="assets._iobeya_creativity[33]  + '#t=0.5'"
           :width="768"
           :height="428"
         />

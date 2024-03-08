@@ -102,6 +102,7 @@
         <Figure
           type="video"
           :src="assets._ui_color_palette[0] + '#t=0.5'"
+          :altsrc="assets._ui_color_palette[3] + '#t=0.5'"
           :width="1920"
           :height="1080"
         >
@@ -120,6 +121,7 @@
         <Figure
           type="video"
           :src="assets._ui_color_palette[1] + '#t=0.5'"
+          :altsrc="assets._ui_color_palette[4] + '#t=0.5'"
           :width="1920"
           :height="1080"
         >
@@ -151,6 +153,7 @@
         <Figure
           type="video"
           :src="assets._ui_color_palette[2] + '#t=0.5'"
+          :altsrc="assets._ui_color_palette[5] + '#t=0.5'"
           :width="1920"
           :height="1080"
         >
