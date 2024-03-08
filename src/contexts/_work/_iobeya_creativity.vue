@@ -347,7 +347,7 @@
       <template #right>
         <Figure
           type="video"
-          :src="assets._iobeya_creativity[27 + '#t=0.5']"
+          :src="assets._iobeya_creativity[27] + '#t=0.5'"
           :altsrc="assets._iobeya_creativity[32] + '#t=0.5'"
           caption
           :width="1920"
