@@ -170,4 +170,12 @@ export const filters: Filters = {
     grayscale: '0%',
     name: '_IOBEYA_CREATIVITY',
   },
+  _axeptio_gusto: {
+    hue: '28deg',
+    brightness: '1.5',
+    invert: '0',
+    saturation: '.3',
+    grayscale: '0%',
+    name: '_AXEPTIO_GUSTO',
+  },
 }

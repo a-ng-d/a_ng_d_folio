@@ -797,17 +797,109 @@
           "name": "Yoann Lheude",
           "role": "Senior Product Manager"
         }
+      }
+    },
+    "_axeptio_gusto": {
+      "title": "@:work._axeptio_gusto.shortTitle@:global.separator@:global.author",
+      "shortTitle": "_axeptio_gusto",
+      "shortDescription": "Design system harmonization for Axeptio products",
+      "description": "This project harmonized design language across Axeptio's consent management platform. I analyzed the existing ecosystem, created missing components, bridged the gap between design and development teams, and established consistent workflows. The initiative successfully created a single source of truth and improved cross-departmental collaboration.",
+      "misc": {
+        "date": "{'2024'}@:global.separator{'In progress'}",
+        "objectives": "Harmonize design language across products, Establish a reliable design workflow, Bridge the gap between design and development",
+        "roles": "Analyzing the current design ecosystem, Creating components and documentation, Educating designers on contribution, Facilitating communication between teams",
+        "type": "@:global.type.pro"
+      },
+      "challenge": {
+        "title": "What's Axeptio?",
+        "paragraph-1": "Axeptio is a company providing a consent management platform for various businesses from small blogs to large online newspaper platforms. Their one-stop platform manages multiple products including user cookie consent, terms of use, and subscriptions. They also maintain a web extension that can handle consent on the user's behalf.",
+        "paragraph-2": "My task was to evaluate how design language was implemented across Axeptio's products and marketing assets, propose a long-term plan, and schedule specific actions."
+      },
+      "part-1": {
+        "title": "The products in between world",
+        "paragraph-1": "Axeptio is a medium business and is composed of 6 developers in Montpellier and 3 designers in Paris.",
+        "paragraph-2": "The first tack was to examined each department's environment (design, development, branding), focusing on their tools, sources of truth, and change management processes. The comprehensive analysis revealed several key issues.",
+        "paragraph-3": "The platform contained a mixture of legacy and current design languages named Gusto, creating visual inconsistency.",
+        "paragraph-4": "The development team had more mature processes and quality standards than the design team, creating a significant gap in delivery expectations. For example, integrated components were available for developers but not for designers. A report was produced to compare the environments according to specific criteria.",
+        "paragraph-5": "My mission evolved to focus on improving design workflows, educating designers on contribution practices, and creating missing components. \"Complete\" was a pilot project I took charge of.",
+        "caption-1": "The left part reflects the new design language from the Axeptio’s brand, whereas the right part reflects the previous one.",
+        "caption-2": "Due to privacy restrictions, the report cannot be shared. Here is an extract to demonstrate how the audit was conducted.",
+        "caption-3": "The Epics are proposals that have been validated by the teams. The main focus was to complete the missing resources on the designers' end."
+      },
+      "part-2": {
+        "title": "A place for transparency",
+        "paragraph-1": "During the building of this pilot, knowledge management was crucial to minimize the risk of future misadoption. ",
+        "paragraph-2": "We established specific communication channels to facilitate team interaction, gather and resolve issues, and report decisions and important events. Additionally, we created a page within the company's wiki to support the same purpose in a more structured way. While the channels have provided responsiveness since the pilot began, the wiki page serves as documentation, designed to place the right information where it belongs.",
+        "paragraph-3": "This page is also a place for the components inventory and tracking their progress. The main purpose is to sort components by criticality, helping me organize each batch (1-week delivery). The second purpose is to review future batches according to the needs of my consumers.",
+        "paragraph-4": "Each component is documented with:",
+        "paragraph-5": "This documentation enables efficient triage, allowing us to prioritize components based on:",
+        "point-1": "Typology",
+        "point-2": "Status (live, deprecated)",
+        "point-3": "Locations",
+        "point-4": "Dependencies",
+        "point-5": "Purpose",
+        "point-6": "Differences between development and design",
+        "point-7": "UX debt",
+        "point-8": "Consumer (aka designers) needs",
+        "caption-1": "The decisions, meetings, updates, and conventions are documented on this page, allowing teams to review the project's history.",
+        "caption-2": "The components are sorted and arranged into a kanban view to track progress efficiently. Other views serve different purposes, such as filtering critical components that will be addressed.",
+        "caption-3": "The documentation provides concise information about each component's status and location, with additional details available below",
+        "caption-4": "This comparison illustrates the gap between components available in Figma and those that have been integrated."
+      },
+      "part-3": {
+        "title": "Communication is the key",
+        "paragraph-1": "Clear communication channels proved essential to the project's success. I facilitated dedicated meetings to establish design conventions around spacing and sizing systems, positioned the implemented components as the definitive source of truth, and implemented best practices.",
+        "paragraph-2": "Developers were kept informed of design decisions, providing the appropriate level of involvement without overwhelming them. Weekly review sessions collected designer feedback for ongoing refinements, while regular change summaries maintained alignment across teams.",
+        "caption-1": "Example of a decision followed by a guide, created to maintain a history of the decisions we have made."
+      },
+      "part-4": {
+        "title": "Getting departments working closer",
+        "paragraph-1": "Bridging interdepartmental gaps became a core focus of the initiative. We primarily targeted improving workflows between the remote design and development teams. Education became a priority to foster mutual empathy and establish shared quality standards. Delivering missing components significantly reduced friction, enabling faster and more efficient work across the organization.",
+        "caption-1": "Since the library has been established, component insertions have increased."
+      },
+      "part-5": {
+        "title": "A traced path to legacy",
+        "paragraph-1": "I was focused on executing the pilot and the long-term strategy. As a design system is an organization, the main point is team member alignment and shared knowledge.",
+        "paragraph-2": "This pilot has a short timeline, but a 12-month roadmap set the rhythm for potential actions:",
+        "paragraph-3": "I served in a governance role, working closely with the Head of Design to plan and schedule actions. The designers—my primary users—provided positive feedback, as did the developers whom I supported in integrating and reusing existing components.",
+        "paragraph-4": "While considerable work remains, we now have a clearly defined path forward.",
+        "caption-1": "The 12-month plan is divided into quarters.",
+        "point-1": "Complete missing priority components・3 months",
+        "point-2": "Document the usage of the components・3 months",
+        "point-3": "Connect environments (React components and Figma components)・3 months",
+        "point-4": "Switch progressively from legacy to the current design system・3 months"
+      },
+      "credit": {
+        "contributor-1": {
+          "name": "Antoine Martinez",
+          "role": "Head of Product Design"
+        },
+        "contributor-2": {
+          "name": "Ludovic Bernard",
+          "role": "Product Designer/Product Manager"
+        },
+        "contributor-3": {
+          "name": "Étienne Tondini-Juvan",
+          "role": "Product Manager/Product Designer"
+        },
+        "contributor-4": {
+          "name": "Camille Alemany",
+          "role": "Sofware Engineer"
+        },
+        "contributor-5": {
+          "name": "Léo Lecherbonnier",
+          "role": "Sofware Engineer"
+        },
+        "contributor-6": {
+          "name": "Laura Gassin",
+          "role": "Senior Brand Designer"
+        }
       },
       "takeaways": {
         "takeaway-1": {
-          "description": "Extract of the final user flow",
-          "linkLabel": "Launch a whiteboard session",
-          "alt": "External link to the final prototype"
-        },
-        "takeaway-2": {
-          "description": "The Whiteboarding session feature is detailed on the iObeya website",
-          "linkLabel": "Consult the page",
-          "alt": "External link to the iObeya whiteboarding session feature page"
+          "description": "The exposed and integrated components are available on Storybook",
+          "linkLabel": "Explore the playground",
+          "alt": "External link to the exposed components on Storybook"
         }
       }
     },

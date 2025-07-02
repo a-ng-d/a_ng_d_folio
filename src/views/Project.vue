@@ -14,6 +14,7 @@
   import _iobeya_whiteboard from '@/contexts/_work/_iobeya_whiteboard.vue'
   import _iobeya_mobile_ds from '@/contexts/_work/_iobeya_mobile_ds.vue'
   import _iobeya_creativity from '@/contexts/_work/_iobeya_creativity.vue'
+  import _axeptio_gusto from '@/contexts/_work/_axeptio_gusto.vue'
 
   export default defineComponent({
     name: 'Project',
@@ -32,6 +33,7 @@
       _iobeya_whiteboard,
       _iobeya_mobile_ds,
       _iobeya_creativity,
+      _axeptio_gusto,
     },
     props: {
       project: {

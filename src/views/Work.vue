@@ -130,33 +130,43 @@
       >
         <div
           v-if="activeProjectCodeName === (projects[0] as any).meta.codeName"
+          :style="{ background: (projects[0] as any).meta.background }"
         ></div>
         <div
           v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName"
-          style="
-            background: url(/images/_work/_iobeya_whiteboard/background.webp) 0% 0% no-repeat;
-          "
+          :style="{ background: (projects[1] as any).meta.background }"
         ></div>
         <div
           v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName"
+          :style="{ background: (projects[2] as any).meta.background }"
         ></div>
         <div
           v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName"
-          style="
-            background: url(/images/_work/_iobeya_creativity/background.webp) 0% 0% / cover no-repeat;
-          "
+          :style="{ background: (projects[4] as any).meta.background }"
         ></div>
         <div
           v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName"
-          style="
-            background: url(/images/_work/_jeprendsquoi/background.svg) 50% / cover no-repeat;
-          "
+          :style="{ background: (projects[4] as any).meta.background }"
         ></div>
         <div
           v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName"
+          :style="{ background: (projects[5] as any).meta.background }"
         ></div>
         <div
           v-else-if="activeProjectCodeName === (projects[6] as any).meta.codeName"
+          :style="{ background: (projects[6] as any).meta.background }"
+        ></div>
+        <div
+          v-else-if="activeProjectCodeName === (projects[7] as any).meta.codeName"
+          :style="{ background: (projects[7] as any).meta.background }"
+        ></div>
+        <div
+          v-else-if="activeProjectCodeName === (projects[8] as any).meta.codeName"
+          :style="{ background: (projects[8] as any).meta.background }"
+        ></div>
+        <div
+          v-else-if="activeProjectCodeName === (projects[9] as any).meta.codeName"
+          :style="{ background: (projects[9] as any).meta.background }"
         ></div>
       </Transition>
     </div>
@@ -194,18 +204,30 @@
               v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName"
               :animationData="(projects[3] as any).meta.illustration"
             />
-            <v-lazy-image
-              v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName"
-              :src="(projects[4] as any).meta.illustration"
-              :alt="$t('work._jeprendsquoi.illustration')"
-            />
             <Vue3Lottie
+              v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName"
+              :animationData="(projects[4] as any).meta.illustration"
+            />
+            <v-lazy-image
               v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName"
-              :animationData="(projects[5] as any).meta.illustration"
+              :src="(projects[5] as any).meta.illustration"
+              :alt="$t('work._jeprendsquoi.illustration')"
             />
             <Vue3Lottie
               v-else-if="activeProjectCodeName === (projects[6] as any).meta.codeName"
               :animationData="(projects[6] as any).meta.illustration"
+            />
+            <Vue3Lottie
+              v-else-if="activeProjectCodeName === (projects[7] as any).meta.codeName"
+              :animationData="(projects[7] as any).meta.illustration"
+            />
+            <Vue3Lottie
+              v-else-if="activeProjectCodeName === (projects[8] as any).meta.codeName"
+              :animationData="(projects[8] as any).meta.illustration"
+            />
+            <Vue3Lottie
+              v-else-if="activeProjectCodeName === (projects[9] as any).meta.codeName"
+              :animationData="(projects[9] as any).meta.illustration"
             />
           </Transition>
         </div>
@@ -255,6 +277,21 @@
                 >
                   <h2>{{ (projects[6] as any).meta.codeName }}</h2>
                 </div>
+                <div
+                  v-else-if="activeProjectCodeName === (projects[7] as any).meta.codeName"
+                >
+                  <h2>{{ (projects[7] as any).meta.codeName }}</h2>
+                </div>
+                <div
+                  v-else-if="activeProjectCodeName === (projects[8] as any).meta.codeName"
+                >
+                  <h2>{{ (projects[8] as any).meta.codeName }}</h2>
+                </div>
+                <div
+                  v-else-if="activeProjectCodeName === (projects[9] as any).meta.codeName"
+                >
+                  <h2>{{ (projects[9] as any).meta.codeName }}</h2>
+                </div>
               </Transition>
               <Transition
                 name="slide-right"
@@ -295,6 +332,21 @@
                   v-else-if="activeProjectCodeName === (projects[6] as any).meta.codeName"
                 >
                   <p>{{ (projects[6] as any).meta.summary }}</p>
+                </div>
+                <div
+                  v-else-if="activeProjectCodeName === (projects[7] as any).meta.codeName"
+                >
+                  <p>{{ (projects[7] as any).meta.summary }}</p>
+                </div>
+                <div
+                  v-else-if="activeProjectCodeName === (projects[8] as any).meta.codeName"
+                >
+                  <p>{{ (projects[8] as any).meta.summary }}</p>
+                </div>
+                <div
+                  v-else-if="activeProjectCodeName === (projects[9] as any).meta.codeName"
+                >
+                  <p>{{ (projects[9] as any).meta.summary }}</p>
                 </div>
               </Transition>
             </div>
@@ -347,6 +399,24 @@
                   <h6>{{ $t('global.date') }}</h6>
                   <p>{{ (projects[6] as any).meta.date }}</p>
                 </li>
+                <li
+                  v-else-if="activeProjectCodeName === (projects[7] as any).meta.codeName"
+                >
+                  <h6>{{ $t('global.date') }}</h6>
+                  <p>{{ (projects[7] as any).meta.date }}</p>
+                </li>
+                <li
+                  v-else-if="activeProjectCodeName === (projects[8] as any).meta.codeName"
+                >
+                  <h6>{{ $t('global.date') }}</h6>
+                  <p>{{ (projects[8] as any).meta.date }}</p>
+                </li>
+                <li
+                  v-else-if="activeProjectCodeName === (projects[9] as any).meta.codeName"
+                >
+                  <h6>{{ $t('global.date') }}</h6>
+                  <p>{{ (projects[9] as any).meta.date }}</p>
+                </li>
               </Transition>
               <Transition
                 class="work__data__item"
@@ -395,6 +465,24 @@
                 >
                   <h6>{{ $t('global.type.label') }}</h6>
                   <p>{{ (projects[6] as any).meta.type }}</p>
+                </li>
+                <li
+                  v-else-if="activeProjectCodeName === (projects[7] as any).meta.codeName"
+                >
+                  <h6>{{ $t('global.type.label') }}</h6>
+                  <p>{{ (projects[7] as any).meta.type }}</p>
+                </li>
+                <li
+                  v-else-if="activeProjectCodeName === (projects[8] as any).meta.codeName"
+                >
+                  <h6>{{ $t('global.type.label') }}</h6>
+                  <p>{{ (projects[8] as any).meta.type }}</p>
+                </li>
+                <li
+                  v-else-if="activeProjectCodeName === (projects[9] as any).meta.codeName"
+                >
+                  <h6>{{ $t('global.type.label') }}</h6>
+                  <p>{{ (projects[9] as any).meta.type }}</p>
                 </li>
               </Transition>
             </ul>

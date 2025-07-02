@@ -24,6 +24,7 @@ export interface Filters {
   _iobeya_whiteboard: HuBrInSaGr
   _iobeya_mobile_ds: HuBrInSaGr
   _iobeya_creativity: HuBrInSaGr
+  _axeptio_gusto: HuBrInSaGr
 }
 
 export interface HuSaLiTy {
@@ -145,6 +146,7 @@ export interface Meta {
   view: string
   illustration: JSONObject
   background: HuBrInSaGr
+  backgroundImage: string
   theme: string
   filter: HuBrInSaGr
   pov: string

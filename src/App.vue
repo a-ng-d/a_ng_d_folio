@@ -174,7 +174,7 @@
         })
       },
       resetDelay(e: Element) {
-        ;(e as HTMLElement).style.transitionDelay = '0'
+        (e as HTMLElement).style.transitionDelay = '0'
       },
       expandParticles() {
         this.isExpanded = true
@@ -183,9 +183,13 @@
         this.isExpanded = false
       },
       getProjects(src: Array<Route>) {
-        let projects: Array<Route> = src.map((a: Route) => a)
+        let projects: Array<Route> = src
+          .map((a: Route) => a)
         projects = projects
-          .filter((project: Route) => project.meta.view === 'PROJECT')
+          .filter(
+            (project: Route) =>
+              project.meta.view === 'PROJECT' && project.meta.position >= 0,
+          )
           .sort((a: Route, b: Route) => a.meta.position - b.meta.position)
         return projects
       },
