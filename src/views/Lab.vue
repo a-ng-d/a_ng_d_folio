@@ -77,7 +77,7 @@
           {
             name: 'Soundbox card',
             sourceName: 'Codepen',
-            sourceLink: 'https://codepen.io/inVoltag/full/QdOVQQ',
+            sourceLink: 'https://codepen.io/a-ng-d/full/QdOVQQ',
             sourceType: 'video',
             sourceFormat: 'mp4',
           },

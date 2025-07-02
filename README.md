@@ -1,4 +1,4 @@
-# a_ng_d-folio
+# a_ng_d_folio
 
 Personal portfolio that presents 7 years of professional and personal work through an immersive visit.
 Take a glance at [www.an.gd](https://an.gd).

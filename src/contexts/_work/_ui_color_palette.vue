@@ -211,7 +211,7 @@
             $t('work._ui_color_palette.takeaways.takeaway-2.description')
           "
           :cta="$t('work._ui_color_palette.takeaways.takeaway-2.linkLabel')"
-          href="https://github.com/inVoltag/figma-ui-color-palette"
+          href="https://github.com/a-ng-d/figma-ui-color-palette"
           :alt="$t('work._ui_color_palette.takeaways.takeaway-2.alt')"
           :theme="theme"
         >

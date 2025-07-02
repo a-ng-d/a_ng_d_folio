@@ -132,7 +132,7 @@
             $t('work._awesome_ipsums.takeaways.takeaway-1.description')
           "
           :cta="$t('work._awesome_ipsums.takeaways.takeaway-1.linkLabel')"
-          href="https://github.com/inVoltag/sketch-awesome-ipsums/releases/latest/download/awesome-ipsums.sketchplugin.zip"
+          href="https://github.com/a-ng-d/sketch-awesome-ipsums/releases/latest/download/awesome-ipsums.sketchplugin.zip"
           :alt="$t('work._awesome_ipsums.takeaways.takeaway-1.alt')"
           :theme="theme"
         >
@@ -145,7 +145,7 @@
             $t('work._awesome_ipsums.takeaways.takeaway-2.description')
           "
           :cta="$t('work._awesome_ipsums.takeaways.takeaway-2.linkLabel')"
-          href="https://github.com/inVoltag/sketch-awesome-ipsums"
+          href="https://github.com/a-ng-d/sketch-awesome-ipsums"
           :alt="$t('work._awesome_ipsums.takeaways.takeaway-2.alt')"
           :theme="theme"
         >

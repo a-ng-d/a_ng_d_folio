@@ -71,7 +71,7 @@
         <LinkContainer
           :description="$t('work._jean_bobby_radio.part-1.info.description')"
           :cta="$t('work._jean_bobby_radio.part-1.info.linkLabel')"
-          href="https://involtag.notion.site/Monter-une-webradio-d-entreprise-avec-peu-de-moyens-8f64fad1b661454999baa1f65ea27c11"
+          href="https://a-ng-d.notion.site/Monter-une-webradio-d-entreprise-avec-peu-de-moyens-8f64fad1b661454999baa1f65ea27c11"
           :alt="$t('work._jean_bobby_radio.part-1.info.alt')"
           :theme="theme"
         >
@@ -178,7 +178,7 @@
             $t('work._jean_bobby_radio.takeaways.takeaway-2.description')
           "
           :cta="$t('work._jean_bobby_radio.takeaways.takeaway-2.linkLabel')"
-          href="https://github.com/inVoltag/jean-bobby-radio"
+          href="https://github.com/a-ng-d/jean-bobby-radio"
           :alt="$t('work._jean_bobby_radio.takeaways.takeaway-2.alt')"
           :theme="theme"
         >

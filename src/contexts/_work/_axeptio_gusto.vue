@@ -388,7 +388,7 @@ import ContentContainer from '@/components/patterns/ContentContainer.vue'
             $t('work._axeptio_gusto.takeaways.takeaway-1.description')
           "
           :cta="$t('work._axeptio_gusto.takeaways.takeaway-1.linkLabel')"
-          href="https://medium.com/@inVoltag/une-r%C3%A9trospective-%C3%A0-distance-88bdab442d93"
+          href="https://medium.com/@a-ng-d/une-r%C3%A9trospective-%C3%A0-distance-88bdab442d93"
           :alt="$t('work._axeptio_gusto.takeaways.takeaway-1.alt')"
           :theme="theme"
         >

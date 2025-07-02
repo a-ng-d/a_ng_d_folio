@@ -59,7 +59,7 @@
       }}</span>
       <SimpleExternalLink
         :label="$t('footer.repository')"
-        href="https://github.com/inVoltag/a_ng_d-folio"
+        href="https://github.com/a-ng-d/a_ng_d_folio"
         :alt="$t('actions.repository')"
         small
         :theme="theme === 'DEFAULT' ? 'DARK' : 'DEFAULT'"
