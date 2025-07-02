@@ -8,7 +8,6 @@
   import Figure from '@/components/patterns/Figure.vue'
   import {
     Heart,
-    Star,
     Users,
     Rocket,
     Figma,
@@ -18,7 +17,6 @@
   import { assets } from '@/utilities/assets'
   import {
     getUIColorPaletteSaves,
-    getUIColorPaletteRating,
     getUIColorPaletteUsers,
     getUIColorPaletteVersion,
   } from '@/utilities/fetch'
