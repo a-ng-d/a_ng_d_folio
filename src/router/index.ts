@@ -145,7 +145,8 @@ const router = createRouter({
         view: 'PROJECT',
         illustration: AGAnimation,
         background: filters._axeptio_gusto,
-        backgroundImage: 'none',
+        backgroundImage:
+          'url(/images/_work/_axeptio_gusto/background.webp) 0% 0% / cover no-repeat',
         theme: 'DEFAULT',
         filter: filters.grayscale,
         pov: 'DIVE_2',
@@ -198,7 +199,8 @@ const router = createRouter({
         view: 'PROJECT',
         illustration: IMDSAnimation,
         background: filters._iobeya_mobile_ds,
-        backgroundImage: 'none',
+        backgroundImage:
+          'url(/images/_work/_iobeya_mobile_ds/background.webp) 0% 0% / cover no-repeat',
         theme: 'DARK',
         filter: filters.grayscale,
         pov: 'DIVE_4',
