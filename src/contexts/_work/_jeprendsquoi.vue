@@ -6,7 +6,8 @@
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
   import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
-  import { Info, Bot, Apple, Pointer } from 'lucide-vue-next'
+  import ContentContainer from '@/components/patterns/ContentContainer.vue'
+  import { Info, Apple, Pointer, Star, Download  } from 'lucide-vue-next'
   import { doMap } from '@/utilities/operations'
   import { assets } from '@/utilities/assets'
 
@@ -16,13 +17,15 @@
       OneColumn,
       TwoColumns,
       WrapColumn,
+      ContentContainer,
       LinkContainer,
       Figure,
       SimpleExternalLink,
       Info,
-      Bot,
       Apple,
       Pointer,
+      Star,
+      Download
     },
     props: {
       scrollProgress: {
@@ -297,6 +300,30 @@
     </TwoColumns>
   </section>
   <section class="ending"></section>
+  <section class="success">
+    <WrapColumn :title="$t('global.success')" :theme="theme">
+      <template #plain>
+        <ContentContainer
+          title="700"
+          :description="$t('global.downloads')"
+          :theme="theme"
+        >
+          <template #icon>
+            <Download :size="48" />
+          </template>
+        </ContentContainer>
+        <ContentContainer
+          title="4.0/5"
+          :description="$t('global.rating')"
+          :theme="theme"
+        >
+          <template #icon>
+            <Star :size="48" />
+          </template>
+        </ContentContainer>
+      </template>
+    </WrapColumn>
+  </section>
   <section class="takeaways">
     <OneColumn :title="$t('global.takeaways')" :theme="theme">
       <template #plain>
@@ -305,21 +332,8 @@
             $t('work._jeprendsquoi.takeaways.takeaway-1.description')
           "
           :cta="$t('work._jeprendsquoi.takeaways.takeaway-1.linkLabel')"
-          href="https://play.google.com/store/apps/details?id=app.bravostudio.A01F6ZSK8YBS59Y8H0ZH6BN4D4F"
-          :alt="$t('work._jeprendsquoi.takeaways.takeaway-1.alt')"
-          :theme="theme"
-        >
-          <template #icon>
-            <Bot :size="48" />
-          </template>
-        </LinkContainer>
-        <LinkContainer
-          :description="
-            $t('work._jeprendsquoi.takeaways.takeaway-2.description')
-          "
-          :cta="$t('work._jeprendsquoi.takeaways.takeaway-2.linkLabel')"
           href="https://apps.apple.com/fr/app/jeprendsquoi/id1672862298"
-          :alt="$t('work._jeprendsquoi.takeaways.takeaway-2.alt')"
+          :alt="$t('work._jeprendsquoi.takeaways.takeaway-1.alt')"
           :theme="theme"
         >
           <template #icon>
@@ -328,11 +342,11 @@
         </LinkContainer>
         <LinkContainer
           :description="
-            $t('work._jeprendsquoi.takeaways.takeaway-3.description')
+            $t('work._jeprendsquoi.takeaways.takeaway-1.description')
           "
-          :cta="$t('work._jeprendsquoi.takeaways.takeaway-3.linkLabel')"
+          :cta="$t('work._jeprendsquoi.takeaways.takeaway-1.linkLabel')"
           href="https://jeprendsquoi.app"
-          :alt="$t('work._jeprendsquoi.takeaways.takeaway-3.alt')"
+          :alt="$t('work._jeprendsquoi.takeaways.takeaway-1.alt')"
           :theme="theme"
         >
           <template #icon>

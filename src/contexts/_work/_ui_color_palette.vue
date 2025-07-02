@@ -33,7 +33,6 @@
       LinkContainer,
       Figure,
       Heart,
-      Star,
       Users,
       Rocket,
       Figma,
@@ -66,7 +65,6 @@
     },
     created: async function () {
       this.saves = await getUIColorPaletteSaves()
-      this.rating = await getUIColorPaletteRating()
       this.users = await getUIColorPaletteUsers()
       this.version = await getUIColorPaletteVersion()
     },
@@ -180,15 +178,6 @@
         >
           <template #icon>
             <Heart :size="48" />
-          </template>
-        </ContentContainer>
-        <ContentContainer
-          :title="rating"
-          :description="$t('global.rating')"
-          :theme="theme"
-        >
-          <template #icon>
-            <Star :size="48" />
           </template>
         </ContentContainer>
         <ContentContainer
