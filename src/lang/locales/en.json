@@ -74,6 +74,8 @@
     "credit": "Credit",
     "takeaways": "Takeaways!",
     "iobeya": "iObeya",
+    "razorfish": "Razorfish",
+    "axeptio": "Axeptio",
     "team": "team collaboration",
     "thinking": "design thinking",
     "system": "design system",
@@ -81,7 +83,8 @@
   },
   "home": {
     "author": "aurélien_grimaud_",
-    "baseline": "Fresh blend of Product Design, DesOps, and Creative Technology",
+    "baseline": "Product Builder / Designer / Engineer",
+    "status": "Currently working for my self company, Yelbolt, but still available",
     "id": "Business card",
     "contact": "Contact",
     "work": "Selected work",
@@ -96,11 +99,11 @@
     "title": "@:glossary.id@:global.separator@:global.author",
     "friendlyName": "@:glossary.id",
     "about": {
-      "title": "你好 nǐ hǎo!",
-      "experience": "I’m Aurélien (or 立安－lì ān in China). Product Designer for {year} years (ex-{iobeya}) and a UI + code enthusiast.",
+      "title": "你好 nǐ hǎo (hello)!",
+      "experience": "I’m 利安(Aurélien)! Product Builder/Designer/Engineer for {year} years (ex-{iobeya}, ex-{razorfish}, ex-{axeptio}) and a UI + code enthusiast.",
       "mission": "Filling the gap between business, designers, and developers is my leitmotiv, by enabling collective intelligence, testing, and learning.",
-      "activities": "I also write about {team}, {thinking} and {system}－I teach UX at design schools－I coach Junior Product Designers.",
-      "side": "Otherwise, I manage the {uicp} plugin on Figma."
+      "activities": "I have founded my company, Yelbolt, which owns UI Color Palette and Ideas Spark Booth.",
+      "side": "I also write about {team}, {thinking} and {system}－I teach UX at design schools－I coach Junior Product Designers."
     },
     "network": {
       "title": "Networks (find me on the internets)",
@@ -180,9 +183,15 @@
       },
       "axeptio": {
         "start": "2024",
-        "end": "Current",
+        "end": "2025",
         "title": "Axeptio",
         "label": "Senior Product Designer + Creative Technologist"
+      },
+      "yelbolt": {
+        "start": "2025",
+        "end": "Current",
+        "title": "Yelbolt",
+        "label": "Founder"
       }
     },
     "stories": {
@@ -211,6 +220,16 @@
         "label": "{'From Design to Agile Thinking﹒Converging to the right solution (the second diamond)'}@:global.separator{'Team collaboration'}",
         "href": "https://medium.com/{'@'}a_ng_d/from-design-to-agile-thinking-70a4c8e5504a",
         "alt": "External link to the \"From Design to Agile Thinking﹒Converging to the right solution (the second diamond)\" article on LinkedIn"
+      },
+      "link-6": {
+        "label": "{'UI Color Palette et le Dev Mode de Figma'}@:global.separator{'Newsletter'}",
+        "href": "https://www.linkedin.com/pulse/ui-color-palette-et-le-dev-mode-de-figma-aur%25C3%25A9lien-grimaud-zcnbc",
+        "alt": "External link to the \"UI Color Palette et le Dev Mode de Figma\" article on LinkedIn"
+      },
+      "link-7": {
+        "label": "{'De H.S.L. à H.C.L., une lettre qui change la donne pour maîtriser les contrastes de couleurs'}@:global.separator{'Color theory'}",
+        "href": "https://www.linkedin.com/pulse/de-hsl-%25C3%25A0-hcl-une-lettre-qui-change-la-donne-pour-les-couleurs-ftske",
+        "alt": "External link to the \"De H.S.L. à H.C.L., une lettre qui change la donne pour maîtriser les contrastes de couleurs\" article on LinkedIn"
       }
     },
     "talks": {
@@ -310,7 +329,7 @@
     },
     "contact": {
       "title": "@:glossary.contact",
-      "description": "Product Designer + Teacher － Send me a feedback or a request."
+      "description": "Product Designer + Teacher － Send me feedback or a request."
     },
     "archive": {
       "title": "@:glossary.archive",
@@ -408,7 +427,7 @@
         "title": "Control the palette with WYSIWYG",
         "paragraph-1": "Slide the stops to change the lightness of every color, and keep a palette with consistent contrasts.",
         "paragraph-2": "Rename, add, remove, change, reorder each color… Keep a full control of the color palette.",
-        "paragraph-3": "WCAG 2.0 scores help you build the most respectful palette for accessibility."
+        "paragraph-3": "WCAG 2.2 scores help you build the most respectful palette for accessibility."
       },
       "part-3": {
         "title": "Deploy and spread the color standard",
@@ -1032,10 +1051,10 @@
   "contact": {
     "title": "@:glossary.contact@:global.separator@:global.author",
     "friendlyName": "@:glossary.contact",
-    "description": "Currently working in a company as a Lead Product Designer, I feel free to share my knowledge by teaching young designers/students design + code. Available on demand to give a talk or facilitate a workshop.",
+    "description": "As a Product Builder, I can help your teams make reliable and realistic prototypes, fill the gap between departments, and challenge your strategy. As a teacher, I can give your teams a Figma, Penpot, Protopie, or Framer training.",
     "email": {
-      "hello": "Send me a message",
-      "pro": "Send me a request"
+      "hello": "Tell me hello",
+      "pro": "Send me your profesionnal request"
     }
   },
   "attribution": {

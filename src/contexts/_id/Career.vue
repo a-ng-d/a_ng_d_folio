@@ -143,6 +143,17 @@
             <p>{{ $t('id.career.axeptio.label') }}</p>
           </div>
         </div>
+        <div>
+          <div>
+            <h5>
+              <span>{{ $t('id.career.yelbolt.start') }}</span>
+              <span>{{ $t('global.separator') }}</span>
+              <span>{{ $t('id.career.yelbolt.end') }}</span>
+            </h5>
+            <h4>{{ $t('id.career.yelbolt.title') }}</h4>
+            <p>{{ $t('id.career.yelbolt.label') }}</p>
+          </div>
+        </div>
       </template>
     </OneColumn>
   </section>

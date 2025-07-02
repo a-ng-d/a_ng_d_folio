@@ -3,6 +3,7 @@
   import { store } from '@/utilities/store'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
+  import Label from '@/components/ui/Label.vue'
   import ScrollingText from '@/components/ui/ScrollingText.vue'
   import {
     ArrowLeft,
@@ -20,6 +21,7 @@
     components: {
       Footer,
       Button,
+      Label,
       ScrollingText,
       ArrowLeft,
       ArrowDown,
@@ -114,6 +116,20 @@
           appear
         >
           <h4 class="jumbotron__baseline">{{ $t('home.baseline') }}</h4>
+          
+        </Transition>
+        <Transition
+          name="slide-up"
+          style="
+            --delay: calc(var(--delay-turtoise) + (var(--duration-step) * 1));
+          "
+          appear
+        >
+          <Label
+            :label="$t('home.status')"
+            small
+            underlined
+          />
         </Transition>
       </div>
       <div class="jumbotron__actions">

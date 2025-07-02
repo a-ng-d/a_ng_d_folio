@@ -27,6 +27,12 @@
             <template v-slot:iobeya>
               <Label :label="$t('global.iobeya')" highlighted :theme="theme" />
             </template>
+            <template v-slot:razorfish>
+              <Label :label="$t('global.razorfish')" highlighted :theme="theme" />
+            </template>
+            <template v-slot:axeptio>
+              <Label :label="$t('global.axeptio')" highlighted :theme="theme" />
+            </template>
             <template v-slot:year>
               {{ new Date().getFullYear() - 2015 }}
             </template>
