@@ -130,43 +130,43 @@
       >
         <div
           v-if="activeProjectCodeName === (projects[0] as any).meta.codeName"
-          :style="{ background: (projects[0] as any).meta.background }"
+          :style="{ background: (projects[0] as any).meta.backgroundImage }"
         ></div>
         <div
           v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName"
-          :style="{ background: (projects[1] as any).meta.background }"
+          :style="{ background: (projects[1] as any).meta.backgroundImage }"
         ></div>
         <div
           v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName"
-          :style="{ background: (projects[2] as any).meta.background }"
+          :style="{ background: (projects[2] as any).meta.backgroundImage }"
         ></div>
         <div
           v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName"
-          :style="{ background: (projects[4] as any).meta.background }"
+          :style="{ background: (projects[4] as any).meta.backgroundImage }"
         ></div>
         <div
           v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName"
-          :style="{ background: (projects[4] as any).meta.background }"
+          :style="{ background: (projects[4] as any).meta.backgroundImage }"
         ></div>
         <div
           v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName"
-          :style="{ background: (projects[5] as any).meta.background }"
+          :style="{ background: (projects[5] as any).meta.backgroundImage }"
         ></div>
         <div
           v-else-if="activeProjectCodeName === (projects[6] as any).meta.codeName"
-          :style="{ background: (projects[6] as any).meta.background }"
+          :style="{ background: (projects[6] as any).meta.backgroundImage }"
         ></div>
         <div
           v-else-if="activeProjectCodeName === (projects[7] as any).meta.codeName"
-          :style="{ background: (projects[7] as any).meta.background }"
+          :style="{ background: (projects[7] as any).meta.backgroundImage }"
         ></div>
         <div
           v-else-if="activeProjectCodeName === (projects[8] as any).meta.codeName"
-          :style="{ background: (projects[8] as any).meta.background }"
+          :style="{ background: (projects[8] as any).meta.backgroundImage }"
         ></div>
         <div
           v-else-if="activeProjectCodeName === (projects[9] as any).meta.codeName"
-          :style="{ background: (projects[9] as any).meta.background }"
+          :style="{ background: (projects[9] as any).meta.backgroundImage }"
         ></div>
       </Transition>
     </div>
