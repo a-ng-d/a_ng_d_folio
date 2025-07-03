@@ -100,7 +100,7 @@
     "friendlyName": "@:glossary.id",
     "about": {
       "title": "你好 nǐ hǎo (hello)!",
-      "experience": "I’m 利安(Aurélien)! Product Builder/Designer/Engineer for {year} years (ex-{iobeya}, ex-{razorfish}, ex-{axeptio}) and a UI + code enthusiast.",
+      "experience": "I’m 利安(Aurélien)! Product Builder / Designer / Engineer for {year} years (ex-{iobeya}, ex-{razorfish}, ex-{axeptio}) and a UI + code enthusiast.",
       "mission": "Filling the gap between business, designers, and developers is my leitmotiv, by enabling collective intelligence, testing, and learning.",
       "activities": "I have founded my company, Yelbolt, which owns UI Color Palette and Ideas Spark Booth.",
       "side": "I also write about {team}, {thinking} and {system}－I teach UX at design schools－I coach Junior Product Designers."
