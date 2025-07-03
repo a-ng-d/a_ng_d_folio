@@ -108,11 +108,7 @@
         controls
       >
         <source v-if="altsrc == undefined" :src="src" type="video/webm" />
-        <source
-          v-else
-          :src="altsrc"
-          type="video/mp4"
-        />
+        <source v-else :src="altsrc" type="video/mp4" />
       </video>
     </div>
     <figcaption v-if="caption" class="figure__caption">

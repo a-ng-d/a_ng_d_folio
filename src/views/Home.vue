@@ -116,7 +116,6 @@
           appear
         >
           <h4 class="jumbotron__baseline">{{ $t('home.baseline') }}</h4>
-          
         </Transition>
         <Transition
           name="slide-up"
@@ -125,11 +124,7 @@
           "
           appear
         >
-          <Label
-            :label="$t('home.status')"
-            small
-            underlined
-          />
+          <Label :label="$t('home.status')" small underlined />
         </Transition>
       </div>
       <div class="jumbotron__actions">

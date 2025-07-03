@@ -6,8 +6,8 @@
   import Figure from '@/components/patterns/Figure.vue'
   import { BookOpen } from 'lucide-vue-next'
   import { assets } from '@/utilities/assets'
-import WrapColumn from '@/components/layouts/WrapColumn.vue'
-import ContentContainer from '@/components/patterns/ContentContainer.vue'
+  import WrapColumn from '@/components/layouts/WrapColumn.vue'
+  import ContentContainer from '@/components/patterns/ContentContainer.vue'
 
   export default defineComponent({
     name: '_axeptio_gusto',
@@ -55,10 +55,7 @@ import ContentContainer from '@/components/patterns/ContentContainer.vue'
     </OneColumn>
   </section>
   <section>
-    <OneColumn
-      :title="$t('work._axeptio_gusto.part-1.title')"
-      :theme="theme"
-    >
+    <OneColumn :title="$t('work._axeptio_gusto.part-1.title')" :theme="theme">
       <template #plain>
         <p>{{ $t('work._axeptio_gusto.part-1.paragraph-1') }}</p>
         <p>{{ $t('work._axeptio_gusto.part-1.paragraph-2') }}</p>
@@ -83,9 +80,7 @@ import ContentContainer from '@/components/patterns/ContentContainer.vue'
         </Figure>
       </template>
     </OneColumn>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <p>{{ $t('work._axeptio_gusto.part-1.paragraph-4') }}</p>
       </template>
@@ -124,19 +119,14 @@ import ContentContainer from '@/components/patterns/ContentContainer.vue'
         </Figure>
       </template>
     </TwoColumns>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <p>{{ $t('work._axeptio_gusto.part-1.paragraph-5') }}</p>
       </template>
     </OneColumn>
   </section>
   <section>
-    <OneColumn
-      :title="$t('work._axeptio_gusto.part-2.title')"
-      :theme="theme"
-    >
+    <OneColumn :title="$t('work._axeptio_gusto.part-2.title')" :theme="theme">
       <template #plain>
         <p>{{ $t('work._axeptio_gusto.part-2.paragraph-1') }}</p>
         <p>{{ $t('work._axeptio_gusto.part-2.paragraph-2') }}</p>
@@ -160,9 +150,7 @@ import ContentContainer from '@/components/patterns/ContentContainer.vue'
         </Figure>
       </template>
     </OneColumn>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <p>{{ $t('work._axeptio_gusto.part-2.paragraph-3') }}</p>
       </template>
@@ -239,10 +227,7 @@ import ContentContainer from '@/components/patterns/ContentContainer.vue'
     </TwoColumns>
   </section>
   <section>
-    <OneColumn
-      :title="$t('work._axeptio_gusto.part-3.title')"
-      :theme="theme"
-    >
+    <OneColumn :title="$t('work._axeptio_gusto.part-3.title')" :theme="theme">
       <template #plain>
         <p>{{ $t('work._axeptio_gusto.part-3.paragraph-1') }}</p>
       </template>
@@ -265,19 +250,14 @@ import ContentContainer from '@/components/patterns/ContentContainer.vue'
         </Figure>
       </template>
     </OneColumn>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <p>{{ $t('work._axeptio_gusto.part-3.paragraph-2') }}</p>
       </template>
     </OneColumn>
   </section>
   <section>
-    <OneColumn
-      :title="$t('work._axeptio_gusto.part-4.title')"
-      :theme="theme"
-    >
+    <OneColumn :title="$t('work._axeptio_gusto.part-4.title')" :theme="theme">
       <template #plain>
         <p>{{ $t('work._axeptio_gusto.part-4.paragraph-1') }}</p>
       </template>
@@ -302,10 +282,7 @@ import ContentContainer from '@/components/patterns/ContentContainer.vue'
     </OneColumn>
   </section>
   <section>
-    <OneColumn
-      :title="$t('work._axeptio_gusto.part-5.title')"
-      :theme="theme"
-    >
+    <OneColumn :title="$t('work._axeptio_gusto.part-5.title')" :theme="theme">
       <template #plain>
         <p>{{ $t('work._axeptio_gusto.part-5.paragraph-1') }}</p>
         <p>{{ $t('work._axeptio_gusto.part-5.paragraph-2') }}</p>
@@ -335,9 +312,7 @@ import ContentContainer from '@/components/patterns/ContentContainer.vue'
         </Figure>
       </template>
     </OneColumn>
-    <OneColumn
-      :theme="theme"
-    >
+    <OneColumn :theme="theme">
       <template #plain>
         <p>{{ $t('work._axeptio_gusto.part-5.paragraph-3') }}</p>
         <p>{{ $t('work._axeptio_gusto.part-5.paragraph-4') }}</p>

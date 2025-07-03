@@ -7,7 +7,7 @@
   import Figure from '@/components/patterns/Figure.vue'
   import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
   import ContentContainer from '@/components/patterns/ContentContainer.vue'
-  import { Info, Apple, Pointer, Star, Download  } from 'lucide-vue-next'
+  import { Info, Apple, Pointer, Star, Download } from 'lucide-vue-next'
   import { doMap } from '@/utilities/operations'
   import { assets } from '@/utilities/assets'
 
@@ -25,7 +25,7 @@
       Apple,
       Pointer,
       Star,
-      Download
+      Download,
     },
     props: {
       scrollProgress: {

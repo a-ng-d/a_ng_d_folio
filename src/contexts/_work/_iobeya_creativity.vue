@@ -366,8 +366,8 @@
       <template #plain>
         <Figure
           type="video"
-          :src="assets._iobeya_creativity[28]  + '#t=0.5'"
-          :altsrc="assets._iobeya_creativity[33]  + '#t=0.5'"
+          :src="assets._iobeya_creativity[28] + '#t=0.5'"
+          :altsrc="assets._iobeya_creativity[33] + '#t=0.5'"
           :width="768"
           :height="428"
         />

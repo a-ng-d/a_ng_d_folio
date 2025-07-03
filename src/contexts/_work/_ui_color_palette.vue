@@ -6,14 +6,7 @@
   import ContentContainer from '@/components/patterns/ContentContainer.vue'
   import LinkContainer from '@/components/patterns/LinkContainer.vue'
   import Figure from '@/components/patterns/Figure.vue'
-  import {
-    Heart,
-    Users,
-    Rocket,
-    Figma,
-    Github,
-    Pointer,
-  } from 'lucide-vue-next'
+  import { Heart, Users, Rocket, Figma, Github, Pointer } from 'lucide-vue-next'
   import { assets } from '@/utilities/assets'
   import {
     getUIColorPaletteSaves,
