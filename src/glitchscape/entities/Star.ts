@@ -73,7 +73,7 @@ export class Star {
     if (stage.isGlitched) {
       this.position.x = randomFloat(-bounds.limitX * 3, bounds.limitX * 3)
       this.position.z = randomFloat(-bounds.limitZ * 3, bounds.limitZ * 3)
-    } else {
+    } else if (stage.flow.axis === 'LINEAR') {
       this.position.z = wrap(
         this.position.z + drift.z * step * 0.4,
         -bounds.limitZ * 3,
@@ -90,6 +90,7 @@ export class Star {
         this.props.yRange[0]
       )
     }
+    // On a ring the field turns with the world, so it needs no drift of its own.
 
     this.params.twinkle = clamp(
       0.45 + sk.noise(this.seed + stage.time * 0.0006) * 0.85,

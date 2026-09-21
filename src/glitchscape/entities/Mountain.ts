@@ -42,6 +42,8 @@ export class Mountain {
   turbulence: number
   spread: number
   lift: number
+  facing: number
+  radius: number
   profile: Profile
   target: Profile
   params: {
@@ -81,6 +83,8 @@ export class Mountain {
     this.turbulence = stage.scene.turbulence
     this.spread = clampCorridor(stage.scene.corridor)
     this.lift = clampRelief(stage.scene.relief)
+    this.facing = this.props.facing
+    this.radius = this.props.radius
     this.profile = this.build(stage)
     this.target = this.profile.slice()
     this.params = {
@@ -158,8 +162,10 @@ export class Mountain {
 
     const corridor = clampCorridor(stage.scene.corridor)
     if (Math.abs(corridor - this.spread) > 0.0005) {
-      const next = lerp(this.spread, corridor, 0.04)
-      this.position.x *= next / this.spread
+      const next = lerp(this.spread, corridor, 0.04),
+        ratio = next / this.spread
+      this.position.x *= ratio
+      this.radius *= ratio
       this.spread = next
     }
 
@@ -172,21 +178,23 @@ export class Mountain {
       this.lift = next
     }
 
-    this.position.z = wrap(
-      this.position.z + drift.z * step,
-      this.props.zRange[0],
-      this.props.zRange[1]
-    )
-    this.position.x = wrap(
-      this.position.x + drift.x * step * 0.5,
-      -bounds.limitX * 1.5 * this.spread,
-      bounds.limitX * 1.5 * this.spread
-    )
-    this.position.y = wrap(
-      this.position.y + drift.y * step * 0.35,
-      this.props.y - band,
-      this.props.y + band
-    )
+    if (stage.flow.axis === 'LINEAR') {
+      this.position.z = wrap(
+        this.position.z + drift.z * step,
+        this.props.zRange[0],
+        this.props.zRange[1]
+      )
+      this.position.x = wrap(
+        this.position.x + drift.x * step * 0.5,
+        -bounds.limitX * 1.5 * this.spread,
+        bounds.limitX * 1.5 * this.spread
+      )
+      this.position.y = wrap(
+        this.position.y + drift.y * step * 0.35,
+        this.props.y - band,
+        this.props.y + band
+      )
+    }
 
     if (sk.millis() > this.params.order * this.params.gap)
       this.params.radians = lerp(this.params.radians, 0, this.params.speed)
@@ -257,9 +265,13 @@ export class Mountain {
 
   draw = (stage: Stage) => {
     const sk = stage.sk,
+      axis = stage.flow.axis,
+      // On a ring, aerial perspective is driven by the radius rather than
+      // by the depth along the travelled axis.
+      depth = axis === 'LINEAR' ? this.position.z : -this.radius,
       tint = rampAt(
         stage.scene.palette.mountains,
-        this.position.z,
+        depth,
         this.props.zRange[0],
         this.props.zRange[1]
       ),
@@ -269,13 +281,21 @@ export class Mountain {
         : null
 
     sk.push()
-    sk.translate(
-      this.position.x < 0
-        ? this.position.x - this.size.width * stage.bounds.multiplier
-        : this.position.x,
-      this.position.y,
-      this.position.z
-    )
+    if (axis === 'LINEAR')
+      sk.translate(
+        this.position.x < 0
+          ? this.position.x - this.size.width * stage.bounds.multiplier
+          : this.position.x,
+        this.position.y,
+        this.position.z
+      )
+    else {
+      // Rotate first, then step out along the radius: the billboard lands
+      // tangent to its circle, facing the centre where the journey sits.
+      if (axis === 'RING_Y') sk.rotateY(this.facing)
+      else sk.rotateX(this.facing)
+      sk.translate(-this.size.width / 2, this.position.y, -this.radius)
+    }
     sk.rotateX(this.params.radians)
 
     sk.noStroke()

@@ -13,6 +13,8 @@ export class Cloud {
   props: CloudProps
   size: Size
   position: Position
+  facing: number
+  radius: number
   params: {
     rows: Array<Row>
     speed: number
@@ -29,6 +31,8 @@ export class Cloud {
 
   constructor(stage: Stage, props: CloudProps) {
     this.props = props
+    this.facing = props.facing
+    this.radius = props.radius
     this.size = {
       width: Math.round(
         randomFloat(this.props.widthRange[0], this.props.widthRange[1])
@@ -87,28 +91,39 @@ export class Cloud {
       step = stage.speed,
       corridor = bounds.limitX * 2
 
-    this.position.z = wrap(
-      this.position.z + drift.z * step,
-      this.props.zRange[0],
-      this.props.zRange[1]
-    )
-    // A constant breeze keeps the sky alive even when the journey stands still.
-    this.position.x = wrap(
-      this.position.x + (drift.x * 0.5 + 0.5) * step,
-      -corridor,
-      corridor
-    )
-    this.position.y = wrap(
-      this.position.y + drift.y * step * 0.6,
-      -bounds.limitY * 0.4,
-      -bounds.height * 0.5
-    )
+    if (stage.flow.axis === 'LINEAR') {
+      this.position.z = wrap(
+        this.position.z + drift.z * step,
+        this.props.zRange[0],
+        this.props.zRange[1]
+      )
+      // A constant breeze keeps the sky alive even when the journey stands still.
+      this.position.x = wrap(
+        this.position.x + (drift.x * 0.5 + 0.5) * step,
+        -corridor,
+        corridor
+      )
+      this.position.y = wrap(
+        this.position.y + drift.y * step * 0.6,
+        -bounds.limitY * 0.4,
+        -bounds.height * 0.5
+      )
 
-    if (this.position.x <= -bounds.limitX)
-      this.params.beta = doMap(this.position.x, -corridor, -bounds.limitX, 0, 1)
-    else if (this.position.x >= bounds.limitX)
-      this.params.beta = doMap(this.position.x, bounds.limitX, corridor, 1, 0)
-    else this.params.beta = 1
+      if (this.position.x <= -bounds.limitX)
+        this.params.beta = doMap(
+          this.position.x,
+          -corridor,
+          -bounds.limitX,
+          0,
+          1
+        )
+      else if (this.position.x >= bounds.limitX)
+        this.params.beta = doMap(this.position.x, bounds.limitX, corridor, 1, 0)
+      else this.params.beta = 1
+    } else {
+      // A ring has no edge to fade against.
+      this.params.beta = 1
+    }
 
     if (sk.millis() > this.params.order * this.params.gap)
       this.params.start = lerp(
@@ -153,10 +168,12 @@ export class Cloud {
 
   draw = (stage: Stage) => {
     const sk = stage.sk,
+      axis = stage.flow.axis,
       quality = stage.quality === 'HIGH' ? 50 : 16,
+      depth = axis === 'LINEAR' ? this.position.z : -this.radius,
       tint = rampAt(
         stage.scene.palette.clouds,
-        this.position.z,
+        depth,
         this.props.zRange[0],
         this.props.zRange[1]
       ),
@@ -168,7 +185,13 @@ export class Cloud {
     let offsetY = 0
 
     sk.push()
-    sk.translate(this.position.x, this.params.start, this.position.z)
+    if (axis === 'LINEAR')
+      sk.translate(this.position.x, this.params.start, this.position.z)
+    else {
+      if (axis === 'RING_Y') sk.rotateY(this.facing)
+      else sk.rotateX(this.facing)
+      sk.translate(-this.size.width / 2, this.params.start, -this.radius)
+    }
 
     if (corrupted !== null)
       sk.fill(corrupted.hue, corrupted.saturation, corrupted.lightness)

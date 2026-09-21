@@ -19,10 +19,23 @@ import {
   randomFloat,
   toRadians,
   twoRangesRandom,
+  wrap,
 } from '@/utilities/operations'
 
 /** Travel distance per frame at speed 1, unchanged from the original sketch. */
 const REFERENCE_SPEED = 30
+
+const TWO_PI = Math.PI * 2
+
+/**
+ * Golden angle. Handing each new particle the next multiple of it spreads
+ * any number of them evenly around a ring, one at a time — which is what
+ * lets the field grow and shrink without ever opening a gap.
+ */
+const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5))
+
+/** Radius used as the reference for the angular rate of a ring. */
+const RING_REFERENCE = 0.2
 
 const RESOLUTIONS: { [key: string]: number } = {
   HIGH: 32,
@@ -70,6 +83,7 @@ export const createGlitchscape = (
       resolution: RESOLUTIONS[options.quality] || RESOLUTIONS.HIGH,
       speed: REFERENCE_SPEED,
       boost: 1,
+      spin: 0,
       time: 0,
       pointer: { x: 0, y: 0 },
       isGlitched: false,
@@ -91,6 +105,8 @@ export const createGlitchscape = (
     stars: Array<Star> = [],
     camera: any = null,
     floor = 1,
+    mountainSlots = 0,
+    cloudSlots = 0,
     projects = options.projects,
     requestedPov = options.pov,
     isReady = false,
@@ -191,6 +207,19 @@ export const createGlitchscape = (
     }
   }
 
+  /**
+   * Where a particle sits on its circle. The relief is spread between a
+   * smaller and a larger radius, so the inner ring sweeps past faster than
+   * the outer one and the turn reads as depth rather than as a flat pan.
+   */
+  const ringRadius = (near: number, far: number, floor: number) =>
+    Math.max(
+      floor,
+      bounds.limitZ *
+        randomFloat(near, far) *
+        clampCorridor(stage.scene.corridor)
+    )
+
   const spawnMountain = () => {
     const sk = stage.sk,
       corridor = clampCorridor(stage.scene.corridor)
@@ -206,6 +235,10 @@ export const createGlitchscape = (
       ),
       y: sk.height * 10,
       zRange: [-bounds.limitZ, 0],
+      facing: (mountainSlots++ * GOLDEN_ANGLE) % TWO_PI,
+      // The floor keeps a mountain from ever reaching past the centre of its
+      // own ring, which would drag its flanks through the camera.
+      radius: ringRadius(0.3, 1.15, sk.width * 14),
     })
   }
 
@@ -219,6 +252,8 @@ export const createGlitchscape = (
       y: randomFloat(-sk.height, -sk.height * 2),
       zRange: [-bounds.limitZ, 0],
       rows: Math.round(randomFloat(3, 5)),
+      facing: (cloudSlots++ * GOLDEN_ANGLE) % TWO_PI,
+      radius: ringRadius(0.2, 0.85, sk.width * 6),
     })
   }
 
@@ -340,7 +375,15 @@ export const createGlitchscape = (
       stage.boost = lerp(stage.boost, 1 + clamp(delta / 24, 0, 2), 0.12)
       stage.speed = REFERENCE_SPEED * scene.speed * stage.boost
 
-      floor = lerp(floor, 0.7, 0.01)
+      if (stage.flow.axis !== 'LINEAR')
+        stage.spin = wrap(
+          stage.spin +
+            (stage.flow.spin * stage.speed) / (bounds.limitZ * RING_REFERENCE),
+          -Math.PI,
+          Math.PI
+        )
+
+      floor = lerp(floor, stage.flow.axis === 'RING_X' ? 0 : 0.7, 0.01)
 
       sk.clear()
       sk.background(sky.hue, sky.saturation, sky.lightness)
@@ -360,9 +403,16 @@ export const createGlitchscape = (
 
       applyLighting(sk, scene.lighting, scene.palette, bounds, stage.time)
 
+      // One rotation turns the whole world, so the ring spins as a body and
+      // the scattered high field comes along without a seam of its own.
+      sk.push()
+      if (stage.flow.axis === 'RING_Y') sk.rotateY(stage.spin)
+      else if (stage.flow.axis === 'RING_X') sk.rotateX(stage.spin)
+
       mountains.forEach((mountain) => mountain.move(stage))
       clouds.forEach((cloud) => cloud.move(stage))
       stars.forEach((star) => star.move(stage))
+      sk.pop()
 
       sk.push()
       sk.noStroke()

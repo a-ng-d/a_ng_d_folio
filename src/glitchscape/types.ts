@@ -116,8 +116,15 @@ export interface Bearing {
   roll: number
 }
 
+/** How a flow moves the world: along an axis, or around a ring. */
+export type FlowAxis = 'LINEAR' | 'RING_Y' | 'RING_X'
+
 export interface FlowField {
+  axis: FlowAxis
+  /** Linear flows only. */
   drift: Vector3
+  /** Ring flows only: which way the ring turns, -1 or 1. */
+  spin: number
   bearing: Bearing
 }
 
@@ -148,6 +155,8 @@ export interface Stage {
   resolution: number
   speed: number
   boost: number
+  /** Accumulated ring rotation, in radians. */
+  spin: number
   time: number
   pointer: Pointer
   isGlitched: boolean
@@ -159,6 +168,10 @@ export interface MountainProps {
   x: number
   y: number
   zRange: Array<number>
+  /** Slot on the ring, in radians. */
+  facing: number
+  /** Distance to the centre of the ring. */
+  radius: number
 }
 
 export interface CloudProps {
@@ -168,6 +181,8 @@ export interface CloudProps {
   y: number
   zRange: Array<number>
   rows: number
+  facing: number
+  radius: number
 }
 
 export interface StarProps {
