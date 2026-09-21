@@ -406,6 +406,10 @@ export const createGlitchscape = (
       // One rotation turns the whole world, so the ring spins as a body and
       // the scattered high field comes along without a seam of its own.
       sk.push()
+      // Altitude is a move of the world, not of the rig: lifting the range
+      // towards a fixed eye drops the horizon without ever putting the ground
+      // plane overhead or uncovering the foot of the mountains.
+      sk.translate(0, scene.altitude * bounds.height, 0)
       if (stage.flow.axis === 'RING_Y') sk.rotateY(stage.spin)
       else if (stage.flow.axis === 'RING_X') sk.rotateX(stage.spin)
 

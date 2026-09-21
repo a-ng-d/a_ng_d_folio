@@ -96,13 +96,15 @@ export class Pov {
   move = (stage: Stage) => {
     const bounds = stage.bounds,
       target = this.params.target,
-      speed = this.params.speed
+      speed = this.params.speed,
+      eye = target.position.y,
+      aim = target.center.y
 
     this.position.x = lerp(this.position.x, target.position.x, speed)
-    this.position.y = lerp(this.position.y, target.position.y, speed)
+    this.position.y = lerp(this.position.y, eye, speed)
     this.position.z = lerp(this.position.z, target.position.z, speed)
     this.center.x = lerp(this.center.x, target.center.x, speed)
-    this.center.y = lerp(this.center.y, target.center.y, speed)
+    this.center.y = lerp(this.center.y, aim, speed)
     this.center.z = lerp(this.center.z, target.center.z, speed)
 
     // The flow bearing is an offset over whatever framing the route asked for.
@@ -140,7 +142,7 @@ export class Pov {
       )
       this.position.y = lerp(
         this.position.y,
-        target.position.y +
+        eye +
           doMap(
             stage.pointer.y,
             0,
@@ -167,7 +169,7 @@ export class Pov {
       )
       this.position.y = lerp(
         this.position.y,
-        target.position.y +
+        eye +
           doMap(
             this.params.beta,
             0,

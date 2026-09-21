@@ -15,6 +15,7 @@ export type Profile = Array<number>
 export type NoiseFn = (x: number) => number
 
 export const SHAPES: Array<ShapeKind> = [
+  'SWELL',
   'EXTRUSION',
   'TRIANGLE',
   'ROUND',
@@ -37,7 +38,7 @@ export const createSeed = (): ProfileSeed => {
   const left = randomFloat(0.15, 0.4)
 
   return {
-    peak: randomFloat(0.35, 0.65),
+    peak: randomFloat(0.2, 0.8),
     shoulders: [left, randomFloat(0.6, 0.85)],
     corner: randomFloat(0.12, 0.28),
     offset: randomFloat(0, 1000),
@@ -49,6 +50,24 @@ export const createSeed = (): ProfileSeed => {
 
 export const resolveShape = (kind: ShapeKind): ShapeKind =>
   kind === 'MIXED' ? SHAPES[random(0, SHAPES.length)] : kind
+
+const smoothstep = (x: number) => {
+  const c = clamp(x, 0, 1)
+
+  return c * c * (3 - 2 * c)
+}
+
+/**
+ * A long, silky crest with soft shoulders and an off-centre summit. Both
+ * flanks are smoothstepped rather than straight, so the ridge sweeps instead
+ * of pointing, and the asymmetry of the summit is what makes a field of them
+ * nest into each other like folded silk.
+ */
+const swellAt = (t: number, seed: ProfileSeed) => {
+  const peak = clamp(seed.peak, 0.12, 0.88)
+
+  return t < peak ? smoothstep(t / peak) : smoothstep((1 - t) / (1 - peak))
+}
 
 /** Historical silhouette: straight flanks and rounded shoulders. */
 const extrusionAt = (t: number, seed: ProfileSeed) => {
@@ -109,6 +128,7 @@ const sampleAt = (
   turbulence: number,
   noise: NoiseFn
 ) => {
+  if (kind === 'SWELL') return swellAt(t, seed)
   if (kind === 'TRIANGLE') return triangleAt(t, seed)
   if (kind === 'ROUND') return roundAt(t)
   if (kind === 'TRAPEZOID') return trapezoidAt(t, seed)

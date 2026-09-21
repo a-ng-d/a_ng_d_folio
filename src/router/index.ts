@@ -35,7 +35,13 @@ const router = createRouter({
         pov: 'RESET',
         quality: 'HIGH',
         universe: 'DAYBREAK',
-        scene: { corridor: 0.25, relief: 1.4, fov: 50, density: 1.4 },
+        scene: {
+          corridor: 0.2,
+          relief: 1.6,
+          altitude: -2.4,
+          fov: 50,
+          density: 1.4,
+        },
       },
     },
     {

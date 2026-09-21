@@ -13,6 +13,7 @@ import type {
  * `MIXED` lets every single mountain pick its own kind.
  */
 export type ShapeKind =
+  | 'SWELL'
   | 'EXTRUSION'
   | 'TRIANGLE'
   | 'ROUND'
@@ -76,6 +77,12 @@ export interface SceneConfig {
    */
   relief: number
   /**
+   * Height of the journey over its default line, in screen heights.
+   * Negative values drop the eye towards the foot of the range, which is
+   * what turns a landscape into something you stand under.
+   */
+  altitude: number
+  /**
    * Vertical field of view, in degrees. Narrowing it stacks the depth
    * layers into each other and crops the sky, which is what makes the
    * vanishing point feel endless.
@@ -97,6 +104,7 @@ export interface SceneOverride {
   density?: number
   corridor?: number
   relief?: number
+  altitude?: number
   fov?: number
   turbulence?: number
   lighting?: LightKind
