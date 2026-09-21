@@ -11,12 +11,16 @@ import {
 import { rampAt, shade } from '@/glitchscape/ramp'
 import { HSLColors } from '@/utilities/colors'
 import {
+  clamp,
   lerp,
   random,
   randomFloat,
   toRadians,
   wrap,
 } from '@/utilities/operations'
+
+/** A corridor never fully collapses, so the proportional rescale stays safe. */
+export const clampCorridor = (corridor: number) => clamp(corridor, 0.05, 3)
 
 /**
  * The relief. A mountain is a billboard whose silhouette is a normalised
@@ -33,6 +37,7 @@ export class Mountain {
   request: ShapeKind
   resolution: number
   turbulence: number
+  spread: number
   profile: Profile
   target: Profile
   params: {
@@ -70,6 +75,7 @@ export class Mountain {
     this.shape = resolveShape(this.request)
     this.resolution = stage.resolution
     this.turbulence = stage.scene.turbulence
+    this.spread = clampCorridor(stage.scene.corridor)
     this.profile = this.build(stage)
     this.target = this.profile.slice()
     this.params = {
@@ -145,6 +151,13 @@ export class Mountain {
 
     this.sync(stage)
 
+    const corridor = clampCorridor(stage.scene.corridor)
+    if (Math.abs(corridor - this.spread) > 0.0005) {
+      const next = lerp(this.spread, corridor, 0.04)
+      this.position.x *= next / this.spread
+      this.spread = next
+    }
+
     this.position.z = wrap(
       this.position.z + drift.z * step,
       this.props.zRange[0],
@@ -152,8 +165,8 @@ export class Mountain {
     )
     this.position.x = wrap(
       this.position.x + drift.x * step * 0.5,
-      -bounds.limitX * 1.5,
-      bounds.limitX * 1.5
+      -bounds.limitX * 1.5 * this.spread,
+      bounds.limitX * 1.5 * this.spread
     )
     this.position.y = wrap(
       this.position.y + drift.y * step * 0.35,

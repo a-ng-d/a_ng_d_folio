@@ -64,6 +64,18 @@ export interface SceneConfig {
   curvature: number
   /** Multiplier over the number of particles. */
   density: number
+  /**
+   * Half width of the free corridor the journey travels through, as a
+   * multiplier over the historical one. Below 1 the relief closes in and
+   * the range reads as a canyon; above 1 it opens onto the sky.
+   */
+  corridor: number
+  /**
+   * Vertical field of view, in degrees. Narrowing it stacks the depth
+   * layers into each other and crops the sky, which is what makes the
+   * vanishing point feel endless.
+   */
+  fov: number
   /** Roughness of the `ORGANIC` silhouettes, 0 to 1. */
   turbulence: number
   lighting: LightKind
@@ -78,6 +90,8 @@ export interface SceneOverride {
   speed?: number
   curvature?: number
   density?: number
+  corridor?: number
+  fov?: number
   turbulence?: number
   lighting?: LightKind
   palette?: Partial<ScenePalette>

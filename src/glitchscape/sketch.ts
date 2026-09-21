@@ -6,7 +6,7 @@ import type {
   SceneConfig,
   Stage,
 } from '@/glitchscape/types'
-import { Mountain } from '@/glitchscape/entities/Mountain'
+import { Mountain, clampCorridor } from '@/glitchscape/entities/Mountain'
 import { Cloud } from '@/glitchscape/entities/Cloud'
 import { Star } from '@/glitchscape/entities/Star'
 import { Pov } from '@/glitchscape/entities/Pov'
@@ -17,6 +17,7 @@ import {
   doMap,
   lerp,
   randomFloat,
+  toRadians,
   twoRangesRandom,
 } from '@/utilities/operations'
 
@@ -135,13 +136,8 @@ export const createGlitchscape = (
   }
 
   const dive = (increment: number) => {
-    const lane = doMap(
-      increment,
-      1,
-      projects,
-      -bounds.limitX * 0.75,
-      bounds.limitX * 0.75
-    )
+    const reach = bounds.limitX * 0.75 * clampCorridor(stage.scene.corridor),
+      lane = doMap(increment, 1, projects, -reach, reach)
 
     pov.animate(
       0.05,
@@ -182,55 +178,111 @@ export const createGlitchscape = (
     }
   }
 
-  const populate = (sk: any) => {
+  /** Head count for the current density. */
+  const counts = () => {
     const base = options.device === 'MOBILE' ? 10 : 20,
       density = clamp(stage.scene.density, 0.3, 2),
-      mNumber = Math.max(4, Math.round(base * density)),
-      cNumber = Math.max(2, Math.round(mNumber / 2)),
-      sNumber = Math.max(8, Math.round(mNumber * 4))
+      mountains = Math.max(4, Math.round(base * density))
 
-    for (let i = 0; i < mNumber; i++)
-      mountains.push(
-        new Mountain(stage, {
-          widthRange: [sk.width * 14, sk.width * 16],
-          heightRange: [-sk.height * 20, -sk.height * 22],
-          x: twoRangesRandom(
-            -bounds.limitX,
-            -sk.width,
-            sk.width,
-            bounds.limitX
-          ),
-          y: sk.height * 10,
-          zRange: [-bounds.limitZ, 0],
-        })
-      )
+    return {
+      mountains,
+      clouds: Math.max(2, Math.round(mountains / 2)),
+      stars: Math.max(8, Math.round(mountains * 4)),
+    }
+  }
 
-    for (let i = 0; i < cNumber; i++)
-      clouds.push(
-        new Cloud(stage, {
-          widthRange: [sk.width, sk.width * 2],
-          heightRange: [-sk.height * 0.1, -sk.height * 0.15],
-          x: randomFloat(-bounds.limitX * 2, bounds.limitX * 2),
-          y: randomFloat(-sk.height, -sk.height * 2),
-          zRange: [-bounds.limitZ, 0],
-          rows: Math.round(randomFloat(3, 5)),
-        })
-      )
+  const spawnMountain = () => {
+    const sk = stage.sk,
+      corridor = clampCorridor(stage.scene.corridor)
 
-    for (let i = 0; i < sNumber; i++)
-      stars.push(
-        new Star(stage, {
-          sizeRange: [-sk.height * 0.05, -sk.height * 0.15],
-          x: randomFloat(-bounds.limitX * 4, bounds.limitX * 4),
-          yRange: [-bounds.limitY * 0.5, -bounds.limitY],
-          z: randomFloat(-bounds.limitZ * 3, bounds.limitZ * 3),
-        })
-      )
+    return new Mountain(stage, {
+      widthRange: [sk.width * 14, sk.width * 16],
+      heightRange: [-sk.height * 20, -sk.height * 22],
+      x: twoRangesRandom(
+        -bounds.limitX * corridor,
+        -sk.width * corridor,
+        sk.width * corridor,
+        bounds.limitX * corridor
+      ),
+      y: sk.height * 10,
+      zRange: [-bounds.limitZ, 0],
+    })
+  }
 
+  const spawnCloud = () => {
+    const sk = stage.sk
+
+    return new Cloud(stage, {
+      widthRange: [sk.width, sk.width * 2],
+      heightRange: [-sk.height * 0.1, -sk.height * 0.15],
+      x: randomFloat(-bounds.limitX * 2, bounds.limitX * 2),
+      y: randomFloat(-sk.height, -sk.height * 2),
+      zRange: [-bounds.limitZ, 0],
+      rows: Math.round(randomFloat(3, 5)),
+    })
+  }
+
+  const spawnStar = () => {
+    const sk = stage.sk
+
+    return new Star(stage, {
+      sizeRange: [-sk.height * 0.05, -sk.height * 0.15],
+      x: randomFloat(-bounds.limitX * 4, bounds.limitX * 4),
+      yRange: [-bounds.limitY * 0.5, -bounds.limitY],
+      z: randomFloat(-bounds.limitZ * 3, bounds.limitZ * 3),
+    })
+  }
+
+  /** Depth order drives the staggered unfolding of the range. */
+  const order = () => {
     mountains.sort((a, b) => a.position.z - b.position.z)
     mountains.forEach((mountain, index) => (mountain.params.order = index))
     clouds.sort((a, b) => a.position.z - b.position.z)
     clouds.forEach((cloud, index) => (cloud.params.order = index))
+  }
+
+  const populate = () => {
+    const target = counts()
+
+    for (let i = 0; i < target.mountains; i++) mountains.push(spawnMountain())
+    for (let i = 0; i < target.clouds; i++) clouds.push(spawnCloud())
+    for (let i = 0; i < target.stars; i++) stars.push(spawnStar())
+
+    order()
+  }
+
+  /**
+   * Density is a live dimension like any other: a scene change grows or trims
+   * the field in place. It also covers the cold start, where the sketch boots
+   * on the defaults a moment before the router hands over the real route.
+   */
+  const reconcile = () => {
+    if (!isReady) return
+
+    const target = counts()
+
+    let hasGrown = false
+
+    while (mountains.length > target.mountains) mountains.pop()
+    while (mountains.length < target.mountains) {
+      mountains.push(spawnMountain())
+      hasGrown = true
+    }
+    while (clouds.length > target.clouds) clouds.pop()
+    while (clouds.length < target.clouds) {
+      clouds.push(spawnCloud())
+      hasGrown = true
+    }
+    while (stars.length > target.stars) stars.pop()
+    while (stars.length < target.stars) {
+      stars.push(spawnStar())
+      hasGrown = true
+    }
+
+    if (!hasGrown) return
+
+    order()
+    applyQuality(stage.quality)
   }
 
   const instance = new P5((sk: any) => {
@@ -264,7 +316,7 @@ export const createGlitchscape = (
         window.addEventListener('deviceorientation', onDeviceOrientation, true)
       }
 
-      populate(sk)
+      populate()
 
       isReady = true
       applyPov(requestedPov)
@@ -297,7 +349,7 @@ export const createGlitchscape = (
       camera.setPosition(pov.position.x, pov.position.y, pov.position.z)
       camera.lookAt(pov.center.x, pov.center.y, pov.center.z)
       camera.perspective(
-        Math.PI / 3,
+        toRadians(clamp(scene.fov, 20, 110)),
         sk.width / sk.height,
         100,
         bounds.limitZ * 2
@@ -349,6 +401,7 @@ export const createGlitchscape = (
     setScene: (scene: SceneConfig) => {
       stage.scene = scene
       stage.flow = resolveFlow(scene.flow, scene.curvature)
+      reconcile()
     },
     setProjectsNumber: (value: number) => (projects = value),
     destroy: () => {
