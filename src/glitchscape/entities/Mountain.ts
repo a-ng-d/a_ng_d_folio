@@ -8,7 +8,7 @@ import {
   resolveShape,
   shatterProfile,
 } from '@/glitchscape/profiles'
-import { rampAt, shade } from '@/glitchscape/ramp'
+import { fogAt, haze, rampAt, shade } from '@/glitchscape/ramp'
 import { bend } from '@/glitchscape/bend'
 import { HSLColors } from '@/utilities/colors'
 import {
@@ -261,13 +261,20 @@ export class Mountain {
     const sk = stage.sk,
       // Depth is the distance travelled along the corridor, bent or not, so
       // aerial perspective reads the same on an arc as on a straight run.
-      tint = rampAt(
-        stage.scene.palette.mountains,
-        this.position.z,
-        this.props.zRange[0],
-        this.props.zRange[1]
+      fog = fogAt(this.position.z, this.props.zRange[0], 0.5),
+      tint = haze(
+        rampAt(
+          stage.scene.palette.mountains,
+          this.position.z,
+          this.props.zRange[0],
+          this.props.zRange[1]
+        ),
+        stage.scene.palette.sky,
+        fog
       ),
-      crest = shade(tint, 7),
+      // The lit crest has to fade with the rest, or the band alone would
+      // announce a mountain the moment it enters the range.
+      crest = shade(tint, 7 * (1 - fog)),
       corrupted = stage.isGlitched
         ? Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
         : null

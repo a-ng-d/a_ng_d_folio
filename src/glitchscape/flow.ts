@@ -5,9 +5,9 @@ import type { FlowField, FlowKind } from '@/glitchscape/types'
  * relief travels towards it — what changes is the shape of the track.
  *
  * `LINEAR` runs straight. The arc flows bend that same corridor into a circle
- * so the journey never stops turning, and `turn` picks which side the centre
- * of the circle sits on. A corridor bending left is what brings its right hand
- * wall into view, which is why the right hand pages bend left.
+ * so the journey never stops turning, and `turn` picks which way it leans. The
+ * camera aims down the corridor rather than straight ahead, so the gap between
+ * the two walls stays centred and the turn is travelled, not watched.
  */
 const FLOWS: { [key: string]: (curvature: number) => FlowField } = {
   STRAIGHT: () => ({
@@ -31,14 +31,14 @@ const FLOWS: { [key: string]: (curvature: number) => FlowField } = {
   RIGHT: (curvature: number) => ({
     axis: 'ARC_Y',
     drift: { x: 0, y: 0, z: 1 },
-    turn: -1,
-    bearing: { yaw: 0, pitch: 0, roll: curvature * 0.15 },
+    turn: 1,
+    bearing: { yaw: 0, pitch: 0, roll: -curvature * 0.15 },
   }),
   LEFT: (curvature: number) => ({
     axis: 'ARC_Y',
     drift: { x: 0, y: 0, z: 1 },
-    turn: 1,
-    bearing: { yaw: 0, pitch: 0, roll: -curvature * 0.15 },
+    turn: -1,
+    bearing: { yaw: 0, pitch: 0, roll: curvature * 0.15 },
   }),
   UP: () => ({
     axis: 'ARC_X',

@@ -1,6 +1,7 @@
 import type { Center, Position, Progress, Rotation } from '@/utilities/types'
 import type { Bearing, PovProps, Stage } from '@/glitchscape/types'
 import { doMap, lerp } from '@/utilities/operations'
+import { bend } from '@/glitchscape/bend'
 
 /**
  * The camera rig. It lerps towards a target framing, and layers three optional
@@ -98,14 +99,23 @@ export class Pov {
       target = this.params.target,
       speed = this.params.speed,
       eye = target.position.y,
-      aim = target.center.y
+      // Aim where the corridor goes, not where the nose points: on a bend the
+      // gap between the two walls would otherwise drift off to one side.
+      aimed = bend(
+        stage.flow.axis,
+        stage.flow.turn,
+        stage.turnRadius,
+        target.center.x,
+        target.center.y,
+        target.center.z
+      )
 
     this.position.x = lerp(this.position.x, target.position.x, speed)
     this.position.y = lerp(this.position.y, eye, speed)
     this.position.z = lerp(this.position.z, target.position.z, speed)
-    this.center.x = lerp(this.center.x, target.center.x, speed)
-    this.center.y = lerp(this.center.y, aim, speed)
-    this.center.z = lerp(this.center.z, target.center.z, speed)
+    this.center.x = lerp(this.center.x, aimed.x, speed)
+    this.center.y = lerp(this.center.y, aimed.y, speed)
+    this.center.z = lerp(this.center.z, aimed.z, speed)
 
     // The flow bearing is an offset over whatever framing the route asked for.
     this.bearing.yaw = lerp(this.bearing.yaw, stage.flow.bearing.yaw, 0.02)

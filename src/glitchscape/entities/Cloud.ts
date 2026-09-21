@@ -1,6 +1,6 @@
 import type { Position, Row, Size } from '@/utilities/types'
 import type { CloudProps, Stage } from '@/glitchscape/types'
-import { rampAt, shade } from '@/glitchscape/ramp'
+import { fogAt, haze, rampAt, shade } from '@/glitchscape/ramp'
 import { bend } from '@/glitchscape/bend'
 import { HSLColors } from '@/utilities/colors'
 import { doMap, lerp, random, randomFloat, wrap } from '@/utilities/operations'
@@ -163,13 +163,18 @@ export class Cloud {
   draw = (stage: Stage) => {
     const sk = stage.sk,
       quality = stage.quality === 'HIGH' ? 50 : 16,
-      tint = rampAt(
-        stage.scene.palette.clouds,
-        this.position.z,
-        this.props.zRange[0],
-        this.props.zRange[1]
+      fog = fogAt(this.position.z, this.props.zRange[0], 0.5),
+      tint = haze(
+        rampAt(
+          stage.scene.palette.clouds,
+          this.position.z,
+          this.props.zRange[0],
+          this.props.zRange[1]
+        ),
+        stage.scene.palette.sky,
+        fog
       ),
-      lit = shade(tint, 4),
+      lit = shade(tint, 4 * (1 - fog)),
       corrupted = stage.isGlitched
         ? Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
         : null
