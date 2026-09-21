@@ -34,6 +34,7 @@ const router = createRouter({
         filter: filters.creamySun,
         pov: 'RESET',
         quality: 'HIGH',
+        universe: 'DAYBREAK',
       },
     },
     {
@@ -47,6 +48,7 @@ const router = createRouter({
         filter: filters.grayscale,
         pov: 'INVERT',
         quality: 'HIGH',
+        universe: 'MONOLITH',
       },
     },
     {
@@ -60,6 +62,7 @@ const router = createRouter({
         filter: filters.nightly,
         pov: 'DONTLOOKUP',
         quality: 'HIGH',
+        universe: 'NIGHTLY',
       },
     },
     {
@@ -73,6 +76,7 @@ const router = createRouter({
         filter: filters.candyFloss,
         pov: 'RESET',
         quality: 'HIGH',
+        universe: 'CANDY_FLOSS',
       },
     },
     {
@@ -86,6 +90,7 @@ const router = createRouter({
         filter: filters.softWind,
         pov: 'SIDE',
         quality: 'LOW',
+        universe: 'SOFT_WIND',
       },
     },
     {
@@ -98,6 +103,7 @@ const router = createRouter({
         filter: filters.grayscale,
         pov: 'DIVE_3',
         quality: 'LOW',
+        universe: 'MONOLITH',
       },
     },
     {
@@ -124,6 +130,8 @@ const router = createRouter({
         filter: filters.grayscale,
         pov: 'DIVE_1',
         quality: 'LOW',
+        universe: 'DAYBREAK',
+        scene: { shape: 'ROUND' },
       },
     },
     {
@@ -151,6 +159,8 @@ const router = createRouter({
         filter: filters.grayscale,
         pov: 'DIVE_2',
         quality: 'LOW',
+        universe: 'DAYBREAK',
+        scene: { shape: 'TRAPEZOID' },
       },
     },
     {
@@ -178,6 +188,8 @@ const router = createRouter({
         filter: filters.grayscale,
         pov: 'DIVE_3',
         quality: 'LOW',
+        universe: 'DAYBREAK',
+        scene: { shape: 'EXTRUSION' },
       },
     },
     {
@@ -205,6 +217,8 @@ const router = createRouter({
         filter: filters.grayscale,
         pov: 'DIVE_4',
         quality: 'LOW',
+        universe: 'DAYBREAK',
+        scene: { shape: 'TRIANGLE' },
       },
     },
     {
@@ -232,6 +246,8 @@ const router = createRouter({
         filter: filters.grayscale,
         pov: 'DIVE_5',
         quality: 'LOW',
+        universe: 'DAYBREAK',
+        scene: { shape: 'ORGANIC' },
       },
     },
     {
@@ -259,6 +275,8 @@ const router = createRouter({
         filter: filters.grayscale,
         pov: 'DIVE_6',
         quality: 'LOW',
+        universe: 'DAYBREAK',
+        scene: { shape: 'ROUND' },
       },
     },
     {
@@ -285,6 +303,8 @@ const router = createRouter({
         filter: filters.grayscale,
         pov: 'DIVE_7',
         quality: 'LOW',
+        universe: 'DAYBREAK',
+        scene: { shape: 'TRAPEZOID' },
       },
     },
     {
@@ -311,6 +331,8 @@ const router = createRouter({
         filter: filters.grayscale,
         pov: 'DIVE_8',
         quality: 'LOW',
+        universe: 'DAYBREAK',
+        scene: { shape: 'TRIANGLE' },
       },
     },
     {
@@ -324,6 +346,7 @@ const router = createRouter({
         filter: filters.grayscale,
         pov: 'RESET',
         quality: 'HIGH',
+        universe: 'MIRAGE',
       },
     },
     {
@@ -337,6 +360,7 @@ const router = createRouter({
         filter: filters.grayscale,
         pov: 'RESET',
         quality: 'HIGH',
+        universe: 'MONOLITH',
       },
     },
     {
@@ -350,6 +374,7 @@ const router = createRouter({
         filter: filters.creamySun,
         pov: 'RESET',
         quality: 'HIGH',
+        universe: 'TEMPEST',
       },
     },
   ],

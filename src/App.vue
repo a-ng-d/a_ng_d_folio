@@ -2,6 +2,8 @@
   import { defineComponent } from 'vue'
   import { store } from '@/utilities/store'
   import type { Route } from '@/utilities/types'
+  import type { SceneOverride } from '@/glitchscape/types'
+  import { DEFAULT_UNIVERSE } from '@/glitchscape/universes'
   import Logotype from '@/components/graphics/Logotype.vue'
   import MainMenu from '@/contexts/MainMenu.vue'
   import Glitchscape from '@/components/graphics/Glitchscape.vue'
@@ -27,6 +29,8 @@
         filter: {},
         pov: '' as string,
         quality: '' as string,
+        universe: DEFAULT_UNIVERSE as string,
+        sceneOverride: null as SceneOverride | null,
         view: '' as string,
         transition: 'scale-down' as string,
         scrollProgress: 0 as number,
@@ -52,6 +56,8 @@
         this.filter = to.meta.filter
         this.pov = to.meta.pov
         this.quality = to.meta.quality
+        this.universe = to.meta.universe || DEFAULT_UNIVERSE
+        this.sceneOverride = to.meta.scene || null
         this.scrollProgress = 0
         this.activeProjectPosition =
           to.meta.view === 'WORK'
@@ -266,6 +272,8 @@
         @activeProjectPov="pov = $event"
         @pov="pov = $event"
         @quality="quality = $event"
+        @universe="universe = $event"
+        @scene="sceneOverride = $event"
         @glitch="isGlitched = $event"
         @filter="filter = $event"
         @isUIHere="isUIHere = $event"
@@ -276,6 +284,8 @@
 
   <!--Background-->
   <Glitchscape
+    :universe="universe"
+    :scene="sceneOverride"
     :filter="filter"
     :pov="pov"
     :quality="quality"
