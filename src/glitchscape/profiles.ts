@@ -42,7 +42,7 @@ export const createSeed = (): ProfileSeed => {
     shoulders: [left, randomFloat(0.6, 0.85)],
     corner: randomFloat(0.12, 0.28),
     offset: randomFloat(0, 1000),
-    frequency: randomFloat(2.5, 6),
+    frequency: randomFloat(1.6, 3.4),
     amplitude: randomFloat(0.4, 0.75),
     skew: randomFloat(-0.2, 0.2),
   }
@@ -58,16 +58,35 @@ const smoothstep = (x: number) => {
 }
 
 /**
- * A long, silky crest with soft shoulders and an off-centre summit. Both
- * flanks are smoothstepped rather than straight, so the ridge sweeps instead
- * of pointing, and the asymmetry of the summit is what makes a field of them
- * nest into each other like folded silk.
+ * The building block of both organic silhouettes: a summit placed off centre
+ * with a different curve on each flank. `rise` under 1 fills the climb out and
+ * `fall` over 1 draws the descent into a long tail, which is what separates a
+ * mountain from a bell.
+ */
+const crest = (t: number, peak: number, rise: number, fall: number) =>
+  t < peak
+    ? Math.pow(smoothstep(t / peak), rise)
+    : Math.pow(smoothstep((1 - t) / (1 - peak)), fall)
+
+/**
+ * A long, silky ridge: a steep climb to an off-centre summit, then a trailing
+ * flank carrying a lower shoulder so the descent folds instead of simply
+ * emptying out. A field of them nests into itself like folded cloth.
  */
 const swellAt = (t: number, seed: ProfileSeed) => {
-  const peak = clamp(seed.peak, 0.12, 0.88)
+  const peak = clamp(seed.peak, 0.15, 0.85),
+    summit = crest(t, peak, 0.8, 1.35),
+    shoulder = crest(t, clamp(peak + seed.skew * 3, 0.1, 0.9), 1.1, 1.1) * 0.68
 
-  return t < peak ? smoothstep(t / peak) : smoothstep((1 - t) / (1 - peak))
+  return clamp(Math.max(summit, shoulder), 0, 1)
 }
+
+/**
+ * Ridged noise: creases where plain noise would round off. Folding the signal
+ * around its midpoint turns smooth humps into crests, which is what gives a
+ * ridgeline its shoulders instead of a row of lumps.
+ */
+const ridged = (x: number, noise: NoiseFn) => 1 - Math.abs(noise(x) * 2 - 1)
 
 /** Historical silhouette: straight flanks and rounded shoulders. */
 const extrusionAt = (t: number, seed: ProfileSeed) => {
@@ -104,8 +123,10 @@ const trapezoidAt = (t: number, seed: ProfileSeed) => {
 }
 
 /**
- * Random but closed: a noise ridge multiplied by an envelope that pins both
- * feet to the ground line.
+ * An alpine ridgeline, random but closed: the same asymmetric crest as the
+ * swell, carved by two octaves of ridged noise and pinned to the ground line
+ * at both feet by the crest itself. Turbulence fades between the two, so the
+ * silhouette runs from a clean sweep to a fully broken skyline.
  */
 const organicAt = (
   t: number,
@@ -113,12 +134,16 @@ const organicAt = (
   turbulence: number,
   noise: NoiseFn
 ) => {
-  const envelope = Math.pow(Math.sin(Math.PI * t), 0.55),
-    coarse = noise(seed.offset + t * seed.frequency),
-    fine = noise(seed.offset * 2 + t * seed.frequency * 3.7),
-    ridge = lerp(coarse, coarse * 0.6 + fine * 0.4, turbulence)
+  const envelope = crest(t, clamp(seed.peak, 0.15, 0.85), 0.7, 1.3),
+    coarse = ridged(seed.offset + t * seed.frequency, noise),
+    fine = ridged(seed.offset * 1.7 + t * seed.frequency * 2.6, noise),
+    ridgeline = coarse * 0.72 + fine * 0.28
 
-  return clamp(envelope * (0.45 + ridge * seed.amplitude), 0, 1)
+  return clamp(
+    envelope * lerp(1, 0.5 + ridgeline * seed.amplitude * 1.3, turbulence),
+    0,
+    1
+  )
 }
 
 const sampleAt = (

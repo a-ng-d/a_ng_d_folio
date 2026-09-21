@@ -1,6 +1,7 @@
 import type { Position } from '@/utilities/types'
 import type { StarProps, Stage } from '@/glitchscape/types'
 import { rampAt } from '@/glitchscape/ramp'
+import { bend } from '@/glitchscape/bend'
 import { HSLColors } from '@/utilities/colors'
 import { clamp, lerp, random, randomFloat, wrap } from '@/utilities/operations'
 
@@ -73,7 +74,7 @@ export class Star {
     if (stage.isGlitched) {
       this.position.x = randomFloat(-bounds.limitX * 3, bounds.limitX * 3)
       this.position.z = randomFloat(-bounds.limitZ * 3, bounds.limitZ * 3)
-    } else if (stage.flow.axis === 'LINEAR') {
+    } else {
       this.position.z = wrap(
         this.position.z + drift.z * step * 0.4,
         -bounds.limitZ * 3,
@@ -90,7 +91,6 @@ export class Star {
         this.props.yRange[0]
       )
     }
-    // On a ring the field turns with the world, so it needs no drift of its own.
 
     this.params.twinkle = clamp(
       0.45 + sk.noise(this.seed + stage.time * 0.0006) * 0.85,
@@ -119,8 +119,17 @@ export class Star {
         ? Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
         : null
 
+    const placed = bend(
+      stage.flow.axis,
+      stage.flow.turn,
+      stage.turnRadius,
+      this.position.x,
+      this.position.y,
+      this.position.z
+    )
+
     sk.push()
-    sk.translate(this.position.x, this.position.y, this.position.z)
+    sk.translate(placed.x, placed.y, placed.z)
 
     if (corrupted !== null)
       sk.fill(corrupted.hue, corrupted.saturation, corrupted.lightness)

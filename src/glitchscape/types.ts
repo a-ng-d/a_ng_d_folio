@@ -61,7 +61,10 @@ export interface SceneConfig {
   flow: FlowKind
   /** Multiplier over the reference travel speed. `1` is the historical pace. */
   speed: number
-  /** Radians of camera bearing held while flowing sideways or vertically. */
+  /**
+   * How sharply an arc flow bends, as a fraction of the visible depth.
+   * Higher curls the corridor out of frame sooner.
+   */
   curvature: number
   /** Multiplier over the number of particles. */
   density: number
@@ -124,15 +127,14 @@ export interface Bearing {
   roll: number
 }
 
-/** How a flow moves the world: along an axis, or around a ring. */
-export type FlowAxis = 'LINEAR' | 'RING_Y' | 'RING_X'
+/** Shape of the track the world travels on: a line, or a bent corridor. */
+export type FlowAxis = 'LINEAR' | 'ARC_Y' | 'ARC_X'
 
 export interface FlowField {
   axis: FlowAxis
-  /** Linear flows only. */
   drift: Vector3
-  /** Ring flows only: which way the ring turns, -1 or 1. */
-  spin: number
+  /** Arc flows only: which side the centre of the bend sits on, -1 or 1. */
+  turn: number
   bearing: Bearing
 }
 
@@ -163,8 +165,8 @@ export interface Stage {
   resolution: number
   speed: number
   boost: number
-  /** Accumulated ring rotation, in radians. */
-  spin: number
+  /** Radius of the bend, derived from the curvature of the scene. */
+  turnRadius: number
   time: number
   pointer: Pointer
   isGlitched: boolean
@@ -176,10 +178,6 @@ export interface MountainProps {
   x: number
   y: number
   zRange: Array<number>
-  /** Slot on the ring, in radians. */
-  facing: number
-  /** Distance to the centre of the ring. */
-  radius: number
 }
 
 export interface CloudProps {
@@ -189,8 +187,6 @@ export interface CloudProps {
   y: number
   zRange: Array<number>
   rows: number
-  facing: number
-  radius: number
 }
 
 export interface StarProps {

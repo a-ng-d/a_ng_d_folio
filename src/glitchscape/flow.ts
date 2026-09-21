@@ -1,61 +1,55 @@
 import type { FlowField, FlowKind } from '@/glitchscape/types'
 
 /**
- * A flow says how the world moves, and there are two ways it can.
+ * A flow says where the world goes. In every case the camera is fixed and the
+ * relief travels towards it — what changes is the shape of the track.
  *
- * `LINEAR` is the historical one: particles drift along an axis and wrap
- * inside their bounds. The seam is hidden because it sits behind the camera.
- *
- * The turning flows are rings instead. The relief is laid out on concentric
- * circles around the journey, and the whole ring spins on itself — a larger
- * circle and a smaller one, turning at the same angular rate, which is what
- * produces the parallax of an endless bank. Nothing drifts and nothing wraps,
- * so no particle ever respawns in sight: a circle has no seam.
- *
- * `RING_Y` turns left or right, `RING_X` loops up or down.
+ * `LINEAR` runs straight. The arc flows bend that same corridor into a circle
+ * so the journey never stops turning, and `turn` picks which side the centre
+ * of the circle sits on. A corridor bending left is what brings its right hand
+ * wall into view, which is why the right hand pages bend left.
  */
 const FLOWS: { [key: string]: (curvature: number) => FlowField } = {
   STRAIGHT: () => ({
     axis: 'LINEAR',
     drift: { x: 0, y: 0, z: 1 },
-    spin: 0,
+    turn: 0,
     bearing: { yaw: 0, pitch: 0, roll: 0 },
   }),
   BACKWARD: () => ({
     axis: 'LINEAR',
     drift: { x: 0, y: 0, z: -1 },
-    spin: 0,
+    turn: 0,
     bearing: { yaw: 0, pitch: 0, roll: 0 },
   }),
   STILL: () => ({
     axis: 'LINEAR',
     drift: { x: 0, y: 0, z: 0 },
-    spin: 0,
+    turn: 0,
     bearing: { yaw: 0, pitch: 0, roll: 0 },
   }),
-  // Turning right sweeps the world to the left, so the ring spins forward.
   RIGHT: (curvature: number) => ({
-    axis: 'RING_Y',
-    drift: { x: 0, y: 0, z: 0 },
-    spin: 1,
-    bearing: { yaw: 0, pitch: 0, roll: curvature * 0.4 },
+    axis: 'ARC_Y',
+    drift: { x: 0, y: 0, z: 1 },
+    turn: -1,
+    bearing: { yaw: 0, pitch: 0, roll: curvature * 0.15 },
   }),
   LEFT: (curvature: number) => ({
-    axis: 'RING_Y',
-    drift: { x: 0, y: 0, z: 0 },
-    spin: -1,
-    bearing: { yaw: 0, pitch: 0, roll: -curvature * 0.4 },
+    axis: 'ARC_Y',
+    drift: { x: 0, y: 0, z: 1 },
+    turn: 1,
+    bearing: { yaw: 0, pitch: 0, roll: -curvature * 0.15 },
   }),
   UP: () => ({
-    axis: 'RING_X',
-    drift: { x: 0, y: 0, z: 0 },
-    spin: 1,
+    axis: 'ARC_X',
+    drift: { x: 0, y: 0, z: 1 },
+    turn: -1,
     bearing: { yaw: 0, pitch: 0, roll: 0 },
   }),
   DOWN: () => ({
-    axis: 'RING_X',
-    drift: { x: 0, y: 0, z: 0 },
-    spin: -1,
+    axis: 'ARC_X',
+    drift: { x: 0, y: 0, z: 1 },
+    turn: 1,
     bearing: { yaw: 0, pitch: 0, roll: 0 },
   }),
 }
@@ -66,7 +60,7 @@ export const resolveFlow = (kind: FlowKind, curvature: number): FlowField => {
   return factory(curvature)
 }
 
-export const isRing = (field: FlowField) => field.axis !== 'LINEAR'
+export const isArc = (field: FlowField) => field.axis !== 'LINEAR'
 
 export const FLOW_KINDS: Array<FlowKind> = [
   'STRAIGHT',

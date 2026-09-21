@@ -1,6 +1,7 @@
 import type { Position, Row, Size } from '@/utilities/types'
 import type { CloudProps, Stage } from '@/glitchscape/types'
 import { rampAt, shade } from '@/glitchscape/ramp'
+import { bend } from '@/glitchscape/bend'
 import { HSLColors } from '@/utilities/colors'
 import { doMap, lerp, random, randomFloat, wrap } from '@/utilities/operations'
 
@@ -13,8 +14,6 @@ export class Cloud {
   props: CloudProps
   size: Size
   position: Position
-  facing: number
-  radius: number
   params: {
     rows: Array<Row>
     speed: number
@@ -31,8 +30,6 @@ export class Cloud {
 
   constructor(stage: Stage, props: CloudProps) {
     this.props = props
-    this.facing = props.facing
-    this.radius = props.radius
     this.size = {
       width: Math.round(
         randomFloat(this.props.widthRange[0], this.props.widthRange[1])
@@ -91,7 +88,7 @@ export class Cloud {
       step = stage.speed,
       corridor = bounds.limitX * 2
 
-    if (stage.flow.axis === 'LINEAR') {
+    {
       this.position.z = wrap(
         this.position.z + drift.z * step,
         this.props.zRange[0],
@@ -120,9 +117,6 @@ export class Cloud {
       else if (this.position.x >= bounds.limitX)
         this.params.beta = doMap(this.position.x, bounds.limitX, corridor, 1, 0)
       else this.params.beta = 1
-    } else {
-      // A ring has no edge to fade against.
-      this.params.beta = 1
     }
 
     if (sk.millis() > this.params.order * this.params.gap)
@@ -168,12 +162,10 @@ export class Cloud {
 
   draw = (stage: Stage) => {
     const sk = stage.sk,
-      axis = stage.flow.axis,
       quality = stage.quality === 'HIGH' ? 50 : 16,
-      depth = axis === 'LINEAR' ? this.position.z : -this.radius,
       tint = rampAt(
         stage.scene.palette.clouds,
-        depth,
+        this.position.z,
         this.props.zRange[0],
         this.props.zRange[1]
       ),
@@ -184,14 +176,17 @@ export class Cloud {
 
     let offsetY = 0
 
+    const placed = bend(
+      stage.flow.axis,
+      stage.flow.turn,
+      stage.turnRadius,
+      this.position.x,
+      this.params.start,
+      this.position.z
+    )
+
     sk.push()
-    if (axis === 'LINEAR')
-      sk.translate(this.position.x, this.params.start, this.position.z)
-    else {
-      if (axis === 'RING_Y') sk.rotateY(this.facing)
-      else sk.rotateX(this.facing)
-      sk.translate(-this.size.width / 2, this.params.start, -this.radius)
-    }
+    sk.translate(placed.x, placed.y, placed.z)
 
     if (corrupted !== null)
       sk.fill(corrupted.hue, corrupted.saturation, corrupted.lightness)
