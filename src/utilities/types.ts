@@ -1,3 +1,5 @@
+import type { SceneOverride } from '@/glitchscape/types'
+
 export interface Colors {
   deepBlack: HuSaLiTy
   titaniumWhite: HuSaLiTy
@@ -42,44 +44,6 @@ export interface HuBrInSaGr {
   saturation: string
   grayscale: string
   name: string
-}
-
-export interface MountainProps {
-  widthRange: Array<number>
-  heightRange: Array<number>
-  x: number
-  y: number
-  zRange: Array<number>
-  foreground: HuSaLiTy
-  background: HuSaLiTy
-}
-
-export interface CloudProps {
-  widthRange: Array<number>
-  heightRange: Array<number>
-  x: number
-  y: number
-  zRange: Array<number>
-  rows: number
-  foreground: HuSaLiTy
-  background: HuSaLiTy
-}
-
-export interface StarProps {
-  sizeRange: Array<number>
-  x: number
-  z: number
-  yRange: Array<number>
-  foreground: HuSaLiTy
-  background: HuSaLiTy
-}
-
-export interface PovProps extends Position {
-  cX: number
-  cY: number
-  cZ: number
-  rH: number
-  rV: number
 }
 
 export interface ParticleProps extends Path {
@@ -151,6 +115,8 @@ export interface Meta {
   filter: HuBrInSaGr
   pov: string
   quality: string
+  universe?: string
+  scene?: SceneOverride
 }
 
 export interface Option {
