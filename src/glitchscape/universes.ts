@@ -46,7 +46,7 @@ const COMMON = {
   speed: 1,
   curvature: 0.55,
   density: 1,
-  corridor: 1,
+  corridor: 0.5,
   relief: 1,
   altitude: 0,
   fov: 60,

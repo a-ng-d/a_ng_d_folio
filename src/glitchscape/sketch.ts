@@ -51,7 +51,6 @@ const computeBounds = (): Bounds => {
     limitX: width * 4,
     limitY: height * 40,
     limitZ: height * 80,
-    multiplier: width < 461 ? 1.5 : width < 1281 ? 1.25 : 1.2,
   }
 }
 

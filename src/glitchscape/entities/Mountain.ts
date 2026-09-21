@@ -281,13 +281,15 @@ export class Mountain {
 
     // The card never turns: it slides along the corridor facing the camera,
     // whether that corridor runs straight or curls away.
+    //
+    // A card on the left is mirrored by exactly its own width, so its inner
+    // edge lands on its position rather than a fraction of a mountain behind
+    // it. Anything else and the two walls stop being a corridor.
     const placed = bend(
       stage.flow.axis,
       stage.flow.turn,
       stage.turnRadius,
-      this.position.x < 0
-        ? this.position.x - this.size.width * stage.bounds.multiplier
-        : this.position.x,
+      this.position.x < 0 ? this.position.x - this.size.width : this.position.x,
       this.position.y,
       this.position.z
     )

@@ -144,7 +144,6 @@ export interface Bounds {
   limitX: number
   limitY: number
   limitZ: number
-  multiplier: number
 }
 
 export interface Pointer {

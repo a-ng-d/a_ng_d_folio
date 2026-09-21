@@ -36,7 +36,7 @@ const router = createRouter({
         quality: 'HIGH',
         universe: 'DAYBREAK',
         scene: {
-          corridor: 0.14,
+          corridor: 0.1,
           relief: 1.6,
           altitude: -2.4,
           fov: 50,
@@ -71,7 +71,7 @@ const router = createRouter({
         pov: 'DONTLOOKUP',
         quality: 'HIGH',
         universe: 'NIGHTLY',
-        scene: { flow: 'UP', corridor: 0.5 },
+        scene: { flow: 'UP', corridor: 0.3 },
       },
     },
     {
@@ -115,7 +115,7 @@ const router = createRouter({
         pov: 'DIVE_3',
         quality: 'LOW',
         universe: 'MONOLITH',
-        scene: { flow: 'DOWN', corridor: 0.5 },
+        scene: { flow: 'DOWN', corridor: 0.3 },
       },
     },
     {
