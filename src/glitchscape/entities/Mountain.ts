@@ -22,6 +22,9 @@ import {
 /** A corridor never fully collapses, so the proportional rescale stays safe. */
 export const clampCorridor = (corridor: number) => clamp(corridor, 0.05, 3)
 
+/** Same guard for the height multiplier, for the same reason. */
+export const clampRelief = (relief: number) => clamp(relief, 0.2, 4)
+
 /**
  * The relief. A mountain is a billboard whose silhouette is a normalised
  * height profile, extruded by a ridge band along its crest. Changing the scene
@@ -38,6 +41,7 @@ export class Mountain {
   resolution: number
   turbulence: number
   spread: number
+  lift: number
   profile: Profile
   target: Profile
   params: {
@@ -76,6 +80,7 @@ export class Mountain {
     this.resolution = stage.resolution
     this.turbulence = stage.scene.turbulence
     this.spread = clampCorridor(stage.scene.corridor)
+    this.lift = clampRelief(stage.scene.relief)
     this.profile = this.build(stage)
     this.target = this.profile.slice()
     this.params = {
@@ -156,6 +161,15 @@ export class Mountain {
       const next = lerp(this.spread, corridor, 0.04)
       this.position.x *= next / this.spread
       this.spread = next
+    }
+
+    const relief = clampRelief(stage.scene.relief)
+    if (Math.abs(relief - this.lift) > 0.0005) {
+      const next = lerp(this.lift, relief, 0.04),
+        ratio = next / this.lift
+      this.size.height *= ratio
+      this.backup.height *= ratio
+      this.lift = next
     }
 
     this.position.z = wrap(

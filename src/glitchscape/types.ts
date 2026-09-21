@@ -71,6 +71,11 @@ export interface SceneConfig {
    */
   corridor: number
   /**
+   * Multiplier over the height of the relief. Above 1 the range towers
+   * over the journey and eats into the sky.
+   */
+  relief: number
+  /**
    * Vertical field of view, in degrees. Narrowing it stacks the depth
    * layers into each other and crops the sky, which is what makes the
    * vanishing point feel endless.
@@ -91,6 +96,7 @@ export interface SceneOverride {
   curvature?: number
   density?: number
   corridor?: number
+  relief?: number
   fov?: number
   turbulence?: number
   lighting?: LightKind

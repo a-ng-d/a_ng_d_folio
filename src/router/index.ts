@@ -35,7 +35,7 @@ const router = createRouter({
         pov: 'RESET',
         quality: 'HIGH',
         universe: 'DAYBREAK',
-        scene: { corridor: 0.4, fov: 52, density: 1.3 },
+        scene: { corridor: 0.25, relief: 1.4, fov: 50, density: 1.4 },
       },
     },
     {
@@ -50,6 +50,7 @@ const router = createRouter({
         pov: 'INVERT',
         quality: 'HIGH',
         universe: 'MONOLITH',
+        scene: { flow: 'RIGHT' },
       },
     },
     {
@@ -64,6 +65,7 @@ const router = createRouter({
         pov: 'DONTLOOKUP',
         quality: 'HIGH',
         universe: 'NIGHTLY',
+        scene: { flow: 'UP' },
       },
     },
     {
@@ -78,6 +80,7 @@ const router = createRouter({
         pov: 'RESET',
         quality: 'HIGH',
         universe: 'CANDY_FLOSS',
+        scene: { flow: 'LEFT' },
       },
     },
     {
@@ -89,9 +92,10 @@ const router = createRouter({
         view: 'LAB',
         theme: 'DEFAULT',
         filter: filters.softWind,
-        pov: 'SIDE',
+        pov: 'RESET',
         quality: 'LOW',
         universe: 'SOFT_WIND',
+        scene: { flow: 'RIGHT' },
       },
     },
     {
@@ -105,6 +109,7 @@ const router = createRouter({
         pov: 'DIVE_3',
         quality: 'LOW',
         universe: 'MONOLITH',
+        scene: { flow: 'DOWN' },
       },
     },
     {
@@ -348,6 +353,7 @@ const router = createRouter({
         pov: 'RESET',
         quality: 'HIGH',
         universe: 'MIRAGE',
+        scene: { flow: 'LEFT' },
       },
     },
     {
@@ -362,6 +368,7 @@ const router = createRouter({
         pov: 'RESET',
         quality: 'HIGH',
         universe: 'MONOLITH',
+        scene: { flow: 'DOWN' },
       },
     },
     {
@@ -376,6 +383,7 @@ const router = createRouter({
         pov: 'RESET',
         quality: 'HIGH',
         universe: 'TEMPEST',
+        scene: { flow: 'DOWN' },
       },
     },
   ],
