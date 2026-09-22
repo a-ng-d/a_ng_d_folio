@@ -114,6 +114,24 @@ export const filters: Filters = {
     grayscale: '100%',
     name: 'GRAYSCALE',
   },
+  softSteel: {
+    hue: '0deg',
+    brightness: '1.1',
+    invert: '0',
+    saturation: '1',
+    grayscale: '100%',
+    name: 'SOFT_STEEL',
+    gradient: 'var(--gradient-soft-steel)',
+  },
+  biscarosse: {
+    hue: '0deg',
+    brightness: '1.1',
+    invert: '0',
+    saturation: '1',
+    grayscale: '100%',
+    name: 'BISCAROSSE',
+    gradient: 'var(--gradient-biscarosse-sunset)',
+  },
   _ui_color_palette: {
     hue: '128deg',
     brightness: '1',
@@ -133,7 +151,7 @@ export const filters: Filters = {
   _jean_bobby_radio: {
     hue: '32deg',
     brightness: '1',
-    invert: '1',
+    invert: '0',
     saturation: '.3',
     grayscale: '0%',
     name: '_JEAN_BOBBY_RADIO',
@@ -141,7 +159,7 @@ export const filters: Filters = {
   _iobeya_mobile_ds: {
     hue: '343deg',
     brightness: '1.5',
-    invert: '1',
+    invert: '0',
     saturation: '.7',
     grayscale: '0%',
     name: '_IOBEYA_MOBILE_DS',
@@ -157,7 +175,7 @@ export const filters: Filters = {
   _iobeya_whiteboard: {
     hue: '343deg',
     brightness: '1.5',
-    invert: '1',
+    invert: '0',
     saturation: '.7',
     grayscale: '0%',
     name: '_IOBEYA_WHITEBOARD',
@@ -165,7 +183,7 @@ export const filters: Filters = {
   _iobeya_creativity: {
     hue: '343deg',
     brightness: '1.5',
-    invert: '1',
+    invert: '0',
     saturation: '.7',
     grayscale: '0%',
     name: '_IOBEYA_CREATIVITY',

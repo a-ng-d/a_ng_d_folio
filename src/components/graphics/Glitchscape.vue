@@ -1,51 +1,55 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import type { PropType } from 'vue'
   import { store } from '@/utilities/store'
+  import type { HuBrInSaGr } from '@/utilities/types'
   import type {
-    MountainProps,
-    CloudProps,
-    StarProps,
-    PovProps,
-    Position,
-    Center,
-    Progress,
-    Rotation,
-    Size,
-    Row,
-  } from '@/utilities/types'
-  import P5 from 'p5'
-  import { HSLColors, filters } from '@/utilities/colors'
-  import { doMap, random, twoRangesRandom } from '@/utilities/operations'
+    GlitchscapeController,
+    LightKind,
+    QualityKind,
+    SceneConfig,
+    SceneOverride,
+  } from '@/glitchscape/types'
+  import { createGlitchscape } from '@/glitchscape/sketch'
+  import { DEFAULT_UNIVERSE, resolveScene } from '@/glitchscape/universes'
+  import { HALO_INTENSITY } from '@/glitchscape/lighting'
+  import {
+    nightward,
+    overcast,
+    resolveLighting,
+    tintPalette,
+  } from '@/glitchscape/ambience'
+  import { resolveFlow } from '@/glitchscape/flow'
+  import { filters } from '@/utilities/colors'
+  import { clamp } from '@/utilities/operations'
+  import type { LocalWeather } from '@/utilities/weather'
+  import { fetchLocalWeather } from '@/utilities/weather'
 
-  let glitchscape: any = null
-  const povs: { [key: string]: () => void } = {
-      RESET: () => glitchscape.povReset(),
-      INVERT: () => glitchscape.povInvert(),
-      DIVE_1: () => glitchscape.povDIVE(1),
-      DIVE_2: () => glitchscape.povDIVE(2),
-      DIVE_3: () => glitchscape.povDIVE(3),
-      DIVE_4: () => glitchscape.povDIVE(4),
-      DIVE_5: () => glitchscape.povDIVE(5),
-      DIVE_6: () => glitchscape.povDIVE(6),
-      DONTLOOKUP: () => glitchscape.povDontLookUp(),
-      SIDE: () => glitchscape.povSide(),
-      GLOBAL: () => glitchscape.povGlobal(),
-    },
-    qualities: { [key: string]: () => void } = {
-      LOW: () => glitchscape.lowQuality(),
-      HIGH: () => glitchscape.highQuality(),
-    }
+  const MAX_BRIGHTNESS = 1.1
+
+  const VEIL = 0.35
+
+  const DARK_SKY = 45
+
+  const WEATHER_FLOOR = 600000
+
+  const WEATHER_EVERY = 900000
 
   export default defineComponent({
     name: 'Glitchscape',
+    emits: ['dark'],
     props: {
-      filter: {
-        type: Object,
-        default: filters.grayscale,
-      },
-      pov: {
+      universe: {
         type: String,
-        default: 'RESET',
+        default: DEFAULT_UNIVERSE,
+      },
+      scene: {
+        type: Object as PropType<SceneOverride | null>,
+        default: null,
+      },
+      filter: {
+        type: Object as PropType<Partial<HuBrInSaGr>>,
+        default: () => filters.grayscale,
       },
       quality: {
         type: String,
@@ -60,1167 +64,232 @@
         type: Number,
         required: true,
       },
-      numberOfProjects: {
-        type: Number,
-        default: 3,
-      },
-      view: String,
     },
     data: function () {
       return {
         store,
-        isRendered: false as boolean,
+        controller: null as GlitchscapeController | null,
+        weather: null as LocalWeather | null,
+        isAsking: false as boolean,
+        asked: 0 as number,
+        watch: 0 as number,
+        tick: 0 as number,
+        clock: Date.now() as number,
       }
     },
+    computed: {
+      resolvedScene(): SceneConfig {
+        return resolveScene(this.universe, this.scene || undefined)
+      },
+      resolvedFilter(): HuBrInSaGr {
+        const custom = this.filter,
+          resolved =
+            custom !== null && custom !== undefined && custom.hue !== undefined
+              ? (custom as HuBrInSaGr)
+              : this.resolvedScene.filter
+
+        return Number(resolved.brightness) > MAX_BRIGHTNESS
+          ? { ...resolved, brightness: String(MAX_BRIGHTNESS) }
+          : resolved
+      },
+      ambientGradient(): string | null {
+        return this.resolvedFilter.gradient || null
+      },
+      lightStyle(): string {
+        const filter = this.resolvedFilter
+
+        return `hue-rotate(${filter.hue}) brightness(${filter.brightness})`
+      },
+      polarityStyle(): string {
+        return `filter: invert(${this.resolvedFilter.invert})`
+      },
+      toneStyle(): string {
+        const filter = this.resolvedFilter
+
+        return `filter: saturate(${filter.saturation}) grayscale(${filter.grayscale})`
+      },
+      roll(): number {
+        const bearing = resolveFlow(
+          this.resolvedScene.flow,
+          this.resolvedScene.curvature
+        ).bearing
+
+        return (bearing.roll * 180) / Math.PI
+      },
+      transformStyle(): string {
+        if (this.roll === 0) return 'none'
+
+        const radians = Math.abs((this.roll * Math.PI) / 180),
+          cover = Math.cos(radians) + 2 * Math.sin(radians)
+
+        return `rotate(${this.roll.toFixed(2)}deg) scale(${cover.toFixed(3)})`
+      },
+      isLive(): boolean {
+        return this.resolvedScene.ambience === 'LIVE'
+      },
+      reading(): LocalWeather | null {
+        return this.isLive ? this.weather : null
+      },
+      hour(): LightKind {
+        const kind = resolveLighting(
+          this.resolvedScene.ambience,
+          this.resolvedScene.lighting,
+          new Date(this.clock)
+        )
+        const reading = this.reading
+
+        return reading !== null && !reading.isDay ? nightward(kind) : kind
+      },
+      lighting(): LightKind {
+        return this.reading !== null && this.reading.isStorm
+          ? 'STORM'
+          : this.hour
+      },
+      liveScene(): SceneConfig {
+        const scene = this.resolvedScene,
+          reading = this.reading
+
+        return {
+          ...scene,
+          lighting: this.lighting,
+          palette: overcast(
+            tintPalette(scene.palette, this.hour),
+            reading !== null ? reading.cloud : 0
+          ),
+          rain: reading !== null ? reading.rain : scene.rain,
+          mist:
+            reading !== null && reading.isFoggy
+              ? Math.max(scene.mist, 0.85)
+              : scene.mist,
+        }
+      },
+      mistStyle(): string {
+        const ground = this.liveScene.palette.ground,
+          tone = (alpha: number) =>
+            `hsla(${ground.hue}, ${ground.saturation}%, ${ground.lightness}%, ${alpha})`
+
+        return [
+          `height: ${Math.round(this.liveScene.mist * 100)}%`,
+          `background-image: linear-gradient(to top, ${tone(1)} 0%, ${tone(
+            1
+          )} 38%, ${tone(0.92)} 56%, ${tone(0.62)} 72%, ${tone(
+            0.24
+          )} 88%, ${tone(0)} 100%)`,
+        ].join('; ')
+      },
+      veilStyle(): string {
+        const sky = this.liveScene.palette.sky
+
+        return `background-color: hsla(${sky.hue}, ${sky.saturation}%, ${sky.lightness}%, ${VEIL})`
+      },
+      litSky(): number {
+        const sky = this.liveScene.palette.sky,
+          filter = this.resolvedFilter,
+          brightness = Number(filter.brightness) || 1,
+          lit = clamp(sky.lightness * brightness, 0, 100)
+
+        return Number(filter.invert) >= 0.5 ? 100 - lit : lit
+      },
+      isDark(): boolean {
+        return this.litSky < DARK_SKY
+      },
+      halo(): number {
+        return HALO_INTENSITY[this.lighting] || 0
+      },
+      haloStyle(): string {
+        const glow = this.liveScene.palette.glow,
+          color = (alpha: number) =>
+            `hsla(${glow.hue}, ${glow.saturation}%, ${glow.lightness}%, ${alpha})`
+
+        return `radial-gradient(circle at 50% 30%, ${color(1)} 0%, ${color(
+          0.35
+        )} 35%, ${color(0)} 70%)`
+      },
+    },
     watch: {
-      pov(to) {
-        return povs[to]?.()
+      quality(to: string) {
+        this.controller?.setQuality(to)
       },
-      quality(to) {
-        return qualities[to]?.()
+      isGlitched(to: boolean) {
+        this.controller?.setGlitched(to)
       },
-      isGlitched(to) {
-        to ? glitchscape.glitch() : glitchscape.unglitch()
+      scrollProgress(to: number) {
+        this.controller?.setScroll(to, this.scrollLimit)
       },
-      scrollProgress() {
-        return glitchscape.povZoom(this.scrollProgress, this.scrollLimit)
+      liveScene: {
+        handler(to: SceneConfig) {
+          this.controller?.setScene(to)
+        },
+        deep: true,
+      },
+      isLive(to: boolean) {
+        if (to) this.askWeather()
+      },
+      isDark: {
+        handler(to: boolean) {
+          this.$emit('dark', to)
+        },
+        immediate: true,
       },
     },
     methods: {
-      getParticlesNumber(): number {
-        const device: string = this.store.device
-        if (device === 'MOBILE') return 10
-        else return 20
+      async askWeather() {
+        const now = Date.now()
+
+        if (!this.isLive || this.isAsking || now - this.asked < WEATHER_FLOOR)
+          return
+
+        this.isAsking = true
+        this.asked = now
+        this.weather = await fetchLocalWeather()
+        this.isAsking = false
       },
     },
     mounted: function () {
-      glitchscape = new P5((sk: any) => {
-        const mNumber: number = this.getParticlesNumber(),
-          cNumber: number = mNumber / 2,
-          sNumber: number = mNumber * 4,
-          quality = 50,
-          scrWidth: number = window.innerWidth,
-          scrHeight: number = window.innerHeight,
-          limitX: number = scrWidth * 4,
-          limitY: number = scrHeight * 40,
-          limitZ: number = scrHeight * 80,
-          multiplier: number =
-            scrWidth < 461 ? 1.5 : scrWidth < 1281 ? 1.25 : 1.2
-
-        let fps = 30,
-          speed = 30,
-          alpha = 1,
-          camera: any,
-          mountains: Array<Mountain> = [],
-          clouds: Array<Cloud> = [],
-          stars: Array<Star> = []
-
-        const povs: { [key: string]: () => void } = {
-            RESET: () => sk.povReset(),
-            DIVE_1: () => sk.povDIVE(1),
-            DIVE_2: () => sk.povDIVE(2),
-            DIVE_3: () => sk.povDIVE(3),
-            DIVE_4: () => sk.povDIVE(4),
-            DIVE_5: () => sk.povDIVE(5),
-            DIVE_6: () => glitchscape.povDIVE(6),
-            DONTLOOKUP: () => sk.povDontLookUp(),
-            SIDE: () => sk.povSide(),
-            GLOBAL: () => sk.povGlobal(),
-          },
-          qualities: { [key: string]: () => void } = {
-            LOW: () => sk.lowQuality(),
-            HIGH: () => sk.highQuality(),
-          }
-
-        // Elements
-        class Mountain {
-          props: MountainProps
-          size: Size
-          position: Position
-          params: {
-            radius: number
-            radians: number
-            speed: number
-            order: number
-            gap: number
-            isGlitched: boolean
-            isStrokedOnly: boolean
-            alpha: number
-          }
-          backup: {
-            size: {
-              width: number
-              height: number
-            }
-            params: {
-              radius: number
-            }
-          }
-
-          constructor(props: MountainProps) {
-            this.props = props
-            this.size = {
-              width: sk.int(
-                random(this.props.widthRange[0], this.props.widthRange[1])
-              ),
-              height: sk.int(
-                random(this.props.heightRange[0], this.props.heightRange[1])
-              ),
-            }
-            this.position = {
-              x: sk.int(this.props.x),
-              y: sk.int(this.props.y),
-              z: sk.int(random(this.props.zRange[0], this.props.zRange[1])),
-            }
-            this.params = {
-              radius: sk.int(sk.abs(this.size.width / 4)),
-              radians: sk.radians(90),
-              speed: 0.05,
-              order: 0,
-              gap: 20,
-              isGlitched: false,
-              isStrokedOnly: true,
-              alpha: 0,
-            }
-            this.backup = {
-              size: {
-                width: this.size.width,
-                height: this.size.height,
-              },
-              params: {
-                radius: this.params.radius,
-              },
-            }
-          }
-
-          deepHue = () =>
-            doMap(
-              this.position.z,
-              this.props.zRange[0],
-              this.props.zRange[1],
-              this.props.background.hue,
-              this.props.foreground.hue
-            )
-
-          deepSaturation = () =>
-            doMap(
-              this.position.z,
-              this.props.zRange[0],
-              this.props.zRange[1],
-              this.props.background.saturation,
-              this.props.foreground.saturation
-            )
-
-          deepLightness = () =>
-            doMap(
-              this.position.z,
-              this.props.zRange[0],
-              this.props.zRange[1],
-              this.props.background.lightness,
-              this.props.foreground.lightness
-            )
-
-          glitch = () => {
-            this.backup = {
-              size: {
-                width: this.size.width,
-                height: this.size.height,
-              },
-              params: {
-                radius: this.params.radius,
-              },
-            }
-            this.params.isGlitched = true
-          }
-
-          unglitch = () => {
-            this.params.isGlitched = false
-            this.size = this.backup.size
-            this.params.radius = this.backup.params.radius
-          }
-
-          wireframe = () => (this.params.isStrokedOnly = true)
-
-          unwireframe = () => (this.params.isStrokedOnly = false)
-
-          move = () => {
-            if (this.position.z <= 0) this.position.z += speed
-            else this.position.z = this.props.zRange[0]
-
-            if (sk.millis() > this.params.order * this.params.gap)
-              this.params.radians = sk.lerp(
-                this.params.radians,
-                sk.radians(0),
-                this.params.speed
-              )
-
-            if (this.params.isGlitched) {
-              this.size.width = random(0, this.backup.size.width * 2)
-              this.size.height = random(0, this.backup.size.height)
-              this.params.radius = random(0, this.backup.params.radius)
-            }
-
-            if (this.params.isStrokedOnly)
-              this.params.alpha = sk.lerp(
-                this.params.alpha,
-                0,
-                this.params.speed * 0.5
-              )
-            else
-              this.params.alpha = sk.lerp(
-                this.params.alpha,
-                1,
-                this.params.speed * 0.5
-              )
-
-            this.draw()
-          }
-
-          extrusion = () => {
-            sk.push()
-            sk.rotateX(this.params.radians)
-            sk.ellipse(
-              0,
-              this.size.height,
-              this.params.radius,
-              this.params.radius,
-              quality
-            )
-            sk.rect(
-              this.params.radius / 2,
-              this.size.height,
-              this.size.width,
-              this.params.radius
-            )
-            sk.ellipse(
-              this.size.width,
-              this.size.height,
-              this.params.radius,
-              this.params.radius,
-              quality
-            )
-            sk.rect(
-              0,
-              0,
-              this.size.width + this.params.radius,
-              this.size.height + this.params.radius / 2
-            )
-            sk.ellipse(
-              0,
-              -(this.params.radius / 2),
-              this.params.radius,
-              this.params.radius,
-              quality
-            )
-            sk.rect(
-              this.params.radius / 2,
-              -(this.params.radius / 2),
-              this.size.width,
-              this.params.radius
-            )
-            sk.ellipse(
-              this.size.width,
-              -(this.params.radius / 2),
-              this.params.radius,
-              this.params.radius,
-              quality
-            )
-            sk.pop()
-          }
-
-          draw = () => {
-            const randomColor: { [key: string]: number } =
-              Object.values(HSLColors)[
-                random(0, Object.values(HSLColors).length)
-              ]
-
-            sk.push()
-            sk.translate(
-              this.position.x < 0
-                ? this.position.x - this.size.width * multiplier
-                : this.position.x,
-              this.position.y,
-              this.position.z
-            )
-            sk.fill(
-              this.deepHue(),
-              this.deepSaturation(),
-              this.deepLightness(),
-              this.params.alpha
-            )
-            sk.stroke(
-              this.deepHue(),
-              this.deepSaturation(),
-              this.deepLightness()
-            )
-            sk.strokeWeight(1)
-            this.params.isGlitched
-              ? sk.fill(
-                  randomColor.hue,
-                  randomColor.saturation,
-                  randomColor.lightness
-                )
-              : null
-            sk.rectMode(sk.CORNER)
-            sk.ellipseMode(sk.CORNER)
-            this.extrusion()
-            sk.pop()
-          }
-        }
-
-        class Cloud {
-          props: CloudProps
-          size: Size
-          position: Position
-          params: {
-            rows: Array<Row>
-            speed: number
-            order: number
-            gap: number
-            start: number
-            isGlitched: boolean
-            isStrokedOnly: boolean
-            alpha: number
-            beta: number
-          }
-          backup: {
-            rows: Array<Row>
-          }
-
-          constructor(props: CloudProps) {
-            this.props = props
-            this.size = {
-              width: sk.int(
-                random(this.props.widthRange[0], this.props.widthRange[1])
-              ),
-              height: sk.int(
-                random(this.props.heightRange[0], this.props.heightRange[1])
-              ),
-            }
-            this.position = {
-              x: sk.int(this.props.x),
-              y: sk.int(this.props.y),
-              z: sk.int(random(this.props.zRange[0], this.props.zRange[1])),
-            }
-            this.params = {
-              rows: [],
-              speed: 0.1,
-              order: 0,
-              gap: 40,
-              start: sk.height,
-              isGlitched: false,
-              isStrokedOnly: true,
-              alpha: 0,
-              beta: 1,
-            }
-            for (let i = 1; i < this.props.rows; i++)
-              this.params.rows.push({
-                width: sk.int(this.size.width * random(0.5, 1)),
-                height: sk.int(this.size.height * random(0.5, 1)),
-                x: sk.int(random(-this.size.width / 4, this.size.width / 4)),
-              })
-            this.backup = {
-              rows: [],
-            }
-          }
-
-          deepHue = () =>
-            doMap(
-              this.position.z,
-              this.props.zRange[0],
-              this.props.zRange[1],
-              this.props.background.hue,
-              this.props.foreground.hue
-            )
-
-          deepSaturation = () =>
-            doMap(
-              this.position.z,
-              this.props.zRange[0],
-              this.props.zRange[1],
-              this.props.background.saturation,
-              this.props.foreground.saturation
-            )
-
-          deepLightness = () =>
-            doMap(
-              this.position.z,
-              this.props.zRange[0],
-              this.props.zRange[1],
-              this.props.background.lightness,
-              this.props.foreground.lightness
-            )
-
-          glitch = () => {
-            this.backup.rows = this.params.rows.map((row) => {
-              return {
-                width: row.width,
-                height: row.height,
-                x: row.x,
-              }
-            })
-            this.params.isGlitched = true
-          }
-
-          unglitch = () => {
-            this.params.isGlitched = false
-            this.params.rows = this.backup.rows
-          }
-
-          wireframe = () => {
-            this.params.isStrokedOnly = true
-            this.params.alpha = this.params.beta
-          }
-
-          unwireframe = () => (this.params.isStrokedOnly = false)
-
-          move = () => {
-            if (this.position.z <= 0) this.position.z += speed
-            else this.position.z = this.props.zRange[0]
-
-            if (this.position.x <= limitX * 2) this.position.x += speed
-            else this.position.x = -limitX * 2
-
-            if (this.position.x >= -limitX * 2 && this.position.x <= -limitX)
-              this.params.beta = doMap(
-                this.position.x,
-                -limitX * 2,
-                -limitX,
-                0,
-                1
-              )
-            else if (this.position.x >= limitX && this.position.x <= limitX * 2)
-              this.params.beta = doMap(
-                this.position.x,
-                limitX,
-                limitX * 2,
-                1,
-                0
-              )
-
-            if (sk.millis() > this.params.order * this.params.gap)
-              this.params.start = sk.lerp(
-                this.params.start,
-                this.position.y,
-                this.params.speed
-              )
-
-            if (this.params.isGlitched) {
-              this.params.rows.forEach((row) => {
-                row.width = random(0, this.size.width / 2)
-                row.height = random(0, this.size.height / 2)
-                row.x = random(-sk.width / 4, sk.width / 4)
-              })
-            }
-
-            if (this.params.isStrokedOnly)
-              this.params.alpha = sk.lerp(
-                this.params.alpha,
-                0,
-                this.params.speed * 0.5
-              )
-            else
-              this.params.alpha = sk.lerp(
-                this.params.alpha,
-                this.params.beta,
-                this.params.speed * 0.5
-              )
-
-            this.draw()
-          }
-
-          drow = (x: number, y: number, width: number, height: number) => {
-            sk.push()
-            sk.translate(x, y, 0)
-            sk.rectMode(sk.CORNER)
-            sk.ellipseMode(sk.CORNER)
-            sk.ellipse(0, height, height, height, quality)
-            sk.rect(-(height / 2), 0, width, height)
-            sk.ellipse(width, height, height, height, quality)
-            sk.pop()
-          }
-
-          draw = () => {
-            let offsetY = 0
-            const randomColor: { [key: string]: number } =
-              Object.values(HSLColors)[
-                random(0, Object.values(HSLColors).length)
-              ]
-
-            sk.push()
-            sk.translate(this.position.x, this.params.start, this.position.z)
-            sk.fill(
-              this.deepHue(),
-              this.deepSaturation(),
-              this.deepLightness(),
-              this.params.isStrokedOnly
-                ? this.params.alpha
-                : this.params.alpha < 0.98
-                ? this.params.alpha
-                : this.params.beta
-            )
-            sk.stroke(
-              this.deepHue(),
-              this.deepSaturation(),
-              this.deepLightness()
-            )
-            sk.strokeWeight(this.params.beta)
-            this.params.isGlitched
-              ? sk.fill(
-                  randomColor.hue,
-                  randomColor.saturation,
-                  randomColor.lightness
-                )
-              : null
-            this.params.rows.forEach((row) => {
-              this.drow(row.x, offsetY, row.width, row.height)
-              offsetY += row.height
-            })
-            sk.pop()
-          }
-        }
-
-        class Star {
-          props: StarProps
-          size: number
-          position: Position
-          params: {
-            speed: number
-            isGlitched: boolean
-            isStrokedOnly: boolean
-            alpha: number
-          }
-          backup: {
-            position: {
-              x: number
-              z: number
-            }
-          }
-
-          constructor(props: StarProps) {
-            this.props = props
-            this.size = sk.int(
-              random(this.props.sizeRange[0], this.props.sizeRange[1])
-            )
-            this.position = {
-              x: sk.int(this.props.x),
-              y: sk.int(random(this.props.yRange[0], this.props.yRange[1])),
-              z: sk.int(this.props.z),
-            }
-            this.params = {
-              speed: 0.1,
-              isGlitched: false,
-              isStrokedOnly: false,
-              alpha: 1,
-            }
-            this.backup = {
-              position: {
-                x: this.position.x,
-                z: this.position.z,
-              },
-            }
-          }
-
-          deepHue = () =>
-            doMap(
-              this.position.y,
-              this.props.yRange[0],
-              this.props.yRange[1],
-              this.props.background.hue,
-              this.props.foreground.hue
-            )
-
-          deepSaturation = () =>
-            doMap(
-              this.position.y,
-              this.props.yRange[0],
-              this.props.yRange[1],
-              this.props.background.saturation,
-              this.props.foreground.saturation
-            )
-
-          deepLightness = () =>
-            doMap(
-              this.position.y,
-              this.props.yRange[0],
-              this.props.yRange[1],
-              this.props.background.lightness,
-              this.props.foreground.lightness
-            )
-
-          glitch = () => {
-            this.backup = {
-              position: {
-                x: this.position.x,
-                z: this.position.z,
-              },
-            }
-            this.params.isGlitched = true
-          }
-
-          unglitch = () => {
-            this.params.isGlitched = false
-            this.position.x = this.backup.position.x
-            this.position.z = this.backup.position.z
-          }
-
-          wireframe = () => (this.params.isStrokedOnly = true)
-
-          unwireframe = () => (this.params.isStrokedOnly = false)
-
-          move = () => {
-            if (this.params.isGlitched) {
-              this.position.x = random(-limitX * 3, limitX * 3)
-              this.position.z = random(-limitZ * 3, limitZ * 3)
-            }
-
-            if (this.params.isStrokedOnly)
-              this.params.alpha = sk.lerp(
-                this.params.alpha,
-                0,
-                this.params.speed
-              )
-            else
-              this.params.alpha = sk.lerp(
-                this.params.alpha,
-                1,
-                this.params.speed
-              )
-
-            this.draw()
-          }
-
-          draw = () => {
-            const randomColor: { [key: string]: number } =
-              Object.values(HSLColors)[
-                random(0, Object.values(HSLColors).length)
-              ]
-
-            sk.push()
-            sk.translate(this.position.x, this.position.y, this.position.z)
-            sk.fill(
-              this.deepHue(),
-              this.deepSaturation(),
-              this.deepLightness(),
-              this.params.alpha
-            )
-            sk.stroke(
-              this.deepHue(),
-              this.deepSaturation(),
-              this.deepLightness()
-            )
-            sk.strokeWeight(1)
-            this.params.isGlitched
-              ? sk.fill(
-                  randomColor.hue,
-                  randomColor.saturation,
-                  randomColor.lightness
-                )
-              : null
-            sk.sphere(this.size, 3, 16)
-            sk.pop()
-          }
-        }
-
-        class Pov {
-          props: PovProps
-          position: Position
-          center: Center
-          rotation: Rotation
-          progress: Progress
-          params: {
-            target: {
-              position: Position
-              center: Center
-              rotation: Rotation
-              progress: Progress
-            }
-            speed: number
-            scrollPosition: number
-            scrollLimit: number
-            alpha: number
-            beta: number
-            distance: number
-            isPushed: boolean
-            isOriented: boolean
-            isScrolling: boolean
-          }
-
-          constructor(props: PovProps) {
-            this.props = props
-            this.position = {
-              x: this.props.x,
-              y: this.props.y,
-              z: this.props.z,
-            }
-            this.center = {
-              x: this.props.cX,
-              y: this.props.cY,
-              z: this.props.cZ,
-            }
-            this.rotation = {
-              v: this.props.rV,
-              h: this.props.rH,
-            }
-            this.progress = {
-              x: 0,
-              y: 0,
-              z: 0,
-            }
-            this.params = {
-              target: {
-                position: {
-                  x: 0,
-                  y: 0,
-                  z: 0,
-                },
-                center: {
-                  x: 0,
-                  y: 0,
-                  z: 0,
-                },
-                rotation: {
-                  v: 0,
-                  h: 0,
-                },
-                progress: {
-                  x: 0,
-                  y: 0,
-                  z: 0,
-                },
-              },
-              speed: 0.1,
-              scrollPosition: 0,
-              scrollLimit: 0,
-              alpha: 0,
-              beta: 75,
-              distance: 0,
-              isPushed: false,
-              isOriented: false,
-              isScrolling: false,
-            }
-          }
-
-          animate = (
-            speed: number,
-            position: Array<number>,
-            center: Array<number>,
-            rotation: Array<number>
-          ) => {
-            this.params.speed = speed
-            this.params.target.position.x = position[0]
-            this.params.target.position.y = position[1]
-            this.params.target.position.z = position[2]
-            this.params.target.center.x = center[0]
-            this.params.target.center.y = center[1]
-            this.params.target.center.z = center[2]
-            this.params.target.rotation.v = rotation[0]
-            this.params.target.rotation.h = rotation[1]
-            this.params.target.progress.z = 0
-            this.params.distance =
-              this.params.target.position.z - this.params.target.center.z
-            this.params.isScrolling = false
-          }
-
-          move = () => {
-            this.position.x = sk.lerp(
-              this.position.x,
-              this.params.target.position.x,
-              this.params.speed
-            )
-            this.position.y = sk.lerp(
-              this.position.y,
-              this.params.target.position.y,
-              this.params.speed
-            )
-            this.position.z = sk.lerp(
-              this.position.z,
-              this.params.target.position.z,
-              this.params.speed
-            )
-            this.center.x = sk.lerp(
-              this.center.x,
-              this.params.target.center.x,
-              this.params.speed
-            )
-            this.center.y = sk.lerp(
-              this.center.y,
-              this.params.target.center.y,
-              this.params.speed
-            )
-            this.center.z = sk.lerp(
-              this.center.z,
-              this.params.target.center.z,
-              this.params.speed
-            )
-            this.rotation.v = sk.lerp(
-              this.rotation.v,
-              this.params.target.rotation.v,
-              this.params.speed
-            )
-            this.rotation.h = sk.lerp(
-              this.rotation.h,
-              this.params.target.rotation.h,
-              this.params.speed
-            )
-
-            if (this.params.isPushed) {
-              this.position.x = sk.lerp(
-                this.position.x,
-                this.params.target.position.x +
-                  doMap(
-                    sk.mouseX,
-                    0,
-                    sk.width,
-                    sk.width * 0.2,
-                    -sk.width * 0.2
-                  ),
-                0.1
-              )
-              this.position.y = sk.lerp(
-                this.position.y,
-                this.params.target.position.y +
-                  doMap(
-                    sk.mouseY,
-                    0,
-                    sk.height,
-                    sk.height * 0.2,
-                    -sk.height * 0.2
-                  ),
-                0.1
-              )
-            }
-
-            if (this.params.isOriented) {
-              this.position.x = sk.lerp(
-                this.position.x,
-                this.params.target.position.x +
-                  doMap(
-                    this.params.alpha,
-                    -90,
-                    90,
-                    sk.width * 0.4,
-                    -sk.width * 0.4
-                  ),
-                0.1
-              )
-              this.position.y = sk.lerp(
-                this.position.y,
-                this.params.target.position.y +
-                  doMap(
-                    this.params.beta,
-                    0,
-                    180,
-                    sk.height * 0.4,
-                    -sk.height * 0.4
-                  ),
-                0.1
-              )
-            }
-
-            if (this.params.isScrolling) {
-              this.progress.z = sk.lerp(
-                this.progress.z,
-                doMap(
-                  this.params.scrollPosition,
-                  0,
-                  this.params.scrollLimit,
-                  0,
-                  this.params.distance < 0
-                    ? this.params.distance
-                    : -this.params.distance
-                ),
-                this.params.speed
-              )
-            } else {
-              this.progress.z = sk.lerp(
-                this.progress.z,
-                this.params.target.progress.z,
-                this.params.speed * 2
-              )
-            }
-          }
-
-          push = () => (this.params.isPushed = true)
-
-          orient = (alpha: number, beta: number) => {
-            this.params.isOriented = true
-            this.params.alpha = alpha
-            this.params.beta = beta
-          }
-
-          zoom = (scrollPosition: number, scrollLimit: number) => {
-            this.params.isScrolling = true
-            this.params.scrollPosition = scrollPosition
-            this.params.scrollLimit = scrollLimit
-          }
-        }
-
-        // Sketch
-        let pov = new Pov({
-          x: 0,
-          y: -window.innerHeight * 0.75,
-          z: -limitZ * 2,
-          cX: 0,
-          cY: -window.innerHeight * 0.75,
-          cZ: -limitZ * 2,
-          rH: 0,
-          rV: 0,
-        })
-
-        sk.setup = () => {
-          sk.createCanvas(sk.windowWidth, sk.windowHeight, sk.WEBGL).parent(
-            'sketch'
-          )
-          sk.colorMode(sk.HSL)
-          sk.rectMode(sk.CENTER)
-          sk.frameRate(fps)
-          camera = sk.createCamera()
-          sk.background(
-            HSLColors.creamySun.hue,
-            HSLColors.creamySun.saturation,
-            HSLColors.creamySun.lightness
-          )
-
-          if (screen.orientation != undefined)
-            screen.orientation.addEventListener(
-              'change',
-              () => {
-                setTimeout(
-                  () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight, true),
-                  100
-                )
-              },
-              true
-            )
-          else
-            sk.windowResized = () => {
-              sk.resizeCanvas(sk.windowWidth, sk.windowHeight, true)
-            }
-
-          if (window.DeviceOrientationEvent)
-            window.addEventListener(
-              'deviceorientation',
-              (e: any) => {
-                pov.orient(e.alpha, e.beta)
-              },
-              true
-            )
-
-          // particles setting
-          for (let i = 0; i < mNumber; i++)
-            mountains.push(
-              new Mountain({
-                widthRange: [sk.width * 14, sk.width * 16],
-                heightRange: [-sk.height * 20, -sk.height * 22],
-                x: twoRangesRandom(-limitX, -sk.width, sk.width, limitX),
-                y: sk.height * 10,
-                zRange: [-limitZ, 0],
-                foreground: HSLColors.cream,
-                background: HSLColors.creamySun,
-              })
-            )
-          for (let i = 0; i < cNumber; i++)
-            clouds.push(
-              new Cloud({
-                widthRange: [sk.width, sk.width * 2],
-                heightRange: [-sk.height * 0.1, -sk.height * 0.15],
-                x: random(-limitX * 2, limitX * 2),
-                y: random(-sk.height * 1, -sk.height * 2),
-                zRange: [-limitZ, 0],
-                rows: sk.int(random(3, 5)),
-                foreground: HSLColors.clay,
-                background: HSLColors.creamySun,
-              })
-            )
-          for (let i = 0; i < sNumber; i++)
-            stars.push(
-              new Star({
-                sizeRange: [-sk.height * 0.05, -sk.height * 0.15],
-                x: random(-limitX * 4, limitX * 4),
-                yRange: [-limitY * 0.5, -limitY],
-                z: random(-limitZ * 3, limitZ * 3),
-                foreground: HSLColors.soil,
-                background: HSLColors.clay,
-              })
-            )
-
-          mountains.sort(
-            (a: Mountain, b: Mountain) => a.position.z - b.position.z
-          )
-          mountains.forEach((mountain: Mountain, index: number) => {
-            mountain.params.order = index
-          })
-          clouds.sort((a: Cloud, b: Cloud) => a.position.z - b.position.z)
-          clouds.forEach((cloud: Cloud, index: number) => {
-            cloud.params.order = index
-          })
-
-          // default pov and quality
-          povs[this.pov]?.()
-          qualities[this.quality]?.()
-        }
-
-        sk.draw = () => {
-          alpha = sk.lerp(alpha, 0.7, 0.01)
-
-          sk.clear()
-
-          sk.background(
-            HSLColors.creamySun.hue,
-            HSLColors.creamySun.saturation,
-            HSLColors.creamySun.lightness
-          )
-
-          // camera
-          pov.move()
-          camera.setPosition(pov.position.x, pov.position.y, pov.position.z)
-          camera.lookAt(pov.center.x, pov.center.y, pov.center.z)
-          camera.perspective(Math.PI / 3, sk.width / sk.height, 100, limitZ * 2)
-          camera.pan(pov.rotation.v)
-          camera.tilt(pov.rotation.h)
-          camera.move(0, 0, pov.progress.z)
-
-          // mountains
-          mountains.forEach((mountain) => mountain.move())
-
-          // clouds
-          clouds.forEach((cloud) => cloud.move())
-
-          // stars
-          stars.forEach((star) => star.move())
-
-          // floor
-          sk.push()
-          sk.noStroke()
-          sk.fill(
-            HSLColors.creamySun.hue,
-            HSLColors.creamySun.saturation,
-            HSLColors.creamySun.lightness,
-            alpha
-          )
-          sk.box(limitX * 20, 5, limitZ * 20)
-          sk.pop()
-        }
-
-        // Events
-        sk.povReset = () =>
-          pov.animate(
-            0.05,
-            [0, -sk.height * 0.75, -sk.height * 0.1],
-            [0, -sk.height * 0.75, -limitZ],
-            [0, 0]
-          )
-
-        sk.povInvert = () =>
-          pov.animate(
-            0.05,
-            [0, -sk.height * 0.75, -limitZ],
-            [0, -sk.height * 0.75, -sk.height * 0.1],
-            [0, 0]
-          )
-
-        sk.povDIVE = (increment: number) =>
-          pov.animate(
-            0.05,
-            [
-              doMap(
-                increment,
-                1,
-                this.numberOfProjects,
-                -limitX * 0.75,
-                limitX * 0.75
-              ),
-              sk.height * 5,
-              -sk.height * 0.1,
-            ],
-            [
-              doMap(
-                increment,
-                1,
-                this.numberOfProjects,
-                -limitX * 0.75,
-                limitX * 0.75
-              ),
-              sk.height * 0.75,
-              -limitZ,
-            ],
-            [0, 0]
-          )
-
-        sk.povDontLookUp = () =>
-          pov.animate(
-            0.05,
-            [0, -sk.height * 2, -sk.height * 0.1],
-            [0, -sk.height * 10, -limitZ * 0.5],
-            [0, 0]
-          )
-
-        sk.povSide = () =>
-          pov.animate(
-            0.05,
-            [limitX * 4, -sk.height * 0.75, -limitZ * 0.5],
-            [limitX * 4, -sk.height * 0.75, -limitZ],
-            [Math.PI / 2, 0]
-          )
-
-        sk.povGlobal = () =>
-          pov.animate(
-            0.05,
-            [0, -sk.height * 10, sk.height * 5],
-            [0, -sk.height * 0.1, -limitZ * 0.5],
-            [0, 0]
-          )
-
-        sk.povZoom = (scrollProgress: number, scrollLimit: number) =>
-          pov.zoom(scrollProgress, scrollLimit + 200)
-
-        sk.lowQuality = () => {
-          mountains.forEach((mountain) => mountain.wireframe())
-          clouds.forEach((cloud) => cloud.wireframe())
-          stars.forEach((star) => star.wireframe())
-        }
-
-        sk.highQuality = () => {
-          mountains.forEach((mountain) => mountain.unwireframe())
-          clouds.forEach((cloud) => cloud.unwireframe())
-          stars.forEach((star) => star.unwireframe())
-        }
-
-        sk.glitch = () => {
-          mountains.forEach((mountain) => mountain.glitch())
-          clouds.forEach((cloud) => cloud.glitch())
-          stars.forEach((star) => star.glitch())
-        }
-
-        sk.unglitch = () => {
-          mountains.forEach((mountain) => mountain.unglitch())
-          clouds.forEach((cloud) => cloud.unglitch())
-          stars.forEach((star) => star.unglitch())
-        }
-
-        sk.mouseMoved = () => pov.push()
-
-        sk.touchMoved = () => pov.push()
+      this.controller = createGlitchscape({
+        parent: 'sketch',
+        scene: this.liveScene,
+        quality: (this.quality === 'LOW' ? 'LOW' : 'HIGH') as QualityKind,
+        device: this.store.device,
       })
+
+      this.askWeather()
+      this.watch = window.setInterval(this.askWeather, WEATHER_EVERY)
+      this.tick = window.setInterval(() => (this.clock = Date.now()), 60000)
+    },
+    unmounted: function () {
+      window.clearInterval(this.watch)
+      window.clearInterval(this.tick)
+      this.controller?.destroy()
+      this.controller = null
     },
   })
 </script>
 
 <template>
   <Transition name="fade" appear>
-    <div v-if="view === 'SHORT'" class="gradient"></div>
+    <div
+      v-if="ambientGradient !== null"
+      class="gradient"
+      :style="`background-image: ${ambientGradient}`"
+    ></div>
   </Transition>
+  <div class="tone" :style="toneStyle">
+    <div class="polarity" :style="polarityStyle">
+      <div
+        class="background"
+        id="sketch"
+        :style="`filter: ${lightStyle}; transform: ${transformStyle}`"
+      >
+        <div class="veil" :style="veilStyle"></div>
+        <div v-if="liveScene.mist > 0" class="mist" :style="mistStyle"></div>
+      </div>
+    </div>
+  </div>
   <div
-    class="background"
-    id="sketch"
-    :style="`
-    filter: hue-rotate(${filter.hue})
-    brightness(${filter.brightness})
-    invert(${filter.invert})
-    saturate(${filter.saturation})
-    grayscale(${filter.grayscale})
-  `"
+    v-if="halo > 0"
+    class="atmosphere"
+    :style="`background-image: ${haloStyle}; opacity: ${halo}`"
   ></div>
 </template>
 
@@ -1231,9 +300,35 @@
     position: fixed
     z-index: 1
     top: 0
-    background-image: var(--gradient-biscarosse-sunset)
     mix-blend-mode: color
     opacity: .75
+
+  .atmosphere
+    width: 100%
+    height: 100%
+    position: fixed
+    z-index: 1
+    top: 0
+    left: 0
+    pointer-events: none
+    mix-blend-mode: soft-light
+    transition: opacity 1.2s ease, background-image 1.2s ease
+
+  .tone
+    width: 100%
+    height: 100%
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 0
+    transition: var(--grandma-transition)
+
+  .polarity
+    width: 100%
+    height: 100%
+    position: fixed
+    top: 0
+    left: 0
 
   .background
     width: 100%
@@ -1241,5 +336,22 @@
     position: fixed
     top: 0
     transition: var(--grandma-transition)
+    transform-origin: 50% 50%
     z-index: 0
+
+    .veil
+      position: absolute
+      inset: 0
+      z-index: 1
+      pointer-events: none
+      transition: var(--grandma-transition)
+
+    .mist
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+      z-index: 2
+      pointer-events: none
+      transition: var(--grandma-transition)
 </style>

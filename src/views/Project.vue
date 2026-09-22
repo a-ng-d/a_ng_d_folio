@@ -204,13 +204,10 @@
         background-color: var(--color-clear-water)
 
       :deep(section.challenge)
-        background-color: var(--color-sandstone)
+        background-color: var(--color-dry-soil)
 
       :deep(section.success), :deep(section.credit)
-        background-color: var(--color-soft-wind)
-
-      :deep(section.credit)
-        background-color: var(--color-soil)
+        background-color: var(--color-clear-water)
 
       :deep(section.takeaways)
         background: var(--gradient-chill-night)

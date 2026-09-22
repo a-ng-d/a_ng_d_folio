@@ -112,7 +112,7 @@
             :path="sourceLink"
             :alt="alt"
             layout="ICON-ONLY"
-            theme="DEFAULT"
+            :theme="theme"
           >
             <template #icon>
               <Component :is="sourceName" :size="24" />
@@ -194,7 +194,4 @@
     --color-2: var(--color-soft-wind)
     --color-3: var(--color-candy-floss)
     --asset-radius: calc(var(--regular-border-radius) - var(--container-padding))
-
-    &[data-theme="DARK"]
-      --text-color: var(--color-soil)
 </style>

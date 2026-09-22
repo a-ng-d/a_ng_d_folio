@@ -2,6 +2,7 @@
   import { defineComponent } from 'vue'
   import { store } from '@/utilities/store'
   import type { Route } from '@/utilities/types'
+  import type { SceneOverride } from '@/glitchscape/types'
   import Logotype from '@/components/graphics/Logotype.vue'
   import MainMenu from '@/contexts/MainMenu.vue'
   import Glitchscape from '@/components/graphics/Glitchscape.vue'
@@ -25,8 +26,8 @@
       return {
         store,
         filter: {},
-        pov: '' as string,
         quality: '' as string,
+        sceneOverride: null as SceneOverride | null,
         view: '' as string,
         transition: 'scale-down' as string,
         scrollProgress: 0 as number,
@@ -42,16 +43,28 @@
         isQuickMenu: false as boolean,
         previousPath: '' as string,
         isUIHere: true as boolean,
-        theme: 'DEFAULT' as string,
+        pageTheme: 'DEFAULT' as string,
+        isBackgroundDark: false as boolean,
       }
     },
+    computed: {
+      theme(): string {
+        return this.isBackgroundDark ? 'DARK' : this.pageTheme
+      },
+    },
     watch: {
+      theme: {
+        handler(to: string) {
+          document.documentElement.setAttribute('data-theme', to)
+        },
+        immediate: true,
+      },
       $route(to, from) {
         this.view = to.meta.view
         document.title = to.meta.title
         this.filter = to.meta.filter
-        this.pov = to.meta.pov
         this.quality = to.meta.quality
+        this.sceneOverride = to.meta.scene || null
         this.scrollProgress = 0
         this.activeProjectPosition =
           to.meta.view === 'WORK'
@@ -60,7 +73,7 @@
             ? to.meta.position
             : 0
 
-        this.theme =
+        this.pageTheme =
           this.view === 'PROJECT'
             ? 'DEFAULT'
             : this.view === 'WORK'
@@ -219,7 +232,12 @@
   </Transition>
 
   <!--Transition-->
-  <Particles :weight="176" :isExpanded="isExpanded" :movement="transition" />
+  <Particles
+    v-if="store.isPageCurtainOn"
+    :weight="176"
+    :isExpanded="isExpanded"
+    :movement="transition"
+  />
 
   <!--Menu-->
   <Transition
@@ -263,27 +281,25 @@
         :theme="theme"
         @activeProjectPosition="activeProjectPosition = $event"
         @activeProjectBackground="filter = $event"
-        @activeProjectPov="pov = $event"
-        @pov="pov = $event"
         @quality="quality = $event"
+        @scene="sceneOverride = $event"
         @glitch="isGlitched = $event"
         @filter="filter = $event"
         @isUIHere="isUIHere = $event"
-        @theme="theme = $event"
+        @theme="pageTheme = $event"
       />
     </Transition>
   </RouterView>
 
   <!--Background-->
   <Glitchscape
+    @dark="isBackgroundDark = $event"
+    :scene="sceneOverride"
     :filter="filter"
-    :pov="pov"
     :quality="quality"
     :isGlitched="isGlitched"
     :scrollProgress="view != 'PROJECT' ? scrollProgress : 0"
     :scrollLimit="pageHeight - viewHeight"
-    :numberOfProjects="numberOfProjects"
-    :view="view"
   />
 
   <!--Audio-->

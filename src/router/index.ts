@@ -18,6 +18,8 @@ import IWAnimation from '@/assets/animations/_work/_iobeya_whiteboard/animation.
 import ICAnimation from '@/assets/animations/_work/_iobeya_creativity/animation.json'
 import AGAnimation from '@/assets/animations/_work/_axeptio_gusto/animation.json'
 import { filters } from '@/utilities/colors'
+import { INSPECTOR_DEFAULT } from '@/glitchscape/dispositions'
+import { page, scenery } from '@/router/scenery'
 import { assets } from '@/utilities/assets'
 
 const router = createRouter({
@@ -27,84 +29,106 @@ const router = createRouter({
       path: '/',
       name: '_HOME',
       component: Home,
-      meta: {
+      meta: page({
         title: i18n.global.t('title'),
         view: 'HOME',
         theme: 'DEFAULT',
-        filter: filters.creamySun,
-        pov: 'RESET',
-        quality: 'HIGH',
-      },
+        ...scenery({
+          disposition: 'CANYON',
+          flow: 'STRAIGHT',
+          ambient: 'creamySun',
+          live: true,
+        }),
+      }),
     },
     {
       path: '/_short',
       name: '_SHORT',
       component: Short,
-      meta: {
+      meta: page({
         title: i18n.global.t('id.title'),
         view: 'SHORT',
         theme: 'DEFAULT',
-        filter: filters.grayscale,
-        pov: 'INVERT',
-        quality: 'HIGH',
-      },
+        ...scenery({
+          disposition: 'VALLEY',
+          flow: 'RIGHT',
+          ambient: 'softSteel',
+          live: true,
+          endless: true,
+        }),
+      }),
     },
     {
       path: '/_universe',
       name: '_UNIVERSE',
       component: Universe,
-      meta: {
+      meta: page({
         title: i18n.global.t('universe.title'),
         view: 'UNIVERSE',
         theme: 'DARK',
-        filter: filters.nightly,
-        pov: 'DONTLOOKUP',
-        quality: 'HIGH',
-      },
+        ...scenery({
+          disposition: 'SWARM',
+          flow: 'UP',
+          ambient: 'biscarosse',
+          live: true,
+        }),
+      }),
     },
     {
       path: '/_core',
       name: '_CORE',
       component: Core,
-      meta: {
+      meta: page({
         title: i18n.global.t('core.title'),
         view: 'CORE',
         theme: 'DEFAULT',
-        filter: filters.candyFloss,
-        pov: 'RESET',
-        quality: 'HIGH',
-      },
+        ...scenery({
+          disposition: 'VALLEY',
+          flow: 'LEFT',
+          ambient: 'candyFloss',
+          live: true,
+          endless: true,
+        }),
+      }),
     },
     {
       path: '/_lab',
       name: '_LAB',
       component: Lab,
-      meta: {
+      meta: page({
         title: i18n.global.t('lab.title'),
         view: 'LAB',
         theme: 'DEFAULT',
-        filter: filters.softWind,
-        pov: 'SIDE',
-        quality: 'LOW',
-      },
+        ...scenery({
+          disposition: 'VALLEY',
+          flow: 'RIGHT',
+          ambient: 'softWind',
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_work',
       name: '_WORK',
       component: Work,
-      meta: {
+      meta: page({
         title: i18n.global.t('work.title'),
         view: 'WORK',
-        filter: filters.grayscale,
-        pov: 'DIVE_3',
-        quality: 'LOW',
-      },
+        ...scenery({
+          disposition: 'DUNES',
+          flow: 'DOWN',
+          ambient: 'grayscale',
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_work/_ui_color_palette',
       name: '_UI_COLOR_PALETTE',
       component: Project,
-      meta: {
+      meta: page({
         title: i18n.global.t('work._ui_color_palette.title'),
         codeName: i18n.global.t('work._ui_color_palette.shortTitle'),
         description: i18n.global.t('work._ui_color_palette.description'),
@@ -121,16 +145,21 @@ const router = createRouter({
         background: filters._ui_color_palette,
         backgroundImage: 'none',
         theme: 'DEFAULT',
-        filter: filters.grayscale,
-        pov: 'DIVE_1',
-        quality: 'LOW',
-      },
+        ...scenery({
+          disposition: 'DUNES',
+          flow: 'STILL',
+          ambient: 'grayscale',
+          shape: 'ROUND',
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_work/_axeptio_gusto',
       name: '_AXEPTIO_GUSTO',
       component: Project,
-      meta: {
+      meta: page({
         title: i18n.global.t('work._axeptio_gusto.title'),
         codeName: i18n.global.t('work._axeptio_gusto.shortTitle'),
         description: i18n.global.t('work._axeptio_gusto.description'),
@@ -148,16 +177,21 @@ const router = createRouter({
         backgroundImage:
           'url(/images/_work/_axeptio_gusto/background.webp) 0% 0% / cover no-repeat',
         theme: 'DEFAULT',
-        filter: filters.grayscale,
-        pov: 'DIVE_2',
-        quality: 'LOW',
-      },
+        ...scenery({
+          disposition: 'DUNES',
+          flow: 'STILL',
+          ambient: 'grayscale',
+          shape: 'ROUND',
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_work/_iobeya_whiteboard',
       name: '_IOBEYA_WHITEBOARD',
       component: Project,
-      meta: {
+      meta: page({
         title: i18n.global.t('work._iobeya_whiteboard.title'),
         codeName: i18n.global.t('work._iobeya_whiteboard.shortTitle'),
         description: i18n.global.t('work._iobeya_whiteboard.description'),
@@ -174,17 +208,22 @@ const router = createRouter({
         background: filters._iobeya_whiteboard,
         backgroundImage:
           'url(/images/_work/_iobeya_whiteboard/background.webp) 0% 0% no-repeat',
-        theme: 'DARK',
-        filter: filters.grayscale,
-        pov: 'DIVE_3',
-        quality: 'LOW',
-      },
+        theme: 'DEFAULT',
+        ...scenery({
+          disposition: 'DUNES',
+          flow: 'STILL',
+          ambient: 'grayscale',
+          shape: 'ROUND',
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_work/_iobeya_mobile_ds',
       name: '_IOBEYA_MOBILE_DS',
       component: Project,
-      meta: {
+      meta: page({
         title: i18n.global.t('work._iobeya_mobile_ds.title'),
         codeName: i18n.global.t('work._iobeya_mobile_ds.shortTitle'),
         description: i18n.global.t('work._iobeya_mobile_ds.description'),
@@ -201,17 +240,22 @@ const router = createRouter({
         background: filters._iobeya_mobile_ds,
         backgroundImage:
           'url(/images/_work/_iobeya_mobile_ds/background.webp) 0% 0% / cover no-repeat',
-        theme: 'DARK',
-        filter: filters.grayscale,
-        pov: 'DIVE_4',
-        quality: 'LOW',
-      },
+        theme: 'DEFAULT',
+        ...scenery({
+          disposition: 'DUNES',
+          flow: 'STILL',
+          ambient: 'grayscale',
+          shape: 'ROUND',
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_work/_iobeya_creativity',
       name: '_IOBEYA_CREATIVITY',
       component: Project,
-      meta: {
+      meta: page({
         title: i18n.global.t('work._iobeya_creativity.title'),
         codeName: i18n.global.t('work._iobeya_creativity.shortTitle'),
         description: i18n.global.t('work._iobeya_creativity.description'),
@@ -228,17 +272,22 @@ const router = createRouter({
         background: filters._iobeya_creativity,
         backgroundImage:
           'url(/images/_work/_iobeya_creativity/background.webp) 0% 0% / cover no-repeat',
-        theme: 'DARK',
-        filter: filters.grayscale,
-        pov: 'DIVE_5',
-        quality: 'LOW',
-      },
+        theme: 'DEFAULT',
+        ...scenery({
+          disposition: 'DUNES',
+          flow: 'STILL',
+          ambient: 'grayscale',
+          shape: 'ROUND',
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_work/_jeprendsquoi',
       name: '_JEPRENDSQUOI',
       component: Project,
-      meta: {
+      meta: page({
         title: i18n.global.t('work._jeprendsquoi.title'),
         codeName: i18n.global.t('work._jeprendsquoi.shortTitle'),
         description: i18n.global.t('work._jeprendsquoi.description'),
@@ -256,16 +305,21 @@ const router = createRouter({
         backgroundImage:
           'url(/images/_work/_jeprendsquoi/background.svg) 50% / cover no-repeat',
         theme: 'DEFAULT',
-        filter: filters.grayscale,
-        pov: 'DIVE_6',
-        quality: 'LOW',
-      },
+        ...scenery({
+          disposition: 'DUNES',
+          flow: 'STILL',
+          ambient: 'grayscale',
+          shape: 'ROUND',
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_work/_jean_bobby_radio',
       name: '_JEAN_BOBBY_RADIO',
       component: Project,
-      meta: {
+      meta: page({
         title: i18n.global.t('work._jean_bobby_radio.title'),
         codeName: i18n.global.t('work._jean_bobby_radio.shortTitle'),
         description: i18n.global.t('work._jean_bobby_radio.description'),
@@ -281,17 +335,22 @@ const router = createRouter({
         illustration: JBRAnimation,
         background: filters._jean_bobby_radio,
         backgroundImage: 'none',
-        theme: 'DARK',
-        filter: filters.grayscale,
-        pov: 'DIVE_7',
-        quality: 'LOW',
-      },
+        theme: 'DEFAULT',
+        ...scenery({
+          disposition: 'DUNES',
+          flow: 'STILL',
+          ambient: 'grayscale',
+          shape: 'ROUND',
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_work/_awesome_ipsums',
       name: '_AWESOME_IPSUMS',
       component: Project,
-      meta: {
+      meta: page({
         title: i18n.global.t('work._awesome_ipsums.title'),
         codeName: i18n.global.t('work._awesome_ipsums.shortTitle'),
         description: i18n.global.t('work._awesome_ipsums.description'),
@@ -308,49 +367,63 @@ const router = createRouter({
         background: filters._awesome_ipsums,
         backgroundImage: 'none',
         theme: 'DARK',
-        filter: filters.grayscale,
-        pov: 'DIVE_8',
-        quality: 'LOW',
-      },
+        ...scenery({
+          disposition: 'DUNES',
+          flow: 'STILL',
+          ambient: 'grayscale',
+          shape: 'ROUND',
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_contact',
       name: '_CONTACT',
       component: Contact,
-      meta: {
+      meta: page({
         title: i18n.global.t('contact.title'),
         view: 'CONTACT',
         theme: 'DEFAULT',
-        filter: filters.grayscale,
-        pov: 'RESET',
-        quality: 'HIGH',
-      },
+        ...scenery({
+          disposition: 'VALLEY',
+          flow: 'LEFT',
+          ambient: 'grayscale',
+          live: true,
+        }),
+      }),
     },
     {
       path: '/_attribution',
       name: '_ATTRIBUTION',
       component: Attribution,
-      meta: {
+      meta: page({
         title: i18n.global.t('attribution.title'),
         view: 'ATTRIBUTION',
         theme: 'DEFAULT',
-        filter: filters.grayscale,
-        pov: 'RESET',
-        quality: 'HIGH',
-      },
+        ...scenery({
+          disposition: 'DUNES',
+          flow: 'DOWN',
+          ambient: 'grayscale',
+          live: true,
+          endless: true,
+        }),
+      }),
     },
     {
       path: '/:pathMatch(.*)*',
       name: '_UNKNOWN',
       component: Unknown,
-      meta: {
+      meta: page({
         title: i18n.global.t('unknown.title'),
         view: 'UNKNOWN',
         theme: 'DEFAULT',
-        filter: filters.creamySun,
-        pov: 'RESET',
-        quality: 'HIGH',
-      },
+        ...scenery({
+          disposition: INSPECTOR_DEFAULT,
+          flow: 'STRAIGHT',
+          ambient: 'creamySun',
+        }),
+      }),
     },
   ],
 })

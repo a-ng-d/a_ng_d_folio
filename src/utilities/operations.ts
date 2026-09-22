@@ -57,3 +57,26 @@ export const scrollVelocity = (
 
   return velocity
 }
+
+export const randomFloat = (min: number, max: number) =>
+  Math.random() * (max - min) + min
+
+export const lerp = (from: number, to: number, amount: number) =>
+  from + (to - from) * amount
+
+export const clamp = (value: number, min: number, max: number) =>
+  value < min ? min : value > max ? max : value
+
+export const toRadians = (degrees: number) => (degrees * Math.PI) / 180
+
+export const wrap = (value: number, min: number, max: number) => {
+  const range = max - min
+
+  if (range <= 0) return value
+
+  let wrapped = value
+  if (wrapped < min) wrapped += range * Math.ceil((min - wrapped) / range)
+  if (wrapped > max) wrapped -= range * Math.ceil((wrapped - max) / range)
+
+  return wrapped
+}

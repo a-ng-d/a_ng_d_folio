@@ -48,6 +48,7 @@
     <input
       type="checkbox"
       name="swt"
+      :checked="isActive"
       :aria-label="alt"
       @click="moveSwitch"
       @key.space="moveSwitch"
@@ -131,8 +132,6 @@
     --knob-background: var(--color-clay)
 
   .switch
-    &[data-theme="DARK"]
-      --text-color: var(--color-soil)
 
   // Event
   .switch

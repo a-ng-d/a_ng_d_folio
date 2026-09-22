@@ -38,7 +38,7 @@
           :label="cta"
           layout="SIMPLE"
           :alt="alt"
-          theme="DEFAULT"
+          :theme="theme"
         />
       </div>
     </div>
@@ -77,9 +77,4 @@
       &__content
         flex-flow: column nowrap
         align-items: center
-
-  // Aspect
-  .link-container__content
-    &[data-theme="DARK"]
-      --text-color: var(--color-soil)
 </style>

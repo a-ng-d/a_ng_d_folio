@@ -22,7 +22,7 @@
 
   // Aspect
   .container
-    background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box, var(--gradient-biscarosse-sunset) border-box
+    background: var(--container-color)
     border: var(--border-size) solid transparent
     box-shadow: 0 0 0 var(--button-border-size) var(--outline-color)
 

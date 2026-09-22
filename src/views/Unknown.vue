@@ -10,7 +10,19 @@
   import Footer from '@/components/patterns/Footer.vue'
   import { Home } from 'lucide-vue-next'
   import { filters } from '@/utilities/colors'
+  import type { DispositionKind } from '@/glitchscape/dispositions'
+  import {
+    DISPOSITION_KEYS,
+    FREE_DISPOSITION,
+    INSPECTOR_DEFAULT,
+    dispositions,
+  } from '@/glitchscape/dispositions'
+  import { FLOW_KINDS } from '@/glitchscape/flow'
+  import { SCENE_DEFAULTS } from '@/glitchscape/universes'
+  import { fineKnobs, knobs } from '@/glitchscape/knobs'
   import { i18n } from '@/lang'
+
+  const FADE = 48
 
   export default defineComponent({
     name: 'Unknown',
@@ -34,6 +46,38 @@
         default: 'DEFAULT',
       },
     },
+    computed: {
+      defaults(): typeof SCENE_DEFAULTS {
+        return SCENE_DEFAULTS
+      },
+      isFree(): boolean {
+        return this.disposition === FREE_DISPOSITION
+      },
+      effective(): { [key: string]: number | string | undefined } {
+        return {
+          ...(dispositions[this.disposition] as {
+            [key: string]: number | string | undefined
+          }),
+          ...this.fine,
+        }
+      },
+      fineControls(): Array<{ field: string; options: Array<Option> }> {
+        return fineKnobs.map((knob) => {
+          const current = this.effective[knob.field]
+          let active = knob.steps.findIndex((step) => step.value === current)
+          if (active < 0) active = 0
+
+          return {
+            field: knob.field,
+            options: knob.steps.map((step, index: number) => ({
+              name: i18n.global.t(`unknown.${knob.field}.${step.key}`),
+              action: () => this.pickKnob(knob.field, step.value),
+              isActive: index === active,
+            })) as Array<Option>,
+          }
+        })
+      },
+    },
     watch: {
       filter(to) {
         to['name'] === 'NIGHTLY'
@@ -44,56 +88,6 @@
     data: function () {
       return {
         store,
-        povs: [
-          {
-            name: i18n.global.t('unknown.pov.reset'),
-            action: () => {
-              this.$emit('pov', 'RESET')
-              this.$el.scrollTop = 0
-            },
-            isActive: true,
-          },
-          {
-            name: i18n.global.t('unknown.pov.invert'),
-            action: () => {
-              this.$emit('pov', 'INVERT')
-              this.$el.scrollTop = 0
-            },
-            isActive: false,
-          },
-          {
-            name: i18n.global.t('unknown.pov.dontLookUp'),
-            action: () => {
-              this.$emit('pov', 'DONTLOOKUP')
-              this.$el.scrollTop = 0
-            },
-            isActive: false,
-          },
-          {
-            name: i18n.global.t('unknown.pov.dive'),
-            action: () => {
-              this.$emit('pov', 'DIVE_3')
-              this.$el.scrollTop = 0
-            },
-            isActive: false,
-          },
-          {
-            name: i18n.global.t('unknown.pov.side'),
-            action: () => {
-              this.$emit('pov', 'SIDE')
-              this.$el.scrollTop = 0
-            },
-            isActive: false,
-          },
-          {
-            name: i18n.global.t('unknown.pov.global'),
-            action: () => {
-              this.$emit('pov', 'GLOBAL')
-              this.$el.scrollTop = 0
-            },
-            isActive: false,
-          },
-        ] as Array<Option>,
         filters: [
           {
             name: i18n.global.t('unknown.filter.creamySun'),
@@ -120,13 +114,86 @@
             action: () => this.$emit('filter', filters.nightly),
             isActive: false,
           },
+          {
+            name: i18n.global.t('unknown.filter.softSteel'),
+            action: () => this.$emit('filter', filters.softSteel),
+            isActive: false,
+          },
+          {
+            name: i18n.global.t('unknown.filter.biscarosse'),
+            action: () => this.$emit('filter', filters.biscarosse),
+            isActive: false,
+          },
         ] as Array<Option>,
+        disposition: INSPECTOR_DEFAULT as DispositionKind,
+        flow: FLOW_KINDS[0] as string,
+        arrangements: DISPOSITION_KEYS.map((key: DispositionKind) => ({
+          name: i18n.global.t(`unknown.disposition.${key.toLowerCase()}`),
+          action: () => this.pickDisposition(key),
+          isActive: key === INSPECTOR_DEFAULT,
+        })) as Array<Option>,
+        flows: FLOW_KINDS.map((kind: string, index: number) => ({
+          name: i18n.global.t(`unknown.flow.${kind.toLowerCase()}`),
+          action: () => this.pickFlow(kind),
+          isActive: index === 0,
+        })) as Array<Option>,
+        fine: {} as { [key: string]: number | string },
+        atmosphere: {} as { [key: string]: number | string | boolean },
+        generation: 0 as number,
+        fadeTop: 0 as number,
+        fadeBottom: 0 as number,
+        controls: knobs.map((knob) => ({
+          field: knob.field,
+          options: knob.steps.map((step, index: number) => ({
+            name: i18n.global.t(`unknown.${knob.field}.${step.key}`),
+            action: () => this.pickKnob(knob.field, step.value),
+            isActive: index === 0,
+          })) as Array<Option>,
+        })),
         interval: 0 as number,
         currentInterval: 0 as number,
         fadeInterval: 0,
       }
     },
     methods: {
+      measureFades() {
+        const panel = this.$refs.panel as HTMLElement | undefined
+        if (panel === undefined) return
+
+        const hidden = panel.scrollHeight - panel.clientHeight
+
+        this.fadeTop = Math.min(panel.scrollTop, FADE)
+        this.fadeBottom = Math.min(Math.max(hidden - panel.scrollTop, 0), FADE)
+      },
+      pickDisposition(key: DispositionKind) {
+        this.fine =
+          key === FREE_DISPOSITION
+            ? ({ ...this.effective } as { [key: string]: number | string })
+            : {}
+        this.disposition = key
+        this.generation += 1
+        this.applyScene()
+        this.$nextTick(this.measureFades)
+      },
+      pickKnob(field: string, value: number | string | boolean) {
+        if (fineKnobs.some((knob) => knob.field === field))
+          this.fine = { ...this.fine, [field]: value as number | string }
+        else this.atmosphere = { ...this.atmosphere, [field]: value }
+
+        this.applyScene()
+      },
+      pickFlow(kind: string) {
+        this.flow = kind
+        this.applyScene()
+      },
+      applyScene() {
+        this.$emit('scene', {
+          ...dispositions[this.disposition],
+          flow: this.flow,
+          ...this.fine,
+          ...this.atmosphere,
+        })
+      },
       mouseOffsetCatching() {
         this.$el.onmousemove = (e: MouseEvent) => {
           this.currentInterval = e.clientX - e.clientY
@@ -155,12 +222,15 @@
       },
     },
     mounted: function () {
+      this.measureFades()
+      window.addEventListener('resize', this.measureFades)
       this.mouseOffsetCatching()
       this.clickCatching()
       this.touchCatching()
       this.fadeInterval = setInterval(this.fadeOutUI, 4000)
     },
     unmounted: function () {
+      window.removeEventListener('resize', this.measureFades)
       this.$el.onmousemove = null
       this.$el.onclick = null
       clearInterval(this.fadeInterval)
@@ -175,7 +245,9 @@
         <Transition
           name="slide-up"
           style="
-            --delay: calc(var(--duration-turtoise) + (var(--duration-step) * 1));
+            --delay: calc(
+              var(--duration-turtoise) + (var(--duration-step) * 1)
+            );
           "
           appear
         >
@@ -200,7 +272,9 @@
         <Transition
           name="slide-up"
           style="
-            --delay: calc(var(--duration-turtoise) + (var(--duration-step) * 3));
+            --delay: calc(
+              var(--duration-turtoise) + (var(--duration-step) * 3)
+            );
           "
           appear
         >
@@ -211,18 +285,37 @@
         <Transition
           name="slide-up"
           style="
-            --delay: calc(var(--duration-turtoise) + (var(--duration-step) * 2));
+            --delay: calc(
+              var(--duration-turtoise) + (var(--duration-step) * 2)
+            );
           "
           appear
         >
           <div
             v-if="store.device != 'MOBILE'"
-            class="controler__content controler__content"
+            class="controler__content controler__content--scrolling"
+            ref="panel"
+            @scroll.passive="measureFades"
+            :style="`--fade-top: ${fadeTop}px; --fade-bottom: ${fadeBottom}px`"
           >
             <Dropdown
-              :label="$t('unknown.pov.title')"
-              :options="povs"
-              :alt="$t('actions.pov')"
+              :label="$t('unknown.disposition.title')"
+              :options="arrangements"
+              :alt="$t('actions.disposition')"
+              :theme="theme"
+            />
+            <Dropdown
+              :label="$t('unknown.flow.title')"
+              :options="flows"
+              :alt="$t('actions.flow')"
+              :theme="theme"
+            />
+            <Dropdown
+              v-for="control in controls"
+              :key="control.field"
+              :label="$t(`unknown.${control.field}.title`)"
+              :options="control.options"
+              :alt="$t(`actions.${control.field}`)"
               :theme="theme"
             />
             <Dropdown
@@ -231,24 +324,44 @@
               :alt="$t('actions.filter')"
               :theme="theme"
             />
+            <Dropdown
+              v-for="control in isFree ? fineControls : []"
+              :key="`${control.field}-${generation}`"
+              :label="$t(`unknown.${control.field}.title`)"
+              :options="control.options"
+              :alt="$t(`actions.${control.field}`)"
+              :theme="theme"
+            />
             <Container>
-              <div class="switch-container">
+              <div class="switch-row">
                 <Switch
-                  :label="$t('unknown.glitch.title')"
-                  :on="() => $emit('glitch', true)"
-                  :off="() => $emit('glitch', false)"
-                  :alt="$t('actions.glitch')"
+                  :label="$t('unknown.ambience.title')"
+                  :active="defaults.ambience === 'LIVE'"
+                  :on="() => pickKnob('ambience', 'LIVE')"
+                  :off="() => pickKnob('ambience', 'FIXED')"
+                  :alt="$t('actions.ambience')"
                   :theme="theme"
                 />
-              </div>
-            </Container>
-            <Container>
-              <div class="switch-container">
+                <Switch
+                  :label="$t('unknown.endless.title')"
+                  :active="defaults.endless"
+                  :on="() => pickKnob('endless', true)"
+                  :off="() => pickKnob('endless', false)"
+                  :alt="$t('actions.endless')"
+                  :theme="theme"
+                />
                 <Switch
                   :label="$t('unknown.quality.title')"
                   :on="() => $emit('quality', 'LOW')"
                   :off="() => $emit('quality', 'HIGH')"
                   :alt="$t('actions.quality')"
+                  :theme="theme"
+                />
+                <Switch
+                  :label="$t('unknown.glitch.title')"
+                  :on="() => $emit('glitch', true)"
+                  :off="() => $emit('glitch', false)"
+                  :alt="$t('actions.glitch')"
                   :theme="theme"
                 />
               </div>
@@ -292,6 +405,21 @@
       flex: 0 1 340rem
       gap: var(--layout-row-gap) 0
       pointer-events: all
+
+      &--scrolling
+        flex-basis: calc(340rem + (var(--spacing-m-300) * 2))
+        max-height: 100%
+        overflow-y: auto
+        overflow-x: hidden
+        overscroll-behavior: contain
+        padding: var(--spacing-m-300)
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 var(--fade-top, 0px), #000 calc(100% - var(--fade-bottom, 0px)), transparent 100%)
+        mask-image: linear-gradient(to bottom, transparent 0, #000 var(--fade-top, 0px), #000 calc(100% - var(--fade-bottom, 0px)), transparent 100%)
+
+  .switch-row
+    display: flex
+    flex-flow: column nowrap
+    gap: var(--layout-row-gap) 0
 
   @include device.tablet
     .controler

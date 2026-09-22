@@ -48,9 +48,4 @@
       &__content
         flex-flow: column nowrap
         align-items: center
-
-  // Aspect
-  .content-container__content
-    &[data-theme="DARK"]
-      --text-color: var(--color-soil)
 </style>

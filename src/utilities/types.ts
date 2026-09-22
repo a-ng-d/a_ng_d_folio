@@ -1,3 +1,5 @@
+import type { SceneOverride } from '@/glitchscape/types'
+
 export interface Colors {
   deepBlack: HuSaLiTy
   titaniumWhite: HuSaLiTy
@@ -17,6 +19,8 @@ export interface Filters {
   candyFloss: HuBrInSaGr
   softWind: HuBrInSaGr
   grayscale: HuBrInSaGr
+  softSteel: HuBrInSaGr
+  biscarosse: HuBrInSaGr
   _ui_color_palette: HuBrInSaGr
   _jeprendsquoi: HuBrInSaGr
   _jean_bobby_radio: HuBrInSaGr
@@ -42,44 +46,7 @@ export interface HuBrInSaGr {
   saturation: string
   grayscale: string
   name: string
-}
-
-export interface MountainProps {
-  widthRange: Array<number>
-  heightRange: Array<number>
-  x: number
-  y: number
-  zRange: Array<number>
-  foreground: HuSaLiTy
-  background: HuSaLiTy
-}
-
-export interface CloudProps {
-  widthRange: Array<number>
-  heightRange: Array<number>
-  x: number
-  y: number
-  zRange: Array<number>
-  rows: number
-  foreground: HuSaLiTy
-  background: HuSaLiTy
-}
-
-export interface StarProps {
-  sizeRange: Array<number>
-  x: number
-  z: number
-  yRange: Array<number>
-  foreground: HuSaLiTy
-  background: HuSaLiTy
-}
-
-export interface PovProps extends Position {
-  cX: number
-  cY: number
-  cZ: number
-  rH: number
-  rV: number
+  gradient?: string
 }
 
 export interface ParticleProps extends Path {
@@ -149,8 +116,8 @@ export interface Meta {
   backgroundImage: string
   theme: string
   filter: HuBrInSaGr
-  pov: string
   quality: string
+  scene?: SceneOverride
 }
 
 export interface Option {
@@ -163,9 +130,9 @@ export interface Asset {
   [x: string]: Array<string>
 }
 
-type JSONValue = string | number | boolean | JSONObject | JSONArray
+export type JSONValue = string | number | boolean | JSONObject | JSONArray
 
-interface JSONObject {
+export interface JSONObject {
   [x: string]: JSONValue
 }
 
