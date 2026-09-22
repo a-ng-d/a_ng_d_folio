@@ -226,7 +226,7 @@
         >
           <div
             v-if="store.device != 'MOBILE'"
-            class="controler__content controler__content--controls"
+            class="controler__content controler__content"
           >
             <Dropdown
               :label="$t('unknown.disposition.title')"
@@ -254,7 +254,7 @@
               :alt="$t('actions.filter')"
               :theme="theme"
             />
-            <Container class="controler__switches">
+            <Container>
               <div class="switch-row">
                 <Switch
                   :label="$t('unknown.ambience.title')"
@@ -318,16 +318,6 @@
       flex: 0 1 340rem
       gap: var(--layout-row-gap) 0
       pointer-events: all
-
-      &--controls
-        display: grid
-        grid-template-columns: repeat(2, 1fr)
-        align-content: end
-        flex: 0 1 720rem
-        gap: var(--layout-row-gap) var(--layout-column-gap)
-
-    &__switches
-      grid-column: 1 / -1
 
   .switch-row
     display: flex

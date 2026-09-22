@@ -39,16 +39,6 @@
     "mute": "Mute/Unmute sound",
     "disposition": "Change the disposition of the relief",
     "flow": "Change the direction of the journey",
-    "speed": "Change the pace of the journey",
-    "shape": "Change the silhouette of the relief",
-    "corridor": "Change how tight the corridor runs",
-    "relief": "Change the height of the relief",
-    "breadth": "Change the width of the relief",
-    "altitude": "Change how high the journey runs",
-    "fov": "Change the framing",
-    "density": "Change how crowded the corridor is",
-    "curvature": "Change how sharply the corridor bends",
-    "turbulence": "Change how broken the skyline is",
     "lighting": "Change the light on the relief",
     "rain": "Change the rainfall",
     "ambience": "Follow the local hour and weather, or hold the ambience as set"
@@ -1182,84 +1172,6 @@
       "up": "Climbing",
       "down": "Descending",
       "still": "Held still"
-    },
-    "speed": {
-      "title": "Pace",
-      "drifting": "Drifting",
-      "slow": "Slow",
-      "steady": "Steady",
-      "brisk": "Brisk",
-      "racing": "Racing"
-    },
-    "shape": {
-      "title": "Silhouette",
-      "swell": "Swell",
-      "organic": "Organic",
-      "triangle": "Triangle",
-      "round": "Round",
-      "trapezoid": "Trapezoid",
-      "extrusion": "Extrusion",
-      "mixed": "Mixed"
-    },
-    "corridor": {
-      "title": "Corridor",
-      "slit": "Slit",
-      "tight": "Tight",
-      "open": "Open",
-      "wide": "Wide",
-      "vast": "Vast"
-    },
-    "relief": {
-      "title": "Height",
-      "flat": "Flat",
-      "even": "Even",
-      "tall": "Tall",
-      "towering": "Towering"
-    },
-    "breadth": {
-      "title": "Width",
-      "narrow": "Narrow",
-      "slim": "Slim",
-      "even": "Even",
-      "broad": "Broad",
-      "sprawling": "Sprawling"
-    },
-    "altitude": {
-      "title": "Altitude",
-      "above": "Above",
-      "level": "Level",
-      "low": "Low",
-      "sunken": "Sunken"
-    },
-    "fov": {
-      "title": "Framing",
-      "long": "Long lens",
-      "narrow": "Narrow",
-      "even": "Even",
-      "wide": "Wide",
-      "fisheye": "Fisheye"
-    },
-    "density": {
-      "title": "Density",
-      "sparse": "Sparse",
-      "light": "Light",
-      "even": "Even",
-      "thick": "Thick",
-      "packed": "Packed"
-    },
-    "curvature": {
-      "title": "Bend",
-      "faint": "Faint",
-      "gentle": "Gentle",
-      "marked": "Marked",
-      "sharp": "Sharp"
-    },
-    "turbulence": {
-      "title": "Roughness",
-      "smooth": "Smooth",
-      "soft": "Soft",
-      "broken": "Broken",
-      "jagged": "Jagged"
     },
     "rain": {
       "title": "Rain",
