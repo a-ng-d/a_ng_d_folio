@@ -142,15 +142,17 @@
           tone = (alpha: number) =>
             `hsla(${ground.hue}, ${ground.saturation}%, ${ground.lightness}%, ${alpha})`
 
-        // Solid for the first third, so the feet of the range are gone
-        // rather than merely dimmed, then a long tail up into the sky.
+        // Solid for its lower half, so the feet of the range are gone rather
+        // than dimmed, then a long tail up into the sky. It lies over the
+        // water plane drawn in the sketch and finishes the same job: the
+        // surface stops the relief, this dissolves the seam above it.
         return [
           `height: ${Math.round(this.resolvedScene.mist * 100)}%`,
           `background-image: linear-gradient(to top, ${tone(1)} 0%, ${tone(
             1
-          )} 24%, ${tone(0.88)} 44%, ${tone(0.5)} 68%, ${tone(
-            0.16
-          )} 86%, ${tone(0)} 100%)`,
+          )} 38%, ${tone(0.92)} 56%, ${tone(0.62)} 72%, ${tone(
+            0.24
+          )} 88%, ${tone(0)} 100%)`,
         ].join('; ')
       },
       halo(): number {

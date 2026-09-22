@@ -26,6 +26,28 @@ import {
 /** Travel distance per frame at speed 1, unchanged from the original sketch. */
 const REFERENCE_SPEED = 30
 
+/**
+ * Draws flat, sorted geometry without a depth test.
+ *
+ * Raising the precision of the depth buffer only ever made sheets at similar
+ * depths fight more slowly. They are flat cards drawn back to front, so depth
+ * order is already exact and the buffer has nothing to add: letting every
+ * fragment through removes the contest instead of tightening it.
+ *
+ * Depth is still written, so whatever is drawn afterwards is occluded by them
+ * correctly — and since they are sorted, the value left at each pixel is the
+ * nearest one.
+ */
+const painted = (sk: any, draw: () => void) => {
+  const gl = sk._renderer && sk._renderer.GL
+
+  if (!gl) return draw()
+
+  gl.depthFunc(gl.ALWAYS)
+  draw()
+  gl.depthFunc(gl.LESS)
+}
+
 /** Most extra travel per frame a scroll can add, on top of the drift. */
 const MAX_SURGE = 420
 
@@ -454,10 +476,32 @@ export const createGlitchscape = (
       // frame draws them the way they overlap, and two sheets at the same
       // depth stay in the same order instead of trading places.
       mountains.sort((a, b) => a.position.z - b.position.z)
-      mountains.forEach((mountain) => mountain.move(stage))
+      painted(sk, () => mountains.forEach((mountain) => mountain.move(stage)))
       clouds.forEach((cloud) => cloud.move(stage))
       stars.forEach((star) => star.move(stage))
       sk.pop()
+
+      // The water. It lies at a fixed depth below the eye rather than at a
+      // height in the world, so it stays a horizon whatever the journey is
+      // flying at, and it is a surface with no thickness — the slab this
+      // replaces was five units thick across a million and fought with
+      // everything it touched.
+      if (scene.mist > 0) {
+        const surface = scene.palette.ground
+
+        sk.push()
+        sk.noStroke()
+        sk.translate(0, pov.position.y + bounds.height * 0.75, 0)
+        sk.rotateX(Math.PI / 2)
+        sk.fill(
+          surface.hue,
+          surface.saturation,
+          surface.lightness,
+          clamp(0.45 + scene.mist * 0.55, 0, 1)
+        )
+        sk.plane(bounds.limitX * 10, bounds.limitZ * 1.4)
+        sk.pop()
+      }
 
       // Weather falls around the camera, outside the bend and outside the
       // altitude of the journey.

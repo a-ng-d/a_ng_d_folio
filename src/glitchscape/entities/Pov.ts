@@ -1,7 +1,6 @@
 import type { Center, Position, Rotation } from '@/utilities/types'
 import type { Bearing, PovProps, Stage } from '@/glitchscape/types'
 import { doMap, lerp } from '@/utilities/operations'
-import { bend } from '@/glitchscape/bend'
 
 /**
  * The camera rig. It lerps towards a target framing and layers two optional
@@ -79,16 +78,10 @@ export class Pov {
       target = this.params.target,
       speed = this.params.speed,
       eye = target.position.y,
-      // Aim where the corridor goes, not where the nose points: on a bend the
-      // gap between the two walls would otherwise drift off to one side.
-      aimed = bend(
-        stage.flow.axis,
-        stage.flow.turn,
-        stage.turnRadius,
-        target.center.x,
-        target.center.y,
-        target.center.z
-      )
+      // The camera holds its heading. The corridor curves away in front of
+      // it rather than the rig turning to follow, now that the relief itself
+      // carries the bend.
+      aimed = target.center
 
     this.position.x = lerp(this.position.x, target.position.x, speed)
     this.position.y = lerp(this.position.y, eye, speed)
