@@ -5,7 +5,6 @@
   import Button from '@/components/ui/Button.vue'
   import Container from '@/components/ui/Container.vue'
   import Label from '@/components/ui/Label.vue'
-  import { doMap } from '@/utilities/operations'
   import { ChevronDown, Check } from 'lucide-vue-next'
 
   export default defineComponent({
@@ -33,17 +32,26 @@
         store,
         isExpanded: false as boolean,
         activeOption: 0 as number,
+        listTop: 0 as number,
+        listLeft: 0 as number,
+        listWidth: 0 as number,
         allOptions: this.options as Array<Option>,
       }
     },
     watch: {
       isExpanded(to) {
-        if (to == false) window.removeEventListener('click', this.closeOptions)
-        else
+        if (to == false) {
+          window.removeEventListener('click', this.closeOptions)
+          window.removeEventListener('scroll', this.dismiss, true)
+          window.removeEventListener('resize', this.dismiss)
+        } else {
+          window.addEventListener('scroll', this.dismiss, true)
+          window.addEventListener('resize', this.dismiss)
           setTimeout(
             () => (this.$refs.option as Array<HTMLElement>)[0].focus(),
             200
           )
+        }
       },
     },
     methods: {
@@ -54,8 +62,44 @@
         this.isExpanded = false
         callback?.()
       },
+      /**
+       * Places the open list against its own button.
+       *
+       * The list is rendered to the body so that no scrolling ancestor can
+       * clip it, which means its position has to be measured rather than
+       * declared. An estimate is used on opening so nothing flashes, then
+       * refined once the list exists and its padding can be read off it.
+       *
+       * The active option is laid over the button, as before, and the whole
+       * list is held inside the viewport so the topmost dropdowns stay usable.
+       */
+      placeList(measured?: HTMLElement) {
+        const anchor = (this.$el as HTMLElement).querySelector('.button'),
+          rect = (anchor || this.$el).getBoundingClientRect(),
+          optionHeight = rect.height,
+          count = this.allOptions.length,
+          height =
+            measured !== undefined
+              ? measured.getBoundingClientRect().height
+              : count * optionHeight + optionHeight * 0.75,
+          padding = (height - count * optionHeight) / 2,
+          room = window.innerHeight - height - 8
+
+        this.listLeft = rect.left
+        this.listWidth = rect.width
+        this.listTop = Math.min(
+          Math.max(rect.top - padding - this.activeOption * optionHeight, 8),
+          room > 8 ? room : 8
+        )
+      },
       openOptions() {
+        this.placeList()
         this.isExpanded = true
+        this.$nextTick(() => {
+          const list = this.$refs.list as { $el?: HTMLElement } | undefined
+          if (list !== undefined && list.$el !== undefined)
+            this.placeList(list.$el)
+        })
         setTimeout(
           () => window.addEventListener('click', this.closeOptions),
           200
@@ -65,14 +109,8 @@
         if ((e.target as HTMLElement).closest('.dropdown__list') == null)
           this.isExpanded = false
       },
-      map(current: number) {
-        return doMap(
-          current,
-          0,
-          this.allOptions.length - 1,
-          this.allOptions.length - 1,
-          0
-        )
+      dismiss() {
+        this.isExpanded = false
       },
       browseOptions(e: FocusEvent) {
         const relatedTarget: EventTarget | null = e.relatedTarget
@@ -86,6 +124,11 @@
       this.activeOption = this.allOptions.findIndex((option) => {
         if (option.isActive == true) return true
       })
+    },
+    unmounted: function () {
+      window.removeEventListener('click', this.closeOptions)
+      window.removeEventListener('scroll', this.dismiss, true)
+      window.removeEventListener('resize', this.dismiss)
     },
   })
 </script>
@@ -113,31 +156,38 @@
         <ChevronDown :size="24" />
       </template>
     </Button>
-    <Transition name="switch" style="--delay: 0ms">
-      <Container class="dropdown__list" v-if="isExpanded">
-        <ul class="dropdown__options">
-          <li
-            v-for="(option, index) in allOptions"
-            :key="option.name"
-            class="dropdown__option"
-            :class="option.isActive ? 'dropdown__option--active' : ''"
-            @click="setOption(option.action, option.name, index)"
-            @keyup.space="setOption(option.action, option.name, index)"
-            @focus="store.isFocus = true"
-            @blur="store.isFocus = false"
-            tabindex="0"
-            ref="option"
-          >
-            <Transition name="switch">
-              <i v-if="option.isActive" class="dropdown__option__icon"
-                ><Check :size="24"
-              /></i>
-            </Transition>
-            <Label class="dropdown__option__label" :label="option.name" />
-          </li>
-        </ul>
-      </Container>
-    </Transition>
+    <Teleport to="body">
+      <Transition name="switch" style="--delay: 0ms">
+        <Container
+          class="dropdown__list"
+          v-if="isExpanded"
+          ref="list"
+          :style="`top: ${listTop}px; left: ${listLeft}px; min-width: ${listWidth}px`"
+        >
+          <ul class="dropdown__options">
+            <li
+              v-for="(option, index) in allOptions"
+              :key="option.name"
+              class="dropdown__option"
+              :class="option.isActive ? 'dropdown__option--active' : ''"
+              @click="setOption(option.action, option.name, index)"
+              @keyup.space="setOption(option.action, option.name, index)"
+              @focus="store.isFocus = true"
+              @blur="store.isFocus = false"
+              tabindex="0"
+              ref="option"
+            >
+              <Transition name="switch">
+                <i v-if="option.isActive" class="dropdown__option__icon"
+                  ><Check :size="24"
+                /></i>
+              </Transition>
+              <Label class="dropdown__option__label" :label="option.name" />
+            </li>
+          </ul>
+        </Container>
+      </Transition>
+    </Teleport>
   </div>
 </template>
 
@@ -150,10 +200,7 @@
 
     &__list
       padding: var(--spacing-m-200)
-      min-width: 100%
-      min-height: 100%
-      position: absolute
-      bottom: calc((var(--spacing-m-200) + var(--sizing-xs-000) + (v-bind("map(activeOption)") * var(--button-height-size))) * -1)
+      position: fixed
       z-index: 5
 
     &__options

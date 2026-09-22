@@ -275,8 +275,7 @@
         >
           <div
             v-if="store.device != 'MOBILE'"
-            class="controler__content"
-            :class="isFree ? 'controler__content--wide' : null"
+            class="controler__content controler__content--scrolling"
           >
             <Dropdown
               :label="$t('unknown.disposition.title')"
@@ -380,15 +379,15 @@
       gap: var(--layout-row-gap) 0
       pointer-events: all
 
-      &--wide
-        display: grid
-        grid-template-columns: repeat(2, 1fr)
-        align-content: end
-        flex: 0 1 720rem
-        gap: var(--layout-row-gap) var(--layout-column-gap)
-
-        .container
-          grid-column: 1 / -1
+      // One ordered list, however long it gets. The dropdowns render to the
+      // body, so nothing here can clip the list one of them opens.
+      &--scrolling
+        max-height: 100%
+        overflow-y: auto
+        overflow-x: hidden
+        overscroll-behavior: contain
+        padding: var(--spacing-xs-000)
+        margin: calc(var(--spacing-xs-000) * -1)
 
   .switch-row
     display: flex
