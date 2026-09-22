@@ -78,10 +78,7 @@ export class Cloud {
     this.params.rows = this.backup.rows.map((row) => ({ ...row }))
   }
 
-  wireframe = () => {
-    this.params.isStrokedOnly = true
-    this.params.alpha = this.params.beta
-  }
+  wireframe = () => (this.params.isStrokedOnly = true)
 
   unwireframe = () => (this.params.isStrokedOnly = false)
 
@@ -150,11 +147,11 @@ export class Cloud {
         row.x = randomFloat(-bounds.width / 4, bounds.width / 4)
       })
 
+    // How present it is, not how filled — a wireframe cloud is drawn with
+    // this on its stroke, so collapsing it here would unhang the sky.
     this.params.alpha = lerp(
       this.params.alpha,
-      this.params.isStrokedOnly || this.params.isRetiring
-        ? 0
-        : this.params.beta,
+      this.params.isRetiring ? 0 : this.params.beta,
       this.params.speed * (this.params.isRetiring ? 1 : 0.5)
     )
 
@@ -219,19 +216,18 @@ export class Cloud {
     sk.push()
     sk.translate(placed.x, placed.y, placed.z)
 
-    if (corrupted !== null)
+    if (this.params.isStrokedOnly) sk.noFill()
+    else if (corrupted !== null)
       sk.fill(corrupted.hue, corrupted.saturation, corrupted.lightness)
     else
       sk.fill(
         lit.hue,
         lit.saturation,
         lit.lightness,
-        this.params.isStrokedOnly
-          ? opacity
-          : Math.min(opacity, this.params.beta)
+        Math.min(opacity, this.params.beta)
       )
 
-    sk.stroke(tint.hue, tint.saturation, tint.lightness)
+    sk.stroke(tint.hue, tint.saturation, tint.lightness, opacity)
     sk.strokeWeight(this.params.beta)
 
     this.params.rows.forEach((row) => {

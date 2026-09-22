@@ -262,9 +262,13 @@ export class Mountain {
     // blended surfaces drawn in the wrong order swap places frame to frame.
     // A sheet on its way out fades at the rate it folds, so it reaches
     // nothing and flat together rather than one long after the other.
+    //
+    // This is how present the sheet is, not how filled: a wireframe is drawn
+    // with the same value on its stroke instead. Taking it to nothing here
+    // was taking the wireframe with it.
     const opacity = lerp(
       this.params.alpha,
-      this.params.isStrokedOnly || this.params.isRetiring ? 0 : 1,
+      this.params.isRetiring ? 0 : 1,
       this.params.speed * (this.params.isRetiring ? 1 : 0.5)
     )
     this.params.alpha = opacity > 0.99 ? 1 : opacity
@@ -356,23 +360,23 @@ export class Mountain {
       this.position.z
     )
 
+    const shown = corrupted !== null ? corrupted : tint
+
     sk.push()
     sk.translate(placed.x, placed.y, placed.z)
     sk.rotateX(this.params.radians)
 
-    sk.noStroke()
-    if (corrupted !== null)
-      sk.fill(corrupted.hue, corrupted.saturation, corrupted.lightness, opacity)
-    else sk.fill(tint.hue, tint.saturation, tint.lightness, opacity)
-    this.face(sk)
-
-    // Paper has no wire around it. The outline is only there to carry the
-    // wireframe, where the faces have already faded to nothing.
+    // Paper has no wire around it, and a wireframe has no paper in it: one or
+    // the other, never a filled face carrying an outline it cannot show.
     if (this.params.isStrokedOnly) {
       sk.noFill()
-      sk.stroke(tint.hue, tint.saturation, tint.lightness)
+      sk.stroke(shown.hue, shown.saturation, shown.lightness, opacity)
       sk.strokeWeight(1)
       this.outline(sk)
+    } else {
+      sk.noStroke()
+      sk.fill(shown.hue, shown.saturation, shown.lightness, opacity)
+      this.face(sk)
     }
 
     sk.pop()
