@@ -35,7 +35,7 @@
    * own contrast to whatever is written over it. Being the colour of the sky,
    * it takes the relief down towards the far distance rather than greying it.
    */
-  const VEIL = 0.22
+  const VEIL = 0.35
 
   /**
    * The living background.
@@ -119,16 +119,33 @@
       ambientGradient(): string | null {
         return this.resolvedFilter.gradient || null
       },
+      /**
+       * Everything about the ambient that can be crossfaded.
+       *
+       * The inversion is not in here, and cannot be: a browser interpolates
+       * a filter function by function, and `invert(0.5)` maps every pixel to
+       * the same grey. Sliding from an inverted tint to an ordinary one takes
+       * the whole scene through it — four of the eight project tints do —
+       * which is a relief that dissolves and comes back for no reason a
+       * viewer can see.
+       */
       filterStyle(): string {
         const filter = this.resolvedFilter
 
         return [
           `hue-rotate(${filter.hue})`,
           `brightness(${filter.brightness})`,
-          `invert(${filter.invert})`,
           `saturate(${filter.saturation})`,
           `grayscale(${filter.grayscale})`,
         ].join(' ')
+      },
+      /**
+       * The inversion, on a layer of its own and with no transition on it, so
+       * it flips rather than fades through the flat grey in the middle. The
+       * hue and the light keep gliding underneath it.
+       */
+      polarityStyle(): string {
+        return `filter: invert(${this.resolvedFilter.invert})`
       },
       /** Degrees of roll held while the journey leans into an endless turn. */
       roll(): number {
@@ -270,13 +287,15 @@
       :style="`background-image: ${ambientGradient}`"
     ></div>
   </Transition>
-  <div
-    class="background"
-    id="sketch"
-    :style="`filter: ${filterStyle}; transform: ${transformStyle}`"
-  >
-    <div class="veil" :style="veilStyle"></div>
-    <div v-if="resolvedScene.mist > 0" class="mist" :style="mistStyle"></div>
+  <div class="polarity" :style="polarityStyle">
+    <div
+      class="background"
+      id="sketch"
+      :style="`filter: ${filterStyle}; transform: ${transformStyle}`"
+    >
+      <div class="veil" :style="veilStyle"></div>
+      <div v-if="resolvedScene.mist > 0" class="mist" :style="mistStyle"></div>
+    </div>
   </div>
   <div
     v-if="halo > 0"
@@ -307,6 +326,15 @@
     pointer-events: none
     mix-blend-mode: soft-light
     transition: opacity 1.2s ease, background-image 1.2s ease
+
+  .polarity
+    width: 100%
+    height: 100%
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 0
+    // No transition, on purpose. See polarityStyle.
 
   .background
     width: 100%
