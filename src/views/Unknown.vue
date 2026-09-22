@@ -350,8 +350,7 @@
                   :theme="theme"
                 />
                 <Switch
-                  :label="$t('unknown.endless.title')"
-                  :active="true"
+:label="$t('unknown.endless.title')"
                   :on="() => pickKnob('endless', true)"
                   :off="() => pickKnob('endless', false)"
                   :alt="$t('actions.endless')"
