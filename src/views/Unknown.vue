@@ -12,6 +12,7 @@
   import { filters } from '@/utilities/colors'
   import {
     DISPOSITION_KEYS,
+    FREE_DISPOSITION,
     INSPECTOR_DEFAULT,
     dispositions,
   } from '@/glitchscape/dispositions'
@@ -39,6 +40,41 @@
       theme: {
         type: String,
         default: 'DEFAULT',
+      },
+    },
+    computed: {
+      isFree(): boolean {
+        return this.disposition === FREE_DISPOSITION
+      },
+      /** Where every geometry dimension actually sits right now. */
+      effective(): { [key: string]: number | string | undefined } {
+        return {
+          ...(dispositions[this.disposition] as {
+            [key: string]: number | string | undefined
+          }),
+          ...this.fine,
+        }
+      },
+      /**
+       * Built from the values in play rather than fixed at startup, so opening
+       * Free shows what the disposition you came from had set — which is the
+       * point: seeing how a disposition moves each dial before moving it.
+       */
+      fineControls(): Array<{ field: string; options: Array<Option> }> {
+        return fineKnobs.map((knob) => {
+          const current = this.effective[knob.field]
+          let active = knob.steps.findIndex((step) => step.value === current)
+          if (active < 0) active = 0
+
+          return {
+            field: knob.field,
+            options: knob.steps.map((step, index: number) => ({
+              name: i18n.global.t(`unknown.${knob.field}.${step.key}`),
+              action: () => this.pickKnob(knob.field, step.value),
+              isActive: index === active,
+            })) as Array<Option>,
+          }
+        })
       },
     },
     watch: {
@@ -95,17 +131,12 @@
         })) as Array<Option>,
         // One dropdown per dimension of the scene, laid over whatever the
         // disposition already set, so each can be judged on its own.
-        overrides: {} as { [key: string]: number | string },
-        isFineTuning: false as boolean,
+        // Kept apart: a disposition owns the geometry, so picking one must
+        // not wipe the weather or the light you set alongside it.
+        fine: {} as { [key: string]: number | string },
+        atmosphere: {} as { [key: string]: number | string },
+        generation: 0 as number,
         controls: knobs.map((knob) => ({
-          field: knob.field,
-          options: knob.steps.map((step, index: number) => ({
-            name: i18n.global.t(`unknown.${knob.field}.${step.key}`),
-            action: () => this.pickKnob(knob.field, step.value),
-            isActive: index === 0,
-          })) as Array<Option>,
-        })),
-        fineControls: fineKnobs.map((knob) => ({
           field: knob.field,
           options: knob.steps.map((step, index: number) => ({
             name: i18n.global.t(`unknown.${knob.field}.${step.key}`),
@@ -120,12 +151,20 @@
     },
     methods: {
       pickDisposition(key: string) {
+        // Free inherits what you were just looking at; anything else replaces it.
+        this.fine =
+          key === FREE_DISPOSITION
+            ? ({ ...this.effective } as { [key: string]: number | string })
+            : {}
         this.disposition = key
-        this.overrides = {}
+        this.generation += 1
         this.applyScene()
       },
       pickKnob(field: string, value: number | string) {
-        this.overrides = { ...this.overrides, [field]: value }
+        if (fineKnobs.some((knob) => knob.field === field))
+          this.fine = { ...this.fine, [field]: value }
+        else this.atmosphere = { ...this.atmosphere, [field]: value }
+
         this.applyScene()
       },
       pickFlow(kind: string) {
@@ -136,7 +175,8 @@
         this.$emit('scene', {
           ...dispositions[this.disposition],
           flow: this.flow,
-          ...this.overrides,
+          ...this.fine,
+          ...this.atmosphere,
         })
       },
       mouseOffsetCatching() {
@@ -236,7 +276,7 @@
           <div
             v-if="store.device != 'MOBILE'"
             class="controler__content"
-            :class="isFineTuning ? 'controler__content--wide' : null"
+            :class="isFree ? 'controler__content--wide' : null"
           >
             <Dropdown
               :label="$t('unknown.disposition.title')"
@@ -259,28 +299,24 @@
               :theme="theme"
             />
             <Dropdown
-              v-for="control in isFineTuning ? fineControls : []"
-              :key="control.field"
-              :label="$t(`unknown.${control.field}.title`)"
-              :options="control.options"
-              :alt="$t(`actions.${control.field}`)"
-              :theme="theme"
-            />
-            <Dropdown
               :label="$t('unknown.filter.title')"
               :options="filters"
               :alt="$t('actions.filter')"
               :theme="theme"
             />
+            <!--The geometry only opens on the disposition that allows moving it.
+                Remounting on each pick is what lets every dial show where the
+                disposition you came from had left it.-->
+            <Dropdown
+              v-for="control in isFree ? fineControls : []"
+              :key="`${control.field}-${generation}`"
+              :label="$t(`unknown.${control.field}.title`)"
+              :options="control.options"
+              :alt="$t(`actions.${control.field}`)"
+              :theme="theme"
+            />
             <Container>
               <div class="switch-row">
-                <Switch
-                  :label="$t('unknown.fine.title')"
-                  :on="() => (isFineTuning = true)"
-                  :off="() => (isFineTuning = false)"
-                  :alt="$t('actions.fine')"
-                  :theme="theme"
-                />
                 <Switch
                   :label="$t('unknown.ambience.title')"
                   :on="() => pickKnob('ambience', 'LIVE')"
@@ -289,17 +325,17 @@
                   :theme="theme"
                 />
                 <Switch
-                  :label="$t('unknown.glitch.title')"
-                  :on="() => $emit('glitch', true)"
-                  :off="() => $emit('glitch', false)"
-                  :alt="$t('actions.glitch')"
-                  :theme="theme"
-                />
-                <Switch
                   :label="$t('unknown.quality.title')"
                   :on="() => $emit('quality', 'LOW')"
                   :off="() => $emit('quality', 'HIGH')"
                   :alt="$t('actions.quality')"
+                  :theme="theme"
+                />
+                <Switch
+                  :label="$t('unknown.glitch.title')"
+                  :on="() => $emit('glitch', true)"
+                  :off="() => $emit('glitch', false)"
+                  :alt="$t('actions.glitch')"
                   :theme="theme"
                 />
               </div>

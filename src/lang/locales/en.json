@@ -51,8 +51,7 @@
     "fov": "Change the framing",
     "density": "Change how crowded the corridor is",
     "curvature": "Change how sharply the corridor bends",
-    "turbulence": "Change how broken the skyline is",
-    "fine": "Reveal the dimensions a disposition already sets"
+    "turbulence": "Change how broken the skyline is"
   },
   "global": {
     "author": "Aurélien Grimaud aka. a_ng_d⚡️",
@@ -1172,7 +1171,8 @@
       "dunes": "Dunes",
       "terraces": "Terraces",
       "monoliths": "Monoliths",
-      "swarm": "Swarm"
+      "swarm": "Swarm",
+      "free": "Free"
     },
     "flow": {
       "title": "Direction",
@@ -1280,9 +1280,6 @@
       "soft": "Soft",
       "broken": "Broken",
       "jagged": "Jagged"
-    },
-    "fine": {
-      "title": "Fine tuning"
     },
     "filter": {
       "title": "Ambient",

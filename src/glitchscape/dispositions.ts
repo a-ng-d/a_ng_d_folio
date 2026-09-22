@@ -176,7 +176,27 @@ export const dispositions: { [key: string]: Disposition } = {
     turbulence: 0.8,
     curvature: 0.75,
   },
+  /** Yours. Starts wherever you came from. */
+  FREE: {
+    shape: 'SWELL',
+    corridor: 0.5,
+    breadth: 0.45,
+    relief: 1,
+    altitude: 0,
+    fov: 60,
+    density: 1.6,
+    speed: 0.75,
+    curvature: 0.55,
+    turbulence: 0.6,
+  },
 }
+
+/**
+ * The one disposition that is not an arrangement but a licence to make one.
+ * Selecting it carries in whatever was on screen a moment earlier, so tuning
+ * starts from what you were just looking at rather than from nothing.
+ */
+export const FREE_DISPOSITION = 'FREE'
 
 export const DISPOSITION_KEYS = Object.keys(dispositions)
 
