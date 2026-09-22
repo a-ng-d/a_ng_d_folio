@@ -16,6 +16,7 @@
     dispositions,
   } from '@/glitchscape/dispositions'
   import { FLOW_KINDS } from '@/glitchscape/flow'
+  import { knobs } from '@/glitchscape/knobs'
   import { i18n } from '@/lang'
 
   export default defineComponent({
@@ -50,56 +51,6 @@
     data: function () {
       return {
         store,
-        povs: [
-          {
-            name: i18n.global.t('unknown.pov.reset'),
-            action: () => {
-              this.$emit('pov', 'RESET')
-              this.$el.scrollTop = 0
-            },
-            isActive: true,
-          },
-          {
-            name: i18n.global.t('unknown.pov.invert'),
-            action: () => {
-              this.$emit('pov', 'INVERT')
-              this.$el.scrollTop = 0
-            },
-            isActive: false,
-          },
-          {
-            name: i18n.global.t('unknown.pov.dontLookUp'),
-            action: () => {
-              this.$emit('pov', 'DONTLOOKUP')
-              this.$el.scrollTop = 0
-            },
-            isActive: false,
-          },
-          {
-            name: i18n.global.t('unknown.pov.dive'),
-            action: () => {
-              this.$emit('pov', 'DIVE_3')
-              this.$el.scrollTop = 0
-            },
-            isActive: false,
-          },
-          {
-            name: i18n.global.t('unknown.pov.side'),
-            action: () => {
-              this.$emit('pov', 'SIDE')
-              this.$el.scrollTop = 0
-            },
-            isActive: false,
-          },
-          {
-            name: i18n.global.t('unknown.pov.global'),
-            action: () => {
-              this.$emit('pov', 'GLOBAL')
-              this.$el.scrollTop = 0
-            },
-            isActive: false,
-          },
-        ] as Array<Option>,
         filters: [
           {
             name: i18n.global.t('unknown.filter.creamySun'),
@@ -133,15 +84,26 @@
         // one against another. Direction is picked apart from them: two pages
         // facing opposite ways share a disposition and differ only by flow.
         arrangements: DISPOSITION_KEYS.map((key: string) => ({
-          name: key,
+          name: i18n.global.t(`unknown.disposition.${key.toLowerCase()}`),
           action: () => this.pickDisposition(key),
           isActive: key === INSPECTOR_DEFAULT,
         })) as Array<Option>,
         flows: FLOW_KINDS.map((kind: string, index: number) => ({
-          name: kind,
+          name: i18n.global.t(`unknown.flow.${kind.toLowerCase()}`),
           action: () => this.pickFlow(kind),
           isActive: index === 0,
         })) as Array<Option>,
+        // One dropdown per dimension of the scene, laid over whatever the
+        // disposition already set, so each can be judged on its own.
+        overrides: {} as { [key: string]: number | string },
+        controls: knobs.map((knob) => ({
+          field: knob.field,
+          options: knob.steps.map((step, index: number) => ({
+            name: i18n.global.t(`unknown.${knob.field}.${step.key}`),
+            action: () => this.pickKnob(knob.field, step.value),
+            isActive: index === 0,
+          })) as Array<Option>,
+        })),
         interval: 0 as number,
         currentInterval: 0 as number,
         fadeInterval: 0,
@@ -150,6 +112,11 @@
     methods: {
       pickDisposition(key: string) {
         this.disposition = key
+        this.overrides = {}
+        this.applyScene()
+      },
+      pickKnob(field: string, value: number | string) {
+        this.overrides = { ...this.overrides, [field]: value }
         this.applyScene()
       },
       pickFlow(kind: string) {
@@ -160,6 +127,7 @@
         this.$emit('scene', {
           ...dispositions[this.disposition],
           flow: this.flow,
+          ...this.overrides,
         })
       },
       mouseOffsetCatching() {
@@ -258,7 +226,7 @@
         >
           <div
             v-if="store.device != 'MOBILE'"
-            class="controler__content controler__content"
+            class="controler__content controler__content--controls"
           >
             <Dropdown
               :label="$t('unknown.disposition.title')"
@@ -273,9 +241,11 @@
               :theme="theme"
             />
             <Dropdown
-              :label="$t('unknown.pov.title')"
-              :options="povs"
-              :alt="$t('actions.pov')"
+              v-for="control in controls"
+              :key="control.field"
+              :label="$t(`unknown.${control.field}.title`)"
+              :options="control.options"
+              :alt="$t(`actions.${control.field}`)"
               :theme="theme"
             />
             <Dropdown
@@ -345,6 +315,13 @@
       flex: 0 1 340rem
       gap: var(--layout-row-gap) 0
       pointer-events: all
+
+      &--controls
+        display: grid
+        grid-template-columns: repeat(2, 1fr)
+        align-content: end
+        flex: 0 1 720rem
+        gap: var(--layout-row-gap) var(--layout-column-gap)
 
   @include device.tablet
     .controler

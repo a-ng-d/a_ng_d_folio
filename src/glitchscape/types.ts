@@ -170,7 +170,8 @@ export interface Stage {
   quality: QualityKind
   resolution: number
   speed: number
-  boost: number
+  /** Extra travel per frame, pushed by the scroll. */
+  surge: number
   /** Radius of the bend, derived from the curvature of the scene. */
   turnRadius: number
   time: number

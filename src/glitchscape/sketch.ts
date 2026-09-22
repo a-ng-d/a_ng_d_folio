@@ -24,6 +24,9 @@ import {
 /** Travel distance per frame at speed 1, unchanged from the original sketch. */
 const REFERENCE_SPEED = 30
 
+/** Most extra travel per frame a scroll can add, on top of the drift. */
+const MAX_SURGE = 420
+
 /** Gentlest bend an arc flow will ever take, as a fraction of the depth. */
 const MIN_CURVATURE = 0.05
 
@@ -71,7 +74,7 @@ export const createGlitchscape = (
       quality: options.quality,
       resolution: RESOLUTIONS[options.quality] || RESOLUTIONS.HIGH,
       speed: REFERENCE_SPEED,
-      boost: 1,
+      surge: 0,
       turnRadius: 0,
       time: 0,
       pointer: { x: 0, y: 0 },
@@ -349,11 +352,14 @@ export const createGlitchscape = (
       stage.bounds.width = sk.width
       stage.bounds.height = sk.height
 
-      // Scrolling rushes the world forward, then the boost decays back.
+      // A scroll pushes the world down the corridor rather than walking the
+      // camera along it. The relief keeps coming and keeps wrapping, so there
+      // is no end of the track to arrive at — scrolling illustrates the
+      // infinite instead of running out of it.
       const delta = Math.abs(scroll.position - scroll.previous)
       scroll.previous = scroll.position
-      stage.boost = lerp(stage.boost, 1 + clamp(delta / 24, 0, 2), 0.12)
-      stage.speed = REFERENCE_SPEED * scene.speed * stage.boost
+      stage.surge = lerp(stage.surge, clamp(delta * 6, 0, MAX_SURGE), 0.2)
+      stage.speed = REFERENCE_SPEED * scene.speed + stage.surge
 
       stage.turnRadius = turnRadius()
       floor = lerp(floor, stage.flow.axis === 'ARC_X' ? 0 : 0.7, 0.01)
@@ -372,7 +378,6 @@ export const createGlitchscape = (
       )
       camera.pan(pov.rotation.v)
       camera.tilt(pov.rotation.h)
-      camera.move(0, 0, pov.progress.z)
 
       applyLighting(sk, scene.lighting, scene.palette, bounds, stage.time)
 
@@ -419,7 +424,6 @@ export const createGlitchscape = (
     setScroll: (progress: number, limit: number) => {
       scroll.position = progress
       scroll.limit = limit
-      pov.zoom(progress, limit + 200)
     },
     setScene: (scene: SceneConfig) => {
       stage.scene = scene

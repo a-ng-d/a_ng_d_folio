@@ -1,37 +1,33 @@
-import type { Center, Position, Progress, Rotation } from '@/utilities/types'
+import type { Center, Position, Rotation } from '@/utilities/types'
 import type { Bearing, PovProps, Stage } from '@/glitchscape/types'
 import { doMap, lerp } from '@/utilities/operations'
 import { bend } from '@/glitchscape/bend'
 
 /**
- * The camera rig. It lerps towards a target framing, and layers three optional
- * modifiers on top: a pointer push, a device orientation tilt, and the scroll
- * driven dolly. The flow bearing is added last, so leaning into an endless turn
- * never fights with the point of view a route asked for.
+ * The camera rig. It lerps towards a target framing and layers two optional
+ * modifiers on top: a pointer push and a device orientation tilt.
+ *
+ * It does not travel. A scroll pushes the world down the corridor instead of
+ * walking the camera along it — which is what keeps a bent corridor bent from
+ * where you sit, and what leaves the journey without an end to reach.
  */
 export class Pov {
   props: PovProps
   position: Position
   center: Center
   rotation: Rotation
-  progress: Progress
   bearing: Bearing
   params: {
     target: {
       position: Position
       center: Center
       rotation: Rotation
-      progress: Progress
     }
     speed: number
-    scrollPosition: number
-    scrollLimit: number
     alpha: number
     beta: number
-    distance: number
     isPushed: boolean
     isOriented: boolean
-    isScrolling: boolean
   }
 
   constructor(props: PovProps) {
@@ -39,24 +35,18 @@ export class Pov {
     this.position = { x: props.x, y: props.y, z: props.z }
     this.center = { x: props.cX, y: props.cY, z: props.cZ }
     this.rotation = { v: props.rV, h: props.rH }
-    this.progress = { x: 0, y: 0, z: 0 }
     this.bearing = { yaw: 0, pitch: 0, roll: 0 }
     this.params = {
       target: {
         position: { x: 0, y: 0, z: 0 },
         center: { x: 0, y: 0, z: 0 },
         rotation: { v: 0, h: 0 },
-        progress: { x: 0, y: 0, z: 0 },
       },
       speed: 0.1,
-      scrollPosition: 0,
-      scrollLimit: 0,
       alpha: 0,
       beta: 75,
-      distance: 0,
       isPushed: false,
       isOriented: false,
-      isScrolling: false,
     }
   }
 
@@ -74,10 +64,6 @@ export class Pov {
     }
     this.params.target.center = { x: center[0], y: center[1], z: center[2] }
     this.params.target.rotation = { v: rotation[0], h: rotation[1] }
-    this.params.target.progress.z = 0
-    this.params.distance =
-      this.params.target.position.z - this.params.target.center.z
-    this.params.isScrolling = false
   }
 
   push = () => (this.params.isPushed = true)
@@ -86,12 +72,6 @@ export class Pov {
     this.params.isOriented = true
     this.params.alpha = alpha
     this.params.beta = beta
-  }
-
-  zoom = (scrollPosition: number, scrollLimit: number) => {
-    this.params.isScrolling = true
-    this.params.scrollPosition = scrollPosition
-    this.params.scrollLimit = scrollLimit
   }
 
   move = (stage: Stage) => {
@@ -190,21 +170,5 @@ export class Pov {
         0.1
       )
     }
-
-    if (this.params.isScrolling)
-      this.progress.z = lerp(
-        this.progress.z,
-        doMap(
-          this.params.scrollPosition,
-          0,
-          this.params.scrollLimit,
-          0,
-          this.params.distance < 0
-            ? this.params.distance
-            : -this.params.distance
-        ),
-        speed
-      )
-    else this.progress.z = lerp(this.progress.z, target.progress.z, speed * 2)
   }
 }
