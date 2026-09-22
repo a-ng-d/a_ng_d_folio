@@ -415,7 +415,7 @@
         overflow-y: auto
         overflow-x: hidden
         overscroll-behavior: contain
-        padding: var(--spacing-m-000)
+        padding: var(--spacing-m-300)
         margin: calc(var(--spacing-m-000) * -1)
         -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 var(--fade-top, 0px), #000 calc(100% - var(--fade-bottom, 0px)), transparent 100%)
         mask-image: linear-gradient(to bottom, transparent 0, #000 var(--fade-top, 0px), #000 calc(100% - var(--fade-bottom, 0px)), transparent 100%)
