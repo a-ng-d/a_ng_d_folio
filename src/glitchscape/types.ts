@@ -234,11 +234,9 @@ export type { Position, Center, Rotation, Progress }
 
 /** Public remote of a running sketch. */
 export interface GlitchscapeController {
-  setPov: (name: string) => void
   setQuality: (quality: string) => void
   setGlitched: (isGlitched: boolean) => void
   setScroll: (progress: number, limit: number) => void
   setScene: (scene: SceneConfig) => void
-  setProjectsNumber: (projects: number) => void
   destroy: () => void
 }

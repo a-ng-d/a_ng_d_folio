@@ -27,7 +27,6 @@
       return {
         store,
         filter: {},
-        pov: '' as string,
         quality: '' as string,
         universe: DEFAULT_UNIVERSE as string,
         sceneOverride: null as SceneOverride | null,
@@ -54,7 +53,6 @@
         this.view = to.meta.view
         document.title = to.meta.title
         this.filter = to.meta.filter
-        this.pov = to.meta.pov
         this.quality = to.meta.quality
         this.universe = to.meta.universe || DEFAULT_UNIVERSE
         this.sceneOverride = to.meta.scene || null
@@ -269,8 +267,6 @@
         :theme="theme"
         @activeProjectPosition="activeProjectPosition = $event"
         @activeProjectBackground="filter = $event"
-        @activeProjectPov="pov = $event"
-        @pov="pov = $event"
         @quality="quality = $event"
         @universe="universe = $event"
         @scene="sceneOverride = $event"
@@ -287,12 +283,10 @@
     :universe="universe"
     :scene="sceneOverride"
     :filter="filter"
-    :pov="pov"
     :quality="quality"
     :isGlitched="isGlitched"
     :scrollProgress="view != 'PROJECT' ? scrollProgress : 0"
     :scrollLimit="pageHeight - viewHeight"
-    :numberOfProjects="numberOfProjects"
   />
 
   <!--Audio-->

@@ -33,9 +33,7 @@ const router = createRouter({
         view: 'HOME',
         theme: 'DEFAULT',
         filter: filters.creamySun,
-        pov: 'RESET',
         quality: 'HIGH',
-        universe: 'DAYBREAK',
         scene: {
           ...dispositions.CANYON,
           flow: 'STRAIGHT',
@@ -53,7 +51,6 @@ const router = createRouter({
         view: 'SHORT',
         theme: 'DEFAULT',
         filter: filters.softSteel,
-        pov: 'INVERT',
         quality: 'HIGH',
         universe: 'SOFT_STEEL',
         scene: {
@@ -73,7 +70,6 @@ const router = createRouter({
         view: 'UNIVERSE',
         theme: 'DARK',
         filter: filters.biscarosse,
-        pov: 'DONTLOOKUP',
         quality: 'HIGH',
         universe: 'BISCAROSSE',
         scene: {
@@ -93,7 +89,6 @@ const router = createRouter({
         view: 'CORE',
         theme: 'DEFAULT',
         filter: filters.candyFloss,
-        pov: 'RESET',
         quality: 'HIGH',
         universe: 'CANDY_FLOSS',
         scene: {
@@ -113,14 +108,13 @@ const router = createRouter({
         view: 'LAB',
         theme: 'DEFAULT',
         filter: filters.softWind,
-        pov: 'RESET',
         quality: 'LOW',
         universe: 'SOFT_WIND',
         scene: {
           ...dispositions.VALLEY,
           flow: 'RIGHT',
           ambience: 'LIVE',
-          endless: true,
+          endless: false,
         },
       },
     },
@@ -134,7 +128,6 @@ const router = createRouter({
         // No ambient of its own: Work.vue hands over the filter of whichever
         // project is in view, so the colour walks down the list with you.
         filter: filters.grayscale,
-        pov: 'DIVE_3',
         quality: 'LOW',
         universe: 'MONOLITH',
         scene: {
@@ -167,7 +160,6 @@ const router = createRouter({
         backgroundImage: 'none',
         theme: 'DEFAULT',
         filter: filters.grayscale,
-        pov: 'DIVE_1',
         quality: 'LOW',
         universe: 'DAYBREAK',
         scene: {
@@ -205,7 +197,6 @@ const router = createRouter({
           'url(/images/_work/_axeptio_gusto/background.webp) 0% 0% / cover no-repeat',
         theme: 'DEFAULT',
         filter: filters.grayscale,
-        pov: 'DIVE_2',
         quality: 'LOW',
         universe: 'DAYBREAK',
         scene: {
@@ -243,7 +234,6 @@ const router = createRouter({
           'url(/images/_work/_iobeya_whiteboard/background.webp) 0% 0% no-repeat',
         theme: 'DARK',
         filter: filters.grayscale,
-        pov: 'DIVE_3',
         quality: 'LOW',
         universe: 'DAYBREAK',
         scene: {
@@ -281,7 +271,6 @@ const router = createRouter({
           'url(/images/_work/_iobeya_mobile_ds/background.webp) 0% 0% / cover no-repeat',
         theme: 'DARK',
         filter: filters.grayscale,
-        pov: 'DIVE_4',
         quality: 'LOW',
         universe: 'DAYBREAK',
         scene: {
@@ -319,7 +308,6 @@ const router = createRouter({
           'url(/images/_work/_iobeya_creativity/background.webp) 0% 0% / cover no-repeat',
         theme: 'DARK',
         filter: filters.grayscale,
-        pov: 'DIVE_5',
         quality: 'LOW',
         universe: 'DAYBREAK',
         scene: {
@@ -357,7 +345,6 @@ const router = createRouter({
           'url(/images/_work/_jeprendsquoi/background.svg) 50% / cover no-repeat',
         theme: 'DEFAULT',
         filter: filters.grayscale,
-        pov: 'DIVE_6',
         quality: 'LOW',
         universe: 'DAYBREAK',
         scene: {
@@ -394,7 +381,6 @@ const router = createRouter({
         backgroundImage: 'none',
         theme: 'DARK',
         filter: filters.grayscale,
-        pov: 'DIVE_7',
         quality: 'LOW',
         universe: 'DAYBREAK',
         scene: {
@@ -431,7 +417,6 @@ const router = createRouter({
         backgroundImage: 'none',
         theme: 'DARK',
         filter: filters.grayscale,
-        pov: 'DIVE_8',
         quality: 'LOW',
         universe: 'DAYBREAK',
         scene: {
@@ -455,7 +440,6 @@ const router = createRouter({
         view: 'CONTACT',
         theme: 'DEFAULT',
         filter: filters.grayscale,
-        pov: 'RESET',
         quality: 'HIGH',
         universe: 'MONOLITH',
         scene: {
@@ -475,7 +459,6 @@ const router = createRouter({
         view: 'ATTRIBUTION',
         theme: 'DEFAULT',
         filter: filters.grayscale,
-        pov: 'RESET',
         quality: 'HIGH',
         universe: 'MONOLITH',
         scene: {
@@ -495,7 +478,6 @@ const router = createRouter({
         view: 'UNKNOWN',
         theme: 'DEFAULT',
         filter: filters.creamySun,
-        pov: 'RESET',
         quality: 'HIGH',
         universe: 'TEMPEST',
         scene: { ...dispositions[INSPECTOR_DEFAULT] },

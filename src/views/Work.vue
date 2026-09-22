@@ -68,14 +68,6 @@
           'activeProjectBackground',
           (this.projects[this.position] as Route).meta.background
         )
-        setTimeout(
-          () =>
-            this.$emit(
-              'activeProjectPov',
-              (this.projects[this.position] as Route).meta.pov
-            ),
-          1500
-        )
       },
       splitLetters(el: Element) {
         const title: Element = el.children[0],
@@ -106,10 +98,6 @@
       this.$emit(
         'activeProjectBackground',
         (this.projects[this.position] as Route).meta.background
-      )
-      this.$emit(
-        'activeProjectPov',
-        (this.projects[this.position] as Route).meta.pov
       )
     },
   })

@@ -44,10 +44,6 @@
         type: Object as PropType<Partial<HuBrInSaGr>>,
         default: () => filters.grayscale,
       },
-      pov: {
-        type: String,
-        default: 'RESET',
-      },
       quality: {
         type: String,
         default: 'HIGH',
@@ -60,10 +56,6 @@
       scrollLimit: {
         type: Number,
         required: true,
-      },
-      numberOfProjects: {
-        type: Number,
-        default: 3,
       },
     },
     data: function () {
@@ -190,9 +182,6 @@
       },
     },
     watch: {
-      pov(to: string) {
-        this.controller?.setPov(to)
-      },
       quality(to: string) {
         this.controller?.setQuality(to)
       },
@@ -201,9 +190,6 @@
       },
       scrollProgress(to: number) {
         this.controller?.setScroll(to, this.scrollLimit)
-      },
-      numberOfProjects(to: number) {
-        this.controller?.setProjectsNumber(to)
       },
       resolvedScene: {
         handler(to: SceneConfig) {
@@ -229,10 +215,8 @@
       this.controller = createGlitchscape({
         parent: 'sketch',
         scene: this.liveScene,
-        pov: this.pov,
         quality: (this.quality === 'LOW' ? 'LOW' : 'HIGH') as QualityKind,
         device: this.store.device,
-        projects: this.numberOfProjects,
       })
 
       this.askWeather()

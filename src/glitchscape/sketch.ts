@@ -16,7 +16,6 @@ import { applyLighting } from '@/glitchscape/lighting'
 import { resolveLighting } from '@/glitchscape/ambience'
 import {
   clamp,
-  doMap,
   lerp,
   randomFloat,
   toRadians,
@@ -62,10 +61,8 @@ const RESOLUTIONS: { [key: string]: number } = {
 export interface GlitchscapeOptions {
   parent: string
   scene: SceneConfig
-  pov: string
   quality: QualityKind
   device: string
-  projects: number
 }
 
 const computeBounds = (): Bounds => {
@@ -122,73 +119,28 @@ export const createGlitchscape = (
     camera: any = null,
     rainfall: Rainfall | null = null,
     resizing = 0,
-    projects = options.projects,
-    requestedPov = options.pov,
     isReady = false,
     onOrientationChange: (() => void) | null = null,
     onDeviceOrientation: ((e: any) => void) | null = null
 
-  const povs: { [key: string]: () => void } = {
-    RESET: () =>
-      pov.animate(
-        0.05,
-        [0, -bounds.height * 0.75, -bounds.height * 0.1],
-        [0, -bounds.height * 0.75, -bounds.limitZ],
-        [0, 0]
-      ),
-    INVERT: () =>
-      pov.animate(
-        0.05,
-        [0, -bounds.height * 0.75, -bounds.limitZ],
-        [0, -bounds.height * 0.75, -bounds.height * 0.1],
-        [0, 0]
-      ),
-    DONTLOOKUP: () =>
-      pov.animate(
-        0.05,
-        [0, -bounds.height * 2, -bounds.height * 0.1],
-        [0, -bounds.height * 10, -bounds.limitZ * 0.5],
-        [0, 0]
-      ),
-    SIDE: () =>
-      pov.animate(
-        0.05,
-        [bounds.limitX * 4, -bounds.height * 0.75, -bounds.limitZ * 0.5],
-        [bounds.limitX * 4, -bounds.height * 0.75, -bounds.limitZ],
-        [Math.PI / 2, 0]
-      ),
-    GLOBAL: () =>
-      pov.animate(
-        0.05,
-        [0, -bounds.height * 10, bounds.height * 5],
-        [0, -bounds.height * 0.1, -bounds.limitZ * 0.5],
-        [0, 0]
-      ),
-  }
-
-  const dive = (increment: number) => {
-    const reach = bounds.limitX * 0.75 * clampCorridor(stage.scene.corridor),
-      lane = doMap(increment, 1, projects, -reach, reach)
-
+  /**
+   * The one framing there is: low in the corridor, level, looking down it.
+   *
+   * A set of named points of view used to live here, from when the camera was
+   * the thing that moved. It is not any more — the world travels past a fixed
+   * rig, and how high the eye sits and how wide it sees belong to the
+   * disposition now, as `altitude` and `fov`. What was left could only argue
+   * with them, and one preset did worse than that: it sat the camera at the
+   * far end of the corridor looking back, which paints the sheets in exactly
+   * the order the sort exists to prevent.
+   */
+  const frame = () =>
     pov.animate(
       0.05,
-      [lane, bounds.height * 5, -bounds.height * 0.1],
-      [lane, bounds.height * 0.75, -bounds.limitZ],
+      [0, -bounds.height * 0.75, -bounds.height * 0.1],
+      [0, -bounds.height * 0.75, -bounds.limitZ],
       [0, 0]
     )
-  }
-
-  const applyPov = (name: string) => {
-    requestedPov = name
-
-    if (!isReady) return
-
-    const dived = /^DIVE_(\d+)$/.exec(name)
-    if (dived !== null) return dive(parseInt(dived[1], 10))
-
-    const preset = povs[name]
-    if (preset !== undefined) preset()
-  }
 
   const applyQuality = (quality: string) => {
     const resolved: QualityKind = quality === 'LOW' ? 'LOW' : 'HIGH',
@@ -365,7 +317,7 @@ export const createGlitchscape = (
     stars = []
     populate()
     applyQuality(stage.quality)
-    applyPov(requestedPov)
+    frame()
   }
 
   const onResize = () => {
@@ -412,7 +364,7 @@ export const createGlitchscape = (
       populate()
 
       isReady = true
-      applyPov(requestedPov)
+      frame()
       applyQuality(stage.quality)
     }
 
@@ -516,7 +468,6 @@ export const createGlitchscape = (
   })
 
   return {
-    setPov: (name: string) => applyPov(name),
     setQuality: (quality: string) => applyQuality(quality),
     setGlitched: (isGlitched: boolean) => {
       if (isGlitched === stage.isGlitched) return
@@ -542,7 +493,6 @@ export const createGlitchscape = (
       stage.flow = resolveFlow(scene.flow, scene.curvature)
       reconcile()
     },
-    setProjectsNumber: (value: number) => (projects = value),
     destroy: () => {
       window.clearTimeout(resizing)
       window.removeEventListener('resize', onResize)
