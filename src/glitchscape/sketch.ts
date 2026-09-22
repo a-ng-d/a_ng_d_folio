@@ -100,7 +100,6 @@ export const createGlitchscape = (
     camera: any = null,
     rainfall: Rainfall | null = null,
     resizing = 0,
-    floor = 1,
     projects = options.projects,
     requestedPov = options.pov,
     isReady = false,
@@ -350,7 +349,7 @@ export const createGlitchscape = (
     const sk = stage.sk
     if (sk === null) return
 
-    sk.resizeCanvas(sk.windowWidth, sk.windowHeight, true)
+    sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
     window.clearTimeout(resizing)
     resizing = window.setTimeout(replay, 250)
   }
@@ -370,16 +369,17 @@ export const createGlitchscape = (
       const sky = stage.scene.palette.sky
       sk.background(sky.hue, sky.saturation, sky.lightness)
 
+      // A desktop browser exposes `screen.orientation` too, so branching on
+      // it left the window resize path unregistered on the very machines that
+      // have a window to resize. Both are wired now, and the sketch keeps its
+      // own listener rather than relying on p5 calling back.
+      sk.windowResized = onResize
+      window.addEventListener('resize', onResize)
+
       if (screen.orientation !== undefined) {
-        onOrientationChange = () =>
-          setTimeout(
-            () => sk.resizeCanvas(sk.windowWidth, sk.windowHeight, true),
-            100
-          )
+        onOrientationChange = () => setTimeout(onResize, 100)
         screen.orientation.addEventListener('change', onOrientationChange, true)
-      } else
-        sk.windowResized = () =>
-          sk.resizeCanvas(sk.windowWidth, sk.windowHeight, true)
+      }
 
       if (window.DeviceOrientationEvent) {
         onDeviceOrientation = (e: any) => pov.orient(e.alpha, e.beta)
@@ -395,8 +395,7 @@ export const createGlitchscape = (
 
     sk.draw = () => {
       const scene = stage.scene,
-        sky = scene.palette.sky,
-        ground = scene.palette.ground
+        sky = scene.palette.sky
 
       stage.time = sk.millis()
       stage.pointer.x = sk.mouseX
@@ -418,19 +417,22 @@ export const createGlitchscape = (
       stage.speed = REFERENCE_SPEED * scene.speed + stage.surge
 
       stage.turnRadius = turnRadius()
-      floor = lerp(floor, stage.flow.axis === 'ARC_X' ? 0 : 0.7, 0.01)
-
       sk.clear()
       sk.background(sky.hue, sky.saturation, sky.lightness)
 
       pov.move(stage)
       camera.setPosition(pov.position.x, pov.position.y, pov.position.z)
       camera.lookAt(pov.center.x, pov.center.y, pov.center.z)
+      // Depth precision is set by the ratio of these two. At 100 against
+      // twice the range it was coarse enough for sheets at similar depths to
+      // trade places frame to frame, which is what made them flicker. Nothing
+      // is drawn within the near plane anyway: the corridor fades out well
+      // before the camera reaches it.
       camera.perspective(
         toRadians(clamp(scene.fov, 20, 110)),
         sk.width / sk.height,
-        100,
-        bounds.limitZ * 2
+        bounds.height * 0.6,
+        bounds.limitZ * 1.15
       )
       camera.pan(pov.rotation.v)
       camera.tilt(pov.rotation.h)
@@ -452,12 +454,6 @@ export const createGlitchscape = (
       mountains.forEach((mountain) => mountain.move(stage))
       clouds.forEach((cloud) => cloud.move(stage))
       stars.forEach((star) => star.move(stage))
-      sk.pop()
-
-      sk.push()
-      sk.noStroke()
-      sk.fill(ground.hue, ground.saturation, ground.lightness, floor)
-      sk.box(bounds.limitX * 20, 5, bounds.limitZ * 20)
       sk.pop()
 
       // Weather falls around the camera, outside the bend and outside the
@@ -499,6 +495,7 @@ export const createGlitchscape = (
     setProjectsNumber: (value: number) => (projects = value),
     destroy: () => {
       window.clearTimeout(resizing)
+      window.removeEventListener('resize', onResize)
       if (onOrientationChange !== null && screen.orientation !== undefined)
         screen.orientation.removeEventListener(
           'change',

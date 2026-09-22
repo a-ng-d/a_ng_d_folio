@@ -56,6 +56,7 @@ const COMMON = {
   ambience: 'FIXED' as const,
   rain: 0,
   endless: true,
+  mist: 0.38,
   palette: palettes.SOLAR,
 }
 
@@ -120,6 +121,7 @@ export const resolveScene = (
     ambience: pick(patch.ambience, base.ambience),
     rain: pick(patch.rain, base.rain),
     endless: pick(patch.endless, base.endless),
+    mist: pick(patch.mist, base.mist),
     palette: mergePalette(base.palette, patch.palette),
     filter: pick(patch.filter, base.filter),
   }

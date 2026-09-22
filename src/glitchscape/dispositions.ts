@@ -14,7 +14,14 @@ import type { SceneOverride } from '@/glitchscape/types'
  */
 export type Disposition = Omit<
   SceneOverride,
-  'flow' | 'filter' | 'palette' | 'lighting' | 'ambience' | 'rain' | 'endless'
+  | 'flow'
+  | 'filter'
+  | 'palette'
+  | 'lighting'
+  | 'ambience'
+  | 'rain'
+  | 'endless'
+  | 'mist'
 >
 
 export const dispositions: { [key: string]: Disposition } = {

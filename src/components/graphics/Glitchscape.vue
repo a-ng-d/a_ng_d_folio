@@ -130,6 +130,25 @@
           ? { ...scene, rain: this.weather.rain }
           : scene
       },
+      /**
+       * Haze lying along the bottom of the view, hiding where the range ends.
+       *
+       * It sits inside the filtered layer rather than over it, so it is
+       * recoloured by the same pass as the canvas and cannot drift away from
+       * the sky it is supposed to be made of.
+       */
+      mistStyle(): string {
+        const ground = this.resolvedScene.palette.ground,
+          tone = (alpha: number) =>
+            `hsla(${ground.hue}, ${ground.saturation}%, ${ground.lightness}%, ${alpha})`
+
+        return [
+          `height: ${Math.round(this.resolvedScene.mist * 100)}%`,
+          `background-image: linear-gradient(to top, ${tone(1)} 0%, ${tone(
+            0.94
+          )} 20%, ${tone(0.6)} 52%, ${tone(0)} 100%)`,
+        ].join('; ')
+      },
       halo(): number {
         const lighting = resolveLighting(
           this.resolvedScene.ambience,
@@ -214,7 +233,9 @@
     class="background"
     id="sketch"
     :style="`filter: ${filterStyle}; transform: ${transformStyle}`"
-  ></div>
+  >
+    <div v-if="resolvedScene.mist > 0" class="mist" :style="mistStyle"></div>
+  </div>
   <div
     v-if="halo > 0"
     class="atmosphere"
@@ -252,4 +273,13 @@
     transition: var(--grandma-transition)
     transform-origin: 50% 50%
     z-index: 0
+
+    .mist
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+      z-index: 1
+      pointer-events: none
+      transition: var(--grandma-transition)
 </style>

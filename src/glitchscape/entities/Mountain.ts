@@ -8,8 +8,7 @@ import {
   resolveShape,
   shatterProfile,
 } from '@/glitchscape/profiles'
-import type { RampColor } from '@/glitchscape/ramp'
-import { fogAt, haze, rampAt, shade, stepDepth } from '@/glitchscape/ramp'
+import { fogAt, haze, rampAt, stepDepth } from '@/glitchscape/ramp'
 import { bend } from '@/glitchscape/bend'
 import { HSLColors } from '@/utilities/colors'
 import {
@@ -24,12 +23,6 @@ import {
 /** Tones a range is allowed to take. Few enough that each sheet is flat. */
 const PAPER_STEPS = 7
 
-/** Horizontal slices of a face, from its foot to its crest. */
-const PAPER_BANDS = 3
-
-/** How far into the sky the foot of a sheet has already dissolved. */
-const WATERLINE = 0.6
-
 /** A corridor never fully collapses, so the proportional rescale stays safe. */
 export const clampCorridor = (corridor: number) => clamp(corridor, 0.05, 3)
 
@@ -38,7 +31,7 @@ export const clampRelief = (relief: number) => clamp(relief, 0.2, 4)
 
 /**
  * The relief. A mountain is a billboard whose silhouette is a normalised
- * height profile, extruded by a ridge band along its crest. Changing the scene
+ * height profile, cut flat with no thickness at all. Changing the scene
  * shape rebuilds the target profile and the mountain morphs into it, so an
  * universe can be swapped mid-journey without a reset.
  */
@@ -61,7 +54,6 @@ export class Mountain {
     morphSpeed: number
     order: number
     gap: number
-    ridge: number
     isStrokedOnly: boolean
     alpha: number
   }
@@ -100,7 +92,6 @@ export class Mountain {
       morphSpeed: 0.05,
       order: 0,
       gap: 20,
-      ridge: Math.abs(this.size.width) * 0.045,
       isStrokedOnly: true,
       alpha: 0,
     }
@@ -225,49 +216,18 @@ export class Mountain {
   }
 
   /**
-   * Front face, from the ground line up to the silhouette, cut into
-   * horizontal slices so the foot can dissolve into the sky while the crest
-   * stays flat. A sheet of paper standing in mist, rather than a gradient.
+   * The sheet itself: one flat shape from the ground line up to the
+   * silhouette, in a single tone. Nothing is extruded and nothing is shaded —
+   * a cut out of coloured paper is exactly one colour.
    */
-  private face = (
-    sk: any,
-    stage: Stage,
-    tint: RampColor,
-    fog: number,
-    bands: number
-  ) => {
-    const steps = this.profile.length,
-      sky = stage.scene.palette.sky
-
-    for (let band = 0; band < bands; band++) {
-      const low = band / bands,
-        high = (band + 1) / bands,
-        drowned = WATERLINE * (1 - (low + high) / 2),
-        wash = haze(tint, sky, clamp(fog + drowned, 0, 1))
-
-      sk.fill(wash.hue, wash.saturation, wash.lightness, this.params.alpha)
-      sk.beginShape(sk.TRIANGLE_STRIP)
-      for (let i = 0; i < steps; i++) {
-        const x = (i / (steps - 1)) * this.size.width,
-          y = this.size.height * this.profile[i]
-        sk.vertex(x, y * low, 0)
-        sk.vertex(x, y * high, 0)
-      }
-      sk.endShape()
-    }
-  }
-
-  /** The cut edge along the crest: the thickness of the sheet, not a bevel. */
-  private ridge = (sk: any) => {
-    const steps = this.profile.length,
-      depth = this.params.ridge
+  private face = (sk: any) => {
+    const steps = this.profile.length
 
     sk.beginShape(sk.TRIANGLE_STRIP)
     for (let i = 0; i < steps; i++) {
-      const x = (i / (steps - 1)) * this.size.width,
-        y = this.size.height * this.profile[i]
-      sk.vertex(x, y, 0)
-      sk.vertex(x, y - depth, -depth)
+      const x = (i / (steps - 1)) * this.size.width
+      sk.vertex(x, 0, 0)
+      sk.vertex(x, this.size.height * this.profile[i], 0)
     }
     sk.endShape()
   }
@@ -309,8 +269,6 @@ export class Mountain {
       ),
       // The lit crest has to fade with the rest, or the band alone would
       // announce a mountain the moment it enters the range.
-      // The cut edge sits in its own shadow rather than catching a light.
-      crest = shade(tint, -9 * (1 - fog)),
       corrupted = stage.isGlitched
         ? Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
         : null
@@ -342,20 +300,8 @@ export class Mountain {
         corrupted.lightness,
         this.params.alpha
       )
-    else
-      sk.fill(crest.hue, crest.saturation, crest.lightness, this.params.alpha)
-    this.ridge(sk)
-
-    if (corrupted !== null)
-      this.face(sk, stage, corrupted as unknown as RampColor, 0, 1)
-    else
-      this.face(
-        sk,
-        stage,
-        tint,
-        fog,
-        stage.quality === 'HIGH' ? PAPER_BANDS : 1
-      )
+    else sk.fill(tint.hue, tint.saturation, tint.lightness, this.params.alpha)
+    this.face(sk)
 
     // Paper has no wire around it. The outline is only there to carry the
     // wireframe, where the faces have already faded to nothing.

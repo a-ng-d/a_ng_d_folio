@@ -108,6 +108,11 @@ export interface SceneConfig {
   rain: number
   /** Whether a scroll pushes the world further down the corridor. */
   endless: boolean
+  /**
+   * Height of the haze lying along the bottom of the view, as a fraction
+   * of it. It is what hides where the range ends.
+   */
+  mist: number
   palette: ScenePalette
   filter: HuBrInSaGr
 }
@@ -129,6 +134,7 @@ export interface SceneOverride {
   ambience?: AmbienceKind
   rain?: number
   endless?: boolean
+  mist?: number
   palette?: Partial<ScenePalette>
   filter?: HuBrInSaGr
 }

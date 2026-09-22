@@ -48,6 +48,7 @@
     <input
       type="checkbox"
       name="swt"
+      :checked="isActive"
       :aria-label="alt"
       @click="moveSwitch"
       @key.space="moveSwitch"
