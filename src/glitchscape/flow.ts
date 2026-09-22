@@ -14,42 +14,51 @@ const FLOWS: { [key: string]: (curvature: number) => FlowField } = {
     axis: 'LINEAR',
     drift: { x: 0, y: 0, z: 1 },
     turn: 0,
+    pinch: 1,
     bearing: { yaw: 0, pitch: 0, roll: 0 },
   }),
   BACKWARD: () => ({
     axis: 'LINEAR',
     drift: { x: 0, y: 0, z: -1 },
     turn: 0,
+    pinch: 1,
     bearing: { yaw: 0, pitch: 0, roll: 0 },
   }),
   STILL: () => ({
     axis: 'LINEAR',
     drift: { x: 0, y: 0, z: 0 },
     turn: 0,
+    pinch: 1,
     bearing: { yaw: 0, pitch: 0, roll: 0 },
   }),
   RIGHT: (curvature: number) => ({
     axis: 'ARC_Y',
     drift: { x: 0, y: 0, z: 1 },
     turn: 1,
-    bearing: { yaw: 0, pitch: 0, roll: -curvature * 0.15 },
+    pinch: 1,
+    bearing: { yaw: 0, pitch: 0, roll: -curvature * 0.18 },
   }),
   LEFT: (curvature: number) => ({
     axis: 'ARC_Y',
     drift: { x: 0, y: 0, z: 1 },
     turn: -1,
-    bearing: { yaw: 0, pitch: 0, roll: curvature * 0.15 },
+    pinch: 1,
+    bearing: { yaw: 0, pitch: 0, roll: curvature * 0.18 },
   }),
+  // A climb reads as one only if it bends harder than a turn: there is no
+  // roll to help sell it, and the eye forgives far less on the vertical.
   UP: () => ({
     axis: 'ARC_X',
     drift: { x: 0, y: 0, z: 1 },
     turn: -1,
+    pinch: 1.3,
     bearing: { yaw: 0, pitch: 0, roll: 0 },
   }),
   DOWN: () => ({
     axis: 'ARC_X',
     drift: { x: 0, y: 0, z: 1 },
     turn: 1,
+    pinch: 1.3,
     bearing: { yaw: 0, pitch: 0, roll: 0 },
   }),
 }

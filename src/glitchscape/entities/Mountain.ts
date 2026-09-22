@@ -8,7 +8,7 @@ import {
   resolveShape,
   shatterProfile,
 } from '@/glitchscape/profiles'
-import { fogAt, haze, rampAt, stepDepth } from '@/glitchscape/ramp'
+import { fadeAt, haze, hazeAt, rampAt, stepDepth } from '@/glitchscape/ramp'
 import { bend } from '@/glitchscape/bend'
 import { HSLColors } from '@/utilities/colors'
 import {
@@ -254,7 +254,12 @@ export class Mountain {
     const sk = stage.sk,
       // Depth is the distance travelled along the corridor, bent or not, so
       // aerial perspective reads the same on an arc as on a straight run.
-      fog = fogAt(this.position.z, this.props.zRange[0], 0.5, 0.08, 0.02),
+      fog = hazeAt(this.position.z, this.props.zRange[0], 0.5),
+      // Passing the camera is an opacity, not a colour: a sheet the tone
+      // of the sky still paints over everything behind it.
+      opacity =
+        this.params.alpha *
+        (1 - fadeAt(this.position.z, this.props.zRange[0], 0.08, 0.02)),
       tint = haze(
         rampAt(
           stage.scene.palette.mountains,
@@ -275,6 +280,10 @@ export class Mountain {
       corrupted = stage.isGlitched
         ? Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
         : null
+
+    // An invisible sheet still writes depth and would occlude whatever is
+    // drawn after it, so it is dropped before it reaches the buffer.
+    if (opacity <= 0.01) return
 
     // The card never turns: it slides along the corridor facing the camera,
     // whether that corridor runs straight or curls away.
@@ -297,13 +306,8 @@ export class Mountain {
 
     sk.noStroke()
     if (corrupted !== null)
-      sk.fill(
-        corrupted.hue,
-        corrupted.saturation,
-        corrupted.lightness,
-        this.params.alpha
-      )
-    else sk.fill(tint.hue, tint.saturation, tint.lightness, this.params.alpha)
+      sk.fill(corrupted.hue, corrupted.saturation, corrupted.lightness, opacity)
+    else sk.fill(tint.hue, tint.saturation, tint.lightness, opacity)
     this.face(sk)
 
     // Paper has no wire around it. The outline is only there to carry the

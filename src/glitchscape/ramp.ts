@@ -38,28 +38,30 @@ export const shade = (color: RampColor, amount: number): RampColor => ({
 })
 
 /**
- * How much of the sky a particle has dissolved into.
+ * How far a particle has dissolved into the sky with distance.
  *
- * It reaches 1 at both ends of the corridor — where particles appear and
- * where they wrap away — whatever the palette says the ramp ends on. Fading
- * the far end alone only hides the seam from a camera that looks forward; any
- * other point of view watches the foreground vanish instead.
- *
- * The near end finishes at `nearEdge` rather than at the camera, because the
- * near clipping plane cuts a little before that: a sheet still carrying some
- * colour when it reaches the plane does not fade out, it disappears.
+ * This one is a colour: at the back of the corridor a sheet takes the tone of
+ * the sky it is disappearing into, which is what aerial perspective does. It
+ * is still opaque, and it needs to be — there is nothing behind it but sky.
  */
-export const fogAt = (
+export const hazeAt = (depth: number, far: number, onset: number) =>
+  clamp(doMap(depth, far, far * onset, 1, 0), 0, 1)
+
+/**
+ * How far a particle has faded out as it passes the camera.
+ *
+ * This one has to be an opacity. Near the camera there are other sheets
+ * behind, so a sheet painted the colour of the sky does not disappear against
+ * them — it wipes over them, and a yellow shape sweeps across the range. It
+ * finishes before the near clipping plane, which would otherwise cut it while
+ * it still carried something.
+ */
+export const fadeAt = (
   depth: number,
   far: number,
-  farOnset: number,
-  nearZone: number,
-  nearEdge: number
-) =>
-  Math.max(
-    clamp(doMap(depth, far, far * farOnset, 1, 0), 0, 1),
-    clamp(doMap(depth, far * nearZone, far * nearEdge, 0, 1), 0, 1)
-  )
+  zone: number,
+  edge: number
+) => clamp(doMap(depth, far * zone, far * edge, 0, 1), 0, 1)
 
 /** Dissolves a ramp colour into the sky. */
 export const haze = (

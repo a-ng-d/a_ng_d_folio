@@ -114,9 +114,16 @@
         return (bearing.roll * 180) / Math.PI
       },
       transformStyle(): string {
-        return this.roll === 0
-          ? 'none'
-          : `rotate(${this.roll.toFixed(2)}deg) scale(1.12)`
+        if (this.roll === 0) return 'none'
+
+        // A rotated rectangle only covers its frame again past this much
+        // scale. It was a fixed guess before, and too small for the angle,
+        // so the corners of the canvas were coming into view. Two stands in
+        // for the widest aspect ratio worth covering.
+        const radians = Math.abs((this.roll * Math.PI) / 180),
+          cover = Math.cos(radians) + 2 * Math.sin(radians)
+
+        return `rotate(${this.roll.toFixed(2)}deg) scale(${cover.toFixed(3)})`
       },
       /**
        * The scene the sketch actually runs. Live weather is fetched out here

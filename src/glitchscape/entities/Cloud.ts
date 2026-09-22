@@ -1,6 +1,6 @@
 import type { Position, Row, Size } from '@/utilities/types'
 import type { CloudProps, Stage } from '@/glitchscape/types'
-import { fogAt, haze, rampAt, shade } from '@/glitchscape/ramp'
+import { fadeAt, haze, hazeAt, rampAt, shade } from '@/glitchscape/ramp'
 import { bend } from '@/glitchscape/bend'
 import { HSLColors } from '@/utilities/colors'
 import { doMap, lerp, random, randomFloat, wrap } from '@/utilities/operations'
@@ -163,7 +163,12 @@ export class Cloud {
   draw = (stage: Stage) => {
     const sk = stage.sk,
       quality = stage.quality === 'HIGH' ? 50 : 16,
-      fog = fogAt(this.position.z, this.props.zRange[0], 0.5, 0.08, 0.02),
+      fog = hazeAt(this.position.z, this.props.zRange[0], 0.5),
+      // Passing the camera is an opacity, not a colour: a sheet the tone
+      // of the sky still paints over everything behind it.
+      opacity =
+        this.params.alpha *
+        (1 - fadeAt(this.position.z, this.props.zRange[0], 0.08, 0.02)),
       tint = haze(
         rampAt(
           stage.scene.palette.clouds,
@@ -178,6 +183,8 @@ export class Cloud {
       corrupted = stage.isGlitched
         ? Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
         : null
+
+    if (opacity <= 0.01) return
 
     let offsetY = 0
 
@@ -201,10 +208,8 @@ export class Cloud {
         lit.saturation,
         lit.lightness,
         this.params.isStrokedOnly
-          ? this.params.alpha
-          : this.params.alpha < 0.98
-          ? this.params.alpha
-          : this.params.beta
+          ? opacity
+          : Math.min(opacity, this.params.beta)
       )
 
     sk.stroke(tint.hue, tint.saturation, tint.lightness)

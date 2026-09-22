@@ -159,6 +159,8 @@ export interface FlowField {
   drift: Vector3
   /** Arc flows only: which side the centre of the bend sits on, -1 or 1. */
   turn: number
+  /** Multiplier over the curvature, so a flow can bend harder than its scene asks. */
+  pinch: number
   bearing: Bearing
 }
 

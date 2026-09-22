@@ -236,7 +236,8 @@ export const createGlitchscape = (
    * curls out of frame.
    */
   const turnRadius = () =>
-    bounds.limitZ / clamp(stage.scene.curvature, MIN_CURVATURE, 2)
+    bounds.limitZ /
+    clamp(stage.scene.curvature * stage.flow.pinch, MIN_CURVATURE, 2.5)
 
   const spawnMountain = () => {
     const sk = stage.sk,
