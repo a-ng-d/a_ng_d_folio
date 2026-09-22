@@ -2,21 +2,23 @@ import type { Disposition } from '@/glitchscape/dispositions'
 import type { SceneOverride } from '@/glitchscape/types'
 
 /**
- * The dimensions a disposition does not carry.
+ * The scene, taken apart one dimension at a time.
  *
- * Geometry belongs to the dispositions — corridor, height, width, altitude,
- * framing, density, pace, bend, roughness, silhouette — so offering it here as
- * well only asked the same question twice. What is left is the weather and the
- * light, which no arrangement of the relief has any say over.
- *
- * The exclusion is taken from the `Disposition` type rather than written out,
- * so the two can never drift: a new scene dimension is knobbable only for as
- * long as no disposition claims it.
+ * Direction, colour and the ambience switch have controls of their own, and a
+ * palette is not something to pick from a list, so none of them is a knob.
  */
 export type KnobField = Exclude<
   keyof SceneOverride,
-  keyof Disposition | 'palette' | 'flow' | 'filter' | 'ambience'
+  'palette' | 'flow' | 'filter' | 'ambience'
 >
+
+/**
+ * A fine dimension is, by definition, one a disposition already sets. Taking
+ * the constraint from the `Disposition` type rather than writing it out means
+ * nothing else can end up buried behind the fine tuning switch: the weather
+ * and the light belong on the surface and the compiler keeps them there.
+ */
+export type FineField = Extract<KnobField, keyof Disposition>
 
 export interface KnobStep {
   key: string
@@ -28,7 +30,35 @@ export interface Knob {
   steps: Array<KnobStep>
 }
 
+export interface FineKnob extends Knob {
+  field: FineField
+}
+
+/** Always on the panel: the two a disposition is most often worth overruling,
+ *  and the two no disposition carries at all. */
 export const knobs: Array<Knob> = [
+  {
+    field: 'speed',
+    steps: [
+      { key: 'drifting', value: 0.15 },
+      { key: 'slow', value: 0.4 },
+      { key: 'steady', value: 0.75 },
+      { key: 'brisk', value: 1.2 },
+      { key: 'racing', value: 2 },
+    ],
+  },
+  {
+    field: 'shape',
+    steps: [
+      { key: 'swell', value: 'SWELL' },
+      { key: 'organic', value: 'ORGANIC' },
+      { key: 'triangle', value: 'TRIANGLE' },
+      { key: 'round', value: 'ROUND' },
+      { key: 'trapezoid', value: 'TRAPEZOID' },
+      { key: 'extrusion', value: 'EXTRUSION' },
+      { key: 'mixed', value: 'MIXED' },
+    ],
+  },
   {
     field: 'rain',
     steps: [
@@ -47,6 +77,87 @@ export const knobs: Array<Knob> = [
       { key: 'dusk', value: 'DUSK' },
       { key: 'night', value: 'NIGHT' },
       { key: 'storm', value: 'STORM' },
+    ],
+  },
+]
+
+/** Revealed by the fine tuning switch. Every one of these is already set by
+ *  whichever disposition is in play. */
+export const fineKnobs: Array<FineKnob> = [
+  {
+    field: 'corridor',
+    steps: [
+      { key: 'slit', value: 0.08 },
+      { key: 'tight', value: 0.2 },
+      { key: 'open', value: 0.5 },
+      { key: 'wide', value: 1 },
+      { key: 'vast', value: 1.8 },
+    ],
+  },
+  {
+    field: 'relief',
+    steps: [
+      { key: 'flat', value: 0.6 },
+      { key: 'even', value: 1 },
+      { key: 'tall', value: 1.5 },
+      { key: 'towering', value: 2.2 },
+    ],
+  },
+  {
+    field: 'breadth',
+    steps: [
+      { key: 'narrow', value: 0.25 },
+      { key: 'slim', value: 0.45 },
+      { key: 'even', value: 0.7 },
+      { key: 'broad', value: 1 },
+      { key: 'sprawling', value: 1.5 },
+    ],
+  },
+  {
+    field: 'altitude',
+    steps: [
+      { key: 'above', value: 1.5 },
+      { key: 'level', value: 0 },
+      { key: 'low', value: -1.5 },
+      { key: 'sunken', value: -3 },
+    ],
+  },
+  {
+    field: 'fov',
+    steps: [
+      { key: 'long', value: 40 },
+      { key: 'narrow', value: 50 },
+      { key: 'even', value: 60 },
+      { key: 'wide', value: 75 },
+      { key: 'fisheye', value: 95 },
+    ],
+  },
+  {
+    field: 'density',
+    steps: [
+      { key: 'sparse', value: 0.6 },
+      { key: 'light', value: 1.2 },
+      { key: 'even', value: 1.8 },
+      { key: 'thick', value: 2.6 },
+      { key: 'packed', value: 3.6 },
+    ],
+  },
+  {
+    field: 'curvature',
+    steps: [
+      { key: 'faint', value: 0.2 },
+      { key: 'gentle', value: 0.45 },
+      { key: 'marked', value: 0.8 },
+      { key: 'sharp', value: 1.3 },
+    ],
+  },
+  {
+    field: 'turbulence',
+    steps: [
+      { key: 'smooth', value: 0 },
+      { key: 'soft', value: 0.35 },
+      { key: 'broken', value: 0.7 },
+      { key: 'jagged', value: 1 },
     ],
   },
 ]

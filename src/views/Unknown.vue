@@ -16,7 +16,7 @@
     dispositions,
   } from '@/glitchscape/dispositions'
   import { FLOW_KINDS } from '@/glitchscape/flow'
-  import { knobs } from '@/glitchscape/knobs'
+  import { fineKnobs, knobs } from '@/glitchscape/knobs'
   import { i18n } from '@/lang'
 
   export default defineComponent({
@@ -96,7 +96,16 @@
         // One dropdown per dimension of the scene, laid over whatever the
         // disposition already set, so each can be judged on its own.
         overrides: {} as { [key: string]: number | string },
+        isFineTuning: false as boolean,
         controls: knobs.map((knob) => ({
+          field: knob.field,
+          options: knob.steps.map((step, index: number) => ({
+            name: i18n.global.t(`unknown.${knob.field}.${step.key}`),
+            action: () => this.pickKnob(knob.field, step.value),
+            isActive: index === 0,
+          })) as Array<Option>,
+        })),
+        fineControls: fineKnobs.map((knob) => ({
           field: knob.field,
           options: knob.steps.map((step, index: number) => ({
             name: i18n.global.t(`unknown.${knob.field}.${step.key}`),
@@ -226,7 +235,8 @@
         >
           <div
             v-if="store.device != 'MOBILE'"
-            class="controler__content controler__content"
+            class="controler__content"
+            :class="isFineTuning ? 'controler__content--wide' : null"
           >
             <Dropdown
               :label="$t('unknown.disposition.title')"
@@ -249,6 +259,14 @@
               :theme="theme"
             />
             <Dropdown
+              v-for="control in isFineTuning ? fineControls : []"
+              :key="control.field"
+              :label="$t(`unknown.${control.field}.title`)"
+              :options="control.options"
+              :alt="$t(`actions.${control.field}`)"
+              :theme="theme"
+            />
+            <Dropdown
               :label="$t('unknown.filter.title')"
               :options="filters"
               :alt="$t('actions.filter')"
@@ -256,6 +274,13 @@
             />
             <Container>
               <div class="switch-row">
+                <Switch
+                  :label="$t('unknown.fine.title')"
+                  :on="() => (isFineTuning = true)"
+                  :off="() => (isFineTuning = false)"
+                  :alt="$t('actions.fine')"
+                  :theme="theme"
+                />
                 <Switch
                   :label="$t('unknown.ambience.title')"
                   :on="() => pickKnob('ambience', 'LIVE')"
@@ -318,6 +343,16 @@
       flex: 0 1 340rem
       gap: var(--layout-row-gap) 0
       pointer-events: all
+
+      &--wide
+        display: grid
+        grid-template-columns: repeat(2, 1fr)
+        align-content: end
+        flex: 0 1 720rem
+        gap: var(--layout-row-gap) var(--layout-column-gap)
+
+        .container
+          grid-column: 1 / -1
 
   .switch-row
     display: flex
