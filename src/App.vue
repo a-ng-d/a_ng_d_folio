@@ -53,6 +53,12 @@
       },
     },
     watch: {
+      theme: {
+        handler(to: string) {
+          document.documentElement.setAttribute('data-theme', to)
+        },
+        immediate: true,
+      },
       $route(to, from) {
         this.view = to.meta.view
         document.title = to.meta.title
