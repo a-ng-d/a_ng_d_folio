@@ -48,7 +48,7 @@
 
 <template>
   <main class="page">
-    <section class="jumbotron">
+    <section class="jumbotron" :data-theme="theme">
       <div class="jumbotron__actions">
         <Transition
           name="slide-up"
@@ -100,7 +100,7 @@
           </Button>
         </Transition>
       </div>
-      <div class="jumbotron__content" :data-theme="theme">
+      <div class="jumbotron__content">
         <Transition
           name="slide-up"
           style="--delay: var(--delay-turtoise)"
@@ -124,7 +124,7 @@
           "
           appear
         >
-          <Label :label="$t('home.status')" small underlined />
+          <Label :label="$t('home.status')" small underlined :theme="theme" />
         </Transition>
       </div>
       <div class="jumbotron__actions">
