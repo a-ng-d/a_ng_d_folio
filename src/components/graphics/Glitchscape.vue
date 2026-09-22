@@ -5,6 +5,7 @@
   import type { HuBrInSaGr } from '@/utilities/types'
   import type {
     GlitchscapeController,
+    LightKind,
     QualityKind,
     SceneConfig,
     SceneOverride,
@@ -12,7 +13,7 @@
   import { createGlitchscape } from '@/glitchscape/sketch'
   import { DEFAULT_UNIVERSE, resolveScene } from '@/glitchscape/universes'
   import { HALO_INTENSITY } from '@/glitchscape/lighting'
-  import { resolveLighting } from '@/glitchscape/ambience'
+  import { resolveLighting, tintPalette } from '@/glitchscape/ambience'
   import { resolveFlow } from '@/glitchscape/flow'
   import { filters } from '@/utilities/colors'
   import type { LocalWeather } from '@/utilities/weather'
@@ -58,6 +59,8 @@
         weather: null as LocalWeather | null,
         isAsking: false as boolean,
         watch: 0 as number,
+        tick: 0 as number,
+        clock: Date.now() as number,
       }
     },
     computed: {
@@ -107,20 +110,34 @@
 
         return `rotate(${this.roll.toFixed(2)}deg) scale(${cover.toFixed(3)})`
       },
+      lighting(): LightKind {
+        return resolveLighting(
+          this.resolvedScene.ambience,
+          this.resolvedScene.lighting,
+          new Date(this.clock)
+        )
+      },
       liveScene(): SceneConfig {
-        const scene = this.resolvedScene
+        const scene = this.resolvedScene,
+          lighting = this.lighting
 
-        return scene.ambience === 'LIVE' && this.weather !== null
-          ? { ...scene, rain: this.weather.rain }
-          : scene
+        return {
+          ...scene,
+          lighting,
+          palette: tintPalette(scene.palette, lighting),
+          rain:
+            scene.ambience === 'LIVE' && this.weather !== null
+              ? this.weather.rain
+              : scene.rain,
+        }
       },
       mistStyle(): string {
-        const ground = this.resolvedScene.palette.ground,
+        const ground = this.liveScene.palette.ground,
           tone = (alpha: number) =>
             `hsla(${ground.hue}, ${ground.saturation}%, ${ground.lightness}%, ${alpha})`
 
         return [
-          `height: ${Math.round(this.resolvedScene.mist * 100)}%`,
+          `height: ${Math.round(this.liveScene.mist * 100)}%`,
           `background-image: linear-gradient(to top, ${tone(1)} 0%, ${tone(
             1
           )} 38%, ${tone(0.92)} 56%, ${tone(0.62)} 72%, ${tone(
@@ -129,20 +146,15 @@
         ].join('; ')
       },
       veilStyle(): string {
-        const sky = this.resolvedScene.palette.sky
+        const sky = this.liveScene.palette.sky
 
         return `background-color: hsla(${sky.hue}, ${sky.saturation}%, ${sky.lightness}%, ${VEIL})`
       },
       halo(): number {
-        const lighting = resolveLighting(
-          this.resolvedScene.ambience,
-          this.resolvedScene.lighting
-        )
-
-        return HALO_INTENSITY[lighting] || 0
+        return HALO_INTENSITY[this.lighting] || 0
       },
       haloStyle(): string {
-        const glow = this.resolvedScene.palette.glow,
+        const glow = this.liveScene.palette.glow,
           color = (alpha: number) =>
             `hsla(${glow.hue}, ${glow.saturation}%, ${glow.lightness}%, ${alpha})`
 
@@ -161,15 +173,12 @@
       scrollProgress(to: number) {
         this.controller?.setScroll(to, this.scrollLimit)
       },
-      resolvedScene: {
+      liveScene: {
         handler(to: SceneConfig) {
-          this.controller?.setScene(this.liveScene)
+          this.controller?.setScene(to)
           if (to.ambience === 'LIVE') this.askWeather()
         },
         deep: true,
-      },
-      weather() {
-        this.controller?.setScene(this.liveScene)
       },
     },
     methods: {
@@ -191,9 +200,11 @@
 
       this.askWeather()
       this.watch = window.setInterval(this.askWeather, 900000)
+      this.tick = window.setInterval(() => (this.clock = Date.now()), 60000)
     },
     unmounted: function () {
       window.clearInterval(this.watch)
+      window.clearInterval(this.tick)
       this.controller?.destroy()
       this.controller = null
     },
@@ -216,11 +227,7 @@
         :style="`filter: ${lightStyle}; transform: ${transformStyle}`"
       >
         <div class="veil" :style="veilStyle"></div>
-        <div
-          v-if="resolvedScene.mist > 0"
-          class="mist"
-          :style="mistStyle"
-        ></div>
+        <div v-if="liveScene.mist > 0" class="mist" :style="mistStyle"></div>
       </div>
     </div>
   </div>
