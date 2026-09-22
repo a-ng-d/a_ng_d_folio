@@ -220,7 +220,12 @@
   </Transition>
 
   <!--Transition-->
-  <Particles :weight="176" :isExpanded="isExpanded" :movement="transition" />
+  <Particles
+    v-if="store.isCurtainOn"
+    :weight="176"
+    :isExpanded="isExpanded"
+    :movement="transition"
+  />
 
   <!--Menu-->
   <Transition

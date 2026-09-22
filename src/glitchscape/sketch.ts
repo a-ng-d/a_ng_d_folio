@@ -1,6 +1,7 @@
 import P5 from 'p5'
 import type {
   Bounds,
+  FlowField,
   GlitchscapeController,
   QualityKind,
   SceneConfig,
@@ -53,6 +54,15 @@ const MAX_SURGE = 420
 /** Gentlest bend an arc flow will ever take, as a fraction of the depth. */
 const MIN_CURVATURE = 0.05
 
+/** How fast the live scene closes on the one asked for: ~1s at 60 frames. */
+const SETTLE = 0.05
+
+/** Frames between two head counts while the field is still changing size. */
+const SETTLE_EVERY = 12
+
+/** Below this much lean, a corridor is straight enough to change axis in. */
+const STRAIGHT = 0.02
+
 const RESOLUTIONS: { [key: string]: number } = {
   HIGH: 32,
   LOW: 14,
@@ -90,7 +100,7 @@ export const createGlitchscape = (
     stage: Stage = {
       sk: null,
       bounds,
-      scene: options.scene,
+      scene: { ...options.scene },
       flow: resolveFlow(options.scene.flow, options.scene.curvature),
       quality: options.quality,
       resolution: RESOLUTIONS[options.quality] || RESOLUTIONS.HIGH,
@@ -120,6 +130,12 @@ export const createGlitchscape = (
     rainfall: Rainfall | null = null,
     resizing = 0,
     isReady = false,
+    target: SceneConfig = options.scene,
+    targetFlow: FlowField = resolveFlow(
+      options.scene.flow,
+      options.scene.curvature
+    ),
+    settling = 0,
     onOrientationChange: (() => void) | null = null,
     onDeviceOrientation: ((e: any) => void) | null = null
 
@@ -180,6 +196,69 @@ export const createGlitchscape = (
       stars: isMobile ? 24 : 80,
       drops: Math.round(clamp(stage.scene.rain, 0, 1) * (isMobile ? 20 : 60)),
     }
+  }
+
+  /**
+   * Walks the live scene towards the one that was asked for.
+   *
+   * A page change used to be a jump: a new altitude, a new framing, a new
+   * count of summits, all in one frame — which the curtain over the route
+   * change was hiding rather than solving. Every dimension that can be read
+   * as a quantity is eased instead, so the relief is seen rearranging itself.
+   *
+   * The silhouette and its roughness are left to change at once: a mountain
+   * already morphs from one profile to the next on its own, and easing the
+   * roughness would have every one of them rebuilt on every frame of it.
+   */
+  const settle = () => {
+    const live = stage.scene,
+      near = (from: number, to: number) => lerp(from, to, SETTLE)
+
+    live.shape = target.shape
+    live.turbulence = target.turbulence
+    live.flow = target.flow
+    live.lighting = target.lighting
+    live.ambience = target.ambience
+    live.endless = target.endless
+    live.palette = target.palette
+    live.filter = target.filter
+
+    live.speed = near(live.speed, target.speed)
+    live.curvature = near(live.curvature, target.curvature)
+    live.density = near(live.density, target.density)
+    live.corridor = near(live.corridor, target.corridor)
+    live.relief = near(live.relief, target.relief)
+    live.breadth = near(live.breadth, target.breadth)
+    live.altitude = near(live.altitude, target.altitude)
+    live.fov = near(live.fov, target.fov)
+    live.rain = near(live.rain, target.rain)
+    live.mist = near(live.mist, target.mist)
+
+    // The bend is eased as one signed quantity, so a corridor that turned
+    // right straightens out before it starts turning left rather than
+    // snapping across. The axis is only ever swapped at the moment it is
+    // straight, where a swap cannot be seen.
+    const flow = stage.flow,
+      lean = flow.turn * flow.pinch,
+      wanted =
+        flow.axis === targetFlow.axis ? targetFlow.turn * targetFlow.pinch : 0,
+      eased = near(lean, wanted)
+
+    if (Math.abs(eased) < STRAIGHT && flow.axis !== targetFlow.axis) {
+      flow.axis = targetFlow.axis
+      flow.turn = 0
+      flow.pinch = 0
+    } else {
+      flow.turn = Math.abs(eased) < STRAIGHT ? 0 : Math.sign(eased)
+      flow.pinch = Math.abs(eased)
+    }
+
+    flow.drift.z = near(flow.drift.z, targetFlow.drift.z)
+
+    // Density is a count, so it only lands on whole summits. Checking now and
+    // then is enough, and spares the field a rebuild on every frame.
+    settling += 1
+    if (settling % SETTLE_EVERY === 0) reconcile()
   }
 
   /**
@@ -372,6 +451,8 @@ export const createGlitchscape = (
       const scene = stage.scene,
         sky = scene.palette.sky
 
+      settle()
+
       stage.time = sk.millis()
       stage.pointer.x = sk.mouseX
       stage.pointer.y = sk.mouseY
@@ -489,9 +570,8 @@ export const createGlitchscape = (
       scroll.limit = limit
     },
     setScene: (scene: SceneConfig) => {
-      stage.scene = scene
-      stage.flow = resolveFlow(scene.flow, scene.curvature)
-      reconcile()
+      target = scene
+      targetFlow = resolveFlow(scene.flow, scene.curvature)
     },
     destroy: () => {
       window.clearTimeout(resizing)
