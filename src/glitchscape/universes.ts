@@ -39,10 +39,14 @@ export const DEFAULT_UNIVERSE = 'DAYBREAK'
  * Structure shared by every universe. Pages differ by colour, and by whatever
  * their route asks of the scene — not by having each their own geometry. That
  * is what makes the worlds interchangeable: the same journey, recoloured.
+ *
+ * Exported because it is also what a switch in the inspector has to open on:
+ * a control showing the opposite of the world it governs costs a click to do
+ * nothing before it does anything.
  */
-const COMMON = {
-  shape: 'SWELL' as const,
-  flow: 'STRAIGHT' as const,
+export const SCENE_DEFAULTS: Omit<SceneConfig, 'filter'> = {
+  shape: 'SWELL',
+  flow: 'STRAIGHT',
   speed: 0.75,
   curvature: 0.55,
   density: 1.6,
@@ -52,8 +56,8 @@ const COMMON = {
   altitude: 0,
   fov: 60,
   turbulence: 0.6,
-  lighting: 'FLAT' as const,
-  ambience: 'FIXED' as const,
+  lighting: 'FLAT',
+  ambience: 'FIXED',
   rain: 0,
   endless: true,
   mist: 0.58,
@@ -62,13 +66,13 @@ const COMMON = {
 
 /** Named colour worlds. A route names one, then refines it if it needs to. */
 export const universes: { [key: string]: SceneConfig } = {
-  DAYBREAK: { ...COMMON, filter: filters.creamySun },
-  MONOLITH: { ...COMMON, filter: filters.grayscale },
-  NIGHTLY: { ...COMMON, filter: filters.nightly },
-  CANDY_FLOSS: { ...COMMON, filter: filters.candyFloss },
-  SOFT_WIND: { ...COMMON, filter: filters.softWind },
-  MIRAGE: { ...COMMON, filter: filters.creamySun },
-  TEMPEST: { ...COMMON, filter: filters.nightly },
+  DAYBREAK: { ...SCENE_DEFAULTS, filter: filters.creamySun },
+  MONOLITH: { ...SCENE_DEFAULTS, filter: filters.grayscale },
+  NIGHTLY: { ...SCENE_DEFAULTS, filter: filters.nightly },
+  CANDY_FLOSS: { ...SCENE_DEFAULTS, filter: filters.candyFloss },
+  SOFT_WIND: { ...SCENE_DEFAULTS, filter: filters.softWind },
+  MIRAGE: { ...SCENE_DEFAULTS, filter: filters.creamySun },
+  TEMPEST: { ...SCENE_DEFAULTS, filter: filters.nightly },
 }
 
 export const UNIVERSE_KEYS = Object.keys(universes)

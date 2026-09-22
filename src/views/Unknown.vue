@@ -17,6 +17,7 @@
     dispositions,
   } from '@/glitchscape/dispositions'
   import { FLOW_KINDS } from '@/glitchscape/flow'
+  import { SCENE_DEFAULTS } from '@/glitchscape/universes'
   import { fineKnobs, knobs } from '@/glitchscape/knobs'
   import { i18n } from '@/lang'
 
@@ -46,6 +47,10 @@
       },
     },
     computed: {
+      /** What the world starts as, so a switch never opens on its opposite. */
+      defaults(): typeof SCENE_DEFAULTS {
+        return SCENE_DEFAULTS
+      },
       isFree(): boolean {
         return this.disposition === FREE_DISPOSITION
       },
@@ -344,13 +349,15 @@
               <div class="switch-row">
                 <Switch
                   :label="$t('unknown.ambience.title')"
+                  :active="defaults.ambience === 'LIVE'"
                   :on="() => pickKnob('ambience', 'LIVE')"
                   :off="() => pickKnob('ambience', 'FIXED')"
                   :alt="$t('actions.ambience')"
                   :theme="theme"
                 />
                 <Switch
-:label="$t('unknown.endless.title')"
+                  :label="$t('unknown.endless.title')"
+                  :active="defaults.endless"
                   :on="() => pickKnob('endless', true)"
                   :off="() => pickKnob('endless', false)"
                   :alt="$t('actions.endless')"
