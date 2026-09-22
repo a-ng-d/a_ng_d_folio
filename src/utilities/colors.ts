@@ -114,6 +114,27 @@ export const filters: Filters = {
     grayscale: '100%',
     name: 'GRAYSCALE',
   },
+  // The canvas paints in creamy sun, so a rotation lands on roughly its own
+  // hue plus the angle: 160 reaches the cold blue of a sea in bad weather,
+  // and the grayscale pass takes the colour back out of it until it is metal.
+  steel: {
+    hue: '160deg',
+    brightness: '.95',
+    invert: '0',
+    saturation: '.55',
+    grayscale: '35%',
+    name: 'STEEL',
+  },
+  // Far enough round to reach the pink the sky turns over the lake, held
+  // bright and saturated so it stays a sunset rather than a wash.
+  biscarosse: {
+    hue: '285deg',
+    brightness: '1.05',
+    invert: '0',
+    saturation: '1.1',
+    grayscale: '0%',
+    name: 'BISCAROSSE',
+  },
   _ui_color_palette: {
     hue: '128deg',
     brightness: '1',

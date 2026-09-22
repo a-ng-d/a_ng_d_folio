@@ -121,6 +121,16 @@
             action: () => this.$emit('filter', filters.nightly),
             isActive: false,
           },
+          {
+            name: i18n.global.t('unknown.filter.steel'),
+            action: () => this.$emit('filter', filters.steel),
+            isActive: false,
+          },
+          {
+            name: i18n.global.t('unknown.filter.biscarosse'),
+            action: () => this.$emit('filter', filters.biscarosse),
+            isActive: false,
+          },
         ] as Array<Option>,
         disposition: INSPECTOR_DEFAULT as string,
         flow: FLOW_KINDS[0] as string,

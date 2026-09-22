@@ -19,6 +19,8 @@ export interface Filters {
   candyFloss: HuBrInSaGr
   softWind: HuBrInSaGr
   grayscale: HuBrInSaGr
+  steel: HuBrInSaGr
+  biscarosse: HuBrInSaGr
   _ui_color_palette: HuBrInSaGr
   _jeprendsquoi: HuBrInSaGr
   _jean_bobby_radio: HuBrInSaGr

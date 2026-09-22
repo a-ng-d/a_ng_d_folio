@@ -36,7 +36,12 @@ const router = createRouter({
         pov: 'RESET',
         quality: 'HIGH',
         universe: 'DAYBREAK',
-        scene: { ...dispositions.CANYON },
+        scene: {
+          ...dispositions.CANYON,
+          flow: 'STRAIGHT',
+          ambience: 'LIVE',
+          endless: false,
+        },
       },
     },
     {
@@ -47,11 +52,16 @@ const router = createRouter({
         title: i18n.global.t('id.title'),
         view: 'SHORT',
         theme: 'DEFAULT',
-        filter: filters.grayscale,
+        filter: filters.steel,
         pov: 'INVERT',
         quality: 'HIGH',
-        universe: 'MONOLITH',
-        scene: { ...dispositions.GORGE, flow: 'RIGHT' },
+        universe: 'STEEL',
+        scene: {
+          ...dispositions.VALLEY,
+          flow: 'RIGHT',
+          ambience: 'LIVE',
+          endless: true,
+        },
       },
     },
     {
@@ -62,11 +72,16 @@ const router = createRouter({
         title: i18n.global.t('universe.title'),
         view: 'UNIVERSE',
         theme: 'DARK',
-        filter: filters.nightly,
+        filter: filters.biscarosse,
         pov: 'DONTLOOKUP',
         quality: 'HIGH',
-        universe: 'NIGHTLY',
-        scene: { ...dispositions.GORGE, flow: 'UP' },
+        universe: 'BISCAROSSE',
+        scene: {
+          ...dispositions.SWARM,
+          flow: 'UP',
+          ambience: 'LIVE',
+          endless: false,
+        },
       },
     },
     {
@@ -81,7 +96,12 @@ const router = createRouter({
         pov: 'RESET',
         quality: 'HIGH',
         universe: 'CANDY_FLOSS',
-        scene: { ...dispositions.GORGE, flow: 'LEFT' },
+        scene: {
+          ...dispositions.VALLEY,
+          flow: 'LEFT',
+          ambience: 'LIVE',
+          endless: true,
+        },
       },
     },
     {
@@ -96,7 +116,12 @@ const router = createRouter({
         pov: 'RESET',
         quality: 'LOW',
         universe: 'SOFT_WIND',
-        scene: { ...dispositions.GORGE, flow: 'RIGHT' },
+        scene: {
+          ...dispositions.VALLEY,
+          flow: 'RIGHT',
+          ambience: 'LIVE',
+          endless: true,
+        },
       },
     },
     {
@@ -106,11 +131,18 @@ const router = createRouter({
       meta: {
         title: i18n.global.t('work.title'),
         view: 'WORK',
+        // No ambient of its own: Work.vue hands over the filter of whichever
+        // project is in view, so the colour walks down the list with you.
         filter: filters.grayscale,
         pov: 'DIVE_3',
         quality: 'LOW',
         universe: 'MONOLITH',
-        scene: { ...dispositions.GORGE, flow: 'DOWN' },
+        scene: {
+          ...dispositions.DUNES,
+          flow: 'DOWN',
+          ambience: 'LIVE',
+          endless: false,
+        },
       },
     },
     {
@@ -353,8 +385,13 @@ const router = createRouter({
         filter: filters.grayscale,
         pov: 'RESET',
         quality: 'HIGH',
-        universe: 'MIRAGE',
-        scene: { ...dispositions.GORGE, flow: 'LEFT' },
+        universe: 'MONOLITH',
+        scene: {
+          ...dispositions.VALLEY,
+          flow: 'LEFT',
+          ambience: 'LIVE',
+          endless: false,
+        },
       },
     },
     {
