@@ -9,9 +9,13 @@ import type { SceneOverride } from '@/glitchscape/types'
  * Direction belongs to the route, so two pages facing opposite ways share one
  * disposition and differ only by their flow.
  *
- * Colour is not here either: that is what an universe is for.
+ * Colour is not here either — that is what an universe is for — and neither
+ * is the weather, the light or the hour of the day.
  */
-export type Disposition = Omit<SceneOverride, 'flow' | 'filter' | 'palette'>
+export type Disposition = Omit<
+  SceneOverride,
+  'flow' | 'filter' | 'palette' | 'lighting' | 'ambience' | 'rain'
+>
 
 export const dispositions: { [key: string]: Disposition } = {
   /** Tight, tall and low: the range stands over the journey. */

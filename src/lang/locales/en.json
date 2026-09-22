@@ -49,7 +49,9 @@
     "density": "Change how crowded the corridor is",
     "curvature": "Change how sharply the corridor bends",
     "turbulence": "Change how broken the skyline is",
-    "lighting": "Change the light on the relief"
+    "lighting": "Change the light on the relief",
+    "rain": "Change the rainfall",
+    "ambience": "Follow the local hour, or hold the light as set"
   },
   "global": {
     "author": "Aurélien Grimaud aka. a_ng_d⚡️",
@@ -1258,6 +1260,18 @@
       "soft": "Soft",
       "broken": "Broken",
       "jagged": "Jagged"
+    },
+    "rain": {
+      "title": "Rain",
+      "none": "None",
+      "drizzle": "Drizzle",
+      "shower": "Shower",
+      "downpour": "Downpour"
+    },
+    "ambience": {
+      "title": "Ambience",
+      "fixed": "As set",
+      "hourly": "By the hour"
     },
     "lighting": {
       "title": "Light",

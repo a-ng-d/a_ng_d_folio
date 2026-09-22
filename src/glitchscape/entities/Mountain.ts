@@ -261,7 +261,7 @@ export class Mountain {
     const sk = stage.sk,
       // Depth is the distance travelled along the corridor, bent or not, so
       // aerial perspective reads the same on an arc as on a straight run.
-      fog = fogAt(this.position.z, this.props.zRange[0], 0.5),
+      fog = fogAt(this.position.z, this.props.zRange[0], 0.5, 0.05),
       tint = haze(
         rampAt(
           stage.scene.palette.mountains,

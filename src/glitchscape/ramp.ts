@@ -38,12 +38,24 @@ export const shade = (color: RampColor, amount: number): RampColor => ({
 })
 
 /**
- * How much of the sky a particle has dissolved into. It reaches 1 at the far
- * end of the range, whatever the palette says the ramp ends on, so nothing can
- * ever wink into existence at the back of the corridor.
+ * How much of the sky a particle has dissolved into.
+ *
+ * It reaches 1 at both ends of the corridor — where particles appear and
+ * where they wrap away — whatever the palette says the ramp ends on. Fading
+ * the far end alone only hides the seam from a camera that looks forward; any
+ * other point of view watches the foreground vanish instead. Covering both
+ * boundaries makes the seam invisible from anywhere.
  */
-export const fogAt = (depth: number, far: number, onset: number) =>
-  clamp(doMap(depth, far, far * onset, 1, 0), 0, 1)
+export const fogAt = (
+  depth: number,
+  far: number,
+  farOnset: number,
+  nearZone: number
+) =>
+  Math.max(
+    clamp(doMap(depth, far, far * farOnset, 1, 0), 0, 1),
+    clamp(doMap(depth, far * nearZone, 0, 0, 1), 0, 1)
+  )
 
 /** Dissolves a ramp colour into the sky. */
 export const haze = (

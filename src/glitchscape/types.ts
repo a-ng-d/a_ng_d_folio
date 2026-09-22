@@ -41,6 +41,9 @@ export type LightKind = 'FLAT' | 'DAWN' | 'ZENITH' | 'DUSK' | 'NIGHT' | 'STORM'
 
 export type QualityKind = 'LOW' | 'HIGH'
 
+/** Whether the light is held where it was set, or follows the local clock. */
+export type AmbienceKind = 'FIXED' | 'HOURLY'
+
 export interface ColorRamp {
   near: HuSaLiTy
   far: HuSaLiTy
@@ -100,6 +103,9 @@ export interface SceneConfig {
   /** Roughness of the `ORGANIC` silhouettes, 0 to 1. */
   turbulence: number
   lighting: LightKind
+  ambience: AmbienceKind
+  /** Strength of the rainfall, 0 for none. */
+  rain: number
   palette: ScenePalette
   filter: HuBrInSaGr
 }
@@ -118,6 +124,8 @@ export interface SceneOverride {
   fov?: number
   turbulence?: number
   lighting?: LightKind
+  ambience?: AmbienceKind
+  rain?: number
   palette?: Partial<ScenePalette>
   filter?: HuBrInSaGr
 }

@@ -10,8 +10,10 @@ import { Mountain, clampCorridor } from '@/glitchscape/entities/Mountain'
 import { Cloud } from '@/glitchscape/entities/Cloud'
 import { Star } from '@/glitchscape/entities/Star'
 import { Pov } from '@/glitchscape/entities/Pov'
+import { Rainfall } from '@/glitchscape/entities/Rainfall'
 import { resolveFlow } from '@/glitchscape/flow'
 import { applyLighting } from '@/glitchscape/lighting'
+import { resolveLighting } from '@/glitchscape/ambience'
 import {
   clamp,
   doMap,
@@ -96,6 +98,7 @@ export const createGlitchscape = (
     clouds: Array<Cloud> = [],
     stars: Array<Star> = [],
     camera: any = null,
+    rainfall: Rainfall | null = null,
     floor = 1,
     projects = options.projects,
     requestedPov = options.pov,
@@ -166,10 +169,12 @@ export const createGlitchscape = (
   }
 
   const applyQuality = (quality: string) => {
-    const resolved: QualityKind = quality === 'LOW' ? 'LOW' : 'HIGH'
+    const resolved: QualityKind = quality === 'LOW' ? 'LOW' : 'HIGH',
+      detail = RESOLUTIONS[resolved]
 
     stage.quality = resolved
-    stage.resolution = RESOLUTIONS[resolved]
+    stage.resolution =
+      options.device === 'MOBILE' ? Math.min(detail, 16) : detail
 
     if (!isReady) return
 
@@ -186,16 +191,20 @@ export const createGlitchscape = (
 
   /** Head count for the current density. */
   const counts = () => {
-    const base = options.device === 'MOBILE' ? 10 : 20,
+    const isMobile = options.device === 'MOBILE',
+      base = isMobile ? 10 : 20,
+      // Density is a wish; this is what the device will actually carry.
+      ceiling = isMobile ? 14 : 48,
       density = clamp(stage.scene.density, 0.3, 4),
-      mountains = Math.max(4, Math.round(base * density))
+      mountains = clamp(Math.round(base * density), 4, ceiling)
 
     return {
       mountains,
-      clouds: Math.max(2, Math.round(mountains / 2)),
+      clouds: clamp(Math.round(mountains / 2), 2, isMobile ? 7 : 24),
       // The high field stays out of the density budget: crowding the corridor
       // is the point, and stars are the one thing a tight one never shows.
-      stars: Math.max(8, base * 4),
+      stars: isMobile ? 24 : 80,
+      drops: Math.round(clamp(stage.scene.rain, 0, 1) * (isMobile ? 20 : 60)),
     }
   }
 
@@ -266,6 +275,8 @@ export const createGlitchscape = (
     for (let i = 0; i < target.clouds; i++) clouds.push(spawnCloud())
     for (let i = 0; i < target.stars; i++) stars.push(spawnStar())
 
+    rainfall = new Rainfall(stage, target.drops)
+
     order()
   }
 
@@ -296,6 +307,8 @@ export const createGlitchscape = (
       stars.push(spawnStar())
       hasGrown = true
     }
+
+    rainfall?.resize(stage, target.drops)
 
     if (!hasGrown) return
 
@@ -379,7 +392,13 @@ export const createGlitchscape = (
       camera.pan(pov.rotation.v)
       camera.tilt(pov.rotation.h)
 
-      applyLighting(sk, scene.lighting, scene.palette, bounds, stage.time)
+      applyLighting(
+        sk,
+        resolveLighting(scene.ambience, scene.lighting),
+        scene.palette,
+        bounds,
+        stage.time
+      )
 
       sk.push()
       // Altitude is a move of the world, not of the rig: lifting the range
@@ -397,6 +416,10 @@ export const createGlitchscape = (
       sk.fill(ground.hue, ground.saturation, ground.lightness, floor)
       sk.box(bounds.limitX * 20, 5, bounds.limitZ * 20)
       sk.pop()
+
+      // Weather falls around the camera, outside the bend and outside the
+      // altitude of the journey.
+      rainfall?.move(stage)
     }
 
     sk.mouseMoved = () => pov.push()
@@ -448,6 +471,7 @@ export const createGlitchscape = (
       mountains = []
       clouds = []
       stars = []
+      rainfall = null
       isReady = false
       instance.remove()
     },

@@ -116,6 +116,22 @@ export const knobs: Array<Knob> = [
     ],
   },
   {
+    field: 'rain',
+    steps: [
+      { key: 'none', value: 0 },
+      { key: 'drizzle', value: 0.3 },
+      { key: 'shower', value: 0.6 },
+      { key: 'downpour', value: 1 },
+    ],
+  },
+  {
+    field: 'ambience',
+    steps: [
+      { key: 'fixed', value: 'FIXED' },
+      { key: 'hourly', value: 'HOURLY' },
+    ],
+  },
+  {
     field: 'lighting',
     steps: [
       { key: 'flat', value: 'FLAT' },

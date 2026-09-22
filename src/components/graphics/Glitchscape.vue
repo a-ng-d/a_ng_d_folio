@@ -12,6 +12,7 @@
   import { createGlitchscape } from '@/glitchscape/sketch'
   import { DEFAULT_UNIVERSE, resolveScene } from '@/glitchscape/universes'
   import { HALO_INTENSITY } from '@/glitchscape/lighting'
+  import { resolveLighting } from '@/glitchscape/ambience'
   import { resolveFlow } from '@/glitchscape/flow'
   import { filters } from '@/utilities/colors'
 
@@ -113,7 +114,12 @@
           : `rotate(${this.roll.toFixed(2)}deg) scale(1.12)`
       },
       halo(): number {
-        return HALO_INTENSITY[this.resolvedScene.lighting] || 0
+        const lighting = resolveLighting(
+          this.resolvedScene.ambience,
+          this.resolvedScene.lighting
+        )
+
+        return HALO_INTENSITY[lighting] || 0
       },
       haloStyle(): string {
         const glow = this.resolvedScene.palette.glow,

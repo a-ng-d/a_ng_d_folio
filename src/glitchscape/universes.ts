@@ -53,6 +53,8 @@ const COMMON = {
   fov: 60,
   turbulence: 0.6,
   lighting: 'FLAT' as const,
+  ambience: 'FIXED' as const,
+  rain: 0,
   palette: palettes.SOLAR,
 }
 
@@ -114,6 +116,8 @@ export const resolveScene = (
     fov: pick(patch.fov, base.fov),
     turbulence: pick(patch.turbulence, base.turbulence),
     lighting: pick(patch.lighting, base.lighting),
+    ambience: pick(patch.ambience, base.ambience),
+    rain: pick(patch.rain, base.rain),
     palette: mergePalette(base.palette, patch.palette),
     filter: pick(patch.filter, base.filter),
   }
