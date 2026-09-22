@@ -43,18 +43,22 @@ export const shade = (color: RampColor, amount: number): RampColor => ({
  * It reaches 1 at both ends of the corridor — where particles appear and
  * where they wrap away — whatever the palette says the ramp ends on. Fading
  * the far end alone only hides the seam from a camera that looks forward; any
- * other point of view watches the foreground vanish instead. Covering both
- * boundaries makes the seam invisible from anywhere.
+ * other point of view watches the foreground vanish instead.
+ *
+ * The near end finishes at `nearEdge` rather than at the camera, because the
+ * near clipping plane cuts a little before that: a sheet still carrying some
+ * colour when it reaches the plane does not fade out, it disappears.
  */
 export const fogAt = (
   depth: number,
   far: number,
   farOnset: number,
-  nearZone: number
+  nearZone: number,
+  nearEdge: number
 ) =>
   Math.max(
     clamp(doMap(depth, far, far * farOnset, 1, 0), 0, 1),
-    clamp(doMap(depth, far * nearZone, 0, 0, 1), 0, 1)
+    clamp(doMap(depth, far * nearZone, far * nearEdge, 0, 1), 0, 1)
   )
 
 /** Dissolves a ramp colour into the sky. */

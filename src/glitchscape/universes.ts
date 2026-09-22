@@ -56,7 +56,7 @@ const COMMON = {
   ambience: 'FIXED' as const,
   rain: 0,
   endless: true,
-  mist: 0.38,
+  mist: 0.5,
   palette: palettes.SOLAR,
 }
 

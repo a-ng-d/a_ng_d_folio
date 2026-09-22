@@ -423,16 +423,15 @@ export const createGlitchscape = (
       pov.move(stage)
       camera.setPosition(pov.position.x, pov.position.y, pov.position.z)
       camera.lookAt(pov.center.x, pov.center.y, pov.center.z)
-      // Depth precision is set by the ratio of these two. At 100 against
-      // twice the range it was coarse enough for sheets at similar depths to
-      // trade places frame to frame, which is what made them flicker. Nothing
-      // is drawn within the near plane anyway: the corridor fades out well
-      // before the camera reaches it.
+      // Depth precision is set by the ratio of these two. Nothing is drawn
+      // within the near plane — the corridor has finished fading before a
+      // sheet reaches it — and the far plane clears the top corner of the
+      // tallest relief, which was being cut off and putting it back.
       camera.perspective(
         toRadians(clamp(scene.fov, 20, 110)),
         sk.width / sk.height,
         bounds.height * 0.6,
-        bounds.limitZ * 1.15
+        bounds.limitZ * 1.5
       )
       camera.pan(pov.rotation.v)
       camera.tilt(pov.rotation.h)
@@ -451,6 +450,10 @@ export const createGlitchscape = (
       // plane overhead or uncovering the foot of the mountains.
       sk.translate(0, scene.altitude * bounds.height, 0)
 
+      // Flat cards, so depth order is exact: sorting them back to front each
+      // frame draws them the way they overlap, and two sheets at the same
+      // depth stay in the same order instead of trading places.
+      mountains.sort((a, b) => a.position.z - b.position.z)
       mountains.forEach((mountain) => mountain.move(stage))
       clouds.forEach((cloud) => cloud.move(stage))
       stars.forEach((star) => star.move(stage))

@@ -206,11 +206,14 @@ export class Mountain {
       )
     }
 
-    this.params.alpha = lerp(
+    // A sheet that never quite reaches 1 keeps blending switched on, and
+    // blended surfaces drawn in the wrong order swap places frame to frame.
+    const opacity = lerp(
       this.params.alpha,
       this.params.isStrokedOnly ? 0 : 1,
       this.params.speed * 0.5
     )
+    this.params.alpha = opacity > 0.99 ? 1 : opacity
 
     this.draw(stage)
   }
@@ -251,7 +254,7 @@ export class Mountain {
     const sk = stage.sk,
       // Depth is the distance travelled along the corridor, bent or not, so
       // aerial perspective reads the same on an arc as on a straight run.
-      fog = fogAt(this.position.z, this.props.zRange[0], 0.5, 0.05),
+      fog = fogAt(this.position.z, this.props.zRange[0], 0.5, 0.08, 0.02),
       tint = haze(
         rampAt(
           stage.scene.palette.mountains,

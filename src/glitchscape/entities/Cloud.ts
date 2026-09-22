@@ -163,7 +163,7 @@ export class Cloud {
   draw = (stage: Stage) => {
     const sk = stage.sk,
       quality = stage.quality === 'HIGH' ? 50 : 16,
-      fog = fogAt(this.position.z, this.props.zRange[0], 0.5, 0.05),
+      fog = fogAt(this.position.z, this.props.zRange[0], 0.5, 0.08, 0.02),
       tint = haze(
         rampAt(
           stage.scene.palette.clouds,
