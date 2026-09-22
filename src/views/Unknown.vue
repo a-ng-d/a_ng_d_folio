@@ -416,17 +416,18 @@
       // One ordered list, however long it gets. The dropdowns render to the
       // body, so nothing here can clip the list one of them opens.
       //
-      // The padding keeps the edges of the controls off the scroll box, which
-      // would otherwise shave their outlines, and the negative margin gives it
-      // back so the column stays where it was. The mask dissolves whatever
-      // runs past an edge instead of cutting it.
+      // The padding keeps the edges of the controls off the scroll box,
+      // which would otherwise shave their outlines. The basis grows by the
+      // same amount instead of a negative margin clawing it back, so the
+      // controls keep their width without the panel reaching outside the
+      // container. The mask dissolves whatever runs past an edge.
       &--scrolling
+        flex-basis: calc(340rem + (var(--spacing-m-300) * 2))
         max-height: 100%
         overflow-y: auto
         overflow-x: hidden
         overscroll-behavior: contain
         padding: var(--spacing-m-300)
-        margin: calc(var(--spacing-m-000) * -1)
         -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 var(--fade-top, 0px), #000 calc(100% - var(--fade-bottom, 0px)), transparent 100%)
         mask-image: linear-gradient(to bottom, transparent 0, #000 var(--fade-top, 0px), #000 calc(100% - var(--fade-bottom, 0px)), transparent 100%)
 
