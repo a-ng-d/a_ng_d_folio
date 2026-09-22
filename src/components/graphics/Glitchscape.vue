@@ -19,6 +19,25 @@
   import { fetchLocalWeather } from '@/utilities/weather'
 
   /**
+   * How far a page may brighten the world before the relief stops reading.
+   *
+   * The scene lives between the lightness of its sky and that of its nearest
+   * crests, which is a narrow band to begin with. A tint meant for a card can
+   * multiply straight through it — at 1.5 the sky lands on 93 and the crests
+   * clip at 100, leaving seven points of relief where there were thirty.
+   */
+  const MAX_BRIGHTNESS = 1.1
+
+  /**
+   * A veil of the sky, over everything.
+   *
+   * The background is there to be read across, so it gives up a little of its
+   * own contrast to whatever is written over it. Being the colour of the sky,
+   * it takes the relief down towards the far distance rather than greying it.
+   */
+  const VEIL = 0.22
+
+  /**
    * The living background.
    *
    * This component owns no drawing logic: it resolves an universe into a scene
@@ -76,13 +95,19 @@
        * recolors the very same world. It wins over the universe one.
        */
       resolvedFilter(): HuBrInSaGr {
-        const custom = this.filter
+        const custom = this.filter,
+          resolved =
+            custom !== null && custom !== undefined && custom.hue !== undefined
+              ? (custom as HuBrInSaGr)
+              : this.resolvedScene.filter
 
-        return custom !== null &&
-          custom !== undefined &&
-          custom.hue !== undefined
-          ? (custom as HuBrInSaGr)
-          : this.resolvedScene.filter
+        // The Work page hands over the tint of the project in view, and those
+        // were drawn for a card behind an image rather than for a landscape.
+        // Nothing may brighten the scene past the point where its own relief
+        // disappears into its sky.
+        return Number(resolved.brightness) > MAX_BRIGHTNESS
+          ? { ...resolved, brightness: String(MAX_BRIGHTNESS) }
+          : resolved
       },
       /**
        * The sky of a gradient ambient, or nothing at all.
@@ -162,6 +187,12 @@
             0.24
           )} 88%, ${tone(0)} 100%)`,
         ].join('; ')
+      },
+      /** The veil itself, in the colour of the sky it is made of. */
+      veilStyle(): string {
+        const sky = this.resolvedScene.palette.sky
+
+        return `background-color: hsla(${sky.hue}, ${sky.saturation}%, ${sky.lightness}%, ${VEIL})`
       },
       halo(): number {
         const lighting = resolveLighting(
@@ -244,6 +275,7 @@
     id="sketch"
     :style="`filter: ${filterStyle}; transform: ${transformStyle}`"
   >
+    <div class="veil" :style="veilStyle"></div>
     <div v-if="resolvedScene.mist > 0" class="mist" :style="mistStyle"></div>
   </div>
   <div
@@ -285,12 +317,19 @@
     transform-origin: 50% 50%
     z-index: 0
 
+    .veil
+      position: absolute
+      inset: 0
+      z-index: 1
+      pointer-events: none
+      transition: var(--grandma-transition)
+
     .mist
       position: absolute
       left: 0
       right: 0
       bottom: 0
-      z-index: 1
+      z-index: 2
       pointer-events: none
       transition: var(--grandma-transition)
 </style>
