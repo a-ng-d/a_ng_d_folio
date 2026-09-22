@@ -182,13 +182,9 @@
     --asset-border: var(--image-border)
     --asset-radius: var(--small-border-radius)
     --alpha: 0
-    --caption-color: var(--color-dry-soil)
 
     &__asset--magnified
       --asset-border: none
       --asset-radius: 0
       --alpha: .9
-
-    &[data-theme="DARK"]
-      --caption-color: var(--color-clay)
 </style>
