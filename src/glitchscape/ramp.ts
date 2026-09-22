@@ -83,14 +83,26 @@ export const haze = (
  * A continuous ramp renders a range as one airbrushed gradient; stepping it
  * first gives each sheet a flat tone of its own, which is what makes a stack
  * of them read as cut paper rather than as fog.
+ *
+ * The staircase is soft at its edges. A hard one is invisible at a drift —
+ * a sheet takes hundreds of frames to cross a band — but a scroll rushes it
+ * across in twenty, and the tone visibly snaps. Holding each band flat for
+ * most of its width and turning over the last of it keeps the sheets flat
+ * without ever letting a colour jump.
  */
 export const stepDepth = (
   depth: number,
   far: number,
   near: number,
-  steps: number
+  steps: number,
+  blend: number
 ) => {
-  const t = clamp(doMap(depth, far, near, 0, 1), 0, 1)
+  const t = clamp(doMap(depth, far, near, 0, 1), 0, 1),
+    position = t * steps,
+    band = Math.floor(position),
+    within = position - band,
+    turning = clamp((within - (1 - blend)) / blend, 0, 1),
+    eased = turning * turning * (3 - 2 * turning)
 
-  return doMap(Math.round(t * steps) / steps, 0, 1, far, near)
+  return doMap(clamp((band + eased) / steps, 0, 1), 0, 1, far, near)
 }

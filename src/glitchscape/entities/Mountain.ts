@@ -23,6 +23,17 @@ import {
 /** Tones a range is allowed to take. Few enough that each sheet is flat. */
 const PAPER_STEPS = 7
 
+/** Share of a band spent turning over to the next one, rather than flat. */
+const PAPER_BLEND = 0.3
+
+/**
+ * How far a sheet carries on below its own ground line, as a share of its
+ * height. A climbing corridor swings the far end of the range up into frame,
+ * and a sheet that stops at its foot shows the straight cut across the bottom
+ * of it. Carrying it well past the water keeps the cut out of the picture.
+ */
+const SKIRT = 2
+
 /** A corridor never fully collapses, so the proportional rescale stays safe. */
 export const clampCorridor = (corridor: number) => clamp(corridor, 0.05, 3)
 
@@ -233,27 +244,30 @@ export class Mountain {
   private face = (sk: any) => {
     const steps = this.profile.length
 
+    const skirt = Math.abs(this.size.height) * SKIRT
+
     sk.beginShape(sk.TRIANGLE_STRIP)
     for (let i = 0; i < steps; i++) {
       const x = (i / (steps - 1)) * this.size.width
-      sk.vertex(x, 0, 0)
+      sk.vertex(x, skirt, 0)
       sk.vertex(x, this.size.height * this.profile[i], 0)
     }
     sk.endShape()
   }
 
   private outline = (sk: any) => {
-    const steps = this.profile.length
+    const steps = this.profile.length,
+      skirt = Math.abs(this.size.height) * SKIRT
 
     sk.beginShape()
-    sk.vertex(0, 0, 0)
+    sk.vertex(0, skirt, 0)
     for (let i = 0; i < steps; i++)
       sk.vertex(
         (i / (steps - 1)) * this.size.width,
         this.size.height * this.profile[i],
         0
       )
-    sk.vertex(this.size.width, 0, 0)
+    sk.vertex(this.size.width, skirt, 0)
     sk.endShape(sk.CLOSE)
   }
 
@@ -274,7 +288,8 @@ export class Mountain {
             this.position.z,
             this.props.zRange[0],
             this.props.zRange[1],
-            PAPER_STEPS
+            PAPER_STEPS,
+            PAPER_BLEND
           ),
           this.props.zRange[0],
           this.props.zRange[1]
