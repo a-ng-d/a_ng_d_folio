@@ -10,6 +10,7 @@
   import Footer from '@/components/patterns/Footer.vue'
   import { Home } from 'lucide-vue-next'
   import { filters } from '@/utilities/colors'
+  import type { DispositionKind } from '@/glitchscape/dispositions'
   import {
     DISPOSITION_KEYS,
     FREE_DISPOSITION,
@@ -132,12 +133,12 @@
             isActive: false,
           },
         ] as Array<Option>,
-        disposition: INSPECTOR_DEFAULT as string,
+        disposition: INSPECTOR_DEFAULT as DispositionKind,
         flow: FLOW_KINDS[0] as string,
         // Every arrangement of the relief, by name, so they can be compared
         // one against another. Direction is picked apart from them: two pages
         // facing opposite ways share a disposition and differ only by flow.
-        arrangements: DISPOSITION_KEYS.map((key: string) => ({
+        arrangements: DISPOSITION_KEYS.map((key: DispositionKind) => ({
           name: i18n.global.t(`unknown.disposition.${key.toLowerCase()}`),
           action: () => this.pickDisposition(key),
           isActive: key === INSPECTOR_DEFAULT,
@@ -182,7 +183,7 @@
         this.fadeTop = Math.min(panel.scrollTop, FADE)
         this.fadeBottom = Math.min(Math.max(hidden - panel.scrollTop, 0), FADE)
       },
-      pickDisposition(key: string) {
+      pickDisposition(key: DispositionKind) {
         // Free inherits what you were just looking at; anything else replaces it.
         this.fine =
           key === FREE_DISPOSITION

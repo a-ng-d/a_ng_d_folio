@@ -122,9 +122,7 @@ export interface Meta {
   backgroundImage: string
   theme: string
   filter: HuBrInSaGr
-  pov: string
   quality: string
-  universe?: string
   scene?: SceneOverride
 }
 
@@ -138,9 +136,9 @@ export interface Asset {
   [x: string]: Array<string>
 }
 
-type JSONValue = string | number | boolean | JSONObject | JSONArray
+export type JSONValue = string | number | boolean | JSONObject | JSONArray
 
-interface JSONObject {
+export interface JSONObject {
   [x: string]: JSONValue
 }
 

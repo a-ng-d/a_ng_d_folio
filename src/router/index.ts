@@ -18,7 +18,8 @@ import IWAnimation from '@/assets/animations/_work/_iobeya_whiteboard/animation.
 import ICAnimation from '@/assets/animations/_work/_iobeya_creativity/animation.json'
 import AGAnimation from '@/assets/animations/_work/_axeptio_gusto/animation.json'
 import { filters } from '@/utilities/colors'
-import { INSPECTOR_DEFAULT, dispositions } from '@/glitchscape/dispositions'
+import { INSPECTOR_DEFAULT } from '@/glitchscape/dispositions'
+import { page, scenery } from '@/router/scenery'
 import { assets } from '@/utilities/assets'
 
 const router = createRouter({
@@ -28,121 +29,106 @@ const router = createRouter({
       path: '/',
       name: '_HOME',
       component: Home,
-      meta: {
+      meta: page({
         title: i18n.global.t('title'),
         view: 'HOME',
         theme: 'DEFAULT',
-        filter: filters.creamySun,
-        quality: 'HIGH',
-        scene: {
-          ...dispositions.CANYON,
+        ...scenery({
+          disposition: 'CANYON',
           flow: 'STRAIGHT',
-          ambience: 'LIVE',
-          endless: false,
-        },
-      },
+          ambient: 'creamySun',
+          live: true,
+        }),
+      }),
     },
     {
       path: '/_short',
       name: '_SHORT',
       component: Short,
-      meta: {
+      meta: page({
         title: i18n.global.t('id.title'),
         view: 'SHORT',
         theme: 'DEFAULT',
-        filter: filters.softSteel,
-        quality: 'HIGH',
-        universe: 'SOFT_STEEL',
-        scene: {
-          ...dispositions.VALLEY,
+        ...scenery({
+          disposition: 'VALLEY',
           flow: 'RIGHT',
-          ambience: 'LIVE',
+          ambient: 'softSteel',
+          live: true,
           endless: true,
-        },
-      },
+        }),
+      }),
     },
     {
       path: '/_universe',
       name: '_UNIVERSE',
       component: Universe,
-      meta: {
+      meta: page({
         title: i18n.global.t('universe.title'),
         view: 'UNIVERSE',
         theme: 'DARK',
-        filter: filters.biscarosse,
-        quality: 'HIGH',
-        universe: 'BISCAROSSE',
-        scene: {
-          ...dispositions.SWARM,
+        ...scenery({
+          disposition: 'SWARM',
           flow: 'UP',
-          ambience: 'LIVE',
-          endless: false,
-        },
-      },
+          ambient: 'biscarosse',
+          live: true,
+        }),
+      }),
     },
     {
       path: '/_core',
       name: '_CORE',
       component: Core,
-      meta: {
+      meta: page({
         title: i18n.global.t('core.title'),
         view: 'CORE',
         theme: 'DEFAULT',
-        filter: filters.candyFloss,
-        quality: 'HIGH',
-        universe: 'CANDY_FLOSS',
-        scene: {
-          ...dispositions.VALLEY,
+        ...scenery({
+          disposition: 'VALLEY',
           flow: 'LEFT',
-          ambience: 'LIVE',
+          ambient: 'candyFloss',
+          live: true,
           endless: true,
-        },
-      },
+        }),
+      }),
     },
     {
       path: '/_lab',
       name: '_LAB',
       component: Lab,
-      meta: {
+      meta: page({
         title: i18n.global.t('lab.title'),
         view: 'LAB',
         theme: 'DEFAULT',
-        filter: filters.softWind,
-        quality: 'LOW',
-        universe: 'SOFT_WIND',
-        scene: {
-          ...dispositions.VALLEY,
+        ...scenery({
+          disposition: 'VALLEY',
           flow: 'RIGHT',
-          ambience: 'LIVE',
-          endless: false,
-        },
-      },
+          ambient: 'softWind',
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_work',
       name: '_WORK',
       component: Work,
-      meta: {
+      meta: page({
         title: i18n.global.t('work.title'),
         view: 'WORK',
-        // No ambient of its own: Work.vue hands over the filter of whichever
-        // project is in view, so the colour walks down the list with you.
-        filter: filters.grayscale,
-        quality: 'LOW',
-        universe: 'MONOLITH',
-        scene: {
-          ...dispositions.DUNES,
+        ...scenery({
+          disposition: 'DUNES',
           flow: 'DOWN',
-          ambience: 'LIVE',
-          endless: false,
-        },
-      },
+          ambient: 'grayscale',
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_work/_ui_color_palette',
       name: '_UI_COLOR_PALETTE',
       component: Project,
-      meta: {
+      meta: page({
         title: i18n.global.t('work._ui_color_palette.title'),
         codeName: i18n.global.t('work._ui_color_palette.shortTitle'),
         description: i18n.global.t('work._ui_color_palette.description'),
@@ -159,26 +145,21 @@ const router = createRouter({
         background: filters._ui_color_palette,
         backgroundImage: 'none',
         theme: 'DEFAULT',
-        filter: filters.grayscale,
-        quality: 'LOW',
-        universe: 'DAYBREAK',
-        scene: {
-          ...dispositions.DUNES,
-          // The relief holds still while a project is read: the page is the
-          // subject here, and the only thing moving behind it would be a
-          // distraction from it.
+        ...scenery({
+          disposition: 'DUNES',
           flow: 'STILL',
+          ambient: 'grayscale',
           shape: 'ROUND',
-          ambience: 'LIVE',
-          endless: false,
-        },
-      },
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_work/_axeptio_gusto',
       name: '_AXEPTIO_GUSTO',
       component: Project,
-      meta: {
+      meta: page({
         title: i18n.global.t('work._axeptio_gusto.title'),
         codeName: i18n.global.t('work._axeptio_gusto.shortTitle'),
         description: i18n.global.t('work._axeptio_gusto.description'),
@@ -196,26 +177,21 @@ const router = createRouter({
         backgroundImage:
           'url(/images/_work/_axeptio_gusto/background.webp) 0% 0% / cover no-repeat',
         theme: 'DEFAULT',
-        filter: filters.grayscale,
-        quality: 'LOW',
-        universe: 'DAYBREAK',
-        scene: {
-          ...dispositions.DUNES,
-          // The relief holds still while a project is read: the page is the
-          // subject here, and the only thing moving behind it would be a
-          // distraction from it.
+        ...scenery({
+          disposition: 'DUNES',
           flow: 'STILL',
+          ambient: 'grayscale',
           shape: 'TRAPEZOID',
-          ambience: 'LIVE',
-          endless: false,
-        },
-      },
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_work/_iobeya_whiteboard',
       name: '_IOBEYA_WHITEBOARD',
       component: Project,
-      meta: {
+      meta: page({
         title: i18n.global.t('work._iobeya_whiteboard.title'),
         codeName: i18n.global.t('work._iobeya_whiteboard.shortTitle'),
         description: i18n.global.t('work._iobeya_whiteboard.description'),
@@ -233,26 +209,21 @@ const router = createRouter({
         backgroundImage:
           'url(/images/_work/_iobeya_whiteboard/background.webp) 0% 0% no-repeat',
         theme: 'DARK',
-        filter: filters.grayscale,
-        quality: 'LOW',
-        universe: 'DAYBREAK',
-        scene: {
-          ...dispositions.DUNES,
-          // The relief holds still while a project is read: the page is the
-          // subject here, and the only thing moving behind it would be a
-          // distraction from it.
+        ...scenery({
+          disposition: 'DUNES',
           flow: 'STILL',
+          ambient: 'grayscale',
           shape: 'EXTRUSION',
-          ambience: 'LIVE',
-          endless: false,
-        },
-      },
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_work/_iobeya_mobile_ds',
       name: '_IOBEYA_MOBILE_DS',
       component: Project,
-      meta: {
+      meta: page({
         title: i18n.global.t('work._iobeya_mobile_ds.title'),
         codeName: i18n.global.t('work._iobeya_mobile_ds.shortTitle'),
         description: i18n.global.t('work._iobeya_mobile_ds.description'),
@@ -270,26 +241,21 @@ const router = createRouter({
         backgroundImage:
           'url(/images/_work/_iobeya_mobile_ds/background.webp) 0% 0% / cover no-repeat',
         theme: 'DARK',
-        filter: filters.grayscale,
-        quality: 'LOW',
-        universe: 'DAYBREAK',
-        scene: {
-          ...dispositions.DUNES,
-          // The relief holds still while a project is read: the page is the
-          // subject here, and the only thing moving behind it would be a
-          // distraction from it.
+        ...scenery({
+          disposition: 'DUNES',
           flow: 'STILL',
+          ambient: 'grayscale',
           shape: 'TRIANGLE',
-          ambience: 'LIVE',
-          endless: false,
-        },
-      },
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_work/_iobeya_creativity',
       name: '_IOBEYA_CREATIVITY',
       component: Project,
-      meta: {
+      meta: page({
         title: i18n.global.t('work._iobeya_creativity.title'),
         codeName: i18n.global.t('work._iobeya_creativity.shortTitle'),
         description: i18n.global.t('work._iobeya_creativity.description'),
@@ -307,26 +273,21 @@ const router = createRouter({
         backgroundImage:
           'url(/images/_work/_iobeya_creativity/background.webp) 0% 0% / cover no-repeat',
         theme: 'DARK',
-        filter: filters.grayscale,
-        quality: 'LOW',
-        universe: 'DAYBREAK',
-        scene: {
-          ...dispositions.DUNES,
-          // The relief holds still while a project is read: the page is the
-          // subject here, and the only thing moving behind it would be a
-          // distraction from it.
+        ...scenery({
+          disposition: 'DUNES',
           flow: 'STILL',
+          ambient: 'grayscale',
           shape: 'ORGANIC',
-          ambience: 'LIVE',
-          endless: false,
-        },
-      },
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_work/_jeprendsquoi',
       name: '_JEPRENDSQUOI',
       component: Project,
-      meta: {
+      meta: page({
         title: i18n.global.t('work._jeprendsquoi.title'),
         codeName: i18n.global.t('work._jeprendsquoi.shortTitle'),
         description: i18n.global.t('work._jeprendsquoi.description'),
@@ -344,26 +305,21 @@ const router = createRouter({
         backgroundImage:
           'url(/images/_work/_jeprendsquoi/background.svg) 50% / cover no-repeat',
         theme: 'DEFAULT',
-        filter: filters.grayscale,
-        quality: 'LOW',
-        universe: 'DAYBREAK',
-        scene: {
-          ...dispositions.DUNES,
-          // The relief holds still while a project is read: the page is the
-          // subject here, and the only thing moving behind it would be a
-          // distraction from it.
+        ...scenery({
+          disposition: 'DUNES',
           flow: 'STILL',
+          ambient: 'grayscale',
           shape: 'ROUND',
-          ambience: 'LIVE',
-          endless: false,
-        },
-      },
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_work/_jean_bobby_radio',
       name: '_JEAN_BOBBY_RADIO',
       component: Project,
-      meta: {
+      meta: page({
         title: i18n.global.t('work._jean_bobby_radio.title'),
         codeName: i18n.global.t('work._jean_bobby_radio.shortTitle'),
         description: i18n.global.t('work._jean_bobby_radio.description'),
@@ -380,26 +336,21 @@ const router = createRouter({
         background: filters._jean_bobby_radio,
         backgroundImage: 'none',
         theme: 'DARK',
-        filter: filters.grayscale,
-        quality: 'LOW',
-        universe: 'DAYBREAK',
-        scene: {
-          ...dispositions.DUNES,
-          // The relief holds still while a project is read: the page is the
-          // subject here, and the only thing moving behind it would be a
-          // distraction from it.
+        ...scenery({
+          disposition: 'DUNES',
           flow: 'STILL',
+          ambient: 'grayscale',
           shape: 'TRAPEZOID',
-          ambience: 'LIVE',
-          endless: false,
-        },
-      },
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_work/_awesome_ipsums',
       name: '_AWESOME_IPSUMS',
       component: Project,
-      meta: {
+      meta: page({
         title: i18n.global.t('work._awesome_ipsums.title'),
         codeName: i18n.global.t('work._awesome_ipsums.shortTitle'),
         description: i18n.global.t('work._awesome_ipsums.description'),
@@ -416,72 +367,63 @@ const router = createRouter({
         background: filters._awesome_ipsums,
         backgroundImage: 'none',
         theme: 'DARK',
-        filter: filters.grayscale,
-        quality: 'LOW',
-        universe: 'DAYBREAK',
-        scene: {
-          ...dispositions.DUNES,
-          // The relief holds still while a project is read: the page is the
-          // subject here, and the only thing moving behind it would be a
-          // distraction from it.
+        ...scenery({
+          disposition: 'DUNES',
           flow: 'STILL',
+          ambient: 'grayscale',
           shape: 'TRIANGLE',
-          ambience: 'LIVE',
-          endless: false,
-        },
-      },
+          live: true,
+          wireframe: true,
+        }),
+      }),
     },
     {
       path: '/_contact',
       name: '_CONTACT',
       component: Contact,
-      meta: {
+      meta: page({
         title: i18n.global.t('contact.title'),
         view: 'CONTACT',
         theme: 'DEFAULT',
-        filter: filters.grayscale,
-        quality: 'HIGH',
-        universe: 'MONOLITH',
-        scene: {
-          ...dispositions.VALLEY,
+        ...scenery({
+          disposition: 'VALLEY',
           flow: 'LEFT',
-          ambience: 'LIVE',
-          endless: false,
-        },
-      },
+          ambient: 'grayscale',
+          live: true,
+        }),
+      }),
     },
     {
       path: '/_attribution',
       name: '_ATTRIBUTION',
       component: Attribution,
-      meta: {
+      meta: page({
         title: i18n.global.t('attribution.title'),
         view: 'ATTRIBUTION',
         theme: 'DEFAULT',
-        filter: filters.grayscale,
-        quality: 'HIGH',
-        universe: 'MONOLITH',
-        scene: {
-          ...dispositions.DUNES,
+        ...scenery({
+          disposition: 'DUNES',
           flow: 'DOWN',
-          ambience: 'LIVE',
+          ambient: 'grayscale',
+          live: true,
           endless: true,
-        },
-      },
+        }),
+      }),
     },
     {
       path: '/:pathMatch(.*)*',
       name: '_UNKNOWN',
       component: Unknown,
-      meta: {
+      meta: page({
         title: i18n.global.t('unknown.title'),
         view: 'UNKNOWN',
         theme: 'DEFAULT',
-        filter: filters.creamySun,
-        quality: 'HIGH',
-        universe: 'TEMPEST',
-        scene: { ...dispositions[INSPECTOR_DEFAULT] },
-      },
+        ...scenery({
+          disposition: INSPECTOR_DEFAULT,
+          flow: 'STRAIGHT',
+          ambient: 'creamySun',
+        }),
+      }),
     },
   ],
 })

@@ -24,7 +24,17 @@ export type Disposition = Omit<
   | 'mist'
 >
 
-export const dispositions: { [key: string]: Disposition } = {
+/**
+ * Checks the values without flattening the keys.
+ *
+ * `{ [key: string]: Disposition }` would let any string index it, and a page
+ * asking for a disposition that does not exist would compile and then travel
+ * through nothing. The identity function keeps each name in the type, so the
+ * editor can offer them and the compiler can refuse the rest.
+ */
+const named = <T extends { [key: string]: Disposition }>(entries: T) => entries
+
+export const dispositions = named({
   /** Tight, tall and low: the range stands over the journey. */
   CANYON: {
     shape: 'SWELL',
@@ -196,7 +206,7 @@ export const dispositions: { [key: string]: Disposition } = {
     curvature: 0.55,
     turbulence: 0.6,
   },
-}
+})
 
 /**
  * The one disposition that is not an arrangement but a licence to make one.
@@ -205,7 +215,12 @@ export const dispositions: { [key: string]: Disposition } = {
  */
 export const FREE_DISPOSITION = 'FREE'
 
-export const DISPOSITION_KEYS = Object.keys(dispositions)
+/** Every arrangement there is, by name — and nothing else compiles. */
+export type DispositionKind = keyof typeof dispositions
+
+export const DISPOSITION_KEYS = Object.keys(
+  dispositions
+) as Array<DispositionKind>
 
 /** Where the inspector starts: the open reference. */
-export const INSPECTOR_DEFAULT = 'PLAIN'
+export const INSPECTOR_DEFAULT: DispositionKind = 'PLAIN'
