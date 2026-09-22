@@ -208,7 +208,7 @@ const router = createRouter({
         background: filters._iobeya_whiteboard,
         backgroundImage:
           'url(/images/_work/_iobeya_whiteboard/background.webp) 0% 0% no-repeat',
-        theme: 'DARK',
+        theme: 'DEFAULT',
         ...scenery({
           disposition: 'DUNES',
           flow: 'STILL',
@@ -240,7 +240,7 @@ const router = createRouter({
         background: filters._iobeya_mobile_ds,
         backgroundImage:
           'url(/images/_work/_iobeya_mobile_ds/background.webp) 0% 0% / cover no-repeat',
-        theme: 'DARK',
+        theme: 'DEFAULT',
         ...scenery({
           disposition: 'DUNES',
           flow: 'STILL',
@@ -272,7 +272,7 @@ const router = createRouter({
         background: filters._iobeya_creativity,
         backgroundImage:
           'url(/images/_work/_iobeya_creativity/background.webp) 0% 0% / cover no-repeat',
-        theme: 'DARK',
+        theme: 'DEFAULT',
         ...scenery({
           disposition: 'DUNES',
           flow: 'STILL',
@@ -335,7 +335,7 @@ const router = createRouter({
         illustration: JBRAnimation,
         background: filters._jean_bobby_radio,
         backgroundImage: 'none',
-        theme: 'DARK',
+        theme: 'DEFAULT',
         ...scenery({
           disposition: 'DUNES',
           flow: 'STILL',
