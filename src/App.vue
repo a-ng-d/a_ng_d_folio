@@ -43,8 +43,14 @@
         isQuickMenu: false as boolean,
         previousPath: '' as string,
         isUIHere: true as boolean,
-        theme: 'DEFAULT' as string,
+        pageTheme: 'DEFAULT' as string,
+        isBackgroundDark: false as boolean,
       }
+    },
+    computed: {
+      theme(): string {
+        return this.isBackgroundDark ? 'DARK' : this.pageTheme
+      },
     },
     watch: {
       $route(to, from) {
@@ -61,7 +67,7 @@
             ? to.meta.position
             : 0
 
-        this.theme =
+        this.pageTheme =
           this.view === 'PROJECT'
             ? 'DEFAULT'
             : this.view === 'WORK'
@@ -274,13 +280,14 @@
         @glitch="isGlitched = $event"
         @filter="filter = $event"
         @isUIHere="isUIHere = $event"
-        @theme="theme = $event"
+        @theme="pageTheme = $event"
       />
     </Transition>
   </RouterView>
 
   <!--Background-->
   <Glitchscape
+    @dark="isBackgroundDark = $event"
     :scene="sceneOverride"
     :filter="filter"
     :quality="quality"

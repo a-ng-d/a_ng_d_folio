@@ -21,6 +21,7 @@
   } from '@/glitchscape/ambience'
   import { resolveFlow } from '@/glitchscape/flow'
   import { filters } from '@/utilities/colors'
+  import { clamp } from '@/utilities/operations'
   import type { LocalWeather } from '@/utilities/weather'
   import { fetchLocalWeather } from '@/utilities/weather'
 
@@ -28,12 +29,15 @@
 
   const VEIL = 0.35
 
+  const DARK_SKY = 45
+
   const WEATHER_FLOOR = 600000
 
   const WEATHER_EVERY = 900000
 
   export default defineComponent({
     name: 'Glitchscape',
+    emits: ['dark'],
     props: {
       universe: {
         type: String,
@@ -178,6 +182,17 @@
 
         return `background-color: hsla(${sky.hue}, ${sky.saturation}%, ${sky.lightness}%, ${VEIL})`
       },
+      litSky(): number {
+        const sky = this.liveScene.palette.sky,
+          filter = this.resolvedFilter,
+          brightness = Number(filter.brightness) || 1,
+          lit = clamp(sky.lightness * brightness, 0, 100)
+
+        return Number(filter.invert) >= 0.5 ? 100 - lit : lit
+      },
+      isDark(): boolean {
+        return this.litSky < DARK_SKY
+      },
       halo(): number {
         return HALO_INTENSITY[this.lighting] || 0
       },
@@ -209,6 +224,12 @@
       },
       isLive(to: boolean) {
         if (to) this.askWeather()
+      },
+      isDark: {
+        handler(to: boolean) {
+          this.$emit('dark', to)
+        },
+        immediate: true,
       },
     },
     methods: {
