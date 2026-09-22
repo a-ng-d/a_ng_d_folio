@@ -10,6 +10,12 @@
   import Footer from '@/components/patterns/Footer.vue'
   import { Home } from 'lucide-vue-next'
   import { filters } from '@/utilities/colors'
+  import {
+    DISPOSITION_KEYS,
+    INSPECTOR_DEFAULT,
+    dispositions,
+  } from '@/glitchscape/dispositions'
+  import { FLOW_KINDS } from '@/glitchscape/flow'
   import { i18n } from '@/lang'
 
   export default defineComponent({
@@ -121,12 +127,41 @@
             isActive: false,
           },
         ] as Array<Option>,
+        disposition: INSPECTOR_DEFAULT as string,
+        flow: FLOW_KINDS[0] as string,
+        // Every arrangement of the relief, by name, so they can be compared
+        // one against another. Direction is picked apart from them: two pages
+        // facing opposite ways share a disposition and differ only by flow.
+        arrangements: DISPOSITION_KEYS.map((key: string) => ({
+          name: key,
+          action: () => this.pickDisposition(key),
+          isActive: key === INSPECTOR_DEFAULT,
+        })) as Array<Option>,
+        flows: FLOW_KINDS.map((kind: string, index: number) => ({
+          name: kind,
+          action: () => this.pickFlow(kind),
+          isActive: index === 0,
+        })) as Array<Option>,
         interval: 0 as number,
         currentInterval: 0 as number,
         fadeInterval: 0,
       }
     },
     methods: {
+      pickDisposition(key: string) {
+        this.disposition = key
+        this.applyScene()
+      },
+      pickFlow(kind: string) {
+        this.flow = kind
+        this.applyScene()
+      },
+      applyScene() {
+        this.$emit('scene', {
+          ...dispositions[this.disposition],
+          flow: this.flow,
+        })
+      },
       mouseOffsetCatching() {
         this.$el.onmousemove = (e: MouseEvent) => {
           this.currentInterval = e.clientX - e.clientY
@@ -175,7 +210,9 @@
         <Transition
           name="slide-up"
           style="
-            --delay: calc(var(--duration-turtoise) + (var(--duration-step) * 1));
+            --delay: calc(
+              var(--duration-turtoise) + (var(--duration-step) * 1)
+            );
           "
           appear
         >
@@ -200,7 +237,9 @@
         <Transition
           name="slide-up"
           style="
-            --delay: calc(var(--duration-turtoise) + (var(--duration-step) * 3));
+            --delay: calc(
+              var(--duration-turtoise) + (var(--duration-step) * 3)
+            );
           "
           appear
         >
@@ -211,7 +250,9 @@
         <Transition
           name="slide-up"
           style="
-            --delay: calc(var(--duration-turtoise) + (var(--duration-step) * 2));
+            --delay: calc(
+              var(--duration-turtoise) + (var(--duration-step) * 2)
+            );
           "
           appear
         >
@@ -219,6 +260,18 @@
             v-if="store.device != 'MOBILE'"
             class="controler__content controler__content"
           >
+            <Dropdown
+              :label="$t('unknown.disposition.title')"
+              :options="arrangements"
+              :alt="$t('actions.disposition')"
+              :theme="theme"
+            />
+            <Dropdown
+              :label="$t('unknown.flow.title')"
+              :options="flows"
+              :alt="$t('actions.flow')"
+              :theme="theme"
+            />
             <Dropdown
               :label="$t('unknown.pov.title')"
               :options="povs"

@@ -18,6 +18,7 @@ import IWAnimation from '@/assets/animations/_work/_iobeya_whiteboard/animation.
 import ICAnimation from '@/assets/animations/_work/_iobeya_creativity/animation.json'
 import AGAnimation from '@/assets/animations/_work/_axeptio_gusto/animation.json'
 import { filters } from '@/utilities/colors'
+import { INSPECTOR_DEFAULT, dispositions } from '@/glitchscape/dispositions'
 import { assets } from '@/utilities/assets'
 
 const router = createRouter({
@@ -35,15 +36,7 @@ const router = createRouter({
         pov: 'RESET',
         quality: 'HIGH',
         universe: 'DAYBREAK',
-        scene: {
-          corridor: 0.1,
-          relief: 1.6,
-          breadth: 0.35,
-          altitude: -2.4,
-          fov: 50,
-          density: 2.2,
-          speed: 0.6,
-        },
+        scene: { ...dispositions.CANYON },
       },
     },
     {
@@ -58,7 +51,7 @@ const router = createRouter({
         pov: 'INVERT',
         quality: 'HIGH',
         universe: 'MONOLITH',
-        scene: { flow: 'RIGHT' },
+        scene: { ...dispositions.GORGE, flow: 'RIGHT' },
       },
     },
     {
@@ -73,7 +66,7 @@ const router = createRouter({
         pov: 'DONTLOOKUP',
         quality: 'HIGH',
         universe: 'NIGHTLY',
-        scene: { flow: 'UP', corridor: 0.3 },
+        scene: { ...dispositions.GORGE, flow: 'UP' },
       },
     },
     {
@@ -88,7 +81,7 @@ const router = createRouter({
         pov: 'RESET',
         quality: 'HIGH',
         universe: 'CANDY_FLOSS',
-        scene: { flow: 'LEFT' },
+        scene: { ...dispositions.GORGE, flow: 'LEFT' },
       },
     },
     {
@@ -103,7 +96,7 @@ const router = createRouter({
         pov: 'RESET',
         quality: 'LOW',
         universe: 'SOFT_WIND',
-        scene: { flow: 'RIGHT' },
+        scene: { ...dispositions.GORGE, flow: 'RIGHT' },
       },
     },
     {
@@ -117,7 +110,7 @@ const router = createRouter({
         pov: 'DIVE_3',
         quality: 'LOW',
         universe: 'MONOLITH',
-        scene: { flow: 'DOWN', corridor: 0.3 },
+        scene: { ...dispositions.GORGE, flow: 'DOWN' },
       },
     },
     {
@@ -145,7 +138,7 @@ const router = createRouter({
         pov: 'DIVE_1',
         quality: 'LOW',
         universe: 'DAYBREAK',
-        scene: { shape: 'ROUND' },
+        scene: { ...dispositions.VALLEY, shape: 'ROUND' },
       },
     },
     {
@@ -174,7 +167,7 @@ const router = createRouter({
         pov: 'DIVE_2',
         quality: 'LOW',
         universe: 'DAYBREAK',
-        scene: { shape: 'TRAPEZOID' },
+        scene: { ...dispositions.VALLEY, shape: 'TRAPEZOID' },
       },
     },
     {
@@ -203,7 +196,7 @@ const router = createRouter({
         pov: 'DIVE_3',
         quality: 'LOW',
         universe: 'DAYBREAK',
-        scene: { shape: 'EXTRUSION' },
+        scene: { ...dispositions.VALLEY, shape: 'EXTRUSION' },
       },
     },
     {
@@ -232,7 +225,7 @@ const router = createRouter({
         pov: 'DIVE_4',
         quality: 'LOW',
         universe: 'DAYBREAK',
-        scene: { shape: 'TRIANGLE' },
+        scene: { ...dispositions.VALLEY, shape: 'TRIANGLE' },
       },
     },
     {
@@ -261,7 +254,7 @@ const router = createRouter({
         pov: 'DIVE_5',
         quality: 'LOW',
         universe: 'DAYBREAK',
-        scene: { shape: 'ORGANIC' },
+        scene: { ...dispositions.VALLEY, shape: 'ORGANIC' },
       },
     },
     {
@@ -290,7 +283,7 @@ const router = createRouter({
         pov: 'DIVE_6',
         quality: 'LOW',
         universe: 'DAYBREAK',
-        scene: { shape: 'ROUND' },
+        scene: { ...dispositions.VALLEY, shape: 'ROUND' },
       },
     },
     {
@@ -318,7 +311,7 @@ const router = createRouter({
         pov: 'DIVE_7',
         quality: 'LOW',
         universe: 'DAYBREAK',
-        scene: { shape: 'TRAPEZOID' },
+        scene: { ...dispositions.VALLEY, shape: 'TRAPEZOID' },
       },
     },
     {
@@ -346,7 +339,7 @@ const router = createRouter({
         pov: 'DIVE_8',
         quality: 'LOW',
         universe: 'DAYBREAK',
-        scene: { shape: 'TRIANGLE' },
+        scene: { ...dispositions.VALLEY, shape: 'TRIANGLE' },
       },
     },
     {
@@ -361,7 +354,7 @@ const router = createRouter({
         pov: 'RESET',
         quality: 'HIGH',
         universe: 'MIRAGE',
-        scene: { flow: 'LEFT' },
+        scene: { ...dispositions.GORGE, flow: 'LEFT' },
       },
     },
     {
@@ -376,7 +369,7 @@ const router = createRouter({
         pov: 'RESET',
         quality: 'HIGH',
         universe: 'MONOLITH',
-        scene: { flow: 'DOWN' },
+        scene: { ...dispositions.VALLEY, flow: 'DOWN' },
       },
     },
     {
@@ -391,7 +384,7 @@ const router = createRouter({
         pov: 'RESET',
         quality: 'HIGH',
         universe: 'TEMPEST',
-        scene: { flow: 'DOWN' },
+        scene: { ...dispositions[INSPECTOR_DEFAULT] },
       },
     },
   ],

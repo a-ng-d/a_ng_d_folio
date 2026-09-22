@@ -37,7 +37,9 @@
     "filter": "Change the colored ambiant",
     "glitch": "Glitch/Unglitch scene",
     "quality": "Wireframe/Unwireframe scene",
-    "mute": "Mute/Unmute sound"
+    "mute": "Mute/Unmute sound",
+    "disposition": "Change the disposition of the relief",
+    "flow": "Change the direction of the journey"
   },
   "global": {
     "author": "Aurélien Grimaud aka. a_ng_d⚡️",
@@ -1151,6 +1153,12 @@
       "dive": "Dive",
       "side": "Side",
       "global": "Global"
+    },
+    "disposition": {
+      "title": "Disposition"
+    },
+    "flow": {
+      "title": "Direction"
     },
     "filter": {
       "title": "Ambient",

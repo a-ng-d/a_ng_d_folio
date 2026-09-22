@@ -8,6 +8,7 @@
  *   lighting.ts   the light rigs, plus the strength of the CSS halo
  *   ramp.ts       depth driven colour, which gives the aerial perspective
  *   universes.ts  named, interchangeable colored worlds
+ *   dispositions.ts named arrangements of the relief, direction excluded
  *   entities/     Mountain, Cloud, Star, Pov
  *   sketch.ts     the p5 host, and the remote handed back to the component
  *
@@ -25,6 +26,8 @@ export {
   universes,
 } from '@/glitchscape/universes'
 export { FLOW_KINDS, resolveFlow } from '@/glitchscape/flow'
+export { DISPOSITION_KEYS, dispositions } from '@/glitchscape/dispositions'
+export type { Disposition } from '@/glitchscape/dispositions'
 export { HALO_INTENSITY, applyLighting, isLit } from '@/glitchscape/lighting'
 export { SHAPES, buildProfile, resolveShape } from '@/glitchscape/profiles'
 export type { Profile, ProfileSeed } from '@/glitchscape/profiles'
