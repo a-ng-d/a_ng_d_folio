@@ -114,11 +114,6 @@ export const filters: Filters = {
     grayscale: '100%',
     name: 'GRAYSCALE',
   },
-  // Two ambients that are skies rather than tints. The scene is taken to
-  // greys first, so what remains is its light, and the gradient hands back a
-  // hue that changes with height: cold above, warm at the horizon. Neither
-  // can be written as a filter — a hue-rotate turns every pixel by the same
-  // angle, and a sky does not have one colour.
   softSteel: {
     hue: '0deg',
     brightness: '1.1',

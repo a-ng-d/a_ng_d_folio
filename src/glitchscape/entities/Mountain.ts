@@ -20,32 +20,16 @@ import {
   wrap,
 } from '@/utilities/operations'
 
-/** Tones a range is allowed to take. Few enough that each sheet is flat. */
 const PAPER_STEPS = 7
 
-/** Share of a band spent turning over to the next one, rather than flat. */
 const PAPER_BLEND = 0.3
 
-/**
- * How far a sheet carries on below its own ground line, as a share of its
- * height. A climbing corridor swings the far end of the range up into frame,
- * and a sheet that stops at its foot shows the straight cut across the bottom
- * of it. Carrying it well past the water keeps the cut out of the picture.
- */
 const SKIRT = 2
 
-/** A corridor never fully collapses, so the proportional rescale stays safe. */
 export const clampCorridor = (corridor: number) => clamp(corridor, 0.05, 3)
 
-/** Same guard for the height multiplier, for the same reason. */
 export const clampRelief = (relief: number) => clamp(relief, 0.2, 4)
 
-/**
- * The relief. A mountain is a billboard whose silhouette is a normalised
- * height profile, cut flat with no thickness at all. Changing the scene
- * shape rebuilds the target profile and the mountain morphs into it, so an
- * universe can be swapped mid-journey without a reset.
- */
 export class Mountain {
   props: MountainProps
   size: Size
@@ -125,7 +109,6 @@ export class Mountain {
       (x: number) => stage.sk.noise(x)
     )
 
-  /** Picks up a live scene change: new silhouette, new resolution. */
   private sync = (stage: Stage) => {
     const hasShapeChanged = stage.scene.shape !== this.request,
       hasResolutionChanged = stage.resolution !== this.resolution,
@@ -160,36 +143,14 @@ export class Mountain {
     this.size.height = this.backup.height
   }
 
-  /**
-   * Asks the sheet to leave.
-   *
-   * A range that thins out used to lose its summits between two frames. It
-   * folds back down instead, the way it stood up: the same rotation, run the
-   * other way, so a disposition with fewer mountains reads as the range lying
-   * down rather than as a gap where one was.
-   */
   retire = () => (this.params.isRetiring = true)
 
-  /**
-   * True once it is out of sight rather than merely on its way: flat to
-   * within three degrees, and down to a hundredth of its opacity. Taken out
-   * any earlier and what is dropped is still a visible sliver.
-   */
   hasFolded = () => this.params.retirement > 0.97
 
   wireframe = () => (this.params.isStrokedOnly = true)
 
   unwireframe = () => (this.params.isStrokedOnly = false)
 
-  /**
-   * Advances the sheet without drawing it.
-   *
-   * The two are separate because a sheet can wrap from the near end of the
-   * corridor to the far end inside this call. Drawing as it moves left the
-   * whole range sorted on where everything was a frame ago, and the one that
-   * had just wrapped — now the furthest, now the colour of the sky — was
-   * still painted last, over everything.
-   */
   advance = (stage: Stage) => {
     const sk = stage.sk,
       bounds = stage.bounds,
@@ -258,14 +219,6 @@ export class Mountain {
       )
     }
 
-    // A sheet that never quite reaches 1 keeps blending switched on, and
-    // blended surfaces drawn in the wrong order swap places frame to frame.
-    // A sheet on its way out fades at the rate it folds, so it reaches
-    // nothing and flat together rather than one long after the other.
-    //
-    // This is how present the sheet is, not how filled: a wireframe is drawn
-    // with the same value on its stroke instead. Taking it to nothing here
-    // was taking the wireframe with it.
     const opacity = lerp(
       this.params.alpha,
       this.params.isRetiring ? 0 : 1,
@@ -274,11 +227,6 @@ export class Mountain {
     this.params.alpha = opacity > 0.99 ? 1 : opacity
   }
 
-  /**
-   * The sheet itself: one flat shape from the ground line up to the
-   * silhouette, in a single tone. Nothing is extruded and nothing is shaded —
-   * a cut out of coloured paper is exactly one colour.
-   */
   private face = (sk: any) => {
     const steps = this.profile.length
 
@@ -311,11 +259,7 @@ export class Mountain {
 
   draw = (stage: Stage) => {
     const sk = stage.sk,
-      // Depth is the distance travelled along the corridor, bent or not, so
-      // aerial perspective reads the same on an arc as on a straight run.
       fog = hazeAt(this.position.z, this.props.zRange[0], 0.5),
-      // Passing the camera is an opacity, not a colour: a sheet the tone
-      // of the sky still paints over everything behind it.
       opacity =
         this.params.alpha *
         (1 - fadeAt(this.position.z, this.props.zRange[0], 0.08, 0.02)),
@@ -335,22 +279,12 @@ export class Mountain {
         stage.scene.palette.sky,
         fog
       ),
-      // The lit crest has to fade with the rest, or the band alone would
-      // announce a mountain the moment it enters the range.
       corrupted = stage.isGlitched
         ? Object.values(HSLColors)[random(0, Object.values(HSLColors).length)]
         : null
 
-    // An invisible sheet still writes depth and would occlude whatever is
-    // drawn after it, so it is dropped before it reaches the buffer.
     if (opacity <= 0.01) return
 
-    // The card never turns: it slides along the corridor facing the camera,
-    // whether that corridor runs straight or curls away.
-    //
-    // A card on the left is mirrored by exactly its own width, so its inner
-    // edge lands on its position rather than a fraction of a mountain behind
-    // it. Anything else and the two walls stop being a corridor.
     const placed = bend(
       stage.flow.axis,
       stage.flow.turn,
@@ -366,8 +300,6 @@ export class Mountain {
     sk.translate(placed.x, placed.y, placed.z)
     sk.rotateX(this.params.radians)
 
-    // Paper has no wire around it, and a wireframe has no paper in it: one or
-    // the other, never a filled face carrying an outline it cannot show.
     if (this.params.isStrokedOnly) {
       sk.noFill()
       sk.stroke(shown.hue, shown.saturation, shown.lightness, opacity)

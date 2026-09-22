@@ -1,14 +1,8 @@
 import type { Bounds, LightKind, ScenePalette } from '@/glitchscape/types'
 import { clamp } from '@/utilities/operations'
 
-/**
- * Light rigs. `FLAT` emits nothing, which leaves the historical unlit
- * rendering untouched — every other rig shades the very same geometry through
- * p5 lighting, so an universe can change its mood without changing its shapes.
- */
 export const isLit = (kind: LightKind) => kind !== 'FLAT'
 
-/** Relative strength of the CSS halo layered over the canvas. */
 export const HALO_INTENSITY: { [key: string]: number } = {
   FLAT: 0,
   DAWN: 0.38,

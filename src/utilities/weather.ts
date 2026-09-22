@@ -1,26 +1,11 @@
 import { clamp } from '@/utilities/operations'
 
-/**
- * Live weather, from Open-Meteo.
- *
- * Open-Meteo is free, open source and needs no key or registration, and its
- * own geocoding endpoint covers the second half of the problem: the browser
- * time zone is named after a city, so `Europe/Paris` resolves to coordinates
- * without ever asking the visitor for their location. One provider, no key,
- * no permission prompt — at the cost of a city rather than a street, which is
- * all the weather behind a landscape needs.
- *
- * Every failure is silent and returns null: a background is not worth an
- * error, and the scene simply keeps whatever it was set to.
- */
 const GEOCODING = 'https://geocoding-api.open-meteo.com/v1/search',
   FORECAST = 'https://api.open-meteo.com/v1/forecast',
   TIMEOUT = 6000
 
 export interface LocalWeather {
-  /** Rainfall mapped onto the scene dial, 0 to 1. */
   rain: number
-  /** Raw WMO weather code, kept for whatever else may want it. */
   code: number
 }
 
@@ -38,7 +23,6 @@ const ask = async (url: string) => {
   }
 }
 
-/** The city a time zone is named after, which is close enough to stand in. */
 export const placeFromTimeZone = (): string | null => {
   try {
     const zone = Intl.DateTimeFormat().resolvedOptions().timeZone
@@ -51,10 +35,6 @@ export const placeFromTimeZone = (): string | null => {
   }
 }
 
-/**
- * WMO codes, turned into how hard it should rain on the scene. Drizzle barely
- * shows, a thunderstorm is a downpour.
- */
 export const rainFromCode = (code: number, millimetres: number): number => {
   if (code >= 95) return 1
   if (code >= 80) return 0.75

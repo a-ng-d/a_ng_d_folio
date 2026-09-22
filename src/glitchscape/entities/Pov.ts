@@ -2,14 +2,6 @@ import type { Center, Position, Rotation } from '@/utilities/types'
 import type { Bearing, PovProps, Stage } from '@/glitchscape/types'
 import { doMap, lerp } from '@/utilities/operations'
 
-/**
- * The camera rig. It lerps towards a target framing and layers two optional
- * modifiers on top: a pointer push and a device orientation tilt.
- *
- * It does not travel. A scroll pushes the world down the corridor instead of
- * walking the camera along it — which is what keeps a bent corridor bent from
- * where you sit, and what leaves the journey without an end to reach.
- */
 export class Pov {
   props: PovProps
   position: Position
@@ -78,9 +70,6 @@ export class Pov {
       target = this.params.target,
       speed = this.params.speed,
       eye = target.position.y,
-      // The camera holds its heading. The corridor curves away in front of
-      // it rather than the rig turning to follow, now that the relief itself
-      // carries the bend.
       aimed = target.center
 
     this.position.x = lerp(this.position.x, target.position.x, speed)
@@ -90,7 +79,6 @@ export class Pov {
     this.center.y = lerp(this.center.y, aimed.y, speed)
     this.center.z = lerp(this.center.z, aimed.z, speed)
 
-    // The flow bearing is an offset over whatever framing the route asked for.
     this.bearing.yaw = lerp(this.bearing.yaw, stage.flow.bearing.yaw, 0.02)
     this.bearing.pitch = lerp(
       this.bearing.pitch,

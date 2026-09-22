@@ -5,11 +5,6 @@ import { bend } from '@/glitchscape/bend'
 import { HSLColors } from '@/utilities/colors'
 import { doMap, lerp, random, randomFloat, wrap } from '@/utilities/operations'
 
-/**
- * Stacked capsules drifting across the range. Clouds keep their historical
- * silhouette — they are the soft counterpoint to the relief — but they now
- * follow the scene flow and fade at the edges of their own corridor.
- */
 export class Cloud {
   props: CloudProps
   size: Size
@@ -82,10 +77,8 @@ export class Cloud {
 
   unwireframe = () => (this.params.isStrokedOnly = false)
 
-  /** Leaves the way it arrived: back up to where it dropped in from. */
   retire = () => (this.params.isRetiring = true)
 
-  /** True once it has climbed back out of sight, and faded with it. */
   hasFaded = () => this.params.retirement > 0.97
 
   move = (stage: Stage) => {
@@ -101,7 +94,6 @@ export class Cloud {
         this.props.zRange[0],
         this.props.zRange[1]
       )
-      // A constant breeze keeps the sky alive even when the journey stands still.
       this.position.x = wrap(
         this.position.x + (drift.x * 0.5 + 0.5) * step,
         -corridor,
@@ -147,8 +139,6 @@ export class Cloud {
         row.x = randomFloat(-bounds.width / 4, bounds.width / 4)
       })
 
-    // How present it is, not how filled — a wireframe cloud is drawn with
-    // this on its stroke, so collapsing it here would unhang the sky.
     this.params.alpha = lerp(
       this.params.alpha,
       this.params.isRetiring ? 0 : this.params.beta,
@@ -180,8 +170,6 @@ export class Cloud {
     const sk = stage.sk,
       quality = stage.quality === 'HIGH' ? 50 : 16,
       fog = hazeAt(this.position.z, this.props.zRange[0], 0.5),
-      // Passing the camera is an opacity, not a colour: a sheet the tone
-      // of the sky still paints over everything behind it.
       opacity =
         this.params.alpha *
         (1 - fadeAt(this.position.z, this.props.zRange[0], 0.08, 0.02)),

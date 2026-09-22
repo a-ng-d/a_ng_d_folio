@@ -22,7 +22,6 @@
   import { fineKnobs, knobs } from '@/glitchscape/knobs'
   import { i18n } from '@/lang'
 
-  /** How far the panel fades out at an edge it has content beyond. */
   const FADE = 48
 
   export default defineComponent({
@@ -48,14 +47,12 @@
       },
     },
     computed: {
-      /** What the world starts as, so a switch never opens on its opposite. */
       defaults(): typeof SCENE_DEFAULTS {
         return SCENE_DEFAULTS
       },
       isFree(): boolean {
         return this.disposition === FREE_DISPOSITION
       },
-      /** Where every geometry dimension actually sits right now. */
       effective(): { [key: string]: number | string | undefined } {
         return {
           ...(dispositions[this.disposition] as {
@@ -64,11 +61,6 @@
           ...this.fine,
         }
       },
-      /**
-       * Built from the values in play rather than fixed at startup, so opening
-       * Free shows what the disposition you came from had set — which is the
-       * point: seeing how a disposition moves each dial before moving it.
-       */
       fineControls(): Array<{ field: string; options: Array<Option> }> {
         return fineKnobs.map((knob) => {
           const current = this.effective[knob.field]
@@ -135,9 +127,6 @@
         ] as Array<Option>,
         disposition: INSPECTOR_DEFAULT as DispositionKind,
         flow: FLOW_KINDS[0] as string,
-        // Every arrangement of the relief, by name, so they can be compared
-        // one against another. Direction is picked apart from them: two pages
-        // facing opposite ways share a disposition and differ only by flow.
         arrangements: DISPOSITION_KEYS.map((key: DispositionKind) => ({
           name: i18n.global.t(`unknown.disposition.${key.toLowerCase()}`),
           action: () => this.pickDisposition(key),
@@ -148,16 +137,9 @@
           action: () => this.pickFlow(kind),
           isActive: index === 0,
         })) as Array<Option>,
-        // One dropdown per dimension of the scene, laid over whatever the
-        // disposition already set, so each can be judged on its own.
-        // Kept apart: a disposition owns the geometry, so picking one must
-        // not wipe the weather or the light you set alongside it.
         fine: {} as { [key: string]: number | string },
         atmosphere: {} as { [key: string]: number | string | boolean },
         generation: 0 as number,
-        // Height of the fade at each edge, in pixels. Tracking the scroll
-        // rather than toggling a class keeps the mask from popping, and
-        // leaves it at zero when nothing overflows at all.
         fadeTop: 0 as number,
         fadeBottom: 0 as number,
         controls: knobs.map((knob) => ({
@@ -184,7 +166,6 @@
         this.fadeBottom = Math.min(Math.max(hidden - panel.scrollTop, 0), FADE)
       },
       pickDisposition(key: DispositionKind) {
-        // Free inherits what you were just looking at; anything else replaces it.
         this.fine =
           key === FREE_DISPOSITION
             ? ({ ...this.effective } as { [key: string]: number | string })
@@ -195,8 +176,6 @@
         this.$nextTick(this.measureFades)
       },
       pickKnob(field: string, value: number | string | boolean) {
-        // Only the switches carry booleans, and none of them is a fine
-        // dimension, so geometry stays numbers and names.
         if (fineKnobs.some((knob) => knob.field === field))
           this.fine = { ...this.fine, [field]: value as number | string }
         else this.atmosphere = { ...this.atmosphere, [field]: value }
@@ -345,9 +324,6 @@
               :alt="$t('actions.filter')"
               :theme="theme"
             />
-            <!--The geometry only opens on the disposition that allows moving it.
-                Remounting on each pick is what lets every dial show where the
-                disposition you came from had left it.-->
             <Dropdown
               v-for="control in isFree ? fineControls : []"
               :key="`${control.field}-${generation}`"
@@ -430,14 +406,6 @@
       gap: var(--layout-row-gap) 0
       pointer-events: all
 
-      // One ordered list, however long it gets. The dropdowns render to the
-      // body, so nothing here can clip the list one of them opens.
-      //
-      // The padding keeps the edges of the controls off the scroll box,
-      // which would otherwise shave their outlines. The basis grows by the
-      // same amount instead of a negative margin clawing it back, so the
-      // controls keep their width without the panel reaching outside the
-      // container. The mask dissolves whatever runs past an edge.
       &--scrolling
         flex-basis: calc(340rem + (var(--spacing-m-300) * 2))
         max-height: 100%

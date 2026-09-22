@@ -10,17 +10,6 @@ interface Drop {
   speed: number
 }
 
-/**
- * Rain, as one object rather than one per drop.
- *
- * Every streak is emitted into a single `LINES` shape, so the whole downpour
- * costs one draw call however heavy it gets — which is the only way it can sit
- * on top of a corridor already crowded with relief.
- *
- * It falls around the camera in world space, outside the bend and outside the
- * altitude of the journey: weather belongs to where you stand, not to the
- * track you are on.
- */
 export class Rainfall {
   drops: Array<Drop>
   ceiling: number

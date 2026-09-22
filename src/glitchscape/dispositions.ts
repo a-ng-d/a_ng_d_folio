@@ -1,17 +1,5 @@
 import type { SceneOverride } from '@/glitchscape/types'
 
-/**
- * Named dispositions of the relief.
- *
- * A disposition is everything that shapes the journey — how tight the
- * corridor runs, how broad and how tall its crests are, how low the eye sits,
- * how sharply the corridor bends — and deliberately not which way it turns.
- * Direction belongs to the route, so two pages facing opposite ways share one
- * disposition and differ only by their flow.
- *
- * Colour is not here either — that is what an universe is for — and neither
- * is the weather, the light or the hour of the day.
- */
 export type Disposition = Omit<
   SceneOverride,
   | 'flow'
@@ -24,18 +12,9 @@ export type Disposition = Omit<
   | 'mist'
 >
 
-/**
- * Checks the values without flattening the keys.
- *
- * `{ [key: string]: Disposition }` would let any string index it, and a page
- * asking for a disposition that does not exist would compile and then travel
- * through nothing. The identity function keeps each name in the type, so the
- * editor can offer them and the compiler can refuse the rest.
- */
 const named = <T extends { [key: string]: Disposition }>(entries: T) => entries
 
 export const dispositions = named({
-  /** Tight, tall and low: the range stands over the journey. */
   CANYON: {
     shape: 'SWELL',
     corridor: 0.1,
@@ -47,7 +26,6 @@ export const dispositions = named({
     speed: 0.6,
     curvature: 0.55,
   },
-  /** A canyon that turns harder and closes in further. */
   GORGE: {
     shape: 'SWELL',
     corridor: 0.18,
@@ -59,7 +37,6 @@ export const dispositions = named({
     speed: 0.7,
     curvature: 0.95,
   },
-  /** The narrowest of them, fast and crowded. */
   SLIPSTREAM: {
     shape: 'SWELL',
     corridor: 0.08,
@@ -71,7 +48,6 @@ export const dispositions = named({
     speed: 1.1,
     curvature: 0.8,
   },
-  /** Very tall, narrow framing, slow: height rather than pace. */
   CATHEDRAL: {
     shape: 'SWELL',
     corridor: 0.15,
@@ -83,7 +59,6 @@ export const dispositions = named({
     speed: 0.45,
     curvature: 0.6,
   },
-  /** Room to breathe, broad crests, a gentle bend. */
   VALLEY: {
     shape: 'SWELL',
     corridor: 0.45,
@@ -95,7 +70,6 @@ export const dispositions = named({
     speed: 0.75,
     curvature: 0.5,
   },
-  /** The open reference, closest to where this started. */
   PLAIN: {
     shape: 'SWELL',
     corridor: 1,
@@ -107,7 +81,6 @@ export const dispositions = named({
     speed: 0.9,
     curvature: 0.35,
   },
-  /** Wide and high: mostly sky. */
   HORIZON: {
     shape: 'SWELL',
     corridor: 1.5,
@@ -119,7 +92,6 @@ export const dispositions = named({
     speed: 0.8,
     curvature: 0.3,
   },
-  /** A broken skyline, carved by noise. */
   RIDGELINE: {
     shape: 'ORGANIC',
     corridor: 0.3,
@@ -132,7 +104,6 @@ export const dispositions = named({
     turbulence: 1,
     curvature: 0.7,
   },
-  /** Sharp summits, packed tight. */
   SPIRES: {
     shape: 'TRIANGLE',
     corridor: 0.2,
@@ -144,7 +115,6 @@ export const dispositions = named({
     speed: 0.7,
     curvature: 0.6,
   },
-  /** Round and low, unhurried. */
   DUNES: {
     shape: 'ROUND',
     corridor: 0.6,
@@ -156,7 +126,6 @@ export const dispositions = named({
     speed: 0.55,
     curvature: 0.45,
   },
-  /** Flat tops, stepped. */
   TERRACES: {
     shape: 'TRAPEZOID',
     corridor: 0.35,
@@ -168,7 +137,6 @@ export const dispositions = named({
     speed: 0.7,
     curvature: 0.6,
   },
-  /** Few, huge and squared off. */
   MONOLITHS: {
     shape: 'EXTRUSION',
     corridor: 0.5,
@@ -180,7 +148,6 @@ export const dispositions = named({
     speed: 0.6,
     curvature: 0.5,
   },
-  /** Every silhouette at once, small and everywhere. */
   SWARM: {
     shape: 'MIXED',
     corridor: 0.12,
@@ -193,7 +160,6 @@ export const dispositions = named({
     turbulence: 0.8,
     curvature: 0.75,
   },
-  /** Yours. Starts wherever you came from. */
   FREE: {
     shape: 'SWELL',
     corridor: 0.5,
@@ -208,19 +174,12 @@ export const dispositions = named({
   },
 })
 
-/**
- * The one disposition that is not an arrangement but a licence to make one.
- * Selecting it carries in whatever was on screen a moment earlier, so tuning
- * starts from what you were just looking at rather than from nothing.
- */
 export const FREE_DISPOSITION = 'FREE'
 
-/** Every arrangement there is, by name — and nothing else compiles. */
 export type DispositionKind = keyof typeof dispositions
 
 export const DISPOSITION_KEYS = Object.keys(
   dispositions
 ) as Array<DispositionKind>
 
-/** Where the inspector starts: the open reference. */
 export const INSPECTOR_DEFAULT: DispositionKind = 'PLAIN'

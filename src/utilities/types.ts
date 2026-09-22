@@ -46,12 +46,6 @@ export interface HuBrInSaGr {
   saturation: string
   grayscale: string
   name: string
-  /**
-   * A CSS gradient laid over the canvas in `color` blend mode, for the
-   * ambients that are a sky rather than a tint. The filter underneath turns
-   * the scene to greys, and this puts the hue back one band at a time — which
-   * a single hue-rotate cannot do, since it moves every pixel by one angle.
-   */
   gradient?: string
 }
 

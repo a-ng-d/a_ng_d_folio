@@ -5,15 +5,6 @@ import type {
   ScenePalette,
 } from '@/glitchscape/types'
 
-/**
- * Colored universes.
- *
- * Colour keeps being driven by the CSS filter mechanism — that is what recolors
- * the whole canvas in one pass — so the palettes below stay deliberately
- * conservative. `SOLAR` is the historical one, pixel for pixel; `DEEP` is an
- * opt-in, higher contrast variant. What really distinguishes an universe is its
- * silhouette, its flow, its pace and its light.
- */
 export const palettes: { [key: string]: ScenePalette } = {
   SOLAR: {
     sky: HSLColors.creamySun,
@@ -35,15 +26,6 @@ export const palettes: { [key: string]: ScenePalette } = {
 
 export const DEFAULT_UNIVERSE = 'DAYBREAK'
 
-/**
- * Structure shared by every universe. Pages differ by colour, and by whatever
- * their route asks of the scene — not by having each their own geometry. That
- * is what makes the worlds interchangeable: the same journey, recoloured.
- *
- * Exported because it is also what a switch in the inspector has to open on:
- * a control showing the opposite of the world it governs costs a click to do
- * nothing before it does anything.
- */
 export const SCENE_DEFAULTS: Omit<SceneConfig, 'filter'> = {
   shape: 'SWELL',
   flow: 'STRAIGHT',
@@ -64,7 +46,6 @@ export const SCENE_DEFAULTS: Omit<SceneConfig, 'filter'> = {
   palette: palettes.SOLAR,
 }
 
-/** Named colour worlds. A route names one, then refines it if it needs to. */
 export const universes: { [key: string]: SceneConfig } = {
   DAYBREAK: { ...SCENE_DEFAULTS, filter: filters.creamySun },
   MONOLITH: { ...SCENE_DEFAULTS, filter: filters.grayscale },
@@ -98,11 +79,6 @@ const mergePalette = (
 const pick = <T>(value: T | undefined, fallback: T): T =>
   value === undefined ? fallback : value
 
-/**
- * Turns an universe name plus an optional override into a usable scene. Any
- * unknown name silently falls back on the default universe, so a typo in a
- * route meta never blanks the background.
- */
 export const resolveScene = (
   universe?: string,
   override?: SceneOverride

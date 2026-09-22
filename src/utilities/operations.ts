@@ -69,10 +69,6 @@ export const clamp = (value: number, min: number, max: number) =>
 
 export const toRadians = (degrees: number) => (degrees * Math.PI) / 180
 
-/**
- * Keeps a value inside a range by teleporting it to the opposite bound, so a
- * drifting field never runs out of material.
- */
 export const wrap = (value: number, min: number, max: number) => {
   const range = max - min
 

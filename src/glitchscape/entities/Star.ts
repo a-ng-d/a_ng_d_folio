@@ -5,11 +5,6 @@ import { bend } from '@/glitchscape/bend'
 import { HSLColors } from '@/utilities/colors'
 import { clamp, lerp, random, randomFloat, wrap } from '@/utilities/operations'
 
-/**
- * The high field. Stars are cheap spheres scattered above the range; they
- * twinkle on a noise clock and drift with the flow, which is what sells a
- * vertical journey.
- */
 export class Star {
   props: StarProps
   size: number

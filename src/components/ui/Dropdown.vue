@@ -62,17 +62,6 @@
         this.isExpanded = false
         callback?.()
       },
-      /**
-       * Places the open list against its own button.
-       *
-       * The list is rendered to the body so that no scrolling ancestor can
-       * clip it, which means its position has to be measured rather than
-       * declared. An estimate is used on opening so nothing flashes, then
-       * refined once the list exists and its padding can be read off it.
-       *
-       * The active option is laid over the button, as before, and the whole
-       * list is held inside the viewport so the topmost dropdowns stay usable.
-       */
       placeList(measured?: HTMLElement) {
         const anchor = (this.$el as HTMLElement).querySelector('.button'),
           rect = (anchor || this.$el).getBoundingClientRect(),

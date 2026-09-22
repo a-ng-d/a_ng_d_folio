@@ -1,26 +1,11 @@
 import type { Disposition } from '@/glitchscape/dispositions'
 import type { SceneOverride } from '@/glitchscape/types'
 
-/**
- * The scene, taken apart one dimension at a time.
- *
- * Direction, colour and the ambience switch have controls of their own, and a
- * palette is not something to pick from a list, so none of them is a knob.
- */
 export type KnobField = Exclude<
   keyof SceneOverride,
   'palette' | 'flow' | 'filter' | 'ambience'
 >
 
-/**
- * The two tiers of the panel, and they are exact complements.
- *
- * A fine dimension is one a disposition already sets; a surface one is any it
- * does not. Both are derived from the `Disposition` type rather than written
- * out, so neither can drift and nothing can land in the wrong drawer: name a
- * geometry dimension on the surface, or the weather behind the switch, and it
- * fails to compile.
- */
 export type FineField = Extract<KnobField, keyof Disposition>
 
 export type SurfaceField = Exclude<KnobField, keyof Disposition>
@@ -43,8 +28,6 @@ export interface FineKnob extends Knob {
   field: FineField
 }
 
-/** Always on the panel: the weather and the light, which no disposition
- *  has any say over. */
 export const knobs: Array<SurfaceKnob> = [
   {
     field: 'rain',
@@ -68,8 +51,6 @@ export const knobs: Array<SurfaceKnob> = [
   },
 ]
 
-/** Revealed by the fine tuning switch. Every one of these is already set by
- *  whichever disposition is in play, so each overrules it. */
 export const fineKnobs: Array<FineKnob> = [
   {
     field: 'speed',

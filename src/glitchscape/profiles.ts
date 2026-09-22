@@ -1,15 +1,6 @@
 import type { ShapeKind } from '@/glitchscape/types'
 import { clamp, lerp, random, randomFloat } from '@/utilities/operations'
 
-/**
- * A silhouette is stored as a normalised height profile: `resolution` samples
- * of the upper contour, from the left foot (t = 0) to the right foot (t = 1),
- * each between 0 and 1. The base line closes the shape, so every silhouette is
- * closed by construction — including the fully random organic ones.
- *
- * Because every kind shares that single representation, morphing from a
- * triangle to a blob is a plain component-wise interpolation.
- */
 export type Profile = Array<number>
 
 export type NoiseFn = (x: number) => number
@@ -23,7 +14,6 @@ export const SHAPES: Array<ShapeKind> = [
   'ORGANIC',
 ]
 
-/** Per-instance variations, drawn once so a mountain keeps its character. */
 export interface ProfileSeed {
   peak: number
   shoulders: Array<number>
@@ -57,22 +47,11 @@ const smoothstep = (x: number) => {
   return c * c * (3 - 2 * c)
 }
 
-/**
- * The building block of both organic silhouettes: a summit placed off centre
- * with a different curve on each flank. `rise` under 1 fills the climb out and
- * `fall` over 1 draws the descent into a long tail, which is what separates a
- * mountain from a bell.
- */
 const crest = (t: number, peak: number, rise: number, fall: number) =>
   t < peak
     ? Math.pow(smoothstep(t / peak), rise)
     : Math.pow(smoothstep((1 - t) / (1 - peak)), fall)
 
-/**
- * A long, silky ridge: a steep climb to an off-centre summit, then a trailing
- * flank carrying a lower shoulder so the descent folds instead of simply
- * emptying out. A field of them nests into itself like folded cloth.
- */
 const swellAt = (t: number, seed: ProfileSeed) => {
   const peak = clamp(seed.peak, 0.15, 0.85),
     summit = crest(t, peak, 0.8, 1.35),
@@ -81,14 +60,8 @@ const swellAt = (t: number, seed: ProfileSeed) => {
   return clamp(Math.max(summit, shoulder), 0, 1)
 }
 
-/**
- * Ridged noise: creases where plain noise would round off. Folding the signal
- * around its midpoint turns smooth humps into crests, which is what gives a
- * ridgeline its shoulders instead of a row of lumps.
- */
 const ridged = (x: number, noise: NoiseFn) => 1 - Math.abs(noise(x) * 2 - 1)
 
-/** Historical silhouette: straight flanks and rounded shoulders. */
 const extrusionAt = (t: number, seed: ProfileSeed) => {
   const corner = seed.corner
 
@@ -122,12 +95,6 @@ const trapezoidAt = (t: number, seed: ProfileSeed) => {
   return 1
 }
 
-/**
- * An alpine ridgeline, random but closed: the same asymmetric crest as the
- * swell, carved by two octaves of ridged noise and pinned to the ground line
- * at both feet by the crest itself. Turbulence fades between the two, so the
- * silhouette runs from a clean sweep to a fully broken skyline.
- */
 const organicAt = (
   t: number,
   seed: ProfileSeed,
@@ -180,7 +147,6 @@ export const buildProfile = (
   return profile
 }
 
-/** Component-wise interpolation, used to morph a silhouette into another. */
 export const morphProfile = (
   from: Profile,
   to: Profile,
@@ -191,7 +157,6 @@ export const morphProfile = (
   return from.map((value, index) => lerp(value, to[index], amount))
 }
 
-/** Per-frame corruption of a silhouette, for the glitch mode. */
 export const shatterProfile = (source: Profile, intensity: number): Profile =>
   source.map((value) =>
     clamp(value * randomFloat(1 - intensity, 1 + intensity * 0.5), 0, 1)
