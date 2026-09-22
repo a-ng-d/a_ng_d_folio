@@ -20,6 +20,9 @@
   import { fineKnobs, knobs } from '@/glitchscape/knobs'
   import { i18n } from '@/lang'
 
+  /** How far the panel fades out at an edge it has content beyond. */
+  const FADE = 48
+
   export default defineComponent({
     name: 'Unknown',
     components: {
@@ -136,6 +139,11 @@
         fine: {} as { [key: string]: number | string },
         atmosphere: {} as { [key: string]: number | string },
         generation: 0 as number,
+        // Height of the fade at each edge, in pixels. Tracking the scroll
+        // rather than toggling a class keeps the mask from popping, and
+        // leaves it at zero when nothing overflows at all.
+        fadeTop: 0 as number,
+        fadeBottom: 0 as number,
         controls: knobs.map((knob) => ({
           field: knob.field,
           options: knob.steps.map((step, index: number) => ({
@@ -150,6 +158,15 @@
       }
     },
     methods: {
+      measureFades() {
+        const panel = this.$refs.panel as HTMLElement | undefined
+        if (panel === undefined) return
+
+        const hidden = panel.scrollHeight - panel.clientHeight
+
+        this.fadeTop = Math.min(panel.scrollTop, FADE)
+        this.fadeBottom = Math.min(Math.max(hidden - panel.scrollTop, 0), FADE)
+      },
       pickDisposition(key: string) {
         // Free inherits what you were just looking at; anything else replaces it.
         this.fine =
@@ -159,6 +176,7 @@
         this.disposition = key
         this.generation += 1
         this.applyScene()
+        this.$nextTick(this.measureFades)
       },
       pickKnob(field: string, value: number | string) {
         if (fineKnobs.some((knob) => knob.field === field))
@@ -207,12 +225,15 @@
       },
     },
     mounted: function () {
+      this.measureFades()
+      window.addEventListener('resize', this.measureFades)
       this.mouseOffsetCatching()
       this.clickCatching()
       this.touchCatching()
       this.fadeInterval = setInterval(this.fadeOutUI, 4000)
     },
     unmounted: function () {
+      window.removeEventListener('resize', this.measureFades)
       this.$el.onmousemove = null
       this.$el.onclick = null
       clearInterval(this.fadeInterval)
@@ -276,6 +297,9 @@
           <div
             v-if="store.device != 'MOBILE'"
             class="controler__content controler__content--scrolling"
+            ref="panel"
+            @scroll.passive="measureFades"
+            :style="`--fade-top: ${fadeTop}px; --fade-bottom: ${fadeBottom}px`"
           >
             <Dropdown
               :label="$t('unknown.disposition.title')"
@@ -381,13 +405,20 @@
 
       // One ordered list, however long it gets. The dropdowns render to the
       // body, so nothing here can clip the list one of them opens.
+      //
+      // The padding keeps the edges of the controls off the scroll box, which
+      // would otherwise shave their outlines, and the negative margin gives it
+      // back so the column stays where it was. The mask dissolves whatever
+      // runs past an edge instead of cutting it.
       &--scrolling
         max-height: 100%
         overflow-y: auto
         overflow-x: hidden
         overscroll-behavior: contain
-        padding: var(--spacing-xs-000)
-        margin: calc(var(--spacing-xs-000) * -1)
+        padding: var(--spacing-m-000)
+        margin: calc(var(--spacing-m-000) * -1)
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 var(--fade-top, 0px), #000 calc(100% - var(--fade-bottom, 0px)), transparent 100%)
+        mask-image: linear-gradient(to bottom, transparent 0, #000 var(--fade-top, 0px), #000 calc(100% - var(--fade-bottom, 0px)), transparent 100%)
 
   .switch-row
     display: flex
