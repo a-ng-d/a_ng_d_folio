@@ -13,12 +13,17 @@ export type KnobField = Exclude<
 >
 
 /**
- * A fine dimension is, by definition, one a disposition already sets. Taking
- * the constraint from the `Disposition` type rather than writing it out means
- * nothing else can end up buried behind the fine tuning switch: the weather
- * and the light belong on the surface and the compiler keeps them there.
+ * The two tiers of the panel, and they are exact complements.
+ *
+ * A fine dimension is one a disposition already sets; a surface one is any it
+ * does not. Both are derived from the `Disposition` type rather than written
+ * out, so neither can drift and nothing can land in the wrong drawer: name a
+ * geometry dimension on the surface, or the weather behind the switch, and it
+ * fails to compile.
  */
 export type FineField = Extract<KnobField, keyof Disposition>
+
+export type SurfaceField = Exclude<KnobField, keyof Disposition>
 
 export interface KnobStep {
   key: string
@@ -30,35 +35,17 @@ export interface Knob {
   steps: Array<KnobStep>
 }
 
+export interface SurfaceKnob extends Knob {
+  field: SurfaceField
+}
+
 export interface FineKnob extends Knob {
   field: FineField
 }
 
-/** Always on the panel: the two a disposition is most often worth overruling,
- *  and the two no disposition carries at all. */
-export const knobs: Array<Knob> = [
-  {
-    field: 'speed',
-    steps: [
-      { key: 'drifting', value: 0.15 },
-      { key: 'slow', value: 0.4 },
-      { key: 'steady', value: 0.75 },
-      { key: 'brisk', value: 1.2 },
-      { key: 'racing', value: 2 },
-    ],
-  },
-  {
-    field: 'shape',
-    steps: [
-      { key: 'swell', value: 'SWELL' },
-      { key: 'organic', value: 'ORGANIC' },
-      { key: 'triangle', value: 'TRIANGLE' },
-      { key: 'round', value: 'ROUND' },
-      { key: 'trapezoid', value: 'TRAPEZOID' },
-      { key: 'extrusion', value: 'EXTRUSION' },
-      { key: 'mixed', value: 'MIXED' },
-    ],
-  },
+/** Always on the panel: the weather and the light, which no disposition
+ *  has any say over. */
+export const knobs: Array<SurfaceKnob> = [
   {
     field: 'rain',
     steps: [
@@ -82,8 +69,30 @@ export const knobs: Array<Knob> = [
 ]
 
 /** Revealed by the fine tuning switch. Every one of these is already set by
- *  whichever disposition is in play. */
+ *  whichever disposition is in play, so each overrules it. */
 export const fineKnobs: Array<FineKnob> = [
+  {
+    field: 'speed',
+    steps: [
+      { key: 'drifting', value: 0.15 },
+      { key: 'slow', value: 0.4 },
+      { key: 'steady', value: 0.75 },
+      { key: 'brisk', value: 1.2 },
+      { key: 'racing', value: 2 },
+    ],
+  },
+  {
+    field: 'shape',
+    steps: [
+      { key: 'swell', value: 'SWELL' },
+      { key: 'organic', value: 'ORGANIC' },
+      { key: 'triangle', value: 'TRIANGLE' },
+      { key: 'round', value: 'ROUND' },
+      { key: 'trapezoid', value: 'TRAPEZOID' },
+      { key: 'extrusion', value: 'EXTRUSION' },
+      { key: 'mixed', value: 'MIXED' },
+    ],
+  },
   {
     field: 'corridor',
     steps: [
