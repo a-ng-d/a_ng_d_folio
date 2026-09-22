@@ -122,8 +122,8 @@
             isActive: false,
           },
           {
-            name: i18n.global.t('unknown.filter.steel'),
-            action: () => this.$emit('filter', filters.steel),
+            name: i18n.global.t('unknown.filter.softSteel'),
+            action: () => this.$emit('filter', filters.softSteel),
             isActive: false,
           },
           {

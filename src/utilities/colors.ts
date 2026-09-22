@@ -114,26 +114,28 @@ export const filters: Filters = {
     grayscale: '100%',
     name: 'GRAYSCALE',
   },
-  // The canvas paints in creamy sun, so a rotation lands on roughly its own
-  // hue plus the angle: 160 reaches the cold blue of a sea in bad weather,
-  // and the grayscale pass takes the colour back out of it until it is metal.
-  steel: {
-    hue: '160deg',
-    brightness: '.95',
+  // Two ambients that are skies rather than tints. The scene is taken to
+  // greys first, so what remains is its light, and the gradient hands back a
+  // hue that changes with height: cold above, warm at the horizon. Neither
+  // can be written as a filter — a hue-rotate turns every pixel by the same
+  // angle, and a sky does not have one colour.
+  softSteel: {
+    hue: '0deg',
+    brightness: '1.1',
     invert: '0',
-    saturation: '.55',
-    grayscale: '35%',
-    name: 'STEEL',
+    saturation: '1',
+    grayscale: '100%',
+    name: 'SOFT_STEEL',
+    gradient: 'var(--gradient-soft-steel)',
   },
-  // Far enough round to reach the pink the sky turns over the lake, held
-  // bright and saturated so it stays a sunset rather than a wash.
   biscarosse: {
-    hue: '285deg',
-    brightness: '1.05',
+    hue: '0deg',
+    brightness: '1.1',
     invert: '0',
-    saturation: '1.1',
-    grayscale: '0%',
+    saturation: '1',
+    grayscale: '100%',
     name: 'BISCAROSSE',
+    gradient: 'var(--gradient-biscarosse-sunset)',
   },
   _ui_color_palette: {
     hue: '128deg',

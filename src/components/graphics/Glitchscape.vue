@@ -65,7 +65,6 @@
         type: Number,
         default: 3,
       },
-      view: String,
     },
     data: function () {
       return {
@@ -92,6 +91,16 @@
           custom.hue !== undefined
           ? (custom as HuBrInSaGr)
           : this.resolvedScene.filter
+      },
+      /**
+       * The sky of a gradient ambient, or nothing at all.
+       *
+       * It used to hang off the Short page by name, which meant one page had
+       * a sunset and no other could ask for one. It now comes with the
+       * ambient, so any page choosing Biscarrosse gets the same sky.
+       */
+      ambientGradient(): string | null {
+        return this.resolvedFilter.gradient || null
       },
       filterStyle(): string {
         const filter = this.resolvedFilter
@@ -240,7 +249,11 @@
 
 <template>
   <Transition name="fade" appear>
-    <div v-if="view === 'SHORT'" class="gradient"></div>
+    <div
+      v-if="ambientGradient !== null"
+      class="gradient"
+      :style="`background-image: ${ambientGradient}`"
+    ></div>
   </Transition>
   <div
     class="background"
@@ -263,7 +276,8 @@
     position: fixed
     z-index: 1
     top: 0
-    background-image: var(--gradient-biscarosse-sunset)
+    // Colour only: the luminosity stays the canvas's, so the relief keeps its
+    // own light and only changes hue.
     mix-blend-mode: color
     opacity: .75
 

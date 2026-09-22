@@ -293,7 +293,6 @@
     :scrollProgress="view != 'PROJECT' ? scrollProgress : 0"
     :scrollLimit="pageHeight - viewHeight"
     :numberOfProjects="numberOfProjects"
-    :view="view"
   />
 
   <!--Audio-->

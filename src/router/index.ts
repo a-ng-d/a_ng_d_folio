@@ -52,10 +52,10 @@ const router = createRouter({
         title: i18n.global.t('id.title'),
         view: 'SHORT',
         theme: 'DEFAULT',
-        filter: filters.steel,
+        filter: filters.softSteel,
         pov: 'INVERT',
         quality: 'HIGH',
-        universe: 'STEEL',
+        universe: 'SOFT_STEEL',
         scene: {
           ...dispositions.VALLEY,
           flow: 'RIGHT',
@@ -170,7 +170,16 @@ const router = createRouter({
         pov: 'DIVE_1',
         quality: 'LOW',
         universe: 'DAYBREAK',
-        scene: { ...dispositions.VALLEY, shape: 'ROUND' },
+        scene: {
+          ...dispositions.DUNES,
+          // The relief holds still while a project is read: the page is the
+          // subject here, and the only thing moving behind it would be a
+          // distraction from it.
+          flow: 'STILL',
+          shape: 'ROUND',
+          ambience: 'LIVE',
+          endless: false,
+        },
       },
     },
     {
@@ -199,7 +208,16 @@ const router = createRouter({
         pov: 'DIVE_2',
         quality: 'LOW',
         universe: 'DAYBREAK',
-        scene: { ...dispositions.VALLEY, shape: 'TRAPEZOID' },
+        scene: {
+          ...dispositions.DUNES,
+          // The relief holds still while a project is read: the page is the
+          // subject here, and the only thing moving behind it would be a
+          // distraction from it.
+          flow: 'STILL',
+          shape: 'TRAPEZOID',
+          ambience: 'LIVE',
+          endless: false,
+        },
       },
     },
     {
@@ -228,7 +246,16 @@ const router = createRouter({
         pov: 'DIVE_3',
         quality: 'LOW',
         universe: 'DAYBREAK',
-        scene: { ...dispositions.VALLEY, shape: 'EXTRUSION' },
+        scene: {
+          ...dispositions.DUNES,
+          // The relief holds still while a project is read: the page is the
+          // subject here, and the only thing moving behind it would be a
+          // distraction from it.
+          flow: 'STILL',
+          shape: 'EXTRUSION',
+          ambience: 'LIVE',
+          endless: false,
+        },
       },
     },
     {
@@ -257,7 +284,16 @@ const router = createRouter({
         pov: 'DIVE_4',
         quality: 'LOW',
         universe: 'DAYBREAK',
-        scene: { ...dispositions.VALLEY, shape: 'TRIANGLE' },
+        scene: {
+          ...dispositions.DUNES,
+          // The relief holds still while a project is read: the page is the
+          // subject here, and the only thing moving behind it would be a
+          // distraction from it.
+          flow: 'STILL',
+          shape: 'TRIANGLE',
+          ambience: 'LIVE',
+          endless: false,
+        },
       },
     },
     {
@@ -286,7 +322,16 @@ const router = createRouter({
         pov: 'DIVE_5',
         quality: 'LOW',
         universe: 'DAYBREAK',
-        scene: { ...dispositions.VALLEY, shape: 'ORGANIC' },
+        scene: {
+          ...dispositions.DUNES,
+          // The relief holds still while a project is read: the page is the
+          // subject here, and the only thing moving behind it would be a
+          // distraction from it.
+          flow: 'STILL',
+          shape: 'ORGANIC',
+          ambience: 'LIVE',
+          endless: false,
+        },
       },
     },
     {
@@ -315,7 +360,16 @@ const router = createRouter({
         pov: 'DIVE_6',
         quality: 'LOW',
         universe: 'DAYBREAK',
-        scene: { ...dispositions.VALLEY, shape: 'ROUND' },
+        scene: {
+          ...dispositions.DUNES,
+          // The relief holds still while a project is read: the page is the
+          // subject here, and the only thing moving behind it would be a
+          // distraction from it.
+          flow: 'STILL',
+          shape: 'ROUND',
+          ambience: 'LIVE',
+          endless: false,
+        },
       },
     },
     {
@@ -343,7 +397,16 @@ const router = createRouter({
         pov: 'DIVE_7',
         quality: 'LOW',
         universe: 'DAYBREAK',
-        scene: { ...dispositions.VALLEY, shape: 'TRAPEZOID' },
+        scene: {
+          ...dispositions.DUNES,
+          // The relief holds still while a project is read: the page is the
+          // subject here, and the only thing moving behind it would be a
+          // distraction from it.
+          flow: 'STILL',
+          shape: 'TRAPEZOID',
+          ambience: 'LIVE',
+          endless: false,
+        },
       },
     },
     {
@@ -371,7 +434,16 @@ const router = createRouter({
         pov: 'DIVE_8',
         quality: 'LOW',
         universe: 'DAYBREAK',
-        scene: { ...dispositions.VALLEY, shape: 'TRIANGLE' },
+        scene: {
+          ...dispositions.DUNES,
+          // The relief holds still while a project is read: the page is the
+          // subject here, and the only thing moving behind it would be a
+          // distraction from it.
+          flow: 'STILL',
+          shape: 'TRIANGLE',
+          ambience: 'LIVE',
+          endless: false,
+        },
       },
     },
     {
@@ -406,7 +478,12 @@ const router = createRouter({
         pov: 'RESET',
         quality: 'HIGH',
         universe: 'MONOLITH',
-        scene: { ...dispositions.VALLEY, flow: 'DOWN' },
+        scene: {
+          ...dispositions.DUNES,
+          flow: 'DOWN',
+          ambience: 'LIVE',
+          endless: true,
+        },
       },
     },
     {

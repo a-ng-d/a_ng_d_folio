@@ -73,7 +73,7 @@ export const universes: { [key: string]: SceneConfig } = {
   SOFT_WIND: { ...SCENE_DEFAULTS, filter: filters.softWind },
   MIRAGE: { ...SCENE_DEFAULTS, filter: filters.creamySun },
   TEMPEST: { ...SCENE_DEFAULTS, filter: filters.nightly },
-  STEEL: { ...SCENE_DEFAULTS, filter: filters.steel },
+  SOFT_STEEL: { ...SCENE_DEFAULTS, filter: filters.softSteel },
   BISCAROSSE: { ...SCENE_DEFAULTS, filter: filters.biscarosse },
 }
 
