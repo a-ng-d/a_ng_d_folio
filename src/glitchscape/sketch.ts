@@ -473,11 +473,13 @@ export const createGlitchscape = (
       // plane overhead or uncovering the foot of the mountains.
       sk.translate(0, scene.altitude * bounds.height, 0)
 
-      // Flat cards, so depth order is exact: sorting them back to front each
-      // frame draws them the way they overlap, and two sheets at the same
-      // depth stay in the same order instead of trading places.
+      // Move everything first, then sort, then draw. Flat cards make depth
+      // order exact, but only against where they have actually ended up:
+      // sorting on the previous frame lets a sheet that has just wrapped to
+      // the far end still be painted last, over the whole range.
+      mountains.forEach((mountain) => mountain.advance(stage))
       mountains.sort((a, b) => a.position.z - b.position.z)
-      painted(sk, () => mountains.forEach((mountain) => mountain.move(stage)))
+      painted(sk, () => mountains.forEach((mountain) => mountain.draw(stage)))
       clouds.forEach((cloud) => cloud.move(stage))
       stars.forEach((star) => star.move(stage))
       sk.pop()

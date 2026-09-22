@@ -149,7 +149,16 @@ export class Mountain {
 
   unwireframe = () => (this.params.isStrokedOnly = false)
 
-  move = (stage: Stage) => {
+  /**
+   * Advances the sheet without drawing it.
+   *
+   * The two are separate because a sheet can wrap from the near end of the
+   * corridor to the far end inside this call. Drawing as it moves left the
+   * whole range sorted on where everything was a frame ago, and the one that
+   * had just wrapped — now the furthest, now the colour of the sky — was
+   * still painted last, over everything.
+   */
+  advance = (stage: Stage) => {
     const sk = stage.sk,
       bounds = stage.bounds,
       drift = stage.flow.drift,
@@ -214,8 +223,6 @@ export class Mountain {
       this.params.speed * 0.5
     )
     this.params.alpha = opacity > 0.99 ? 1 : opacity
-
-    this.draw(stage)
   }
 
   /**
