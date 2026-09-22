@@ -346,14 +346,25 @@ export const createGlitchscape = (
 
     let hasGrown = false
 
-    while (mountains.length > target.mountains) mountains.pop()
-    while (mountains.length < target.mountains) {
+    // Only what is still standing counts: a sheet already folding down is on
+    // its way out, and counting it would have a second one sent after it.
+    // They are asked to leave from the far end, where the fold reads as the
+    // range settling rather than as something collapsing underfoot.
+    const standing = mountains.filter(
+        (mountain) => !mountain.params.isRetiring
+      ),
+      floating = clouds.filter((cloud) => !cloud.params.isRetiring)
+
+    while (standing.length > target.mountains) standing.shift()?.retire()
+    while (standing.length < target.mountains) {
       mountains.push(spawnMountain())
+      standing.push(mountains[mountains.length - 1])
       hasGrown = true
     }
-    while (clouds.length > target.clouds) clouds.pop()
-    while (clouds.length < target.clouds) {
+    while (floating.length > target.clouds) floating.shift()?.retire()
+    while (floating.length < target.clouds) {
       clouds.push(spawnCloud())
+      floating.push(clouds[clouds.length - 1])
       hasGrown = true
     }
     while (stars.length > target.stars) stars.pop()
@@ -511,9 +522,13 @@ export const createGlitchscape = (
       // sorting on the previous frame lets a sheet that has just wrapped to
       // the far end still be painted last, over the whole range.
       mountains.forEach((mountain) => mountain.advance(stage))
+      if (mountains.some((mountain) => mountain.hasFolded()))
+        mountains = mountains.filter((mountain) => !mountain.hasFolded())
       mountains.sort((a, b) => a.position.z - b.position.z)
       painted(sk, () => mountains.forEach((mountain) => mountain.draw(stage)))
       clouds.forEach((cloud) => cloud.move(stage))
+      if (clouds.some((cloud) => cloud.hasFaded()))
+        clouds = clouds.filter((cloud) => !cloud.hasFaded())
       stars.forEach((star) => star.move(stage))
       sk.pop()
 

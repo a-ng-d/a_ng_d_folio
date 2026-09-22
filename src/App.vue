@@ -221,7 +221,7 @@
 
   <!--Transition-->
   <Particles
-    v-if="store.isCurtainOn"
+    v-if="store.isPageCurtainOn"
     :weight="176"
     :isExpanded="isExpanded"
     :movement="transition"

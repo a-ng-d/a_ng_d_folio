@@ -67,6 +67,8 @@ export class Mountain {
     gap: number
     isStrokedOnly: boolean
     alpha: number
+    isRetiring: boolean
+    retirement: number
   }
   backup: {
     width: number
@@ -105,6 +107,8 @@ export class Mountain {
       gap: 20,
       isStrokedOnly: true,
       alpha: 0,
+      isRetiring: false,
+      retirement: 0,
     }
     this.backup = {
       width: this.size.width,
@@ -155,6 +159,23 @@ export class Mountain {
     this.size.width = this.backup.width
     this.size.height = this.backup.height
   }
+
+  /**
+   * Asks the sheet to leave.
+   *
+   * A range that thins out used to lose its summits between two frames. It
+   * folds back down instead, the way it stood up: the same rotation, run the
+   * other way, so a disposition with fewer mountains reads as the range lying
+   * down rather than as a gap where one was.
+   */
+  retire = () => (this.params.isRetiring = true)
+
+  /**
+   * True once it is out of sight rather than merely on its way: flat to
+   * within three degrees, and down to a hundredth of its opacity. Taken out
+   * any earlier and what is dropped is still a visible sliver.
+   */
+  hasFolded = () => this.params.retirement > 0.97
 
   wireframe = () => (this.params.isStrokedOnly = true)
 
@@ -212,7 +233,18 @@ export class Mountain {
     )
 
     if (sk.millis() > this.params.order * this.params.gap)
-      this.params.radians = lerp(this.params.radians, 0, this.params.speed)
+      this.params.radians = lerp(
+        this.params.radians,
+        this.params.isRetiring ? toRadians(90) : 0,
+        this.params.speed
+      )
+
+    if (this.params.isRetiring)
+      this.params.retirement = lerp(
+        this.params.retirement,
+        1,
+        this.params.speed
+      )
 
     if (stage.isGlitched) {
       this.size.width = randomFloat(0, this.backup.width * 2)
@@ -228,10 +260,12 @@ export class Mountain {
 
     // A sheet that never quite reaches 1 keeps blending switched on, and
     // blended surfaces drawn in the wrong order swap places frame to frame.
+    // A sheet on its way out fades at the rate it folds, so it reaches
+    // nothing and flat together rather than one long after the other.
     const opacity = lerp(
       this.params.alpha,
-      this.params.isStrokedOnly ? 0 : 1,
-      this.params.speed * 0.5
+      this.params.isStrokedOnly || this.params.isRetiring ? 0 : 1,
+      this.params.speed * (this.params.isRetiring ? 1 : 0.5)
     )
     this.params.alpha = opacity > 0.99 ? 1 : opacity
   }

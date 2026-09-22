@@ -21,6 +21,8 @@ export class Cloud {
     gap: number
     start: number
     isStrokedOnly: boolean
+    isRetiring: boolean
+    retirement: number
     alpha: number
     beta: number
   }
@@ -50,6 +52,8 @@ export class Cloud {
       gap: 40,
       start: stage.bounds.height,
       isStrokedOnly: true,
+      isRetiring: false,
+      retirement: 0,
       alpha: 0,
       beta: 1,
     }
@@ -80,6 +84,12 @@ export class Cloud {
   }
 
   unwireframe = () => (this.params.isStrokedOnly = false)
+
+  /** Leaves the way it arrived: back up to where it dropped in from. */
+  retire = () => (this.params.isRetiring = true)
+
+  /** True once it has climbed back out of sight, and faded with it. */
+  hasFaded = () => this.params.retirement > 0.97
 
   move = (stage: Stage) => {
     const sk = stage.sk,
@@ -122,7 +132,14 @@ export class Cloud {
     if (sk.millis() > this.params.order * this.params.gap)
       this.params.start = lerp(
         this.params.start,
-        this.position.y,
+        this.params.isRetiring ? bounds.height : this.position.y,
+        this.params.speed
+      )
+
+    if (this.params.isRetiring)
+      this.params.retirement = lerp(
+        this.params.retirement,
+        1,
         this.params.speed
       )
 
@@ -135,8 +152,10 @@ export class Cloud {
 
     this.params.alpha = lerp(
       this.params.alpha,
-      this.params.isStrokedOnly ? 0 : this.params.beta,
-      this.params.speed * 0.5
+      this.params.isStrokedOnly || this.params.isRetiring
+        ? 0
+        : this.params.beta,
+      this.params.speed * (this.params.isRetiring ? 1 : 0.5)
     )
 
     this.draw(stage)
