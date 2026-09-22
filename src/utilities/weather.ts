@@ -28,8 +28,13 @@ export const placeFromTimeZone = (): string | null => {
     const zone = Intl.DateTimeFormat().resolvedOptions().timeZone
     if (!zone) return null
 
-    const city = zone.split('/').pop()
-    return city ? city.replace(/_/g, ' ') : null
+    const parts = zone.split('/')
+    if (parts.length < 2 || parts[0] === 'Etc') return null
+
+    const city = parts[parts.length - 1]
+    if (city === '' || /[+0-9]/.test(city)) return null
+
+    return city.replace(/_/g, ' ')
   } catch (error) {
     return null
   }
