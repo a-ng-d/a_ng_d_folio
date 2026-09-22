@@ -132,8 +132,6 @@
     --knob-background: var(--color-clay)
 
   .switch
-    &[data-theme="DARK"]
-      --text-color: var(--color-soil)
 
   // Event
   .switch

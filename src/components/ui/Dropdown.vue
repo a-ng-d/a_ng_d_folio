@@ -227,8 +227,6 @@
       --item-background: transparent
 
   .dropdown
-    &[data-theme="DARK"]
-      --text-color: var(--color-soil)
 
   // Event
   .dropdown
