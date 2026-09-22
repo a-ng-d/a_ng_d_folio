@@ -41,8 +41,8 @@ export type LightKind = 'FLAT' | 'DAWN' | 'ZENITH' | 'DUSK' | 'NIGHT' | 'STORM'
 
 export type QualityKind = 'LOW' | 'HIGH'
 
-/** Whether the light is held where it was set, or follows the local clock. */
-export type AmbienceKind = 'FIXED' | 'HOURLY'
+/** Whether the ambience is held where it was set, or follows the world. */
+export type AmbienceKind = 'FIXED' | 'LIVE'
 
 export interface ColorRamp {
   near: HuSaLiTy

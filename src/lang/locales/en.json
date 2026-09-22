@@ -51,7 +51,7 @@
     "turbulence": "Change how broken the skyline is",
     "lighting": "Change the light on the relief",
     "rain": "Change the rainfall",
-    "ambience": "Follow the local hour, or hold the light as set"
+    "ambience": "Follow the local hour and weather, or hold the ambience as set"
   },
   "global": {
     "author": "Aurélien Grimaud aka. a_ng_d⚡️",
@@ -1269,9 +1269,7 @@
       "downpour": "Downpour"
     },
     "ambience": {
-      "title": "Ambience",
-      "fixed": "As set",
-      "hourly": "By the hour"
+      "title": "Live ambience"
     },
     "lighting": {
       "title": "Light",

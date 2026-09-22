@@ -254,8 +254,15 @@
               :alt="$t('actions.filter')"
               :theme="theme"
             />
-            <Container>
-              <div class="switch-container">
+            <Container class="controler__switches">
+              <div class="switch-row">
+                <Switch
+                  :label="$t('unknown.ambience.title')"
+                  :on="() => pickKnob('ambience', 'LIVE')"
+                  :off="() => pickKnob('ambience', 'FIXED')"
+                  :alt="$t('actions.ambience')"
+                  :theme="theme"
+                />
                 <Switch
                   :label="$t('unknown.glitch.title')"
                   :on="() => $emit('glitch', true)"
@@ -263,10 +270,6 @@
                   :alt="$t('actions.glitch')"
                   :theme="theme"
                 />
-              </div>
-            </Container>
-            <Container>
-              <div class="switch-container">
                 <Switch
                   :label="$t('unknown.quality.title')"
                   :on="() => $emit('quality', 'LOW')"
@@ -322,6 +325,14 @@
         align-content: end
         flex: 0 1 720rem
         gap: var(--layout-row-gap) var(--layout-column-gap)
+
+    &__switches
+      grid-column: 1 / -1
+
+  .switch-row
+    display: flex
+    flex-flow: column nowrap
+    gap: var(--layout-row-gap) 0
 
   @include device.tablet
     .controler

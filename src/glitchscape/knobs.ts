@@ -125,13 +125,6 @@ export const knobs: Array<Knob> = [
     ],
   },
   {
-    field: 'ambience',
-    steps: [
-      { key: 'fixed', value: 'FIXED' },
-      { key: 'hourly', value: 'HOURLY' },
-    ],
-  },
-  {
     field: 'lighting',
     steps: [
       { key: 'flat', value: 'FLAT' },

@@ -15,6 +15,8 @@
   import { resolveLighting } from '@/glitchscape/ambience'
   import { resolveFlow } from '@/glitchscape/flow'
   import { filters } from '@/utilities/colors'
+  import type { LocalWeather } from '@/utilities/weather'
+  import { fetchLocalWeather } from '@/utilities/weather'
 
   /**
    * The living background.
@@ -69,6 +71,9 @@
       return {
         store,
         controller: null as GlitchscapeController | null,
+        weather: null as LocalWeather | null,
+        isAsking: false as boolean,
+        watch: 0 as number,
       }
     },
     computed: {
@@ -113,6 +118,18 @@
           ? 'none'
           : `rotate(${this.roll.toFixed(2)}deg) scale(1.12)`
       },
+      /**
+       * The scene the sketch actually runs. Live weather is fetched out here
+       * rather than inside the engine, which keeps the engine free of any
+       * notion that a network exists — and portable because of it.
+       */
+      liveScene(): SceneConfig {
+        const scene = this.resolvedScene
+
+        return scene.ambience === 'LIVE' && this.weather !== null
+          ? { ...scene, rain: this.weather.rain }
+          : scene
+      },
       halo(): number {
         const lighting = resolveLighting(
           this.resolvedScene.ambience,
@@ -149,22 +166,40 @@
       },
       resolvedScene: {
         handler(to: SceneConfig) {
-          this.controller?.setScene(to)
+          this.controller?.setScene(this.liveScene)
+          if (to.ambience === 'LIVE') this.askWeather()
         },
         deep: true,
+      },
+      weather() {
+        this.controller?.setScene(this.liveScene)
+      },
+    },
+    methods: {
+      async askWeather() {
+        if (this.resolvedScene.ambience !== 'LIVE' || this.isAsking) return
+
+        this.isAsking = true
+        this.weather = await fetchLocalWeather()
+        this.isAsking = false
       },
     },
     mounted: function () {
       this.controller = createGlitchscape({
         parent: 'sketch',
-        scene: this.resolvedScene,
+        scene: this.liveScene,
         pov: this.pov,
         quality: (this.quality === 'LOW' ? 'LOW' : 'HIGH') as QualityKind,
         device: this.store.device,
         projects: this.numberOfProjects,
       })
+
+      this.askWeather()
+      // A visit can outlast the weather it started in.
+      this.watch = window.setInterval(this.askWeather, 900000)
     },
     unmounted: function () {
+      window.clearInterval(this.watch)
       this.controller?.destroy()
       this.controller = null
     },
