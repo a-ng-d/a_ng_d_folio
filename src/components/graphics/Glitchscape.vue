@@ -13,7 +13,12 @@
   import { createGlitchscape } from '@/glitchscape/sketch'
   import { DEFAULT_UNIVERSE, resolveScene } from '@/glitchscape/universes'
   import { HALO_INTENSITY } from '@/glitchscape/lighting'
-  import { resolveLighting, tintPalette } from '@/glitchscape/ambience'
+  import {
+    nightward,
+    overcast,
+    resolveLighting,
+    tintPalette,
+  } from '@/glitchscape/ambience'
   import { resolveFlow } from '@/glitchscape/flow'
   import { filters } from '@/utilities/colors'
   import type { LocalWeather } from '@/utilities/weather'
@@ -110,25 +115,40 @@
 
         return `rotate(${this.roll.toFixed(2)}deg) scale(${cover.toFixed(3)})`
       },
-      lighting(): LightKind {
-        return resolveLighting(
+      reading(): LocalWeather | null {
+        return this.resolvedScene.ambience === 'LIVE' ? this.weather : null
+      },
+      hour(): LightKind {
+        const kind = resolveLighting(
           this.resolvedScene.ambience,
           this.resolvedScene.lighting,
           new Date(this.clock)
         )
+        const reading = this.reading
+
+        return reading !== null && !reading.isDay ? nightward(kind) : kind
+      },
+      lighting(): LightKind {
+        return this.reading !== null && this.reading.isStorm
+          ? 'STORM'
+          : this.hour
       },
       liveScene(): SceneConfig {
         const scene = this.resolvedScene,
-          lighting = this.lighting
+          reading = this.reading
 
         return {
           ...scene,
-          lighting,
-          palette: tintPalette(scene.palette, lighting),
-          rain:
-            scene.ambience === 'LIVE' && this.weather !== null
-              ? this.weather.rain
-              : scene.rain,
+          lighting: this.lighting,
+          palette: overcast(
+            tintPalette(scene.palette, this.hour),
+            reading !== null ? reading.cloud : 0
+          ),
+          rain: reading !== null ? reading.rain : scene.rain,
+          mist:
+            reading !== null && reading.isFoggy
+              ? Math.max(scene.mist, 0.85)
+              : scene.mist,
         }
       },
       mistStyle(): string {

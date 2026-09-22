@@ -5,7 +5,7 @@ import type {
   ScenePalette,
 } from '@/glitchscape/types'
 import type { HuSaLiTy } from '@/utilities/types'
-import { clamp } from '@/utilities/operations'
+import { clamp, lerp } from '@/utilities/operations'
 
 export const lightingForHour = (hour: number): LightKind => {
   if (hour < 5) return 'NIGHT'
@@ -22,6 +22,17 @@ export const resolveLighting = (
   now: Date = new Date()
 ): LightKind =>
   ambience === 'LIVE' ? lightingForHour(now.getHours()) : lighting
+
+const NIGHTWARD: { [key: string]: LightKind } = {
+  ZENITH: 'DUSK',
+  DAWN: 'NIGHT',
+  DUSK: 'NIGHT',
+  FLAT: 'FLAT',
+  NIGHT: 'NIGHT',
+  STORM: 'STORM',
+}
+
+export const nightward = (kind: LightKind): LightKind => NIGHTWARD[kind] || kind
 
 interface Tint {
   hue: number
@@ -77,5 +88,40 @@ export const tintPalette = (
     mountains: ramp(palette.mountains),
     clouds: ramp(palette.clouds),
     stars: ramp(palette.stars),
+  }
+}
+
+const LIT_SKY = 50
+
+export const overcast = (
+  palette: ScenePalette,
+  amount: number
+): ScenePalette => {
+  const reference = palette.sky.lightness,
+    cover = clamp(amount, 0, 1) * clamp(reference / LIT_SKY, 0.25, 1)
+
+  if (cover <= 0.01) return palette
+
+  const dull = (color: HuSaLiTy): HuSaLiTy => ({
+      ...color,
+      saturation: clamp(color.saturation * (1 - 0.6 * cover), 0, 100),
+      lightness: clamp(
+        lerp(color.lightness, reference, 0.35 * cover) * (1 - 0.12 * cover),
+        0,
+        100
+      ),
+    }),
+    band = (ramp: ColorRamp): ColorRamp => ({
+      near: dull(ramp.near),
+      far: dull(ramp.far),
+    })
+
+  return {
+    sky: dull(palette.sky),
+    ground: dull(palette.ground),
+    glow: dull(palette.glow),
+    mountains: band(palette.mountains),
+    clouds: band(palette.clouds),
+    stars: band(palette.stars),
   }
 }

@@ -7,6 +7,10 @@ const GEOCODING = 'https://geocoding-api.open-meteo.com/v1/search',
 export interface LocalWeather {
   rain: number
   code: number
+  cloud: number
+  isStorm: boolean
+  isFoggy: boolean
+  isDay: boolean
 }
 
 const ask = async (url: string) => {
@@ -62,7 +66,7 @@ export const fetchLocalWeather = async (): Promise<LocalWeather | null> => {
 
   const reading = await ask(
     `${FORECAST}?latitude=${spot.latitude}&longitude=${spot.longitude}` +
-      '&current=precipitation,weather_code'
+      '&current=precipitation,weather_code,cloud_cover,is_day'
   )
   const current = reading && reading.current
   if (!current) return null
@@ -72,5 +76,9 @@ export const fetchLocalWeather = async (): Promise<LocalWeather | null> => {
   return {
     code,
     rain: rainFromCode(code, Number(current.precipitation) || 0),
+    cloud: clamp((Number(current.cloud_cover) || 0) / 100, 0, 1),
+    isStorm: code >= 95,
+    isFoggy: code === 45 || code === 48,
+    isDay: Number(current.is_day) === 1,
   }
 }
