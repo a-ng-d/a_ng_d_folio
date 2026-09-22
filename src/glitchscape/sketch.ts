@@ -184,13 +184,15 @@ export const createGlitchscape = (
   /** Head count for the current density. */
   const counts = () => {
     const base = options.device === 'MOBILE' ? 10 : 20,
-      density = clamp(stage.scene.density, 0.3, 2),
+      density = clamp(stage.scene.density, 0.3, 4),
       mountains = Math.max(4, Math.round(base * density))
 
     return {
       mountains,
       clouds: Math.max(2, Math.round(mountains / 2)),
-      stars: Math.max(8, Math.round(mountains * 4)),
+      // The high field stays out of the density budget: crowding the corridor
+      // is the point, and stars are the one thing a tight one never shows.
+      stars: Math.max(8, base * 4),
     }
   }
 
@@ -206,8 +208,10 @@ export const createGlitchscape = (
     const sk = stage.sk,
       corridor = clampCorridor(stage.scene.corridor)
 
+    const breadth = clamp(stage.scene.breadth, 0.15, 3)
+
     return new Mountain(stage, {
-      widthRange: [sk.width * 14, sk.width * 16],
+      widthRange: [sk.width * 14 * breadth, sk.width * 16 * breadth],
       heightRange: [-sk.height * 20, -sk.height * 22],
       x: twoRangesRandom(
         -bounds.limitX * corridor,

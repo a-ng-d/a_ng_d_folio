@@ -38,9 +38,11 @@ const router = createRouter({
         scene: {
           corridor: 0.1,
           relief: 1.6,
+          breadth: 0.35,
           altitude: -2.4,
           fov: 50,
-          density: 1.4,
+          density: 2.2,
+          speed: 0.6,
         },
       },
     },

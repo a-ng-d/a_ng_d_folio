@@ -80,6 +80,12 @@ export interface SceneConfig {
    */
   relief: number
   /**
+   * Multiplier over the width of the relief. Narrow enough and a whole
+   * crest fits inside the corridor even up close, which is what lets the
+   * silhouettes nest instead of showing one endless flank.
+   */
+  breadth: number
+  /**
    * Height of the journey over its default line, in screen heights.
    * Negative values drop the eye towards the foot of the range, which is
    * what turns a landscape into something you stand under.
@@ -107,6 +113,7 @@ export interface SceneOverride {
   density?: number
   corridor?: number
   relief?: number
+  breadth?: number
   altitude?: number
   fov?: number
   turbulence?: number
