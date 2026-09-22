@@ -120,32 +120,36 @@
         return this.resolvedFilter.gradient || null
       },
       /**
-       * Everything about the ambient that can be crossfaded.
+       * The ambient, in three layers rather than one filter.
        *
-       * The inversion is not in here, and cannot be: a browser interpolates
-       * a filter function by function, and `invert(0.5)` maps every pixel to
-       * the same grey. Sliding from an inverted tint to an ordinary one takes
-       * the whole scene through it — four of the eight project tints do —
-       * which is a relief that dissolves and comes back for no reason a
-       * viewer can see.
+       * A browser crossfades a filter function by function, and `invert(0.5)`
+       * maps every pixel to the same grey — so sliding between an inverted
+       * tint and an ordinary one takes the whole relief through flat. Four of
+       * the seven steps through the project list do exactly that.
+       *
+       * The inversion therefore sits on a layer of its own with no transition
+       * on it: it flips while everything else keeps gliding. A filter applies
+       * to what its subtree has already drawn, so the innermost layer runs
+       * first — which is how the original order is kept, to the function:
+       *
+       *   hue-rotate, brightness | invert | saturate, grayscale
+       *
+       * Splitting it any other way would change what the inverted ambients
+       * look like, since saturating before inverting and after it do not
+       * give the same picture.
        */
-      filterStyle(): string {
+      lightStyle(): string {
         const filter = this.resolvedFilter
 
-        return [
-          `hue-rotate(${filter.hue})`,
-          `brightness(${filter.brightness})`,
-          `saturate(${filter.saturation})`,
-          `grayscale(${filter.grayscale})`,
-        ].join(' ')
+        return `hue-rotate(${filter.hue}) brightness(${filter.brightness})`
       },
-      /**
-       * The inversion, on a layer of its own and with no transition on it, so
-       * it flips rather than fades through the flat grey in the middle. The
-       * hue and the light keep gliding underneath it.
-       */
       polarityStyle(): string {
         return `filter: invert(${this.resolvedFilter.invert})`
+      },
+      toneStyle(): string {
+        const filter = this.resolvedFilter
+
+        return `filter: saturate(${filter.saturation}) grayscale(${filter.grayscale})`
       },
       /** Degrees of roll held while the journey leans into an endless turn. */
       roll(): number {
@@ -287,14 +291,20 @@
       :style="`background-image: ${ambientGradient}`"
     ></div>
   </Transition>
-  <div class="polarity" :style="polarityStyle">
-    <div
-      class="background"
-      id="sketch"
-      :style="`filter: ${filterStyle}; transform: ${transformStyle}`"
-    >
-      <div class="veil" :style="veilStyle"></div>
-      <div v-if="resolvedScene.mist > 0" class="mist" :style="mistStyle"></div>
+  <div class="tone" :style="toneStyle">
+    <div class="polarity" :style="polarityStyle">
+      <div
+        class="background"
+        id="sketch"
+        :style="`filter: ${lightStyle}; transform: ${transformStyle}`"
+      >
+        <div class="veil" :style="veilStyle"></div>
+        <div
+          v-if="resolvedScene.mist > 0"
+          class="mist"
+          :style="mistStyle"
+        ></div>
+      </div>
     </div>
   </div>
   <div
@@ -327,14 +337,23 @@
     mix-blend-mode: soft-light
     transition: opacity 1.2s ease, background-image 1.2s ease
 
-  .polarity
+  .tone
     width: 100%
     height: 100%
     position: fixed
     top: 0
     left: 0
     z-index: 0
-    // No transition, on purpose. See polarityStyle.
+    transition: var(--grandma-transition)
+
+  .polarity
+    width: 100%
+    height: 100%
+    position: fixed
+    top: 0
+    left: 0
+    // No transition, on purpose: this is the one that must flip rather than
+    // fade. See the note on lightStyle.
 
   .background
     width: 100%
