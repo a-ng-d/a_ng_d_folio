@@ -207,9 +207,6 @@
         background-color: var(--color-sandstone)
 
       :deep(section.success), :deep(section.credit)
-        background-color: var(--color-soft-wind)
-
-      :deep(section.credit)
         background-color: var(--color-soil)
 
       :deep(section.takeaways)
