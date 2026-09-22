@@ -28,6 +28,10 @@
 
   const VEIL = 0.35
 
+  const WEATHER_FLOOR = 600000
+
+  const WEATHER_EVERY = 900000
+
   export default defineComponent({
     name: 'Glitchscape',
     props: {
@@ -63,6 +67,7 @@
         controller: null as GlitchscapeController | null,
         weather: null as LocalWeather | null,
         isAsking: false as boolean,
+        asked: 0 as number,
         watch: 0 as number,
         tick: 0 as number,
         clock: Date.now() as number,
@@ -115,8 +120,11 @@
 
         return `rotate(${this.roll.toFixed(2)}deg) scale(${cover.toFixed(3)})`
       },
+      isLive(): boolean {
+        return this.resolvedScene.ambience === 'LIVE'
+      },
       reading(): LocalWeather | null {
-        return this.resolvedScene.ambience === 'LIVE' ? this.weather : null
+        return this.isLive ? this.weather : null
       },
       hour(): LightKind {
         const kind = resolveLighting(
@@ -196,16 +204,22 @@
       liveScene: {
         handler(to: SceneConfig) {
           this.controller?.setScene(to)
-          if (to.ambience === 'LIVE') this.askWeather()
         },
         deep: true,
+      },
+      isLive(to: boolean) {
+        if (to) this.askWeather()
       },
     },
     methods: {
       async askWeather() {
-        if (this.resolvedScene.ambience !== 'LIVE' || this.isAsking) return
+        const now = Date.now()
+
+        if (!this.isLive || this.isAsking || now - this.asked < WEATHER_FLOOR)
+          return
 
         this.isAsking = true
+        this.asked = now
         this.weather = await fetchLocalWeather()
         this.isAsking = false
       },
@@ -219,7 +233,7 @@
       })
 
       this.askWeather()
-      this.watch = window.setInterval(this.askWeather, 900000)
+      this.watch = window.setInterval(this.askWeather, WEATHER_EVERY)
       this.tick = window.setInterval(() => (this.clock = Date.now()), 60000)
     },
     unmounted: function () {
