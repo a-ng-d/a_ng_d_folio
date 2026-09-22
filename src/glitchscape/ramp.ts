@@ -70,3 +70,21 @@ export const haze = (
         saturation: lerp(color.saturation, sky.saturation, amount),
         lightness: lerp(color.lightness, sky.lightness, amount),
       }
+
+/**
+ * Snaps a depth onto a fixed number of bands before the ramp reads it.
+ *
+ * A continuous ramp renders a range as one airbrushed gradient; stepping it
+ * first gives each sheet a flat tone of its own, which is what makes a stack
+ * of them read as cut paper rather than as fog.
+ */
+export const stepDepth = (
+  depth: number,
+  far: number,
+  near: number,
+  steps: number
+) => {
+  const t = clamp(doMap(depth, far, near, 0, 1), 0, 1)
+
+  return doMap(Math.round(t * steps) / steps, 0, 1, far, near)
+}

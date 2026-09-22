@@ -99,6 +99,7 @@ export const createGlitchscape = (
     stars: Array<Star> = [],
     camera: any = null,
     rainfall: Rainfall | null = null,
+    resizing = 0,
     floor = 1,
     projects = options.projects,
     requestedPov = options.pov,
@@ -316,6 +317,44 @@ export const createGlitchscape = (
     applyQuality(stage.quality)
   }
 
+  /**
+   * A viewport change moves every bound the field was laid out against, so the
+   * scene is played again rather than stretched: the corridor, the depth of
+   * the range and the size of every silhouette are all read off the window.
+   *
+   * Debounced, because dragging a window edge fires this by the frame.
+   */
+  const measure = () => {
+    const next = computeBounds()
+
+    bounds.width = next.width
+    bounds.height = next.height
+    bounds.limitX = next.limitX
+    bounds.limitY = next.limitY
+    bounds.limitZ = next.limitZ
+  }
+
+  const replay = () => {
+    if (!isReady) return
+
+    measure()
+    mountains = []
+    clouds = []
+    stars = []
+    populate()
+    applyQuality(stage.quality)
+    applyPov(requestedPov)
+  }
+
+  const onResize = () => {
+    const sk = stage.sk
+    if (sk === null) return
+
+    sk.resizeCanvas(sk.windowWidth, sk.windowHeight, true)
+    window.clearTimeout(resizing)
+    resizing = window.setTimeout(replay, 250)
+  }
+
   const instance = new P5((sk: any) => {
     stage.sk = sk
 
@@ -371,7 +410,11 @@ export const createGlitchscape = (
       // infinite instead of running out of it.
       const delta = Math.abs(scroll.position - scroll.previous)
       scroll.previous = scroll.position
-      stage.surge = lerp(stage.surge, clamp(delta * 6, 0, MAX_SURGE), 0.2)
+      stage.surge = lerp(
+        stage.surge,
+        scene.endless ? clamp(delta * 6, 0, MAX_SURGE) : 0,
+        0.2
+      )
       stage.speed = REFERENCE_SPEED * scene.speed + stage.surge
 
       stage.turnRadius = turnRadius()
@@ -455,6 +498,7 @@ export const createGlitchscape = (
     },
     setProjectsNumber: (value: number) => (projects = value),
     destroy: () => {
+      window.clearTimeout(resizing)
       if (onOrientationChange !== null && screen.orientation !== undefined)
         screen.orientation.removeEventListener(
           'change',

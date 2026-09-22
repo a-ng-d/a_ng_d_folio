@@ -106,6 +106,8 @@ export interface SceneConfig {
   ambience: AmbienceKind
   /** Strength of the rainfall, 0 for none. */
   rain: number
+  /** Whether a scroll pushes the world further down the corridor. */
+  endless: boolean
   palette: ScenePalette
   filter: HuBrInSaGr
 }
@@ -126,6 +128,7 @@ export interface SceneOverride {
   lighting?: LightKind
   ambience?: AmbienceKind
   rain?: number
+  endless?: boolean
   palette?: Partial<ScenePalette>
   filter?: HuBrInSaGr
 }

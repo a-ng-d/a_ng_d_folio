@@ -137,7 +137,7 @@
         // Kept apart: a disposition owns the geometry, so picking one must
         // not wipe the weather or the light you set alongside it.
         fine: {} as { [key: string]: number | string },
-        atmosphere: {} as { [key: string]: number | string },
+        atmosphere: {} as { [key: string]: number | string | boolean },
         generation: 0 as number,
         // Height of the fade at each edge, in pixels. Tracking the scroll
         // rather than toggling a class keeps the mask from popping, and
@@ -178,9 +178,11 @@
         this.applyScene()
         this.$nextTick(this.measureFades)
       },
-      pickKnob(field: string, value: number | string) {
+      pickKnob(field: string, value: number | string | boolean) {
+        // Only the switches carry booleans, and none of them is a fine
+        // dimension, so geometry stays numbers and names.
         if (fineKnobs.some((knob) => knob.field === field))
-          this.fine = { ...this.fine, [field]: value }
+          this.fine = { ...this.fine, [field]: value as number | string }
         else this.atmosphere = { ...this.atmosphere, [field]: value }
 
         this.applyScene()
@@ -345,6 +347,14 @@
                   :on="() => pickKnob('ambience', 'LIVE')"
                   :off="() => pickKnob('ambience', 'FIXED')"
                   :alt="$t('actions.ambience')"
+                  :theme="theme"
+                />
+                <Switch
+                  :label="$t('unknown.endless.title')"
+                  :active="true"
+                  :on="() => pickKnob('endless', true)"
+                  :off="() => pickKnob('endless', false)"
+                  :alt="$t('actions.endless')"
                   :theme="theme"
                 />
                 <Switch

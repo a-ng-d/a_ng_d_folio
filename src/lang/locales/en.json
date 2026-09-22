@@ -51,7 +51,8 @@
     "fov": "Change the framing",
     "density": "Change how crowded the corridor is",
     "curvature": "Change how sharply the corridor bends",
-    "turbulence": "Change how broken the skyline is"
+    "turbulence": "Change how broken the skyline is",
+    "endless": "Let a scroll push the world further down the corridor"
   },
   "global": {
     "author": "Aurélien Grimaud aka. a_ng_d⚡️",
@@ -1211,6 +1212,9 @@
     },
     "ambience": {
       "title": "Live ambience"
+    },
+    "endless": {
+      "title": "Endless scroll"
     },
     "lighting": {
       "title": "Light",
