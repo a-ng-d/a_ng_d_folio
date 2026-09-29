@@ -37,11 +37,11 @@
 
 <OneColumn title="Sounds effects & Musics">
 <template #plain>
-<SimpleExternalLink label="{'Ambient music'}@:global.separator{'Celestial Planets - Ambient 432hz'}@:global.separator{'Dream-Protocol'}@:global.separator{'Edited'}" href="https://pixabay.com/fr/music/ambiant-celestial-planets-ambient-432hz-114366/" alt="External link to the ambient music page: Celestial Planets - Ambient 432hz by Dream-Protocol" />
-<SimpleExternalLink label="{'Start sound'}@:global.separator{'Sonar Ping'}@:global.separator{'SamsterBirdies'}" href="https://pixabay.com/fr/sound-effects/sonar-ping-95840/" alt="External link to the ambient sound page: Sonar Ping by SamsterBirdies" />
-<SimpleExternalLink label="{'Entrance sound'}@:global.separator{'Blip (SFX)'}@:global.separator{'Beetlemuse'}" href="https://pixabay.com/fr/sound-effects/blip-sfx-36568/" alt="External link to the ambient sound page: Blip (SFX) by Beetlemuse" />
-<SimpleExternalLink label="{'Particles sound'}@:global.separator{'DoorScan'}@:global.separator{'theshuggie'}@:global.separator{'Edited'}" href="https://pixabay.com/fr/sound-effects/doorscan-102283/" alt="External link to the ambient sound page: DoorScan by theshuggie" />
-<SimpleExternalLink label="{'Press sound'}@:global.separator{'ButtonPress'}@:global.separator{'BigDino1995'}@:global.separator{'Edited'}" href="https://pixabay.com/fr/sound-effects/buttonpress-94482/" alt="External link to the ambient sound page: ButtonPress by BigDino1995" />
+<SimpleExternalLink label="Ambient music・Celestial Planets - Ambient 432hz・Dream-Protocol・Edited" href="https://pixabay.com/fr/music/ambiant-celestial-planets-ambient-432hz-114366/" alt="External link to the ambient music page: Celestial Planets - Ambient 432hz by Dream-Protocol" />
+<SimpleExternalLink label="Start sound・Sonar Ping・SamsterBirdies" href="https://pixabay.com/fr/sound-effects/sonar-ping-95840/" alt="External link to the ambient sound page: Sonar Ping by SamsterBirdies" />
+<SimpleExternalLink label="Entrance sound・Blip (SFX)・Beetlemuse" href="https://pixabay.com/fr/sound-effects/blip-sfx-36568/" alt="External link to the ambient sound page: Blip (SFX) by Beetlemuse" />
+<SimpleExternalLink label="Particles sound・DoorScan・theshuggie・Edited" href="https://pixabay.com/fr/sound-effects/doorscan-102283/" alt="External link to the ambient sound page: DoorScan by theshuggie" />
+<SimpleExternalLink label="Press sound・ButtonPress・BigDino1995・Edited" href="https://pixabay.com/fr/sound-effects/buttonpress-94482/" alt="External link to the ambient sound page: ButtonPress by BigDino1995" />
 </template>
 </OneColumn>
 

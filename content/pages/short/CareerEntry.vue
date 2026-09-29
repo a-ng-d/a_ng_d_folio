@@ -13,7 +13,7 @@
 </script>
 
 <template>
-  <div>
+  <div class="career-entry">
     <div>
       <h5>
         <span>{{ start }}</span>
@@ -26,3 +26,15 @@
     <slot></slot>
   </div>
 </template>
+
+<style scoped lang="sass">
+  // Reprend l'espacement que portait le style scopé de Career.vue : il visait
+  // les div glissés dans le slot de OneColumn, qui sont devenus cette racine.
+  .career-entry
+    display: flex
+    flex-flow: column nowrap
+    gap: var(--layout-row-gap) 0
+
+    h5
+      margin: 0 0 var(--layout-label-gap)
+</style>
