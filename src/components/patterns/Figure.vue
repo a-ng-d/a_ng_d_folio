@@ -199,7 +199,7 @@
     --asset-border: var(--image-border)
     --asset-radius: var(--small-border-radius)
     --alpha: 0
-
+    
     &__asset--magnified
       --asset-border: none
       --asset-radius: 0
@@ -207,5 +207,6 @@
       --overlay-color: hsla(var(--hsl-cream), var(--alpha))
 
     &[data-theme="DARK"]
-      --overlay-color: hsla(var(--hsl-soil), var(--alpha))
+      .figure__asset--magnified
+        --overlay-color: hsla(var(--hsl-soil), var(--alpha)) !important
 </style>

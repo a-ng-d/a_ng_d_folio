@@ -14,7 +14,7 @@ const year = new Date().getFullYear() - 2015
 <p>I’m 利安(Aurélien)! Product Builder / Designer / Engineer for {{ year }} years (ex-<Label label="iObeya" highlighted />, ex-<Label label="Razorfish" highlighted />, ex-<Label label="Axeptio" highlighted />) and a UI + code enthusiast.</p>
 <p>Filling the gap between business, designers, and developers is my leitmotiv, by enabling collective intelligence, testing, and learning.</p>
 <p>I have founded my company, Yelbolt, which owns UI Color Palette and Ideas Spark Booth.</p>
-<p>I also write about <Label label="team collaboration" highlighted />, <Label label="design thinking" highlighted /> and <Label label="design system" highlighted />－I teach UX at design schools－I coach Junior Product Designers.</p>
+<p>I also write about <Label label="team collaboration" highlighted />, <Label label="design thinking" highlighted /> and <Label label="design systems" highlighted />－I teach UX at design schools－I coach Junior Product Designers.</p>
 </div>
 </template>
 </OneColumn>
@@ -28,10 +28,10 @@ const year = new Date().getFullYear() - 2015
 <RichExternalLink title="Twitter" description="Curation, ideas, reactions and thoughts" color="var(--color-soft-wind)" href="https://twitter.com/a_ng_d" alt="External link to my Twitter page">
 <template #icon><Twitter :size="48" /></template>
 </RichExternalLink>
-<RichExternalLink title="Codepen" description="Procedural animation and code concept" color="var(--color-deep-black)" href="https://codepen.io/a_ng_d" alt="External link to my Codepen page">
+<RichExternalLink title="CodePen" description="Procedural animation and code concept" color="var(--color-deep-black)" href="https://codepen.io/a_ng_d" alt="External link to my CodePen page">
 <template #icon><Codepen :size="48" style="--icon-color: var(--color-titanium-white)" /></template>
 </RichExternalLink>
-<RichExternalLink title="Github" description="Dev projects and plugins for UX tools" color="var(--color-creamy-sun)" href="https://github.com/a-ng-d" alt="External link to my GitHub page">
+<RichExternalLink title="GitHub" description="Dev projects and plugins for UX tools" color="var(--color-creamy-sun)" href="https://github.com/a-ng-d" alt="External link to my GitHub page">
 <template #icon><Github :size="48" /></template>
 </RichExternalLink>
 <RichExternalLink title="Dribbble" description="Concept, UI and animation" color="var(--color-candy-floss)" href="https://dribbble.com/a_ng_d" alt="External link to my Dribbble page">
@@ -70,7 +70,7 @@ const year = new Date().getFullYear() - 2015
 
 <OneColumn>
 <template #plain>
-<CareerEntry start="2010" end="2015" title="ECV (École de Communication Visuelle)" label="Digital design course, Title of Digital Art Director with honor">
+<CareerEntry start="2010" end="2015" title="ECV (École de Communication Visuelle)" label="Digital design course, Title of Digital Art Director with honors">
 </CareerEntry>
 <CareerEntry start="2015" end="2023" title="iObeya">
 <CareerRole start="2015" end="2018" title="UI/UX Designer" />
@@ -108,10 +108,10 @@ const year = new Date().getFullYear() - 2015
 
 <OneColumn title="Talks">
 <template #plain>
-<SimpleExternalLink label="Ramifions le fleuve de notre recherche d\activité'}・Human Talks" href="https://link.an.gd/talk-ramifions-le-fleuve-de-notre-recherche-d-activite" alt="External link to the &quot;Ramifions le fleuve de notre recherche d'activité&quot; slides on Figma" />
-<SimpleExternalLink label="How to facilitate a workshop with a lot of participants・iObeya" href="https://link.an.gd/talk-facilitation-tips" alt="External link to the &quot;How to facilitate a workshop with a lot of participants slides on Figma" />
+<SimpleExternalLink label="Ramifions le fleuve de notre recherche d'activité・Human Talks" href="https://link.an.gd/talk-ramifions-le-fleuve-de-notre-recherche-d-activite" alt="External link to the &quot;Ramifions le fleuve de notre recherche d'activité&quot; slides on Figma" />
+<SimpleExternalLink label="How to facilitate a workshop with a lot of participants・iObeya" href="https://link.an.gd/talk-facilitation-tips" alt="External link to the &quot;How to facilitate a workshop with a lot of participants&quot; slides on Figma" />
 <SimpleExternalLink label="A design system is like a residential complex・iObeya" href="https://link.an.gd/talk-design-system-metaphor" alt="External link to the &quot;A design system is like a residential complex&quot; slides on Figma" />
-<SimpleExternalLink label="Design Thinking・Digital Catalyst" href="https://youtu.be/DDl4Pe0rJDc?t=3727" alt="External link to the &quot;Design Thinkingglobal.separatorDigital Catalyst&quot; video on Youtube" />
+<SimpleExternalLink label="Design Thinking・Digital Catalyst" href="https://youtu.be/DDl4Pe0rJDc?t=3727" alt="External link to the &quot;Design Thinking・Digital Catalyst&quot; video on YouTube" />
 </template>
 </OneColumn>
 

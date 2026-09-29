@@ -5,9 +5,6 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      // vue3-lottie n'expose pas de champ "types" dans sa map "exports" :
-      // en résolution Bundler, TypeScript ne trouve pas ses déclarations.
-      // On les désigne à la main plutôt que de dégrader le module en `any`.
       "vue3-lottie": ["./node_modules/vue3-lottie/dist/index.d.ts"]
     },
     "target": "es2018",

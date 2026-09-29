@@ -53,9 +53,9 @@ My task was to evaluate how design language was implemented across Axeptio's pro
 <OneColumn title="The products in between world">
 <template #plain>
 
-Axeptio is a medium business and is composed of 6 developers in Montpellier and 3 designers in Paris.
+Axeptio is a medium-sized business and is composed of 6 developers in Montpellier and 3 designers in Paris.
 
-The first tack was to examined each department's environment (design, development, branding), focusing on their tools, sources of truth, and change management processes. The comprehensive analysis revealed several key issues.
+The first tack was to examine each department's environment (design, development, branding), focusing on their tools, sources of truth, and change management processes. The comprehensive analysis revealed several key issues.
 
 The platform contained a mixture of legacy and current design languages named Gusto, creating visual inconsistency.
 
@@ -270,8 +270,8 @@ While considerable work remains, we now have a clearly defined path forward.
 <ContentContainer title="Antoine Martinez" description="Head of Product Design" />
 <ContentContainer title="Ludovic Bernard" description="Product Designer/Product Manager" />
 <ContentContainer title="Étienne Tondini-Juvan" description="Product Manager/Product Designer" />
-<ContentContainer title="Camille Alemany" description="Sofware Engineer" />
-<ContentContainer title="Léo Lecherbonnier" description="Sofware Engineer" />
+<ContentContainer title="Camille Alemany" description="Software Engineer" />
+<ContentContainer title="Léo Lecherbonnier" description="Software Engineer" />
 <ContentContainer title="Laura Gassin" description="Senior Brand Designer" />
 </template>
 </WrapColumn>

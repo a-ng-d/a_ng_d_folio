@@ -32,7 +32,7 @@
       "go": "Consult this project",
       "next": "Next project"
     },
-    "filter": "Change the colored ambiant",
+    "filter": "Change the colored ambience",
     "glitch": "Glitch/Unglitch scene",
     "quality": "Wireframe/Unwireframe scene",
     "mute": "Mute/Unmute sound",
@@ -51,7 +51,14 @@
     "density": "Change how crowded the corridor is",
     "curvature": "Change how sharply the corridor bends",
     "turbulence": "Change how broken the skyline is",
-    "endless": "Let a scroll push the world further down the corridor"
+    "endless": "Let a scroll push the world further down the corridor",
+    "particlesShape": "Change the silhouette of the test particles",
+    "particlesSpeed": "Change the pace of the test particles",
+    "particlesWeight": "Change the thickness of the test particles",
+    "particlesGrain": "Change the grain of the test particles",
+    "particlesMovement": "Change the direction of the test particles",
+    "particlesColors": "Change the color palette of the test particles",
+    "particlesExpanded": "Open/close the test particles"
   },
   "global": {
     "author": "Aurélien Grimaud aka. a_ng_d⚡️",
@@ -132,7 +139,7 @@
     },
     "work": {
       "title": "@:glossary.work",
-      "description": "A selection of professional projects I have really appreciated to own and side-projects where I have learnt something new."
+      "description": "A selection of professional projects I have really appreciated owning and side-projects where I have learnt something new."
     },
     "lab": {
       "title": "@:glossary.lab",
@@ -140,7 +147,7 @@
     },
     "short": {
       "title": "@:glossary.id",
-      "description": "Find a short summary of my profesional experience, included my profile and contributions in the last few years."
+      "description": "Find a short summary of my professional experience, including my profile and contributions in the last few years."
     },
     "contact": {
       "title": "@:glossary.contact",
@@ -163,7 +170,7 @@
       "summary": "What I believe",
       "mission-1": "Product and technology must help people",
       "mission-2": "Energy Transition is the main challenge of today",
-      "mission-3": "Enable people may increase their self-confidence"
+      "mission-3": "Enabling people may increase their self-confidence"
     },
     "productDesign": {
       "title": "_product_design",
@@ -175,7 +182,7 @@
     "creativeTechnology": {
       "title": "_creative_technology",
       "summary": "What I extend to achieve my mission",
-      "mission-1": "Create very high-fidelity prototype",
+      "mission-1": "Create very high-fidelity prototypes",
       "mission-2": "Bring depth to UI",
       "mission-3": "Industrialize design through an organization"
     },
@@ -183,7 +190,7 @@
       "title": "_facilitation",
       "summary": "How I enable collective intelligence",
       "mission-1": "Help teammates to reach their purpose",
-      "mission-2": "Organize workshop to define and solve a problem together",
+      "mission-2": "Organize workshops to define and solve a problem together",
       "mission-3": "Teach design to developers, teach code to designers"
     },
     "communication": {
@@ -196,15 +203,15 @@
     "human": {
       "title": "_next_challenges",
       "summary": "Where I would love to contribute",
-      "mission-1": "Care people with Healthtech",
+      "mission-1": "Care for people with Healthtech",
       "mission-2": "Make education more accessible with Edutech",
-      "mission-3": "Connect people with Collaborative economy"
+      "mission-3": "Connect people with the Collaborative economy"
     },
     "extra": {
       "title": "_extra",
       "summary": "Some extra(power)",
       "mission-1": "Build side projects from scratch",
-      "mission-2": "Give a second life to furnitures and objects",
+      "mission-2": "Give a second life to furniture and objects",
       "mission-3": "Spend time to sustain my old bike"
     },
     "outro": {
@@ -226,7 +233,7 @@
     "description": "As a Product Builder, I can help your teams make reliable and realistic prototypes, fill the gap between departments, and challenge your strategy. As a teacher, I can give your teams a Figma, Penpot, Protopie, or Framer training.",
     "email": {
       "hello": "Tell me hello",
-      "pro": "Send me your profesionnal request"
+      "pro": "Send me your professional request"
     }
   },
   "attribution": {
@@ -380,6 +387,51 @@
     },
     "quality": {
       "title": "Wireframe"
+    },
+    "particles": {
+      "shape": {
+        "title": "Shape",
+        "line": "Line",
+        "square": "Square",
+        "triangle": "Triangle"
+      },
+      "speed": {
+        "title": "Speed",
+        "slow": "Slow",
+        "steady": "Steady",
+        "brisk": "Brisk",
+        "racing": "Racing"
+      },
+      "weight": {
+        "title": "Weight",
+        "thin": "Thin",
+        "even": "Even",
+        "thick": "Thick",
+        "massive": "Massive"
+      },
+      "grain": {
+        "title": "Grain",
+        "fine": "Fine",
+        "regular": "Regular",
+        "coarse": "Coarse",
+        "chunky": "Chunky"
+      },
+      "movement": {
+        "title": "Direction",
+        "up": "Up",
+        "right": "Right",
+        "down": "Down",
+        "left": "Left"
+      },
+      "colors": {
+        "title": "Palette",
+        "primary": "Primary",
+        "grayscale": "Grayscale",
+        "spectrum": "Spectrum"
+      },
+      "expanded": {
+        "title": "Open"
+      }
     }
   }
 }

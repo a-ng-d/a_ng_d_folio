@@ -38,9 +38,9 @@ const isFullScreen = ref(false)
 <OneColumn title="What is the challenge?">
 <template #plain>
 
-In 2019, we thought about how to deploy design at scale. The iObeya mobile application was a great opportunity to start a design system from scratch. Indeed, we have just only turned a little part of the web application monolithic GUI into a design system.
+In 2019, we thought about how to deploy design at scale. The iObeya mobile application was a great opportunity to start a design system from scratch. Indeed, we had only just turned a small part of the web application's monolithic GUI into a design system.
 
-<p>The choice of making native apps brought us at reading the <SimpleExternalLink label="Apple Human Interface" href="https://developer.apple.com/design/human-interface-guidelines/" alt="External link to the Apple Human Interface documentation" /> and the <SimpleExternalLink label="Material Design Guidelines" href="https://material.io/design" alt="External link to the Material Design documentation" />. I was in charge of designing reusable UI components, fully compliant with iOS and Android paradigms. We made this decision to keep a same look & feel and to reduce the learning curve when using the application daily.</p>
+<p>The choice of making native apps brought us to read the <SimpleExternalLink label="Apple Human Interface" href="https://developer.apple.com/design/human-interface-guidelines/" alt="External link to the Apple Human Interface documentation" /> and the <SimpleExternalLink label="Material Design Guidelines" href="https://material.io/design" alt="External link to the Material Design documentation" />. I was in charge of designing reusable UI components, fully compliant with iOS and Android paradigms. We made this decision to keep the same look & feel and to reduce the learning curve when using the application daily.</p>
 </template>
 </OneColumn>
 
@@ -61,7 +61,7 @@ In 2019, we thought about how to deploy design at scale. The iObeya mobile appli
 <OneColumn title="Atomic design as a philosophy">
 <template #plain>
 
-A system consists of interconnecting components each others, in order to design a hierarchy. Atomic design is directly based on organic life: atoms make molecules, molecules make organisms…
+A system consists of components interconnecting with each other, in order to design a hierarchy. Atomic design is directly based on organic life: atoms make molecules, molecules make organisms…
 
 The atoms have been defined with the brand team because they own the iObeya Graphical Guidelines. It gathers brand and UI colors, typography, spacing, shadows… These elements are used as parameters to override iOS and Android native components.
 
@@ -69,16 +69,16 @@ The atoms have been defined with the brand team because they own the iObeya Grap
 </OneColumn>
 <TwoColumns>
 <template #left>
-<Figure type="image" src="/images/_work/_iobeya_mobile_ds/article-asset-1.webp" caption alt="Colors adapted for an UI usage and provided by the brand team">
+<Figure type="image" src="/images/_work/_iobeya_mobile_ds/article-asset-1.webp" caption alt="Colors adapted for a UI usage and provided by the brand team">
 <template #caption>
-<p class="discrete">Colors adapted for an UI usage and provided by the brand team</p>
+<p class="discrete">Colors adapted for a UI usage and provided by the brand team</p>
 </template>
 </Figure>
 </template>
 <template #right>
-<Figure type="image" src="/images/_work/_iobeya_mobile_ds/article-asset-2.webp" caption alt="Text styles adapted for an UI usage and provided by the brand team">
+<Figure type="image" src="/images/_work/_iobeya_mobile_ds/article-asset-2.webp" caption alt="Text styles adapted for a UI usage and provided by the brand team">
 <template #caption>
-<p class="discrete">Text styles adapted for an UI usage and provided by the brand team</p>
+<p class="discrete">Text styles adapted for a UI usage and provided by the brand team</p>
 </template>
 </Figure>
 </template>
@@ -86,23 +86,23 @@ The atoms have been defined with the brand team because they own the iObeya Grap
 <OneColumn>
 <template #plain>
 
-Sketch is our diagraming software and one feature was really relevant to build an atomic design system: the external components library.
+Sketch is our diagramming software and one feature was really relevant to build an atomic design system: the external components library.
 
-<Figure type="image" src="/images/_work/_iobeya_mobile_ds/article-asset-3.png" caption alt="The iOS and Android patterns come from external libraries embed in Sketch. The Master Design System is internally managed by the design team.">
+<Figure type="image" src="/images/_work/_iobeya_mobile_ds/article-asset-3.png" caption alt="The iOS and Android patterns come from external libraries embedded in Sketch. The Master Design System is internally managed by the design team.">
 <template #caption>
-<p class="discrete">The iOS and Android patterns come from external libraries embed in Sketch. The Master Design System is internally managed by the design team.</p>
+<p class="discrete">The iOS and Android patterns come from external libraries embedded in Sketch. The Master Design System is internally managed by the design team.</p>
 </template>
 </Figure>
 
-Each part of the UI is a reusable component. Building the UI is like playing lego: small parts are stuck together to make bigger parts, and they are stuck each other to make views. In this way, we keep consistency and make a change is easier.
+Each part of the UI is a reusable component. Building the UI is like playing Lego: small parts are stuck together to make bigger parts, and they are stuck to each other to make views. In this way, we keep consistency and make change easier.
 
-<Figure type="image" src="/images/_work/_iobeya_mobile_ds/article-asset-4.webp" caption alt="Exploded view of the cards list view. It is composed of the overrided iOS navigation bar and a cards list container. Those patterns are subdivided into components which inherit parameters from the iObeya Master Design System.">
+<Figure type="image" src="/images/_work/_iobeya_mobile_ds/article-asset-4.webp" caption alt="Exploded view of the cards list view. It is composed of the overridden iOS navigation bar and a cards list container. Those patterns are subdivided into components which inherit parameters from the iObeya Master Design System.">
 <template #caption>
-<p class="discrete">Exploded view of the cards list view. It is composed of the overrided iOS navigation bar and a cards list container. Those patterns are subdivided into components which inherit parameters from the iObeya Master Design System.</p>
+<p class="discrete">Exploded view of the cards list view. It is composed of the overridden iOS navigation bar and a cards list container. Those patterns are subdivided into components which inherit parameters from the iObeya Master Design System.</p>
 </template>
 </Figure>
 
-Every part was classified and structured in order to deploy them on our versionning system. So, the file is synchronized and can be linked with Sketch to be used as an external library.
+Every part was classified and structured in order to deploy them on our versioning system. So, the file is synchronized and can be linked with Sketch to be used as an external library.
 
 <Figure type="image" src="/images/_work/_iobeya_mobile_ds/article-asset-5.webp" caption alt="Big pictures of every component, pattern and template, ready for making every view with ease.">
 <template #caption>

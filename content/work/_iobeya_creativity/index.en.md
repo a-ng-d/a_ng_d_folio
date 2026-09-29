@@ -75,9 +75,9 @@ To understand the overall process, let's consider a team retrospective as an exa
 </OneColumn>
 <OneColumn>
 <template #plain>
-<Figure type="image" src="/images/_work/_iobeya_creativity/article-asset-2.webp" caption alt="The Actions for Retrospectives board is waiting for receiving team members’ feedback!">
+<Figure type="image" src="/images/_work/_iobeya_creativity/article-asset-2.webp" caption alt="The Actions for Retrospectives board is waiting to receive team members’ feedback!">
 <template #caption>
-<p class="discrete">The Actions for Retrospectives board is waiting for receiving team members’ feedback!</p>
+<p class="discrete">The Actions for Retrospectives board is waiting to receive team members’ feedback!</p>
 </template>
 </Figure>
 </template>
@@ -219,15 +219,15 @@ Firstly, users need to understand how to participate, for example, through inter
 <OneColumn>
 <template #plain>
 
-On the other hand, both of the modes enhance an infinte pattern animation composed by moving particles. It may increase participants attention and it reinforces the identity of each of the modes.
+On the other hand, both of the modes enhance an infinite pattern animation composed of moving particles. It may increase participants' attention and it reinforces the identity of each of the modes.
 
 </template>
 </OneColumn>
 <TwoColumns>
 <template #left>
-<Figure type="video" src="/videos/_work/_iobeya_creativity/article-asset-3.webm#t=0.5" altsrc="/videos/_work/_iobeya_creativity/article-asset-3.mp4#t=0.5" caption :width="1920" :height="1242" alt="The divergence: Brainstormring">
+<Figure type="video" src="/videos/_work/_iobeya_creativity/article-asset-3.webm#t=0.5" altsrc="/videos/_work/_iobeya_creativity/article-asset-3.mp4#t=0.5" caption :width="1920" :height="1242" alt="The divergence: Brainstorming">
 <template #caption>
-<p class="discrete">The divergence: Brainstormring</p>
+<p class="discrete">The divergence: Brainstorming</p>
 </template>
 </Figure>
 </template>
@@ -247,7 +247,7 @@ On the other hand, both of the modes enhance an infinte pattern animation compos
 <OneColumn>
 <template #plain>
 
-Finally, those modes are mainly and simply FUN: the global tone has been designed to bridge fun and efficience.
+Finally, those modes are mainly and simply FUN: the global tone has been designed to bridge fun and efficiency.
 
 </template>
 </OneColumn>

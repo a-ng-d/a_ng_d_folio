@@ -7,7 +7,7 @@ title: '_awesome_ipsums@:global.separator@:global.author'
 shortTitle: _awesome_ipsums
 summary: Design team’s own Lorem Ipsums from a simple Google Spreadsheet with Sketch
 description: >-
-  Sketch is an UX tool, using diagrams to build user experiences, interfaces,
+  Sketch is a UX tool, using diagrams to build user experiences, interfaces,
   prototypes, and illustrations… The tool can be extended with a plugin system
   where the purpose is to add additional features, or script actions. The idea
   of making a more fun Lorem Ipsum tool was a great opportunity to make a Sketch
@@ -47,7 +47,7 @@ Lorem ipsum is often used to simulate content into a designed web page. Neverthe
 - It does not make any sense.
 - It is quite boring and repetitive.
 
-Lorem ipsum could be fun, relevant, and fully personalized. A design team can create, collect and reuse his own fake content. How to get this team involved in collecting content? An online spreadsheet, because it is easy to maintain and always up-to-date.
+Lorem ipsum could be fun, relevant, and fully personalized. A design team can create, collect and reuse its own fake content. How to get this team involved in collecting content? An online spreadsheet, because it is easy to maintain and always up-to-date.
 
 Google Spreadsheet is simple to use and collaborative. It can act as a micro-database for micro-projects.
 
@@ -80,11 +80,11 @@ The workflow is quite simple: Synchronizing the spreadsheet model to Sketch.
 
 <TwoColumns class="col-2--invert" center>
 <template #left>
-<Figure src="/images/_work/_awesome_ipsums/article-asset-3.webp" alt="Then, creating a text from a random content of the spreadsheet. The text is displayed at the center of the current view." />
+<Figure src="/images/_work/_awesome_ipsums/article-asset-3.webp" alt="Then, creating a text from random content in the spreadsheet. The text is displayed at the center of the current view." />
 </template>
 <template #right>
 
-Then, creating a text from a random content of the spreadsheet. The text is displayed at the center of the current view.
+Then, creating a text from random content in the spreadsheet. The text is displayed at the center of the current view.
 
 </template>
 </TwoColumns>
@@ -92,11 +92,11 @@ Then, creating a text from a random content of the spreadsheet. The text is disp
 <TwoColumns center>
 <template #left>
 
-Lastly, a text content can be updated with another random content.
+Lastly, a text's content can be updated with different random content.
 
 </template>
 <template #right>
-<Figure src="/images/_work/_awesome_ipsums/article-asset-4.webp" alt="Lastly, a text content can be updated with another random content." />
+<Figure src="/images/_work/_awesome_ipsums/article-asset-4.webp" alt="Lastly, a text's content can be updated with different random content." />
 </template>
 </TwoColumns>
 
@@ -111,7 +111,7 @@ Lastly, a text content can be updated with another random content.
 <LinkContainer description="If you want to test the plugin, you can download the archive file from the project repository (double-click on the plugin file to install it)." cta="Download the archive" href="https://github.com/a-ng-d/sketch-awesome-ipsums/releases/latest/download/awesome-ipsums.sketchplugin.zip" alt="External link to download the plugin">
 <template #icon><Download :size="48" /></template>
 </LinkContainer>
-<LinkContainer description="Awesome Ipsums is an open-source project. You can take a glance at the source code on Github." cta="Watch the repository" href="https://github.com/a-ng-d/sketch-awesome-ipsums" alt="External link to the repository">
+<LinkContainer description="Awesome Ipsums is an open-source project. You can take a glance at the source code on GitHub." cta="Watch the repository" href="https://github.com/a-ng-d/sketch-awesome-ipsums" alt="External link to the repository">
 <template #icon><Github :size="48" /></template>
 </LinkContainer>
 </template>

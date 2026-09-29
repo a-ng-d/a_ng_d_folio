@@ -6,7 +6,7 @@ theme: DEFAULT
 title: '_jean_bobby_radio@:global.separator@:global.author'
 shortTitle: _jean_bobby_radio
 summary: 'iObeya internal and participatory web radio'
-description: 'Before the COVID-19 pandemic, with my teammate in the UX team, we were used to listen to our Spotify collaborative playlist. A batch of various masterpieces from different personalities. There are some 90''s hits: Trip Hop, Alternative rock, House… Some 80''s hits: Goth, New Wave… Around 500 tracks we listened to everyday. And yet, a virus has come, and the remote work was the new order. We were distributed. The problem is we cannot use Spotify as a web radio, in order to listen together to our music and react on it. Make our own web radio allows us to retrieve this office atmosphere: Jean-Bobby Radio.'
+description: 'Before the COVID-19 pandemic, with my teammate in the UX team, we used to listen to our Spotify collaborative playlist. A batch of various masterpieces from different personalities. There are some 90''s hits: Trip Hop, Alternative rock, House… Some 80''s hits: Goth, New Wave… Around 500 tracks we listened to every day. And yet, a virus has come, and the remote work was the new order. We were distributed. The problem is we cannot use Spotify as a web radio, in order to listen together to our music and react to it. Making our own web radio allows us to retrieve this office atmosphere: Jean-Bobby Radio.'
 date: '{''2020''}@:global.separator{''On-air''}'
 type: '@:global.type.product@:global.separator@:global.type.side'
 objectives:
@@ -43,7 +43,7 @@ const { parallax } = useScroll()
 <OneColumn title="Let's start the broadcasting system">
 <template #plain>
 
-Build a web radio from scratch is not as easy as expected. The challenge was interesting because a web radio is a complex system where each component is connected to broadcast audio to whom wants to listen to. To explain a bit, the audio is played from a classic computer, then it is encoded and sent to a broadcasting server, and finally, the audio can be played from a player.
+Building a web radio from scratch is not as easy as expected. The challenge was interesting because a web radio is a complex system where each component is connected to broadcast audio to whoever wants to listen. To explain a bit, the audio is played from a classic computer, then it is encoded and sent to a broadcasting server, and finally, the audio can be played from a player.
 
 </template>
 </OneColumn>
@@ -64,7 +64,7 @@ Build a web radio from scratch is not as easy as expected. The challenge was int
 <OneColumn title="Bring the motion design at the front-stage">
 <template #plain>
 
-The web player gathers few actions: Play/Pause, Volume, Now playing information and notifications, the collaborative playlist and the sound folder link, some information about the project and a feedback zone. The middle of the stage is the most important part of the player: the looping animation.
+The web player gathers a few actions: Play/Pause, Volume, Now playing information and notifications, the collaborative playlist and the sound folder link, some information about the project and a feedback zone. The middle of the stage is the most important part of the player: the looping animation.
 
 </template>
 </OneColumn>
@@ -85,7 +85,7 @@ The web player gathers few actions: Play/Pause, Volume, Now playing information 
 <OneColumn title="Our mascot, All Around the World">
 <template #plain>
 
-Jean-Bobby is our company's mascot. We are used to get him during our trips or events. He has become a running gag because a lot a people liked to take him on holidays. Jean-Bobby has seen the beauty of our world while being the heart of iObeya (ex-KAP IT).
+Jean-Bobby is our company's mascot. We are used to getting him during our trips or events. He has become a running gag because a lot of people liked to take him on holidays. Jean-Bobby has seen the beauty of our world while being the heart of iObeya (ex-KAP IT).
 
 </template>
 </OneColumn>
@@ -106,7 +106,7 @@ This animated loop is a tribute to this period. The best pictures have been a gr
 <Vue3Lottie :animationData="JBRAnimation" />
 </template>
 <template #caption>
-<p class="discrete">This animation has been a great opportunity at using <SimpleExternalLink label="Lottie" href="https://airbnb.design/lottie" alt="External link to the Lottie page" small /> to generate a web-compliant animation. From an Adobe After Effects composition to an animated SVG.</p>
+<p class="discrete">This animation has been a great opportunity to use <SimpleExternalLink label="Lottie" href="https://airbnb.design/lottie" alt="External link to the Lottie page" small /> to generate a web-compliant animation. From an Adobe After Effects composition to an animated SVG.</p>
 </template>
 </FullWidthFigure>
 
@@ -123,7 +123,7 @@ This animated loop is a tribute to this period. The best pictures have been a gr
 <Radio :size="48" />
 </template>
 </LinkContainer>
-<LinkContainer description="Jean-Bobby Radio is an open-source project. You can take a glance at the source code on Github." cta="Watch the repository" href="https://github.com/a-ng-d/jean-bobby-radio" alt="External link to the repository">
+<LinkContainer description="Jean-Bobby Radio is an open-source project. You can take a glance at the source code on GitHub." cta="Watch the repository" href="https://github.com/a-ng-d/jean-bobby-radio" alt="External link to the repository">
 <template #icon>
 <Github :size="48" />
 </template>

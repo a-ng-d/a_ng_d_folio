@@ -6,7 +6,7 @@ theme: DEFAULT
 title: '_jeprendsquoi@:global.separator@:global.author'
 shortTitle: _jeprendsquoi
 summary: 'Fruits and vegetables seasonality companion'
-description: 'I often go at the market, to buy some fresh and local food. For decades, my parents taught me consume local food is the best way to feed, because the local economy is stimulated and the carbon footprint is lower. So, avoiding supermarket and co. is a leitmotiv. However, the local market reveals its own limits because of some absurdities: find some cherries in winter (17€ a kilogram), some tomatoes or melons on november… The bitter conclusion is simple: strict seasonality is not in the minds of people.'
+description: 'I often go to the market, to buy some fresh and local food. For decades, my parents taught me that consuming local food is the best way to eat, because the local economy is stimulated and the carbon footprint is lower. So, avoiding supermarkets and co. is a leitmotiv. However, the local market reveals its own limits because of some absurdities: finding some cherries in winter (17€ a kilogram), some tomatoes or melons in November… The bitter conclusion is simple: strict seasonality is not in the minds of people.'
 date: '{''2021''}@:global.separator{''iOS app released''}'
 type: '@:global.type.side'
 objectives:
@@ -47,7 +47,7 @@ A non-seasonal fruit or vegetable comes from:
 - Abroad, in a country where the cultivation is seasonal or locally unavailable.
 - Cultivated in a greenhouse.
 
-Abroad, the carbon footprint is high because of the transportation: by boat or plane. And yet, cultivate inside a greenhouse has a more expensive carbon footprint. Indeed, a greenhouse keeps a non-stop heat to simulate the season temperature, and make the cultivation grow. That is why we can see some tomatoes on november, they grow in a greenhouse in Brittany.
+Abroad, the carbon footprint is high because of the transportation: by boat or plane. And yet, cultivating inside a greenhouse has a more expensive carbon footprint. Indeed, a greenhouse keeps non-stop heat to simulate the season temperature, and makes the cultivation grow. That is why we can see some tomatoes in November; they grow in a greenhouse in Brittany.
 
 </template>
 </OneColumn>
@@ -59,15 +59,15 @@ Abroad, the carbon footprint is high because of the transportation: by boat or p
 <OneColumn title="A first prototype to solve the problem">
 <template #plain>
 
-There are a couple of tools to make some quick database. No-code is an interesting philosophy to build and test quickly something. Airtable has been chosen because its databases can use different visual representations. The grid was the most relevant view to retrieve a vegetable or a fruit and consult its data.
+There are a couple of tools to make some quick databases. No-code is an interesting philosophy to quickly build and test something. Airtable has been chosen because its databases can use different visual representations. The grid was the most relevant view to retrieve a vegetable or a fruit and consult its data.
 
 </template>
 </OneColumn>
 <OneColumn>
 <template #plain>
-<Figure type="image" src="/images/_work/_jeprendsquoi/article-asset-1.webp" caption alt="The grid representation is clear enough to help user to retrieve the product he is looking for. Besides, Airtable provides a discrete search feature to help a bit more. The fruits and vegetables grid views have been divided into two databases in the first instance. Consult the fruits and vegetables databases.">
+<Figure type="image" src="/images/_work/_jeprendsquoi/article-asset-1.webp" caption alt="The grid representation is clear enough to help a user retrieve the product he is looking for. Besides, Airtable provides a discreet search feature to help a bit more. The fruits and vegetables grid views have been divided into two databases in the first instance. Consult the fruits and vegetables databases.">
 <template #caption>
-<p class="discrete">The grid representation is clear enough to help user to retrieve the product he is looking for. Besides, Airtable provides a discrete search feature to help a bit more. The fruits and vegetables grid views have been divided into two databases in the first instance. Consult the <SimpleExternalLink label="fruits" href="https://airtable.com/shrjuPamh7D8dN0mD" alt="External link to the fruits database on airtable" small /> and <SimpleExternalLink label="vegetables" href="https://airtable.com/shr7bwEb4cuhWyREm" alt="External link to the vegetables database on airtable" small /> databases.</p>
+<p class="discrete">The grid representation is clear enough to help a user retrieve the product he is looking for. Besides, Airtable provides a discreet search feature to help a bit more. The fruits and vegetables grid views have been divided into two databases in the first instance. Consult the <SimpleExternalLink label="fruits" href="https://airtable.com/shrjuPamh7D8dN0mD" alt="External link to the fruits database on airtable" small /> and <SimpleExternalLink label="vegetables" href="https://airtable.com/shr7bwEb4cuhWyREm" alt="External link to the vegetables database on airtable" small /> databases.</p>
 </template>
 </Figure>
 </template>
@@ -75,15 +75,15 @@ There are a couple of tools to make some quick database. No-code is an interesti
 <OneColumn>
 <template #plain>
 
-The limitation of this representation is the device context. Indeed, the main use case takes place outside, at the market or the supermarket. People are not used to bring their laptop to the supermarket. So, this solution is not viable for a real usage on the ground.
+The limitation of this representation is the device context. Indeed, the main use case takes place outside, at the market or the supermarket. People are not used to bringing their laptop to the supermarket. So, this solution is not viable for a real usage on the ground.
 
 </template>
 </OneColumn>
 <OneColumn>
 <template #plain>
-<Figure type="image" src="/images/_work/_jeprendsquoi/article-asset-2.webp" caption alt="Notion has merged the two Airtable databases into one. Notion operates in the same way and the reason of this migration is simple: Notion is my all-in-one digital workplace..">
+<Figure type="image" src="/images/_work/_jeprendsquoi/article-asset-2.webp" caption alt="Notion has merged the two Airtable databases into one. Notion operates in the same way and the reason for this migration is simple: Notion is my all-in-one digital workplace.">
 <template #caption>
-<p class="discrete">Notion has merged the two Airtable databases into one. Notion operates in the same way and the reason of this migration is simple: Notion is my all-in-one digital workplace. <SimpleExternalLink label="Consult the Fruits and Vegetables database" href="https://www.notion.so/0a62c28a5f444ff482e676483f44d0d5" alt="External link to the fruits and vegetables database on Notion" small />.</p>
+<p class="discrete">Notion has merged the two Airtable databases into one. Notion operates in the same way and the reason for this migration is simple: Notion is my all-in-one digital workplace. <SimpleExternalLink label="Consult the Fruits and Vegetables database" href="https://www.notion.so/0a62c28a5f444ff482e676483f44d0d5" alt="External link to the fruits and vegetables database on Notion" small />.</p>
 </template>
 </Figure>
 </template>
@@ -91,7 +91,7 @@ The limitation of this representation is the device context. Indeed, the main us
 <OneColumn>
 <template #plain>
 
-Nevertheless, people might take their smartphone! And Notion can be consulted with the native app or via a shared URL. The access point is a bit risky because people might loose the shared URL or their Notion account. So, make a mobile app should be safer.
+Nevertheless, people might take their smartphone! And Notion can be consulted with the native app or via a shared URL. The access point is a bit risky because people might lose the shared URL or their Notion account. So, making a mobile app should be safer.
 
 </template>
 </OneColumn>
@@ -112,14 +112,14 @@ Nevertheless, people might take their smartphone! And Notion can be consulted wi
 <p class="discrete">The list of fruits and vegetables is displayed as the main section. The list can be filtered by season.</p>
 </template>
 </Figure>
-<Figure type="image" src="/images/_work/_jeprendsquoi/article-asset-4.webp" caption alt="The search feature allows user to find a specific product" @isMagnified="isFullScreen = $event">
+<Figure type="image" src="/images/_work/_jeprendsquoi/article-asset-4.webp" caption alt="The search feature allows a user to find a specific product" @isMagnified="isFullScreen = $event">
 <template #caption>
-<p class="discrete">The search feature allows user to find a specific product</p>
+<p class="discrete">The search feature allows a user to find a specific product</p>
 </template>
 </Figure>
-<Figure type="image" src="/images/_work/_jeprendsquoi/article-asset-5.webp" caption alt="The detailed page gives user the months of consumption and some additional information" @isMagnified="isFullScreen = $event">
+<Figure type="image" src="/images/_work/_jeprendsquoi/article-asset-5.webp" caption alt="The detailed page gives a user the months of consumption and some additional information" @isMagnified="isFullScreen = $event">
 <template #caption>
-<p class="discrete">The detailed page gives user the months of consumption and some additional information</p>
+<p class="discrete">The detailed page gives a user the months of consumption and some additional information</p>
 </template>
 </Figure>
 <Figure type="image" src="/images/_work/_jeprendsquoi/article-asset-6.webp" caption alt="Every user can contribute to the list, just by filling the form. A moderation step is required before publishing." @isMagnified="isFullScreen = $event">
@@ -138,7 +138,7 @@ The brand has been created and developed around a simple question: What do I tak
 </OneColumn>
 <OneColumn>
 <template #plain>
-<LinkContainer description="Yuka was a great inspiration at developing the brand, the voice and the ton." cta="Discover Yuka" href="https://yuka.io" alt="External link to the Yuka homepage">
+<LinkContainer description="Yuka was a great inspiration for developing the brand, the voice and the tone." cta="Discover Yuka" href="https://yuka.io" alt="External link to the Yuka homepage">
 <template #icon>
 <Info :size="48" />
 </template>
@@ -189,12 +189,12 @@ The brand has been created and developed around a simple question: What do I tak
 
 <OneColumn :title="$t('global.takeaways')">
 <template #plain>
-<LinkContainer description="The iOS app is available on the App Store" cta="Install the app on iOS" href="https://apps.apple.com/fr/app/jeprendsquoi/id1672862298" alt="External link to the jeprendquoi App Store page">
+<LinkContainer description="The iOS app is available on the App Store" cta="Install the app on iOS" href="https://apps.apple.com/fr/app/jeprendsquoi/id1672862298" alt="External link to the jeprendsquoi App Store page">
 <template #icon>
 <Apple :size="48" />
 </template>
 </LinkContainer>
-<LinkContainer description="The iOS app is available on the App Store" cta="Install the app on iOS" href="https://jeprendsquoi.app" alt="External link to the jeprendquoi App Store page">
+<LinkContainer description="The iOS app is available on the App Store" cta="Install the app on iOS" href="https://jeprendsquoi.app" alt="External link to the jeprendsquoi App Store page">
 <template #icon>
 <Pointer :size="48" />
 </template>

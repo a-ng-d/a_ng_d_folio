@@ -6,7 +6,7 @@ theme: DEFAULT
 title: '_ui_color_palette@:global.separator@:global.author'
 shortTitle: _ui_color_palette
 summary: 'Accessible color palettes with consistent lightness with Figma'
-description: 'Figma is an UX tool, using diagrams to build user experiences, interfaces, prototypes, illustrations, etc. The tool can be extended with a plugin system. Figma tends to be the leader of UX tools market because of its inclusive and powerful business model. So, Figma is still the most exciting ux tool. By reading this article (Accessible Palette: stop using HSL for color systems), I noticed there is not any plugin on Figma to help build accessible color systems for UI. The opportunity is to develop a tool to create, edit and deploy color palettes.'
+description: 'Figma is a UX tool, using diagrams to build user experiences, interfaces, prototypes, illustrations, etc. The tool can be extended with a plugin system. Figma tends to be the leader of the UX tools market because of its inclusive and powerful business model. So, Figma is still the most exciting UX tool. By reading this article (Accessible Palette: stop using HSL for color systems), I noticed there was no plugin on Figma to help build accessible color systems for UI. The opportunity is to develop a tool to create, edit and deploy color palettes.'
 date: '{''2022''}@:global.separator{''Monthly release''}'
 type: '@:global.type.product@:global.separator@:global.type.side'
 objectives:
@@ -54,9 +54,9 @@ onMounted(async () => {
 <OneColumn title="Make UI color palettes with the LCH color model">
 <template #plain>
 
-The plugin uses the LCH (Lightness-Chroma-Hue) model to generate colors according to the chosen lightness scale. The model LCH is relevant to make colors compliant with the WCAG standards.
+The plugin uses the LCH (Lightness-Chroma-Hue) model to generate colors according to the chosen lightness scale. The LCH model is relevant to make colors compliant with the WCAG standards.
 
-It works like the HSL (Hue-Saturation-Lightness) color model. The HSL is simple to use to build a color system, because the lightness can just be changed to create variants. The LCH too, but the Chroma, and the Hue are automatically adjusted to keep the colors within the sRGB gamut.
+It works like the HSL (Hue-Saturation-Lightness) color model. The HSL is simple to use to build a color system, because the lightness can just be changed to create variants. The LCH too, but the Chroma and the Hue are automatically adjusted to keep the colors within the sRGB gamut.
 
 </template>
 </OneColumn>
@@ -69,8 +69,8 @@ It works like the HSL (Hue-Saturation-Lightness) color model. The HSL is simple 
 <template #left>
 
 1. Select the colors you want to spread into shades directly from your document's canvas.
-1. Let you guide by the existing pre-configured stops (Material Design, Atlassian…) or make it your own way.
-1. Every shade from the starting colors are gathered within a calibrated palette compliant with WCAG guidelines.
+1. Let yourself be guided by the existing pre-configured stops (Material Design, Atlassian…) or make it your own way.
+1. Every shade from the starting colors is gathered within a calibrated palette compliant with WCAG guidelines.
 
 </template>
 <template #right>
@@ -91,7 +91,7 @@ It works like the HSL (Hue-Saturation-Lightness) color model. The HSL is simple 
 <template #right>
 
 1. Slide the stops to change the lightness of every color, and keep a palette with consistent contrasts.
-1. Rename, add, remove, change, reorder each color… Keep a full control of the color palette.
+1. Rename, add, remove, change, reorder each color… Keep full control of the color palette.
 1. WCAG 2.2 scores help you build the most respectful palette for accessibility.
 
 </template>
@@ -104,7 +104,7 @@ It works like the HSL (Hue-Saturation-Lightness) color model. The HSL is simple 
 <TwoColumns title="Deploy and spread the color standard" center>
 <template #left>
 
-1. Add with a single click every color of the palette to the document local styles.
+1. Add with a single click every color of the palette to the document's local styles.
 1. Publish the local styles and spread standardized color to your team.
 1. Export the palette to a JSON document or CSS Custom Properties.
 
@@ -150,7 +150,7 @@ It works like the HSL (Hue-Saturation-Lightness) color model. The HSL is simple 
 <Figma :size="48" />
 </template>
 </LinkContainer>
-<LinkContainer description="UI Color Palette is an open-source project. You can take a glance at the source code on Github." cta="Watch the repository" href="https://github.com/a-ng-d/figma-ui-color-palette" alt="External link to the plugin repository on Github">
+<LinkContainer description="UI Color Palette is an open-source project. You can take a glance at the source code on GitHub." cta="Watch the repository" href="https://github.com/a-ng-d/figma-ui-color-palette" alt="External link to the plugin repository on GitHub">
 <template #icon>
 <Github :size="48" />
 </template>

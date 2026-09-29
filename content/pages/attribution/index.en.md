@@ -2,9 +2,9 @@
 
 <OneColumn title="Development tools">
 <template #plain>
-<SimpleExternalLink label="p5.js as drawing canvas engine by Qianqian Ye" href="https://p5js.org" alt="External link to the p5.js website" />
-<SimpleExternalLink label="Vite.js as frontend build tool by Evan You" href="https://vitejs.dev" alt="External link to the Vite.js website" />
-<SimpleExternalLink label="Vue.js as Javascript framework by Evan You" href="https://vuejs.org" alt="External link to the Vue.js website" />
+<SimpleExternalLink label="p5.js as a drawing canvas engine by Qianqian Ye" href="https://p5js.org" alt="External link to the p5.js website" />
+<SimpleExternalLink label="Vite.js as a frontend build tool by Evan You" href="https://vitejs.dev" alt="External link to the Vite.js website" />
+<SimpleExternalLink label="Vue.js as a JavaScript framework by Evan You" href="https://vuejs.org" alt="External link to the Vue.js website" />
 </template>
 </OneColumn>
 
@@ -27,7 +27,7 @@
 <template #plain>
 <SimpleExternalLink label="Rubik typeface family by Hubert and Fischer" href="https://github.com/googlefonts/Rubik" alt="External link to the Rubik typeface family repository" />
 <SimpleExternalLink label="Sora typeface family by Jonathan Barnbrook and Julián Moncada" href="https://github.com/sora-xor/sora-font" alt="External link to the Sora typeface family repository" />
-<SimpleExternalLink label="Lucide icons as Icons library" href="https://lucide.dev" alt="External link to the Lucide icons website" />
+<SimpleExternalLink label="Lucide icons as an icon library" href="https://lucide.dev" alt="External link to the Lucide icons website" />
 </template>
 </OneColumn>
 
@@ -35,7 +35,7 @@
 
 ::: section
 
-<OneColumn title="Sounds effects & Musics">
+<OneColumn title="Sound effects & Music">
 <template #plain>
 <SimpleExternalLink label="Ambient music・Celestial Planets - Ambient 432hz・Dream-Protocol・Edited" href="https://pixabay.com/fr/music/ambiant-celestial-planets-ambient-432hz-114366/" alt="External link to the ambient music page: Celestial Planets - Ambient 432hz by Dream-Protocol" />
 <SimpleExternalLink label="Start sound・Sonar Ping・SamsterBirdies" href="https://pixabay.com/fr/sound-effects/sonar-ping-95840/" alt="External link to the ambient sound page: Sonar Ping by SamsterBirdies" />
