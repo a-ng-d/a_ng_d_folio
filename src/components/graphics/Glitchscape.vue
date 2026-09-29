@@ -264,7 +264,10 @@
 
         this.isAsking = true
         this.asked = now
-        this.weather = await fetchLocalWeather()
+
+        const reading = await fetchLocalWeather()
+        if (reading !== null) this.weather = reading
+
         this.isAsking = false
       },
     },
