@@ -135,7 +135,6 @@
         :is="body"
         :scrollProgress="scrollProgress"
         :scrollLimit="scrollLimit"
-        :theme="theme"
       />
     </article>
     <Footer

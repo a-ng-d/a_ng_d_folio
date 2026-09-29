@@ -144,15 +144,36 @@ transcribed, so nothing can drift out of sync.
 
 To impose a frame instead of following the file's own ratio, use `ratio`:
 
-```html
-<figure src="…" ratio="wide" />
+```md
+<Figure src="…" ratio="wide" />
 <!-- square landscape wide ultrawide -->
-<figure src="…" ratio="16 / 10" />
+<Figure src="…" ratio="16 / 10" />
 <!-- panorama portrait tall, or any CSS -->
 ```
 
 Videos cannot be measured at build time, so they keep explicit `:width` and
 `:height`.
+
+## Theme
+
+`theme:` in the frontmatter sets the page's theme for the whole body — every
+themed component (`Figure`, the layout components, `Button`…) picks it up on
+its own, with no prop to write. That is what lets a plain
+
+```md
+<Figure src="…" alt="…" />
+```
+
+follow DEFAULT or DARK depending only on the project it is in.
+
+To break from the page's theme for a single component — a dark screenshot
+dropped into an otherwise DEFAULT page, say — pass `theme` on that one tag:
+
+```md
+<Figure src="…" alt="…" theme="DARK" />
+```
+
+Leave it out everywhere else; the page's theme still reaches them normally.
 
 ## When Markdown is not enough
 
