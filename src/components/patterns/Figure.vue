@@ -4,8 +4,6 @@
   import VLazyImage from 'v-lazy-image'
   import { naturalRatio } from '@/content/assets'
 
-  // Cadres nommés, pour n'avoir pas à retenir des fractions. Toute valeur
-  // CSS reste acceptée : ratio="16 / 10", :ratio="1.5"…
   const NAMED_RATIOS: Record<string, string> = {
     square: '1 / 1',
     landscape: '4 / 3',
@@ -34,14 +32,10 @@
         type: Boolean,
         default: false,
       },
-      // Le cadre voulu. Absent, la figure prend le ratio propre du fichier,
-      // déduit de width/height — et rien n'est rogné.
       ratio: {
         type: [String, Number],
         default: undefined,
       },
-      // Recours pour ce que le build ne sait pas mesurer — les vidéos.
-      // Pour une image, ne rien déclarer : le fichier fait foi.
       width: {
         type: Number,
         default: undefined,
@@ -52,15 +46,6 @@
       },
     },
     computed: {
-      /**
-       * Le ratio du cadre, par ordre d'autorité :
-       *   1. `ratio`, le cadre qu'on impose délibérément ;
-       *   2. les dimensions relevées dans le fichier au build — la vérité,
-       *      que personne n'a eu à recopier ;
-       *   3. `width`/`height` déclarés, pour ce qui ne se mesure pas au
-       *      build, à commencer par les vidéos ;
-       *   4. rien : la boîte se règle alors sur l'image.
-       */
       aspectRatio(): string {
         if (this.ratio !== undefined) {
           const named = NAMED_RATIOS[String(this.ratio)]
@@ -72,7 +57,6 @@
           return `${this.width} / ${this.height}`
         return 'auto'
       },
-      // Sans ratio connu, l'image dicte la hauteur au lieu de l'inverse.
       assetHeight(): string {
         return this.aspectRatio === 'auto' ? 'auto' : '100%'
       },
@@ -174,7 +158,7 @@
         width: 300vw
         height: 300vh
         position: fixed
-        background-color: hsla(var(--hsl-cream), var(--alpha))
+        background-color: var(--overlay-color)
         transition: var(--simple-transition)
 
       img, video
@@ -221,4 +205,8 @@
       --asset-border: none
       --asset-radius: 0
       --alpha: .9
+      --overlay-color: hsla(var(--hsl-cream), var(--alpha))
+
+    &[data-theme="DARK"]
+      --overlay-color: hsla(var(--hsl-soil), var(--alpha))
 </style>
