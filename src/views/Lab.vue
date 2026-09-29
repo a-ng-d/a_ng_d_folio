@@ -7,7 +7,7 @@
   import { easeInOutQuart } from '@/utilities/easings'
   import { ArrowLeft, ArrowRight } from 'lucide-vue-next'
 
-let timeout: number, sliding: number
+  let timeout: number, sliding: number
 
   export default defineComponent({
     name: 'Lab',

@@ -23,10 +23,6 @@ export interface Filters {
   biscarosse: HuBrInSaGr
 }
 
-// Les teintes projet sont ouvertes : ajouter un projet ne doit jamais
-// demander de modifier une interface.
-export type ProjectTints = Record<string, HuBrInSaGr>
-
 export interface HuSaLiTy {
   hue: number
   saturation: number
@@ -94,10 +90,6 @@ export interface Option {
   name: string
   action: () => void
   isActive: boolean
-}
-
-export interface Asset {
-  [x: string]: Array<string>
 }
 
 export type JSONValue = string | number | boolean | JSONObject | JSONArray

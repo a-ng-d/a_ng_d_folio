@@ -1,4 +1,4 @@
-import type { Colors, Filters, ProjectTints } from '@/utilities/types'
+import type { Colors, Filters } from '@/utilities/types'
 
 export const HSLColors: Colors = {
   deepBlack: {
@@ -131,76 +131,5 @@ export const filters: Filters = {
     grayscale: '100%',
     name: 'BISCAROSSE',
     gradient: 'var(--gradient-biscarosse-sunset)',
-  },
-}
-
-// Teintes propres à chaque projet, appliquées au décor 3D quand on ouvre sa page.
-// Elles sont volontairement séparées des ambiances : celles-ci forment un
-// ensemble fermé (AmbientKind), alors que les projets vont et viennent.
-// En phase 2, ce bloc est remplacé par la frontmatter de chaque projet.
-export const projectTints: ProjectTints = {
-  _ui_color_palette: {
-    hue: '128deg',
-    brightness: '1',
-    invert: '0',
-    saturation: '.55',
-    grayscale: '0%',
-    name: '_UI_COLOR_PALETTE',
-  },
-  _jeprendsquoi: {
-    hue: '0deg',
-    brightness: '1.5',
-    invert: '0',
-    saturation: '1',
-    grayscale: '100%',
-    name: '_JEPRENDSQUOI',
-  },
-  _jean_bobby_radio: {
-    hue: '32deg',
-    brightness: '1',
-    invert: '0',
-    saturation: '.3',
-    grayscale: '0%',
-    name: '_JEAN_BOBBY_RADIO',
-  },
-  _iobeya_mobile_ds: {
-    hue: '343deg',
-    brightness: '1.5',
-    invert: '0',
-    saturation: '.7',
-    grayscale: '0%',
-    name: '_IOBEYA_MOBILE_DS',
-  },
-  _awesome_ipsums: {
-    hue: '82deg',
-    brightness: '.7',
-    invert: '0',
-    saturation: '.9',
-    grayscale: '0%',
-    name: '_AWESOME_IPSUMS',
-  },
-  _iobeya_whiteboard: {
-    hue: '343deg',
-    brightness: '1.5',
-    invert: '0',
-    saturation: '.7',
-    grayscale: '0%',
-    name: '_IOBEYA_WHITEBOARD',
-  },
-  _iobeya_creativity: {
-    hue: '343deg',
-    brightness: '1.5',
-    invert: '0',
-    saturation: '.7',
-    grayscale: '0%',
-    name: '_IOBEYA_CREATIVITY',
-  },
-  _axeptio_gusto: {
-    hue: '28deg',
-    brightness: '1.5',
-    invert: '0',
-    saturation: '.3',
-    grayscale: '0%',
-    name: '_AXEPTIO_GUSTO',
   },
 }

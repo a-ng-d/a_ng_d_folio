@@ -9,18 +9,6 @@ import type { JSONObject } from '@/utilities/types'
  * Rien ici n'est écrit à la main : ajouter un dossier suffit.
  */
 
-// Corps hérités. La phase 3 les remplace un par un par le corps Markdown ;
-// `hasBody` du manifeste dira lequel des deux rendre.
-//
-// Chargés d'avance, comme ils l'étaient quand le routeur les importait en
-// dur : la phase 2 ne doit rien changer au rendu. Retirer `eager` les rend
-// paresseux et sort les huit projets du bundle initial — ce sera l'affaire
-// de la phase 3, quand les corps changeront de toute façon.
-const legacyBodies = import.meta.glob('/src/contexts/_work/*.vue', {
-  eager: true,
-  import: 'default',
-})
-
 // Les vignettes Lottie sont chargées d'avance : le carrousel les rend
 // immédiatement, sans attente ni clignotement.
 const lottieIllustrations = import.meta.glob(
@@ -28,8 +16,6 @@ const lottieIllustrations = import.meta.glob(
   { eager: true, import: 'default' }
 )
 
-// Corps Markdown. Un projet bascule dessus dès que son fichier porte autre
-// chose que sa frontmatter — d'où une migration projet par projet, réversible.
 const markdownBodies = import.meta.glob('/content/work/*/index.en.md', {
   eager: true,
   import: 'default',
@@ -73,8 +59,6 @@ export const illustrationOf = (project: WorkProject): JSONObject | string =>
       ] as JSONObject)
     : assetUrl(project.slug, project.illustration.file)
 
-/** Le composant qui rend le corps du projet : son Markdown, sinon son SFC. */
+/** Le composant qui rend le corps du projet. */
 export const bodyOf = (project: WorkProject) =>
-  (project.hasBody
-    ? markdownBodies[`/content/work/${project.slug}/index.en.md`]
-    : undefined) ?? legacyBodies[`/src/contexts/_work/${project.slug}.vue`]
+  markdownBodies[`/content/work/${project.slug}/index.en.md`]

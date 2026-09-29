@@ -1,4 +1,4 @@
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, inject } from 'vue'
 import type { ComputedRef } from 'vue'
 import { doMap } from '@/utilities/operations'
 
@@ -35,3 +35,18 @@ export const withScroll = defineComponent({
     },
   },
 })
+
+/** Variante composition, pour un bloc <script setup> dans un corps Markdown. */
+export const useScroll = () => {
+  const provided = inject<ComputedRef<ScrollState> | undefined>(
+    SCROLL_KEY,
+    undefined
+  )
+
+  const parallax = (start: number, end: number): string => {
+    const { progress, limit } = provided?.value ?? { progress: 0, limit: 1 }
+    return `${doMap(progress, 0, limit, start, end)}%`
+  }
+
+  return { parallax }
+}
