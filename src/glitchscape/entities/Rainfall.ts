@@ -32,6 +32,17 @@ export class Rainfall {
       })
   }
 
+  rescale = (widthRatio: number, heightRatio: number, depthRatio: number) => {
+    this.ceiling *= heightRatio
+    this.floor *= heightRatio
+    this.drops.forEach((drop) => {
+      drop.x *= widthRatio
+      drop.y *= heightRatio
+      drop.z *= depthRatio
+      drop.length *= heightRatio
+    })
+  }
+
   resize = (stage: Stage, count: number) => {
     while (this.drops.length > count) this.drops.pop()
     while (this.drops.length < count) {

@@ -33,7 +33,7 @@ export class Star {
     }
     this.seed = randomFloat(0, 1000)
     this.params = {
-      speed: 0.1,
+      speed: 0.06,
       isStrokedOnly: false,
       alpha: 1,
       twinkle: 1,
@@ -59,6 +59,21 @@ export class Star {
   wireframe = () => (this.params.isStrokedOnly = true)
 
   unwireframe = () => (this.params.isStrokedOnly = false)
+
+  rescale = (widthRatio: number, heightRatio: number, depthRatio: number) => {
+    this.props.sizeRange = this.props.sizeRange.map(
+      (value) => value * heightRatio
+    )
+    this.props.yRange = this.props.yRange.map((value) => value * heightRatio)
+    this.props.x *= widthRatio
+    this.props.z *= depthRatio
+    this.size *= heightRatio
+    this.position.x *= widthRatio
+    this.position.y *= heightRatio
+    this.position.z *= depthRatio
+    this.backup.x *= widthRatio
+    this.backup.z *= depthRatio
+  }
 
   move = (stage: Stage) => {
     const sk = stage.sk,
@@ -102,6 +117,8 @@ export class Star {
   }
 
   draw = (stage: Stage) => {
+    if (this.params.alpha <= 0.01) return
+
     const sk = stage.sk,
       detail = stage.quality === 'HIGH' ? 16 : 6,
       tint = rampAt(
@@ -130,7 +147,12 @@ export class Star {
       sk.fill(corrupted.hue, corrupted.saturation, corrupted.lightness)
     else sk.fill(tint.hue, tint.saturation, tint.lightness, this.params.alpha)
 
-    sk.stroke(tint.hue, tint.saturation, tint.lightness)
+    sk.stroke(
+      tint.hue,
+      tint.saturation,
+      tint.lightness,
+      corrupted !== null ? 1 : this.params.alpha
+    )
     sk.strokeWeight(1)
     sk.sphere(this.size, 3, detail)
     sk.pop()

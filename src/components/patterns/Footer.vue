@@ -1,6 +1,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import { store } from '@/utilities/store'
+  import type { LocalWeather } from '@/utilities/weather'
   import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
   import SimpleLink from '@/components/ui/SimpleLink.vue'
   import Button from '@/components/ui/Button.vue'
@@ -38,6 +39,62 @@
             ? 'flex-end'
             : ('flex-start' as string),
       }
+    },
+    computed: {
+      ambience(): LocalWeather | null {
+        return this.store.isLiveAmbience ? this.store.weather : null
+      },
+      time(): string {
+        const now = new Date(this.store.clock),
+          pad = (value: number) => String(value).padStart(2, '0')
+
+        return `${pad(now.getHours())}:${pad(now.getMinutes())}`
+      },
+      // Only the readings that came back are named, so a sky that answered
+      // half the question does not leave a hole in the row.
+      readings(): Array<{ key: string; label: string; value: string }> {
+        const weather = this.ambience
+
+        if (weather === null) return []
+
+        const parts = [
+          { key: 'place', value: weather.place },
+          { key: 'time', value: this.time },
+          {
+            key: 'light',
+            value: this.$t(`footer.ambience.lights.${this.store.hour}`),
+          },
+        ]
+
+        if (weather.temperature !== null)
+          parts.push({
+            key: 'temperature',
+            value: this.$t('footer.ambience.degrees', {
+              value: Math.round(weather.temperature),
+            }),
+          })
+
+        if (weather.humidity !== null)
+          parts.push({
+            key: 'humidity',
+            value: this.$t('footer.ambience.percent', {
+              value: Math.round(weather.humidity),
+            }),
+          })
+
+        if (weather.luminosity !== null)
+          parts.push({
+            key: 'luminosity',
+            value: this.$t('footer.ambience.irradiance', {
+              value: Math.round(weather.luminosity),
+            }),
+          })
+
+        return parts.map((part) => ({
+          ...part,
+          label: this.$t(`footer.ambience.${part.key}`),
+        }))
+      },
     },
   })
 </script>
@@ -80,6 +137,20 @@
       <span class="footer__tag__content small-label">{{
         `${$t('global.version')} ${version}`
       }}</span>
+    </div>
+    <div
+      v-if="readings.length > 0"
+      class="footer__tag footer__tag--ambience"
+      :title="$t('footer.ambience.alt')"
+    >
+      <template v-for="(reading, index) in readings" :key="reading.key">
+        <span v-if="index > 0" class="footer__tag__content small-label">{{
+          $t('global.separator')
+        }}</span>
+        <span class="footer__tag__content small-label" :title="reading.label">{{
+          reading.value
+        }}</span>
+      </template>
     </div>
     <Button
       v-if="store.device === 'DESKTOP'"
@@ -131,6 +202,7 @@
   @include device.smartphone
     .footer
       justify-content: center
+      flex-wrap: wrap
 
   // Aspect
   .footer

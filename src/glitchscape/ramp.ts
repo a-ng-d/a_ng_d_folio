@@ -70,3 +70,6 @@ export const stepDepth = (
 
   return doMap(clamp((band + eased) / steps, 0, 1), 0, 1, far, near)
 }
+
+export const riseAt = (depth: number, far: number, band: number) =>
+  clamp(doMap(depth, far, far * (1 - band), 0, 1), 0, 1)

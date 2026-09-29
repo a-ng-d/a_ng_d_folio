@@ -3,6 +3,8 @@
   import { store } from '@/utilities/store'
   import type { Route } from '@/utilities/types'
   import type { SceneOverride } from '@/glitchscape/types'
+  import type { ThemeKind } from '@/router/scenery'
+  import { invertTheme } from '@/router/scenery'
   import Logotype from '@/components/graphics/Logotype.vue'
   import MainMenu from '@/contexts/MainMenu.vue'
   import Glitchscape from '@/components/graphics/Glitchscape.vue'
@@ -43,13 +45,18 @@
         isQuickMenu: false as boolean,
         previousPath: '' as string,
         isUIHere: true as boolean,
-        pageTheme: 'DEFAULT' as string,
+        pageTheme: 'DEFAULT' as ThemeKind,
         isBackgroundDark: false as boolean,
       }
     },
     computed: {
-      theme(): string {
-        return this.isBackgroundDark ? 'DARK' : this.pageTheme
+      // Once the world behind has turned, the page reads against a surface of
+      // the opposite value, so its theme is flipped rather than forced dark: a
+      // page that asked for DARK has to go light to stay legible at night.
+      theme(): ThemeKind {
+        return this.isBackgroundDark
+          ? invertTheme(this.pageTheme)
+          : this.pageTheme
       },
     },
     watch: {
@@ -77,8 +84,8 @@
           this.view === 'PROJECT'
             ? 'DEFAULT'
             : this.view === 'WORK'
-            ? this.projects[this.activeProjectPosition].meta.theme
-            : to.meta.theme
+            ? this.projects[this.activeProjectPosition].meta.theme || 'DEFAULT'
+            : to.meta.theme || 'DEFAULT'
 
         const AB: { [key: string]: () => void } = {
           'HOME > CORE': () => {

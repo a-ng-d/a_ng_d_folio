@@ -1,9 +1,13 @@
 import type { Position, Row, Size } from '@/utilities/types'
 import type { CloudProps, Stage } from '@/glitchscape/types'
-import { fadeAt, haze, hazeAt, rampAt, shade } from '@/glitchscape/ramp'
+import { fadeAt, haze, hazeAt, rampAt, riseAt, shade } from '@/glitchscape/ramp'
 import { bend } from '@/glitchscape/bend'
 import { HSLColors } from '@/utilities/colors'
 import { doMap, lerp, random, randomFloat, wrap } from '@/utilities/operations'
+
+const WIRE_SPEED = 0.06
+
+const RISE_BAND = 0.2
 
 export class Cloud {
   props: CloudProps
@@ -15,7 +19,8 @@ export class Cloud {
     order: number
     gap: number
     start: number
-    isStrokedOnly: boolean
+    wire: number
+    wireTarget: number
     isRetiring: boolean
     retirement: number
     alpha: number
@@ -46,7 +51,8 @@ export class Cloud {
       order: 0,
       gap: 40,
       start: stage.bounds.height,
-      isStrokedOnly: true,
+      wire: 1,
+      wireTarget: 1,
       isRetiring: false,
       retirement: 0,
       alpha: 0,
@@ -73,9 +79,37 @@ export class Cloud {
     this.params.rows = this.backup.rows.map((row) => ({ ...row }))
   }
 
-  wireframe = () => (this.params.isStrokedOnly = true)
+  wireframe = () => (this.params.wireTarget = 1)
 
-  unwireframe = () => (this.params.isStrokedOnly = false)
+  unwireframe = () => (this.params.wireTarget = 0)
+
+  rescale = (widthRatio: number, heightRatio: number, depthRatio: number) => {
+    this.props.widthRange = this.props.widthRange.map(
+      (value) => value * widthRatio
+    )
+    this.props.heightRange = this.props.heightRange.map(
+      (value) => value * heightRatio
+    )
+    this.props.zRange = this.props.zRange.map((value) => value * depthRatio)
+    this.props.x *= widthRatio
+    this.props.y *= heightRatio
+    this.size.width *= widthRatio
+    this.size.height *= heightRatio
+    this.position.x *= widthRatio
+    this.position.y *= heightRatio
+    this.position.z *= depthRatio
+    this.params.start *= heightRatio
+    this.params.rows.forEach((row) => {
+      row.width *= widthRatio
+      row.height *= heightRatio
+      row.x *= widthRatio
+    })
+    this.backup.rows.forEach((row) => {
+      row.width *= widthRatio
+      row.height *= heightRatio
+      row.x *= widthRatio
+    })
+  }
 
   retire = () => (this.params.isRetiring = true)
 
@@ -145,6 +179,12 @@ export class Cloud {
       this.params.speed * (this.params.isRetiring ? 1 : 0.5)
     )
 
+    const woven = lerp(this.params.wire, this.params.wireTarget, WIRE_SPEED)
+    this.params.wire =
+      Math.abs(woven - this.params.wireTarget) < 0.002
+        ? this.params.wireTarget
+        : woven
+
     this.draw(stage)
   }
 
@@ -172,7 +212,8 @@ export class Cloud {
       fog = hazeAt(this.position.z, this.props.zRange[0], 0.5),
       opacity =
         this.params.alpha *
-        (1 - fadeAt(this.position.z, this.props.zRange[0], 0.08, 0.02)),
+        (1 - fadeAt(this.position.z, this.props.zRange[0], 0.08, 0.02)) *
+        riseAt(this.position.z, this.props.zRange[0], RISE_BAND),
       tint = haze(
         rampAt(
           stage.scene.palette.clouds,
@@ -204,15 +245,22 @@ export class Cloud {
     sk.push()
     sk.translate(placed.x, placed.y, placed.z)
 
-    if (this.params.isStrokedOnly) sk.noFill()
+    const wire = this.params.wire
+
+    if (wire > 0.995) sk.noFill()
     else if (corrupted !== null)
-      sk.fill(corrupted.hue, corrupted.saturation, corrupted.lightness)
+      sk.fill(
+        corrupted.hue,
+        corrupted.saturation,
+        corrupted.lightness,
+        1 - wire
+      )
     else
       sk.fill(
         lit.hue,
         lit.saturation,
         lit.lightness,
-        Math.min(opacity, this.params.beta)
+        Math.min(opacity, this.params.beta) * (1 - wire)
       )
 
     sk.stroke(tint.hue, tint.saturation, tint.lightness, opacity)

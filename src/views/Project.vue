@@ -138,7 +138,7 @@
     <Footer
       alignment="CENTER"
       :theme="theme"
-      style="background-color: var(--color-creamy-sun)"
+      :style="{ backgroundColor: theme === 'DARK' ? 'var(--color-soil)' : 'var(--color-creamy-sun)' }"
     />
   </main>
 </template>

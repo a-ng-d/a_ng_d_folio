@@ -161,3 +161,21 @@ export const shatterProfile = (source: Profile, intensity: number): Profile =>
   source.map((value) =>
     clamp(value * randomFloat(1 - intensity, 1 + intensity * 0.5), 0, 1)
   )
+
+export const resampleProfile = (source: Profile, length: number): Profile => {
+  const steps = Math.max(3, length)
+
+  if (source.length === steps) return source.slice()
+  if (source.length < 2) return new Array(steps).fill(source[0] || 0)
+
+  const profile: Profile = []
+
+  for (let i = 0; i < steps; i++) {
+    const position = (i / (steps - 1)) * (source.length - 1),
+      index = Math.min(Math.floor(position), source.length - 2)
+
+    profile.push(lerp(source[index], source[index + 1], position - index))
+  }
+
+  return profile
+}

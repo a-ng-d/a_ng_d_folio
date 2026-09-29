@@ -5,10 +5,18 @@ import {
   buildProfile,
   createSeed,
   morphProfile,
+  resampleProfile,
   resolveShape,
   shatterProfile,
 } from '@/glitchscape/profiles'
-import { fadeAt, haze, hazeAt, rampAt, stepDepth } from '@/glitchscape/ramp'
+import {
+  fadeAt,
+  haze,
+  hazeAt,
+  rampAt,
+  riseAt,
+  stepDepth,
+} from '@/glitchscape/ramp'
 import { bend } from '@/glitchscape/bend'
 import { HSLColors } from '@/utilities/colors'
 import {
@@ -25,6 +33,10 @@ const PAPER_STEPS = 7
 const PAPER_BLEND = 0.3
 
 const SKIRT = 2
+
+const WIRE_SPEED = 0.06
+
+const RISE_BAND = 0.2
 
 export const clampCorridor = (corridor: number) => clamp(corridor, 0.05, 3)
 
@@ -49,7 +61,8 @@ export class Mountain {
     morphSpeed: number
     order: number
     gap: number
-    isStrokedOnly: boolean
+    wire: number
+    wireTarget: number
     alpha: number
     isRetiring: boolean
     retirement: number
@@ -89,7 +102,8 @@ export class Mountain {
       morphSpeed: 0.05,
       order: 0,
       gap: 20,
-      isStrokedOnly: true,
+      wire: 1,
+      wireTarget: 1,
       alpha: 0,
       isRetiring: false,
       retirement: 0,
@@ -123,8 +137,8 @@ export class Mountain {
 
     if (hasResolutionChanged) {
       this.resolution = stage.resolution
-      this.profile = this.build(stage)
-      this.target = this.profile.slice()
+      this.profile = resampleProfile(this.profile, this.resolution)
+      this.target = this.build(stage)
       return
     }
 
@@ -147,9 +161,28 @@ export class Mountain {
 
   hasFolded = () => this.params.retirement > 0.97
 
-  wireframe = () => (this.params.isStrokedOnly = true)
+  wireframe = () => (this.params.wireTarget = 1)
 
-  unwireframe = () => (this.params.isStrokedOnly = false)
+  unwireframe = () => (this.params.wireTarget = 0)
+
+  rescale = (widthRatio: number, heightRatio: number, depthRatio: number) => {
+    this.props.widthRange = this.props.widthRange.map(
+      (value) => value * widthRatio
+    )
+    this.props.heightRange = this.props.heightRange.map(
+      (value) => value * heightRatio
+    )
+    this.props.zRange = this.props.zRange.map((value) => value * depthRatio)
+    this.props.x *= widthRatio
+    this.props.y *= heightRatio
+    this.size.width *= widthRatio
+    this.size.height *= heightRatio
+    this.backup.width *= widthRatio
+    this.backup.height *= heightRatio
+    this.position.x *= widthRatio
+    this.position.y *= heightRatio
+    this.position.z *= depthRatio
+  }
 
   advance = (stage: Stage) => {
     const sk = stage.sk,
@@ -219,6 +252,12 @@ export class Mountain {
       )
     }
 
+    const woven = lerp(this.params.wire, this.params.wireTarget, WIRE_SPEED)
+    this.params.wire =
+      Math.abs(woven - this.params.wireTarget) < 0.002
+        ? this.params.wireTarget
+        : woven
+
     const opacity = lerp(
       this.params.alpha,
       this.params.isRetiring ? 0 : 1,
@@ -262,7 +301,8 @@ export class Mountain {
       fog = hazeAt(this.position.z, this.props.zRange[0], 0.5),
       opacity =
         this.params.alpha *
-        (1 - fadeAt(this.position.z, this.props.zRange[0], 0.08, 0.02)),
+        (1 - fadeAt(this.position.z, this.props.zRange[0], 0.08, 0.02)) *
+        riseAt(this.position.z, this.props.zRange[0], RISE_BAND),
       tint = haze(
         rampAt(
           stage.scene.palette.mountains,
@@ -294,21 +334,29 @@ export class Mountain {
       this.position.z
     )
 
-    const shown = corrupted !== null ? corrupted : tint
+    const shown = corrupted !== null ? corrupted : tint,
+      wire = this.params.wire
 
     sk.push()
     sk.translate(placed.x, placed.y, placed.z)
     sk.rotateX(this.params.radians)
 
-    if (this.params.isStrokedOnly) {
+    if (wire < 0.995) {
+      sk.noStroke()
+      sk.fill(
+        shown.hue,
+        shown.saturation,
+        shown.lightness,
+        opacity * (1 - wire)
+      )
+      this.face(sk)
+    }
+
+    if (wire > 0.005) {
       sk.noFill()
-      sk.stroke(shown.hue, shown.saturation, shown.lightness, opacity)
+      sk.stroke(shown.hue, shown.saturation, shown.lightness, opacity * wire)
       sk.strokeWeight(1)
       this.outline(sk)
-    } else {
-      sk.noStroke()
-      sk.fill(shown.hue, shown.saturation, shown.lightness, opacity)
-      this.face(sk)
     }
 
     sk.pop()

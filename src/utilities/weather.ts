@@ -4,14 +4,35 @@ const GEOCODING = 'https://geocoding-api.open-meteo.com/v1/search',
   FORECAST = 'https://api.open-meteo.com/v1/forecast',
   TIMEOUT = 6000
 
+// A luminosity reading the sky actually gives, rather than one inferred from
+// the hour and the temperature: irradiance answers the cloud cover within the
+// quarter hour, where the temperature lags it by hours and carries the season
+// and the latitude with it.
+export const FULL_SUN = 1000
+
 export interface LocalWeather {
+  place: string
   rain: number
   code: number
   cloud: number
+  temperature: number | null
+  humidity: number | null
+  luminosity: number | null
   isStorm: boolean
   isFoggy: boolean
   isDay: boolean
 }
+
+const measure = (value: unknown): number | null => {
+  const read = Number(value)
+
+  return value === null || value === undefined || Number.isNaN(read)
+    ? null
+    : read
+}
+
+export const luminosityIndex = (luminosity: number | null): number | null =>
+  luminosity === null ? null : clamp(luminosity / FULL_SUN, 0, 1)
 
 const ask = async (url: string) => {
   const controller = new AbortController(),
@@ -66,7 +87,8 @@ export const fetchLocalWeather = async (): Promise<LocalWeather | null> => {
 
   const reading = await ask(
     `${FORECAST}?latitude=${spot.latitude}&longitude=${spot.longitude}` +
-      '&current=precipitation,weather_code,cloud_cover,is_day'
+      '&current=precipitation,weather_code,cloud_cover,is_day' +
+      ',temperature_2m,relative_humidity_2m,shortwave_radiation'
   )
   const current = reading && reading.current
   if (!current) return null
@@ -74,9 +96,13 @@ export const fetchLocalWeather = async (): Promise<LocalWeather | null> => {
   const code = Number(current.weather_code) || 0
 
   return {
+    place,
     code,
     rain: rainFromCode(code, Number(current.precipitation) || 0),
     cloud: clamp((Number(current.cloud_cover) || 0) / 100, 0, 1),
+    temperature: measure(current.temperature_2m),
+    humidity: measure(current.relative_humidity_2m),
+    luminosity: measure(current.shortwave_radiation),
     isStorm: code >= 95,
     isFoggy: code === 45 || code === 48,
     isDay: Number(current.is_day) === 1,

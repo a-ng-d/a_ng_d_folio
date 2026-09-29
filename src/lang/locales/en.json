@@ -108,7 +108,27 @@
   },
   "footer": {
     "attribution": "Attribution",
-    "repository": "Watch the repository"
+    "repository": "Watch the repository",
+    "ambience": {
+      "alt": "Readings the scene is borrowing from the world right now",
+      "place": "Location",
+      "time": "Local time",
+      "light": "Light of the moment",
+      "temperature": "Temperature",
+      "humidity": "Relative humidity",
+      "luminosity": "Solar irradiance",
+      "degrees": "{value}°C",
+      "percent": "{value}%",
+      "irradiance": "{value} W/m²",
+      "lights": {
+        "FLAT": "Flat light",
+        "DAWN": "Dawn",
+        "ZENITH": "Zenith",
+        "DUSK": "Dusk",
+        "NIGHT": "Night",
+        "STORM": "Storm"
+      }
+    }
   },
   "id": {
     "title": "@:glossary.id@:global.separator@:global.author",

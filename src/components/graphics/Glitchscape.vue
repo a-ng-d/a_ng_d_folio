@@ -17,19 +17,22 @@
     nightward,
     overcast,
     resolveLighting,
+    temper,
     tintPalette,
   } from '@/glitchscape/ambience'
   import { resolveFlow } from '@/glitchscape/flow'
   import { filters } from '@/utilities/colors'
-  import { clamp } from '@/utilities/operations'
   import type { LocalWeather } from '@/utilities/weather'
-  import { fetchLocalWeather } from '@/utilities/weather'
+  import { fetchLocalWeather, luminosityIndex } from '@/utilities/weather'
 
   const MAX_BRIGHTNESS = 1.1
 
   const VEIL = 0.35
 
-  const DARK_SKY = 45
+  // The world turns dark at nightfall and stays dark until dawn. The hour is
+  // read rather than the sky lightness, so a passing cloud cannot flip the
+  // interface and a filter's polarity has no say in it.
+  const NIGHTFALL: Array<LightKind> = ['DUSK', 'NIGHT']
 
   const WEATHER_FLOOR = 600000
 
@@ -101,7 +104,9 @@
         return `hue-rotate(${filter.hue}) brightness(${filter.brightness})`
       },
       polarityStyle(): string {
-        return `filter: invert(${this.resolvedFilter.invert})`
+        const invert = Number(this.resolvedFilter.invert) || 0
+
+        return `filter: ${invert > 0 ? `invert(${invert})` : 'none'}`
       },
       toneStyle(): string {
         const filter = this.resolvedFilter
@@ -130,15 +135,24 @@
       reading(): LocalWeather | null {
         return this.isLive ? this.weather : null
       },
-      hour(): LightKind {
-        const kind = resolveLighting(
-          this.resolvedScene.ambience,
-          this.resolvedScene.lighting,
-          new Date(this.clock)
-        )
+      // How much light is actually reaching the ground, as a share of full sun.
+      // Null on a fixed scene, or when the sky did not answer.
+      index(): number | null {
         const reading = this.reading
 
-        return reading !== null && !reading.isDay ? nightward(kind) : kind
+        return reading === null ? null : luminosityIndex(reading.luminosity)
+      },
+      hour(): LightKind {
+        const now = new Date(this.clock),
+          kind = resolveLighting(
+            this.resolvedScene.ambience,
+            this.resolvedScene.lighting,
+            now
+          ),
+          reading = this.reading,
+          leaning = reading !== null && !reading.isDay ? nightward(kind) : kind
+
+        return temper(leaning, this.index, now.getHours())
       },
       lighting(): LightKind {
         return this.reading !== null && this.reading.isStorm
@@ -153,7 +167,7 @@
           ...scene,
           lighting: this.lighting,
           palette: overcast(
-            tintPalette(scene.palette, this.hour),
+            tintPalette(scene.palette, this.hour, this.index),
             reading !== null ? reading.cloud : 0
           ),
           rain: reading !== null ? reading.rain : scene.rain,
@@ -182,16 +196,8 @@
 
         return `background-color: hsla(${sky.hue}, ${sky.saturation}%, ${sky.lightness}%, ${VEIL})`
       },
-      litSky(): number {
-        const sky = this.liveScene.palette.sky,
-          filter = this.resolvedFilter,
-          brightness = Number(filter.brightness) || 1,
-          lit = clamp(sky.lightness * brightness, 0, 100)
-
-        return Number(filter.invert) >= 0.5 ? 100 - lit : lit
-      },
       isDark(): boolean {
-        return this.litSky < DARK_SKY
+        return NIGHTFALL.includes(this.hour)
       },
       halo(): number {
         return HALO_INTENSITY[this.lighting] || 0
@@ -222,8 +228,32 @@
         },
         deep: true,
       },
-      isLive(to: boolean) {
-        if (to) this.askWeather()
+      isLive: {
+        handler(to: boolean) {
+          this.store.isLiveAmbience = to
+          if (to) this.askWeather()
+        },
+        immediate: true,
+      },
+      // The footer names what the scene is borrowing, so the readings are
+      // published as they are resolved here rather than fetched a second time.
+      reading: {
+        handler(to: LocalWeather | null) {
+          this.store.weather = to
+        },
+        immediate: true,
+      },
+      hour: {
+        handler(to: LightKind) {
+          this.store.hour = to
+        },
+        immediate: true,
+      },
+      clock: {
+        handler(to: number) {
+          this.store.clock = to
+        },
+        immediate: true,
       },
       isDark: {
         handler(to: boolean) {
@@ -338,6 +368,11 @@
     transition: var(--grandma-transition)
     transform-origin: 50% 50%
     z-index: 0
+
+    canvas
+      display: block
+      width: 100% !important
+      height: 100% !important
 
     .veil
       position: absolute

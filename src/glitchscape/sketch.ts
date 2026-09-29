@@ -50,6 +50,14 @@ const RESOLUTIONS: { [key: string]: number } = {
   LOW: 14,
 }
 
+const RESIZE_DELAY = 220
+
+const CHROME_TOLERANCE = 0.3
+
+const IDLE_DRIFT = 0.05
+
+const ENTRY_JITTER = 0.015
+
 export interface GlitchscapeOptions {
   parent: string
   scene: SceneConfig
@@ -106,6 +114,7 @@ export const createGlitchscape = (
     camera: any = null,
     rainfall: Rainfall | null = null,
     resizing = 0,
+    measured = { width: bounds.width, height: bounds.height },
     isReady = false,
     target: SceneConfig = options.scene,
     targetFlow: FlowField = resolveFlow(
@@ -209,6 +218,21 @@ export const createGlitchscape = (
     bounds.limitZ /
     clamp(stage.scene.curvature * stage.flow.pinch, MIN_CURVATURE, 2.5)
 
+  // The far plane and the near plane are both invisible: one is hazed into the
+  // sky and faded out by riseAt, the other is cut by fadeAt as it passes the
+  // camera. A range that has to grow enters through whichever of the two the
+  // drift is heading away from, so it is never seen arriving.
+  const entryDepth = (zRange: Array<number>) => {
+    const drift = stage.flow.drift.z
+
+    if (Math.abs(drift) < IDLE_DRIFT) return null
+
+    const span = zRange[1] - zRange[0],
+      jitter = span * randomFloat(0, ENTRY_JITTER)
+
+    return drift > 0 ? zRange[0] + jitter : zRange[1] - jitter
+  }
+
   const spawnMountain = () => {
     const sk = stage.sk,
       corridor = clampCorridor(stage.scene.corridor)
@@ -253,6 +277,29 @@ export const createGlitchscape = (
     })
   }
 
+  // Whatever joins a scene already on screen takes the look it finds there
+  // rather than crossfading into it from nothing.
+  const dress = <T extends Mountain | Cloud | Star>(entity: T): T => {
+    const isLow = stage.quality === 'LOW'
+
+    if (isLow) entity.wireframe()
+    else entity.unwireframe()
+
+    if (entity instanceof Star)
+      entity.params.alpha = isLow ? 0 : entity.params.twinkle
+    else entity.params.wire = isLow ? 1 : 0
+
+    return entity
+  }
+
+  const grow = <T extends Mountain | Cloud>(entity: T): T => {
+    const edge = entryDepth(entity.props.zRange)
+
+    if (edge !== null) entity.position.z = edge
+
+    return dress(entity)
+  }
+
   const order = () => {
     mountains.sort((a, b) => a.position.z - b.position.z)
     mountains.forEach((mountain, index) => (mountain.params.order = index))
@@ -286,19 +333,19 @@ export const createGlitchscape = (
 
     while (standing.length > target.mountains) standing.shift()?.retire()
     while (standing.length < target.mountains) {
-      mountains.push(spawnMountain())
+      mountains.push(grow(spawnMountain()))
       standing.push(mountains[mountains.length - 1])
       hasGrown = true
     }
     while (floating.length > target.clouds) floating.shift()?.retire()
     while (floating.length < target.clouds) {
-      clouds.push(spawnCloud())
+      clouds.push(grow(spawnCloud()))
       floating.push(clouds[clouds.length - 1])
       hasGrown = true
     }
     while (stars.length > target.stars) stars.pop()
     while (stars.length < target.stars) {
-      stars.push(spawnStar())
+      stars.push(dress(spawnStar()))
       hasGrown = true
     }
 
@@ -307,7 +354,6 @@ export const createGlitchscape = (
     if (!hasGrown) return
 
     order()
-    applyQuality(stage.quality)
   }
 
   const measure = () => {
@@ -320,15 +366,42 @@ export const createGlitchscape = (
     bounds.limitZ = next.limitZ
   }
 
-  const replay = () => {
-    if (!isReady) return
+  const adapt = () => {
+    const sk = stage.sk
+    if (sk === null || !isReady) return
 
+    const width = window.innerWidth,
+      height = window.innerHeight,
+      widthRatio = width / measured.width,
+      heightRatio = height / measured.height
+
+    // A phone hiding or showing its browser chrome only ever moves the height,
+    // and the scene is laid out against the width. Taking that bait would
+    // rebuild the whole range mid-scroll and throw away the corridor the
+    // camera is flying through, so the sketch sits it out.
+    const chrome =
+      options.device === 'MOBILE' &&
+      widthRatio === 1 &&
+      Math.abs(heightRatio - 1) < CHROME_TOLERANCE
+
+    if (sk.width !== width || sk.height !== height)
+      sk.resizeCanvas(width, height)
+
+    if (chrome || (widthRatio === 1 && heightRatio === 1)) return
+
+    measured = { width, height }
     measure()
-    mountains = []
-    clouds = []
-    stars = []
-    populate()
-    applyQuality(stage.quality)
+
+    mountains.forEach((mountain) =>
+      mountain.rescale(widthRatio, heightRatio, heightRatio)
+    )
+    clouds.forEach((cloud) =>
+      cloud.rescale(widthRatio, heightRatio, heightRatio)
+    )
+    stars.forEach((star) => star.rescale(widthRatio, heightRatio, heightRatio))
+    rainfall?.rescale(widthRatio, heightRatio, heightRatio)
+
+    order()
     frame()
   }
 
@@ -336,9 +409,18 @@ export const createGlitchscape = (
     const sk = stage.sk
     if (sk === null) return
 
-    sk.resizeCanvas(sk.windowWidth, sk.windowHeight)
+    const width = window.innerWidth,
+      height = window.innerHeight
+
+    if (sk.width === width && sk.height === height) return
+
+    // A width change is a real reframing and is answered at once; a height-only
+    // change waits for the gesture to settle, so one scroll cannot cost a
+    // string of WebGL buffer rebuilds.
+    if (width !== sk.width) sk.resizeCanvas(width, height)
+
     window.clearTimeout(resizing)
-    resizing = window.setTimeout(replay, 250)
+    resizing = window.setTimeout(adapt, RESIZE_DELAY)
   }
 
   const instance = new P5((sk: any) => {
@@ -356,7 +438,6 @@ export const createGlitchscape = (
       const sky = stage.scene.palette.sky
       sk.background(sky.hue, sky.saturation, sky.lightness)
 
-      sk.windowResized = onResize
       window.addEventListener('resize', onResize)
 
       if (screen.orientation !== undefined) {
