@@ -1,4 +1,5 @@
 import type { App } from 'vue'
+import VLazyImage from 'v-lazy-image'
 
 import OneColumn from '@/components/layouts/OneColumn.vue'
 import TwoColumns from '@/components/layouts/TwoColumns.vue'
@@ -14,6 +15,7 @@ import Button from '@/components/ui/Button.vue'
 
 // Ce que le contenu Markdown peut appeler sans rien importer.
 const COMPONENTS = {
+  VLazyImage,
   OneColumn,
   TwoColumns,
   ThreeColumns,

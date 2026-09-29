@@ -4,6 +4,21 @@ import { doMap } from '@/utilities/operations'
 
 export const SCROLL_KEY = 'a_ng_d:scroll'
 
+const IDLE: ScrollState = { progress: 0, limit: 1 }
+
+/**
+ * Selon qu'on injecte depuis un composant Options ou depuis `setup`, Vue rend
+ * la valeur telle quelle ou déjà déballée. On accepte les deux plutôt que de
+ * retomber silencieusement sur une position figée.
+ */
+const readScroll = (provided: unknown): ScrollState => {
+  if (provided === null || provided === undefined) return IDLE
+  const value = (provided as { value?: ScrollState }).value ?? provided
+  return (value as ScrollState).limit !== undefined
+    ? (value as ScrollState)
+    : IDLE
+}
+
 export interface ScrollState {
   progress: number
   limit: number
@@ -21,10 +36,7 @@ export const withScroll = defineComponent({
   },
   computed: {
     scroll(): ScrollState {
-      const provided = this.providedScroll as
-        | ComputedRef<ScrollState>
-        | undefined
-      return provided?.value ?? { progress: 0, limit: 1 }
+      return readScroll(this.providedScroll)
     },
   },
   methods: {
@@ -44,7 +56,7 @@ export const useScroll = () => {
   )
 
   const parallax = (start: number, end: number): string => {
-    const { progress, limit } = provided?.value ?? { progress: 0, limit: 1 }
+    const { progress, limit } = readScroll(provided)
     return `${doMap(progress, 0, limit, start, end)}%`
   }
 

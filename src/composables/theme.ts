@@ -32,8 +32,12 @@ export const withTheme = defineComponent({
   computed: {
     resolvedTheme(): ThemeKind {
       if (this.theme !== undefined) return this.theme as ThemeKind
-      const provided = this.providedTheme as ComputedRef<ThemeKind> | undefined
-      return provided?.value ?? 'DEFAULT'
+      const provided = this.providedTheme
+      if (provided === null || provided === undefined) return 'DEFAULT'
+      // Injection déballée ou sous forme de ref selon le contexte d'appel.
+      const value =
+        (provided as { value?: ThemeKind }).value ?? (provided as ThemeKind)
+      return typeof value === 'string' ? value : 'DEFAULT'
     },
   },
 })
