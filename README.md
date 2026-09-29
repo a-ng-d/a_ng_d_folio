@@ -5,6 +5,26 @@
 Personal portfolio that presents 7 years of professional and personal work through an immersive visit.
 Take a glance at [www.an.gd](https://an.gd).
 
+## Adding a project
+
+A project is a folder under `content/work/`. Its name is the slug, and the slug
+is written nowhere else — no route to declare, no component to register, no
+translation key to invent.
+
+```sh
+mkdir content/work/_my_project        # the slug
+# drop assets in public/images/_work/_my_project/
+# write content/work/_my_project/index.en.md
+# flip `published: true` when it is ready
+```
+
+`published: false` removes the route in production while keeping it reachable
+in development, so a draft can be reviewed without being exposed. `order` only
+sorts the carousel; inserting a project never renumbers the others.
+
+Full procedure, frontmatter reference and authoring rules:
+[`content/work/README.md`](content/work/README.md).
+
 ## Project Setup
 
 ```sh

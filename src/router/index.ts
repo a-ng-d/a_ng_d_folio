@@ -32,16 +32,11 @@ const resolve = (value: string): string =>
     .replace(/@:([\w.]+)/g, (_, key) => i18n.global.t(key))
     .replace(/\{'([^']*)'\}/g, '$1')
 
-const text = (project: WorkProject, field: TextField, key: string): string => {
-  const own = project.text[field] as string | undefined
-  return own !== undefined
-    ? resolve(own)
-    : i18n.global.t(`work.${project.slug}.${key}`)
-}
+const text = (project: WorkProject, field: TextField): string =>
+  resolve((project.text[field] as string | undefined) ?? '')
 
-const list = (project: WorkProject, field: TextField, key: string): string[] =>
-  (project.text[field] as string[] | undefined) ??
-  i18n.global.t(`work.${project.slug}.${key}`).split(', ')
+const list = (project: WorkProject, field: TextField): string[] =>
+  (project.text[field] as string[] | undefined) ?? []
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -154,16 +149,16 @@ const router = createRouter({
       name: project.slug.toUpperCase(),
       component: Project,
       meta: page({
-        title: text(project, 'title', 'title'),
+        title: text(project, 'title'),
         // Le slug fait foi. Il servait jusqu'ici de chaîne i18n, ce qui
         // rendait le rendu du corps dépendant d'un fichier de traduction.
         codeName: project.slug,
-        description: text(project, 'description', 'description'),
-        summary: text(project, 'summary', 'shortDescription'),
-        date: text(project, 'date', 'misc.date'),
-        objectives: list(project, 'objectives', 'misc.objectives'),
-        roles: list(project, 'roles', 'misc.roles'),
-        type: text(project, 'type', 'misc.type'),
+        description: text(project, 'description'),
+        summary: text(project, 'summary'),
+        date: text(project, 'date'),
+        objectives: list(project, 'objectives'),
+        roles: list(project, 'roles'),
+        type: text(project, 'type'),
         position: positionOf(project.slug),
         view: 'PROJECT' as const,
         illustration: illustrationOf(project),

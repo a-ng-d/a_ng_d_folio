@@ -95,8 +95,15 @@ const readProject = (dir: string, root: string): WorkProject => {
     )
 
   const text: Record<string, unknown> = {}
-  for (const field of TEXT_FIELDS)
-    if (fm[field] !== undefined) text[field] = fm[field]
+  const absent: string[] = []
+  for (const field of TEXT_FIELDS) {
+    if (fm[field] === undefined) absent.push(field)
+    else text[field] = fm[field]
+  }
+  // Le texte ne vit plus que dans la frontmatter : ce qui manque ici ne se
+  // rattrape nulle part, donc le build s'arrête.
+  if (absent.length > 0)
+    fail(rel, `champ(s) de texte manquant(s) — ${absent.join(', ')}`)
 
   return {
     slug,

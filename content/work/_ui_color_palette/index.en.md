@@ -76,7 +76,7 @@ It works like the HSL (Hue-Saturation-Lightness) color model. The HSL is simple 
 
 </template>
 <template #right>
-<Figure type="video" src="/videos/_work/_ui_color_palette/article-asset-1.webm + '#t=0.5'" altsrc="/videos/_work/_ui_color_palette/article-asset-1.mp4 + '#t=0.5'" :width="1920" :height="1080">
+<Figure type="video" src="/videos/_work/_ui_color_palette/article-asset-1.webm#t=0.5" altsrc="/videos/_work/_ui_color_palette/article-asset-1.mp4#t=0.5" :width="1920" :height="1080">
 </Figure>
 </template>
 </TwoColumns>
@@ -87,7 +87,7 @@ It works like the HSL (Hue-Saturation-Lightness) color model. The HSL is simple 
 
 <TwoColumns title="Control the palette with WYSIWYG" class="col-2--invert" center>
 <template #left>
-<Figure type="video" src="/videos/_work/_ui_color_palette/article-asset-2.webm + '#t=0.5'" altsrc="/videos/_work/_ui_color_palette/article-asset-2.mp4 + '#t=0.5'" :width="1920" :height="1080">
+<Figure type="video" src="/videos/_work/_ui_color_palette/article-asset-2.webm#t=0.5" altsrc="/videos/_work/_ui_color_palette/article-asset-2.mp4#t=0.5" :width="1920" :height="1080">
 </Figure>
 </template>
 <template #right>
@@ -112,7 +112,7 @@ It works like the HSL (Hue-Saturation-Lightness) color model. The HSL is simple 
 
 </template>
 <template #right>
-<Figure type="video" src="/videos/_work/_ui_color_palette/article-asset-3.webm + '#t=0.5'" altsrc="/videos/_work/_ui_color_palette/article-asset-3.mp4 + '#t=0.5'" :width="1920" :height="1080">
+<Figure type="video" src="/videos/_work/_ui_color_palette/article-asset-3.webm#t=0.5" altsrc="/videos/_work/_ui_color_palette/article-asset-3.mp4#t=0.5" :width="1920" :height="1080">
 </Figure>
 </template>
 </TwoColumns>

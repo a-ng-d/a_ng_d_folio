@@ -95,7 +95,7 @@
         <OneColumn :theme="theme">
           <template #plain>
             <p class="enhanced">
-              {{ $t(`work.${project.codeName}.description`) }}
+              {{ project.description }}
             </p>
           </template>
         </OneColumn>

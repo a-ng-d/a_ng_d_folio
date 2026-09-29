@@ -159,7 +159,7 @@
               v-else-if="active !== undefined"
               :key="activeProjectCodeName"
               :src="active.illustration"
-              :alt="$t(`work.${activeProjectCodeName}.illustration`)"
+              :alt="active.summary"
             />
           </Transition>
         </div>

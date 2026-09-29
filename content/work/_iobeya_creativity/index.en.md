@@ -202,14 +202,14 @@ Firstly, users need to understand how to participate, for example, through inter
 </OneColumn>
 <TwoColumns>
 <template #left>
-<Figure type="video" src="/videos/_work/_iobeya_creativity/article-asset-1.webm + '#t=0.5'" altsrc="/videos/_work/_iobeya_creativity/article-asset-1.mp4 + '#t=0.5'" caption :width="1244" :height="1244" alt="How to participate in a brainstorming session">
+<Figure type="video" src="/videos/_work/_iobeya_creativity/article-asset-1.webm#t=0.5" altsrc="/videos/_work/_iobeya_creativity/article-asset-1.mp4#t=0.5" caption :width="1244" :height="1244" alt="How to participate in a brainstorming session">
 <template #caption>
 <p class="discrete">How to participate in a brainstorming session</p>
 </template>
 </Figure>
 </template>
 <template #right>
-<Figure type="video" src="/videos/_work/_iobeya_creativity/article-asset-2.webm + '#t=0.5'" altsrc="/videos/_work/_iobeya_creativity/article-asset-2.mp4 + '#t=0.5'" caption :width="1244" :height="1244" alt="How to participate in a voting session">
+<Figure type="video" src="/videos/_work/_iobeya_creativity/article-asset-2.webm#t=0.5" altsrc="/videos/_work/_iobeya_creativity/article-asset-2.mp4#t=0.5" caption :width="1244" :height="1244" alt="How to participate in a voting session">
 <template #caption>
 <p class="discrete">How to participate in a voting session</p>
 </template>
@@ -225,14 +225,14 @@ On the other hand, both of the modes enhance an infinte pattern animation compos
 </OneColumn>
 <TwoColumns>
 <template #left>
-<Figure type="video" src="/videos/_work/_iobeya_creativity/article-asset-3.webm + '#t=0.5'" altsrc="/videos/_work/_iobeya_creativity/article-asset-3.mp4 + '#t=0.5'" caption :width="1920" :height="1242" alt="The divergence: Brainstormring">
+<Figure type="video" src="/videos/_work/_iobeya_creativity/article-asset-3.webm#t=0.5" altsrc="/videos/_work/_iobeya_creativity/article-asset-3.mp4#t=0.5" caption :width="1920" :height="1242" alt="The divergence: Brainstormring">
 <template #caption>
 <p class="discrete">The divergence: Brainstormring</p>
 </template>
 </Figure>
 </template>
 <template #right>
-<Figure type="video" src="/videos/_work/_iobeya_creativity/article-asset-4.webm + '#t=0.5'" altsrc="/videos/_work/_iobeya_creativity/article-asset-4.mp4 + '#t=0.5'" caption :width="1920" :height="1242" alt="The convergence: Voting">
+<Figure type="video" src="/videos/_work/_iobeya_creativity/article-asset-4.webm#t=0.5" altsrc="/videos/_work/_iobeya_creativity/article-asset-4.mp4#t=0.5" caption :width="1920" :height="1242" alt="The convergence: Voting">
 <template #caption>
 <p class="discrete">The convergence: Voting</p>
 </template>
@@ -241,7 +241,7 @@ On the other hand, both of the modes enhance an infinte pattern animation compos
 </TwoColumns>
 <OneColumn>
 <template #plain>
-<Figure type="video" src="/videos/_work/_iobeya_creativity/article-asset-5.webm + '#t=0.5'" altsrc="/videos/_work/_iobeya_creativity/article-asset-5.mp4 + '#t=0.5'" :width="768" :height="428" />
+<Figure type="video" src="/videos/_work/_iobeya_creativity/article-asset-5.webm#t=0.5" altsrc="/videos/_work/_iobeya_creativity/article-asset-5.mp4#t=0.5" :width="768" :height="428" />
 </template>
 </OneColumn>
 <OneColumn>
