@@ -128,10 +128,13 @@
       z-index: 2
 
     &[data-theme="DARK"]
-      &:hover, &:focus
-        --text-color: var(--color-soil)
-        --border-color: var(--color-soil)
+      &:hover, &:focus, &:active
+        --text-color: var(--color-cream)
+        --border-color: var(--color-cream)
         --outline-color: var(--color-cream)
+    
+      &:focus
+        --outline-color: var(--color-clear-water)
 
   @include device.mobile
     .rich-external-link

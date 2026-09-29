@@ -3,8 +3,7 @@
   import { store } from '@/utilities/store'
   import type { Route } from '@/utilities/types'
   import type { SceneOverride } from '@/glitchscape/types'
-  import type { ThemeKind } from '@/router/scenery'
-  import { invertTheme } from '@/router/scenery'
+import type { ThemeKind } from '@/router/scenery'
   import Logotype from '@/components/graphics/Logotype.vue'
   import MainMenu from '@/contexts/MainMenu.vue'
   import Glitchscape from '@/components/graphics/Glitchscape.vue'
@@ -50,13 +49,8 @@
       }
     },
     computed: {
-      // Once the world behind has turned, the page reads against a surface of
-      // the opposite value, so its theme is flipped rather than forced dark: a
-      // page that asked for DARK has to go light to stay legible at night.
       theme(): ThemeKind {
-        return this.isBackgroundDark
-          ? invertTheme(this.pageTheme)
-          : this.pageTheme
+        return this.isBackgroundDark ? 'DARK' : this.pageTheme
       },
     },
     watch: {

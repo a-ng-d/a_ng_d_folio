@@ -7,9 +7,6 @@ import type {
 import type { HuSaLiTy } from '@/utilities/types'
 import { clamp, doMap, lerp } from '@/utilities/operations'
 
-// Irradiance thresholds, as a share of full sun. Astronomical night reads 0,
-// civil twilight a handful of W/m², and the thickest winter overcast at noon
-// still lets 50 W/m² through, so 20 W/m² is a safe line for "the sun is not up".
 const DARKNESS = 0.02
 
 const TWILIGHT = 0.22
@@ -41,10 +38,6 @@ const NIGHTWARD: { [key: string]: LightKind } = {
 
 export const nightward = (kind: LightKind): LightKind => NIGHTWARD[kind] || kind
 
-// The clock names the period, because irradiance is symmetric about solar noon
-// and so cannot tell a dawn from a dusk. The irradiance corrects the clock,
-// because fixed bands cannot know the season: 17h is broad daylight in June and
-// long dark in December, and 5h is the reverse.
 export const temper = (
   kind: LightKind,
   index: number | null,
@@ -67,10 +60,6 @@ interface Tint {
   saturation: number
 }
 
-// Where the lightness sits inside a period, read off the irradiance: a dusk
-// still holding 300 W/m² and a dusk gone to ink are not painted alike. Each
-// range is centred on the anchor the period used before, so a scene with no
-// reading, or a fixed one, comes out exactly as it did.
 const ANCHORS: {
   [key: string]: { low: number; high: number; from: number; to: number }
 } = {
@@ -122,9 +111,6 @@ export const tintPalette = (
   index: number | null = null
 ): ScenePalette => {
   const tint = TINTS[kind]
-  // FLAT and ZENITH pull nothing, so full daylight is never touched by a
-  // reading: the ambient owns the hue there, and that is what tells a context
-  // apart.
   if (tint === undefined || tint.pull === 0) return palette
 
   const lit: Tint = { ...tint, anchor: anchorAt(kind, tint, index) },

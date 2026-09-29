@@ -53,6 +53,7 @@ export class Mountain {
   turbulence: number
   spread: number
   lift: number
+  stretch: number
   profile: Profile
   target: Profile
   params: {
@@ -94,6 +95,7 @@ export class Mountain {
     this.turbulence = stage.scene.turbulence
     this.spread = clampCorridor(stage.scene.corridor)
     this.lift = clampRelief(stage.scene.relief)
+    this.stretch = stage.stretch
     this.profile = this.build(stage)
     this.target = this.profile.slice()
     this.params = {
@@ -199,6 +201,14 @@ export class Mountain {
         ratio = next / this.spread
       this.position.x *= ratio
       this.spread = next
+    }
+
+    if (Math.abs(stage.stretch - this.stretch) > 0.0005) {
+      const next = lerp(this.stretch, stage.stretch, 0.04),
+        ratio = next / this.stretch
+      this.size.width *= ratio
+      this.backup.width *= ratio
+      this.stretch = next
     }
 
     const relief = clampRelief(stage.scene.relief)

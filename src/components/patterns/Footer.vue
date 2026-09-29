@@ -50,8 +50,6 @@
 
         return `${pad(now.getHours())}:${pad(now.getMinutes())}`
       },
-      // Only the readings that came back are named, so a sky that answered
-      // half the question does not leave a hole in the row.
       readings(): Array<{ key: string; label: string; value: string }> {
         const weather = this.ambience
 
@@ -180,7 +178,7 @@
     justify-content: v-bind(flex)
     align-items: center
     padding: var(--layout-column-gap)
-    gap: 0 var(--layout-paragraph-gap)
+    gap: var(--layout-paragraph-gap)
 
     &__tag
       display: flex

@@ -29,9 +29,6 @@
 
   const VEIL = 0.35
 
-  // The world turns dark at nightfall and stays dark until dawn. The hour is
-  // read rather than the sky lightness, so a passing cloud cannot flip the
-  // interface and a filter's polarity has no say in it.
   const NIGHTFALL: Array<LightKind> = ['DUSK', 'NIGHT']
 
   const WEATHER_FLOOR = 600000
@@ -135,8 +132,6 @@
       reading(): LocalWeather | null {
         return this.isLive ? this.weather : null
       },
-      // How much light is actually reaching the ground, as a share of full sun.
-      // Null on a fixed scene, or when the sky did not answer.
       index(): number | null {
         const reading = this.reading
 
@@ -235,8 +230,6 @@
         },
         immediate: true,
       },
-      // The footer names what the scene is borrowing, so the readings are
-      // published as they are resolved here rather than fetched a second time.
       reading: {
         handler(to: LocalWeather | null) {
           this.store.weather = to

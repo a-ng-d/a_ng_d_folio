@@ -129,6 +129,7 @@ export interface Stage {
   flow: FlowField
   quality: QualityKind
   resolution: number
+  stretch: number
   speed: number
   surge: number
   turnRadius: number

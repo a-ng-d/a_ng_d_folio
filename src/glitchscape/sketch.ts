@@ -50,6 +50,10 @@ const RESOLUTIONS: { [key: string]: number } = {
   LOW: 14,
 }
 
+const REFERENCE_ASPECT = 16 / 9
+
+const MAX_STRETCH = 4
+
 const RESIZE_DELAY = 220
 
 const CHROME_TOLERANCE = 0.3
@@ -89,6 +93,11 @@ export const createGlitchscape = (
       flow: resolveFlow(options.scene.flow, options.scene.curvature),
       quality: options.quality,
       resolution: RESOLUTIONS[options.quality] || RESOLUTIONS.HIGH,
+      stretch: clamp(
+        REFERENCE_ASPECT / (bounds.width / bounds.height),
+        1,
+        MAX_STRETCH
+      ),
       speed: REFERENCE_SPEED,
       surge: 0,
       turnRadius: 0,
@@ -125,6 +134,13 @@ export const createGlitchscape = (
     onOrientationChange: (() => void) | null = null,
     onDeviceOrientation: ((e: any) => void) | null = null
 
+  const aspectStretch = () =>
+    clamp(
+      REFERENCE_ASPECT / (stage.bounds.width / stage.bounds.height),
+      1,
+      MAX_STRETCH
+    )
+
   const frame = () =>
     pov.animate(
       0.05,
@@ -139,7 +155,7 @@ export const createGlitchscape = (
 
     stage.quality = resolved
     stage.resolution =
-      options.device === 'MOBILE' ? Math.min(detail, 16) : detail
+      options.device === 'MOBILE' ? Math.min(detail, 20) : detail
 
     if (!isReady) return
 
@@ -218,10 +234,6 @@ export const createGlitchscape = (
     bounds.limitZ /
     clamp(stage.scene.curvature * stage.flow.pinch, MIN_CURVATURE, 2.5)
 
-  // The far plane and the near plane are both invisible: one is hazed into the
-  // sky and faded out by riseAt, the other is cut by fadeAt as it passes the
-  // camera. A range that has to grow enters through whichever of the two the
-  // drift is heading away from, so it is never seen arriving.
   const entryDepth = (zRange: Array<number>) => {
     const drift = stage.flow.drift.z
 
@@ -239,8 +251,10 @@ export const createGlitchscape = (
 
     const breadth = clamp(stage.scene.breadth, 0.15, 3)
 
+    const girth = breadth * stage.stretch
+
     return new Mountain(stage, {
-      widthRange: [sk.width * 14 * breadth, sk.width * 16 * breadth],
+      widthRange: [sk.width * 14 * girth, sk.width * 16 * girth],
       heightRange: [-sk.height * 20, -sk.height * 22],
       x: twoRangesRandom(
         -bounds.limitX * corridor,
@@ -277,8 +291,6 @@ export const createGlitchscape = (
     })
   }
 
-  // Whatever joins a scene already on screen takes the look it finds there
-  // rather than crossfading into it from nothing.
   const dress = <T extends Mountain | Cloud | Star>(entity: T): T => {
     const isLow = stage.quality === 'LOW'
 
@@ -375,10 +387,6 @@ export const createGlitchscape = (
       widthRatio = width / measured.width,
       heightRatio = height / measured.height
 
-    // A phone hiding or showing its browser chrome only ever moves the height,
-    // and the scene is laid out against the width. Taking that bait would
-    // rebuild the whole range mid-scroll and throw away the corridor the
-    // camera is flying through, so the sketch sits it out.
     const chrome =
       options.device === 'MOBILE' &&
       widthRatio === 1 &&
@@ -414,9 +422,6 @@ export const createGlitchscape = (
 
     if (sk.width === width && sk.height === height) return
 
-    // A width change is a real reframing and is answered at once; a height-only
-    // change waits for the gesture to settle, so one scroll cannot cost a
-    // string of WebGL buffer rebuilds.
     if (width !== sk.width) sk.resizeCanvas(width, height)
 
     window.clearTimeout(resizing)
@@ -468,6 +473,7 @@ export const createGlitchscape = (
       stage.pointer.y = sk.mouseY
       stage.bounds.width = sk.width
       stage.bounds.height = sk.height
+      stage.stretch = aspectStretch()
 
       const delta = Math.abs(scroll.position - scroll.previous)
       scroll.previous = scroll.position

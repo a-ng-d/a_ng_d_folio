@@ -4,10 +4,6 @@ const GEOCODING = 'https://geocoding-api.open-meteo.com/v1/search',
   FORECAST = 'https://api.open-meteo.com/v1/forecast',
   TIMEOUT = 6000
 
-// A luminosity reading the sky actually gives, rather than one inferred from
-// the hour and the temperature: irradiance answers the cloud cover within the
-// quarter hour, where the temperature lags it by hours and carries the season
-// and the latitude with it.
 export const FULL_SUN = 1000
 
 export interface LocalWeather {

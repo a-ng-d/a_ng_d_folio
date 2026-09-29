@@ -44,7 +44,7 @@
         <Workshops :theme="theme" />
       </article>
     </Transition>
-    <Footer alignment="CENTER" :theme="theme" />
+    <Footer alignment="LEFT" :theme="theme" />
   </main>
 </template>
 

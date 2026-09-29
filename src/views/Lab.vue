@@ -7,7 +7,7 @@
   import { easeInOutQuart } from '@/utilities/easings'
   import { ArrowLeft, ArrowRight } from 'lucide-vue-next'
 
-  let timeout: number
+let timeout: number, sliding: number
 
   export default defineComponent({
     name: 'Lab',
@@ -106,6 +106,15 @@
       }
     },
     methods: {
+      scrollBox(): HTMLElement | null {
+        return (
+          Array.from(
+            document.getElementsByClassName(
+              'shots__scroll'
+            ) as HTMLCollectionOf<HTMLElement>
+          )[0] || null
+        )
+      },
       smoothScroll(e: Event) {
         if (timeout) window.cancelAnimationFrame(timeout)
 
@@ -144,12 +153,10 @@
         })
       },
       slideRight() {
-        const scrollBox: HTMLElement = Array.from(
-          document.getElementsByClassName(
-            'shots__scroll'
-          ) as HTMLCollectionOf<HTMLElement>
-        )[0]
-        let animationScroll: number, progress: number
+        const scrollBox = this.scrollBox()
+        if (scrollBox === null) return
+
+        let progress: number
 
         this.slider.time == 0
           ? (this.slider.start = scrollBox.scrollLeft)
@@ -165,20 +172,18 @@
         scrollBox.scrollLeft =
           this.slider.start + this.slider.distance * easeInOutQuart(progress)
 
-        animationScroll = requestAnimationFrame(this.slideRight)
+        sliding = requestAnimationFrame(this.slideRight)
 
         if (progress >= 1) {
-          cancelAnimationFrame(animationScroll)
+          cancelAnimationFrame(sliding)
           this.slider.time = progress = 0
         }
       },
       slideLeft() {
-        const scrollBox: HTMLElement = Array.from(
-          document.getElementsByClassName(
-            'shots__scroll'
-          ) as HTMLCollectionOf<HTMLElement>
-        )[0]
-        let animationScroll: number, progress: number, diff: number
+        const scrollBox = this.scrollBox()
+        if (scrollBox === null) return
+
+        let progress: number, diff: number
 
         this.slider.hasNextButton
           ? (diff = this.slider.slide - 1)
@@ -197,28 +202,33 @@
         scrollBox.scrollLeft =
           this.slider.start - this.slider.distance * easeInOutQuart(progress)
 
-        animationScroll = requestAnimationFrame(this.slideLeft)
+        sliding = requestAnimationFrame(this.slideLeft)
 
         if (progress >= 1 || scrollBox.scrollLeft <= 0) {
-          cancelAnimationFrame(animationScroll)
+          cancelAnimationFrame(sliding)
           this.slider.time = progress = 0
         }
       },
       makeSlides() {
-        const scrollBox: HTMLElement = Array.from(
-          document.getElementsByClassName(
-            'shots__scroll'
-          ) as HTMLCollectionOf<HTMLElement>
-        )[0]
-        this.slider.slides =
-          Math.ceil(scrollBox.scrollWidth / document.body.clientWidth) ?? 4
+        const scrollBox = this.scrollBox(),
+          width = document.body.clientWidth
+
+        if (scrollBox === null || width === 0) {
+          this.slider.slides = 4
+          return
+        }
+
+        this.slider.slides = Math.ceil(scrollBox.scrollWidth / width)
       },
     },
-    created: function () {
-      window.addEventListener('resize', this.makeSlides)
-    },
     mounted: function () {
+      window.addEventListener('resize', this.makeSlides)
       this.makeSlides()
+    },
+    unmounted: function () {
+      window.removeEventListener('resize', this.makeSlides)
+      if (timeout) window.cancelAnimationFrame(timeout)
+      if (sliding) window.cancelAnimationFrame(sliding)
     },
   })
 </script>

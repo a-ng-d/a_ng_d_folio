@@ -36,9 +36,6 @@ export type ViewKind =
 
 export type ThemeKind = 'DEFAULT' | 'DARK'
 
-export const invertTheme = (theme: ThemeKind): ThemeKind =>
-  theme === 'DARK' ? 'DEFAULT' : 'DARK'
-
 export interface SceneryMeta {
   filter: HuBrInSaGr
   quality: QualityKind
