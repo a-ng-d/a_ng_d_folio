@@ -35,6 +35,7 @@
     "@fontsource/rubik": "^4.5.6",
     "@fontsource/sora": "^4.5.5",
     "@rushstack/eslint-patch": "^1.1.0",
+    "@types/markdown-it": "^14.2.0",
     "@types/node": "^22.20.4",
     "@types/nprogress": "^0.2.0",
     "@types/p5": "^1.4.3",
@@ -46,9 +47,11 @@
     "eslint-plugin-vue": "^8.2.0",
     "gray-matter": "^4.0.3",
     "image-size": "^2.0.4",
+    "markdown-it-container": "^4.0.0",
     "prettier": "2.8.4",
     "sass": "^1.105.0",
     "typescript": "^5.9.3",
+    "unplugin-vue-markdown": "^32.1.1",
     "vite": "^7.3.6",
     "vue-tsc": "^3.3.11"
   }

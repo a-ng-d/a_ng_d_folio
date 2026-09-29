@@ -3,6 +3,7 @@
   import type { PropType } from 'vue'
   import type { PageMeta } from '@/router/scenery'
   import { bodyOf, getProject } from '@/content/work'
+  import { provideScroll } from '@/composables/scroll'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import ScrollingText from '@/components/ui/ScrollingText.vue'
@@ -21,6 +22,12 @@
       WrapColumn,
       ContentContainer,
       SimpleExternalLink,
+    },
+    provide() {
+      return provideScroll(() => ({
+        progress: this.scrollProgress ?? 0,
+        limit: this.scrollLimit ?? 1,
+      }))
     },
     computed: {
       // Le corps vient du manifeste, désigné par le slug. Plus d'imports ni

@@ -728,45 +728,6 @@
         }
       }
     },
-    "_awesome_ipsums": {
-      "title": "@:work._awesome_ipsums.shortTitle@:global.separator@:global.author",
-      "shortTitle": "_awesome_ipsums",
-      "shortDescription": "Design team’s own Lorem Ipsums from a simple Google Spreadsheet with Sketch",
-      "description": "Sketch is an UX tool, using diagrams to build user experiences, interfaces, prototypes, and illustrations… The tool can be extended with a plugin system where the purpose is to add additional features, or script actions. The idea of making a more fun Lorem Ipsum tool was a great opportunity to make a Sketch Plugin and understand how it works.",
-      "misc": {
-        "date": "{'2019'}@:global.separator{'Released'}",
-        "objectives": "Allowing the design team to use custom lorem ipsums as fake content, Making the fake content collaborative",
-        "roles": "Developing the scripts to create/update/sync. the custom lorem ipsums",
-        "type": "@:global.type.product@:global.separator@:global.type.side"
-      },
-      "part-1": {
-        "title": "Welcome to the world of collaborative content",
-        "paragraph-1": "Lorem ipsum is often used to simulate content into a designed web page. Nevertheless, there may be some issues:",
-        "paragraph-2": "Lorem ipsum could be fun, relevant, and fully personalized. A design team can create, collect and reuse his own fake content. How to get this team involved in collecting content? An online spreadsheet, because it is easy to maintain and always up-to-date.",
-        "paragraph-3": "Google Spreadsheet is simple to use and collaborative. It can act as a micro-database for micro-projects.",
-        "point-1": "It does not make any sense.",
-        "point-2": "It is quite boring and repetitive.",
-        "caption-1": "It is possible to create a new text or update one by filling it with a random value from the spreadsheet"
-      },
-      "part-2": {
-        "title": "How does it work?",
-        "paragraph-1": "The workflow is quite simple: Synchronizing the spreadsheet model to Sketch.",
-        "paragraph-2": "Then, creating a text from a random content of the spreadsheet. The text is displayed at the center of the current view.",
-        "paragraph-3": "Lastly, a text content can be updated with another random content."
-      },
-      "takeaways": {
-        "takeaway-1": {
-          "description": "If you want to test the plugin, you can download the archive file from the project repository (double-click on the plugin file to install it).",
-          "linkLabel": "Download the archive",
-          "alt": "External link to download the plugin"
-        },
-        "takeaway-2": {
-          "description": "Awesome Ipsums is an open-source project. You can take a glance at the source code on Github.",
-          "linkLabel": "Watch the repository",
-          "alt": "External link to the repository"
-        }
-      }
-    },
     "_iobeya_whiteboard": {
       "title": "@:work._iobeya_whiteboard.shortTitle@:global.separator@:global.author",
       "shortTitle": "_iobeya_whiteboard",

@@ -15,3 +15,9 @@ declare module 'virtual:work-content' {
 declare module 'virtual:asset-sizes' {
   export const sizes: Record<string, [number, number]>
 }
+
+declare module '*.md' {
+  import type { ComponentOptions } from 'vue'
+  const component: ComponentOptions
+  export default component
+}

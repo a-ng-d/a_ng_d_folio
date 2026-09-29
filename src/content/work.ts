@@ -28,6 +28,13 @@ const lottieIllustrations = import.meta.glob(
   { eager: true, import: 'default' }
 )
 
+// Corps Markdown. Un projet bascule dessus dès que son fichier porte autre
+// chose que sa frontmatter — d'où une migration projet par projet, réversible.
+const markdownBodies = import.meta.glob('/content/work/*/index.en.md', {
+  eager: true,
+  import: 'default',
+})
+
 export const allProjects: WorkProject[] = manifest
 
 /** Les projets du carrousel : publiés, triés. Identique en dev et en production. */
@@ -66,6 +73,8 @@ export const illustrationOf = (project: WorkProject): JSONObject | string =>
       ] as JSONObject)
     : assetUrl(project.slug, project.illustration.file)
 
-/** Le composant qui rend le corps du projet. */
+/** Le composant qui rend le corps du projet : son Markdown, sinon son SFC. */
 export const bodyOf = (project: WorkProject) =>
-  legacyBodies[`/src/contexts/_work/${project.slug}.vue`]
+  (project.hasBody
+    ? markdownBodies[`/content/work/${project.slug}/index.en.md`]
+    : undefined) ?? legacyBodies[`/src/contexts/_work/${project.slug}.vue`]

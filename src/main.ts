@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from '@/App.vue'
 import router from '@/router'
 import { i18n } from '@/lang'
+import { registerContentComponents } from '@/content/components'
 import Loop from '@/components/graphics/loader'
 import SetCursor from '@/components/graphics/cursor'
 import Vue3Lottie from 'vue3-lottie'
@@ -10,6 +11,8 @@ import NProgress from 'nprogress'
 const app = createApp(App),
   loader: HTMLElement = document.getElementById('loader')!,
   feedback: any = document.getElementById('feedback')!
+
+registerContentComponents(app)
 
 document.title = 'Virtualization in progress…'
 

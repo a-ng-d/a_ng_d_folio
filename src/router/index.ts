@@ -24,9 +24,20 @@ import type { WorkProject } from '@/content/types'
 // C'est ce qui rend la bascule du contenu réversible, projet par projet.
 type TextField = keyof WorkProject['text']
 
-const text = (project: WorkProject, field: TextField, key: string): string =>
-  (project.text[field] as string | undefined) ??
-  i18n.global.t(`work.${project.slug}.${key}`)
+// Une frontmatter peut porter les mêmes messages liés qu'en.json :
+// `@:global.separator` pointe vers une valeur du site, `{'2019'}` est un
+// littéral. Le routeur les résout comme le ferait $t.
+const resolve = (value: string): string =>
+  value
+    .replace(/@:([\w.]+)/g, (_, key) => i18n.global.t(key))
+    .replace(/\{'([^']*)'\}/g, '$1')
+
+const text = (project: WorkProject, field: TextField, key: string): string => {
+  const own = project.text[field] as string | undefined
+  return own !== undefined
+    ? resolve(own)
+    : i18n.global.t(`work.${project.slug}.${key}`)
+}
 
 const list = (project: WorkProject, field: TextField, key: string): string[] =>
   (project.text[field] as string[] | undefined) ??
