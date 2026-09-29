@@ -10,6 +10,7 @@ import Figure from '@/components/patterns/Figure.vue'
 import ContentContainer from '@/components/patterns/ContentContainer.vue'
 import LinkContainer from '@/components/patterns/LinkContainer.vue'
 import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
+import RichExternalLink from '@/components/ui/RichExternalLink.vue'
 import Label from '@/components/ui/Label.vue'
 import Button from '@/components/ui/Button.vue'
 
@@ -25,6 +26,7 @@ const COMPONENTS = {
   ContentContainer,
   LinkContainer,
   SimpleExternalLink,
+  RichExternalLink,
   Label,
   Button,
 }

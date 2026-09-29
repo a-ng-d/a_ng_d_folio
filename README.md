@@ -25,6 +25,9 @@ sorts the carousel; inserting a project never renumbers the others.
 Full procedure, frontmatter reference and authoring rules:
 [`content/work/README.md`](content/work/README.md).
 
+The written pages — the short bio and the attributions — work the same way,
+under `content/pages/`: see [`content/pages/README.md`](content/pages/README.md).
+
 ## Project Setup
 
 ```sh
