@@ -1,5 +1,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import type { PropType } from 'vue'
+  import type { PageMeta } from '@/router/scenery'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import ScrollingText from '@/components/ui/ScrollingText.vue'
@@ -37,7 +39,7 @@
     },
     props: {
       project: {
-        type: Object,
+        type: Object as PropType<PageMeta>,
         required: true,
       },
       scrollProgress: Number,
@@ -79,7 +81,7 @@
               project.summary +
               $t('global.separator') +
               'Project #' +
-              (project.position + 1) +
+              ((project.position ?? 0) + 1) +
               $t('global.separator')
             "
             direction="RIGHT"
@@ -138,7 +140,10 @@
     <Footer
       alignment="CENTER"
       :theme="theme"
-      :style="{ backgroundColor: theme === 'DARK' ? 'var(--color-soil)' : 'var(--color-creamy-sun)' }"
+      :style="{
+        backgroundColor:
+          theme === 'DARK' ? 'var(--color-soil)' : 'var(--color-creamy-sun)',
+      }"
     />
   </main>
 </template>

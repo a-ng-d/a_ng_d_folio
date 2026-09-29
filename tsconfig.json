@@ -1,18 +1,16 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      // vue3-lottie n'expose pas de champ "types" dans sa map "exports" :
+      // en résolution Bundler, TypeScript ne trouve pas ses déclarations.
+      // On les désigne à la main plutôt que de dégrader le module en `any`.
+      "vue3-lottie": ["./node_modules/vue3-lottie/dist/index.d.ts"]
     },
     "target": "es2018",
-    "lib": ["es2018", "dom", "esnext"],
-    "ignoreDeprecations": "5.0",
-  },
-  "references": [
-    {
-      "path": "./tsconfig.vite-config.json"
-    }
-  ]
+    "lib": ["es2018", "dom", "esnext"]
+  }
 }

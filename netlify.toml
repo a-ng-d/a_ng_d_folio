@@ -1,0 +1,9 @@
+# Le build Netlify était jusqu'ici configuré côté dashboard, donc invisible du dépôt.
+# On le rend explicite et versionné : Vite 7 exige Node >= 20.19 ou >= 22.12.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"

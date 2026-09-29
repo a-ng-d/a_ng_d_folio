@@ -62,11 +62,19 @@ if (import.meta.env.MODE != 'development') {
     setTimeout(() => {
       Loop.destroy()
       loader.remove()
-      app.use(router).use(i18n).use(Vue3Lottie).mount('#app')
+      app
+        .use(router)
+        .use(i18n)
+        .use(Vue3Lottie, { name: 'Vue3Lottie' })
+        .mount('#app')
     }, 3600)
   }
 } else {
   Loop.destroy()
   loader.remove()
-  app.use(router).use(i18n).use(Vue3Lottie).mount('#app')
+  app
+    .use(router)
+    .use(i18n)
+    .use(Vue3Lottie, { name: 'Vue3Lottie' })
+    .mount('#app')
 }
