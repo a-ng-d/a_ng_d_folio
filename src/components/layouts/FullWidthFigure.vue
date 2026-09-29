@@ -36,8 +36,6 @@
 </template>
 
 <style scoped lang="sass">
-  // Une vidéo brute posée dans le slot #asset. La règle était recopiée dans
-  // trois projets ; elle appartient au composant qui l'accueille.
   :deep(.full-width-video)
     max-width: 100%
     max-height: 100%
@@ -74,7 +72,6 @@
     &__caption :deep(p)
       padding: 0 var(--layout-center)
       color: var(--caption-color)
-
 
   // Aspect
   .figure

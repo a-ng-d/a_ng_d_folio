@@ -1,10 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 interface RemoteStatOptions {
-  // Délai au-delà duquel la requête est abandonnée et les valeurs de repli
-  // prennent le relais. Le site ne doit jamais attendre une source distante.
   timeout?: number
-  // Extrait la charge utile du corps brut de la réponse.
   pick?: (raw: any) => any
 }
 
@@ -21,15 +18,6 @@ async function fetchWithTimeout(resource: string, options: any = {}) {
   return response
 }
 
-/**
- * Déclare une source distante consultée une seule fois par session, puis
- * partagée par tous ses lecteurs.
- *
- * Renvoie un lecteur : on lui donne le chemin vers la valeur voulue et ce
- * qu'il faut afficher si la source est absente, lente ou malformée. Toute
- * erreur est absorbée — une statistique distante ne doit jamais casser une
- * page.
- */
 export const useRemoteStat = (url: string, options: RemoteStatOptions = {}) => {
   const { timeout = 5000, pick = (raw: any) => raw } = options
 

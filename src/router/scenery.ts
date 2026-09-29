@@ -71,9 +71,6 @@ export interface PageMeta extends SceneryMeta {
   backgroundImage?: string
 }
 
-// Une route telle que la consomment App, Work et MainMenu.
-// `meta` est PageMeta : une seule définition, celle que vue-router voit aussi
-// via l'augmentation de RouteMeta plus bas.
 export interface Route {
   path: string
   name: string

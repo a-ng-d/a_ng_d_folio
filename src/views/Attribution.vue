@@ -9,7 +9,6 @@
       Footer,
     },
     computed: {
-      // Le contenu vient de content/pages/attribution/index.en.md.
       body() {
         return pageBody('attribution')
       },

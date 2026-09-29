@@ -11,8 +11,6 @@ export interface Colors {
   clearWater: HuSaLiTy
 }
 
-// Les ambiances forment un ensemble fermé : AmbientKind en dérive directement,
-// donc toute ambiance inconnue est une erreur de compilation.
 export interface Filters {
   creamySun: HuBrInSaGr
   nightly: HuBrInSaGr

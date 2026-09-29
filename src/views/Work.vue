@@ -32,9 +32,6 @@
       },
     },
     computed: {
-      // Le projet affiché, retrouvé par son slug. Remplace six échelles de
-      // dix branches indexées à la main, qui plafonnaient le site à dix
-      // projets et dont l'une lisait le fond du voisin.
       active(): PageMeta | undefined {
         return this.projects.find(
           (project) => project.meta.codeName === this.activeProjectCodeName

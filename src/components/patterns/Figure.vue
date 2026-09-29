@@ -142,7 +142,6 @@
     &__asset
       display: flex
       width: 100%
-      // La boîte tient son ratio toute seule, à toute largeur de colonne.
       aspect-ratio: v-bind("aspectRatio")
       border-radius: var(--asset-radius)
       box-shadow: var(--asset-border)

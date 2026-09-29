@@ -17,8 +17,6 @@ const MEASURABLE = /\.(webp|png|jpe?g|gif|avif|svg)$/i
 const CONTENT_DIR = 'content/work'
 const FILE_RE = /^index\.([a-z]{2})\.md$/
 
-// Les huit projets partagent aujourd'hui la même scénographie. Elle devient
-// donc un défaut : une frontmatter n'a à la déclarer que pour en dévier.
 const DEFAULT_SCENERY = {
   disposition: 'DUNES',
   flow: 'STILL',
@@ -62,8 +60,6 @@ const readProject = (dir: string, root: string): WorkProject => {
   const locales = files
     .map((f) => (f.match(FILE_RE) as RegExpMatchArray)[1])
     .sort()
-  // La locale de base porte la configuration ; les autres ne traduisent que
-  // le texte. 'en' si elle existe, sinon la première par ordre alphabétique.
   const baseLocale = locales.includes('en') ? 'en' : locales[0]
   const basePath = path.join(dir, `index.${baseLocale}.md`)
   const rel = path.relative(root, basePath)
@@ -100,8 +96,6 @@ const readProject = (dir: string, root: string): WorkProject => {
     if (fm[field] === undefined) absent.push(field)
     else text[field] = fm[field]
   }
-  // Le texte ne vit plus que dans la frontmatter : ce qui manque ici ne se
-  // rattrape nulle part, donc le build s'arrête.
   if (absent.length > 0)
     fail(rel, `champ(s) de texte manquant(s) — ${absent.join(', ')}`)
 
@@ -135,7 +129,6 @@ const collect = (root: string): WorkProject[] => {
   const seen = new Set<number>()
   for (const p of projects) {
     if (seen.has(p.order))
-      // Non bloquant : le tri secondaire sur le slug garde un ordre stable.
       console.warn(`[work-content] ordre ${p.order} en double (${p.slug})`)
     seen.add(p.order)
   }
@@ -145,13 +138,6 @@ const collect = (root: string): WorkProject[] => {
   )
 }
 
-/**
- * Dimensions natives de chaque image de public/images, relevées au build et
- * indexées sur l'URL publique.
- *
- * C'est ce qui permet à une figure de n'avoir rien à déclarer : personne ne
- * recopie de nombres, donc personne ne les désynchronise.
- */
 const measureImages = (root: string): Record<string, [number, number]> => {
   const base = path.join(root, IMAGE_DIR)
   if (!fs.existsSync(base)) return {}
@@ -169,10 +155,7 @@ const measureImages = (root: string): Record<string, [number, number]> => {
             const url = '/' + path.relative(path.join(root, 'public'), full)
             sizes[url.split(path.sep).join('/')] = [width, height]
           }
-        } catch {
-          // Un fichier illisible ne doit pas casser le build : la figure
-          // retombera simplement sur ce qu'elle déclare.
-        }
+        } catch {}
       }
     }
   }

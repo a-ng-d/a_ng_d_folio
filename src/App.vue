@@ -50,10 +50,6 @@
       }
     },
     provide() {
-      // Source unique du thème pour tout l'arbre. Les composants de
-      // présentation l'injectent au lieu de se le faire passer de parent en
-      // parent — c'est ce qui permettra aux composants rendus depuis un
-      // Markdown de suivre le thème sans qu'on le leur transmette.
       return provideTheme(() => this.theme as ThemeKind)
     },
     computed: {
@@ -205,10 +201,6 @@
         this.isExpanded = false
       },
       getProjects(src: Array<Route>) {
-        // `position` cumule aujourd'hui trois rôles : ordre, visibilité et
-        // identité d'index dans le carrousel. Une position absente vaut
-        // « non listé », au même titre que -1. La phase 2 remplace tout ceci
-        // par le manifeste, où visibilité et ordre sont deux champs distincts.
         return src
           .filter(
             (project: Route) =>

@@ -30,8 +30,6 @@
       }))
     },
     computed: {
-      // Le corps vient du manifeste, désigné par le slug. Plus d'imports ni
-      // d'enregistrements à tenir à jour quand un projet arrive ou part.
       body() {
         const project = getProject(this.project.codeName ?? '')
         return project !== undefined ? bodyOf(project) : undefined

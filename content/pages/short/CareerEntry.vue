@@ -28,8 +28,6 @@
 </template>
 
 <style scoped lang="sass">
-  // Reprend l'espacement que portait le style scopé de Career.vue : il visait
-  // les div glissés dans le slot de OneColumn, qui sont devenus cette racine.
   .career-entry
     display: flex
     flex-flow: column nowrap

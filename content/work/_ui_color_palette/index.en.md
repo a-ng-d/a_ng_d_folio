@@ -38,8 +38,6 @@ import {
   getUIColorPaletteVersion,
 } from '@/utilities/fetch'
 
-// Statistiques du plugin, relevées en direct. Les valeurs de départ sont
-// celles qui s'affichent si la source ne répond pas.
 const saves = ref('❤️')
 const users = ref('▶️')
 const version = ref('🚀')

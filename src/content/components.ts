@@ -14,7 +14,6 @@ import RichExternalLink from '@/components/ui/RichExternalLink.vue'
 import Label from '@/components/ui/Label.vue'
 import Button from '@/components/ui/Button.vue'
 
-// Ce que le contenu Markdown peut appeler sans rien importer.
 const COMPONENTS = {
   VLazyImage,
   OneColumn,

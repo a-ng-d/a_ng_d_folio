@@ -20,13 +20,8 @@ import {
 } from '@/content/work'
 import type { WorkProject } from '@/content/types'
 
-// Le texte vient de la frontmatter si elle le porte, sinon de en.json.
-// C'est ce qui rend la bascule du contenu réversible, projet par projet.
 type TextField = keyof WorkProject['text']
 
-// Une frontmatter peut porter les mêmes messages liés qu'en.json :
-// `@:global.separator` pointe vers une valeur du site, `{'2019'}` est un
-// littéral. Le routeur les résout comme le ferait $t.
 const resolve = (value: string): string =>
   value
     .replace(/@:([\w.]+)/g, (_, key) => i18n.global.t(key))
@@ -140,18 +135,12 @@ const router = createRouter({
         }),
       }),
     },
-    // Les routes projet sont dérivées du manifeste : déposer un dossier sous
-    // content/work/ suffit à en créer une. En production seuls les projets
-    // publiés en obtiennent une ; en développement les brouillons aussi, pour
-    // qu'on puisse les relire à leur URL sans les exposer.
     ...routableProjects().map((project) => ({
       path: pathOf(project.slug),
       name: project.slug.toUpperCase(),
       component: Project,
       meta: page({
         title: text(project, 'title'),
-        // Le slug fait foi. Il servait jusqu'ici de chaîne i18n, ce qui
-        // rendait le rendu du corps dépendant d'un fichier de traduction.
         codeName: project.slug,
         description: text(project, 'description'),
         summary: text(project, 'summary'),

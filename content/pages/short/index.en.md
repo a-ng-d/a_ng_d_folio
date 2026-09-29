@@ -3,7 +3,6 @@ import { Twitter, Codepen, Github, Dribbble, BookOpen, Instagram, Download, Link
 import CareerEntry from './CareerEntry.vue'
 import CareerRole from './CareerRole.vue'
 
-// Années d'expérience, comptées depuis 2015.
 const year = new Date().getFullYear() - 2015
 </script>
 

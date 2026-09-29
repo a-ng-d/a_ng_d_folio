@@ -6,9 +6,6 @@ import Markdown from 'unplugin-vue-markdown/vite'
 import container from 'markdown-it-container'
 import workContent from './build/vite-plugin-work-content'
 
-// Sections sémantiques : `::: challenge` … `:::` rend <section class="challenge">.
-// Project.vue colore les sections d'après cette classe et zèbre les autres au
-// nth-child, donc le <section> doit rester un frère direct — d'où wrapperDiv: false.
 const SECTIONS = ['challenge', 'success', 'credit', 'takeaways', 'ending']
 
 export default defineConfig({
