@@ -1,5 +1,4 @@
 import { computed, defineComponent } from 'vue'
-import type { ComputedRef } from 'vue'
 import type { ThemeKind } from '@/router/scenery'
 
 export const THEME_KEY = 'a_ng_d:theme'

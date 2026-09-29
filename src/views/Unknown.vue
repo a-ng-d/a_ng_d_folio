@@ -345,14 +345,14 @@
         }
       },
       clickCatching() {
-        this.$el.onclick = (e: MouseEvent) => {
+        this.$el.onclick = () => {
           this.$emit('isUIHere', true)
           clearInterval(this.fadeInterval)
           this.fadeInterval = setInterval(this.fadeOutUI, 4000)
         }
       },
       touchCatching() {
-        this.$el.ontouchstart = (e: TouchEvent) => {
+        this.$el.ontouchstart = () => {
           this.$emit('isUIHere', true)
           clearInterval(this.fadeInterval)
           this.fadeInterval = setInterval(this.fadeOutUI, 4000)
@@ -519,22 +519,13 @@
                 />
               </div>
             </Container>
+            <Dropdown v-for="control in particlesControls" :key="`${control.field}-${particlesGeneration}`"
+              :label="$t(`unknown.particles.${control.field}.title`)" :options="control.options" :alt="$t(control.alt)"
+              :theme="theme" />
+            <Dropdown :label="$t('unknown.particles.colors.title')" :options="particlesPalettes"
+              :alt="$t('actions.particlesColors')" :theme="theme" />
             <Container>
               <div class="switch-row">
-                <Dropdown
-                  v-for="control in particlesControls"
-                  :key="`${control.field}-${particlesGeneration}`"
-                  :label="$t(`unknown.particles.${control.field}.title`)"
-                  :options="control.options"
-                  :alt="$t(control.alt)"
-                  :theme="theme"
-                />
-                <Dropdown
-                  :label="$t('unknown.particles.colors.title')"
-                  :options="particlesPalettes"
-                  :alt="$t('actions.particlesColors')"
-                  :theme="theme"
-                />
                 <Switch
                   :label="$t('unknown.particles.expanded.title')"
                   :active="particlesExpanded"
@@ -621,4 +612,5 @@
   .unknown
     &[data-theme="DARK"]
       --text-color: var(--color-cream)
+      --color-divider: var(--color-cream)
 </style>

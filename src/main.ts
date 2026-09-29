@@ -9,8 +9,8 @@ import Vue3Lottie from 'vue3-lottie'
 import NProgress from 'nprogress'
 
 const app = createApp(App),
-  loader: HTMLElement = document.getElementById('loader')!,
-  feedback: any = document.getElementById('feedback')!
+  loader = document.getElementById('loader') as HTMLElement,
+  feedback = document.getElementById('feedback') as HTMLAudioElement
 
 registerContentComponents(app)
 

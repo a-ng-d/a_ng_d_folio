@@ -1,5 +1,10 @@
 import type { Position, Size } from '@/utilities/types'
-import type { MountainProps, ShapeKind, Stage } from '@/glitchscape/types'
+import type {
+  MountainProps,
+  P5Instance,
+  ShapeKind,
+  Stage,
+} from '@/glitchscape/types'
 import type { Profile, ProfileSeed } from '@/glitchscape/profiles'
 import {
   buildProfile,
@@ -276,7 +281,7 @@ export class Mountain {
     this.params.alpha = opacity > 0.99 ? 1 : opacity
   }
 
-  private face = (sk: any) => {
+  private face = (sk: P5Instance) => {
     const steps = this.profile.length
 
     const skirt = Math.abs(this.size.height) * SKIRT
@@ -290,7 +295,7 @@ export class Mountain {
     sk.endShape()
   }
 
-  private outline = (sk: any) => {
+  private outline = (sk: P5Instance) => {
     const steps = this.profile.length,
       skirt = Math.abs(this.size.height) * SKIRT
 

@@ -1,4 +1,9 @@
-import type { Bounds, LightKind, ScenePalette } from '@/glitchscape/types'
+import type {
+  Bounds,
+  LightKind,
+  P5Instance,
+  ScenePalette,
+} from '@/glitchscape/types'
 import { clamp } from '@/utilities/operations'
 
 export const isLit = (kind: LightKind) => kind !== 'FLAT'
@@ -15,7 +20,7 @@ export const HALO_INTENSITY: { [key: string]: number } = {
 const shade = (lightness: number) => clamp(lightness, 0, 100)
 
 export const applyLighting = (
-  sk: any,
+  sk: P5Instance,
   kind: LightKind,
   palette: ScenePalette,
   bounds: Bounds,

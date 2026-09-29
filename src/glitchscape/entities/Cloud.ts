@@ -1,5 +1,5 @@
 import type { Position, Row, Size } from '@/utilities/types'
-import type { CloudProps, Stage } from '@/glitchscape/types'
+import type { CloudProps, P5Instance, Stage } from '@/glitchscape/types'
 import { fadeAt, haze, hazeAt, rampAt, riseAt, shade } from '@/glitchscape/ramp'
 import { bend } from '@/glitchscape/bend'
 import { HSLColors } from '@/utilities/colors'
@@ -189,7 +189,7 @@ export class Cloud {
   }
 
   private drow = (
-    sk: any,
+    sk: P5Instance,
     quality: number,
     x: number,
     y: number,

@@ -155,7 +155,9 @@ const measureImages = (root: string): Record<string, [number, number]> => {
             const url = '/' + path.relative(path.join(root, 'public'), full)
             sizes[url.split(path.sep).join('/')] = [width, height]
           }
-        } catch {}
+        } catch {
+          // ignore unreadable/corrupt images
+        }
       }
     }
   }

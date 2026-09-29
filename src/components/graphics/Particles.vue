@@ -9,6 +9,24 @@
 
   export type Shape = 'line' | 'square' | 'triangle'
 
+  interface ParticlesSketch extends P5 {
+    makeUnits: (direction: string) => void
+    expand: () => void
+    collapse: () => void
+    mouseReleased: () => void
+    goUp: (movement: string) => void
+    goRight: (movement: string) => void
+    goDown: (movement: string) => void
+    goLeft: (movement: string) => void
+    setDirection: (direction: string) => void
+    setShape: (shape: Shape) => void
+    setSpeed: (speed: number) => void
+    setSize: (size: number) => void
+    setColors: (colors: Array<HuSaLiTy>) => void
+    windowResized: () => void
+    deviceTurned: () => void
+  }
+
   export default defineComponent({
     name: 'Particles',
     props: {
@@ -45,19 +63,19 @@
     data: function () {
       return {
         uuid: uuidv4() as string,
-        particles: null as any,
+        particles: null as ParticlesSketch | null,
       }
     },
     watch: {
       isExpanded(to) {
-        to ? this.particles.expand() : this.particles.collapse()
+        to ? this.particles?.expand() : this.particles?.collapse()
       },
       movement(to) {
         const actions: { [key: string]: () => void } = {
-          'go-up': () => this.particles.goUp(to),
-          'go-right': () => this.particles.goRight(to),
-          'go-down': () => this.particles.goDown(to),
-          'go-left': () => this.particles.goLeft(to),
+          'go-up': () => this.particles?.goUp(to),
+          'go-right': () => this.particles?.goRight(to),
+          'go-down': () => this.particles?.goDown(to),
+          'go-left': () => this.particles?.goLeft(to),
         }
         return actions[to]?.()
       },
@@ -78,7 +96,7 @@
       },
     },
     mounted: function () {
-      this.particles = new P5((sk: any) => {
+      this.particles = new P5((sk: ParticlesSketch) => {
         let fps = 30,
           units: Array<Unit> = [],
           time = 0,
@@ -399,7 +417,7 @@
         }
 
         sk.draw = () => {
-          sk.clear()
+          sk.clear(0, 0, 0, 0)
           units.forEach((unit) => unit.move())
         }
 
@@ -474,7 +492,7 @@
           sk.resizeCanvas(this.$el.clientWidth, this.$el.clientHeight)
           sk.makeUnits(currentDirection)
         }
-      })
+      }) as ParticlesSketch
     },
   })
 </script>

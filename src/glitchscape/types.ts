@@ -122,8 +122,11 @@ export interface Pointer {
   y: number
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type P5Instance = any
+
 export interface Stage {
-  sk: any
+  sk: P5Instance
   bounds: Bounds
   scene: SceneConfig
   flow: FlowField

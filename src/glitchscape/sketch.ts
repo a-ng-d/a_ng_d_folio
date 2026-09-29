@@ -3,6 +3,7 @@ import type {
   Bounds,
   FlowField,
   GlitchscapeController,
+  P5Instance,
   QualityKind,
   SceneConfig,
   Stage,
@@ -25,7 +26,7 @@ import {
 
 const REFERENCE_SPEED = 30
 
-const painted = (sk: any, draw: () => void) => {
+const painted = (sk: P5Instance, draw: () => void) => {
   const gl = sk._renderer && sk._renderer.GL
 
   if (!gl) return draw()
@@ -120,7 +121,7 @@ export const createGlitchscape = (
   let mountains: Array<Mountain> = [],
     clouds: Array<Cloud> = [],
     stars: Array<Star> = [],
-    camera: any = null,
+    camera: P5Instance = null,
     rainfall: Rainfall | null = null,
     resizing = 0,
     measured = { width: bounds.width, height: bounds.height },
@@ -132,7 +133,7 @@ export const createGlitchscape = (
     ),
     settling = 0,
     onOrientationChange: (() => void) | null = null,
-    onDeviceOrientation: ((e: any) => void) | null = null
+    onDeviceOrientation: ((e: DeviceOrientationEvent) => void) | null = null
 
   const aspectStretch = () =>
     clamp(
@@ -428,7 +429,7 @@ export const createGlitchscape = (
     resizing = window.setTimeout(adapt, RESIZE_DELAY)
   }
 
-  const instance = new P5((sk: any) => {
+  const instance = new P5((sk: P5Instance) => {
     stage.sk = sk
 
     sk.setup = () => {
@@ -451,7 +452,8 @@ export const createGlitchscape = (
       }
 
       if (window.DeviceOrientationEvent) {
-        onDeviceOrientation = (e: any) => pov.orient(e.alpha, e.beta)
+        onDeviceOrientation = (e: DeviceOrientationEvent) =>
+          pov.orient(e.alpha ?? 0, e.beta ?? 0)
         window.addEventListener('deviceorientation', onDeviceOrientation, true)
       }
 
