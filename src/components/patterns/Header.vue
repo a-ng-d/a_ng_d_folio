@@ -31,7 +31,7 @@
     },
     methods: {
       backHome() {
-        ;(document.querySelector('#back-home') as HTMLElement).click()
+        (document.querySelector('#back-home') as HTMLElement).click()
       },
     },
   })

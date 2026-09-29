@@ -29,6 +29,23 @@ if (import.meta.env.MODE != 'development') {
   })
   NProgress.start()
 
+  const unlockAudio = () => {
+    const previousVolume = feedback.volume
+    feedback.volume = 0
+    feedback
+      .play()
+      .then(() => {
+        feedback.pause()
+        feedback.currentTime = 0
+        feedback.volume = previousVolume
+      })
+      .catch(() => {
+        feedback.volume = previousVolume
+      })
+  }
+  document.addEventListener('keydown', unlockAudio, { once: true })
+  document.addEventListener('pointerdown', unlockAudio, { once: true })
+
   // Loading screen
   window.onload = () => {
     let isFrozen = false
@@ -40,9 +57,8 @@ if (import.meta.env.MODE != 'development') {
       if (isFrozen) {
         Loop.goToAndStop(200, true)
         loader.classList.add('loader--loaded')
-        document.onkeyup = () => entrance()
-        document.body.ontouchstart = () => entrance()
         NProgress.done()
+        setTimeout(entrance, 500)
       } else Loop.goToAndStop(420, true)
     }
   }
@@ -52,11 +68,19 @@ if (import.meta.env.MODE != 'development') {
     Loop.playSegments([[200, 420]], false)
     Loop.play()
     feedback.volume = 0.2
-    document.body.clientWidth > 1280 ? feedback.play() : null
-    document.onkeyup = null
-    document.body.ontouchstart = null
+    document.body.clientWidth > 1280
+      ? feedback.play().catch(() => {
+          //
+        })
+      : null
 
     loader.classList.remove('loader--loaded')
+
+    app
+      .use(router)
+      .use(i18n)
+      .use(Vue3Lottie, { name: 'Vue3Lottie' })
+      .mount('#app')
 
     setTimeout(
       () => loader.classList.replace('loader--enter', 'loader--leave'),
@@ -65,12 +89,7 @@ if (import.meta.env.MODE != 'development') {
     setTimeout(() => {
       Loop.destroy()
       loader.remove()
-      app
-        .use(router)
-        .use(i18n)
-        .use(Vue3Lottie, { name: 'Vue3Lottie' })
-        .mount('#app')
-    }, 3600)
+    }, 4400)
   }
 } else {
   Loop.destroy()

@@ -1,10 +1,13 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import type { PropType } from 'vue'
   import type { ParticleProps, Path, HuSaLiTy, Size } from '@/utilities/types'
   import P5 from 'p5'
   import { v4 as uuidv4 } from 'uuid'
   import { HSLColors } from '@/utilities/colors'
   import { random } from '@/utilities/operations'
+
+  export type Shape = 'line' | 'square' | 'triangle'
 
   export default defineComponent({
     name: 'Particles',
@@ -21,6 +24,22 @@
       movement: {
         type: String,
         default: 'go-right',
+      },
+      shape: {
+        type: String as PropType<Shape>,
+        default: 'line',
+      },
+      speed: {
+        type: Number,
+        default: 0.1,
+      },
+      particleSize: {
+        type: Number,
+        default: 1,
+      },
+      colors: {
+        type: Array as PropType<Array<HuSaLiTy>>,
+        default: () => [],
       },
     },
     data: function () {
@@ -42,17 +61,39 @@
         }
         return actions[to]?.()
       },
+      direction(to) {
+        this.particles?.setDirection(to)
+      },
+      shape(to) {
+        this.particles?.setShape(to)
+      },
+      speed(to) {
+        this.particles?.setSpeed(to)
+      },
+      particleSize(to) {
+        this.particles?.setSize(to)
+      },
+      colors(to) {
+        this.particles?.setColors(to)
+      },
     },
     mounted: function () {
       this.particles = new P5((sk: any) => {
-        const colors: Array<HuSaLiTy> = Object.values(HSLColors).filter(
-            (entry: HuSaLiTy) => entry.type === 'primary'
-          ),
-          weight: number = this.weight
-
         let fps = 30,
           units: Array<Unit> = [],
-          time = 0
+          time = 0,
+          collapseTimer = 0,
+          weight: number = this.weight,
+          speed: number = this.speed,
+          particleSize: number = this.particleSize,
+          shape: Shape = this.shape,
+          currentDirection: string = this.direction,
+          colors: Array<HuSaLiTy> =
+            this.colors && this.colors.length > 0
+              ? this.colors
+              : Object.values(HSLColors).filter(
+                  (entry: HuSaLiTy) => entry.type === 'primary'
+                )
 
         // Elements
         class Unit {
@@ -70,6 +111,7 @@
             isExpanded: boolean
             resetTime: boolean
             movement: string
+            shape: Shape
           }
 
           constructor(props: ParticleProps) {
@@ -92,12 +134,13 @@
               weight: 0,
               weightRef: this.props.weight,
               move: this.size.width,
-              speed: 0.1,
+              speed: speed,
               order: 0,
               gap: 8,
               isExpanded: false,
               resetTime: false,
               movement: 'go-left',
+              shape: shape,
             }
           }
 
@@ -124,6 +167,13 @@
           changeMovement = (movement: string) =>
             ((this.params.movement as string) = movement)
 
+          changeShape = (shape: Shape) => (this.params.shape = shape)
+
+          changeSpeed = (speed: number) => (this.params.speed = speed)
+
+          changeColor = (palette: Array<HuSaLiTy>) =>
+            (this.params.color = palette[random(0, palette.length)])
+
           move = () => {
             if (
               this.params.isExpanded &&
@@ -132,12 +182,12 @@
               this.params.move = sk.lerp(
                 this.params.move,
                 0,
-                this.params.speed * 2
+                sk.constrain(this.params.speed * 2, 0, 1)
               )
               this.params.weight = sk.lerp(
                 this.params.weight,
                 this.params.weightRef,
-                this.params.speed * 4
+                sk.constrain(this.params.speed * 4, 0, 1)
               )
             } else if (
               !this.params.isExpanded &&
@@ -146,12 +196,12 @@
               this.params.move = sk.lerp(
                 this.params.move,
                 -(this.size.width + 1),
-                this.params.speed * 4
+                sk.constrain(this.params.speed * 4, 0, 1)
               )
               this.params.weight = sk.lerp(
                 this.params.weight,
                 0,
-                this.params.speed * 2
+                sk.constrain(this.params.speed * 2, 0, 1)
               )
             }
 
@@ -159,12 +209,22 @@
           }
 
           draw = () => {
+            sk.push()
+
+            this.params.shape === 'triangle'
+              ? this.drawTriangle()
+              : this.drawLine()
+
+            sk.pop()
+          }
+
+          drawLine = () => {
             sk.stroke(
               this.params.color.hue,
               this.params.color.saturation,
               this.params.color.lightness
             )
-            sk.strokeCap(sk.ROUND)
+            sk.strokeCap(this.params.shape === 'square' ? sk.SQUARE : sk.ROUND)
             sk.strokeWeight(this.params.weight)
             sk.drawingContext.setLineDash([
               this.size.width,
@@ -183,15 +243,113 @@
               this.position.y2
             )
           }
+
+          drawTriangle = () => {
+            sk.stroke(
+              this.params.color.hue,
+              this.params.color.saturation,
+              this.params.color.lightness
+            )
+            sk.strokeCap(sk.SQUARE)
+            sk.strokeWeight(this.params.weight)
+            sk.drawingContext.setLineDash([
+              this.size.width,
+              this.size.width + 1,
+            ])
+            sk.drawingContext.lineDashOffset =
+              this.params.movement === 'go-up'
+                ? this.params.move
+                : this.params.movement === 'go-left'
+                ? this.params.move
+                : -this.params.move
+            sk.line(
+              this.position.x1,
+              this.position.y1,
+              this.position.x2,
+              this.position.y2
+            )
+
+            const width = this.size.width,
+              move = this.params.move,
+              forward =
+                this.params.movement === 'go-up' ||
+                this.params.movement === 'go-left',
+              offset = forward ? move : -move,
+              lo = sk.constrain(-offset, 0, width),
+              hi = sk.constrain(width - offset, 0, width)
+
+            if (hi <= lo) return
+
+            const half = Math.min(this.params.weight / 2, (hi - lo) / 2)
+
+            if (half <= 0) return
+
+            const point = half * 2,
+              isVertical = this.position.x1 === this.position.x2,
+              startX = isVertical
+                ? this.position.x1
+                : sk.lerp(this.position.x1, this.position.x2, lo / width),
+              startY = isVertical
+                ? sk.lerp(this.position.y1, this.position.y2, lo / width)
+                : this.position.y1,
+              endX = isVertical
+                ? this.position.x1
+                : sk.lerp(this.position.x1, this.position.x2, hi / width),
+              endY = isVertical
+                ? sk.lerp(this.position.y1, this.position.y2, hi / width)
+                : this.position.y1
+
+            sk.noStroke()
+            sk.fill(
+              this.params.color.hue,
+              this.params.color.saturation,
+              this.params.color.lightness
+            )
+            isVertical
+              ? sk.triangle(
+                  startX - half,
+                  startY,
+                  startX + half,
+                  startY,
+                  startX,
+                  startY - point
+                )
+              : sk.triangle(
+                  startX,
+                  startY - half,
+                  startX,
+                  startY + half,
+                  startX - point,
+                  startY
+                )
+            isVertical
+              ? sk.triangle(
+                  endX - half,
+                  endY,
+                  endX + half,
+                  endY,
+                  endX,
+                  endY + point
+                )
+              : sk.triangle(
+                  endX,
+                  endY - half,
+                  endX,
+                  endY + half,
+                  endX + point,
+                  endY
+                )
+          }
         }
 
         sk.makeUnits = (direction: string) => {
           units = []
+          currentDirection = direction
 
           if (direction === 'vertical')
             for (let limitX = 0; limitX <= sk.width + weight; ) {
               for (let limitY = 0; limitY <= sk.height + weight; ) {
-                let rY = sk.int(random(weight, weight * 6))
+                let rY = sk.int(random(weight, weight * 6) * particleSize)
                 units.push(
                   new Unit({
                     x1: limitX,
@@ -208,7 +366,7 @@
           else if (direction === 'horizontal')
             for (let limitY = 0; limitY <= sk.height + weight; ) {
               for (let limitX = 0; limitX <= sk.width + weight; ) {
-                let rX = sk.int(random(weight, weight * 6))
+                let rX = sk.int(random(weight, weight * 6) * particleSize)
                 units.push(
                   new Unit({
                     x1: limitX,
@@ -247,14 +405,16 @@
 
         // Events
         sk.expand = () => {
+          window.clearTimeout(collapseTimer)
           sk.loop()
           units.forEach((unit) => unit.expand(units.length))
         }
 
         sk.collapse = () => {
+          window.clearTimeout(collapseTimer)
           sk.loop()
           units.forEach((unit) => unit.collapse())
-          setTimeout(() => {
+          collapseTimer = window.setTimeout(() => {
             sk.noLoop()
           }, 2000)
         }
@@ -281,14 +441,38 @@
           units.forEach((unit) => unit.changeMovement(movement))
         }
 
+        sk.setDirection = (direction: string) => {
+          sk.makeUnits(direction)
+        }
+
+        sk.setShape = (nextShape: Shape) => {
+          shape = nextShape
+          units.forEach((unit) => unit.changeShape(nextShape))
+        }
+
+        sk.setSpeed = (nextSpeed: number) => {
+          speed = nextSpeed
+          units.forEach((unit) => unit.changeSpeed(nextSpeed))
+        }
+
+        sk.setSize = (nextSize: number) => {
+          particleSize = nextSize
+          sk.makeUnits(currentDirection)
+        }
+
+        sk.setColors = (palette: Array<HuSaLiTy>) => {
+          colors = palette && palette.length > 0 ? palette : colors
+          units.forEach((unit) => unit.changeColor(colors))
+        }
+
         sk.windowResized = () => {
           sk.resizeCanvas(this.$el.clientWidth, this.$el.clientHeight)
-          sk.makeUnits('horizontal')
+          sk.makeUnits(currentDirection)
         }
 
         sk.deviceTurned = () => {
           sk.resizeCanvas(this.$el.clientWidth, this.$el.clientHeight)
-          sk.makeUnits('horizontal')
+          sk.makeUnits(currentDirection)
         }
       })
     },

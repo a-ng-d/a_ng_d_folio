@@ -43,8 +43,10 @@
           window.removeEventListener('scroll', this.dismiss, true)
           window.removeEventListener('resize', this.dismiss)
         } else {
-          window.addEventListener('scroll', this.dismiss, true)
-          window.addEventListener('resize', this.dismiss)
+          setTimeout(() => {
+            window.addEventListener('scroll', this.dismiss, true)
+            window.addEventListener('resize', this.dismiss)
+          }, 200)
           setTimeout(
             () => (this.$refs.option as Array<HTMLElement>)[0].focus(),
             200

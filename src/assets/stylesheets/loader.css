@@ -30,11 +30,7 @@ body, html {
   animation: go-forwards--enter 3200ms cubic-bezier(.86, .12, .12, .86) forwards
 }
 #loader.loader--leave {
-  animation: go-forwards--leave 1600ms cubic-bezier(.86, .12, .12, .86) forwards
-}
-#loader.loader--loaded h6 {
-  opacity: 1;
-  transform: translateY(0)
+  animation: go-forwards--leave 2400ms cubic-bezier(.33, 1, .68, 1) forwards
 }
 #loader.loader--loaded #nprogress {
   opacity: 0
@@ -56,12 +52,6 @@ body, html {
   display: flex;
   flex-flow: column nowrap;
   align-items: center
-}
-#progress h6 {
-  opacity: 0;
-  transition: transform var(--duration-turtoise) var(--ease-vroom), opacity var(--duration-jogging) var(--delay-running) var(--ease-vroom);
-  transform: translateY(var(--spacing-l-000));
-  order: 2
 }
 #progress #nprogress {
   width: 100%;
@@ -96,13 +86,16 @@ body, html {
 @keyframes go-forwards--leave {
   0% {
     opacity: 1;
-    background-size: 100% 100%
+    background-size: 100% 100%;
+    filter: blur(0px)
   }
-  80% {
-    opacity: 0
+  55% {
+    opacity: 0.35;
+    filter: blur(4px)
   }
   100% {
     opacity: 0;
-    background-size: 100% 1000%
+    background-size: 100% 280%;
+    filter: blur(12px)
   }
 }

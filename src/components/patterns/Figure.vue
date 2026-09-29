@@ -199,7 +199,7 @@
     --asset-border: var(--image-border)
     --asset-radius: var(--small-border-radius)
     --alpha: 0
-    
+
     &__asset--magnified
       --asset-border: none
       --asset-radius: 0

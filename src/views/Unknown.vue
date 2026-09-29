@@ -1,15 +1,17 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import { store } from '@/utilities/store'
-  import type { Option } from '@/utilities/types'
+  import type { HuSaLiTy, Option } from '@/utilities/types'
   import Button from '@/components/ui/Button.vue'
   import Dropdown from '@/components/ui/Dropdown.vue'
   import Container from '@/components/ui/Container.vue'
   import Label from '@/components/ui/Label.vue'
   import Switch from '@/components/ui/Switch.vue'
   import Footer from '@/components/patterns/Footer.vue'
+  import Particles from '@/components/graphics/Particles.vue'
+  import type { Shape } from '@/components/graphics/Particles.vue'
   import { Home } from 'lucide-vue-next'
-  import { filters } from '@/utilities/colors'
+  import { filters, HSLColors } from '@/utilities/colors'
   import type { DispositionKind } from '@/glitchscape/dispositions'
   import {
     DISPOSITION_KEYS,
@@ -24,6 +26,71 @@
 
   const FADE = 48
 
+  type ParticlesField = 'shape' | 'speed' | 'weight' | 'grain' | 'movement'
+
+  interface ParticlesKnobStep {
+    key: string
+    value: number | string
+  }
+
+  interface ParticlesKnob {
+    field: ParticlesField
+    alt: string
+    steps: Array<ParticlesKnobStep>
+  }
+
+  const particlesKnobs: Array<ParticlesKnob> = [
+    {
+      field: 'shape',
+      alt: 'actions.particlesShape',
+      steps: [
+        { key: 'line', value: 'line' },
+        { key: 'square', value: 'square' },
+        { key: 'triangle', value: 'triangle' },
+      ],
+    },
+    {
+      field: 'speed',
+      alt: 'actions.particlesSpeed',
+      steps: [
+        { key: 'slow', value: 0.05 },
+        { key: 'steady', value: 0.1 },
+        { key: 'brisk', value: 0.25 },
+        { key: 'racing', value: 0.5 },
+      ],
+    },
+    {
+      field: 'weight',
+      alt: 'actions.particlesWeight',
+      steps: [
+        { key: 'thin', value: 8 },
+        { key: 'even', value: 16 },
+        { key: 'thick', value: 32 },
+        { key: 'massive', value: 64 },
+      ],
+    },
+    {
+      field: 'grain',
+      alt: 'actions.particlesGrain',
+      steps: [
+        { key: 'fine', value: 0.4 },
+        { key: 'regular', value: 1 },
+        { key: 'coarse', value: 2 },
+        { key: 'chunky', value: 4 },
+      ],
+    },
+    {
+      field: 'movement',
+      alt: 'actions.particlesMovement',
+      steps: [
+        { key: 'up', value: 'go-up' },
+        { key: 'right', value: 'go-right' },
+        { key: 'down', value: 'go-down' },
+        { key: 'left', value: 'go-left' },
+      ],
+    },
+  ]
+
   export default defineComponent({
     name: 'Unknown',
     components: {
@@ -33,6 +100,7 @@
       Label,
       Switch,
       Footer,
+      Particles,
       Home,
     },
     props: {
@@ -72,6 +140,38 @@
             options: knob.steps.map((step, index: number) => ({
               name: i18n.global.t(`unknown.${knob.field}.${step.key}`),
               action: () => this.pickKnob(knob.field, step.value),
+              isActive: index === active,
+            })) as Array<Option>,
+          }
+        })
+      },
+      effectiveParticles(): { [key: string]: number | string } {
+        return {
+          shape: this.particlesShape,
+          speed: this.particlesSpeed,
+          weight: this.particlesWeight,
+          grain: this.particlesGrain,
+          movement: this.particlesMovement,
+        }
+      },
+      particlesControls(): Array<{
+        field: string
+        alt: string
+        options: Array<Option>
+      }> {
+        return particlesKnobs.map((knob) => {
+          const current = this.effectiveParticles[knob.field]
+          let active = knob.steps.findIndex((step) => step.value === current)
+          if (active < 0) active = 0
+
+          return {
+            field: knob.field,
+            alt: knob.alt,
+            options: knob.steps.map((step, index: number) => ({
+              name: i18n.global.t(
+                `unknown.particles.${knob.field}.${step.key}`
+              ),
+              action: () => this.pickParticlesKnob(knob.field, step.value),
               isActive: index === active,
             })) as Array<Option>,
           }
@@ -153,6 +253,31 @@
         interval: 0 as number,
         currentInterval: 0 as number,
         fadeInterval: 0,
+        particlesShape: 'line' as Shape,
+        particlesSpeed: 0.1 as number,
+        particlesWeight: 64 as number,
+        particlesGrain: 1 as number,
+        particlesMovement: 'go-right' as string,
+        particlesExpanded: false as boolean,
+        particlesColors: [] as Array<HuSaLiTy>,
+        particlesGeneration: 0 as number,
+        particlesPalettes: [
+          {
+            name: i18n.global.t('unknown.particles.colors.primary'),
+            action: () => this.pickParticlesPalette('primary'),
+            isActive: true,
+          },
+          {
+            name: i18n.global.t('unknown.particles.colors.grayscale'),
+            action: () => this.pickParticlesPalette('grayscale'),
+            isActive: false,
+          },
+          {
+            name: i18n.global.t('unknown.particles.colors.spectrum'),
+            action: () => this.pickParticlesPalette('spectrum'),
+            isActive: false,
+          },
+        ] as Array<Option>,
       }
     },
     methods: {
@@ -181,6 +306,25 @@
         else this.atmosphere = { ...this.atmosphere, [field]: value }
 
         this.applyScene()
+      },
+      pickParticlesKnob(field: ParticlesField, value: number | string) {
+        const setters: { [key: string]: (v: number | string) => void } = {
+          shape: (v) => (this.particlesShape = v as Shape),
+          speed: (v) => (this.particlesSpeed = v as number),
+          weight: (v) => (this.particlesWeight = v as number),
+          grain: (v) => (this.particlesGrain = v as number),
+          movement: (v) => (this.particlesMovement = v as string),
+        }
+        setters[field]?.(value)
+        this.particlesGeneration += 1
+      },
+      pickParticlesPalette(kind: 'primary' | 'grayscale' | 'spectrum') {
+        this.particlesColors =
+          kind === 'spectrum'
+            ? Object.values(HSLColors)
+            : Object.values(HSLColors).filter(
+                (entry: HuSaLiTy) => entry.type === kind
+              )
       },
       pickFlow(kind: string) {
         this.flow = kind
@@ -241,6 +385,17 @@
 <template>
   <main class="page">
     <article class="unknown" :data-theme="theme">
+      <div class="particles-test">
+        <Particles
+          :weight="particlesWeight"
+          :shape="particlesShape"
+          :speed="particlesSpeed"
+          :particleSize="particlesGrain"
+          :movement="particlesMovement"
+          :colors="particlesColors"
+          :isExpanded="particlesExpanded"
+        />
+      </div>
       <section class="controler">
         <Transition
           name="slide-up"
@@ -336,7 +491,6 @@
               <div class="switch-row">
                 <Switch
                   :label="$t('unknown.ambience.title')"
-                  :active="defaults.ambience === 'LIVE'"
                   :on="() => pickKnob('ambience', 'LIVE')"
                   :off="() => pickKnob('ambience', 'FIXED')"
                   :alt="$t('actions.ambience')"
@@ -344,7 +498,6 @@
                 />
                 <Switch
                   :label="$t('unknown.endless.title')"
-                  :active="defaults.endless"
                   :on="() => pickKnob('endless', true)"
                   :off="() => pickKnob('endless', false)"
                   :alt="$t('actions.endless')"
@@ -362,6 +515,32 @@
                   :on="() => $emit('glitch', true)"
                   :off="() => $emit('glitch', false)"
                   :alt="$t('actions.glitch')"
+                  :theme="theme"
+                />
+              </div>
+            </Container>
+            <Container>
+              <div class="switch-row">
+                <Dropdown
+                  v-for="control in particlesControls"
+                  :key="`${control.field}-${particlesGeneration}`"
+                  :label="$t(`unknown.particles.${control.field}.title`)"
+                  :options="control.options"
+                  :alt="$t(control.alt)"
+                  :theme="theme"
+                />
+                <Dropdown
+                  :label="$t('unknown.particles.colors.title')"
+                  :options="particlesPalettes"
+                  :alt="$t('actions.particlesColors')"
+                  :theme="theme"
+                />
+                <Switch
+                  :label="$t('unknown.particles.expanded.title')"
+                  :active="particlesExpanded"
+                  :on="() => (particlesExpanded = true)"
+                  :off="() => (particlesExpanded = false)"
+                  :alt="$t('actions.particlesExpanded')"
                   :theme="theme"
                 />
               </div>
@@ -386,6 +565,12 @@
     transition: var(--slow-transition)
     opacity: v-bind("ui ? 1 : 0")
 
+  .particles-test
+    position: fixed
+    inset: 0
+    z-index: 1
+    pointer-events: none
+
   .controler
     display: flex
     flex-flow: row nowrap
@@ -397,6 +582,7 @@
     height: 100%
     position: fixed
     top: 0
+    z-index: 2
     pointer-events: none
 
     &__content
