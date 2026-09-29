@@ -3,6 +3,18 @@
   import { withTheme } from '@/composables/theme'
   import VLazyImage from 'v-lazy-image'
 
+  // Cadres nommés, pour n'avoir pas à retenir des fractions. Toute valeur
+  // CSS reste acceptée : ratio="16 / 10", :ratio="1.5"…
+  const NAMED_RATIOS: Record<string, string> = {
+    square: '1 / 1',
+    landscape: '4 / 3',
+    wide: '16 / 9',
+    ultrawide: '21 / 9',
+    panorama: '3 / 1',
+    portrait: '3 / 4',
+    tall: '9 / 16',
+  }
+
   export default defineComponent({
     name: 'Figure',
     mixins: [withTheme],
@@ -21,13 +33,40 @@
         type: Boolean,
         default: false,
       },
+      // Le cadre voulu. Absent, la figure prend le ratio propre du fichier,
+      // déduit de width/height — et rien n'est rogné.
+      ratio: {
+        type: [String, Number],
+        default: undefined,
+      },
+      // Dimensions natives du fichier. Elles ne servent plus qu'à déduire le
+      // ratio naturel ; la phase 3 les extraira du fichier au build.
       width: {
         type: Number,
-        required: true,
+        default: undefined,
       },
       height: {
         type: Number,
-        required: true,
+        default: undefined,
+      },
+    },
+    computed: {
+      /**
+       * Le ratio du cadre, dans l'ordre : celui qu'on impose, sinon celui du
+       * fichier, sinon aucun — la boîte se règle alors sur l'image.
+       */
+      aspectRatio(): string {
+        if (this.ratio !== undefined) {
+          const named = NAMED_RATIOS[String(this.ratio)]
+          return named ?? String(this.ratio)
+        }
+        if (this.width !== undefined && this.height !== undefined)
+          return `${this.width} / ${this.height}`
+        return 'auto'
+      },
+      // Sans ratio connu, l'image dicte la hauteur au lieu de l'inverse.
+      assetHeight(): string {
+        return this.aspectRatio === 'auto' ? 'auto' : '100%'
       },
     },
     watch: {
@@ -111,11 +150,8 @@
     &__asset
       display: flex
       width: 100%
-      // La boîte tient son ratio toute seule. Auparavant sa hauteur était
-      // mesurée en JavaScript au montage puis figée en pixels : dès que la
-      // colonne s'élargissait sans que la fenêtre bouge, la boîte restait
-      // trop basse et rognait l'image.
-      aspect-ratio: v-bind("`${width} / ${height}`")
+      // La boîte tient son ratio toute seule, à toute largeur de colonne.
+      aspect-ratio: v-bind("aspectRatio")
       border-radius: var(--asset-radius)
       box-shadow: var(--asset-border)
       justify-content: center
@@ -135,7 +171,7 @@
 
       img, video
         width: 100%
-        height: 100%
+        height: v-bind("assetHeight")
         object-fit: cover
         transition: var(--simple-transition)
         border-radius: var(--asset-radius)
