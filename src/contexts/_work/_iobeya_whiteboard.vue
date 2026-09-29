@@ -78,8 +78,6 @@
           type="image"
           :src="assets._iobeya_whiteboard[1]"
           caption
-          :width="1920"
-          :height="912"
           :alt="$t('work._iobeya_whiteboard.part-1.caption-1')"
         >
           <template #caption>
@@ -97,20 +95,10 @@
     </OneColumn>
     <TwoColumns :theme="theme">
       <template #left>
-        <Figure
-          type="image"
-          :src="assets._iobeya_whiteboard[2]"
-          :width="1920"
-          :height="912"
-        />
+        <Figure type="image" :src="assets._iobeya_whiteboard[2]" />
       </template>
       <template #right>
-        <Figure
-          type="image"
-          :src="assets._iobeya_whiteboard[3]"
-          :width="1920"
-          :height="912"
-        />
+        <Figure type="image" :src="assets._iobeya_whiteboard[3]" />
       </template>
     </TwoColumns>
     <OneColumn :theme="theme">
@@ -119,8 +107,6 @@
           type="image"
           :src="assets._iobeya_whiteboard[4]"
           caption
-          :width="1920"
-          :height="680"
           :alt="$t('work._iobeya_whiteboard.part-1.caption-2')"
         >
           <template #caption>
@@ -138,12 +124,7 @@
     </OneColumn>
     <OneColumn :theme="theme">
       <template #plain>
-        <Figure
-          type="image"
-          :src="assets._iobeya_whiteboard[5]"
-          :width="1920"
-          :height="912"
-        />
+        <Figure type="image" :src="assets._iobeya_whiteboard[5]" />
       </template>
     </OneColumn>
   </section>
@@ -162,8 +143,6 @@
           type="image"
           :src="assets._iobeya_whiteboard[6]"
           caption
-          :width="1024"
-          :height="770"
           :alt="$t('work._iobeya_whiteboard.part-2.caption-1')"
         >
           <template #caption>
@@ -178,8 +157,6 @@
           type="image"
           :src="assets._iobeya_whiteboard[7]"
           caption
-          :width="1024"
-          :height="770"
           :alt="$t('work._iobeya_whiteboard.part-2.caption-2')"
         >
           <template #caption>
@@ -201,8 +178,6 @@
           type="image"
           :src="assets._iobeya_whiteboard[8]"
           caption
-          :width="1920"
-          :height="680"
           :alt="$t('work._iobeya_whiteboard.part-2.caption-3')"
         >
           <template #caption>
@@ -271,8 +246,6 @@
           type="image"
           :src="assets._iobeya_whiteboard[9]"
           caption
-          :width="480"
-          :height="480"
           :alt="$t('work._iobeya_whiteboard.part-3.caption-1')"
         >
           <template #caption>
@@ -287,8 +260,6 @@
           type="image"
           :src="assets._iobeya_whiteboard[10]"
           caption
-          :width="480"
-          :height="480"
           :alt="$t('work._iobeya_whiteboard.part-3.caption-2')"
         >
           <template #caption>
@@ -331,8 +302,6 @@
           type="image"
           :src="assets._iobeya_whiteboard[11]"
           caption
-          :width="1920"
-          :height="680"
           :alt="$t('work._iobeya_whiteboard.part-3.caption-4')"
         >
           <template #caption>

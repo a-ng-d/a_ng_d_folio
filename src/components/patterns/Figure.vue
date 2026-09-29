@@ -2,6 +2,7 @@
   import { defineComponent } from 'vue'
   import { withTheme } from '@/composables/theme'
   import VLazyImage from 'v-lazy-image'
+  import { naturalRatio } from '@/content/assets'
 
   // Cadres nommés, pour n'avoir pas à retenir des fractions. Toute valeur
   // CSS reste acceptée : ratio="16 / 10", :ratio="1.5"…
@@ -39,8 +40,8 @@
         type: [String, Number],
         default: undefined,
       },
-      // Dimensions natives du fichier. Elles ne servent plus qu'à déduire le
-      // ratio naturel ; la phase 3 les extraira du fichier au build.
+      // Recours pour ce que le build ne sait pas mesurer — les vidéos.
+      // Pour une image, ne rien déclarer : le fichier fait foi.
       width: {
         type: Number,
         default: undefined,
@@ -52,14 +53,21 @@
     },
     computed: {
       /**
-       * Le ratio du cadre, dans l'ordre : celui qu'on impose, sinon celui du
-       * fichier, sinon aucun — la boîte se règle alors sur l'image.
+       * Le ratio du cadre, par ordre d'autorité :
+       *   1. `ratio`, le cadre qu'on impose délibérément ;
+       *   2. les dimensions relevées dans le fichier au build — la vérité,
+       *      que personne n'a eu à recopier ;
+       *   3. `width`/`height` déclarés, pour ce qui ne se mesure pas au
+       *      build, à commencer par les vidéos ;
+       *   4. rien : la boîte se règle alors sur l'image.
        */
       aspectRatio(): string {
         if (this.ratio !== undefined) {
           const named = NAMED_RATIOS[String(this.ratio)]
           return named ?? String(this.ratio)
         }
+        const measured = naturalRatio(this.src)
+        if (measured !== undefined) return measured
         if (this.width !== undefined && this.height !== undefined)
           return `${this.width} / ${this.height}`
         return 'auto'

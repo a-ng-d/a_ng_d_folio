@@ -11,3 +11,7 @@ declare module 'virtual:work-content' {
   import type { WorkProject } from '@/content/types'
   export const projects: WorkProject[]
 }
+
+declare module 'virtual:asset-sizes' {
+  export const sizes: Record<string, [number, number]>
+}

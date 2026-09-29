@@ -121,8 +121,6 @@
           type="image"
           :src="assets._iobeya_mobile_ds[0]"
           caption
-          :width="1200"
-          :height="1500"
           :alt="$t('work._iobeya_mobile_ds.part-2.caption-1')"
         >
           <template #caption>
@@ -137,8 +135,6 @@
           type="image"
           :src="assets._iobeya_mobile_ds[1]"
           caption
-          :width="1200"
-          :height="1500"
           :alt="$t('work._iobeya_mobile_ds.part-2.caption-2')"
         >
           <template #caption>
@@ -156,8 +152,6 @@
           type="image"
           :src="assets._iobeya_mobile_ds[2]"
           caption
-          :width="1920"
-          :height="1070"
           :alt="$t('work._iobeya_mobile_ds.part-2.caption-3')"
         >
           <template #caption>
@@ -171,8 +165,6 @@
           type="image"
           :src="assets._iobeya_mobile_ds[3]"
           caption
-          :width="1920"
-          :height="1650"
           :alt="$t('work._iobeya_mobile_ds.part-2.caption-4')"
         >
           <template #caption>
@@ -186,8 +178,6 @@
           type="image"
           :src="assets._iobeya_mobile_ds[4]"
           caption
-          :width="1920"
-          :height="1855"
           :alt="$t('work._iobeya_mobile_ds.part-2.caption-5')"
         >
           <template #caption>
@@ -214,8 +204,6 @@
           type="image"
           :src="assets._iobeya_mobile_ds[5]"
           caption
-          :width="750"
-          :height="1624"
           :alt="$t('work._iobeya_mobile_ds.part-3.caption-1')"
           @isMagnified="isFullScreen = $event"
         >
@@ -229,8 +217,6 @@
           type="image"
           :src="assets._iobeya_mobile_ds[6]"
           caption
-          :width="750"
-          :height="1624"
           :alt="$t('work._iobeya_mobile_ds.part-3.caption-2')"
           @isMagnified="isFullScreen = $event"
         >
@@ -244,8 +230,6 @@
           type="image"
           :src="assets._iobeya_mobile_ds[7]"
           caption
-          :width="750"
-          :height="1624"
           :alt="$t('work._iobeya_mobile_ds.part-3.caption-3')"
           @isMagnified="isFullScreen = $event"
         >
@@ -259,8 +243,6 @@
           type="image"
           :src="assets._iobeya_mobile_ds[8]"
           caption
-          :width="750"
-          :height="1624"
           :alt="$t('work._iobeya_mobile_ds.part-3.caption-4')"
           @isMagnified="isFullScreen = $event"
         >

@@ -62,8 +62,6 @@
           type="image"
           :src="assets._awesome_ipsums[0]"
           caption
-          :width="1440"
-          :height="1100"
           :alt="$t('work._awesome_ipsums.part-1.caption-1')"
         >
           <template #caption>
@@ -88,8 +86,6 @@
         <Figure
           type="image"
           :src="assets._awesome_ipsums[1]"
-          :width="1200"
-          :height="1000"
           :alt="$t('work._awesome_ipsums.part-2.paragraph-1')"
         />
       </template>
@@ -99,8 +95,6 @@
         <Figure
           type="image"
           :src="assets._awesome_ipsums[2]"
-          :width="1200"
-          :height="1000"
           :alt="$t('work._awesome_ipsums.part-2.paragraph-2')"
         />
       </template>
@@ -116,8 +110,6 @@
         <Figure
           type="image"
           :src="assets._awesome_ipsums[3]"
-          :width="1200"
-          :height="1000"
           :alt="$t('work._awesome_ipsums.part-2.paragraph-3')"
         />
       </template>

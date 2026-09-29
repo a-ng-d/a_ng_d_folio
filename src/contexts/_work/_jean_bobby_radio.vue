@@ -97,8 +97,6 @@
           type="image"
           :src="assets._jean_bobby_radio[0]"
           caption
-          :width="1922"
-          :height="1202"
           :alt="$t('work._jean_bobby_radio.part-2.caption-1')"
         >
           <template #caption>

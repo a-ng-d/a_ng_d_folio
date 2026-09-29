@@ -66,12 +66,7 @@
     </OneColumn>
     <OneColumn :theme="theme">
       <template #plain>
-        <Figure
-          type="image"
-          :src="assets._iobeya_creativity[1]"
-          :width="1920"
-          :height="664"
-        />
+        <Figure type="image" :src="assets._iobeya_creativity[1]" />
       </template>
     </OneColumn>
   </section>
@@ -90,8 +85,6 @@
           type="image"
           :src="assets._iobeya_creativity[2]"
           caption
-          :width="3376"
-          :height="2010"
           :alt="$t('work._iobeya_creativity.part-2.caption-1')"
         >
           <template #caption>
@@ -113,8 +106,6 @@
           type="image"
           :src="assets._iobeya_creativity[3]"
           caption
-          :width="3376"
-          :height="2010"
           :alt="$t('work._iobeya_creativity.part-2.caption-2')"
         >
           <template #caption>
@@ -131,8 +122,6 @@
           type="image"
           :src="assets._iobeya_creativity[4]"
           caption
-          :width="3376"
-          :height="2010"
           :alt="$t('work._iobeya_creativity.part-2.caption-3')"
         >
           <template #caption>
@@ -147,8 +136,6 @@
           type="image"
           :src="assets._iobeya_creativity[5]"
           caption
-          :width="828"
-          :height="1792"
           :alt="$t('work._iobeya_creativity.part-2.caption-4')"
         >
           <template #caption>
@@ -170,8 +157,6 @@
           type="image"
           :src="assets._iobeya_creativity[6]"
           caption
-          :width="3376"
-          :height="2010"
           :alt="$t('work._iobeya_creativity.part-2.caption-5')"
         >
           <template #caption>
@@ -188,8 +173,6 @@
           type="image"
           :src="assets._iobeya_creativity[7]"
           caption
-          :width="3376"
-          :height="2010"
           :alt="$t('work._iobeya_creativity.part-2.caption-6')"
         >
           <template #caption>
@@ -204,8 +187,6 @@
           type="image"
           :src="assets._iobeya_creativity[8]"
           caption
-          :width="828"
-          :height="1792"
           :alt="$t('work._iobeya_creativity.part-2.caption-7')"
         >
           <template #caption>
@@ -227,8 +208,6 @@
           type="image"
           :src="assets._iobeya_creativity[9]"
           caption
-          :width="3376"
-          :height="2010"
           :alt="$t('work._iobeya_creativity.part-2.caption-8')"
         >
           <template #caption>
@@ -243,8 +222,6 @@
           type="image"
           :src="assets._iobeya_creativity[10]"
           caption
-          :width="828"
-          :height="1792"
           :alt="$t('work._iobeya_creativity.part-2.caption-9')"
         >
           <template #caption>
@@ -262,12 +239,7 @@
     </OneColumn>
     <OneColumn :theme="theme">
       <template #plain>
-        <Figure
-          type="image"
-          :src="assets._iobeya_creativity[11]"
-          :width="3376"
-          :height="2010"
-        />
+        <Figure type="image" :src="assets._iobeya_creativity[11]" />
       </template>
     </OneColumn>
   </section>
@@ -397,12 +369,7 @@
     </OneColumn>
     <OneColumn :theme="theme">
       <template #plain>
-        <Figure
-          type="image"
-          :src="assets._iobeya_creativity[23]"
-          :width="5040"
-          :height="3600"
-        />
+        <Figure type="image" :src="assets._iobeya_creativity[23]" />
       </template>
     </OneColumn>
   </section>

@@ -1,11 +1,18 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import matter from 'gray-matter'
+import { imageSize } from 'image-size'
 import type { Plugin } from 'vite'
 import type { WorkProject } from '../src/content/types'
 
 const VIRTUAL_ID = 'virtual:work-content'
 const RESOLVED_ID = '\0' + VIRTUAL_ID
+
+const SIZES_ID = 'virtual:asset-sizes'
+const RESOLVED_SIZES_ID = '\0' + SIZES_ID
+
+const IMAGE_DIR = 'public/images'
+const MEASURABLE = /\.(webp|png|jpe?g|gif|avif|svg)$/i
 
 const CONTENT_DIR = 'content/work'
 const FILE_RE = /^index\.([a-z]{2})\.md$/
@@ -131,6 +138,41 @@ const collect = (root: string): WorkProject[] => {
   )
 }
 
+/**
+ * Dimensions natives de chaque image de public/images, relevées au build et
+ * indexées sur l'URL publique.
+ *
+ * C'est ce qui permet à une figure de n'avoir rien à déclarer : personne ne
+ * recopie de nombres, donc personne ne les désynchronise.
+ */
+const measureImages = (root: string): Record<string, [number, number]> => {
+  const base = path.join(root, IMAGE_DIR)
+  if (!fs.existsSync(base)) return {}
+
+  const sizes: Record<string, [number, number]> = {}
+  const walk = (dir: string) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name)
+      if (entry.isDirectory()) {
+        walk(full)
+      } else if (MEASURABLE.test(entry.name)) {
+        try {
+          const { width, height } = imageSize(fs.readFileSync(full))
+          if (width && height) {
+            const url = '/' + path.relative(path.join(root, 'public'), full)
+            sizes[url.split(path.sep).join('/')] = [width, height]
+          }
+        } catch {
+          // Un fichier illisible ne doit pas casser le build : la figure
+          // retombera simplement sur ce qu'elle déclare.
+        }
+      }
+    }
+  }
+  walk(base)
+  return sizes
+}
+
 export const workContent = (): Plugin => {
   let root = process.cwd()
 
@@ -143,12 +185,18 @@ export const workContent = (): Plugin => {
 
     resolveId(id) {
       if (id === VIRTUAL_ID) return RESOLVED_ID
+      if (id === SIZES_ID) return RESOLVED_SIZES_ID
     },
 
     load(id) {
-      if (id !== RESOLVED_ID) return
-      const projects = collect(root)
-      return `export const projects = ${JSON.stringify(projects, null, 2)}\n`
+      if (id === RESOLVED_ID) {
+        const projects = collect(root)
+        return `export const projects = ${JSON.stringify(projects, null, 2)}\n`
+      }
+      if (id === RESOLVED_SIZES_ID) {
+        const sizes = measureImages(root)
+        return `export const sizes = ${JSON.stringify(sizes)}\n`
+      }
     },
 
     configureServer(server) {

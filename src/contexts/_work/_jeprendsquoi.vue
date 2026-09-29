@@ -80,8 +80,6 @@
           type="image"
           :src="assets._jeprendsquoi[2]"
           caption
-          :width="1440"
-          :height="900"
           :alt="$t('work._jeprendsquoi.part-1.caption-1')"
           :theme="theme"
         >
@@ -126,8 +124,6 @@
           type="image"
           :src="assets._jeprendsquoi[3]"
           caption
-          :width="1440"
-          :height="900"
           :alt="$t('work._jeprendsquoi.part-1.caption-2')"
         >
           <template #caption>
@@ -184,8 +180,6 @@
           type="image"
           :src="assets._jeprendsquoi[4]"
           caption
-          :width="750"
-          :height="1334"
           :alt="$t('work._jeprendsquoi.part-2.caption-1')"
           @isMagnified="isFullScreen = $event"
         >
@@ -199,8 +193,6 @@
           type="image"
           :src="assets._jeprendsquoi[5]"
           caption
-          :width="750"
-          :height="1334"
           :alt="$t('work._jeprendsquoi.part-2.caption-2')"
           @isMagnified="isFullScreen = $event"
         >
@@ -214,8 +206,6 @@
           type="image"
           :src="assets._jeprendsquoi[6]"
           caption
-          :width="750"
-          :height="1334"
           :alt="$t('work._jeprendsquoi.part-2.caption-3')"
           @isMagnified="isFullScreen = $event"
         >
@@ -229,8 +219,6 @@
           type="image"
           :src="assets._jeprendsquoi[7]"
           caption
-          :width="750"
-          :height="1334"
           :alt="$t('work._jeprendsquoi.part-2.caption-4')"
           @isMagnified="isFullScreen = $event"
         >
@@ -268,8 +256,6 @@
           type="image"
           :src="assets._jeprendsquoi[8]"
           caption
-          :width="640"
-          :height="640"
           :alt="$t('work._jeprendsquoi.part-2.caption-7')"
           @isMagnified="isFullScreen = $event"
         >
@@ -285,8 +271,6 @@
           type="image"
           :src="assets._jeprendsquoi[9]"
           caption
-          :width="640"
-          :height="640"
           :alt="$t('work._jeprendsquoi.part-2.caption-8')"
           @isMagnified="isFullScreen = $event"
         >
