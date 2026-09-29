@@ -41,7 +41,6 @@
         maxScale: 1 as number,
         pathX: 0 as number,
         pathY: 0 as number,
-        ratio: 0 as number,
       }
     },
     methods: {
@@ -72,19 +71,6 @@
           this.pathY = (refY - y - h / 2) / refScale
         }
       },
-      setRatio(parentWidth: number) {
-        if (this.width != undefined || this.height != undefined)
-          this.ratio = (parentWidth * this.height) / this.width
-        else this.ratio = 640
-      },
-    },
-    created: function () {
-      window.addEventListener('resize', () =>
-        this.setRatio(this.$el.children[0].offsetWidth)
-      )
-    },
-    mounted: function () {
-      this.setRatio(this.$el.children[0].offsetWidth)
     },
   })
 </script>
@@ -125,7 +111,11 @@
     &__asset
       display: flex
       width: 100%
-      height: v-bind("ratio + 'px'")
+      // La boîte tient son ratio toute seule. Auparavant sa hauteur était
+      // mesurée en JavaScript au montage puis figée en pixels : dès que la
+      // colonne s'élargissait sans que la fenêtre bouge, la boîte restait
+      // trop basse et rognait l'image.
+      aspect-ratio: v-bind("`${width} / ${height}`")
       border-radius: var(--asset-radius)
       box-shadow: var(--asset-border)
       justify-content: center
@@ -145,6 +135,8 @@
 
       img, video
         width: 100%
+        height: 100%
+        object-fit: cover
         transition: var(--simple-transition)
         border-radius: var(--asset-radius)
 

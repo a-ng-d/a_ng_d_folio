@@ -238,8 +238,8 @@
           type="image"
           :src="assets._axeptio_gusto[8]"
           caption
-          :width="1000"
-          :height="600"
+          :width="1600"
+          :height="1000"
           :alt="$t('work._axeptio_gusto.part-2.caption-1')"
         >
           <template #caption>
@@ -268,8 +268,8 @@
           type="image"
           :src="assets._axeptio_gusto[9]"
           caption
-          :width="1600"
-          :height="800"
+          :width="1000"
+          :height="600"
           :alt="$t('work._axeptio_gusto.part-4.caption-1')"
         >
           <template #caption>
