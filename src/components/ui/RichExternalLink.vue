@@ -1,9 +1,11 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
   import { store } from '@/utilities/store'
 
   export default defineComponent({
     name: 'RichExternalLink',
+    mixins: [withTheme],
     props: {
       title: String,
       description: String,
@@ -13,10 +15,6 @@
       },
       href: String,
       alt: String,
-      theme: {
-        type: String,
-        default: 'DEFAULT',
-      },
     },
     data: function () {
       return {
@@ -34,7 +32,7 @@
     :aria-label="alt"
     @focus="store.isFocus = true"
     @blur="store.isFocus = false"
-    :data-theme="theme"
+    :data-theme="resolvedTheme"
   >
     <div class="rich-external-link__icon" :style="`background-color: ${color}`">
       <slot name="icon"></slot>
@@ -132,7 +130,7 @@
         --text-color: var(--color-cream)
         --border-color: var(--color-cream)
         --outline-color: var(--color-cream)
-    
+
       &:focus
         --outline-color: var(--color-clear-water)
 

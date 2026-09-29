@@ -6,3 +6,8 @@ declare module '*.json' {
   const value: any
   export default value
 }
+
+declare module 'virtual:work-content' {
+  import type { WorkProject } from '@/content/types'
+  export const projects: WorkProject[]
+}

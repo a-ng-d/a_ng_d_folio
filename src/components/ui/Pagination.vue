@@ -1,8 +1,10 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
 
   export default defineComponent({
     name: 'Pagination',
+    mixins: [withTheme],
     props: {
       pages: {
         type: [Array, Object],
@@ -12,16 +14,12 @@
         type: Number,
         required: true,
       },
-      theme: {
-        type: String,
-        default: 'DEFAULT',
-      },
     },
   })
 </script>
 
 <template>
-  <div class="pagination" :data-theme="theme">
+  <div class="pagination" :data-theme="resolvedTheme">
     <div class="pagination__dots">
       <div
         v-for="n in pages.length"

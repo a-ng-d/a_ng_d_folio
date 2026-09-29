@@ -2,6 +2,7 @@
   import { defineComponent } from 'vue'
   import type { PropType } from 'vue'
   import type { PageMeta } from '@/router/scenery'
+  import { bodyOf, getProject } from '@/content/work'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import ScrollingText from '@/components/ui/ScrollingText.vue'
@@ -9,14 +10,6 @@
   import WrapColumn from '@/components/layouts/WrapColumn.vue'
   import ContentContainer from '@/components/patterns/ContentContainer.vue'
   import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
-  import _ui_color_palette from '@/contexts/_work/_ui_color_palette.vue'
-  import _jeprendsquoi from '@/contexts/_work/_jeprendsquoi.vue'
-  import _jean_bobby_radio from '@/contexts/_work/_jean_bobby_radio.vue'
-  import _awesome_ipsums from '@/contexts/_work/_awesome_ipsums.vue'
-  import _iobeya_whiteboard from '@/contexts/_work/_iobeya_whiteboard.vue'
-  import _iobeya_mobile_ds from '@/contexts/_work/_iobeya_mobile_ds.vue'
-  import _iobeya_creativity from '@/contexts/_work/_iobeya_creativity.vue'
-  import _axeptio_gusto from '@/contexts/_work/_axeptio_gusto.vue'
 
   export default defineComponent({
     name: 'Project',
@@ -28,14 +21,14 @@
       WrapColumn,
       ContentContainer,
       SimpleExternalLink,
-      _ui_color_palette,
-      _jeprendsquoi,
-      _jean_bobby_radio,
-      _awesome_ipsums,
-      _iobeya_whiteboard,
-      _iobeya_mobile_ds,
-      _iobeya_creativity,
-      _axeptio_gusto,
+    },
+    computed: {
+      // Le corps vient du manifeste, désigné par le slug. Plus d'imports ni
+      // d'enregistrements à tenir à jour quand un projet arrive ou part.
+      body() {
+        const project = getProject(this.project.codeName ?? '')
+        return project !== undefined ? bodyOf(project) : undefined
+      },
     },
     props: {
       project: {
@@ -131,7 +124,8 @@
         </WrapColumn>
       </section>
       <Component
-        :is="project.codeName"
+        v-if="body !== undefined"
+        :is="body"
         :scrollProgress="scrollProgress"
         :scrollLimit="scrollLimit"
         :theme="theme"

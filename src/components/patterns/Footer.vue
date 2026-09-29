@@ -1,5 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
   import { store } from '@/utilities/store'
   import type { LocalWeather } from '@/utilities/weather'
   import SimpleExternalLink from '@/components/ui/SimpleExternalLink.vue'
@@ -9,6 +10,7 @@
 
   export default defineComponent({
     name: 'Footer',
+    mixins: [withTheme],
     components: {
       Button,
       SimpleExternalLink,
@@ -20,10 +22,6 @@
       alignment: {
         type: String,
         default: 'LEFT',
-      },
-      theme: {
-        type: String,
-        default: 'DEFAULT',
       },
     },
     data: function () {
@@ -98,7 +96,7 @@
 </script>
 
 <template>
-  <footer class="footer" :data-theme="theme">
+  <footer class="footer" :data-theme="resolvedTheme">
     <div class="footer__tag">
       <span class="footer__tag__content small-label">{{
         $t('global.author')
@@ -117,7 +115,7 @@
         href="https://github.com/a-ng-d/a_ng_d_folio"
         :alt="$t('actions.repository')"
         small
-        :theme="theme === 'DEFAULT' ? 'DARK' : 'DEFAULT'"
+        :theme="resolvedTheme === 'DEFAULT' ? 'DARK' : 'DEFAULT'"
       />
       <span class="footer__tag__content small-label">{{
         $t('global.separator')
@@ -127,7 +125,7 @@
         path="/_attribution"
         :alt="$t('actions.attribution')"
         small
-        :theme="theme === 'DEFAULT' ? 'DARK' : 'DEFAULT'"
+        :theme="resolvedTheme === 'DEFAULT' ? 'DARK' : 'DEFAULT'"
       />
       <span class="footer__tag__content small-label">{{
         $t('global.separator')
@@ -157,7 +155,7 @@
       @click="store.isSoundOn = !store.isSoundOn"
       style="height: calc(var(--footer-tag-height-size) - var(--border-size))"
       :alt="$t('actions.mute')"
-      :theme="theme"
+      :theme="resolvedTheme"
     >
       <template #icon>
         <Volume2 v-if="store.isSoundOn" :size="16" />

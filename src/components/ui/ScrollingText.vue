@@ -1,8 +1,10 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
 
   export default defineComponent({
     name: 'ScrollingText',
+    mixins: [withTheme],
     props: {
       label: {
         type: String,
@@ -20,10 +22,6 @@
         type: Boolean,
         default: false,
       },
-      theme: {
-        type: String,
-        default: 'DEFAULT',
-      },
     },
   })
 </script>
@@ -33,7 +31,7 @@
     v-if="!isSubTitle"
     class="scrolling-text"
     :class="stopped ? 'scrolling-text--stopped' : 'scrolling-text--played'"
-    :data-theme="theme"
+    :data-theme="resolvedTheme"
   >
     <span class="scrolling-text__instance">{{ label }}</span>
     <span class="scrolling-text__instance">{{ label }}</span>
@@ -42,7 +40,7 @@
     v-else-if="isSubTitle"
     class="scrolling-text"
     :class="stopped ? 'scrolling-text--stopped' : 'scrolling-text--played'"
-    :data-theme="theme"
+    :data-theme="resolvedTheme"
   >
     <span class="scrolling-text__instance">{{ label }}</span>
     <span class="scrolling-text__instance">{{ label }}</span>

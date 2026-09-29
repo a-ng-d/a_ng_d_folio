@@ -1,10 +1,12 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
   import { store } from '@/utilities/store'
   import Particles from '@/components/graphics/Particles.vue'
 
   export default defineComponent({
     name: 'Button',
+    mixins: [withTheme],
     components: {
       Particles,
     },
@@ -31,10 +33,6 @@
         default: false,
       },
       alt: String,
-      theme: {
-        type: String,
-        default: 'DEFAULT',
-      },
     },
     data: function () {
       return {
@@ -84,7 +82,7 @@
       @focus="store.isFocus = true"
       @blur="store.isFocus = false"
       :aria-label="alt"
-      :data-theme="theme"
+      :data-theme="resolvedTheme"
     >
       <div class="button__content">
         <div
@@ -124,7 +122,7 @@
       @focus="store.isFocus = true"
       @blur="store.isFocus = false"
       :aria-label="alt"
-      :data-theme="theme"
+      :data-theme="resolvedTheme"
     >
       <div class="button__content">
         <div
@@ -163,7 +161,7 @@
       @mouseout="collapseParticles"
       @focus="store.isFocus = true"
       @blur="store.isFocus = false"
-      :data-theme="theme"
+      :data-theme="resolvedTheme"
       target="_blank"
       :aria-label="alt"
     >

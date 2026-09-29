@@ -1,4 +1,4 @@
-import type { Colors, Filters } from '@/utilities/types'
+import type { Colors, Filters, ProjectTints } from '@/utilities/types'
 
 export const HSLColors: Colors = {
   deepBlack: {
@@ -132,6 +132,13 @@ export const filters: Filters = {
     name: 'BISCAROSSE',
     gradient: 'var(--gradient-biscarosse-sunset)',
   },
+}
+
+// Teintes propres à chaque projet, appliquées au décor 3D quand on ouvre sa page.
+// Elles sont volontairement séparées des ambiances : celles-ci forment un
+// ensemble fermé (AmbientKind), alors que les projets vont et viennent.
+// En phase 2, ce bloc est remplacé par la frontmatter de chaque projet.
+export const projectTints: ProjectTints = {
   _ui_color_palette: {
     hue: '128deg',
     brightness: '1',

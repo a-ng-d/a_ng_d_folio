@@ -1,9 +1,11 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
   import VLazyImage from 'v-lazy-image'
 
   export default defineComponent({
     name: 'Figure',
+    mixins: [withTheme],
     components: {
       VLazyImage,
     },
@@ -26,10 +28,6 @@
       height: {
         type: Number,
         required: true,
-      },
-      theme: {
-        type: String,
-        default: 'DEFAULT',
       },
     },
     watch: {
@@ -92,7 +90,7 @@
 </script>
 
 <template>
-  <figure class="figure" :data-theme="theme">
+  <figure class="figure" :data-theme="resolvedTheme">
     <div
       class="figure__asset"
       :class="isMagnified ? 'figure__asset--magnified' : null"

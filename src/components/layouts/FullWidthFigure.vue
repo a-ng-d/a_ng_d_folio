@@ -1,8 +1,10 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
 
   export default defineComponent({
     name: 'FullWidthFigure',
+    mixins: [withTheme],
     props: {
       center: {
         type: Boolean,
@@ -16,16 +18,12 @@
         type: Boolean,
         default: false,
       },
-      theme: {
-        type: String,
-        default: 'DEFAULT',
-      },
     },
   })
 </script>
 
 <template>
-  <div class="full" :data-theme="theme">
+  <div class="full" :data-theme="resolvedTheme">
     <figure class="figure">
       <div class="figure__asset">
         <slot name="asset"></slot>

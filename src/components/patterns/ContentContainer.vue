@@ -1,26 +1,24 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
   import Container from '@/components/ui/Container.vue'
 
   export default defineComponent({
     name: 'ContentContainer',
+    mixins: [withTheme],
     components: {
       Container,
     },
     props: {
       title: String,
       description: String,
-      theme: {
-        type: String,
-        default: 'DEFAULT',
-      },
     },
   })
 </script>
 
 <template>
   <Container>
-    <div class="content-container__content" :data-theme="theme">
+    <div class="content-container__content" :data-theme="resolvedTheme">
       <slot name="icon"></slot>
       <template v-if="title != undefined">
         <h5>{{ title }}</h5>

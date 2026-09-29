@@ -1,5 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
   import { store } from '@/utilities/store'
   import Button from '@/components/ui/Button.vue'
   import Container from '@/components/ui/Container.vue'
@@ -8,6 +9,7 @@
 
   export default defineComponent({
     name: 'AssetContainer',
+    mixins: [withTheme],
     components: {
       Button,
       Container,
@@ -26,10 +28,6 @@
       unmagnify: {
         type: Boolean,
         default: false,
-      },
-      theme: {
-        type: String,
-        default: 'DEFAULT',
       },
     },
     data: function () {
@@ -73,7 +71,7 @@
     :class="isMagnified ? 'container--magnified' : ''"
     isInteractive
   >
-    <div class="asset-container__content" :data-theme="theme">
+    <div class="asset-container__content" :data-theme="resolvedTheme">
       <div class="asset-container__asset">
         <Transition
           name="fade"
@@ -112,7 +110,7 @@
             :path="sourceLink"
             :alt="alt"
             layout="ICON-ONLY"
-            :theme="theme"
+            :theme="resolvedTheme"
           >
             <template #icon>
               <Component :is="sourceName" :size="24" />

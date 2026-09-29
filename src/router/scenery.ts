@@ -20,7 +20,7 @@ export interface Scenery {
   shape?: ShapeKind
 }
 
-export type AmbientKind = Exclude<keyof Filters, `_${string}`>
+export type AmbientKind = keyof Filters
 
 export type ViewKind =
   | 'HOME'
@@ -69,6 +69,16 @@ export interface PageMeta extends SceneryMeta {
   illustration?: object | string
   background?: HuBrInSaGr
   backgroundImage?: string
+}
+
+// Une route telle que la consomment App, Work et MainMenu.
+// `meta` est PageMeta : une seule définition, celle que vue-router voit aussi
+// via l'augmentation de RouteMeta plus bas.
+export interface Route {
+  path: string
+  name: string
+  component: unknown
+  meta: PageMeta
 }
 
 type Only<T extends PageMeta> = T &

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
   import type { Option } from '@/utilities/types'
   import { store } from '@/utilities/store'
   import Button from '@/components/ui/Button.vue'
@@ -9,6 +10,7 @@
 
   export default defineComponent({
     name: 'Dropdown',
+    mixins: [withTheme],
     components: {
       Button,
       Container,
@@ -22,10 +24,6 @@
         type: Array,
       },
       alt: String,
-      theme: {
-        type: String,
-        default: 'DEFAULT',
-      },
     },
     data: function () {
       return {
@@ -127,15 +125,15 @@
     class="dropdown"
     @keydown.esc="isExpanded = false"
     @focusout="browseOptions"
-    :data-theme="theme"
+    :data-theme="resolvedTheme"
   >
-    <Label v-if="label != undefined" :label="label" :theme="theme" />
+    <Label v-if="label != undefined" :label="label" :theme="resolvedTheme" />
     <Button
       type="secondary"
       :label="allOptions[activeOption].name"
       layout="ICON-RIGHT"
       :alt="alt"
-      :theme="theme"
+      :theme="resolvedTheme"
       @click="openOptions"
       @keyup.space="openOptions"
       extensible

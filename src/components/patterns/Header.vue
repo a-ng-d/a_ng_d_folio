@@ -1,9 +1,11 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
   import Logotype from '@/components/graphics/Logotype.vue'
 
   export default defineComponent({
     name: 'Header',
+    mixins: [withTheme],
     components: {
       Logotype,
     },
@@ -15,10 +17,6 @@
       scrollProgress: {
         type: Number,
         default: 0,
-      },
-      theme: {
-        type: String,
-        default: 'DEFAULT',
       },
     },
     data: function () {
@@ -43,7 +41,7 @@
   <header
     class="main-menu"
     :class="isStuck ? 'main-menu--stuck' : null"
-    :data-theme="theme"
+    :data-theme="resolvedTheme"
   >
     <div class="main-menu__left-part">
       <slot name="left-part"></slot>
@@ -56,7 +54,7 @@
         :aria-label="$t('actions.home')"
       >
       </RouterLink>
-      <Logotype :theme="theme" />
+      <Logotype :theme="resolvedTheme" />
     </div>
     <div class="main-menu__right-part">
       <slot name="right-part"></slot>

@@ -1,8 +1,10 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
 
   export default defineComponent({
     name: 'WrapColumns',
+    mixins: [withTheme],
     props: {
       title: String,
       isSubSection: {
@@ -17,16 +19,12 @@
         type: Boolean,
         default: false,
       },
-      theme: {
-        type: String,
-        default: 'DEFAULT',
-      },
     },
   })
 </script>
 
 <template>
-  <div class="col-w" :data-theme="theme">
+  <div class="col-w" :data-theme="resolvedTheme">
     <template v-if="title != undefined && !isSubSection">
       <h3>{{ title }}</h3>
     </template>

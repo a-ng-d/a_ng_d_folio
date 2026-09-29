@@ -1,8 +1,10 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
 
   export default defineComponent({
     name: 'TwoColumns',
+    mixins: [withTheme],
     props: {
       title: String,
       center: Boolean,
@@ -10,16 +12,12 @@
         type: String,
         default: '1_1',
       },
-      theme: {
-        type: String,
-        default: 'DEFAULT',
-      },
     },
   })
 </script>
 
 <template>
-  <div class="col-2" :data-theme="theme">
+  <div class="col-2" :data-theme="resolvedTheme">
     <template v-if="title != undefined">
       <h3>{{ title }}</h3>
     </template>

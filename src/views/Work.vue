@@ -1,11 +1,11 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
-  import type { Route } from '@/utilities/types'
+  import type { PropType } from 'vue'
+  import type { PageMeta, Route } from '@/router/scenery'
   import Footer from '@/components/patterns/Footer.vue'
   import Button from '@/components/ui/Button.vue'
   import VLazyImage from 'v-lazy-image'
   import { ArrowLeft, ArrowRight, ArrowDown } from 'lucide-vue-next'
-  import { assets } from '@/utilities/assets'
 
   export default defineComponent({
     name: 'Work',
@@ -19,7 +19,7 @@
     },
     props: {
       projects: {
-        type: Array,
+        type: Array as PropType<Route[]>,
         required: true,
       },
       activeProjectPosition: {
@@ -31,16 +31,24 @@
         default: 'DEFAULT',
       },
     },
+    computed: {
+      // Le projet affiché, retrouvé par son slug. Remplace six échelles de
+      // dix branches indexées à la main, qui plafonnaient le site à dix
+      // projets et dont l'une lisait le fond du voisin.
+      active(): PageMeta | undefined {
+        return this.projects.find(
+          (project) => project.meta.codeName === this.activeProjectCodeName
+        )?.meta
+      },
+    },
     data: function () {
       return {
-        activeProjectCodeName: (
-          this.projects[this.activeProjectPosition as number] as Route
-        ).meta.codeName as string,
+        activeProjectCodeName:
+          this.projects[this.activeProjectPosition].meta.codeName ?? '',
         position: this.activeProjectPosition as number,
         duration: 2000 as number,
         direction: 'right' as string,
         touchStart: 0 as number,
-        assets: assets,
       }
     },
     methods: {
@@ -59,14 +67,13 @@
         this.switchProject()
       },
       switchProject() {
-        this.activeProjectCodeName = (
-          this.projects[this.position] as Route
-        ).meta.codeName
-        this.$emit('theme', (this.projects[this.position] as Route).meta.theme)
+        this.activeProjectCodeName =
+          this.projects[this.position].meta.codeName ?? ''
+        this.$emit('theme', this.projects[this.position].meta.theme)
         this.$emit('activeProjectPosition', this.position)
         this.$emit(
           'activeProjectBackground',
-          (this.projects[this.position] as Route).meta.background
+          this.projects[this.position].meta.background
         )
       },
       splitLetters(el: Element) {
@@ -97,7 +104,7 @@
       this.$emit('activeProjectPosition', this.position)
       this.$emit(
         'activeProjectBackground',
-        (this.projects[this.position] as Route).meta.background
+        this.projects[this.position].meta.background
       )
     },
   })
@@ -117,44 +124,9 @@
         class="background__item"
       >
         <div
-          v-if="activeProjectCodeName === (projects[0] as any).meta.codeName"
-          :style="{ background: (projects[0] as any).meta.backgroundImage }"
-        ></div>
-        <div
-          v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName"
-          :style="{ background: (projects[1] as any).meta.backgroundImage }"
-        ></div>
-        <div
-          v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName"
-          :style="{ background: (projects[2] as any).meta.backgroundImage }"
-        ></div>
-        <div
-          v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName"
-          :style="{ background: (projects[4] as any).meta.backgroundImage }"
-        ></div>
-        <div
-          v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName"
-          :style="{ background: (projects[4] as any).meta.backgroundImage }"
-        ></div>
-        <div
-          v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName"
-          :style="{ background: (projects[5] as any).meta.backgroundImage }"
-        ></div>
-        <div
-          v-else-if="activeProjectCodeName === (projects[6] as any).meta.codeName"
-          :style="{ background: (projects[6] as any).meta.backgroundImage }"
-        ></div>
-        <div
-          v-else-if="activeProjectCodeName === (projects[7] as any).meta.codeName"
-          :style="{ background: (projects[7] as any).meta.backgroundImage }"
-        ></div>
-        <div
-          v-else-if="activeProjectCodeName === (projects[8] as any).meta.codeName"
-          :style="{ background: (projects[8] as any).meta.backgroundImage }"
-        ></div>
-        <div
-          v-else-if="activeProjectCodeName === (projects[9] as any).meta.codeName"
-          :style="{ background: (projects[9] as any).meta.backgroundImage }"
+          v-if="active !== undefined"
+          :key="activeProjectCodeName"
+          :style="{ background: active.backgroundImage }"
         ></div>
       </Transition>
     </div>
@@ -177,45 +149,17 @@
             class="work__illustration__item"
           >
             <Vue3Lottie
-              v-if="activeProjectCodeName === (projects[0] as any).meta.codeName"
-              :animationData="(projects[0] as any).meta.illustration"
-            />
-            <Vue3Lottie
-              v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName"
-              :animationData="(projects[1] as any).meta.illustration"
-            />
-            <Vue3Lottie
-              v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName"
-              :animationData="(projects[2] as any).meta.illustration"
-            />
-            <Vue3Lottie
-              v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName"
-              :animationData="(projects[3] as any).meta.illustration"
-            />
-            <Vue3Lottie
-              v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName"
-              :animationData="(projects[4] as any).meta.illustration"
+              v-if="
+                active !== undefined && typeof active.illustration !== 'string'
+              "
+              :key="activeProjectCodeName"
+              :animationData="active.illustration"
             />
             <v-lazy-image
-              v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName"
-              :src="(projects[5] as any).meta.illustration"
-              :alt="$t('work._jeprendsquoi.illustration')"
-            />
-            <Vue3Lottie
-              v-else-if="activeProjectCodeName === (projects[6] as any).meta.codeName"
-              :animationData="(projects[6] as any).meta.illustration"
-            />
-            <Vue3Lottie
-              v-else-if="activeProjectCodeName === (projects[7] as any).meta.codeName"
-              :animationData="(projects[7] as any).meta.illustration"
-            />
-            <Vue3Lottie
-              v-else-if="activeProjectCodeName === (projects[8] as any).meta.codeName"
-              :animationData="(projects[8] as any).meta.illustration"
-            />
-            <Vue3Lottie
-              v-else-if="activeProjectCodeName === (projects[9] as any).meta.codeName"
-              :animationData="(projects[9] as any).meta.illustration"
+              v-else-if="active !== undefined"
+              :key="activeProjectCodeName"
+              :src="active.illustration"
+              :alt="$t(`work.${activeProjectCodeName}.illustration`)"
             />
           </Transition>
         </div>
@@ -230,55 +174,8 @@
                 @before-enter="splitLetters"
                 appear
               >
-                <div
-                  v-if="activeProjectCodeName === (projects[0] as any).meta.codeName"
-                >
-                  <h2>{{ (projects[0] as any).meta.codeName }}</h2>
-                </div>
-                <div
-                  v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName"
-                >
-                  <h2>{{ (projects[1] as any).meta.codeName }}</h2>
-                </div>
-                <div
-                  v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName"
-                >
-                  <h2>{{ (projects[2] as any).meta.codeName }}</h2>
-                </div>
-                <div
-                  v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName"
-                >
-                  <h2>{{ (projects[3] as any).meta.codeName }}</h2>
-                </div>
-                <div
-                  v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName"
-                >
-                  <h2>{{ (projects[4] as any).meta.codeName }}</h2>
-                </div>
-                <div
-                  v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName"
-                >
-                  <h2>{{ (projects[5] as any).meta.codeName }}</h2>
-                </div>
-                <div
-                  v-else-if="activeProjectCodeName === (projects[6] as any).meta.codeName"
-                >
-                  <h2>{{ (projects[6] as any).meta.codeName }}</h2>
-                </div>
-                <div
-                  v-else-if="activeProjectCodeName === (projects[7] as any).meta.codeName"
-                >
-                  <h2>{{ (projects[7] as any).meta.codeName }}</h2>
-                </div>
-                <div
-                  v-else-if="activeProjectCodeName === (projects[8] as any).meta.codeName"
-                >
-                  <h2>{{ (projects[8] as any).meta.codeName }}</h2>
-                </div>
-                <div
-                  v-else-if="activeProjectCodeName === (projects[9] as any).meta.codeName"
-                >
-                  <h2>{{ (projects[9] as any).meta.codeName }}</h2>
+                <div v-if="active !== undefined" :key="activeProjectCodeName">
+                  <h2>{{ active.codeName }}</h2>
                 </div>
               </Transition>
               <Transition
@@ -286,55 +183,8 @@
                 :duration="duration * 1.5"
                 mode="out-in"
               >
-                <div
-                  v-if="activeProjectCodeName === (projects[0] as any).meta.codeName"
-                >
-                  <p>{{ (projects[0] as any).meta.summary }}</p>
-                </div>
-                <div
-                  v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName"
-                >
-                  <p>{{ (projects[1] as any).meta.summary }}</p>
-                </div>
-                <div
-                  v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName"
-                >
-                  <p>{{ (projects[2] as any).meta.summary }}</p>
-                </div>
-                <div
-                  v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName"
-                >
-                  <p>{{ (projects[3] as any).meta.summary }}</p>
-                </div>
-                <div
-                  v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName"
-                >
-                  <p>{{ (projects[4] as any).meta.summary }}</p>
-                </div>
-                <div
-                  v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName"
-                >
-                  <p>{{ (projects[5] as any).meta.summary }}</p>
-                </div>
-                <div
-                  v-else-if="activeProjectCodeName === (projects[6] as any).meta.codeName"
-                >
-                  <p>{{ (projects[6] as any).meta.summary }}</p>
-                </div>
-                <div
-                  v-else-if="activeProjectCodeName === (projects[7] as any).meta.codeName"
-                >
-                  <p>{{ (projects[7] as any).meta.summary }}</p>
-                </div>
-                <div
-                  v-else-if="activeProjectCodeName === (projects[8] as any).meta.codeName"
-                >
-                  <p>{{ (projects[8] as any).meta.summary }}</p>
-                </div>
-                <div
-                  v-else-if="activeProjectCodeName === (projects[9] as any).meta.codeName"
-                >
-                  <p>{{ (projects[9] as any).meta.summary }}</p>
+                <div v-if="active !== undefined" :key="activeProjectCodeName">
+                  <p>{{ active.summary }}</p>
                 </div>
               </Transition>
             </div>
@@ -345,65 +195,9 @@
                 :duration="duration * 1.5"
                 mode="out-in"
               >
-                <li
-                  v-if="activeProjectCodeName === (projects[0] as any).meta.codeName"
-                >
+                <li v-if="active !== undefined" :key="activeProjectCodeName">
                   <h6>{{ $t('global.date') }}</h6>
-                  <p>{{ (projects[0] as any).meta.date }}</p>
-                </li>
-                <li
-                  v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName"
-                >
-                  <h6>{{ $t('global.date') }}</h6>
-                  <p>{{ (projects[1] as any).meta.date }}</p>
-                </li>
-                <li
-                  v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName"
-                >
-                  <h6>{{ $t('global.date') }}</h6>
-                  <p>{{ (projects[2] as any).meta.date }}</p>
-                </li>
-                <li
-                  v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName"
-                >
-                  <h6>{{ $t('global.date') }}</h6>
-                  <p>{{ (projects[3] as any).meta.date }}</p>
-                </li>
-                <li
-                  v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName"
-                >
-                  <h6>{{ $t('global.date') }}</h6>
-                  <p>{{ (projects[4] as any).meta.date }}</p>
-                </li>
-                <li
-                  v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName"
-                >
-                  <h6>{{ $t('global.date') }}</h6>
-                  <p>{{ (projects[5] as any).meta.date }}</p>
-                </li>
-                <li
-                  v-else-if="activeProjectCodeName === (projects[6] as any).meta.codeName"
-                >
-                  <h6>{{ $t('global.date') }}</h6>
-                  <p>{{ (projects[6] as any).meta.date }}</p>
-                </li>
-                <li
-                  v-else-if="activeProjectCodeName === (projects[7] as any).meta.codeName"
-                >
-                  <h6>{{ $t('global.date') }}</h6>
-                  <p>{{ (projects[7] as any).meta.date }}</p>
-                </li>
-                <li
-                  v-else-if="activeProjectCodeName === (projects[8] as any).meta.codeName"
-                >
-                  <h6>{{ $t('global.date') }}</h6>
-                  <p>{{ (projects[8] as any).meta.date }}</p>
-                </li>
-                <li
-                  v-else-if="activeProjectCodeName === (projects[9] as any).meta.codeName"
-                >
-                  <h6>{{ $t('global.date') }}</h6>
-                  <p>{{ (projects[9] as any).meta.date }}</p>
+                  <p>{{ active.date }}</p>
                 </li>
               </Transition>
               <Transition
@@ -412,65 +206,9 @@
                 :duration="duration * 1.6"
                 mode="out-in"
               >
-                <li
-                  v-if="activeProjectCodeName === (projects[0] as any).meta.codeName"
-                >
+                <li v-if="active !== undefined" :key="activeProjectCodeName">
                   <h6>{{ $t('global.type.label') }}</h6>
-                  <p>{{ (projects[0] as any).meta.type }}</p>
-                </li>
-                <li
-                  v-else-if="activeProjectCodeName === (projects[1] as any).meta.codeName"
-                >
-                  <h6>{{ $t('global.type.label') }}</h6>
-                  <p>{{ (projects[1] as any).meta.type }}</p>
-                </li>
-                <li
-                  v-else-if="activeProjectCodeName === (projects[2] as any).meta.codeName"
-                >
-                  <h6>{{ $t('global.type.label') }}</h6>
-                  <p>{{ (projects[2] as any).meta.type }}</p>
-                </li>
-                <li
-                  v-else-if="activeProjectCodeName === (projects[3] as any).meta.codeName"
-                >
-                  <h6>{{ $t('global.type.label') }}</h6>
-                  <p>{{ (projects[3] as any).meta.type }}</p>
-                </li>
-                <li
-                  v-else-if="activeProjectCodeName === (projects[4] as any).meta.codeName"
-                >
-                  <h6>{{ $t('global.type.label') }}</h6>
-                  <p>{{ (projects[4] as any).meta.type }}</p>
-                </li>
-                <li
-                  v-else-if="activeProjectCodeName === (projects[5] as any).meta.codeName"
-                >
-                  <h6>{{ $t('global.type.label') }}</h6>
-                  <p>{{ (projects[5] as any).meta.type }}</p>
-                </li>
-                <li
-                  v-else-if="activeProjectCodeName === (projects[6] as any).meta.codeName"
-                >
-                  <h6>{{ $t('global.type.label') }}</h6>
-                  <p>{{ (projects[6] as any).meta.type }}</p>
-                </li>
-                <li
-                  v-else-if="activeProjectCodeName === (projects[7] as any).meta.codeName"
-                >
-                  <h6>{{ $t('global.type.label') }}</h6>
-                  <p>{{ (projects[7] as any).meta.type }}</p>
-                </li>
-                <li
-                  v-else-if="activeProjectCodeName === (projects[8] as any).meta.codeName"
-                >
-                  <h6>{{ $t('global.type.label') }}</h6>
-                  <p>{{ (projects[8] as any).meta.type }}</p>
-                </li>
-                <li
-                  v-else-if="activeProjectCodeName === (projects[9] as any).meta.codeName"
-                >
-                  <h6>{{ $t('global.type.label') }}</h6>
-                  <p>{{ (projects[9] as any).meta.type }}</p>
+                  <p>{{ active.type }}</p>
                 </li>
               </Transition>
             </ul>

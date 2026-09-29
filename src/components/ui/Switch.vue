@@ -1,10 +1,12 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
   import { store } from '@/utilities/store'
   import Particles from '@/components/graphics/Particles.vue'
 
   export default defineComponent({
     name: 'Switch',
+    mixins: [withTheme],
     components: {
       Particles,
     },
@@ -23,10 +25,6 @@
         required: true,
       },
       alt: String,
-      theme: {
-        type: String,
-        default: 'DEFAULT',
-      },
     },
     data: function () {
       return {
@@ -44,7 +42,7 @@
 </script>
 
 <template>
-  <div class="switch" :data-theme="theme">
+  <div class="switch" :data-theme="resolvedTheme">
     <input
       type="checkbox"
       name="swt"

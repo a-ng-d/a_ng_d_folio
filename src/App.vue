@@ -1,9 +1,10 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import { store } from '@/utilities/store'
-  import type { Route } from '@/utilities/types'
+  import type { Route } from '@/router/scenery'
   import type { SceneOverride } from '@/glitchscape/types'
-import type { ThemeKind } from '@/router/scenery'
+  import type { ThemeKind } from '@/router/scenery'
+  import { provideTheme } from '@/composables/theme'
   import Logotype from '@/components/graphics/Logotype.vue'
   import MainMenu from '@/contexts/MainMenu.vue'
   import Glitchscape from '@/components/graphics/Glitchscape.vue'
@@ -47,6 +48,13 @@ import type { ThemeKind } from '@/router/scenery'
         pageTheme: 'DEFAULT' as ThemeKind,
         isBackgroundDark: false as boolean,
       }
+    },
+    provide() {
+      // Source unique du thème pour tout l'arbre. Les composants de
+      // présentation l'injectent au lieu de se le faire passer de parent en
+      // parent — c'est ce qui permettra aux composants rendus depuis un
+      // Markdown de suivre le thème sans qu'on le leur transmette.
+      return provideTheme(() => this.theme as ThemeKind)
     },
     computed: {
       theme(): ThemeKind {
@@ -197,14 +205,20 @@ import type { ThemeKind } from '@/router/scenery'
         this.isExpanded = false
       },
       getProjects(src: Array<Route>) {
-        let projects: Array<Route> = src.map((a: Route) => a)
-        projects = projects
+        // `position` cumule aujourd'hui trois rôles : ordre, visibilité et
+        // identité d'index dans le carrousel. Une position absente vaut
+        // « non listé », au même titre que -1. La phase 2 remplace tout ceci
+        // par le manifeste, où visibilité et ordre sont deux champs distincts.
+        return src
           .filter(
             (project: Route) =>
-              project.meta.view === 'PROJECT' && project.meta.position >= 0
+              project.meta.view === 'PROJECT' &&
+              (project.meta.position ?? -1) >= 0
           )
-          .sort((a: Route, b: Route) => a.meta.position - b.meta.position)
-        return projects
+          .sort(
+            (a: Route, b: Route) =>
+              (a.meta.position ?? 0) - (b.meta.position ?? 0)
+          )
       },
       getScreenContext() {
         window.innerWidth < 1280

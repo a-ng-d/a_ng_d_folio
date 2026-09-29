@@ -1,10 +1,12 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
   import Button from '@/components/ui/Button.vue'
   import { ArrowUp, ArrowRight, ArrowLeft } from 'lucide-vue-next'
 
   export default defineComponent({
     name: 'Navigation',
+    mixins: [withTheme],
     components: {
       Button,
       ArrowUp,
@@ -15,10 +17,6 @@
       previousPage: String,
       rootPage: String,
       nextPage: String,
-      theme: {
-        type: String,
-        default: 'DEFAULT',
-      },
     },
   })
 </script>
@@ -30,7 +28,7 @@
       :path="previousPage"
       layout="ICON-ONLY"
       :alt="$t('actions.projects.previous')"
-      :theme="theme"
+      :theme="resolvedTheme"
     >
       <template #icon>
         <ArrowLeft :size="24" />
@@ -41,7 +39,7 @@
       :path="rootPage"
       layout="ICON-ONLY"
       :alt="$t('actions.projects.go')"
-      :theme="theme"
+      :theme="resolvedTheme"
     >
       <template #icon>
         <ArrowUp :size="24" />
@@ -52,7 +50,7 @@
       :path="nextPage"
       layout="ICON-ONLY"
       :alt="$t('actions.projects.next')"
-      :theme="theme"
+      :theme="resolvedTheme"
     >
       <template #icon>
         <ArrowRight :size="24" />

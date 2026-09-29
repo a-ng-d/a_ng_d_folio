@@ -1,10 +1,12 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
   import Button from '@/components/ui/Button.vue'
   import Container from '@/components/ui/Container.vue'
 
   export default defineComponent({
     name: 'LinkContainer',
+    mixins: [withTheme],
     components: {
       Button,
       Container,
@@ -14,17 +16,13 @@
       cta: String,
       href: String,
       alt: String,
-      theme: {
-        type: String,
-        default: 'DEFAULT',
-      },
     },
   })
 </script>
 
 <template>
   <Container>
-    <div class="link-container__content" :data-theme="theme">
+    <div class="link-container__content" :data-theme="resolvedTheme">
       <div class="link-container__icon">
         <slot name="icon"></slot>
       </div>
@@ -38,7 +36,7 @@
           :label="cta"
           layout="SIMPLE"
           :alt="alt"
-          :theme="theme"
+          :theme="resolvedTheme"
         />
       </div>
     </div>

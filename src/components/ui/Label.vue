@@ -1,8 +1,10 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
 
   export default defineComponent({
     name: 'Label',
+    mixins: [withTheme],
     props: {
       label: {
         type: String,
@@ -24,10 +26,6 @@
         type: Boolean,
         default: false,
       },
-      theme: {
-        type: String,
-        default: 'DEFAULT',
-      },
     },
   })
 </script>
@@ -35,7 +33,7 @@
 <template>
   <div
     class="label"
-    :data-theme="theme"
+    :data-theme="resolvedTheme"
     :data-underlined="underlined"
     :data-highlighted="highlighted"
   >

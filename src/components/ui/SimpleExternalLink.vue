@@ -1,11 +1,13 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
   import { store } from '@/utilities/store'
   import { ExternalLink } from 'lucide-vue-next'
   import Label from '@/components/ui/Label.vue'
 
   export default defineComponent({
     name: 'SimpleExternalLink',
+    mixins: [withTheme],
     components: {
       ExternalLink,
       Label,
@@ -28,10 +30,6 @@
         type: Boolean,
         default: false,
       },
-      theme: {
-        type: String,
-        default: 'DEFAULT',
-      },
     },
     data: function () {
       return {
@@ -49,7 +47,7 @@
     :aria-label="alt"
     @focus="store.isFocus = true"
     @blur="store.isFocus = false"
-    :data-theme="theme"
+    :data-theme="resolvedTheme"
   >
     <div class="external-link__icon">
       <ExternalLink :size="small ? 16 : large ? 32 : 24" />
@@ -60,7 +58,7 @@
         underlined
         :small="small ? true : false"
         :large="large ? true : false"
-        :theme="theme"
+        :theme="resolvedTheme"
       />
     </div>
   </a>

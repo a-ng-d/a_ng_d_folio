@@ -1,5 +1,3 @@
-import type { SceneOverride } from '@/glitchscape/types'
-
 export interface Colors {
   deepBlack: HuSaLiTy
   titaniumWhite: HuSaLiTy
@@ -13,6 +11,8 @@ export interface Colors {
   clearWater: HuSaLiTy
 }
 
+// Les ambiances forment un ensemble fermé : AmbientKind en dérive directement,
+// donc toute ambiance inconnue est une erreur de compilation.
 export interface Filters {
   creamySun: HuBrInSaGr
   nightly: HuBrInSaGr
@@ -21,15 +21,11 @@ export interface Filters {
   grayscale: HuBrInSaGr
   softSteel: HuBrInSaGr
   biscarosse: HuBrInSaGr
-  _ui_color_palette: HuBrInSaGr
-  _jeprendsquoi: HuBrInSaGr
-  _jean_bobby_radio: HuBrInSaGr
-  _awesome_ipsums: HuBrInSaGr
-  _iobeya_whiteboard: HuBrInSaGr
-  _iobeya_mobile_ds: HuBrInSaGr
-  _iobeya_creativity: HuBrInSaGr
-  _axeptio_gusto: HuBrInSaGr
 }
+
+// Les teintes projet sont ouvertes : ajouter un projet ne doit jamais
+// demander de modifier une interface.
+export type ProjectTints = Record<string, HuBrInSaGr>
 
 export interface HuSaLiTy {
   hue: number
@@ -92,32 +88,6 @@ export interface Row {
   width: number
   height: number
   x: number
-}
-
-export interface Route {
-  path: string
-  name: string
-  component: unknown
-  meta: Meta
-}
-
-export interface Meta {
-  title: string
-  codeName: string
-  description: string
-  summary: string
-  date: string
-  objectives: Array<string>
-  roles: Array<string>
-  position: number
-  view: string
-  illustration: JSONObject
-  background: HuBrInSaGr
-  backgroundImage: string
-  theme: string
-  filter: HuBrInSaGr
-  quality: string
-  scene?: SceneOverride
 }
 
 export interface Option {

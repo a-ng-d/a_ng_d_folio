@@ -1,7 +1,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import { store } from '@/utilities/store'
-  import type { Route } from '@/utilities/types'
+  import type { Route } from '@/router/scenery'
   import Header from '@/components/patterns/Header.vue'
   import Button from '@/components/ui/Button.vue'
   import Pagination from '@/components/ui/Pagination.vue'

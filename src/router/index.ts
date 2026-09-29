@@ -10,17 +10,27 @@ import Lab from '@/views/Lab.vue'
 import Contact from '@/views/Contact.vue'
 import Attribution from '@/views/Attribution.vue'
 import Unknown from '@/views/Unknown.vue'
-import JBRAnimation from '@/assets/animations/_work/_jean_bobby_radio/animation.json'
-import UCPAnimation from '@/assets/animations/_work/_ui_color_palette/animation.json'
-import IMDSAnimation from '@/assets/animations/_work/_iobeya_mobile_ds/animation.json'
-import AIAnimation from '@/assets/animations/_work/_awesome_ipsums/animation.json'
-import IWAnimation from '@/assets/animations/_work/_iobeya_whiteboard/animation.json'
-import ICAnimation from '@/assets/animations/_work/_iobeya_creativity/animation.json'
-import AGAnimation from '@/assets/animations/_work/_axeptio_gusto/animation.json'
-import { filters } from '@/utilities/colors'
 import { INSPECTOR_DEFAULT } from '@/glitchscape/dispositions'
 import { page, scenery } from '@/router/scenery'
-import { assets } from '@/utilities/assets'
+import {
+  illustrationOf,
+  pathOf,
+  positionOf,
+  routableProjects,
+} from '@/content/work'
+import type { WorkProject } from '@/content/types'
+
+// Le texte vient de la frontmatter si elle le porte, sinon de en.json.
+// C'est ce qui rend la bascule du contenu réversible, projet par projet.
+type TextField = keyof WorkProject['text']
+
+const text = (project: WorkProject, field: TextField, key: string): string =>
+  (project.text[field] as string | undefined) ??
+  i18n.global.t(`work.${project.slug}.${key}`)
+
+const list = (project: WorkProject, field: TextField, key: string): string[] =>
+  (project.text[field] as string[] | undefined) ??
+  i18n.global.t(`work.${project.slug}.${key}`).split(', ')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -124,259 +134,34 @@ const router = createRouter({
         }),
       }),
     },
-    {
-      path: '/_work/_ui_color_palette',
-      name: '_UI_COLOR_PALETTE',
+    // Les routes projet sont dérivées du manifeste : déposer un dossier sous
+    // content/work/ suffit à en créer une. En production seuls les projets
+    // publiés en obtiennent une ; en développement les brouillons aussi, pour
+    // qu'on puisse les relire à leur URL sans les exposer.
+    ...routableProjects().map((project) => ({
+      path: pathOf(project.slug),
+      name: project.slug.toUpperCase(),
       component: Project,
       meta: page({
-        title: i18n.global.t('work._ui_color_palette.title'),
-        codeName: i18n.global.t('work._ui_color_palette.shortTitle'),
-        description: i18n.global.t('work._ui_color_palette.description'),
-        summary: i18n.global.t('work._ui_color_palette.shortDescription'),
-        date: i18n.global.t('work._ui_color_palette.misc.date'),
-        objectives: i18n.global
-          .t('work._ui_color_palette.misc.objectives')
-          .split(', '),
-        roles: i18n.global.t('work._ui_color_palette.misc.roles').split(', '),
-        type: i18n.global.t('work._ui_color_palette.misc.type'),
-        position: 0,
-        view: 'PROJECT',
-        illustration: UCPAnimation,
-        background: filters._ui_color_palette,
-        backgroundImage: 'none',
-        theme: 'DEFAULT',
-        ...scenery({
-          disposition: 'DUNES',
-          flow: 'STILL',
-          ambient: 'grayscale',
-          shape: 'ROUND',
-          live: true,
-          wireframe: true,
-        }),
+        title: text(project, 'title', 'title'),
+        // Le slug fait foi. Il servait jusqu'ici de chaîne i18n, ce qui
+        // rendait le rendu du corps dépendant d'un fichier de traduction.
+        codeName: project.slug,
+        description: text(project, 'description', 'description'),
+        summary: text(project, 'summary', 'shortDescription'),
+        date: text(project, 'date', 'misc.date'),
+        objectives: list(project, 'objectives', 'misc.objectives'),
+        roles: list(project, 'roles', 'misc.roles'),
+        type: text(project, 'type', 'misc.type'),
+        position: positionOf(project.slug),
+        view: 'PROJECT' as const,
+        illustration: illustrationOf(project),
+        background: project.tint,
+        backgroundImage: project.backgroundImage,
+        theme: project.theme,
+        ...scenery(project.scenery),
       }),
-    },
-    {
-      path: '/_work/_axeptio_gusto',
-      name: '_AXEPTIO_GUSTO',
-      component: Project,
-      meta: page({
-        title: i18n.global.t('work._axeptio_gusto.title'),
-        codeName: i18n.global.t('work._axeptio_gusto.shortTitle'),
-        description: i18n.global.t('work._axeptio_gusto.description'),
-        summary: i18n.global.t('work._axeptio_gusto.shortDescription'),
-        date: i18n.global.t('work._axeptio_gusto.misc.date'),
-        objectives: i18n.global
-          .t('work._axeptio_gusto.misc.objectives')
-          .split(', '),
-        roles: i18n.global.t('work._axeptio_gusto.misc.roles').split(', '),
-        type: i18n.global.t('work._axeptio_gusto.misc.type'),
-        position: 1,
-        view: 'PROJECT',
-        illustration: AGAnimation,
-        background: filters._axeptio_gusto,
-        backgroundImage:
-          'url(/images/_work/_axeptio_gusto/background.webp) 0% 0% / cover no-repeat',
-        theme: 'DEFAULT',
-        ...scenery({
-          disposition: 'DUNES',
-          flow: 'STILL',
-          ambient: 'grayscale',
-          shape: 'ROUND',
-          live: true,
-          wireframe: true,
-        }),
-      }),
-    },
-    {
-      path: '/_work/_iobeya_whiteboard',
-      name: '_IOBEYA_WHITEBOARD',
-      component: Project,
-      meta: page({
-        title: i18n.global.t('work._iobeya_whiteboard.title'),
-        codeName: i18n.global.t('work._iobeya_whiteboard.shortTitle'),
-        description: i18n.global.t('work._iobeya_whiteboard.description'),
-        summary: i18n.global.t('work._iobeya_whiteboard.shortDescription'),
-        date: i18n.global.t('work._iobeya_whiteboard.misc.date'),
-        objectives: i18n.global
-          .t('work._iobeya_whiteboard.misc.objectives')
-          .split(', '),
-        roles: i18n.global.t('work._iobeya_whiteboard.misc.roles').split(', '),
-        type: i18n.global.t('work._iobeya_whiteboard.misc.type'),
-        position: 2,
-        view: 'PROJECT',
-        illustration: IWAnimation,
-        background: filters._iobeya_whiteboard,
-        backgroundImage:
-          'url(/images/_work/_iobeya_whiteboard/background.webp) 0% 0% no-repeat',
-        theme: 'DEFAULT',
-        ...scenery({
-          disposition: 'DUNES',
-          flow: 'STILL',
-          ambient: 'grayscale',
-          shape: 'ROUND',
-          live: true,
-          wireframe: true,
-        }),
-      }),
-    },
-    {
-      path: '/_work/_iobeya_mobile_ds',
-      name: '_IOBEYA_MOBILE_DS',
-      component: Project,
-      meta: page({
-        title: i18n.global.t('work._iobeya_mobile_ds.title'),
-        codeName: i18n.global.t('work._iobeya_mobile_ds.shortTitle'),
-        description: i18n.global.t('work._iobeya_mobile_ds.description'),
-        summary: i18n.global.t('work._iobeya_mobile_ds.shortDescription'),
-        date: i18n.global.t('work._iobeya_mobile_ds.misc.date'),
-        objectives: i18n.global
-          .t('work._iobeya_mobile_ds.misc.objectives')
-          .split(', '),
-        roles: i18n.global.t('work._iobeya_mobile_ds.misc.roles').split(', '),
-        type: i18n.global.t('work._iobeya_mobile_ds.misc.type'),
-        position: 3,
-        view: 'PROJECT',
-        illustration: IMDSAnimation,
-        background: filters._iobeya_mobile_ds,
-        backgroundImage:
-          'url(/images/_work/_iobeya_mobile_ds/background.webp) 0% 0% / cover no-repeat',
-        theme: 'DEFAULT',
-        ...scenery({
-          disposition: 'DUNES',
-          flow: 'STILL',
-          ambient: 'grayscale',
-          shape: 'ROUND',
-          live: true,
-          wireframe: true,
-        }),
-      }),
-    },
-    {
-      path: '/_work/_iobeya_creativity',
-      name: '_IOBEYA_CREATIVITY',
-      component: Project,
-      meta: page({
-        title: i18n.global.t('work._iobeya_creativity.title'),
-        codeName: i18n.global.t('work._iobeya_creativity.shortTitle'),
-        description: i18n.global.t('work._iobeya_creativity.description'),
-        summary: i18n.global.t('work._iobeya_creativity.shortDescription'),
-        date: i18n.global.t('work._iobeya_creativity.misc.date'),
-        objectives: i18n.global
-          .t('work._iobeya_creativity.misc.objectives')
-          .split(', '),
-        roles: i18n.global.t('work._iobeya_creativity.misc.roles').split(', '),
-        type: i18n.global.t('work._iobeya_creativity.misc.type'),
-        position: 4,
-        view: 'PROJECT',
-        illustration: ICAnimation,
-        background: filters._iobeya_creativity,
-        backgroundImage:
-          'url(/images/_work/_iobeya_creativity/background.webp) 0% 0% / cover no-repeat',
-        theme: 'DEFAULT',
-        ...scenery({
-          disposition: 'DUNES',
-          flow: 'STILL',
-          ambient: 'grayscale',
-          shape: 'ROUND',
-          live: true,
-          wireframe: true,
-        }),
-      }),
-    },
-    {
-      path: '/_work/_jeprendsquoi',
-      name: '_JEPRENDSQUOI',
-      component: Project,
-      meta: page({
-        title: i18n.global.t('work._jeprendsquoi.title'),
-        codeName: i18n.global.t('work._jeprendsquoi.shortTitle'),
-        description: i18n.global.t('work._jeprendsquoi.description'),
-        summary: i18n.global.t('work._jeprendsquoi.shortDescription'),
-        date: i18n.global.t('work._jeprendsquoi.misc.date'),
-        objectives: i18n.global
-          .t('work._jeprendsquoi.misc.objectives')
-          .split(', '),
-        roles: i18n.global.t('work._jeprendsquoi.misc.roles').split(', '),
-        type: i18n.global.t('work._jeprendsquoi.misc.type'),
-        position: 5,
-        view: 'PROJECT',
-        illustration: assets._jeprendsquoi[0],
-        background: filters._jeprendsquoi,
-        backgroundImage:
-          'url(/images/_work/_jeprendsquoi/background.svg) 50% / cover no-repeat',
-        theme: 'DEFAULT',
-        ...scenery({
-          disposition: 'DUNES',
-          flow: 'STILL',
-          ambient: 'grayscale',
-          shape: 'ROUND',
-          live: true,
-          wireframe: true,
-        }),
-      }),
-    },
-    {
-      path: '/_work/_jean_bobby_radio',
-      name: '_JEAN_BOBBY_RADIO',
-      component: Project,
-      meta: page({
-        title: i18n.global.t('work._jean_bobby_radio.title'),
-        codeName: i18n.global.t('work._jean_bobby_radio.shortTitle'),
-        description: i18n.global.t('work._jean_bobby_radio.description'),
-        summary: i18n.global.t('work._jean_bobby_radio.shortDescription'),
-        date: i18n.global.t('work._jean_bobby_radio.misc.date'),
-        objectives: i18n.global
-          .t('work._jean_bobby_radio.misc.objectives')
-          .split(', '),
-        roles: i18n.global.t('work._jean_bobby_radio.misc.roles').split(', '),
-        type: i18n.global.t('work._jean_bobby_radio.misc.type'),
-        position: -1,
-        view: 'PROJECT',
-        illustration: JBRAnimation,
-        background: filters._jean_bobby_radio,
-        backgroundImage: 'none',
-        theme: 'DEFAULT',
-        ...scenery({
-          disposition: 'DUNES',
-          flow: 'STILL',
-          ambient: 'grayscale',
-          shape: 'ROUND',
-          live: true,
-          wireframe: true,
-        }),
-      }),
-    },
-    {
-      path: '/_work/_awesome_ipsums',
-      name: '_AWESOME_IPSUMS',
-      component: Project,
-      meta: page({
-        title: i18n.global.t('work._awesome_ipsums.title'),
-        codeName: i18n.global.t('work._awesome_ipsums.shortTitle'),
-        description: i18n.global.t('work._awesome_ipsums.description'),
-        summary: i18n.global.t('work._awesome_ipsums.shortDescription'),
-        date: i18n.global.t('work._awesome_ipsums.misc.date'),
-        objectives: i18n.global
-          .t('work._awesome_ipsums.misc.objectives')
-          .split(', '),
-        roles: i18n.global.t('work._awesome_ipsums.misc.roles').split(', '),
-        type: i18n.global.t('work._awesome_ipsums.misc.type'),
-        position: -1,
-        view: 'PROJECT',
-        illustration: AIAnimation,
-        background: filters._awesome_ipsums,
-        backgroundImage: 'none',
-        theme: 'DARK',
-        ...scenery({
-          disposition: 'DUNES',
-          flow: 'STILL',
-          ambient: 'grayscale',
-          shape: 'ROUND',
-          live: true,
-          wireframe: true,
-        }),
-      }),
-    },
+    })),
     {
       path: '/_contact',
       name: '_CONTACT',

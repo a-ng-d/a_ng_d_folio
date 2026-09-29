@@ -1,10 +1,12 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import { withTheme } from '@/composables/theme'
   import { store } from '@/utilities/store'
   import Label from '@/components/ui/Label.vue'
 
   export default defineComponent({
     name: 'SimpleLink',
+    mixins: [withTheme],
     components: {
       Label,
     },
@@ -26,10 +28,6 @@
         type: Boolean,
         default: false,
       },
-      theme: {
-        type: String,
-        default: 'DEFAULT',
-      },
     },
     data: function () {
       return {
@@ -46,7 +44,7 @@
     :aria-label="alt"
     @focus="store.isFocus = true"
     @blur="store.isFocus = false"
-    :data-theme="theme"
+    :data-theme="resolvedTheme"
   >
     <div class="internal-link__label">
       <Label
@@ -54,7 +52,7 @@
         underlined
         :small="small ? true : false"
         :large="large ? true : false"
-        :theme="theme"
+        :theme="resolvedTheme"
       />
     </div>
   </RouterLink>
