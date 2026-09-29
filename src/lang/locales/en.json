@@ -1,7 +1,6 @@
 {
   "title": "@:global.author@:global.separator{'Product Builder / Designer / Engineer'}",
   "glossary": {
-    "home": "_Home",
     "universe": "_Universe",
     "core": "_Core_story{breakLine}_and_values",
     "work": "_Selected{breakLine}_work",
@@ -69,7 +68,6 @@
     "navigate": "Navigate between projects by using the arrows",
     "overview": "Project at a glance",
     "date": "Date",
-    "status": "Status",
     "type": {
       "label": "Type",
       "side": "Side Project",
@@ -87,14 +85,7 @@
     "versions": "Versions",
     "downloads": "Downloads",
     "credit": "Credit",
-    "takeaways": "Takeaways!",
-    "iobeya": "iObeya",
-    "razorfish": "Razorfish",
-    "axeptio": "Axeptio",
-    "team": "team collaboration",
-    "thinking": "design thinking",
-    "system": "design system",
-    "uicp": "UI Color Palette"
+    "takeaways": "Takeaways!"
   },
   "home": {
     "author": "aurélien_grimaud_",
@@ -131,8 +122,7 @@
     }
   },
   "id": {
-    "title": "@:glossary.id@:global.separator@:global.author",
-    "friendlyName": "@:glossary.id"
+    "title": "@:glossary.id@:global.separator@:global.author"
   },
   "universe": {
     "title": "@:glossary.universe@:global.separator@:global.author",
@@ -224,12 +214,10 @@
     }
   },
   "work": {
-    "title": "@:glossary.work@:global.separator@:global.author",
-    "friendlyName": "@:glossary.work"
+    "title": "@:glossary.work@:global.separator@:global.author"
   },
   "lab": {
     "title": "@:glossary.lab@:global.separator@:global.author",
-    "friendlyName": "@:glossary.lab",
     "alt": "Image from an external source"
   },
   "contact": {
