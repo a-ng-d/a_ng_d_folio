@@ -39,7 +39,7 @@ const PAPER_BLEND = 0.3
 
 const SKIRT = 2
 
-const WIRE_SPEED = 0.025
+const WIRE_SPEED = 0.04
 
 const WIRE_LINE_RAMP = 0.6
 

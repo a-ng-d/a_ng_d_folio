@@ -5,7 +5,7 @@ import { bend } from '@/glitchscape/bend'
 import { HSLColors } from '@/utilities/colors'
 import { doMap, lerp, random, randomFloat, wrap } from '@/utilities/operations'
 
-const WIRE_SPEED = 0.025
+const WIRE_SPEED = 0.04
 
 const RISE_BAND = 0.2
 
