@@ -35,6 +35,8 @@
 
   const WEATHER_EVERY = 900000
 
+const INTRO_RELIEF = 0.28
+
   export default defineComponent({
     name: 'Glitchscape',
     emits: ['dark'],
@@ -172,6 +174,13 @@
               : scene.mist,
         }
       },
+      stagedScene(): SceneConfig {
+        const scene = this.liveScene
+
+        return this.store.isSceneRevealed
+          ? scene
+          : { ...scene, relief: scene.relief * INTRO_RELIEF }
+      },
       mistStyle(): string {
         const ground = this.liveScene.palette.ground,
           tone = (alpha: number) =>
@@ -217,7 +226,7 @@
       scrollProgress(to: number) {
         this.controller?.setScroll(to, this.scrollLimit)
       },
-      liveScene: {
+      stagedScene: {
         handler(to: SceneConfig) {
           this.controller?.setScene(to)
         },
@@ -274,7 +283,7 @@
     mounted: function () {
       this.controller = createGlitchscape({
         parent: 'sketch',
-        scene: this.liveScene,
+        scene: this.stagedScene,
         quality: (this.quality === 'LOW' ? 'LOW' : 'HIGH') as QualityKind,
         device: this.store.device,
       })

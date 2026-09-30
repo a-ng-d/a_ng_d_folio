@@ -10,6 +10,7 @@ import Vue3Lottie from 'vue3-lottie'
 import NProgress from 'nprogress'
 
 const app = createApp(App),
+  stage = document.getElementById('app') as HTMLElement,
   loader = document.getElementById('loader') as HTMLElement,
   feedback = document.getElementById('feedback') as HTMLAudioElement
 
@@ -43,6 +44,8 @@ document.addEventListener('keydown', unlockAudio, { once: true })
 document.addEventListener('pointerdown', unlockAudio, { once: true })
 
 if (import.meta.env.MODE != 'development') {
+  store.isSceneRevealed = false
+
   // Progress bar
   NProgress.configure({
     showSpinner: false,
@@ -82,20 +85,25 @@ if (import.meta.env.MODE != 'development') {
 
     loader.classList.remove('loader--loaded')
 
+    stage.classList.add('app--arriving')
+
     app
       .use(router)
       .use(i18n)
       .use(Vue3Lottie, { name: 'Vue3Lottie' })
       .mount('#app')
 
-    setTimeout(
-      () => loader.classList.replace('loader--enter', 'loader--leave'),
-      2000
-    )
+    setTimeout(() => {
+      loader.classList.replace('loader--enter', 'loader--leave')
+      stage.classList.add('app--arrived')
+      store.isSceneRevealed = true
+    }, 2000)
+
     setTimeout(() => {
       Loop.destroy()
       loader.remove()
-    }, 4800)
+      stage.classList.remove('app--arriving', 'app--arrived')
+    }, 4400)
   }
 } else {
   Loop.destroy()
