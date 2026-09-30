@@ -76,7 +76,7 @@ const router = createRouter({
       meta: page({
         title: i18n.global.t('universe.title'),
         view: 'UNIVERSE',
-        theme: 'DARK',
+        theme: 'DEFAULT',
         ...scenery({
           disposition: 'SWARM',
           flow: 'UP',

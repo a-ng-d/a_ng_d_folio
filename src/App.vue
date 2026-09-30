@@ -4,6 +4,7 @@
   import type { Route } from '@/router/scenery'
   import type { SceneOverride } from '@/glitchscape/types'
   import type { ThemeKind } from '@/router/scenery'
+import { invertTheme } from '@/router/scenery'
   import { provideTheme } from '@/composables/theme'
   import Logotype from '@/components/graphics/Logotype.vue'
   import MainMenu from '@/contexts/MainMenu.vue'
@@ -54,7 +55,9 @@
     },
     computed: {
       theme(): ThemeKind {
-        return this.isBackgroundDark ? 'DARK' : this.pageTheme
+        return this.isBackgroundDark
+          ? invertTheme(this.pageTheme)
+          : this.pageTheme
       },
       isMuted(): boolean {
         return !this.store.isSoundOn || !this.store.isAudioUnlocked

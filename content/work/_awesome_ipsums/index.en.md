@@ -1,7 +1,7 @@
 ---
 published: true
 order: 7
-theme: DARK
+theme: DEFAULT
 
 title: '_awesome_ipsums@:global.separator@:global.author'
 shortTitle: _awesome_ipsums
