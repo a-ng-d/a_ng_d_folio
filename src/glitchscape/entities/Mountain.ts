@@ -39,7 +39,9 @@ const PAPER_BLEND = 0.3
 
 const SKIRT = 2
 
-const WIRE_SPEED = 0.06
+const WIRE_SPEED = 0.025
+
+const WIRE_LINE_RAMP = 0.6
 
 const RISE_BAND = 0.2
 
@@ -142,7 +144,13 @@ export class Mountain {
     this.shape = hasShapeChanged ? resolveShape(this.request) : this.shape
     this.turbulence = stage.scene.turbulence
 
-    if (hasResolutionChanged) {
+    const isLoweringDetail =
+      hasResolutionChanged && stage.resolution < this.resolution
+
+    if (
+      hasResolutionChanged &&
+      (!isLoweringDetail || this.params.wire >= 0.5)
+    ) {
       this.resolution = stage.resolution
       this.profile = resampleProfile(this.profile, this.resolution)
       this.target = this.build(stage)
@@ -350,7 +358,8 @@ export class Mountain {
     )
 
     const shown = corrupted !== null ? corrupted : tint,
-      wire = this.params.wire
+      wire = this.params.wire,
+      lineFade = clamp(wire / WIRE_LINE_RAMP, 0, 1)
 
     sk.push()
     sk.translate(placed.x, placed.y, placed.z)
@@ -369,7 +378,12 @@ export class Mountain {
 
     if (wire > 0.005) {
       sk.noFill()
-      sk.stroke(shown.hue, shown.saturation, shown.lightness, opacity * wire)
+      sk.stroke(
+        shown.hue,
+        shown.saturation,
+        shown.lightness,
+        opacity * lineFade
+      )
       sk.strokeWeight(1)
       this.outline(sk)
     }
