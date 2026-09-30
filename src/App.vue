@@ -60,7 +60,7 @@ import { invertTheme } from '@/router/scenery'
           : this.pageTheme
       },
       isMuted(): boolean {
-        return !this.store.isSoundOn || !this.store.isAudioUnlocked
+        return !this.store.isSoundOn
       },
     },
     watch: {
@@ -222,9 +222,6 @@ import { invertTheme } from '@/router/scenery'
         window.innerWidth < 1280
           ? (this.store.device = 'MOBILE')
           : (this.store.device = 'DESKTOP')
-        this.store.device === 'MOBILE'
-          ? (this.store.isSoundOn = false)
-          : (this.store.isSoundOn = true)
       },
       isSameContext(to: string) {
         if (this.previousPath === to) return false
@@ -234,6 +231,7 @@ import { invertTheme } from '@/router/scenery'
     created: function () {
       window.addEventListener('resize', this.getScreenContext)
       this.getScreenContext()
+      this.store.isSoundOn = this.store.device !== 'MOBILE'
     },
   })
 </script>

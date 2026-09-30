@@ -21,6 +21,7 @@
     tintPalette,
   } from '@/glitchscape/ambience'
   import { resolveFlow } from '@/glitchscape/flow'
+import { lerp } from '@/utilities/operations'
   import { filters } from '@/utilities/colors'
   import type { LocalWeather } from '@/utilities/weather'
   import { fetchLocalWeather, luminosityIndex } from '@/utilities/weather'
@@ -36,6 +37,16 @@
   const WEATHER_EVERY = 900000
 
 const INTRO_RELIEF = 0.28
+
+const INTRO_FOV = 0.68
+
+const INTRO_SPEED = 2.2
+
+const INTRO_ALTITUDE = 0.45
+
+const ARRIVAL_DURATION = 5000
+
+const ARRIVAL_STEP = 100
 
   export default defineComponent({
     name: 'Glitchscape',
@@ -77,6 +88,8 @@ const INTRO_RELIEF = 0.28
         watch: 0 as number,
         tick: 0 as number,
         clock: Date.now() as number,
+        arrival: (store.isSceneRevealed ? 1 : 0) as number,
+        arriving: 0 as number,
       }
     },
     computed: {
@@ -175,11 +188,21 @@ const INTRO_RELIEF = 0.28
         }
       },
       stagedScene(): SceneConfig {
-        const scene = this.liveScene
+        const scene = this.liveScene,
+          progress = this.arrival
 
-        return this.store.isSceneRevealed
-          ? scene
-          : { ...scene, relief: scene.relief * INTRO_RELIEF }
+        if (progress >= 1) return scene
+
+        const eased = progress * progress * (3 - 2 * progress),
+          blend = (from: number, to: number) => lerp(from, to, eased)
+
+        return {
+          ...scene,
+          relief: blend(scene.relief * INTRO_RELIEF, scene.relief),
+          fov: blend(scene.fov * INTRO_FOV, scene.fov),
+          speed: blend(scene.speed * INTRO_SPEED, scene.speed),
+          altitude: blend(scene.altitude + INTRO_ALTITUDE, scene.altitude),
+        }
       },
       mistStyle(): string {
         const ground = this.liveScene.palette.ground,
@@ -232,6 +255,9 @@ const INTRO_RELIEF = 0.28
         },
         deep: true,
       },
+      'store.isSceneRevealed'(to: boolean) {
+        if (to && this.arrival < 1) this.beginArrival()
+      },
       isLive: {
         handler(to: boolean) {
           this.store.isLiveAmbience = to
@@ -265,6 +291,22 @@ const INTRO_RELIEF = 0.28
       },
     },
     methods: {
+      beginArrival() {
+        window.clearInterval(this.arriving)
+
+        const started = Date.now()
+
+        this.arriving = window.setInterval(() => {
+          const progress = Math.min(
+            (Date.now() - started) / ARRIVAL_DURATION,
+            1
+          )
+
+          this.arrival = progress
+
+          if (progress >= 1) window.clearInterval(this.arriving)
+        }, ARRIVAL_STEP)
+      },
       async askWeather() {
         const now = Date.now()
 
@@ -295,6 +337,7 @@ const INTRO_RELIEF = 0.28
     unmounted: function () {
       window.clearInterval(this.watch)
       window.clearInterval(this.tick)
+      window.clearInterval(this.arriving)
       this.controller?.destroy()
       this.controller = null
     },

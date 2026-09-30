@@ -1,5 +1,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
+import { store } from '@/utilities/store'
 
   export default defineComponent({
     name: 'Audio',
@@ -29,6 +30,11 @@
         default: 1,
       },
     },
+    data: function () {
+      return {
+        store,
+      }
+    },
     watch: {
       volume(to) {
         this.$el.volume = to
@@ -41,10 +47,18 @@
         }
       },
       muted(to) {
-        if (to || !this.autoplay || !this.$el.paused) return
+        if (!to) this.resume()
+      },
+      'store.isAudioUnlocked'(to: boolean) {
+        if (to) this.resume()
+      },
+    },
+    methods: {
+      resume() {
+        if (!this.autoplay || this.muted || !this.$el.paused) return
 
         this.$el.play().catch(() => {
-          // Still no user interaction: it will be picked up on the next one.
+          // Still not allowed: the next interaction will come back here.
         })
       },
     },
