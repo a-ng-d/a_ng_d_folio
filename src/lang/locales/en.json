@@ -87,9 +87,10 @@
     "role": "Role",
     "success": "Success criteria",
     "saves": "Saves",
+    "likes": "Likes",
     "rating": "Rating",
     "users": "Users",
-    "versions": "Versions",
+    "countries": "Countries",
     "downloads": "Downloads",
     "credit": "Credit",
     "takeaways": "Takeaways!"

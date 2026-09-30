@@ -170,7 +170,7 @@ The brand has been created and developed around a simple question: What do I tak
 
 <WrapColumn :title="$t('global.success')">
 <template #plain>
-<ContentContainer title="700" :description="$t('global.downloads')">
+<ContentContainer title="+1000" :description="$t('global.downloads')">
 <template #icon>
 <Download :size="48" />
 </template>
