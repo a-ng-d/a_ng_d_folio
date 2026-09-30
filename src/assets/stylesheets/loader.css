@@ -30,7 +30,13 @@ body, html {
   animation: go-forwards--enter 3200ms cubic-bezier(.86, .12, .12, .86) forwards
 }
 #loader.loader--leave {
-  animation: go-forwards--leave 2400ms cubic-bezier(.33, 1, .68, 1) forwards
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 35%);
+  mask-image: linear-gradient(to top, transparent 0%, #000 35%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 50% 0%;
+  mask-position: 50% 0%;
+  animation: go-forwards--leave 2800ms cubic-bezier(.33, 1, .68, 1) forwards
 }
 #loader.loader--loaded #nprogress {
   opacity: 0
@@ -87,15 +93,16 @@ body, html {
   0% {
     opacity: 1;
     background-size: 100% 100%;
-    filter: blur(0px)
+    -webkit-mask-size: 100% 165%;
+    mask-size: 100% 165%
   }
-  55% {
-    opacity: 0.35;
-    filter: blur(4px)
+  50% {
+    opacity: 0.9
   }
   100% {
     opacity: 0;
-    background-size: 100% 280%;
-    filter: blur(12px)
+    background-size: 100% 180%;
+    -webkit-mask-size: 100% 0%;
+    mask-size: 100% 0%
   }
 }

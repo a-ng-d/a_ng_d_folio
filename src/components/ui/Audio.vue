@@ -40,6 +40,13 @@
           this.$el.currentTime = 0
         }
       },
+      muted(to) {
+        if (to || !this.autoplay || !this.$el.paused) return
+
+        this.$el.play().catch(() => {
+          // Still no user interaction: it will be picked up on the next one.
+        })
+      },
     },
     mounted: function () {
       this.$el.volume = this.volume

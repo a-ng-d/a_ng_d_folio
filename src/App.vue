@@ -56,6 +56,9 @@
       theme(): ThemeKind {
         return this.isBackgroundDark ? 'DARK' : this.pageTheme
       },
+      isMuted(): boolean {
+        return !this.store.isSoundOn || !this.store.isAudioUnlocked
+      },
     },
     watch: {
       theme: {
@@ -314,36 +317,36 @@
     src="/sounds/ambient.mp3"
     autoplay
     loop
-    :muted="!store.isSoundOn"
+    :muted="isMuted"
     :volume="0.15"
   />
   <Audio
     src="/sounds/entrance.mp3"
     autoplay
-    :muted="!store.isSoundOn"
+    :muted="isMuted"
     :volume="0.2"
   />
   <Audio
     src="/sounds/transition-in.mp3"
-    :muted="!store.isSoundOn"
+    :muted="isMuted"
     :play="isExpanded"
     :volume="0.4"
   />
   <Audio
     src="/sounds/transition-out.mp3"
-    :muted="!store.isSoundOn"
+    :muted="isMuted"
     :play="!isExpanded"
     :volume="0.4"
   />
   <Audio
     src="/sounds/interaction-over.mp3"
-    :muted="!store.isSoundOn"
+    :muted="isMuted"
     :play="store.isOver"
     :volume="0.4"
   />
   <Audio
     src="/sounds/interaction-focus.mp3"
-    :muted="!store.isSoundOn"
+    :muted="isMuted"
     :play="store.isFocus"
     :volume="0.3"
   />

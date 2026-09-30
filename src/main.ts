@@ -3,6 +3,7 @@ import App from '@/App.vue'
 import router from '@/router'
 import { i18n } from '@/lang'
 import { registerContentComponents } from '@/content/components'
+import { store } from '@/utilities/store'
 import Loop from '@/components/graphics/loader'
 import SetCursor from '@/components/graphics/cursor'
 import Vue3Lottie from 'vue3-lottie'
@@ -19,6 +20,28 @@ document.title = 'Virtualization in progress…'
 // Cursor
 SetCursor()
 
+const unlockAudio = () => {
+  if (store.isAudioUnlocked) return
+
+  store.isAudioUnlocked = true
+
+  const previousVolume = feedback.volume
+  feedback.volume = 0
+  feedback
+    .play()
+    .then(() => {
+      feedback.pause()
+      feedback.currentTime = 0
+      feedback.volume = previousVolume
+    })
+    .catch(() => {
+      feedback.volume = previousVolume
+    })
+}
+
+document.addEventListener('keydown', unlockAudio, { once: true })
+document.addEventListener('pointerdown', unlockAudio, { once: true })
+
 if (import.meta.env.MODE != 'development') {
   // Progress bar
   NProgress.configure({
@@ -28,23 +51,6 @@ if (import.meta.env.MODE != 'development') {
     speed: 200,
   })
   NProgress.start()
-
-  const unlockAudio = () => {
-    const previousVolume = feedback.volume
-    feedback.volume = 0
-    feedback
-      .play()
-      .then(() => {
-        feedback.pause()
-        feedback.currentTime = 0
-        feedback.volume = previousVolume
-      })
-      .catch(() => {
-        feedback.volume = previousVolume
-      })
-  }
-  document.addEventListener('keydown', unlockAudio, { once: true })
-  document.addEventListener('pointerdown', unlockAudio, { once: true })
 
   // Loading screen
   window.onload = () => {
@@ -89,7 +95,7 @@ if (import.meta.env.MODE != 'development') {
     setTimeout(() => {
       Loop.destroy()
       loader.remove()
-    }, 4400)
+    }, 4800)
   }
 } else {
   Loop.destroy()
