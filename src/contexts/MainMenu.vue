@@ -102,6 +102,7 @@
       <Transition name="switch" mode="out-in" appear>
         <Button
           v-if="view === 'UNIVERSE'"
+          key="back-home"
           type="secondary"
           :label="$t('global.back.home')"
           path="/"
@@ -115,6 +116,7 @@
         </Button>
         <Button
           v-else-if="view != 'HOME'"
+          key="to-universe"
           type="secondary"
           :label="$t('global.menu')"
           path="/_universe"
@@ -132,12 +134,14 @@
       <Transition name="switch" mode="out-in">
         <Pagination
           v-if="view === 'WORK'"
+          key="pagination"
           :pages="projects"
           :activePage="activeProjectPosition"
           :theme="theme"
         />
         <Navigation
           v-else-if="view === 'PROJECT'"
+          key="navigation"
           :previousPage="previousProject()"
           rootPage="/_work"
           :nextPage="nextProject()"
@@ -145,6 +149,7 @@
         />
         <Button
           v-else-if="view === 'UNIVERSE' && goback"
+          key="close-universe"
           type="primary"
           layout="ICON-ONLY"
           :path="previousPath"
@@ -155,44 +160,44 @@
             <X :size="24" />
           </template>
         </Button>
-        <div class="universe-title" v-else>
+        <div class="universe-title" key="title" v-else>
           <Transition name="switch" mode="out-in">
-            <div v-if="view === 'SHORT'">
+            <div v-if="view === 'SHORT'" key="short">
               <i18n-t keypath="glossary.id" tag="h6" scope="global">
                 <template #breakLine>
                   <br />
                 </template>
               </i18n-t>
             </div>
-            <div v-else-if="view === 'CORE'">
+            <div v-else-if="view === 'CORE'" key="core">
               <i18n-t keypath="glossary.core" tag="h6" scope="global">
                 <template #breakLine>
                   <br />
                 </template>
               </i18n-t>
             </div>
-            <div v-else-if="view === 'LAB'">
+            <div v-else-if="view === 'LAB'" key="lab">
               <i18n-t keypath="glossary.lab" tag="h6" scope="global">
                 <template #breakLine>
                   <br />
                 </template>
               </i18n-t>
             </div>
-            <div v-else-if="view === 'UNIVERSE'">
+            <div v-else-if="view === 'UNIVERSE'" key="universe">
               <i18n-t keypath="glossary.universe" tag="h6" scope="global">
                 <template #breakLine>
                   <br />
                 </template>
               </i18n-t>
             </div>
-            <div v-else-if="view === 'CONTACT'">
+            <div v-else-if="view === 'CONTACT'" key="contact">
               <i18n-t keypath="glossary.contact" tag="h6" scope="global">
                 <template #breakLine>
                   <br />
                 </template>
               </i18n-t>
             </div>
-            <div v-else-if="view === 'ATTRIBUTION'">
+            <div v-else-if="view === 'ATTRIBUTION'" key="attribution">
               <i18n-t keypath="glossary.attribution" tag="h6" scope="global">
                 <template #breakLine>
                   <br />

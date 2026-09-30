@@ -211,7 +211,10 @@
     transform-origin: center center
     box-shadow: 0 0 0 var(--border-size) var(--outline-color)
     overflow: hidden
-    transition: var(--simple-transition)
+    transition-duration: var(--duration-running)
+    transition-delay: var(--delay, 0ms)
+    transition-timing-function: var(--ease-peps)
+    transition-property: background-color, border-color, box-shadow, color
     // cursor: pointer
 
     &:before
