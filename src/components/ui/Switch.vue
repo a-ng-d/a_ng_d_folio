@@ -129,7 +129,8 @@
     --slide-border: var(--color-soil)
     --knob-background: var(--color-clay)
 
-  .switch
+    &[data-theme="DARK"]
+      --slide-border: var(--color-cream)
 
   // Event
   .switch
