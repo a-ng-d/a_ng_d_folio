@@ -5,7 +5,6 @@ import type { LocalWeather } from '@/utilities/weather'
 export const store = reactive({
   isPageCurtainOn: false as boolean,
   isSoundOn: true as boolean,
-  isAudioUnlocked: false as boolean,
   isSceneRevealed: true as boolean,
   isOver: false as boolean,
   isFocus: false as boolean,

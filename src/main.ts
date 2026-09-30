@@ -9,8 +9,12 @@ import SetCursor from '@/components/graphics/cursor'
 import Vue3Lottie from 'vue3-lottie'
 import NProgress from 'nprogress'
 
+const CLOSING_SPEED = 1
+const CLOSING_FRAMES = (220 / 60) * 1000
+const SETTLED_BEAT = 600
+const WIPE_DURATION = 3200
+
 const app = createApp(App),
-  stage = document.getElementById('app') as HTMLElement,
   loader = document.getElementById('loader') as HTMLElement,
   feedback = document.getElementById('feedback') as HTMLAudioElement
 
@@ -21,30 +25,10 @@ document.title = 'Virtualization in progress…'
 // Cursor
 SetCursor()
 
-const unlockAudio = () => {
-  if (store.isAudioUnlocked) return
-
-  store.isAudioUnlocked = true
-
-  const previousVolume = feedback.volume
-  feedback.volume = 0
-  feedback
-    .play()
-    .then(() => {
-      feedback.pause()
-      feedback.currentTime = 0
-      feedback.volume = previousVolume
-    })
-    .catch(() => {
-      feedback.volume = previousVolume
-    })
-}
-
-document.addEventListener('keydown', unlockAudio, { once: true })
-document.addEventListener('pointerdown', unlockAudio, { once: true })
-
-if (import.meta.env.MODE != 'development') {
+if (import.meta.env.MODE !== 'development') {
   store.isSceneRevealed = false
+
+  let isWiping = false
 
   // Progress bar
   NProgress.configure({
@@ -57,26 +41,30 @@ if (import.meta.env.MODE != 'development') {
 
   // Loading screen
   window.onload = () => {
-    let isFrozen = false
+    let isClosing = false
 
     Loop.playSegments([[0, 200]], false)
 
     Loop.onLoopComplete = () => {
-      isFrozen = !isFrozen
-      if (isFrozen) {
+      isClosing = !isClosing
+
+      if (isClosing) {
         Loop.goToAndStop(200, true)
         loader.classList.add('loader--loaded')
         NProgress.done()
-        setTimeout(entrance, 500)
-      } else Loop.goToAndStop(420, true)
+        setTimeout(entrance, SETTLED_BEAT)
+      } else {
+        Loop.goToAndStop(420, true)
+        wipe()
+      }
     }
   }
 
   const entrance = (): void => {
-    Loop.setSpeed(2)
+    Loop.setSpeed(CLOSING_SPEED)
     Loop.playSegments([[200, 420]], false)
     Loop.play()
-    feedback.volume = 0.2
+    feedback.volume = 0.1
     document.body.clientWidth > 1280
       ? feedback.play().catch(() => {
           //
@@ -85,7 +73,14 @@ if (import.meta.env.MODE != 'development') {
 
     loader.classList.remove('loader--loaded')
 
-    stage.classList.add('app--arriving')
+    setTimeout(wipe, CLOSING_FRAMES / CLOSING_SPEED + SETTLED_BEAT)
+  }
+
+  const wipe = (): void => {
+    if (isWiping) return
+
+    isWiping = true
+    loader.classList.replace('loader--enter', 'loader--leave')
 
     app
       .use(router)
@@ -94,16 +89,10 @@ if (import.meta.env.MODE != 'development') {
       .mount('#app')
 
     setTimeout(() => {
-      loader.classList.replace('loader--enter', 'loader--leave')
-      stage.classList.add('app--arrived')
-      store.isSceneRevealed = true
-    }, 2000)
-
-    setTimeout(() => {
       Loop.destroy()
       loader.remove()
-      stage.classList.remove('app--arriving', 'app--arrived')
-    }, 4400)
+      store.isSceneRevealed = true
+    }, WIPE_DURATION)
   }
 } else {
   Loop.destroy()

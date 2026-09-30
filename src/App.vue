@@ -94,30 +94,36 @@ import { invertTheme } from '@/router/scenery'
         const AB: { [key: string]: () => void } = {
           'HOME > CORE': () => {
             this.transition = 'go-left'
-            this.isHardTransited = true
+            this.isHardTransited = false
           },
           'CORE > HOME': () => {
             this.transition = 'go-right'
-            this.isHardTransited = true
+            this.isHardTransited = false
           },
           'HOME > LAB': () => {
             this.transition = 'go-right'
-            this.isHardTransited = true
+            this.isHardTransited = false
           },
           'LAB > HOME': () => {
             this.transition = 'go-left'
-            this.isHardTransited = true
+            this.isHardTransited = false
           },
           'HOME > WORK': () => {
             this.transition = 'go-down'
-            this.isHardTransited = true
+            this.isHardTransited = false
           },
           'WORK > HOME': () => {
             this.transition = 'go-up'
-            this.isHardTransited = true
+            this.isHardTransited = false
           },
-          'WORK > PROJECT': () => (this.transition = 'go-down'),
-          'PROJECT > WORK': () => (this.transition = 'go-up'),
+          'WORK > PROJECT': () => {
+            this.transition = 'go-down'
+            this.isHardTransited = false
+          },
+          'PROJECT > WORK': () => {
+            this.transition = 'go-up'
+            this.isHardTransited = false
+          },
           'PROJECT > PROJECT': () => {
             let diff = from.meta.position - to.meta.position
             diff == this.numberOfProjects - 1 ? (diff = -1) : diff
@@ -128,38 +134,38 @@ import { invertTheme } from '@/router/scenery'
           },
           'PROJECT > HOME': () => {
             this.transition = 'go-up'
-            this.isHardTransited = true
+            this.isHardTransited = false
           },
           'HOME > SHORT': () => {
             this.transition = 'go-right'
-            this.isHardTransited = true
+            this.isHardTransited = false
           },
           'SHORT > HOME': () => {
             this.transition = 'go-left'
-            this.isHardTransited = true
+            this.isHardTransited = false
           },
           'HOME > CONTACT': () => {
             this.transition = 'go-left'
-            this.isHardTransited = true
+            this.isHardTransited = false
           },
           'CONTACT > HOME': () => {
             this.transition = 'go-right'
-            this.isHardTransited = true
+            this.isHardTransited = false
           },
         }
 
         const A: { [key: string]: () => void } = {
           UNIVERSE: () => {
             this.transition = 'go-down'
-            this.isHardTransited = this.isSameContext(to.path)
+            this.isHardTransited = false
           },
           ATTRIBUTION: () => {
             this.transition = 'go-up'
-            this.isHardTransited = this.isSameContext(to.path)
+            this.isHardTransited = false
           },
           UNKNOWN: () => {
             this.transition = 'go-up'
-            this.isHardTransited = this.isSameContext(to.path)
+            this.isHardTransited = false
           },
         }
 
@@ -172,11 +178,11 @@ import { invertTheme } from '@/router/scenery'
           },
           ATTRIBUTION: () => {
             this.transition = 'go-down'
-            this.isHardTransited = this.isSameContext(to.path)
+            this.isHardTransited = false
           },
           UNKNOWN: () => {
             this.transition = 'go-down'
-            this.isHardTransited = this.isSameContext(to.path)
+            this.isHardTransited = false
           },
         }
 

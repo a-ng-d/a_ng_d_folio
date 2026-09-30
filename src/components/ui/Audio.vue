@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { defineComponent } from 'vue'
-import { store } from '@/utilities/store'
+import { defineComponent } from 'vue'
 
   export default defineComponent({
     name: 'Audio',
@@ -32,7 +31,7 @@ import { store } from '@/utilities/store'
     },
     data: function () {
       return {
-        store,
+        isWaiting: false as boolean,
       }
     },
     watch: {
@@ -49,21 +48,36 @@ import { store } from '@/utilities/store'
       muted(to) {
         if (!to) this.resume()
       },
-      'store.isAudioUnlocked'(to: boolean) {
-        if (to) this.resume()
-      },
     },
     methods: {
       resume() {
         if (!this.autoplay || this.muted || !this.$el.paused) return
 
-        this.$el.play().catch(() => {
-          // Still not allowed: the next interaction will come back here.
-        })
+        this.$el.play().catch(this.waitForVisitor)
+      },
+      waitForVisitor() {
+        if (this.isWaiting) return
+
+        this.isWaiting = true
+        document.addEventListener('pointerdown', this.retry, { once: true })
+        document.addEventListener('keydown', this.retry, { once: true })
+      },
+      retry() {
+        this.stopWaiting()
+        this.resume()
+      },
+      stopWaiting() {
+        this.isWaiting = false
+        document.removeEventListener('pointerdown', this.retry)
+        document.removeEventListener('keydown', this.retry)
       },
     },
     mounted: function () {
       this.$el.volume = this.volume
+      this.resume()
+    },
+    unmounted: function () {
+      this.stopWaiting()
     },
   })
 </script>

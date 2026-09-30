@@ -11,17 +11,6 @@ body, html {
   overflow: hidden
 }
 
-#app.app--arriving {
-  position: relative;
-  z-index: 7;
-  opacity: 0;
-  pointer-events: none
-}
-#app.app--arriving.app--arrived {
-  pointer-events: auto;
-  animation: come-forwards 2400ms cubic-bezier(.33, 1, .68, 1) forwards
-}
-
 #loader {
   position: absolute;
   top: 0;
@@ -41,7 +30,13 @@ body, html {
   animation: go-forwards--enter 3200ms cubic-bezier(.86, .12, .12, .86) forwards
 }
 #loader.loader--leave {
-  animation: go-forwards--leave 2400ms cubic-bezier(.33, 1, .68, 1) forwards
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 35%);
+  mask-image: linear-gradient(to top, transparent 0%, #000 35%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 50% 0%;
+  mask-position: 50% 0%;
+  animation: go-forwards--leave 3200ms cubic-bezier(.33, 1, .68, 1) forwards
 }
 #loader.loader--loaded #nprogress {
   opacity: 0
@@ -96,18 +91,18 @@ body, html {
 }
 @keyframes go-forwards--leave {
   0% {
-    background-size: 100% 100%
+    opacity: 1;
+    background-size: 100% 100%;
+    -webkit-mask-size: 100% 200%;
+    mask-size: 100% 200%
+  }
+  80% {
+    opacity: 0.2;
   }
   100% {
-    background-size: 100% 180%
-  }
-}
-
-@keyframes come-forwards {
-  0% {
-    opacity: 0
-  }
-  100% {
-    opacity: 1
+    opacity: 0;
+    background-size: 100% 100%;
+    -webkit-mask-size: 100% 0%;
+    mask-size: 100% 0%
   }
 }
