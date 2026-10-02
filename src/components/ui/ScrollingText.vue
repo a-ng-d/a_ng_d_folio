@@ -22,6 +22,18 @@
         type: Boolean,
         default: false,
       },
+      pauseOnHover: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    computed: {
+      modifiers(): Array<string> {
+        return [
+          this.stopped ? 'scrolling-text--stopped' : 'scrolling-text--played',
+          this.pauseOnHover ? 'scrolling-text--pausable' : '',
+        ]
+      },
     },
   })
 </script>
@@ -30,7 +42,7 @@
   <h1
     v-if="!isSubTitle"
     class="scrolling-text"
-    :class="stopped ? 'scrolling-text--stopped' : 'scrolling-text--played'"
+    :class="modifiers"
     :data-theme="resolvedTheme"
   >
     <span class="scrolling-text__instance">{{ label }}</span>
@@ -39,7 +51,7 @@
   <h4
     v-else-if="isSubTitle"
     class="scrolling-text"
-    :class="stopped ? 'scrolling-text--stopped' : 'scrolling-text--played'"
+    :class="modifiers"
     :data-theme="resolvedTheme"
   >
     <span class="scrolling-text__instance">{{ label }}</span>
@@ -65,6 +77,9 @@
 
     &--played &__instance
       animation-play-state: running
+
+    &--pausable:hover &__instance
+      animation-play-state: paused
 
   // Aspect
   .scrolling-text
